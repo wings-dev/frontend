@@ -1,0 +1,45 @@
+.section-caption .top-title {
+    color: #C8CADD;
+}
+
+.input-field {
+    padding: 0px 16px;
+    .line {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        right: 50%;
+        height: 1px;
+        background-color: var(--bs-theme-second);
+        transition: all 0.15s ease;
+    }
+    input, select, textarea {
+        padding: 9px 16px 12px 0px;
+        &[type="radio"], &[type="checkbox"] {
+            padding: inherit;
+        }
+        &::placeholder {
+            color: rgba(var(--bs-theme-secondary-rgb), 0.5);
+        }
+        &:focus + .line {
+            left: 0;
+            right: 0;
+        }
+    }
+    .icon-box {
+        width: 60px;
+    }
+    .select-date {
+        input {
+            width: 42px;
+        }
+    }
+}
+
+.footer {
+    padding-top: unset;
+}
+
+.map {
+    height: 530px;
+}

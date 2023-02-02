@@ -1,0 +1,36 @@
+.categories {
+  margin-top: -129px;
+}
+.categories .cat-item .item-caption {
+  background-color: rgba(38, 30, 50, 0.4);
+  transition: background-color 0.35s ease;
+}
+.categories .cat-item .item-caption .title {
+  transition: color 0.15s ease;
+}
+.categories .cat-item .item-caption .caption-content {
+  max-height: 0px;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.35s ease;
+}
+.categories .cat-item:not(:hover) .item-caption .caption-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.categories .cat-item:hover .item-caption {
+  background-color: rgba(var(--bs-theme-first-rgb), 0.68);
+  z-index: 4;
+}
+.categories .cat-item:hover .item-caption .title {
+  color: var(--bs-theme-second) !important;
+}
+.categories .cat-item:hover .item-caption .caption-content {
+  max-height: 100%;
+  opacity: 1;
+}
+.categories .ribbon {
+  background-color: #FFD128;
+  transform: rotate(-45deg) translate(-30%, -45%);
+  z-index: 3;
+}/*# sourceMappingURL=villa-secenekleri.css.map */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>check-4</title>
+    <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Havale-EFT-3" transform="translate(-936.000000, -307.000000)" fill="#5DC1B2" fill-rule="nonzero">
+            <g id="check-4" transform="translate(936.000000, 307.000000)">
+                <path d="M24,0 C10.8178125,0 0,10.8178125 0,24 C0,37.1821875 10.8178125,48 24,48 C37.1821875,48 48,37.1821875 48,24 C48,10.8178125 37.1821875,0 24,0 Z M21.0955313,34.91625 L10.5856875,24.4065 L14.56275,20.4294375 L21.2795625,27.14625 L34.7639063,14.88825 L38.5486875,19.0493437 L21.0955313,34.91625 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
