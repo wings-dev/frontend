@@ -2043,7 +2043,7 @@ export default {
 </script>
 
 <style scoped>
-@import '~/static/cdn/fonts/sf-pro/stylesheet.css';
+/*@import '~/static/cdn/fonts/sf-pro/stylesheet.css';
 @import '~/static/cdn/css/custom-bootstrap.min.css';
 @import '~/static/cdn/css/jquery/bootstrap-select.min.css';
 @import '~/static/cdn/css/jquery/swiper.css';
@@ -2053,5 +2053,5 @@ export default {
 @import '~/static/cdn/css/theme.min.css';
 @import '~/static/cdn/css/jquery/ion.rangeSlider.min.css';
 @import '~/static/cdn/css/jquery/intlTelInput.min.css';
-@import '~/static/cdn/css/listeleme.min.css';
+@import '~/static/cdn/css/listeleme.min.css';*/
 </style>
