@@ -9,20 +9,21 @@
         <div class="Filters-range-inputs">
           <label for="">
             <small class="">Min</small>
-            <input type="number" class="js-minFiyat" name="min" placeholder="Min" v-model="min_price">
+            <input type="number" class="js-minFiyat" name="min" placeholder="Min" v-model="min_price" @keyup="emitPrices()">
             <span>₺</span>
           </label>
           <label for="">
             <small class="fw-medium text-theme-secondary d-block w-100">Max</small>
             <input type="number" class="js-maxFiyat" name="max" placeholder="Max"
-                   value="">
+                   value="" v-model="max_price" @keyup="emitPrices()">
             <span class="text-theme-secondary">₺</span>
           </label>
         </div>
-        <div class="Filters-range-inputs-bar">
+        <!-- TODO buraya uygun vue range componenti eklenecek -->
+<!--        <div class="Filters-range-inputs-bar">
           <input type="text" class="js-range-slider" name="my_range" value="" data-min="0"
-                 data-max="9000" data-prefix="₺" data-step="50" v-model="max_price" />
-        </div>
+                 data-max="9000" data-prefix="₺" data-step="50"  />
+        </div>-->
       </div>
     </div>
   </div>
@@ -35,6 +36,15 @@ export default {
     return {
       min_price: null,
       max_price: null
+    }
+  },
+  methods: {
+    /**
+     * Üst componente değerleri gönderir
+     */
+    emitPrices() {
+      this.$emit('min_price', this.min_price);
+      this.$emit('max_price', this.max_price);
     }
   }
 }

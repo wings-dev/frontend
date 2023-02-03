@@ -362,11 +362,13 @@
                 <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
               </div>
 
+              {{selectedValues}}
+
               <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations" :hideTitleBorder="true" @values="selectedValues.destinations = $event"></filter-item-checkbox-component>
 
               <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes" @values="selectedValues.amenites.facilityTypes = $event"></filter-item-checkbox-component>
 
-              <filter-price-between-component></filter-price-between-component>
+              <filter-price-between-component @min_price="selectedValues.min_price = $event" @max_price="selectedValues.max_price = $event"></filter-price-between-component>
 
               <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts" @values="selectedValues.amenites.facilityConcepts = $event"></filter-item-checkbox-component>
 
