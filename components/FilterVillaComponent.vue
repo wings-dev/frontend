@@ -20,59 +20,16 @@
               <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
             </div>
 
-            <filter-item-checkbox-component @destinationCodes="updateDestinationCodes($event)"></filter-item-checkbox-component>
+            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations" :hideTitleBorder="true" @values="selectedValues.destinations = $event"></filter-item-checkbox-component>
 
+            <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes" @values="selectedValues.amenites.facilityTypes = $event"></filter-item-checkbox-component>
 
-            <div class="Filters Filters-amenites">
-              <div class="Filters-head border-bottom">
-                <i class="icon-facility"></i>
-                <h5>TESİS TİPİ</h5>
-              </div>
-              <div class="Filters-in">
-                <ul class="Filters-first Filters-grid">
-                  <li class="Filters-item">
-                    <label for="tesis_tipi_6">
-                      <input type="checkbox" class="AmenitesID_1" data-type="amenites"
-                             data-name="Tip" id="tesis_tipi_6" value="1">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Villa</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="tesis_tipi_7">
-                      <input type="checkbox" data-type="amenites" data-name="Tip"
-                             id="tesis_tipi_7" class="AmenitesID_2" value="2">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Ev</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="tesis_tipi_8">
-                      <input type="checkbox" data-type="amenites" data-name="Tip"
-                             id="tesis_tipi_8" class="AmenitesID_3" value="3">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Suite</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="tesis_tipi_9">
-                      <input type="checkbox" data-type="amenites" data-name="Tip"
-                             id="tesis_tipi_9" class="AmenitesID_4" value="4">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Dubleks</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="tesis_tipi_10">
-                      <input type="checkbox" class="AmenitesID_5" data-type="amenites"
-                             data-name="Tip" id="tesis_tipi_10" value="5">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Bungalov</p>
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts" @values="selectedValues.amenites.facilityConcepts = $event"></filter-item-checkbox-component>
+
+            <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights" @values="selectedValues.amenites.highlights = $event"></filter-item-checkbox-component>
+
+            <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities" @values="selectedValues.amenites.facilities = $event"></filter-item-checkbox-component>
+
 
             <div class="Filters">
               <div class="Filters-head border-bottom">
@@ -102,158 +59,6 @@
               </div>
             </div>
 
-            <div class="Filters Filters-amenites">
-              <div class="Filters-head border-bottom">
-                <i class="icon-concept"></i>
-                <h5>TESİS KONSEPTİ</h5>
-              </div>
-              <div class="Filters-in">
-                <ul>
-                  <li class="Filters-item">
-                    <label for="konsept_6">
-                      <input type="checkbox" class="AmenitesID_6" data-type="amenites"
-                             data-name="Konsept" id="konsept_6" value="6">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Deniz manzaralı villa ve evler</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="konsept_7">
-                      <input type="checkbox" class="AmenitesID_7" data-type="amenites"
-                             data-name="Konsept" id="konsept_7" value="7">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Merkezi konumdaki evler</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="konsept_8">
-                      <input type="checkbox" class="AmenitesID_8" data-type="amenites"
-                             data-name="Konsept" id="konsept_8" value="8">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Lüks tatil villaları</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="konsept_9">
-                      <input type="checkbox" class="AmenitesID_9" data-type="amenites"
-                             data-name="Konsept" id="konsept_9" value="9">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Balayı villası</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="konsept_10">
-                      <input type="checkbox" class="AmenitesID_10" data-type="amenites"
-                             data-name="Konsept" id="konsept_10" value="10">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Muhafazakar villa</p>
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="Filters Filters-amenites">
-              <div class="Filters-head border-bottom">
-                <i class="icon-concept"></i>
-                <h5>ÖNE ÇIKAN ÖZELLİKLER</h5>
-              </div>
-              <div class="Filters-in">
-                <ul class="Filters-first">
-                  <li class="Filters-item">
-                    <label for="amenites_1">
-                      <input type="checkbox" class="AmenitesID_11" data-type="amenites"
-                             data-name="Özellik" id="amenites_1" value="11">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Özel Havuz</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="amenites_2">
-                      <input type="checkbox" class="AmenitesID_12" data-type="amenites"
-                             data-name="Özellik" id="amenites_2" value="12">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Şezlong</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="amenites_3">
-                      <input type="checkbox" class="AmenitesID_13" data-type="amenites"
-                             data-name="Özellik" id="amenites_3" value="13">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Ortak Havuz</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="amenites_4">
-                      <input type="checkbox" class="AmenitesID_14" data-type="amenites"
-                             data-name="Özellik" id="amenites_4" value="14">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Isıtmalı Havuz</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="amenites_5">
-                      <input type="checkbox" class="AmenitesID_15" data-type="amenites"
-                             data-name="Özellik" id="amenites_5" value="15">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Kapalı Havuz</p>
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="Filters Filters-amenites">
-              <div class="Filters-head border-bottom">
-                <i class="icon-concept"></i>
-                <h5>OLANAKLAR</h5>
-              </div>
-              <div class="Filters-in">
-                <ul class="Filters-first">
-                  <li class="Filters-item">
-                    <label for="amenites_1">
-                      <input type="checkbox" class="AmenitesID_16" data-type="amenites"
-                             data-name="Olanak" id="amenites_1" value="16">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Çamaşır Makinesi</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="amenites_2">
-                      <input type="checkbox" class="AmenitesID_17" data-type="amenites"
-                             data-name="Olanak" id="amenites_2" value="17">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Hamam</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="amenites_3">
-                      <input type="checkbox" class="AmenitesID_18" data-type="amenites"
-                             data-name="Olanak" id="amenites_3" value="18">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Sauna</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="amenites_4">
-                      <input type="checkbox" class="AmenitesID_19" data-type="amenites"
-                             data-name="Olanak" id="amenites_4" value="19">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Küvetli Banyo</p>
-                    </label>
-                  </li>
-                  <li class="Filters-item">
-                    <label for="amenites_5">
-                      <input type="checkbox" class="AmenitesID_20" data-type="amenites"
-                             data-name="Olanak" id="amenites_5" value="20">
-                      <span class="checkspan"></span>
-                      <p class="check-text">Fırın</p>
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
 
           <div class="Filters-button" type="button" onclick="RunFilter(this)">Filtele</div>
@@ -516,14 +321,168 @@ export default {
   name: "FilterVillaComponent",
   data() {
     return {
-      form: {
-        destinations: []
+      selectedValues: {
+        destinations: [],
+        amenites: {
+          facilityTypes: [],
+          facilityConcepts: [],
+          highlights: [],
+          facilities: [],
+        }
+      },
+      destinations: [
+        {
+          text: "Antalya",
+          code: "antalya",
+          selected: false,
+          children: [
+            {
+              text: "Kaş",
+              code: "kas",
+              selected: false,
+              children: [
+                {
+                  text: "Kalkan",
+                  code: "kalkan",
+                  selected: false,
+                }
+              ]
+            }
+          ]
+        },
+        {
+          text: "Çavdır",
+          code: "cavdir",
+          selected: false,
+          children: [
+            {
+              text: "Fethiye",
+              code: "fethiye",
+              selected: false,
+            },
+            {
+              text: "Marmaris",
+              code: "marmaris",
+              selected: false,
+            }
+          ]
+        }
+      ],
+      amenites: {
+        facilityTypes: [
+          {
+            text: "Villa",
+            code: "villa",
+            selected: false,
+          },
+          {
+            text: "Ev",
+            code: "ev",
+            selected: false,
+          },
+          {
+            text: "Suite",
+            code: "suite",
+            selected: false,
+          },
+          {
+            text: "Dubleks",
+            code: "dubleks",
+            selected: false,
+          },
+          {
+            text: "Bungalov",
+            code: "bungalov",
+            selected: false,
+          },
+        ],
+        facilityConcepts: [
+          {
+            text: "Deniz manzaralı villa ve evler",
+            code: "Deniz manzaralı villa ve evler",
+            selected: false,
+          },
+          {
+            text: "Merkezi konumdaki evler",
+            code: "Merkezi konumdaki evler",
+            selected: false,
+          },
+          {
+            text: "Lüks tatil villaları",
+            code: "Lüks tatil villaları",
+            selected: false,
+          },
+          {
+            text: "Lüks tatil villaları",
+            code: "Lüks tatil villaları",
+            selected: false,
+          },
+          {
+            text: "Muhafazakar villa",
+            code: "Muhafazakar villa",
+            selected: false,
+          },
+        ],
+        highlights: [
+          {
+            text: "Özel Havuz",
+            code: "Şezlong",
+            selected: false,
+          },
+          {
+            text: "Şezlong",
+            code: "Şezlong",
+            selected: false,
+          },
+          {
+            text: "Ortak Havuz",
+            code: "Ortak Havuz",
+            selected: false,
+          },
+          {
+            text: "Isıtmalı Havuz",
+            code: "Isıtmalı Havuz",
+            selected: false,
+          },
+          {
+            text: "Kapalı Havuz",
+            code: "Kapalı Havuz",
+            selected: false,
+          },
+        ],
+        facilities: [
+          {
+            text: "Çamaşır Makinesi",
+            code: "Çamaşır Makinesi",
+            selected: false,
+          },
+          {
+            text: "Hamam",
+            code: "Hamam",
+            selected: false,
+          },
+          {
+            text: "Sauna",
+            code: "Sauna",
+            selected: false,
+          },
+          {
+            text: "Küvetli Banyo",
+            code: "Küvetli Banyo",
+            selected: false,
+          },
+          {
+            text: "Fırın",
+            code: "Fırın",
+            selected: false,
+          },
+        ],
       }
     }
   },
-  methods: {
-    updateDestinationCodes(destinations) {
-      this.form.destinations = destinations;
+  computed: {
+    combinedAmenites() {
+
     }
   }
 }

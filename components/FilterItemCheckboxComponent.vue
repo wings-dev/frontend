@@ -1,8 +1,8 @@
 <template>
   <div class="Filters Filters-region ">
-    <div class="Filters-head"><i class="icon-location-1"></i><h5>BÖLGE</h5></div>
-    <div class="Filters-search">
-      <label><i class="icon-search-new"></i><input type="search" placeholder="Bölge arayın" v-model="filterText" @keyup="applyFilter()"></label>
+    <div class="Filters-head" v-bind:class="{ 'border-bottom' : !hideTitleBorder}"><i class="icon-location-1"></i><h5>{{title}}</h5></div>
+    <div class="Filters-search" v-if="filterInputPlaceholder">
+      <label><i class="icon-search-new"></i><input type="search" :placeholder="filterInputPlaceholder" v-model="filterText" @keyup="applyFilter()"></label>
     </div>
     <div class="Filters-in">
       <ul class="Filters-first">
@@ -42,48 +42,17 @@
 <script>
 export default {
   name: "FilterItemCheckboxComponent",
+  props: {
+    title: {type: String},
+    checkboxes: {type: Array, default: []},
+    filterInputPlaceholder: {type: String, default: false},
+    hideTitleBorder: {type: Boolean, default: false},
+  },
   data() {
     return {
       filterText: "",
       filteredCheckboxes: [],
-      checkboxes: [
-        {
-          text: "Antalya",
-          code: "antalya",
-          selected: false,
-          children: [
-            {
-              text: "Kaş",
-              code: "kas",
-              selected: false,
-              children: [
-                {
-                  text: "Kalkan",
-                  code: "kalkan",
-                  selected: false,
-                }
-              ]
-            }
-          ]
-        },
-        {
-          text: "Çavdır",
-          code: "cavdir",
-          selected: false,
-          children: [
-            {
-              text: "Fethiye",
-              code: "fethiye",
-              selected: false,
-            },
-            {
-              text: "Marmaris",
-              code: "marmaris",
-              selected: false,
-            }
-          ]
-        }
-      ]
+      checkboxes: []
     };
   },
   methods: {
@@ -129,7 +98,7 @@ export default {
      */
     emitSelectedCodes() {
       const selectedCodes = this.getSelectedCodes(this.checkboxes);
-      this.$emit("checkboxCodes", selectedCodes);
+      this.$emit("values", selectedCodes);
     },
     /**
      * Filtre yapar, üst node ile birlikte sırasıyla verir
