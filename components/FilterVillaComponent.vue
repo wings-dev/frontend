@@ -24,40 +24,13 @@
 
             <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes" @values="selectedValues.amenites.facilityTypes = $event"></filter-item-checkbox-component>
 
+            <filter-price-between-component></filter-price-between-component>
+
             <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts" @values="selectedValues.amenites.facilityConcepts = $event"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights" @values="selectedValues.amenites.highlights = $event"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities" @values="selectedValues.amenites.facilities = $event"></filter-item-checkbox-component>
-
-
-            <div class="Filters">
-              <div class="Filters-head border-bottom">
-                <i class="icon-wallet"></i>
-                <h5>FİYAT ARALIĞI</h5>
-              </div>
-              <div class="Filters-in">
-                <div class="Filters-range">
-                  <div class="Filters-range-inputs">
-                    <label for="">
-                      <small class="">Min</small>
-                      <input type="number" class="js-minFiyat" name="min" placeholder="Min">
-                      <span>₺</span>
-                    </label>
-                    <label for="">
-                      <small class="fw-medium text-theme-secondary d-block w-100">Max</small>
-                      <input type="number" class="js-maxFiyat" name="max" placeholder="Max"
-                             value="">
-                      <span class="text-theme-secondary">₺</span>
-                    </label>
-                  </div>
-                  <div class="Filters-range-inputs-bar">
-                    <input type="text" class="js-range-slider" name="my_range" value="" data-min="0"
-                           data-max="9000" data-prefix="₺" data-step="50"/>
-                  </div>
-                </div>
-              </div>
-            </div>
 
           </div>
 
@@ -328,7 +301,9 @@ export default {
           facilityConcepts: [],
           highlights: [],
           facilities: [],
-        }
+        },
+        min_price: null,
+        max_price: null
       },
       destinations: [
         {
