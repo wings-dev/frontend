@@ -20,7 +20,7 @@
               <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
             </div>
 
-            <filter-item-destination-component @destinationCodes="updateDestinationCodes($event)"></filter-item-destination-component>
+            <filter-item-checkbox-component @destinationCodes="updateDestinationCodes($event)"></filter-item-checkbox-component>
 
 
             <div class="Filters Filters-amenites">

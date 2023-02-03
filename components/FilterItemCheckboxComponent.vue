@@ -6,28 +6,28 @@
     </div>
     <div class="Filters-in">
       <ul class="Filters-first">
-        <li class="Filters-item Filters-item-notfound" v-bind:style="filterText.length && !filteredDestinations.length ? 'display:block' : 'display:none'">
+        <li class="Filters-item Filters-item-notfound" v-bind:style="filterText.length && !filteredCheckboxes.length ? 'display:block' : 'display:none'">
           <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
         </li>
-        <li class="Filters-item" v-for="destination1 in (filterText.length ? filteredDestinations : destinations)">
+        <li class="Filters-item" v-for="checkbox1 in (filterText.length ? filteredCheckboxes : checkboxes)">
           <label>
-            <input type="checkbox" v-model="destination1.selected" @change="selectDestination(destination1)">
+            <input type="checkbox" v-model="checkbox1.selected" @change="selectCheckbox(checkbox1)">
             <span class="checkspan"></span>
-            <p class="check-text" v-text="destination1.text"></p>
+            <p class="check-text" v-text="checkbox1.text"></p>
           </label>
-          <ul class="Filter-second" v-for="destination2 in destination1.children">
+          <ul class="Filter-second" v-for="checkbox2 in checkbox1.children">
             <li>
               <label>
-                <input type="checkbox" v-model="destination2.selected" @change="selectDestination(destination2)">
+                <input type="checkbox" v-model="checkbox2.selected" @change="selectCheckbox(checkbox2)">
                 <span class="checkspan"></span>
-                <p class="check-text" v-text="destination2.text"></p>
+                <p class="check-text" v-text="checkbox2.text"></p>
               </label>
-              <ul class="Filter-third" v-for="destination3 in destination2.children">
+              <ul class="Filter-third" v-for="checkbox3 in checkbox2.children">
                 <li>
                   <label>
-                    <input type="checkbox" v-model="destination3.selected" @change="selectDestination(destination3)">
+                    <input type="checkbox" v-model="checkbox3.selected" @change="selectCheckbox(checkbox3)">
                     <span class="checkspan"></span>
-                    <p class="check-text" v-text="destination3.text"></p>
+                    <p class="check-text" v-text="checkbox3.text"></p>
                   </label>
                 </li>
               </ul>
@@ -41,12 +41,12 @@
 
 <script>
 export default {
-  name: "FilterItemDestinationComponent",
+  name: "FilterItemCheckboxComponent",
   data() {
     return {
       filterText: "",
-      filteredDestinations: [],
-      destinations: [
+      filteredCheckboxes: [],
+      checkboxes: [
         {
           text: "Antalya",
           code: "antalya",
@@ -89,37 +89,37 @@ export default {
   methods: {
     /**
      * Bir node seçildiğinde gerekli işleri yapar
-     * @param destination
+     * @param checkbox
      */
-    selectDestination(destination) {
-      this.updateSelection(destination, destination.selected)
+    selectCheckbox(checkbox) {
+      this.updateSelection(checkbox, checkbox.selected)
       this.emitSelectedCodes();
     },
     /**
      * Node seçildiğinde, alt nodelarda seçilsin
-     * @param destination
+     * @param checkbox
      * @param value
      */
-    updateSelection(destination, value) {
-      destination.selected = value;
-      if (destination.children) {
-        destination.children.forEach(child => {
+    updateSelection(checkbox, value) {
+      checkbox.selected = value;
+      if (checkbox.children) {
+        checkbox.children.forEach(child => {
           this.updateSelection(child, value);
         });
       }
     },
     /**
      * selected true olan nodeların codelarını verir
-     * @param destinations
+     * @param checkboxes
      * @returns {*}
      */
-    getSelectedCodes(destinations) {
-      return destinations.reduce((selectedCodes, destination) => {
-        if (destination.selected) {
-          selectedCodes.push(destination.code);
+    getSelectedCodes(checkboxes) {
+      return checkboxes.reduce((selectedCodes, checkbox) => {
+        if (checkbox.selected) {
+          selectedCodes.push(checkbox.code);
         }
-        if (destination.children) {
-          selectedCodes.push(...this.getSelectedCodes(destination.children));
+        if (checkbox.children) {
+          selectedCodes.push(...this.getSelectedCodes(checkbox.children));
         }
         return selectedCodes;
       }, []);
@@ -128,32 +128,32 @@ export default {
      * üst componente seçili kodları gönderir
      */
     emitSelectedCodes() {
-      const selectedCodes = this.getSelectedCodes(this.destinations);
-      this.$emit("destinationCodes", selectedCodes);
+      const selectedCodes = this.getSelectedCodes(this.checkboxes);
+      this.$emit("checkboxCodes", selectedCodes);
     },
     /**
      * Filtre yapar, üst node ile birlikte sırasıyla verir
      * @param text
      * @returns {*[]}
      */
-    filterDestinations(text) {
-      function searchInDestination(destination, text) {
-        if (destination.text.toLowerCase().includes(text.toLowerCase())) {
-          return destination;
+    filterCheckboxes(text) {
+      function searchInCheckbox(checkbox, text) {
+        if (checkbox.text.toLowerCase().includes(text.toLowerCase())) {
+          return checkbox;
         }
 
-        if (destination.children) {
-          for (let child of destination.children) {
-            let found = searchInDestination(child, text);
+        if (checkbox.children) {
+          for (let child of checkbox.children) {
+            let found = searchInCheckbox(child, text);
             if (found) {
-              return {...destination, children: [found]};
+              return {...checkbox, children: [found]};
             }
           }
         }
       }
 
-      return this.destinations.reduce((filtered, destination) => {
-        let found = searchInDestination(destination, text);
+      return this.checkboxes.reduce((filtered, checkbox) => {
+        let found = searchInCheckbox(checkbox, text);
         if (found) {
           filtered.push(found);
         }
@@ -164,7 +164,7 @@ export default {
      * Filtreyi uygular
      */
     applyFilter() {
-      this.filteredDestinations = this.filterDestinations(this.filterText);
+      this.filteredCheckboxes = this.filterCheckboxes(this.filterText);
     }
   }
 }
