@@ -14,14 +14,12 @@
           </label>
           <label for="">
             <small class="fw-medium text-theme-secondary d-block w-100">Max</small>
-            <input type="number" class="js-maxFiyat" name="max" placeholder="Max"
-                   value="">
+            <input type="number" class="js-maxFiyat" name="max" placeholder="Max" value="" v-model="max_price">
             <span class="text-theme-secondary">₺</span>
           </label>
         </div>
-        <div class="Filters-range-inputs-bar">
-          <input type="text" class="js-range-slider" name="my_range" value="" data-min="0"
-                 data-max="9000" data-prefix="₺" data-step="50" v-model="max_price" />
+        <div class="mt-3 px-3">
+          <vue-slider v-model="value" @change="onChange" :tooltip-formatter="formatter" :min="500" :max="5000" />
         </div>
       </div>
     </div>
@@ -29,17 +27,40 @@
 </template>
 
 <script>
+
+import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'
+import 'vue-slider-component/dist-css/vue-slider-component.css'
+import 'vue-slider-component/theme/default.css'
 export default {
   name: "FilterPriceBetweenComponent",
   data() {
     return {
       min_price: null,
-      max_price: null
+      max_price: null,
+      value: [500, 2000],
+      formatter: '₺{value}',
+    }
+  },
+  components: {
+    VueSlider,
+  },
+  methods: {
+    onChange(value) {
+      this.min_price = value[0]
+      this.max_price = value[1]
     }
   }
+
 }
 </script>
 
 <style scoped>
 
+:deep() .vue-slider-process{
+  background-color: var(--bs-theme-second);
+}
+:deep() .vue-slider-dot-tooltip-inner{
+  background-color: var(--bs-theme-second);
+  border-color: var(--bs-theme-second);
+}
 </style>
