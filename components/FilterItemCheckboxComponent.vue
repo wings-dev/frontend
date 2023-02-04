@@ -116,6 +116,7 @@ export default {
       let selectedObjects = this.getSelectedObjects(this.checkboxes);
       this.$emit("values", selectedCodes);
       this.$emit('selectedObjects', selectedObjects);
+      this.$emit('updated', this.checkboxes);
     },
     /**
      * Filtre yapar, üst node ile birlikte sırasıyla verir
