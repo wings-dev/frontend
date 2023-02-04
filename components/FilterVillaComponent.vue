@@ -909,7 +909,7 @@ export default {
         max_price: this.max_price,
       }
       data = {}; // TODO filtre kodları düzeldiğinde kalkacak
-      this.$axios.post("http://wings.rentals/api/website/property?api_token=123456", data).then(response => {
+      this.$axios.post("/api/website/property?api_token=123456", data).then(response => {
         this.villas = response.data.data;
       }).catch(err => console.log(err));
     },
