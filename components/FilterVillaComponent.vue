@@ -362,27 +362,53 @@
                 <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
               </div>
 
-              <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations" :hideTitleBorder="true" @values="selectedValues.destinations = $event"></filter-item-checkbox-component>
+              <filter-item-checkbox-component
+                title="BÖLGE"
+                filterInputPlaceholder="Bölge Arayın"
+                :checkboxes="destinations"
+                :hideTitleBorder="true"
+                @updated="destinations = $event"
+                @selectedObjects="selectedDestintions = $event"
+              ></filter-item-checkbox-component>
 
-              <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes" @values="selectedValues.amenites.facilityTypes = $event"></filter-item-checkbox-component>
+              <filter-item-checkbox-component
+                title="TESİS TİPİ"
+                :checkboxes="amenites.facilityTypes"
+                @updated="amenites.facilityTypes = $event"
+              ></filter-item-checkbox-component>
 
-              <filter-price-between-component></filter-price-between-component>
+              <filter-price-between-component
+                @min_price="min_price = $event"
+                @max_price="max_price = $event"
+              ></filter-price-between-component>
 
-              <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts" @values="selectedValues.amenites.facilityConcepts = $event"></filter-item-checkbox-component>
+              <filter-item-checkbox-component
+                title="TESİS KONSEPTİ"
+                :checkboxes="amenites.facilityConcepts"
+                @updated="amenites.facilityConcepts = $event"
+              ></filter-item-checkbox-component>
 
-              <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights" @values="selectedValues.amenites.highlights = $event"></filter-item-checkbox-component>
+              <filter-item-checkbox-component
+                title="ÖNE ÇIKAN ÖZELLİKLER"
+                :checkboxes="amenites.highlights"
+                @updated="amenites.highlights = $event"
+              ></filter-item-checkbox-component>
 
-              <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities" @values="selectedValues.amenites.facilities = $event"></filter-item-checkbox-component>
+              <filter-item-checkbox-component
+                title="OLANAKLAR"
+                :checkboxes="amenites.facilities"
+                @updated="amenites.facilities = $event"
+              ></filter-item-checkbox-component>
 
             </div>
 
-            <div class="Filters-button" type="button" onclick="RunFilter(this)">Filtele</div>
+            <div class="Filters-button" type="button" @click="filter">Filtele</div>
           </div>
           <div class="Filter-right">
             <div class="Filter-right-head">
               <div class="Filter-right-head-info">
                 <i class="icon-list"></i>
-                <p>450 villa listeleniyor</p>
+                <p>{{villas.length}} villa listeleniyor</p>
               </div>
               <div class="Filter-right-head-buttons">
 
@@ -399,16 +425,16 @@
 
             <div class="Filter-right-selected" style="">
               <div class="Filter-right-selected-in">
-                <a href="#" class="Filter-right-selected-item" id="it-1"
-                   onclick="event.preventDefault(), Filters_ById('.RegionID_1'), $(this).remove()">Bölge:Antalya<i
-                  class="icon-search-close"></i></a>
-                <a href="#" class="Filter-right-selected-item" id="it-3"
-                   onclick="event.preventDefault(), Filters_ById('.RegionID_3'), $(this).remove()">Bölge:Kalkan<i
-                  class="icon-search-close"></i></a>
-                <button type="button" id="Fetures_clear"
-                        onclick="Filters_Clear(),$('.Filter-right-selected .Filter-right-selected-item').remove(),$(this).hide()">
-                  Temizle
-                </button>
+
+                <a v-for="destination in selectedDestintions" href="#" class="Filter-right-selected-item" id="it-1">Bölge:{{destination.text}}<i class="icon-search-close" @click="unselectDestination(destination)"></i></a>
+<!--
+                <a v-for="facilityType in amenites.facilityTypes" href="#" class="Filter-right-selected-item" id="it-1">Tesis Tipi:{{facilityType.text}}<i class="icon-search-close"></i></a>
+                <a v-for="facilityConcept in amenites.facilityConcepts" href="#" class="Filter-right-selected-item" id="it-1">Konsept:{{facilityConcept.text}}<i class="icon-search-close"></i></a>
+                <a v-for="highlight in amenites.highlights" href="#" class="Filter-right-selected-item" id="it-1">Özellik:{{highlight.text}}<i class="icon-search-close"></i></a>
+                <a v-for="facility in amenites.facilities" href="#" class="Filter-right-selected-item" id="it-1">Olanak:{{facility.text}}<i class="icon-search-close"></i></a>
+-->
+
+                <button type="button" id="Fetures_clear" v-if="selectedDestintions.length > 0">Temizle</button>
               </div>
             </div>
 
@@ -416,29 +442,14 @@
 
             <div class="F_villa ">
 
-              <div class="F_villa-item">
+              <div class="F_villa-item" v-for="villa in villas">
                 <div class="F_villa-item-img ">
                   <div class="swiper-container villa-list-slider">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <img class="lazyload" src="/cdn/filterimg/villa-list.jpg"
-                             data-src="/cdn/filterimg/villa-list.jpg"
-                             data-srcset="https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1920_1080.jpg 1920w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1606_903.jpg 1606w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1344_756.jpg 1344w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1124_632.jpg 1124w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_940_529.jpg 940w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_787_443.jpg 787w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_658_370.jpg 658w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_550_309.jpg 550w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_460_259.jpg 460w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_385_217.jpg 385w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_322_181.jpg 322w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_269_151.jpg 269w, data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHg9IjAiCiB5PSIwIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDgwIj4KCTxpbWFnZSB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB4bGluazpocmVmPSJkYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUVBWUFCZ0FBRC8vZ0E3UTFKRlFWUlBVam9nWjJRdGFuQmxaeUIyTVM0d0lDaDFjMmx1WnlCSlNrY2dTbEJGUnlCMk9EQXBMQ0J4ZFdGc2FYUjVJRDBnT1RBSy85c0FRd0FEQWdJREFnSURBd01EQkFNREJBVUlCUVVFQkFVS0J3Y0dDQXdLREF3TENnc0xEUTRTRUEwT0VRNExDeEFXRUJFVEZCVVZGUXdQRnhnV0ZCZ1NGQlVVLzlzQVF3RURCQVFGQkFVSkJRVUpGQTBMRFJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVUvOEFBRVFnQUVnQWdBd0VSQUFJUkFRTVJBZi9FQUI4QUFBRUZBUUVCQVFFQkFBQUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVRQUFJQkF3TUNCQU1GQlFRRUFBQUJmUUVDQXdBRUVRVVNJVEZCQmhOUllRY2ljUlF5Z1pHaENDTkNzY0VWVXRId0pETmljb0lKQ2hZWEdCa2FKU1luS0NrcU5EVTJOemc1T2tORVJVWkhTRWxLVTFSVlZsZFlXVnBqWkdWbVoyaHBhbk4wZFhaM2VIbDZnNFNGaG9lSWlZcVNrNVNWbHBlWW1acWlvNlNscHFlb3FhcXlzN1MxdHJlNHVickN3OFRGeHNmSXljclMwOVRWMXRmWTJkcmg0dVBrNWVibjZPbnE4Zkx6OVBYMjkvajUrdi9FQUI4QkFBTUJBUUVCQVFFQkFRRUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVSQUFJQkFnUUVBd1FIQlFRRUFBRUNkd0FCQWdNUkJBVWhNUVlTUVZFSFlYRVRJaktCQ0JSQ2thR3h3UWtqTTFMd0ZXSnkwUW9XSkRUaEpmRVhHQmthSmljb0tTbzFOamM0T1RwRFJFVkdSMGhKU2xOVVZWWlhXRmxhWTJSbFptZG9hV3B6ZEhWMmQzaDVlb0tEaElXR2g0aUppcEtUbEpXV2w1aVptcUtqcEtXbXA2aXBxckt6dExXMnQ3aTV1c0xEeE1YR3g4akp5dExUMU5YVzE5aloydUxqNU9YbTUranA2dkx6OVBYMjkvajUrdi9hQUF3REFRQUNFUU1SQUQ4QThDMFRVcks4dkd1THRmTVBwWHhXRncwdlk4dE0rNXhPSVh0ZWFScEcyMC9VcmxsdFI1Yk4ycm5kR2NaV21LZGVQTGVKUTFEdzFMSEcwU25PRG1wcEtTbTdFemNYQk5pV1dsWE56YXNFTzBKNjEzVW9WTE13bEtuY3cvRG1sTjV5K2N4aml6eTFkT0RtK1gzU01WRmMvdkhvR2hhSkFzMHIyYi9hR0FyU1VidThqbWJ2cEUyVTBXNG5pRWtzUlFzY2MxRUtjSU55UXBWSlNTaWRycFhnS3duMDVDNDJPdzV4VDlwYllwUjZuaTZxQjRkWTRHZlhGWllIWTJ4dTUwUHdlK1pyalBQUGV1dkVibkxSUFZkWVVDMWd3QVB3cm1OR2F1bmY2dUQ2Vms5aWovL1oiPgoJPC9pbWFnZT4KPC9zdmc+ 32w"/>
-                      </div>
-                      <div class="swiper-slide">
-                        <img class="lazyload" src="/cdn/filterimg/villa-list.jpg"
-                             data-src="/cdn/filterimg/villa-list.jpg"
-                             data-srcset="https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1920_1080.jpg 1920w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1606_903.jpg 1606w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1344_756.jpg 1344w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1124_632.jpg 1124w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_940_529.jpg 940w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_787_443.jpg 787w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_658_370.jpg 658w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_550_309.jpg 550w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_460_259.jpg 460w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_385_217.jpg 385w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_322_181.jpg 322w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_269_151.jpg 269w, data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHg9IjAiCiB5PSIwIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDgwIj4KCTxpbWFnZSB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB4bGluazpocmVmPSJkYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUVBWUFCZ0FBRC8vZ0E3UTFKRlFWUlBVam9nWjJRdGFuQmxaeUIyTVM0d0lDaDFjMmx1WnlCSlNrY2dTbEJGUnlCMk9EQXBMQ0J4ZFdGc2FYUjVJRDBnT1RBSy85c0FRd0FEQWdJREFnSURBd01EQkFNREJBVUlCUVVFQkFVS0J3Y0dDQXdLREF3TENnc0xEUTRTRUEwT0VRNExDeEFXRUJFVEZCVVZGUXdQRnhnV0ZCZ1NGQlVVLzlzQVF3RURCQVFGQkFVSkJRVUpGQTBMRFJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVUvOEFBRVFnQUVnQWdBd0VSQUFJUkFRTVJBZi9FQUI4QUFBRUZBUUVCQVFFQkFBQUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVRQUFJQkF3TUNCQU1GQlFRRUFBQUJmUUVDQXdBRUVRVVNJVEZCQmhOUllRY2ljUlF5Z1pHaENDTkNzY0VWVXRId0pETmljb0lKQ2hZWEdCa2FKU1luS0NrcU5EVTJOemc1T2tORVJVWkhTRWxLVTFSVlZsZFlXVnBqWkdWbVoyaHBhbk4wZFhaM2VIbDZnNFNGaG9lSWlZcVNrNVNWbHBlWW1acWlvNlNscHFlb3FhcXlzN1MxdHJlNHVickN3OFRGeHNmSXljclMwOVRWMXRmWTJkcmg0dVBrNWVibjZPbnE4Zkx6OVBYMjkvajUrdi9FQUI4QkFBTUJBUUVCQVFFQkFRRUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVSQUFJQkFnUUVBd1FIQlFRRUFBRUNkd0FCQWdNUkJBVWhNUVlTUVZFSFlYRVRJaktCQ0JSQ2thR3h3UWtqTTFMd0ZXSnkwUW9XSkRUaEpmRVhHQmthSmljb0tTbzFOamM0T1RwRFJFVkdSMGhKU2xOVVZWWlhXRmxhWTJSbFptZG9hV3B6ZEhWMmQzaDVlb0tEaElXR2g0aUppcEtUbEpXV2w1aVptcUtqcEtXbXA2aXBxckt6dExXMnQ3aTV1c0xEeE1YR3g4akp5dExUMU5YVzE5aloydUxqNU9YbTUranA2dkx6OVBYMjkvajUrdi9hQUF3REFRQUNFUU1SQUQ4QThDMFRVcks4dkd1THRmTVBwWHhXRncwdlk4dE0rNXhPSVh0ZWFScEcyMC9VcmxsdFI1Yk4ycm5kR2NaV21LZGVQTGVKUTFEdzFMSEcwU25PRG1wcEtTbTdFemNYQk5pV1dsWE56YXNFTzBKNjEzVW9WTE13bEtuY3cvRG1sTjV5K2N4aml6eTFkT0RtK1gzU01WRmMvdkhvR2hhSkFzMHIyYi9hR0FyU1VidThqbWJ2cEUyVTBXNG5pRWtzUlFzY2MxRUtjSU55UXBWSlNTaWRycFhnS3duMDVDNDJPdzV4VDlwYllwUjZuaTZxQjRkWTRHZlhGWllIWTJ4dTUwUHdlK1pyalBQUGV1dkVibkxSUFZkWVVDMWd3QVB3cm1OR2F1bmY2dUQ2Vms5aWovL1oiPgoJPC9pbWFnZT4KPC9zdmc+ 32w"/>
-                      </div>
-                      <div class="swiper-slide">
-                        <img class="lazyload" src="/cdn/filterimg/villa-list.jpg"
-                             data-src="/cdn/filterimg/villa-list.jpg"
-                             data-srcset="https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1920_1080.jpg 1920w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1606_903.jpg 1606w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1344_756.jpg 1344w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1124_632.jpg 1124w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_940_529.jpg 940w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_787_443.jpg 787w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_658_370.jpg 658w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_550_309.jpg 550w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_460_259.jpg 460w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_385_217.jpg 385w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_322_181.jpg 322w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_269_151.jpg 269w, data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHg9IjAiCiB5PSIwIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDgwIj4KCTxpbWFnZSB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB4bGluazpocmVmPSJkYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUVBWUFCZ0FBRC8vZ0E3UTFKRlFWUlBVam9nWjJRdGFuQmxaeUIyTVM0d0lDaDFjMmx1WnlCSlNrY2dTbEJGUnlCMk9EQXBMQ0J4ZFdGc2FYUjVJRDBnT1RBSy85c0FRd0FEQWdJREFnSURBd01EQkFNREJBVUlCUVVFQkFVS0J3Y0dDQXdLREF3TENnc0xEUTRTRUEwT0VRNExDeEFXRUJFVEZCVVZGUXdQRnhnV0ZCZ1NGQlVVLzlzQVF3RURCQVFGQkFVSkJRVUpGQTBMRFJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVUvOEFBRVFnQUVnQWdBd0VSQUFJUkFRTVJBZi9FQUI4QUFBRUZBUUVCQVFFQkFBQUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVRQUFJQkF3TUNCQU1GQlFRRUFBQUJmUUVDQXdBRUVRVVNJVEZCQmhOUllRY2ljUlF5Z1pHaENDTkNzY0VWVXRId0pETmljb0lKQ2hZWEdCa2FKU1luS0NrcU5EVTJOemc1T2tORVJVWkhTRWxLVTFSVlZsZFlXVnBqWkdWbVoyaHBhbk4wZFhaM2VIbDZnNFNGaG9lSWlZcVNrNVNWbHBlWW1acWlvNlNscHFlb3FhcXlzN1MxdHJlNHVickN3OFRGeHNmSXljclMwOVRWMXRmWTJkcmg0dVBrNWVibjZPbnE4Zkx6OVBYMjkvajUrdi9FQUI4QkFBTUJBUUVCQVFFQkFRRUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVSQUFJQkFnUUVBd1FIQlFRRUFBRUNkd0FCQWdNUkJBVWhNUVlTUVZFSFlYRVRJaktCQ0JSQ2thR3h3UWtqTTFMd0ZXSnkwUW9XSkRUaEpmRVhHQmthSmljb0tTbzFOamM0T1RwRFJFVkdSMGhKU2xOVVZWWlhXRmxhWTJSbFptZG9hV3B6ZEhWMmQzaDVlb0tEaElXR2g0aUppcEtUbEpXV2w1aVptcUtqcEtXbXA2aXBxckt6dExXMnQ3aTV1c0xEeE1YR3g4akp5dExUMU5YVzE5aloydUxqNU9YbTUranA2dkx6OVBYMjkvajUrdi9hQUF3REFRQUNFUU1SQUQ4QThDMFRVcks4dkd1THRmTVBwWHhXRncwdlk4dE0rNXhPSVh0ZWFScEcyMC9VcmxsdFI1Yk4ycm5kR2NaV21LZGVQTGVKUTFEdzFMSEcwU25PRG1wcEtTbTdFemNYQk5pV1dsWE56YXNFTzBKNjEzVW9WTE13bEtuY3cvRG1sTjV5K2N4aml6eTFkT0RtK1gzU01WRmMvdkhvR2hhSkFzMHIyYi9hR0FyU1VidThqbWJ2cEUyVTBXNG5pRWtzUlFzY2MxRUtjSU55UXBWSlNTaWRycFhnS3duMDVDNDJPdzV4VDlwYllwUjZuaTZxQjRkWTRHZlhGWllIWTJ4dTUwUHdlK1pyalBQUGV1dkVibkxSUFZkWVVDMWd3QVB3cm1OR2F1bmY2dUQ2Vms5aWovL1oiPgoJPC9pbWFnZT4KPC9zdmc+ 32w"/>
-                      </div>
-                      <div class="swiper-slide">
-                        <img class="lazyload" src="/cdn/filterimg/villa-list.jpg"
-                             data-src="/cdn/filterimg/villa-list.jpg"
-                             data-srcset="https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1920_1080.jpg 1920w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1606_903.jpg 1606w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1344_756.jpg 1344w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_1124_632.jpg 1124w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_940_529.jpg 940w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_787_443.jpg 787w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_658_370.jpg 658w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_550_309.jpg 550w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_460_259.jpg 460w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_385_217.jpg 385w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_322_181.jpg 322w, https://d1t2mawg5vwzes.cloudfront.net/website/20/property/8/131200/responsive-images/13___media_library_original_269_151.jpg 269w, data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHg9IjAiCiB5PSIwIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDgwIj4KCTxpbWFnZSB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB4bGluazpocmVmPSJkYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUVBWUFCZ0FBRC8vZ0E3UTFKRlFWUlBVam9nWjJRdGFuQmxaeUIyTVM0d0lDaDFjMmx1WnlCSlNrY2dTbEJGUnlCMk9EQXBMQ0J4ZFdGc2FYUjVJRDBnT1RBSy85c0FRd0FEQWdJREFnSURBd01EQkFNREJBVUlCUVVFQkFVS0J3Y0dDQXdLREF3TENnc0xEUTRTRUEwT0VRNExDeEFXRUJFVEZCVVZGUXdQRnhnV0ZCZ1NGQlVVLzlzQVF3RURCQVFGQkFVSkJRVUpGQTBMRFJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVUvOEFBRVFnQUVnQWdBd0VSQUFJUkFRTVJBZi9FQUI4QUFBRUZBUUVCQVFFQkFBQUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVRQUFJQkF3TUNCQU1GQlFRRUFBQUJmUUVDQXdBRUVRVVNJVEZCQmhOUllRY2ljUlF5Z1pHaENDTkNzY0VWVXRId0pETmljb0lKQ2hZWEdCa2FKU1luS0NrcU5EVTJOemc1T2tORVJVWkhTRWxLVTFSVlZsZFlXVnBqWkdWbVoyaHBhbk4wZFhaM2VIbDZnNFNGaG9lSWlZcVNrNVNWbHBlWW1acWlvNlNscHFlb3FhcXlzN1MxdHJlNHVickN3OFRGeHNmSXljclMwOVRWMXRmWTJkcmg0dVBrNWVibjZPbnE4Zkx6OVBYMjkvajUrdi9FQUI4QkFBTUJBUUVCQVFFQkFRRUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVSQUFJQkFnUUVBd1FIQlFRRUFBRUNkd0FCQWdNUkJBVWhNUVlTUVZFSFlYRVRJaktCQ0JSQ2thR3h3UWtqTTFMd0ZXSnkwUW9XSkRUaEpmRVhHQmthSmljb0tTbzFOamM0T1RwRFJFVkdSMGhKU2xOVVZWWlhXRmxhWTJSbFptZG9hV3B6ZEhWMmQzaDVlb0tEaElXR2g0aUppcEtUbEpXV2w1aVptcUtqcEtXbXA2aXBxckt6dExXMnQ3aTV1c0xEeE1YR3g4akp5dExUMU5YVzE5aloydUxqNU9YbTUranA2dkx6OVBYMjkvajUrdi9hQUF3REFRQUNFUU1SQUQ4QThDMFRVcks4dkd1THRmTVBwWHhXRncwdlk4dE0rNXhPSVh0ZWFScEcyMC9VcmxsdFI1Yk4ycm5kR2NaV21LZGVQTGVKUTFEdzFMSEcwU25PRG1wcEtTbTdFemNYQk5pV1dsWE56YXNFTzBKNjEzVW9WTE13bEtuY3cvRG1sTjV5K2N4aml6eTFkT0RtK1gzU01WRmMvdkhvR2hhSkFzMHIyYi9hR0FyU1VidThqbWJ2cEUyVTBXNG5pRWtzUlFzY2MxRUtjSU55UXBWSlNTaWRycFhnS3duMDVDNDJPdzV4VDlwYllwUjZuaTZxQjRkWTRHZlhGWllIWTJ4dTUwUHdlK1pyalBQUGV1dkVibkxSUFZkWVVDMWd3QVB3cm1OR2F1bmY2dUQ2Vms5aWovL1oiPgoJPC9pbWFnZT4KPC9zdmc+ 32w"/>
+                      <div class="swiper-slide" v-for="image in villa.preview_image">
+                        <img class="lazyload" :src="image.preview_url"
+                             :data-src="image.preview_url"
+                             :data-srcset="image.responsive_url"/>
                       </div>
                     </div>
                     <div class="swiper-button-prev"></div>
@@ -449,7 +460,7 @@
                   <div class="F_villa-item-head">
                     <div class="F_villa-item-head-name">
                       <span>Tesis Kodu</span>
-                      <a href="">VKV1020</a>
+                      <a href="">{{villa.name}}</a>
                       <div class="F_villa-item-head-name-star">
                         <i class="icon-star active"></i>
                         <i class="icon-star active"></i>
@@ -463,13 +474,13 @@
                       <i class="icon-name-location"></i>
                       <div class="F_villa-item-head-location-text">
                         <p>KALKAN
-                          <span>Turkey / Antalya</span>
+                          <span>{{villa.country[0].toUpperCase() + villa.country.substring(1)}} / {{villa.city[0].toUpperCase() + villa.city.substring(1)}} </span>
                         </p>
                       </div>
                     </div>
                     <div class="F_villa-item-head-price F_villa-item-head-price-promotion">
                       <div class="F_villa-item-head-price-in">
-                        <b>9.220₺</b>
+                        <b>{{villa.prices.min_price.price}}₺</b>
                         <p>‘den başlayan fiyatlar</p>
                       </div>
 
@@ -479,15 +490,15 @@
                   <div class="F_villa-item-info">
                     <div class="F_villa-item-info-item">
                       <i class="icon-user-new"></i>
-                      <span>4 Kişilik</span>
+                      <span>{{villa.max_adult}} Kişilik</span>
                     </div>
                     <div class="F_villa-item-info-item">
                       <i class="icon-bed-new"></i>
-                      <span>2 Yatak Odası</span>
+                      <span>{{villa.bedroom}} Yatak Odası</span>
                     </div>
                     <div class="F_villa-item-info-item">
                       <i class="icon-shower-new"></i>
-                      <span>2 Banyo</span>
+                      <span>{{villa.bathrooms}} Banyo</span>
                     </div>
                   </div>
                   <div class="F_villa-item-bottom">
@@ -721,31 +732,25 @@ export default {
   name: "FilterVillaComponent",
   data() {
     return {
-      selectedValues: {
-        destinations: [],
-        amenites: {
-          facilityTypes: [],
-          facilityConcepts: [],
-          highlights: [],
-          facilities: [],
-        },
-        min_price: null,
-        max_price: null
-      },
+      current_page: 1,
+      villas: [],
+      min_price: null,
+      max_price: null,
+      selectedDestintions: [],
       destinations: [
         {
           text: "Antalya",
-          code: "antalya",
+          code: 0,
           selected: false,
           children: [
             {
               text: "Kaş",
-              code: "kas",
+              code: 2,
               selected: false,
               children: [
                 {
                   text: "Kalkan",
-                  code: "kalkan",
+                  code: 1,
                   selected: false,
                 }
               ]
@@ -754,17 +759,17 @@ export default {
         },
         {
           text: "Çavdır",
-          code: "cavdir",
+          code: 0,
           selected: false,
           children: [
             {
               text: "Fethiye",
-              code: "fethiye",
+              code: 6,
               selected: false,
             },
             {
               text: "Marmaris",
-              code: "marmaris",
+              code: 0,
               selected: false,
             }
           ]
@@ -882,11 +887,48 @@ export default {
       }
     }
   },
+  mounted() {
+    this.filter();
+  },
   computed: {
-    combinedAmenites() {
-
-    }
-  }
+    combinedSelectedAmenites() {
+      return [].concat(
+        this.amenites.facilityConcepts,
+        this.amenites.facilityTypes,
+        this.amenites.facilities,
+        this.amenites.highlights
+      );
+    },
+  },
+  methods: {
+    filter() {
+      let data = {
+        destination: this.destinations.map(destination => destination.code),
+        amenites: this.combinedSelectedAmenites.map(destination => destination.code),
+        min_price: this.min_price,
+        max_price: this.max_price,
+      }
+      data = {}; // TODO filtre kodları düzeldiğinde kalkacak
+      this.$axios.post("/api/website/property?api_token=123456", data).then(response => {
+        this.villas = response.data.data;
+      }).catch(err => console.log(err));
+    },
+    unselectDestination(d, destinationArray) {
+      // TODO burası hatalı çalışıyor çözülecek
+      let destinations = destinationArray || this.destinations;
+      return destinations.map(destination => {
+        if (destination.code === d.code) {
+          return {
+            ...destination,
+            selected: false
+          };
+        }
+        if (destination.children && destination.children.length > 0) {
+          destination.children = this.unselectDestination(d, destination.children);
+        }
+        return destination;
+      });
+    }  }
 }
 </script>
 

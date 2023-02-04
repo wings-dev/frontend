@@ -48,6 +48,11 @@ export default {
     onChange(value) {
       this.min_price = value[0]
       this.max_price = value[1]
+      this.emitPrices()
+    },
+    emitPrices() {
+      this.$emit('min_price', this.min_price);
+      this.$emit('max_price', this.max_price);
     }
   }
 

@@ -93,11 +93,30 @@ export default {
       }, []);
     },
     /**
+     * selected true olan nodeların objelerini verir
+     * @param checkboxes
+     * @returns {*}
+     */
+    getSelectedObjects(checkboxes) {
+      return checkboxes.reduce((selectedObjects, checkbox) => {
+        if (checkbox.selected) {
+          selectedObjects.push(checkbox);
+        }
+        if (checkbox.children) {
+          selectedObjects.push(...this.getSelectedObjects(checkbox.children));
+        }
+        return selectedObjects;
+      }, []);
+    },
+    /**
      * üst componente seçili kodları gönderir
      */
     emitSelectedCodes() {
       const selectedCodes = this.getSelectedCodes(this.checkboxes);
+      let selectedObjects = this.getSelectedObjects(this.checkboxes);
       this.$emit("values", selectedCodes);
+      this.$emit('selectedObjects', selectedObjects);
+      this.$emit('updated', this.checkboxes);
     },
     /**
      * Filtre yapar, üst node ile birlikte sırasıyla verir
