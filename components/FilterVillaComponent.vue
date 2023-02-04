@@ -380,7 +380,7 @@
 
             </div>
 
-            <div class="Filters-button" type="button" onclick="RunFilter(this)">Filtele</div>
+            <div class="Filters-button" type="button" @click="filter">Filtele</div>
           </div>
           <div class="Filter-right">
             <div class="Filter-right-head">
@@ -406,7 +406,7 @@
 
                 <a v-for="destination in selectedValues.destinationObjects" href="#" class="Filter-right-selected-item" id="it-1">Bölge:{{destination.text}}<i class="icon-search-close"></i></a>
 
-                <button type="button" id="Fetures_clear">Temizle</button>
+                <button type="button" id="Fetures_clear" v-if="selectedValues.destinationObjects.length > 0">Temizle</button>
               </div>
             </div>
 
@@ -890,6 +890,19 @@ export default {
         this.selectedValues.amenites.highlights
       );
     },
+  },
+  methods: {
+    filter() {
+      let data = {
+        destination: this.selectedValues.destinationCodes,
+        amenites: this.combinedSelectedAmenites,
+        min_price: this.selectedValues.min_price,
+        max_price: this.selectedValues.max_price,
+      }
+      this.$axios.post("http://wings.rentals/api/website/property?api_token=123456", data).then(response => {
+        console.log(response.data);
+      }).catch(err => console.log(err));
+    }
   }
 }
 </script>
