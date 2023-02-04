@@ -362,9 +362,11 @@
                 <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
               </div>
 
-              {{selectedValues}}
-
-              <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations" :hideTitleBorder="true" @values="selectedValues.destinations = $event"></filter-item-checkbox-component>
+              {{selectedValues.destinationObjects}}
+              <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations" :hideTitleBorder="true"
+                                              @values="selectedValues.destinationCodes = $event"
+                                              @selectedObjects="selectedValues.destinationObjects = $event"
+              ></filter-item-checkbox-component>
 
               <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes" @values="selectedValues.amenites.facilityTypes = $event"></filter-item-checkbox-component>
 
@@ -401,16 +403,10 @@
 
             <div class="Filter-right-selected" style="">
               <div class="Filter-right-selected-in">
-                <a href="#" class="Filter-right-selected-item" id="it-1"
-                   onclick="event.preventDefault(), Filters_ById('.RegionID_1'), $(this).remove()">Bölge:Antalya<i
-                  class="icon-search-close"></i></a>
-                <a href="#" class="Filter-right-selected-item" id="it-3"
-                   onclick="event.preventDefault(), Filters_ById('.RegionID_3'), $(this).remove()">Bölge:Kalkan<i
-                  class="icon-search-close"></i></a>
-                <button type="button" id="Fetures_clear"
-                        onclick="Filters_Clear(),$('.Filter-right-selected .Filter-right-selected-item').remove(),$(this).hide()">
-                  Temizle
-                </button>
+
+                <a v-for="destination in selectedValues.destinationObjects" href="#" class="Filter-right-selected-item" id="it-1">Bölge:{{destination.text}}<i class="icon-search-close"></i></a>
+
+                <button type="button" id="Fetures_clear">Temizle</button>
               </div>
             </div>
 
@@ -724,7 +720,8 @@ export default {
   data() {
     return {
       selectedValues: {
-        destinations: [],
+        destinationCodes: [],
+        destinationObjects: [],
         amenites: {
           facilityTypes: [],
           facilityConcepts: [],
@@ -885,9 +882,14 @@ export default {
     }
   },
   computed: {
-    combinedAmenites() {
-
-    }
+    combinedSelectedAmenites() {
+      return [].concat(
+        this.selectedValues.amenites.facilityConcepts,
+        this.selectedValues.amenites.facilityTypes,
+        this.selectedValues.amenites.facilities,
+        this.selectedValues.amenites.highlights
+      );
+    },
   }
 }
 </script>
