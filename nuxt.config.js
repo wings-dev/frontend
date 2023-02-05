@@ -81,5 +81,12 @@ export default {
 
   proxy: {
     '/api/': 'http://wings.rentals/'
+  },
+
+  // 301 yapılacak linkler için alan
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({ path: '/eski-link', redirect: '/listele', statusCode: 301 });
+    }
   }
 }
