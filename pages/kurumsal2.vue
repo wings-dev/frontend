@@ -147,5 +147,4 @@ export default {
 }
 </script>
 <style scoped>
-  @import '~static/cdn/css/hakkimizda.css';
 </style>

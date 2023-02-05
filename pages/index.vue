@@ -410,7 +410,6 @@ export default {
 }
 </script>
 <style scoped>
-@import '~static/cdn/css/anasayfa.css';
 
 .list-item .list-image {
    width: 100%;
