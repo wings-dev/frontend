@@ -383,7 +383,7 @@ export default {
           { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
         ],
         link: [
-          { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/hakkimizda.css` }
+          { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/anasayfa.css` }
         ]
       }
     },
