@@ -567,19 +567,19 @@
 <script>
 export default {
   name: "default",
+  head() {
+    let site_id = process.env.SITE
+    return {
+      link: [
+        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/custom-bootstrap.min.css` },
+        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/main.min.css` },
+        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/theme.min.css` },
+      ]
+    }
+  }
 }
 </script>
 
 <style scoped>
-/*@import '~/static/cdn/fonts/sf-pro/stylesheet.css';
-@import '~/static/cdn/css/custom-bootstrap.min.css';
-@import '~/static/cdn/css/jquery/bootstrap-select.min.css';
-@import '~/static/cdn/css/jquery/swiper.css';
-@import '~/static/cdn/css/jquery/jquery-ui.min.css';
-@import '~/static/cdn/css/jquery/caleran.min.css';
-@import '~/static/cdn/css/main.min.css';
-@import '~/static/cdn/css/theme.min.css';
-@import '~/static/cdn/css/jquery/ion.rangeSlider.min.css';
-@import '~/static/cdn/css/jquery/intlTelInput.min.css';
-@import '~/static/cdn/css/listeleme.min.css';*/
+
 </style>

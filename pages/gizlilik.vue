@@ -25,7 +25,16 @@
 <script>
 export default {
   name: 'DetailPage',
-  layout: 'no-search'
+  layout: 'no-search',
+  head() {
+    return {
+      title: 'Gizlilik',
+      meta: [
+        { hid: 'description', name: 'description', content: 'gizlilik' },
+        { hid: 'keywords', name: 'keywords', content: 'gizlilik1, gizlilik2, gizlilik3' }
+      ]
+    }
+  }
 }
 </script>
 

@@ -297,7 +297,20 @@
 <script>
 export default {
   name: 'DetailPage',
-  layout: 'no-search'
+  layout: 'no-search',
+  head() {
+    let site_id = process.env.SITE
+    return {
+      title: 'Hakkımızda',
+      meta: [
+        { hid: 'description', name: 'description', content: 'hakkımızda' },
+        { hid: 'keywords', name: 'keywords', content: 'hakkımızda1, hakkımızda2, hakkımızd3' }
+      ],
+      link: [
+        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/hakkimizda.css` }
+      ]
+    }
+  },
 }
 </script>
 <style scoped>

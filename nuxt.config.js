@@ -1,25 +1,5 @@
 require('dotenv').config()
 
-let site_id = process.env.SITE;
-
-let links = [
-  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-  { rel: 'stylesheet', href: '/cdn/fonts/sf-pro/stylesheet.css' },
-  { rel: 'stylesheet', href: '/cdn/css/jquery/bootstrap-select.min.css' },
-  { rel: 'stylesheet', href: '/cdn/css/jquery/swiper.css' },
-  { rel: 'stylesheet', href: '/cdn/css/jquery/jquery-ui.min.css' },
-  { rel: 'stylesheet', href: '/cdn/css/jquery/caleran.min.css' },
-  { rel: 'stylesheet', href: '/cdn/css/jquery/ion.rangeSlider.min.css' },
-  { rel: 'stylesheet', href: '/cdn/css/jquery/intlTelInput.min.css' }
-];
-
-links.push({ rel: 'stylesheet', href: `/cdn/css/site_${site_id}/custom-bootstrap.min.css` });
-links.push({ rel: 'stylesheet', href: `/cdn/css/site_${site_id}/main.min.css` });
-links.push({ rel: 'stylesheet', href: `/cdn/css/site_${site_id}/theme.min.css` });
-links.push({ rel: 'stylesheet', href: `/cdn/css/site_${site_id}/listeleme.min.css` });
-links.push({ rel: 'stylesheet', href: `/cdn/css/site_${site_id}/anasayfa.css` });
-links.push({ rel: 'stylesheet', href: `/cdn/css/site_${site_id}/hakkimizda.css` });
-
 export default {
   // environment variables, access with like this.$config.NODE_ENV
   publicRuntimeConfig: {
@@ -41,7 +21,16 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: links
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '/cdn/fonts/sf-pro/stylesheet.css' },
+      { rel: 'stylesheet', href: '/cdn/css/jquery/bootstrap-select.min.css' },
+      { rel: 'stylesheet', href: '/cdn/css/jquery/swiper.css' },
+      { rel: 'stylesheet', href: '/cdn/css/jquery/jquery-ui.min.css' },
+      { rel: 'stylesheet', href: '/cdn/css/jquery/caleran.min.css' },
+      { rel: 'stylesheet', href: '/cdn/css/jquery/ion.rangeSlider.min.css' },
+      { rel: 'stylesheet', href: '/cdn/css/jquery/intlTelInput.min.css' }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

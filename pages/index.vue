@@ -374,6 +374,19 @@
 <script>
 export default {
     name: 'IndexPage',
+    head() {
+      let site_id = process.env.SITE
+      return {
+        title: 'Anasayfa',
+        meta: [
+          { hid: 'description', name: 'description', content: 'anasayfa' },
+          { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
+        ],
+        link: [
+          { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/hakkimizda.css` }
+        ]
+      }
+    },
     data() {
         return {
             swiperOptions: {
