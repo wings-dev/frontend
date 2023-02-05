@@ -584,7 +584,7 @@
                     <div class="swiper-button-prev" slot="button-prev"></div>
                     <div class="swiper-button-next" slot="button-next"></div>
                   </swiper>
-                  
+
 
                 </div>
                 <div class="F_villa-item-right">
@@ -1046,12 +1046,12 @@ export default {
   methods: {
     filter() {
       let data = {
-        destination: this.destinations.map(destination => destination.code),
+        destination: this.selectedDestintions.map(destination => destination.code),
         amenites: this.combinedSelectedAmenites.map(destination => destination.code),
         min_price: this.min_price,
         max_price: this.max_price,
       }
-      data = {}; // TODO filtre kodları düzeldiğinde kalkacak
+      // data = {}; // TODO filtre kodları düzeldiğinde kalkacak
       this.$axios.post("/api/website/property?api_token=123456", data).then(response => {
         this.villas = response.data.data;
       }).catch(err => console.log(err));

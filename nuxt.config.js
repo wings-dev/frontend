@@ -1,4 +1,14 @@
+require('dotenv').config()
+
 export default {
+  // environment variables, access with like this.$config.NODE_ENV
+  publicRuntimeConfig: {
+    message: process.env.hey || 'hello world!'
+  },
+  privateRuntimeConfig: {
+    message: process.env.hey || 'hello world!'
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'wings-frontend',
@@ -41,6 +51,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    ['@nuxtjs/dotenv', { systemvars: true }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

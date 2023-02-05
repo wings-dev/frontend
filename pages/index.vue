@@ -402,6 +402,10 @@ export default {
             }
         }
     },
+  mounted() {
+      console.log(process.env.NODE_ENV);
+      console.log(this.$config.message);
+  }
 
 }
 </script>

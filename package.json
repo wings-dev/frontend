@@ -19,5 +19,8 @@
     "vue-slider-component": "^3.2.24",
     "vue-template-compiler": "^2.7.10",
     "vue2-slot-calendar": "^2.2.5"
+  },
+  "devDependencies": {
+    "@nuxtjs/dotenv": "^1.4.1"
   }
 }
