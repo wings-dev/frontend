@@ -16,7 +16,7 @@ export default {
         { hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3' }
       ],
       link: [
-        { rel: 'stylesheet', href: `/static/css/site_${site_id}/listeleme.min.css` }
+        { rel: 'stylesheet', href: `/css/listeleme.min.css` }
       ]
     }
   },

@@ -23,8 +23,11 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/static/fonts/sf-pro/stylesheet.css' },
-      { rel: 'stylesheet', href: '/static/css/jquery/bootstrap-select.min.css' },
+      { rel: 'stylesheet', href: '/fonts/sf-pro/stylesheet.css' },
+      { rel: 'stylesheet', href: '/css/custom-bootstrap.min.css' },
+      { rel: 'stylesheet', href: '/css/jquery/bootstrap-select.min.css' },
+      { rel: 'stylesheet', href: '/css/main.min.css' },
+      
     ]
   },
 

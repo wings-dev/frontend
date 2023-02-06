@@ -356,7 +356,7 @@
                     </div>
                     <button type="button" class="Search-item-more-mobile" id="mobileFilter"><i class="icon-filter"></i>
                       <span class="dropdown-toggle-title">Gelişmiş Arama</span></button>
-                    <button type="button" class="Search-button" id="searchVilla" onclick="RunFilter(this)"><img src="/cdn/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search" class="contain flex-shrink-0 my-1"></button>
+                    <button type="button" class="Search-button" id="searchVilla" onclick="RunFilter(this)"><img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search" class="contain flex-shrink-0 my-1"></button>
                   </form>
                 </div>
 
@@ -374,7 +374,7 @@
     <section class="newsletter-section position-relative">
       <div class="container-wide">
         <div class="newsletter bg-theme-first-dark rounded-xl position-relative overflow-hidden py-4 py-sm-5">
-          <img src="/cdn/img/spacer.gif" data-src="/cdn/uploads/newsletter-bg.png" alt="newsletter background" class="newsletter-bg lazy cover position-absolute top-0 start-0 w-100 h-100">
+          <img src="/img/spacer.gif" data-src="/uploads/newsletter-bg.png" alt="newsletter background" class="newsletter-bg lazy cover position-absolute top-0 start-0 w-100 h-100">
           <div class="container position-relative d-flex flex-wrap py-xl-4 my-lg-2">
             <div class="col-12 col-lg-4 mb-lg-0 mb-3 px-lg-0 px-3">
               <div class="caption d-flex flex-column">
@@ -509,7 +509,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-lg-end ps-md-4">
               <div class="footer-banner bg-light rounded-xl d-inline-block position-relative w-100">
-                <img src="/cdn/img/tools/footer-banner.jpg" width="265" height="335" alt="footer banner"
+                <img src="/img/tools/footer-banner.jpg" width="265" height="335" alt="footer banner"
                      class="banner lazy cover rounded-xl w-100">
                 <div class="caption d-flex flex-column justify-content-center pt-5 ps-4 pe-5 position-absolute top-0 start-0">
                   <i class="footer-banner-logo"></i>
@@ -527,18 +527,18 @@
                   href="https://www.eticaret.gov.tr/" target="blank" class="text-primary"><u>Etbis</u></a> kayıtlı olup bir wings iştirakidir.</span>
           </div>
           <div class="cards d-flex me-4 pe-2 mb-md-0 mb-3">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Discover-card-dark.svg" width="50" height="30"
+            <img src="/img/spacer.gif" data-src="/img/tools/Discover-card-dark.svg" width="50" height="30"
                  alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Maestro-card-dark.svg" width="50" height="30"
+            <img src="/img/spacer.gif" data-src="/img/tools/Maestro-card-dark.svg" width="50" height="30"
                  alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Visa-card-dark.svg" width="50" height="30"
+            <img src="/img/spacer.gif" data-src="/img/tools/Visa-card-dark.svg" width="50" height="30"
                  alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Mastercard-dark.svg" width="50" height="30"
+            <img src="/img/spacer.gif" data-src="/img/tools/Mastercard-dark.svg" width="50" height="30"
                  alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Americanexpress-card-dark.svg" width="50"
+            <img src="/img/spacer.gif" data-src="/img/tools/Americanexpress-card-dark.svg" width="50"
                  height="30" alt="discover card" class="lazy contain flex-shrink-0 me-2">
           </div>
-          <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/comodo-ssl-certificate.svg" width="108"
+          <img src="/img/spacer.gif" data-src="/img/tools/comodo-ssl-certificate.svg" width="108"
                height="34" alt="" class="lazy contain">
         </div>
       </section>
@@ -551,7 +551,7 @@
             <span class="fs-8 d-block mb-sm-0 mb-2">© 2021 Otelbnb.com Turizm ve Seyehat Ltd. Şti. Tüm hakları saklıdır - <a
               href="#!"><u>Gizlilik Politikası</u></a> ve <a href="#!"><u>Rezervasyon Koşulları</u></a></span>
           <a href="https://www.wings.com.tr/" target="blank" class="wings flex-shrink-0">
-            <img src="/cdn/img/tools/wings.svg" width="65" height="24" alt="" class="contain">
+            <img src="/img/tools/wings.svg" width="65" height="24" alt="" class="contain">
           </a>
         </div>
       </section>
@@ -571,8 +571,6 @@ export default {
     let site_id = process.env.SITE
     return {
       link: [
-        { rel: 'stylesheet', href: `/css/site_${site_id}/custom-bootstrap.min.css` },
-        { rel: 'stylesheet', href: `/css/site_${site_id}/main.min.css` },
         { rel: 'stylesheet', href: `/css/site_${site_id}/theme.min.css` },
       ]
     }

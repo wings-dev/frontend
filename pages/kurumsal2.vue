@@ -41,7 +41,7 @@
                                 </span>
                         </p>
                     </div>
-                    <img src="cdn/img/otelbnb.svg" width="67" height="18" alt="" class="contain">
+                    <img src="/img/otelbnb.svg" width="67" height="18" alt="" class="contain">
                 </div>
             </div>
         </div>
@@ -52,23 +52,23 @@
             <div class="swiper gallery">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a data-fancybox="gallery" href="cdn/uploads/about-gallery-2.jpg" data-thumb="cdn/uploads/about-gallery-2.jpg" class="gallery-item d-block">
-                            <img src="cdn/uploads/about-gallery-2.jpg" width="585" height="334" alt="about gallery" class="cover w-100">
+                        <a data-fancybox="gallery" href="/uploads/about-gallery-2.jpg" data-thumb="/uploads/about-gallery-2.jpg" class="gallery-item d-block">
+                            <img src="/uploads/about-gallery-2.jpg" width="585" height="334" alt="about gallery" class="cover w-100">
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="gallery" href="cdn/uploads/about-gallery-3.jpg" data-thumb="cdn/uploads/about-gallery-3.jpg" class="gallery-item d-block">
-                            <img src="cdn/uploads/about-gallery-3.jpg" width="585" height="334" alt="about gallery" class="cover w-100">
+                        <a data-fancybox="gallery" href="/uploads/about-gallery-3.jpg" data-thumb="/uploads/about-gallery-3.jpg" class="gallery-item d-block">
+                            <img src="/uploads/about-gallery-3.jpg" width="585" height="334" alt="about gallery" class="cover w-100">
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="gallery" href="cdn/uploads/about-gallery-4.jpg" data-thumb="cdn/uploads/about-gallery-4.jpg" class="gallery-item d-block">
-                            <img src="cdn/uploads/about-gallery-4.jpg" width="585" height="334" alt="about gallery" class="cover w-100">
+                        <a data-fancybox="gallery" href="/uploads/about-gallery-4.jpg" data-thumb="/uploads/about-gallery-4.jpg" class="gallery-item d-block">
+                            <img src="/uploads/about-gallery-4.jpg" width="585" height="334" alt="about gallery" class="cover w-100">
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="gallery" href="cdn/uploads/about-gallery-1.jpg" data-thumb="cdn/uploads/about-gallery-1.jpg" class="gallery-item d-block">
-                            <img src="cdn/uploads/about-gallery-1.jpg" width="585" height="334" alt="about gallery" class="cover w-100">
+                        <a data-fancybox="gallery" href="/uploads/about-gallery-1.jpg" data-thumb="/uploads/about-gallery-1.jpg" class="gallery-item d-block">
+                            <img src="/uploads/about-gallery-1.jpg" width="585" height="334" alt="about gallery" class="cover w-100">
                         </a>
                     </div>
                 </div>
@@ -76,14 +76,14 @@
         </div>
     </section>
 
-    <section class="documents-section bg-theme-light-2 lazy cover" data-src="cdn/img/tools/page-title-bg.svg">
+    <section class="documents-section bg-theme-light-2 lazy cover" data-src="/img/tools/page-title-bg.svg">
         <div class="container pb-5">
             <div class="documents ls-05">
                 <h4 class="fs-3 text-theme-first text-center fw-normal lh-sm mb-sm-5 pb-3">Belgelerimiz</h4>
                 <div class="row g-3">
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="document-item bg-white rounded-sm w-100 h-100 d-flex flex-column align-items-center text-center position-relative overflow-hidden p-4">
-                            <img src="cdn/img/tools/wings.svg" width="67" height="24" alt="" class="lazy contain flex-shrink-0 mt-3 mb-1">
+                            <img src="/img/tools/wings.svg" width="67" height="24" alt="" class="lazy contain flex-shrink-0 mt-3 mb-1">
                             <strong class="fs-6 text-theme-first fw-normal mb-1">Marka Tescil Belgesi</strong>
                             <small class="text-theme-secondary mb-4">T.C. TÜRK PATENT ve MARKA KURUMU</small>
                             <a href="#!" class="pdf-link align-self-end mt-auto">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="document-item bg-white rounded-sm w-100 h-100 d-flex flex-column align-items-center text-center position-relative overflow-hidden p-4">
-                            <img src="cdn/img/tools/A-GRUBU.png" width="67" height="24" alt="" class="lazy contain flex-shrink-0 mt-3 mb-1">
+                            <img src="/img/tools/A-GRUBU.png" width="67" height="24" alt="" class="lazy contain flex-shrink-0 mt-3 mb-1">
                             <strong class="fs-6 text-theme-first fw-normal mb-1">Seyehat Acentası İşletme Belg.</strong>
                             <small class="text-theme-secondary mb-4">T.C. KÜLTÜR VE TURİZM BAKANLIĞI</small>
                             <a href="#!" class="pdf-link align-self-end mt-auto">
@@ -122,7 +122,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="document-item bg-white rounded-sm w-100 h-100 d-flex flex-column align-items-center text-center position-relative overflow-hidden p-4">
-                            <img src="cdn/img/otelbnb.svg" width="67" height="24" alt="" class="lazy contain flex-shrink-0 mt-3 mb-1">
+                            <img src="/img/otelbnb.svg" width="67" height="24" alt="" class="lazy contain flex-shrink-0 mt-3 mb-1">
                             <strong class="fs-6 text-theme-first fw-normal mb-1">Marka Tescil Belgesi</strong>
                             <small class="text-theme-secondary mb-4">T.C. TÜRK PATENT ve MARKA KURUMU</small>
                             <a href="#!" class="pdf-link align-self-end mt-auto">
@@ -153,7 +153,7 @@ export default {
         { hid: 'keywords', name: 'keywords', content: 'hakkımızda1, hakkımızda2, hakkımızd3' }
       ],
       link: [
-        { rel: 'stylesheet', href: `/static/css/site_${site_id}/hakkimizda.min.css` }
+        { rel: 'stylesheet', href: `/css/hakkimizda.min.css` }
       ]
     }
   },

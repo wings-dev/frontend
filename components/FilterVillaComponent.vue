@@ -47,7 +47,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                 class="icon-login-close"></i></button>
             <div class="Login-in">
-              <div class="Login-left" style="background-image:url('/cdn/img/login-bg.jpg')"></div>
+              <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
               <div class="Login-right">
                 <div class="Login-right-in">
                   <h2><b>MÜŞTERİ </b> GİRİŞİ</h2>
@@ -107,7 +107,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                 class="icon-login-close"></i></button>
             <div class="Login-in">
-              <div class="Login-left" style="background-image:url('/cdn/img/login-bg.jpg')"></div>
+              <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
               <div class="Login-right">
                 <div class="Login-right-in">
                   <h2><b>DOĞRULAMA </b> KODU</h2>
@@ -146,7 +146,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                 class="icon-login-close"></i></button>
             <div class="Login-in">
-              <div class="Login-left" style="background-image:url('/cdn/img/login-bg.jpg')"></div>
+              <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
               <div class="Login-right">
                 <div class="Login-right-in">
                   <h2><b>KAYIT </b> OL</h2>
@@ -193,7 +193,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                 class="icon-login-close"></i></button>
             <div class="Login-in">
-              <div class="Login-left" style="background-image:url('/cdn/img/login-bg.jpg')"></div>
+              <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
               <div class="Login-right">
                 <div class="Login-right-in">
                   <h2><b>SİZİ </b> ARAYALIM</h2>
@@ -654,7 +654,7 @@
 
               <div
                 class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-                <img src="/cdn/img/spacer.gif" data-src="/cdn/uploads/holiday-banner.jpg" alt=""
+                <img src="/uploads/holiday-banner.jpg"  alt=""
                   class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
                 <div class="d-flex flex-column position-relative ls-05 pt-3">
                   <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
@@ -778,7 +778,7 @@
         <div class="List-in">
           <h3>Fethiye Villa Kiralama </h3>
           <div class="List-img">
-            <img src="cdn/img/list.png" alt="">
+            <img src="/img/list.png" alt="">
           </div>
           <div class="List-text">
             <p>İslamlar kiralık villa seçenekleriyle son derece meşhur bir bölgedir. Dört bir yanı zeytin
