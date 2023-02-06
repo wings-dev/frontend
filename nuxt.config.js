@@ -23,13 +23,8 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/cdn/fonts/sf-pro/stylesheet.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/bootstrap-select.min.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/swiper.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/jquery-ui.min.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/caleran.min.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/ion.rangeSlider.min.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/intlTelInput.min.css' }
+      { rel: 'stylesheet', href: '/static/fonts/sf-pro/stylesheet.css' },
+      { rel: 'stylesheet', href: '/static/css/jquery/bootstrap-select.min.css' },
     ]
   },
 

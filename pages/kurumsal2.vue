@@ -153,7 +153,7 @@ export default {
         { hid: 'keywords', name: 'keywords', content: 'hakkımızda1, hakkımızda2, hakkımızd3' }
       ],
       link: [
-        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/hakkimizda.css` }
+        { rel: 'stylesheet', href: `/static/css/site_${site_id}/hakkimizda.min.css` }
       ]
     }
   },

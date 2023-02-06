@@ -383,7 +383,7 @@ export default {
           { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
         ],
         link: [
-          { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/anasayfa.css` }
+          { rel: 'stylesheet', href: `~/static/css/site_${site_id}/anasayfa.min.css` }
         ]
       }
     },
@@ -423,7 +423,7 @@ export default {
 }
 </script>
 <style scoped>
-
+@import '~/static/css/site_1/custom-bootstrap.min.css';
 .list-item .list-image {
    width: 100%;
 }

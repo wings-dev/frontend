@@ -571,9 +571,9 @@ export default {
     let site_id = process.env.SITE
     return {
       link: [
-        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/custom-bootstrap.min.css` },
-        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/main.min.css` },
-        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/theme.min.css` },
+        { rel: 'stylesheet', href: `/css/site_${site_id}/custom-bootstrap.min.css` },
+        { rel: 'stylesheet', href: `/css/site_${site_id}/main.min.css` },
+        { rel: 'stylesheet', href: `/css/site_${site_id}/theme.min.css` },
       ]
     }
   }
