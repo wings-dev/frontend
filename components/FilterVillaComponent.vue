@@ -20,23 +20,42 @@
               <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
             </div>
 
-            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın"
-                                            :checkboxes="destinations" :hideTitleBorder="true" @updated="destinations = $event; filter();"></filter-item-checkbox-component>
+            <filter-item-checkbox-component
+              title="BÖLGE"
+              filterInputPlaceholder="Bölge Arayın"
+              :checkboxes="destinations"
+              :hideTitleBorder="true"
+              @updated="updateFilter('destinations', $event)"
+            ></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
-                                            @updated="amenites.facilityTypes = $event; filter();"></filter-item-checkbox-component>
+            <filter-item-checkbox-component
+              title="TESİS TİPİ"
+              :checkboxes="amenites.facilityTypes"
+              @updated="updateFilter('amenites.facilityTypes', $event)"
+            ></filter-item-checkbox-component>
 
-            <filter-price-between-component @min_price="min_price = $event"
-                                            @max_price="max_price = $event"></filter-price-between-component>
+            <filter-price-between-component
+              @min_price="updateFilter('min_price', $event, false)"
+              @max_price="updateFilter('max_price', $event)"
+            ></filter-price-between-component>
 
-            <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts"
-                                            @updated="amenites.facilityConcepts = $event; filter();"></filter-item-checkbox-component>
+            <filter-item-checkbox-component
+              title="TESİS KONSEPTİ"
+              :checkboxes="amenites.facilityConcepts"
+              @updated="updateFilter('amenites.facilityConcepts', $event)"
+            ></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights"
-                                            @updated="amenites.highlights = $event; filter();"></filter-item-checkbox-component>
+            <filter-item-checkbox-component
+              title="ÖNE ÇIKAN ÖZELLİKLER"
+              :checkboxes="amenites.highlights"
+              @updated="updateFilter('amenites.highlights', $event)"
+            ></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
-                                            @updated="amenites.facilities = $event; filter();"></filter-item-checkbox-component>
+            <filter-item-checkbox-component
+              title="OLANAKLAR"
+              :checkboxes="amenites.facilities"
+              @updated="updateFilter('amenites.facilities', $event)"
+            ></filter-item-checkbox-component>
           </div>
 
           <div class="Filters-button" type="button" @click="filter">Filtele</div>
@@ -63,15 +82,30 @@
           <div class="Filter-right-selected" style="">
             <div class="Filter-right-selected-in">
 
-              <a v-for="destination in selectedDestintions" class="Filter-right-selected-item">Bölge:{{ destination.text }}<i class="icon-search-close" @click="unselect(destination)"></i></a>
+              <a v-for="destination in selectedDestintions" class="Filter-right-selected-item">
+                Bölge:{{ destination.text }}
+                <i class="icon-search-close" @click="unselect(destination)"></i>
+              </a>
 
-              <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">Bölge:{{ facilityType.text }}<i class="icon-search-close" @click="unselect(facilityType)"></i></a>
+              <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
+                Bölge:{{ facilityType.text }}
+                <i class="icon-search-close" @click="unselect(facilityType)"></i>
+              </a>
 
-              <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">Konsept:{{facilityConcept.text}}<i class="icon-search-close" @click="unselect(facilityConcept)"></i></a>
+              <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">
+                Konsept:{{facilityConcept.text}}
+                <i class="icon-search-close" @click="unselect(facilityConcept)"></i>
+              </a>
 
-              <a v-for="highlight in selectedHighlights" class="Filter-right-selected-item">Özellik:{{highlight.text}}<i class="icon-search-close" @click="unselect(highlight)"></i></a>
+              <a v-for="highlight in selectedHighlights" class="Filter-right-selected-item">
+                Özellik:{{highlight.text}}
+                <i class="icon-search-close" @click="unselect(highlight)"></i>
+              </a>
 
-              <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">Olanak:{{facility.text}}<i class="icon-search-close" @click="unselect(facility)"></i></a>
+              <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
+                Olanak:{{facility.text}}
+                <i class="icon-search-close" @click="unselect(facility)"></i>
+              </a>
 
               <button type="button" id="Fetures_clear" v-if="filterCount > 0" @click="clearFilter()">Temizle</button>
             </div>
@@ -192,17 +226,14 @@
 
           <nav aria-label="..." class="my-3">
             <ul class="pagination d-flex flex-wrap justify-content-center align-items-center">
-              <li class="page-item me-2 me-sm-3 mb-1">
-                <a href="#!"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
-                  <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                       xmlns:xlink="http://www.w3.org/1999/xlink">
+              <!-- Go to First Page -->
+              <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page > 1">
+                <a href="javascript:void(0)" @click.prevent="goToPage(1)" class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
+                  <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="VillaListeleme" transform="translate(-860.000000, -2875.000000)" fill="#AFAFB6"
-                         fill-rule="nonzero">
+                      <g id="VillaListeleme" transform="translate(-860.000000, -2875.000000)" fill="#AFAFB6" fill-rule="nonzero">
                         <g id="Group-27" transform="translate(837.000000, 2861.000000)">
-                          <g id="right-arrow-(3)-copy"
-                             transform="translate(26.954957, 19.166042) scale(-1, 1) translate(-26.954957, -19.166042) translate(23.919953, 14.000000)">
+                          <g id="right-arrow-(3)-copy" transform="translate(26.954957, 19.166042) scale(-1, 1) translate(-26.954957, -19.166042) translate(23.919953, 14.000000)">
                             <path
                               d="M5.9052,4.762884 L1.307292,0.16506 C1.200948,0.058632 1.058988,0 0.90762,0 C0.756252,0 0.614292,0.058632 0.507948,0.16506 L0.169344,0.50358 C-0.050988,0.724164 -0.050988,1.082676 0.169344,1.302924 L4.03032,5.1639 L0.16506,9.02916 C0.058716,9.135588 0,9.277464 0,9.428748 C0,9.5802 0.058716,9.722076 0.16506,9.828588 L0.503664,10.167024 C0.610092,10.273452 0.751968,10.332084 0.903336,10.332084 C1.054704,10.332084 1.196664,10.273452 1.303008,10.167024 L5.9052,5.565 C6.011796,5.458236 6.070344,5.315688 6.07000944,5.164152 C6.070344,5.012028 6.011796,4.869564 5.9052,4.762884 Z"
                               id="Path"></path>
@@ -213,19 +244,16 @@
                   </svg>
                 </a>
               </li>
-              <li class="page-item me-2 me-sm-3 mb-1">
-                <a href="#!"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">1</a>
+
+              <!-- Page numbers -->
+              <li class="page-item me-2 me-sm-3 mb-1" v-for="(pageNumber, index) in pageNumbers" :key="index">
+                <a href="javascript:void(0)" class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
+                   :class="{ 'active': pageNumber === current_page }"
+                   @click.prevent="goToPage(pageNumber)">{{ pageNumber }}</a>
               </li>
-              <li class="page-item me-2 me-sm-3 mb-1" aria-current="page">
-                <a href="#!"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary active">2</a>
-              </li>
-              <li class="page-item me-2 me-sm-3 mb-1">
-                <a href="#!"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">3</a>
-              </li>
-              <li class="page-item me-2 me-sm-3 mb-1">
+
+              <!-- 3 dots -->
+<!--              <li class="page-item me-2 me-sm-3 mb-1">
                 <svg width="23px" height="5px" viewBox="0 0 23 5" version="1.1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink">
                   <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -240,21 +268,11 @@
                     </g>
                   </g>
                 </svg>
-              </li>
-              <li class="page-item me-2 me-sm-3 mb-1">
-                <a href="#!"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">14</a>
-              </li>
-              <li class="page-item me-2 me-sm-3 mb-1" aria-current="page">
-                <a href="#!"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">15</a>
-              </li>
-              <li class="page-item me-2 me-sm-3 mb-1">
-                <a href="#!"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">16</a>
-              </li>
-              <li class="page-item me-2 me-sm-3 mb-1">
-                <a href="#!"
+              </li>-->
+
+              <!-- Go to Last Page -->
+              <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page < totalPages">
+                <a href="javascript:void(0)" @click.prevent="goToPage(totalPages)"
                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
                   <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
                        xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -277,6 +295,7 @@
               </li>
             </ul>
           </nav>
+
         </div>
       </div>
     </div>
@@ -291,6 +310,8 @@ export default {
   data() {
     return {
       current_page: 1,
+      per_page: 10,
+      total_items: 0,
       villas: [],
       min_price: null,
       max_price: null,
@@ -457,6 +478,16 @@ export default {
     this.filter();
   },
   computed: {
+    totalPages() {
+      return Math.ceil(this.total_items / this.per_page);
+    },
+    pageNumbers() {
+      let pageNumbers = [];
+      for (let i = 1; i <= this.totalPages; i++) {
+        pageNumbers.push(i);
+      }
+      return pageNumbers;
+    },
     selectedDestintions() {
       return this.getSelectedObjects(this.destinations);
     },
@@ -485,7 +516,17 @@ export default {
     }
   },
   methods: {
-    filter() {
+    updateFilter(key, value, sendRequest = true) {
+      this[key] = value;
+      if (sendRequest) {
+        this.filter();
+      }
+    },
+    goToPage(pageNumber) {
+      this.current_page = pageNumber
+      this.filter(pageNumber);
+    },
+    filter(pageNumber = 1) {
       let data = {
         destination: this.getSelectedObjects(this.destinations).map(destination => destination.code),
         amenites: [].concat(
@@ -497,8 +538,11 @@ export default {
         min_price: this.min_price,
         max_price: this.max_price,
       }
-      this.$axios.post("/api/website/property?api_token=123456", data).then(response => {
+      this.$axios.post("/api/website/property?api_token=123456&page=" + pageNumber, data).then(response => {
         this.villas = response.data.data;
+        this.per_page = response.data.per_page
+        this.total_items = response.data.total
+        this.current_page = response.data.current_page
       }).catch(err => console.log(err));
     },
     getSelectedObjects(checkboxes) {
