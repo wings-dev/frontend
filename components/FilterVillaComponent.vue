@@ -522,6 +522,9 @@ export default {
       }
     },
     goToPage(pageNumber) {
+      if (this.current_page === pageNumber) {
+        return;
+      }
       this.current_page = pageNumber
       this.filter(pageNumber);
     },

@@ -69,7 +69,22 @@ export default {
   },
 
   proxy: {
-    '/api/': 'http://wings.rentals/'
+    '/api/': {
+      target: 'http://wings.rentals/',
+      onProxyReq: (proxyReq, req, res) => {
+        /*
+        if (req._parsedUrl.query) {
+          req.url += "&api_key=123456";
+        } else {
+          req.url += "?api_key=123456";
+        }
+        console.log( req.url);
+         */
+      },
+      onError: (err, req, res) => {
+        // console.error(`Proxy error: ${err.message}`);
+      }
+    }
   },
 
   // 301 yapılacak linkler için alan
