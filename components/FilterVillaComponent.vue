@@ -81,7 +81,7 @@
           <div class="Filter-right-selected" style="">
             <div class="Filter-right-selected-in">
 
-              <a v-for="destination in selectedDestintions" class="Filter-right-selected-item">
+              <a v-for="destination in selectedDestinations" class="Filter-right-selected-item">
                 Bölge:{{ destination.text }}
                 <i class="icon-search-close" @click="unselect(destination)"></i>
               </a>
@@ -180,13 +180,8 @@
                   <div class="F_villa-item-features">
                     <h6>Öne çıkan özellikleri</h6>
                     <div class="F_villa-item-features-in">
-                      <p class="F_villa-item-features-item">Jakuzi</p>
-                      <p class="F_villa-item-features-item">Deniz Manzaralı</p>
-                      <p class="F_villa-item-features-item">Merkeze Yakın</p>
-                      <p class="F_villa-item-features-item">Denize Yakın</p>
-                      <p class="F_villa-item-features-item">Kapalı Otopark</p>
-                      <p class="F_villa-item-features-item F_villa-item-features-more"><a href="" class="">Tümünü
-                        Gör</a></p>
+                      <p class="F_villa-item-features-item" v-for="amenite in getAmenitiesOfVilla(villa)">{{ amenite }}</p>
+                      <p class="F_villa-item-features-item F_villa-item-features-more"><a href="" class="">Tümünü Gör</a></p>
                     </div>
 
                   </div>
@@ -482,13 +477,9 @@ export default {
       return Math.ceil(this.total_items / this.per_page);
     },
     pageNumbers() {
-      let pageNumbers = [];
-      for (let i = 1; i <= this.totalPages; i++) {
-        pageNumbers.push(i);
-      }
-      return pageNumbers;
+      return Array.from({length: this.totalPages}, (_, i) => i + 1);
     },
-    selectedDestintions() {
+    selectedDestinations() {
       return this.getSelectedObjects(this.destinations);
     },
     selectedFacilityTypes() {
@@ -504,59 +495,56 @@ export default {
       return this.getSelectedObjects(this.amenites.facilities);
     },
     filterCount() {
-      return [].concat(
-        this.getSelectedObjects(this.destinations),
-        [].concat(
-          this.getSelectedObjects(this.amenites.facilityConcepts),
-          this.getSelectedObjects(this.amenites.facilityTypes),
-          this.getSelectedObjects(this.amenites.facilities),
-          this.getSelectedObjects(this.amenites.highlights),
-        ),
-      ).length;
+      return [
+        ...this.selectedDestinations,
+        ...this.selectedFacilityConcepts,
+        ...this.selectedFacilityTypes,
+        ...this.selectedFacilities,
+        ...this.selectedHighlights,
+      ].length;
     }
   },
   methods: {
+    getAmenitiesOfVilla(villa) {
+      return (Object.values(villa.amenites || {}).flatMap(amenite => amenite.list) || []).filter(i => !!i);
+    },
     updateFilter(key, value, sendRequest = true) {
       this[key] = value;
-      if (sendRequest) {
-        this.filter();
-      }
+      sendRequest && this.filter();
     },
     goToPage(pageNumber) {
-      if (this.current_page === pageNumber) {
-        return;
-      }
-      this.current_page = pageNumber
+      if (pageNumber === this.current_page) return;
+      this.current_page = pageNumber;
       this.filter(pageNumber);
     },
     filter(pageNumber = 1) {
-      let data = {
-        destination: this.getSelectedObjects(this.destinations).map(destination => destination.code),
-        amenites: [].concat(
-          this.getSelectedObjects(this.amenites.facilityConcepts),
-          this.getSelectedObjects(this.amenites.facilityTypes),
-          this.getSelectedObjects(this.amenites.facilities),
-          this.getSelectedObjects(this.amenites.highlights),
-        ).map(destination => destination.code),
+      const data = {
+        destination: this.selectedDestinations.map(({ code }) => code),
+        amenites: [
+          ...this.selectedFacilityConcepts,
+          ...this.selectedFacilityTypes,
+          ...this.selectedFacilities,
+          ...this.selectedHighlights,
+        ].map(({ code }) => code),
         min_price: this.min_price,
-        max_price: this.max_price,
-      }
-      this.$axios.post("/api/website/property?api_token=123456&page=" + pageNumber, data).then(response => {
-        this.villas = response.data.data;
-        this.per_page = response.data.per_page
-        this.total_items = response.data.total
-        this.current_page = response.data.current_page
-      }).catch(err => console.log(err));
+        max_price: this.max_price
+      };
+
+      this.$axios
+        .post(`/api/website/property?api_token=123456&page=${pageNumber}`, data)
+        .then(({ data: responseData }) => {
+          this.villas = responseData.data;
+          this.per_page = responseData.per_page;
+          this.total_items = responseData.total;
+          this.current_page = responseData.current_page;
+        })
+        .catch(console.error);
     },
     getSelectedObjects(checkboxes) {
-      return checkboxes.reduce((selectedObjects, checkbox) => {
-        if (checkbox.selected) {
-          selectedObjects.push(checkbox);
-        }
-        if (checkbox.children) {
-          selectedObjects.push(...this.getSelectedObjects(checkbox.children));
-        }
-        return selectedObjects;
+      return checkboxes.reduce((selected, checkbox) => {
+        if (checkbox.selected) selected.push(checkbox);
+        if (checkbox.children) selected.push(...this.getSelectedObjects(checkbox.children));
+        return selected;
       }, []);
     },
     unselect(item) {
@@ -565,18 +553,16 @@ export default {
     },
     updateSelection(checkbox, value) {
       checkbox.selected = value;
-      if (checkbox.children) {
-        checkbox.children.forEach(child => {
-          this.updateSelection(child, value);
-        });
-      }
+      checkbox.children && checkbox.children.forEach(child => this.updateSelection(child, value));
     },
     clearFilter() {
-      this.destinations.forEach(checkbox => this.updateSelection(checkbox, false))
-      this.amenites.facilityConcepts.forEach(checkbox => this.updateSelection(checkbox, false))
-      this.amenites.facilityTypes.forEach(checkbox => this.updateSelection(checkbox, false))
-      this.amenites.facilities.forEach(checkbox => this.updateSelection(checkbox, false))
-      this.amenites.highlights.forEach(checkbox => this.updateSelection(checkbox, false))
+      [
+        ...this.destinations,
+        ...this.amenites.facilityConcepts,
+        ...this.amenites.facilityTypes,
+        ...this.amenites.facilities,
+        ...this.amenites.highlights
+      ].forEach(checkbox => this.updateSelection(checkbox, false));
       this.filter();
     }
   }
