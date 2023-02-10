@@ -23,19 +23,19 @@
         <nav class="header-menu flex-fill">
           <ul class="menu d-flex flex-column flex-xl-row align-items-xl-center ls-1 fw-medium h-100 mb-xl-0 mb-3">
             <li class="h-100 me-xl-2 pe-xl-1"><a href="#!"
-                                                 class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Villa
-              Holidays</a></li>
+                class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Villa
+                Holidays</a></li>
             <li class="h-100 me-xl-2 pe-xl-1"><a href="#!"
-                                                 class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Destinations</a>
+                class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Destinations</a>
             </li>
             <li class="h-100 me-xl-2 pe-xl-1"><a href="#!"
-                                                 class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Villa
-              Types</a></li>
+                class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Villa
+                Types</a></li>
             <li class="h-100 me-xl-2 pe-xl-1"><a href="#!"
-                                                 class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Special
-              Offers</a></li>
+                class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Special
+                Offers</a></li>
             <li class="h-100 me-xl-2 pe-xl-1"><a href="#!"
-                                                 class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Services</a>
+                class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Services</a>
             </li>
           </ul>
           <div class="btn btn-theme-first fs-7 ls-1 fw-medium w-100 py-2 d-md-none">
@@ -44,27 +44,27 @@
         </nav>
         <div class="fav-list-wrapper align-self-center me-1">
           <button type="button"
-                  class="toggle-favs search-button flex-shrink-0 btn btn-theme-first-dark rounded-circle d-flex align-items-center justify-content-center shadow-none p-0"
-                  aria-label="Favorileri aç">
+            class="toggle-favs search-button flex-shrink-0 btn btn-theme-first-dark rounded-circle d-flex align-items-center justify-content-center shadow-none p-0"
+            aria-label="Favorileri aç">
             <i class="icon-search"></i>
           </button>
           <div class="fav-list"></div>
         </div>
         <div class="fav-list-wrapper align-self-center me-3">
           <button type="button"
-                  class="toggle-favs flex-shrink-0 btn btn-theme-second rounded-circle d-flex align-items-center justify-content-center shadow-none p-0"
-                  aria-label="Favorileri aç">
+            class="toggle-favs flex-shrink-0 btn btn-theme-second rounded-circle d-flex align-items-center justify-content-center shadow-none p-0"
+            aria-label="Favorileri aç">
             <i class="icon-heart-full"></i>
           </button>
           <div class="fav-list"></div>
         </div>
         <button type="button"
-                class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none"
-                data-bs-toggle="modal" data-bs-target="#signupModal">
+          class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none"
+          data-bs-toggle="modal" data-bs-target="#signupModal">
           <span class="d-inline-block px-1 px-xl-2 py-1 py-xl-0">ÜYE GİRİŞİ YAP</span>
         </button>
         <button type="button" class="menu-toggle bg-transparent align-self-center d-xl-none ms-xl-0 ms-md-4"
-                onclick="$(this).toggleClass('hide');$('.header-menu').toggleClass('show');$('.header-menu-shadow').toggleClass('show');">
+          onclick="$(this).toggleClass('hide');$('.header-menu').toggleClass('show');$('.header-menu-shadow').toggleClass('show');">
           <span></span>
           <span></span>
           <span></span>
@@ -72,7 +72,8 @@
         </button>
       </div>
       <div class="header-menu-shadow position-fixed top-0 start-0 w-100 h-100 bg-black bg-opacity-25"
-           onclick="$(this).removeClass('show');$('.header-menu').removeClass('show');$('.menu-toggle').removeClass('hide');"></div>
+        onclick="$(this).removeClass('show');$('.header-menu').removeClass('show');$('.menu-toggle').removeClass('hide');">
+      </div>
     </header>
 
     <main class="main">
@@ -81,14 +82,20 @@
           <form action="" class="search-engine">
             <nav>
               <div class="nav nav-tabs border-0 lh-sm" id="search-tab" role="tablist">
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 active" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">
+                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 active" id="villa-tab"
+                  data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa"
+                  aria-selected="false">
                   <span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt İçi Villalar</span>
                 </button>
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 " disabled id="otel-tab" data-bs-toggle="tab" data-bs-target="#otel" type="button" role="tab" aria-controls="otel" aria-selected="true">
+                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 " disabled id="otel-tab"
+                  data-bs-toggle="tab" data-bs-target="#otel" type="button" role="tab" aria-controls="otel"
+                  aria-selected="true">
                   <span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt Dışı Villalar</span>
                   <span class="comingsoon">ÇOK YAKINDA</span>
                 </button>
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 d-none" disabled id="otel-tab" data-bs-toggle="tab" data-bs-target="#otel" type="button" role="tab" aria-controls="otel" aria-selected="true">
+                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 d-none" disabled id="otel-tab"
+                  data-bs-toggle="tab" data-bs-target="#otel" type="button" role="tab" aria-controls="otel"
+                  aria-selected="true">
                   <span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Otel Rezervasyon</span>
                   <span class="comingsoon">ÇOK YAKINDA</span>
                 </button>
@@ -100,8 +107,10 @@
                   <form action="">
                     <div class="Search-left">
                       <div class="Search-item Search-item-region dropdown">
-                        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                          <div class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
+                        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          <div
+                            class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
                             <i class="icon-pin"></i>
                           </div>
                           <div class="Search-item-region-in">
@@ -124,26 +133,30 @@
                             </li>
                             <li class="Filters-item">
                               <label for="bolge_1">
-                                <input type="checkbox" class="RegionID_1" data-type="location_2" data-name="Bölge" id="bolge_1" value="1">
+                                <input type="checkbox" class="RegionID_1" data-type="location_2" data-name="Bölge"
+                                  id="bolge_1" value="1">
                                 <span class="checkspan"></span>
                                 <p class="check-text">Antalya</p>
                               </label>
                               <ul class="Filter-second">
                                 <li>
                                   <label for="bolge_2">
-                                    <input type="checkbox" class="RegionID_2" data-type="location_2" data-name="Bölge" id="bolge_2" value="2">
+                                    <input type="checkbox" class="RegionID_2" data-type="location_2" data-name="Bölge"
+                                      id="bolge_2" value="2">
                                     <span class="checkspan"></span>
                                     <p class="check-text">Kaş</p>
                                   </label>
                                   <ul class="Filter-third">
                                     <li>
                                       <label for="bolge_3">
-                                        <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_3" class="RegionID_3" value="3">
+                                        <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_3"
+                                          class="RegionID_3" value="3">
                                         <span class="checkspan"></span>
                                         <p class="check-text">Kalkan</p>
                                       </label>
                                       <label for="bolge_4">
-                                        <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_4" class="RegionID_4" value="4">
+                                        <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_4"
+                                          class="RegionID_4" value="4">
                                         <span class="checkspan"></span>
                                         <p class="check-text">Kalkan</p>
                                       </label>
@@ -152,19 +165,22 @@
                                 </li>
                                 <li>
                                   <label for="bolge_5">
-                                    <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_5" class="RegionID_5" value="5">
+                                    <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_5"
+                                      class="RegionID_5" value="5">
                                     <span class="checkspan"></span>
                                     <p class="check-text">Çavdır</p>
                                   </label>
                                   <ul class="Filter-third">
                                     <li>
                                       <label for="bolge_6">
-                                        <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_6" class="RegionID_6" value="6">
+                                        <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_6"
+                                          class="RegionID_6" value="6">
                                         <span class="checkspan"></span>
                                         <p class="check-text">Fethiye</p>
                                       </label>
                                       <label for="bolge_7">
-                                        <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_7" class="RegionID_7" value="7">
+                                        <input type="checkbox" data-type="location_2" data-name="Bölge" id="bolge_7"
+                                          class="RegionID_7" value="7">
                                         <span class="checkspan"></span>
                                         <p class="check-text">Marmaris</p>
                                       </label>
@@ -177,22 +193,27 @@
                         </ul>
                       </div>
                       <div class="Search-item date">
-                        <div class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
+                        <div
+                          class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
                           <i class="icon-calendar"></i>
                         </div>
 
                         <div class="Search-item-date">
                           <span class="Search-item-name">Giriş / Çıkış Tarihi</span>
                           <div class="Search-item-date-inputs">
-                            <input type="text" id="search_arrival" class="villa_date-input" placeholder="Arrival" autocomplete="off" name="search_arrival" />
+                            <input type="text" id="search_arrival" class="villa_date-input" placeholder="Arrival"
+                              autocomplete="off" name="search_arrival" />
                             <i class="icon-right-arrows-new"></i>
-                            <input id="search_departure" type="text" class="villa_date-input" placeholder="Departure" autocomplete="off" name="search_departure" />
+                            <input id="search_departure" type="text" class="villa_date-input" placeholder="Departure"
+                              autocomplete="off" name="search_departure" />
                           </div>
                         </div>
                       </div>
                       <div class="Search-item Search-item-people">
-                        <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                          <div class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
+                        <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          <div
+                            class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
                             <i class="icon-group-user"></i>
                           </div>
                           <div class="Search-item-people-in">
@@ -207,8 +228,7 @@
                             <div class="Search-item-person-item ">
                               <p>Adult</p>
                               <div class="Search-item-person-item-in ">
-                                <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i>
-                                </button>
+                                <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i></button>
                                 <input id="Search_PeopleAdult" class="person" type="text" value="1" max="20" readonly>
                                 <button type="button" class="plus-person"><i class="icon-plus "></i></button>
                               </div>
@@ -216,8 +236,7 @@
                             <div class="Search-item-person-item">
                               <p>Children <br><span>Between 6-17 </span></p>
                               <div class="Search-item-person-item-in ">
-                                <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i>
-                                </button>
+                                <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i></button>
                                 <input id="Search_PeopleChild" class="person" type="text" value="0" max="10" readonly>
                                 <button type="button" class="plus-person"><i class="icon-plus "></i></button>
                               </div>
@@ -228,7 +247,8 @@
 
                                 <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i>
                                 </button>
-                                <input id="Search_PeopleBaby" class="person" type="text" value="0" name="baby" max="5" readonly>
+                                <input id="Search_PeopleBaby" class="person" type="text" value="0" name="baby" max="5"
+                                  readonly>
                                 <button type="button" class="plus-person"><i class="icon-plus "></i></button>
 
                               </div>
@@ -242,7 +262,8 @@
                         </ul>
                       </div>
                       <div class="Search-item Search-item-more">
-                        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1"
+                          data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="icon-filter"></i>
                           <span class="dropdown-toggle-title">Gelişmiş Arama</span>
                           <i class="icon-down-chevron"></i>
@@ -251,7 +272,8 @@
                           <div class="Filters-search">
                             <label for="">
                               <i class="icon-search-new"></i>
-                              <input type="search" placeholder="Özellik arayın" onkeyup="destinationsSearchFilter(this)">
+                              <input type="search" placeholder="Özellik arayın"
+                                onkeyup="destinationsSearchFilter(this)">
                             </label>
                           </div>
                           <li class="Filters-item Filters-item-notfound">
@@ -268,35 +290,40 @@
                                 <ul class="Filters-first">
                                   <li class="Filters-item">
                                     <label for="tesis_tipi_1">
-                                      <input type="checkbox" class="AmenitesID_1" data-type="amenites" data-name="Tip" id="tesis_tipi_1" value="1">
+                                      <input type="checkbox" class="AmenitesID_1" data-type="amenites" data-name="Tip"
+                                        id="tesis_tipi_1" value="1">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Villa</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="tesis_tipi_2">
-                                      <input type="checkbox" data-type="amenites" data-name="Tip" id="tesis_tipi_2" class="AmenitesID_2" value="2">
+                                      <input type="checkbox" data-type="amenites" data-name="Tip" id="tesis_tipi_2"
+                                        class="AmenitesID_2" value="2">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Ev</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="tesis_tipi_3">
-                                      <input type="checkbox" data-type="amenites" data-name="Tip" id="tesis_tipi_3" class="AmenitesID_3" value="3">
+                                      <input type="checkbox" data-type="amenites" data-name="Tip" id="tesis_tipi_3"
+                                        class="AmenitesID_3" value="3">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Suite</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="tesis_tipi_4">
-                                      <input type="checkbox" data-type="amenites" data-name="Tip" id="tesis_tipi_4" class="AmenitesID_4" value="4">
+                                      <input type="checkbox" data-type="amenites" data-name="Tip" id="tesis_tipi_4"
+                                        class="AmenitesID_4" value="4">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Dubleks</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="tesis_tipi_5">
-                                      <input type="checkbox" class="AmenitesID_5" data-type="amenites" data-name="Tip" id="tesis_tipi_5" value="5">
+                                      <input type="checkbox" class="AmenitesID_5" data-type="amenites" data-name="Tip"
+                                        id="tesis_tipi_5" value="5">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Bungalov</p>
                                     </label>
@@ -313,35 +340,40 @@
                                 <ul>
                                   <li class="Filters-item">
                                     <label for="konsept_1">
-                                      <input type="checkbox" class="AmenitesID_6" data-type="amenites" data-name="Konsept" id="konsept_1" value="6">
+                                      <input type="checkbox" class="AmenitesID_6" data-type="amenites"
+                                        data-name="Konsept" id="konsept_1" value="6">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Deniz manzaralı villa ve evler</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="konsept_2">
-                                      <input type="checkbox" class="AmenitesID_7" data-type="amenites" data-name="Konsept" id="konsept_2" value="7">
+                                      <input type="checkbox" class="AmenitesID_7" data-type="amenites"
+                                        data-name="Konsept" id="konsept_2" value="7">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Merkezi konumdaki evler</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="konsept_3">
-                                      <input type="checkbox" class="AmenitesID_8" data-type="amenites" data-name="Konsept" id="konsept_3" value="8">
+                                      <input type="checkbox" class="AmenitesID_8" data-type="amenites"
+                                        data-name="Konsept" id="konsept_3" value="8">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Lüks tatil villaları</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="konsept_4">
-                                      <input type="checkbox" class="AmenitesID_9" data-type="amenites" data-name="Konsept" id="konsept_4" value="9">
+                                      <input type="checkbox" class="AmenitesID_9" data-type="amenites"
+                                        data-name="Konsept" id="konsept_4" value="9">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Balayı villası</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="konsept_5">
-                                      <input type="checkbox" class="AmenitesID_10" data-type="amenites" data-name="Konsept" id="konsept_5" value="10">
+                                      <input type="checkbox" class="AmenitesID_10" data-type="amenites"
+                                        data-name="Konsept" id="konsept_5" value="10">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Muhafazakar villa</p>
                                     </label>
@@ -356,7 +388,9 @@
                     </div>
                     <button type="button" class="Search-item-more-mobile" id="mobileFilter"><i class="icon-filter"></i>
                       <span class="dropdown-toggle-title">Gelişmiş Arama</span></button>
-                    <button type="button" class="Search-button" id="searchVilla" onclick="RunFilter(this)"><img src="/cdn/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search" class="contain flex-shrink-0 my-1"></button>
+                    <button type="button" class="Search-button" id="searchVilla" onclick="RunFilter(this)"><img
+                        src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
+                        class="contain flex-shrink-0 my-1"></button>
                   </form>
                 </div>
 
@@ -374,18 +408,21 @@
     <section class="newsletter-section position-relative">
       <div class="container-wide">
         <div class="newsletter bg-theme-first-dark rounded-xl position-relative overflow-hidden py-4 py-sm-5">
-          <img src="/cdn/img/spacer.gif" data-src="/cdn/uploads/newsletter-bg.png" alt="newsletter background" class="newsletter-bg lazy cover position-absolute top-0 start-0 w-100 h-100">
+          <img src="/img/spacer.gif" data-src="/uploads/newsletter-bg.png" alt="newsletter background"
+            class="newsletter-bg lazy cover position-absolute top-0 start-0 w-100 h-100">
           <div class="container position-relative d-flex flex-wrap py-xl-4 my-lg-2">
             <div class="col-12 col-lg-4 mb-lg-0 mb-3 px-lg-0 px-3">
               <div class="caption d-flex flex-column">
                 <strong class="fs-3 fw-normal text-white ls-05 lh-sm mb-1">e-Bülten’e kayıt olun</strong>
-                <p class="fs-6 fw-normal ls-05 lh-sm mb-0">Erken rezervasyon fırsatlarından <br> indirimli otel ve villalardan ilk siz haberdar olun!</p>
+                <p class="fs-6 fw-normal ls-05 lh-sm mb-0">Erken rezervasyon fırsatlarından <br> indirimli otel ve
+                  villalardan ilk siz haberdar olun!</p>
               </div>
             </div>
             <div class="col-12 col-sm-7 col-lg-5 ps-3 pe-3 pe-lg-5 mb-sm-0 mb-3">
               <form action="" class="d-flex align-items-end h-100">
                 <div class="newsletter-register w-100 d-flex align-items-center border-bottom pb-3">
-                  <input type="text" name="newsletter-register" class="bg-transparent text-white w-100 ps-3" placeholder="e-Posta Adresiniz">
+                  <input type="text" name="newsletter-register" class="bg-transparent text-white w-100 ps-3"
+                    placeholder="e-Posta Adresiniz">
                   <button type="button" class="bg-transparent flex-shrink-0 px-2 py-1">
                     <i class="icon-plus-1 text-theme-second"></i>
                   </button>
@@ -393,19 +430,23 @@
               </form>
             </div>
             <div class="col-12 col-sm-5 col-lg-3 px-sm-0 px-3">
-              <ul class="social-media h-100 d-flex align-items-center justify-content-sm-center justify-content-lg-end w-100">
+              <ul
+                class="social-media h-100 d-flex align-items-center justify-content-sm-center justify-content-lg-end w-100">
                 <li class="me-3 pe-md-1">
-                  <a href="https://www.facebook.com" class="social-link btn btn-theme-first-dark bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center text-center facebook">
+                  <a href="https://www.facebook.com"
+                    class="social-link btn btn-theme-first-dark bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center text-center facebook">
                     <i class="icon-facebook"></i>
                   </a>
                 </li>
                 <li class="me-3 pe-md-1">
-                  <a href="https://www.twitter.com" class="social-link btn btn-theme-first-dark bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center text-center facebook">
+                  <a href="https://www.twitter.com"
+                    class="social-link btn btn-theme-first-dark bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center text-center facebook">
                     <i class="icon-twitter"></i>
                   </a>
                 </li>
                 <li class="me-3 pe-md-1">
-                  <a href="https://www.instagram.com" class="social-link btn btn-theme-first-dark bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center text-center facebook">
+                  <a href="https://www.instagram.com"
+                    class="social-link btn btn-theme-first-dark bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center text-center facebook">
                     <i class="icon-instagram"></i>
                   </a>
                 </li>
@@ -419,17 +460,19 @@
       <section class="footer-top-section text-white">
         <div class="container">
           <div class="footer-top d-flex flex-wrap flex-lg-nowrap">
-            <div class="ft-item flex-fill d-flex align-items-center justify-content-sm-center justify-content-lg-start py-4 py-sm-2 py-lg-4 pe-2 order-sm-1 order-2">
+            <div
+              class="ft-item flex-fill d-flex align-items-center justify-content-sm-center justify-content-lg-start py-4 py-sm-2 py-lg-4 pe-2 order-sm-1 order-2">
               <svg class="flex-shrink-0 me-1" width="31px" height="31px" viewBox="0 0 31 31" version="1.1"
-                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g id="anasayfa" transform="translate(-371.000000, -3815.000000)" fill="#f5841f"
-                     fill-rule="nonzero">
+                  <g id="anasayfa" transform="translate(-371.000000, -3815.000000)" fill="#f5841f" fill-rule="nonzero">
                     <g id="phone-call" transform="translate(371.000000, 3815.000000)">
-                      <path d="M29.31,8.85 C28.056,6.192 26.07,3.96 23.568,2.394 C20.088,0.222 15.966,-0.468 11.97,0.456 C7.974,1.374 4.572,3.798 2.4,7.278 C0.222,10.758 -0.468,14.874 0.456,18.876 C1.38,22.878 3.804,26.274 7.278,28.446 C9.726,29.976 12.534,30.786 15.408,30.786 L15.594,30.786 C18.456,30.75 21.24,29.922 23.652,28.398 C24.354,27.954 24.558,27.03 24.114,26.328 C23.67,25.626 22.746,25.422 22.044,25.866 C20.106,27.096 17.862,27.762 15.558,27.792 C13.194,27.822 10.884,27.168 8.868,25.914 C3.09,22.29 1.326,14.646 4.944,8.868 C6.696,6.066 9.432,4.116 12.648,3.378 C15.864,2.634 19.176,3.192 21.978,4.944 C23.994,6.204 25.59,7.998 26.598,10.134 C27.582,12.216 27.966,14.526 27.708,16.806 C27.618,17.628 28.206,18.372 29.034,18.462 C29.856,18.552 30.6,17.964 30.69,17.136 C31.008,14.304 30.528,11.436 29.31,8.85 L29.31,8.85 Z"
-                            id="Path"></path>
-                      <path d="M12.774,9.132 C12.186,8.544 11.238,8.544 10.65,9.132 C9.834,9.948 9.33,11.034 9.24,12.192 C9.15,13.35 9.48,14.502 10.164,15.432 C11.724,17.55 13.59,19.416 15.708,20.976 C16.542,21.588 17.544,21.918 18.57,21.918 C18.696,21.918 18.822,21.912 18.948,21.906 C20.1,21.816 21.186,21.318 22.008,20.496 C22.596,19.908 22.596,18.96 22.008,18.372 C21.42,17.784 20.472,17.784 19.884,18.372 C19.242,19.014 18.21,19.098 17.484,18.564 C15.612,17.184 13.962,15.534 12.582,13.662 C12.048,12.936 12.126,11.904 12.774,11.262 C13.362,10.668 13.362,9.714 12.774,9.132 L12.774,9.132 Z"
-                            id="Path"></path>
+                      <path
+                        d="M29.31,8.85 C28.056,6.192 26.07,3.96 23.568,2.394 C20.088,0.222 15.966,-0.468 11.97,0.456 C7.974,1.374 4.572,3.798 2.4,7.278 C0.222,10.758 -0.468,14.874 0.456,18.876 C1.38,22.878 3.804,26.274 7.278,28.446 C9.726,29.976 12.534,30.786 15.408,30.786 L15.594,30.786 C18.456,30.75 21.24,29.922 23.652,28.398 C24.354,27.954 24.558,27.03 24.114,26.328 C23.67,25.626 22.746,25.422 22.044,25.866 C20.106,27.096 17.862,27.762 15.558,27.792 C13.194,27.822 10.884,27.168 8.868,25.914 C3.09,22.29 1.326,14.646 4.944,8.868 C6.696,6.066 9.432,4.116 12.648,3.378 C15.864,2.634 19.176,3.192 21.978,4.944 C23.994,6.204 25.59,7.998 26.598,10.134 C27.582,12.216 27.966,14.526 27.708,16.806 C27.618,17.628 28.206,18.372 29.034,18.462 C29.856,18.552 30.6,17.964 30.69,17.136 C31.008,14.304 30.528,11.436 29.31,8.85 L29.31,8.85 Z"
+                        id="Path"></path>
+                      <path
+                        d="M12.774,9.132 C12.186,8.544 11.238,8.544 10.65,9.132 C9.834,9.948 9.33,11.034 9.24,12.192 C9.15,13.35 9.48,14.502 10.164,15.432 C11.724,17.55 13.59,19.416 15.708,20.976 C16.542,21.588 17.544,21.918 18.57,21.918 C18.696,21.918 18.822,21.912 18.948,21.906 C20.1,21.816 21.186,21.318 22.008,20.496 C22.596,19.908 22.596,18.96 22.008,18.372 C21.42,17.784 20.472,17.784 19.884,18.372 C19.242,19.014 18.21,19.098 17.484,18.564 C15.612,17.184 13.962,15.534 12.582,13.662 C12.048,12.936 12.126,11.904 12.774,11.262 C13.362,10.668 13.362,9.714 12.774,9.132 L12.774,9.132 Z"
+                        id="Path"></path>
                     </g>
                   </g>
                 </g>
@@ -439,15 +482,18 @@
                 <a href="tel:444 8 484" class="fs-5-5 fw-normal">444 8 484</a>
               </div>
             </div>
-            <div class="ft-item flex-fill ls-05 d-flex flex-column justify-content-center align-items-sm-center text-sm-center py-4 py-sm-2 py-lg-4 px-2 order-lg-2 order-3">
+            <div
+              class="ft-item flex-fill ls-05 d-flex flex-column justify-content-center align-items-sm-center text-sm-center py-4 py-sm-2 py-lg-4 px-2 order-lg-2 order-3">
               <span class="text-theme-second">İş Birliği için</span>
               <a href="mailto:info@otelbnb.com" class="underline-hover">info@otelbnb.com</a>
             </div>
-            <div class="ft-item flex-fill ls-05 d-flex flex-column justify-content-center align-items-sm-center text-sm-center py-4 py-sm-2 py-lg-4 px-2 order-lg-2 order-4">
+            <div
+              class="ft-item flex-fill ls-05 d-flex flex-column justify-content-center align-items-sm-center text-sm-center py-4 py-sm-2 py-lg-4 px-2 order-lg-2 order-4">
               <span class="text-theme-second">Merkez</span>
               <strong class="fw-normal">Kalkan Mah. Cumhuriyet Cd. No:48/2 - Kaş/Antalya</strong>
             </div>
-            <div class="ft-item flex-fill ls-05 text-sm-center text-lg-end py-4 py-sm-2 py-lg-4 ps-2 order-lg-last order-sm-2 order-1">
+            <div
+              class="ft-item flex-fill ls-05 text-sm-center text-lg-end py-4 py-sm-2 py-lg-4 ps-2 order-lg-last order-sm-2 order-1">
               <a href="index.php" class="d-inline-block footer-logo">
               </a>
             </div>
@@ -509,9 +555,10 @@
             </div>
             <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-lg-end ps-md-4">
               <div class="footer-banner bg-light rounded-xl d-inline-block position-relative w-100">
-                <img src="/cdn/img/tools/footer-banner.jpg" width="265" height="335" alt="footer banner"
-                     class="banner lazy cover rounded-xl w-100">
-                <div class="caption d-flex flex-column justify-content-center pt-5 ps-4 pe-5 position-absolute top-0 start-0">
+                <img src="/img/tools/footer-banner.jpg" width="265" height="335" alt="footer banner"
+                  class="banner lazy cover rounded-xl w-100">
+                <div
+                  class="caption d-flex flex-column justify-content-center pt-5 ps-4 pe-5 position-absolute top-0 start-0">
                   <i class="footer-banner-logo"></i>
                   <span class="fs-4 lh-sm ls-05 text-white d-block pe-3">ile yazlar sıcak ve eğlenceli</span>
                 </div>
@@ -523,35 +570,36 @@
       <section class="footer-cards bg-white border-top border-theme-light-2 py-4 py-sm-5">
         <div class="container d-flex flex-wrap align-items-center">
           <div class="text-secondary d-flex align-items-center lh-sm ls-05 me-auto py-1 mb-md-0 mb-2">
-                <span>OtelBnb <a href="https://www.tursab.org.tr/" target="blank" class="text-primary"><u>Türsab</u></a> ve <a
-                  href="https://www.eticaret.gov.tr/" target="blank" class="text-primary"><u>Etbis</u></a> kayıtlı olup bir wings iştirakidir.</span>
+            <span>OtelBnb <a href="https://www.tursab.org.tr/" target="blank" class="text-primary"><u>Türsab</u></a> ve
+              <a href="https://www.eticaret.gov.tr/" target="blank" class="text-primary"><u>Etbis</u></a> kayıtlı olup
+              bir wings iştirakidir.</span>
           </div>
           <div class="cards d-flex me-4 pe-2 mb-md-0 mb-3">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Discover-card-dark.svg" width="50" height="30"
-                 alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Maestro-card-dark.svg" width="50" height="30"
-                 alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Visa-card-dark.svg" width="50" height="30"
-                 alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Mastercard-dark.svg" width="50" height="30"
-                 alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/Americanexpress-card-dark.svg" width="50"
-                 height="30" alt="discover card" class="lazy contain flex-shrink-0 me-2">
+            <img src="/img/spacer.gif" data-src="/img/tools/Discover-card-dark.svg" width="50" height="30"
+              alt="discover card" class="lazy contain flex-shrink-0 me-2">
+            <img src="/img/spacer.gif" data-src="/img/tools/Maestro-card-dark.svg" width="50" height="30"
+              alt="discover card" class="lazy contain flex-shrink-0 me-2">
+            <img src="/img/spacer.gif" data-src="/img/tools/Visa-card-dark.svg" width="50" height="30"
+              alt="discover card" class="lazy contain flex-shrink-0 me-2">
+            <img src="/img/spacer.gif" data-src="/img/tools/Mastercard-dark.svg" width="50" height="30"
+              alt="discover card" class="lazy contain flex-shrink-0 me-2">
+            <img src="/img/spacer.gif" data-src="/img/tools/Americanexpress-card-dark.svg" width="50" height="30"
+              alt="discover card" class="lazy contain flex-shrink-0 me-2">
           </div>
-          <img src="/cdn/img/spacer.gif" data-src="/cdn/img/tools/comodo-ssl-certificate.svg" width="108"
-               height="34" alt="" class="lazy contain">
+          <img src="/img/spacer.gif" data-src="/img/tools/comodo-ssl-certificate.svg" width="108" height="34" alt=""
+            class="lazy contain">
         </div>
       </section>
       <section class="footer-map-section">
         <div class="map w-100" id="contactMap" data-id="contactMap" data-lat="36.67416043629058"
-             data-lng="29.100266338322857"></div>
+          data-lng="29.100266338322857"></div>
       </section>
       <section class="footer-bottom bg-theme-light-2 text-secondary ls-05 py-3 py-sm-4">
         <div class="container d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1">
-            <span class="fs-8 d-block mb-sm-0 mb-2">© 2021 Otelbnb.com Turizm ve Seyehat Ltd. Şti. Tüm hakları saklıdır - <a
-              href="#!"><u>Gizlilik Politikası</u></a> ve <a href="#!"><u>Rezervasyon Koşulları</u></a></span>
+          <span class="fs-8 d-block mb-sm-0 mb-2">© 2021 Otelbnb.com Turizm ve Seyehat Ltd. Şti. Tüm hakları saklıdır -
+            <a href="#!"><u>Gizlilik Politikası</u></a> ve <a href="#!"><u>Rezervasyon Koşulları</u></a></span>
           <a href="https://www.wings.com.tr/" target="blank" class="wings flex-shrink-0">
-            <img src="/cdn/img/tools/wings.svg" width="65" height="24" alt="" class="contain">
+            <img src="/img/tools/wings.svg" width="65" height="24" alt="" class="contain">
           </a>
         </div>
       </section>
@@ -571,12 +619,21 @@ export default {
     let site_id = process.env.SITE
     return {
       link: [
-        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/custom-bootstrap.min.css` },
-        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/main.min.css` },
-        { rel: 'stylesheet', href: `/cdn/css/site_${site_id}/theme.min.css` },
+        // { rel: 'stylesheet', href: `/css/site_${site_id}/theme.min.css` },
+        { rel: 'stylesheet', href: `/css/theme.min.css` },
       ]
     }
-  }
+  },
+  mounted() {
+    //dropdown-menu içerisinde bir yerlere tıklandığında menünün kapanmaması
+    this.$el.addEventListener('click', function (e) {
+      if (e.target.closest('.dropdown-menu')) {
+        e.stopPropagation();
+      }
+    });
+
+
+  },
 }
 </script>
 

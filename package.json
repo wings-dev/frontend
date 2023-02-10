@@ -21,6 +21,7 @@
     "vue2-slot-calendar": "^2.2.5"
   },
   "devDependencies": {
-    "@nuxtjs/dotenv": "^1.4.1"
+    "@nuxtjs/dotenv": "^1.4.1",
+    "sass-loader": "^10.4.1"
   }
 }

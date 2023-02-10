@@ -23,14 +23,17 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/cdn/fonts/sf-pro/stylesheet.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/bootstrap-select.min.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/swiper.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/jquery-ui.min.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/caleran.min.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/ion.rangeSlider.min.css' },
-      { rel: 'stylesheet', href: '/cdn/css/jquery/intlTelInput.min.css' }
-    ]
+      { rel: 'stylesheet', href: '/fonts/sf-pro/stylesheet.css' },
+      { rel: 'stylesheet', href: '/css/custom-bootstrap.min.css' },
+      { rel: 'stylesheet', href: '/css/jquery/bootstrap-select.min.css' },
+      { rel: 'stylesheet', href: '/css/main.min.css' },
+      
+    ],
+    script: [
+      {
+        src: '/js/bootstrap.bundle.min.js',
+      }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

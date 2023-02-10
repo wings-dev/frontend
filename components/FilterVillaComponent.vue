@@ -197,7 +197,7 @@
 
             <div
               class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-              <img src="/cdn/img/spacer.gif" data-src="/cdn/uploads/holiday-banner.jpg" alt=""
+              <img src="/uploads/holiday-banner.jpg"  alt=""
                    class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
               <div class="d-flex flex-column position-relative ls-05 pt-3">
                 <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
@@ -252,22 +252,22 @@
               </li>
 
               <!-- 3 dots -->
-<!--              <li class="page-item me-2 me-sm-3 mb-1">
-                <svg width="23px" height="5px" viewBox="0 0 23 5" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="VillaListeleme" transform="translate(-1109.000000, -2877.000000)" fill="#AFAFB6">
-                      <g id="Group-27" transform="translate(837.000000, 2861.000000)">
-                        <g id="Group-16" transform="translate(272.000000, 16.000000)">
-                          <circle id="Oval" cx="2.5" cy="2.5" r="2.5"></circle>
-                          <circle id="Oval-Copy" cx="11.5" cy="2.5" r="2.5"></circle>
-                          <circle id="Oval-Copy-2" cx="20.5" cy="2.5" r="2.5"></circle>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </li>-->
+              <!--              <li class="page-item me-2 me-sm-3 mb-1">
+                              <svg width="23px" height="5px" viewBox="0 0 23 5" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                   xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                  <g id="VillaListeleme" transform="translate(-1109.000000, -2877.000000)" fill="#AFAFB6">
+                                    <g id="Group-27" transform="translate(837.000000, 2861.000000)">
+                                      <g id="Group-16" transform="translate(272.000000, 16.000000)">
+                                        <circle id="Oval" cx="2.5" cy="2.5" r="2.5"></circle>
+                                        <circle id="Oval-Copy" cx="11.5" cy="2.5" r="2.5"></circle>
+                                        <circle id="Oval-Copy-2" cx="20.5" cy="2.5" r="2.5"></circle>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </svg>
+                            </li>-->
 
               <!-- Go to Last Page -->
               <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page < totalPages">
@@ -470,9 +470,10 @@ export default {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
           }
-      }
+      },
     }
   },
+
   mounted() {
     this.filter();
   },
