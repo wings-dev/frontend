@@ -58,7 +58,6 @@
             ></filter-item-checkbox-component>
           </div>
 
-          <div class="Filters-button" type="button" @click="filter">Filtele</div>
         </div>
         <div class="Filter-right">
           <div class="Filter-right-head">

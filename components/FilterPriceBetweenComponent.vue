@@ -9,17 +9,17 @@
         <div class="Filters-range-inputs">
           <label for="">
             <small class="">Min</small>
-            <input type="number" class="js-minFiyat" name="min" placeholder="Min" v-model="min_price">
+            <input type="number" class="js-minFiyat" name="min" placeholder="Min" v-model="min_price" @change="emitPrices">
             <span>₺</span>
           </label>
           <label for="">
             <small class="fw-medium text-theme-secondary d-block w-100">Max</small>
-            <input type="number" class="js-maxFiyat" name="max" placeholder="Max" value="" v-model="max_price">
+            <input type="number" class="js-maxFiyat" name="max" placeholder="Max" value="" v-model="max_price" @change="emitPrices">
             <span class="text-theme-secondary">₺</span>
           </label>
         </div>
         <div class="mt-3 px-3">
-          <vue-slider v-model="value" @change="onChange" :tooltip-formatter="formatter" :min="500" :max="5000" />
+          <vue-slider v-model="value" @change="onChange" :lazy="true" :tooltip-formatter="formatter" :min="500" :max="5000" />
         </div>
       </div>
     </div>
@@ -51,8 +51,8 @@ export default {
       this.emitPrices()
     },
     emitPrices() {
-      this.$emit('min_price', this.min_price);
-      this.$emit('max_price', this.max_price);
+      this.$emit('min_price', parseInt(this.min_price, 10));
+      this.$emit('max_price', parseInt(this.max_price, 10));
     }
   }
 
