@@ -180,7 +180,7 @@
                   <div class="F_villa-item-features">
                     <h6>Öne çıkan özellikleri</h6>
                     <div class="F_villa-item-features-in">
-                      <p class="F_villa-item-features-item" v-for="amenite in getAmenitiesOfVilla(villa)">{{ amenite }}</p>
+                      <p class="F_villa-item-features-item" v-for="amenite in amenitesList(villa)">{{ amenite }}</p>
                       <p class="F_villa-item-features-item F_villa-item-features-more"><a href="" class="">Tümünü Gör</a></p>
                     </div>
 
@@ -505,7 +505,7 @@ export default {
     }
   },
   methods: {
-    getAmenitiesOfVilla(villa) {
+    amenitesList(villa) {
       return (Object.values(villa.amenites || {}).flatMap(amenite => amenite.list) || []).filter(i => !!i);
     },
     updateFilter(key, value, sendRequest = true) {
