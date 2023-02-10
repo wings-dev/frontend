@@ -75,7 +75,7 @@ export default {
   // 301 yapılacak linkler için alan
   router: {
     extendRoutes(routes, resolve) {
-      routes.push({ path: '/eski-link', redirect: '/listele', statusCode: 301 });
+      require("./301").apply(routes, resolve);
     }
   }
 }
