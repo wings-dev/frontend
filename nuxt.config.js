@@ -28,7 +28,12 @@ export default {
       { rel: 'stylesheet', href: '/css/jquery/bootstrap-select.min.css' },
       { rel: 'stylesheet', href: '/css/main.min.css' },
       
-    ]
+    ],
+    script: [
+      {
+        src: '/js/bootstrap.bundle.min.js',
+      }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

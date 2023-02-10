@@ -462,6 +462,7 @@ body.overflow-hidden {
   form {
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 
   &-left {
@@ -1911,6 +1912,12 @@ body.overflow-hidden {
         color: #6878aa;
       }
     }
+    button{
+      transition: all 300ms;
+      &:hover{
+        transform: scale(1.2);
+      }
+    }
   }
   .social-media {
     li:last-child {
@@ -1921,6 +1928,11 @@ body.overflow-hidden {
       width: 59px;
       height: 59px;
       flex-shrink: 0;
+      transition: all 300ms;
+
+      &:hover{
+        background-color: var(--bs-theme-second)!important;
+      }
     }
   }
 }

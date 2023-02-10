@@ -1027,9 +1027,10 @@ export default {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
           }
-      }
+      },
     }
   },
+
   mounted() {
     this.filter();
   },

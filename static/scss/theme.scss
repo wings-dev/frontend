@@ -21,8 +21,13 @@
 }
 
 .bg-theme-first {
-  background-color: var(--bs-theme-first);
+  
+  background-color: rgba(var(--bs-theme-first-rgb), var(--bs-bg-opacity, 1));
 }
+.bg-theme-first-dark {
+  background-color: rgba(var(--bs-theme-first-dark-rgb), var(--bs-bg-opacity, 1));
+}
+
 .btn-theme-first-dark {
   color: #fff;
   background-color: var(--bs-theme-first-dark);
@@ -44,6 +49,13 @@
     border-color: var(--bs-theme-second-hover);
   }
 }
+
+.text-theme-second {
+  color: rgba(var(--bs-theme-second-rgb), var(--bs-text-opacity,1)) !important;
+}
+
+
+
 
 .header-logo {
   background-image: url(../../img/villa-kalkan-logo.svg);
