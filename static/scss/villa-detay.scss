@@ -1173,6 +1173,7 @@ body {
       width: 100%;
       margin-bottom: 40px;
     }
+    
     &-menu {
       &-in {
         flex-direction: column;
@@ -1180,6 +1181,15 @@ body {
       &-left {
         flex-wrap: wrap;
         width: 100%;
+      }
+    }
+    &-desc{
+      &-amenites{
+        &-in{
+          p{
+            width: 50%;
+          }
+        }
       }
     }
   }
