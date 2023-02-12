@@ -38,19 +38,27 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    {
+      src: '@fancyapps/ui/dist/fancybox.css',
+      lang: 'css',
+    },
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vue-awesome-swiper.js',
+    '~/plugins/fancyapps-ui.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
+  target: 'static',
+
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    ['@nuxtjs/dotenv', { systemvars: true }]
+    ['@nuxtjs/dotenv', { systemvars: true }],
+    '@nuxt/image',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

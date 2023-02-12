@@ -126,8 +126,7 @@
                         <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
                     </a>
                 </div>
-                <swiper
-                    class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1"
+                <swiper class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1"
                     :options="swiperOptions">
                     <div class="swiper-slide" v-for="item in 10">
                         <div class="list-item list-item-firsat rounded-xxl">
@@ -375,17 +374,17 @@
 export default {
     name: 'IndexPage',
     head() {
-      let site_id = process.env.SITE
-      return {
-        title: 'Anasayfa',
-        meta: [
-          { hid: 'description', name: 'description', content: 'anasayfa' },
-          { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
-        ],
-        link: [
-          { rel: 'stylesheet', href: `/css/anasayfa.min.css` }
-        ]
-      }
+        let site_id = process.env.SITE
+        return {
+            title: 'Anasayfa',
+            meta: [
+                { hid: 'description', name: 'description', content: 'anasayfa' },
+                { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
+            ],
+            link: [
+                { rel: 'stylesheet', href: `/css/anasayfa.min.css` }
+            ]
+        }
     },
     data() {
         return {
@@ -415,16 +414,15 @@ export default {
             }
         }
     },
-  mounted() {
-      console.log(process.env.NODE_ENV);
-      console.log(this.$config.message);
-  }
+    mounted() {
+        console.log(process.env.NODE_ENV);
+        console.log(this.$config.message);
+    }
 
 }
 </script>
 <style scoped>
-
 .list-item .list-image {
-   width: 100%;
+    width: 100%;
 }
 </style>
