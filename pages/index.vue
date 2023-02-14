@@ -415,7 +415,7 @@ export default {
         }
     },
   async asyncData({$getRedisKey}) {
-    console.log(await $getRedisKey("ahmet2"));
+    console.log(await $getRedisKey("web:4:pages:deneme"));
   },
     mounted() {
         console.log(process.env.NODE_ENV);
