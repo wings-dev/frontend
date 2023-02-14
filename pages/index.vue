@@ -414,12 +414,8 @@ export default {
             }
         }
     },
-  async asyncData() {
-
-
-
-    // $redis.set('ahmet2x', 'mehmet2')
-    // console.log(await $redis.get('ahmet2x'));
+  async asyncData({$getRedisKey}) {
+    console.log(await $getRedisKey("ahmet2"));
   },
     mounted() {
         console.log(process.env.NODE_ENV);

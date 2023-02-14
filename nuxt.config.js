@@ -47,7 +47,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vue-awesome-swiper.js',
-    '~/plugins/fancyapps-ui.js'
+    '~/plugins/fancyapps-ui.js',
+    '~/plugins/redisHelper.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -110,5 +111,11 @@ export default {
     extendRoutes(routes, resolve) {
       require("./301").apply(routes, resolve);
     }
+  },
+
+  server: {
+    port: 3000, // default: 3000
+    host: '0.0.0.0', // default: localhost,
+    timing: false
   }
 }
