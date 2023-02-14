@@ -414,6 +414,13 @@ export default {
             }
         }
     },
+  async asyncData() {
+
+
+
+    // $redis.set('ahmet2x', 'mehmet2')
+    // console.log(await $redis.get('ahmet2x'));
+  },
     mounted() {
         console.log(process.env.NODE_ENV);
         console.log(this.$config.message);

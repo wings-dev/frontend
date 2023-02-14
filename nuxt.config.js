@@ -27,7 +27,7 @@ export default {
       { rel: 'stylesheet', href: '/css/custom-bootstrap.min.css' },
       { rel: 'stylesheet', href: '/css/jquery/bootstrap-select.min.css' },
       { rel: 'stylesheet', href: '/css/main.min.css' },
-      
+
     ],
     script: [
       {
@@ -96,6 +96,13 @@ export default {
         // console.error(`Proxy error: ${err.message}`);
       }
     }
+  },
+
+  /*
+  ** Server Middleware
+  */
+  serverMiddleware: {
+    '/redis': '~/redis'
   },
 
   // 301 yapılacak linkler için alan
