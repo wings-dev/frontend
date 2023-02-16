@@ -22,19 +22,11 @@ export default {
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [
-<<<<<<< HEAD
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: "/fonts/sf-pro/stylesheet.css" },
       { rel: "stylesheet", href: "/css/custom-bootstrap.min.css" },
       { rel: "stylesheet", href: "/css/main.min.css" },
-=======
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/fonts/sf-pro/stylesheet.css' },
-      { rel: 'stylesheet', href: '/css/custom-bootstrap.min.css' },
-      { rel: 'stylesheet', href: '/css/jquery/bootstrap-select.min.css' },
-      { rel: 'stylesheet', href: '/css/main.min.css' },
 
->>>>>>> main
     ],
     script: [
       {
@@ -53,16 +45,11 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-<<<<<<< HEAD
     "~/plugins/vue-awesome-swiper.js",
     "~/plugins/fancyapps-ui.js",
     "~/plugins/vue-tel-input",
-    { src: '~plugins/vcalendar.js', ssr: false }
-=======
-    '~/plugins/vue-awesome-swiper.js',
-    '~/plugins/fancyapps-ui.js',
-    '~/plugins/redisHelper.js'
->>>>>>> main
+    { src: '~plugins/vcalendar.js', ssr: false },
+    '~/plugins/redisHelper.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -121,11 +108,6 @@ export default {
   router: {
     extendRoutes(routes, resolve) {
       require("./301").apply(routes, resolve);
-<<<<<<< HEAD
-    },
-  },
-};
-=======
     }
   },
 
@@ -135,4 +117,3 @@ export default {
     timing: false
   }
 }
->>>>>>> main

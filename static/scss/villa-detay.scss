@@ -172,7 +172,7 @@ body {
     }
   }
   position: relative;
-  z-index: 1;
+  z-index: 11;
   &:before {
     content: "";
     display: inline-block;
@@ -2085,7 +2085,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #fff;
-  z-index: 9;
+  z-index: 99;
   overflow-y: scroll;
 
   &-container {

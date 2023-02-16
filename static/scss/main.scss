@@ -52,6 +52,29 @@ i[class^="flaticon-"] {
   font-family: "Poppins", sans-serif !important;
 }
 
+.header{
+  position: sticky;
+}
+.header.villa-detay{
+  position: relative;
+}
+.custom-fixed{
+  position: fixed;
+  top:0;
+  z-index: 999;
+  width: 100%;
+  &-menu{
+    top: 69px;
+  }
+  &-reservation{
+    position: fixed;
+    z-index: 1;
+    max-width: 330px;
+    // right: calc((100vw - 1170px) / 2);
+    top: 160px;
+  }
+}
+
 .btn {
   box-shadow: none !important;
 }
@@ -2342,7 +2365,7 @@ body.overflow-hidden {
 }
 
 .newsletter-section {
-  z-index: 1;
+  z-index: 2;
 }
 .newsletter {
   color: #6878aa;
@@ -2384,6 +2407,7 @@ body.overflow-hidden {
 .footer {
   padding-top: 128px;
   margin-top: -128px;
+  z-index: 1;position: relative;
   .footer-top {
     .ft-item {
       border-right: 1px solid rgba(var(--bs-theme-first-light-rgb), 0.25);

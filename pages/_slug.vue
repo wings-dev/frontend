@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'DynamicPage',
-  layout: "default",
+  layout: "no-search",
   head() {
     return this.headData
   },

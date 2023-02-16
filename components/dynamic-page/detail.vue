@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="view-detail-section">
-      <div class="detail-top bg-theme-first-dark">
+      <div class="detail-top bg-theme-first-dark" id="detailTop">
         <div class="container">
           <div class="view-top d-flex">
 
@@ -12,15 +12,15 @@
             <div class="item-infos d-flex flex-wrap mb-sm-0 ">
               <div class="info flex-shrink-0 d-flex align-items-center">
                 <i class="icon-user"></i>
-                <span class="lh-sm pe-1">{{villa.max_adult}} Kişilik</span>
+                <span class="lh-sm pe-1">{{ villa.max_adult }} Kişilik</span>
               </div>
               <div class="info flex-shrink-0 d-flex align-items-center">
                 <i class="icon-bed"></i>
-                <span class="lh-sm pe-1">{{villa.bedroom}} Yatak Odası</span>
+                <span class="lh-sm pe-1">{{ villa.bedroom }} Yatak Odası</span>
               </div>
               <div class="info flex-shrink-0 d-flex align-items-center">
                 <i class="icon-shower"></i>
-                <span class="lh-sm pe-1">{{villa.bathrooms}} Banyo</span>
+                <span class="lh-sm pe-1">{{ villa.bathrooms }} Banyo</span>
               </div>
             </div>
             <div class="view-top-right">
@@ -37,7 +37,7 @@
           </div>
         </div>
       </div>
-      <div class="View-menu">
+      <div class="View-menu" id="detailMenu">
         <div class="container">
           <div class="View-menu-in">
             <div class="View-menu-left">
@@ -49,14 +49,14 @@
             </div>
             <div class="View-menu-right">
               <button type="button"
-                      class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4">
+                class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4">
                 <span class="action-btn-icon">
                   <i class="icon-heart"></i>
                 </span>
                 <span class="action-btn-text">Favorilere Ekle</span>
               </button>
               <button type="button"
-                      class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
+                class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
                 <span class="action-btn-icon">
                   <i class="icon-share"></i>
                 </span>
@@ -69,21 +69,20 @@
       <div class="container pb-1">
         <div class="view-gallery">
           <div class="area-1">
-            <a href="#" @click.prevent="showGallery()"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="/uploads/hotel-image2.jpg" width="585" height="387" alt="view-image"
-                   class="lazy cover rounded-xl w-100 h-100">
+            <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <img :src="villa.watermark_images[0].original_url" width="585" height="387" alt="view-image"
+                class="lazy cover rounded-xl w-100 h-100">
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
+                <span>Tüm Fotoğraflar ( 32 )  </span>
               </div>
             </a>
           </div>
           <div class="area-2 d-md-block d-none">
             <a href="#" @click.prevent="showGallery()"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="/uploads/hotel-image3.jpg" width="585" height="387" alt="view-image"
-                   class="lazy cover rounded-xl w-100 h-100">
+              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <img :src="villa.watermark_images[1].original_url" width="585" height="387" alt="view-image"
+                class="lazy cover rounded-xl w-100 h-100">
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -92,9 +91,9 @@
           </div>
           <div class="area-3 d-md-block d-none">
             <a href="#" @click.prevent="showGallery()"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="/uploads/hotel-image2.jpg" width="585" height="387" alt="view-image"
-                   class="lazy cover rounded-xl w-100 h-100">
+              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <img :src="villa.watermark_images[2].original_url" width="585" height="387" alt="view-image"
+                class="lazy cover rounded-xl w-100 h-100">
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -103,9 +102,9 @@
           </div>
           <div class="area-4 d-none d-lg-block">
             <a href="#" @click.prevent="showGallery()"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="/uploads/hotel-image1.jpg" width="585" height="387" alt="view-image"
-                   class="lazy cover rounded-xl w-100 h-100">
+              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <img :src="villa.watermark_images[3].original_url" width="585" height="387" alt="view-image"
+                class="lazy cover rounded-xl w-100 h-100">
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -114,9 +113,9 @@
           </div>
           <div class="area-5 d-none d-lg-block">
             <a href="#" @click.prevent="showGallery()"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="/uploads/hotel-image3.jpg" width="585" height="387" alt="view-image"
-                   class="lazy cover rounded-xl w-100 h-100">
+              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <img :src="villa.watermark_images[4].original_url" width="585" height="387" alt="view-image"
+                class="lazy cover rounded-xl w-100 h-100">
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -287,8 +286,26 @@
                 Aşağıda belirtilen fiyatlar tesisin 1 gecelik konaklama ücretidir. Dönemlere göre konaklama süresine
                 göre ekstra temizlik ücreti eklenebilmektedir.
               </p>
-              <p>bu alan yapılmadı ne yapacağğımız görmek için görsel olarak koydum </p>
-              <img src="/img/availibitycalendar.png" alt="" class="w-100">
+              <client-only>
+                <v-calendar class="custom-calendar" :attributes="attributes" :columns="2"
+                  :disabled-dates="disabledDates" disable-page-swipe >
+                  <template v-slot:day-content="{ day, attributes }">
+                    <div v-for="attr in attributes" :key="attr.key"
+                      class="d-flex flex-column kapali-gun align-items-center justify-content-center h-100 z-10 overflow-hidden"
+                      :class="{ giris: attr.customData.start, cikis: attr.customData.end, opsiyon: attr.customData.opsiyon }">
+                      <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
+                      <div class="flex-grow overflow-y-auto overflow-x-auto">
+                        <p class="calendar-price" style="" :class="attr.customData.class">
+                          {{ attr.customData.title }}
+                        </p>
+                      </div>
+                      <!-- A6AFC2 -->
+                      <!-- 989FB5 -->
+                    </div>
+                  </template>
+                </v-calendar>
+
+              </client-only>
             </div>
             <div class="View-beds">
               <h2 class="View-title">Yatak ve Kişi Kapasitesi</h2>
@@ -326,104 +343,62 @@
                   Kat Planı
                 </h4>
                 <ul class="nav nav-pills me-auto" id="room-tab" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="floor-1-tab" data-bs-toggle="pill" data-bs-target="#floor-1"
-                            type="button" role="tab" aria-controls="floor-1" aria-selected="true">
-                      <span class="d-inline-block ">Kat 1</span>
+                  <li class="nav-item" role="presentation" v-for="(floor,index) in villa.floorplan.kat" :key="index">
+                    <button :class="[index == 0 ? 'active' : ''] " class="nav-link" :id="'floor'+index" data-bs-toggle="pill" :data-bs-target="'#floor'+index"
+                      type="button" role="tab" :aria-controls="'floor'+index" aria-selected="true">
+                      <span class="d-inline-block ">{{ floor.name }}</span>
                     </button>
                   </li>
-                  <li class="nav-item" role="presentation">
+                  <!-- <li class="nav-item" role="presentation">
                     <button class="nav-link" id="floor-2-tab" data-bs-toggle="pill" data-bs-target="#floor-2"
-                            type="button" role="tab" aria-controls="floor-2" aria-selected="false">
+                      type="button" role="tab" aria-controls="floor-2" aria-selected="false">
                       <span class="d-inline-block ">Kat 2</span>
                     </button>
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="floor-3-tab" data-bs-toggle="pill" data-bs-target="#floor-3"
-                            type="button" role="tab" aria-controls="floor-3" aria-selected="false">
+                      type="button" role="tab" aria-controls="floor-3" aria-selected="false">
                       <span class="d-inline-block ">Kat 3</span>
                     </button>
-                  </li>
+                  </li> -->
                 </ul>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
               </div>
+              {{ villa.floorplan.kat.bolum }}
               <div class="tab-content mb-4 mb-sm-5 pb-3" id="room-tabContent">
-                <div class="tab-pane fade show active" id="floor-1" role="tabpanel" aria-labelledby="floor-1-tab">
+                <div :class="[index == 0 ? 'show active' : ''] " class="tab-pane fade " id="floor-1" role="tabpanel" aria-labelledby="floor-1-tab" v-for="(floor,index) in villa.floorplan.kat" :key="index">
+                  
                   <div class="rooms swiper mySwiper">
 
                     <swiper class="" :options="swiperOptionsRooms">
-                      <div class="swiper-slide">
+                      <div class="swiper-slide" v-for="(bolum,index) in floor.bolum" :key="index">
                         <div class="room-item">
                           <div class="img-box w-100">
-                            <img src="/uploads/room1.jpg" width="312" height="213" alt="room image"
-                                 class="lazy cover rounded-xl w-100">
+                            
+                            <img :src="img.preview_url" width="312" height="213" alt="room image"
+                              class="lazy cover rounded-xl w-100" v-for="(img,index) in bolum.gorsel" :key="index"  v-if="index <= 0">
                           </div>
                           <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                            <span class="room-item-title">Yatak Odası</span>
+                            <span class="room-item-title">{{ bolum.name }}</span>
                             <p class="room-item-text">
-                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
+                             <span style="margin-right: 5px;" v-for="(ozellik,index) in bolum.donanim" :key="index">{{ ozellik }}</span>
                             </p>
                           </div>
                         </div>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="room-item">
-                          <div class="img-box w-100">
-                            <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                                 class="lazy cover rounded-xl w-100">
-                          </div>
-                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                            <span class="room-item-title">Yatak Odası</span>
-                            <p class="room-item-text">
-                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="room-item">
-                          <div class="img-box w-100">
-                            <img src="/uploads/room3.jpg" width="312" height="213" alt="room image"
-                                 class="lazy cover rounded-xl w-100">
-                          </div>
-                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                            <span class="room-item-title">Yatak Odası</span>
-                            <p class="room-item-text">
-                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="room-item">
-                          <div class="img-box w-100">
-                            <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                                 class="lazy cover rounded-xl w-100">
-                          </div>
-                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                            <span class="room-item-title">Yatak Odası</span>
-                            <p class="room-item-text">
-                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      
                     </swiper>
 
                   </div>
                 </div>
-                <div class="tab-pane fade" id="floor-2" role="tabpanel" aria-labelledby="floor-2-tab">
+                <!-- <div class="tab-pane fade" id="floor-2" role="tabpanel" aria-labelledby="floor-2-tab">
                   <swiper class="" :options="swiperOptionsRooms">
                     <div class="swiper-slide">
                       <div class="room-item">
                         <div class="img-box w-100">
                           <img src="/uploads/room1.jpg" width="312" height="213" alt="room image"
-                               class="lazy cover rounded-xl w-100">
+                            class="lazy cover rounded-xl w-100">
                         </div>
                         <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                           <span class="room-item-title">Yatak Odası</span>
@@ -438,7 +413,7 @@
                       <div class="room-item">
                         <div class="img-box w-100">
                           <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                               class="lazy cover rounded-xl w-100">
+                            class="lazy cover rounded-xl w-100">
                         </div>
                         <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                           <span class="room-item-title">Yatak Odası</span>
@@ -453,7 +428,7 @@
                       <div class="room-item">
                         <div class="img-box w-100">
                           <img src="/uploads/room3.jpg" width="312" height="213" alt="room image"
-                               class="lazy cover rounded-xl w-100">
+                            class="lazy cover rounded-xl w-100">
                         </div>
                         <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                           <span class="room-item-title">Yatak Odası</span>
@@ -468,7 +443,7 @@
                       <div class="room-item">
                         <div class="img-box w-100">
                           <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                               class="lazy cover rounded-xl w-100">
+                            class="lazy cover rounded-xl w-100">
                         </div>
                         <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                           <span class="room-item-title">Yatak Odası</span>
@@ -487,7 +462,7 @@
                       <div class="room-item">
                         <div class="img-box w-100">
                           <img src="/uploads/room1.jpg" width="312" height="213" alt="room image"
-                               class="lazy cover rounded-xl w-100">
+                            class="lazy cover rounded-xl w-100">
                         </div>
                         <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                           <span class="room-item-title">Yatak Odası</span>
@@ -502,7 +477,7 @@
                       <div class="room-item">
                         <div class="img-box w-100">
                           <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                               class="lazy cover rounded-xl w-100">
+                            class="lazy cover rounded-xl w-100">
                         </div>
                         <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                           <span class="room-item-title">Yatak Odası</span>
@@ -517,7 +492,7 @@
                       <div class="room-item">
                         <div class="img-box w-100">
                           <img src="/uploads/room3.jpg" width="312" height="213" alt="room image"
-                               class="lazy cover rounded-xl w-100">
+                            class="lazy cover rounded-xl w-100">
                         </div>
                         <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                           <span class="room-item-title">Yatak Odası</span>
@@ -532,7 +507,7 @@
                       <div class="room-item">
                         <div class="img-box w-100">
                           <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                               class="lazy cover rounded-xl w-100">
+                            class="lazy cover rounded-xl w-100">
                         </div>
                         <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                           <span class="room-item-title">Yatak Odası</span>
@@ -544,7 +519,7 @@
                       </div>
                     </div>
                   </swiper>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="View-pools">
@@ -558,43 +533,24 @@
                   <span>Yükseklik</span>
                 </div>
               </div>
-              <div class="pool-item mb-3">
+
+              <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
                 <div class="pool-item-left">
-                  <img src="/uploads/003-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain">
-                  <span class="">Açık Havuz</span>
+                  <img src="/uploads/003-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
+                    v-if="poolitem.pool == 8">
+                  <img src="/uploads/005-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
+                    v-if="poolitem.pool == 9">
+                  <!-- <img src="/uploads/002-watch-your-children.svg" width="28" height="28" alt="pool icon" -->
+                  <span class="">{{ poolitem.name }}</span>
                 </div>
                 <div class="pool-item-right">
-                  <span>4.20m</span>
-                  <span>6.20m</span>
-                  <span>1.60m</span>
+                  <span>{{ poolitem['havuz-en'] }}m</span>
+                  <span>{{ poolitem['havuz-boy'] }}m</span>
+                  <span>{{ poolitem['havuz-derinlik'] }}m</span>
                 </div>
 
               </div>
-              <div class="pool-item mb-3">
-                <div class="pool-item-left">
-                  <img src="/uploads/005-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain">
-                  <span class="">Kapalı Havuz</span>
-                </div>
-                <div class="pool-item-right">
-                  <span>4.20m</span>
-                  <span>6.20m</span>
-                  <span>1.60m</span>
-                </div>
 
-              </div>
-              <div class="pool-item mb-3">
-                <div class="pool-item-left">
-                  <img src="/uploads/002-watch-your-children.svg" width="28" height="28" alt="pool icon"
-                       class="lazy contain">
-                  <span class="">Çocuk Havuz</span>
-                </div>
-                <div class="pool-item-right">
-                  <span>4.20m</span>
-                  <span>6.20m</span>
-                  <span>1.60m</span>
-                </div>
-
-              </div>
             </div>
             <div class="View-location">
               <div class="View-location-head mb-3">
@@ -606,11 +562,11 @@
               </div>
               <div class="View-location-in">
                 <div class="View-location-left">
-                  <div class="View-location-item">
-                    <p>1 -) Çalış Plajı</p>
+                  <div class="View-location-item" v-for="(place,index) in villa.places" :key="index">
+                    <p>{{ index.substr(6) }} -) {{place.place_type}}</p>
                     <span>7 Km</span>
                   </div>
-                  <div class="View-location-item">
+                  <!-- <div class="View-location-item">
                     <p>2 -) Süper Market</p>
                     <span>1 Km</span>
                   </div>
@@ -625,7 +581,7 @@
                   <div class="View-location-item">
                     <p>4 -) Müze Kayaköy</p>
                     <span>3 Km</span>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="View-location-right">
                   <p>harita yapılmadı. ne yapacağğımızı görmek için görsel olarak koydum</p>
@@ -677,7 +633,7 @@
                       <img src="/img/reviews.png" alt="">
                     </a>
                     <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item more"
-                       data-fancybox="reviews">Daha fazla görüntüle (12)</a>
+                      data-fancybox="reviews">Daha fazla görüntüle (12)</a>
                     <div class="d-none">
                       <a href="/img/reviews.png" data-fancybox="reviews"></a>
                       <a href="/img/reviews.png" data-fancybox="reviews"></a>
@@ -748,13 +704,13 @@
                       <div class="View-info-hours-status">
                         <div class="View-info-hours-status-in" style="grid-column: 14/23;">
                           <div class="View-info-hours-status-lefthours">
-                            <span>14:00</span>
+                            <span>{{villa.checkin.substr(0,5)}}</span>
                           </div>
                           <div class="View-info-hours-status-righthours">
-                            <span>23:00</span>
+                            <span>{{villa.checkin_end.substr(0,5)}}</span>
                           </div>
                           <div class="View-info-hours-status-tophours">
-                            <span>14:00 - 23:00 Arası</span>
+                            <span>{{villa.checkin.substr(0,5)}} - {{villa.checkin_end.substr(0,5)}} Arası</span>
                           </div>
                         </div>
                       </div>
@@ -765,8 +721,8 @@
                       <div class="View-info-hours-check">
                         <i class="icon-check-out"></i>
                         <div class="View-info-hours-check-text">
-                          <h6>Check-in</h6>
-                          <p>En erken ve en geç tesise giriş yapabileceğiniz saatler.</p>
+                          <h6>Check-out</h6>
+                          <p>En erken ve en geç tesisten çıkış yapabileceğiniz saatler.</p>
                         </div>
                       </div>
                     </div>
@@ -774,13 +730,13 @@
                       <div class="View-info-hours-status">
                         <div class="View-info-hours-status-in" style="grid-column: 4/9;">
                           <div class="View-info-hours-status-lefthours">
-                            <span>08:00</span>
+                            <span><span>{{villa.checkout.substr(0,5)}}</span></span>
                           </div>
                           <div class="View-info-hours-status-righthours">
-                            <span>10:00</span>
+                            <span>{{villa.checkout_end.substr(0,5)}}</span>
                           </div>
                           <div class="View-info-hours-status-tophours">
-                            <span>08:00 - 10:00 Arası</span>
+                            <span>{{villa.checkout.substr(0,5)}} - {{villa.checkout_end.substr(0,5)}} Arası</span>
                           </div>
                         </div>
                       </div>
@@ -845,7 +801,7 @@
               <div class="accordion" id="Faq">
                 <div class="accordion-item">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
-                          aria-expanded="true" aria-controls="faq1">
+                    aria-expanded="true" aria-controls="faq1">
                     Nasıl rezervasyon yapabilirim ?
                   </button>
                   <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#Faq">
@@ -857,7 +813,7 @@
                 </div>
                 <div class="accordion-item">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                    data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
                     Kaç Kişi Konaklayabiliyoruz ?
                   </button>
                   <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#Faq">
@@ -869,7 +825,7 @@
                 </div>
                 <div class="accordion-item">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                    data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
                     Yemek servisi hizmetiniz var mı ?
                   </button>
                   <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#Faq">
@@ -881,7 +837,7 @@
                 </div>
                 <div class="accordion-item">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                    data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
                     Yemek servisi hizmetiniz var mı ?
                   </button>
                   <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#Faq">
@@ -897,7 +853,7 @@
           </div>
           <div class="View-right Reservation">
 
-            <form action="" class="Reservation-form">
+            <form action="" class="Reservation-form" id="reservationForm">
               <div class="Reservation-form-top">
                 <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
                 <div class="Reservation-form-in">
@@ -931,7 +887,7 @@
                       <div class="Reservation-form-item-input">
                         <span>Kişi Sayısı</span>
                         <button class=" dropdown-toggle" type="button" id="dropdownPerson" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                          aria-expanded="false">
                           <p><span class="adult-people">2</span> Yetişkin,
                             <span class="child-people">0</span> Çocuk
                           </p>
@@ -944,21 +900,21 @@
                             </div>
                             <div class="d-flex align-items-center text-center">
                               <button type="button"
-                                      class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle"
-                                      disabled>
+                                class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle"
+                                disabled>
                                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                     role="presentation" focusable="false"
-                                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                                  role="presentation" focusable="false"
+                                  style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
                                   <path d="m2 16h28"></path>
                                 </svg>
                               </button>
                               <input type="text" name="yetiskinler" class="select-input text-center fs-5 px-2" value="1"
-                                     data-min="1" data-max="10" data-text="Yetişkin, " readonly>
+                                data-min="1" data-max="10" data-text="Yetişkin, " readonly>
                               <button type="button"
-                                      class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                                class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
                                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                     role="presentation" focusable="false"
-                                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                                  role="presentation" focusable="false"
+                                  style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
                                   <path d="m2 16h28m-14-14v28"></path>
                                 </svg>
                               </button>
@@ -971,21 +927,21 @@
                             </div>
                             <div class="d-flex align-items-center text-center">
                               <button type="button"
-                                      class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle"
-                                      disabled>
+                                class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle"
+                                disabled>
                                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                     role="presentation" focusable="false"
-                                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                                  role="presentation" focusable="false"
+                                  style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
                                   <path d="m2 16h28"></path>
                                 </svg>
                               </button>
                               <input type="text" name="cocuklar" class="select-input text-center fs-5 px-2" value="0"
-                                     data-min="0" data-max="10" data-text="Çocuk" readonly>
+                                data-min="0" data-max="10" data-text="Çocuk" readonly>
                               <button type="button"
-                                      class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                                class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
                                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                     role="presentation" focusable="false"
-                                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                                  role="presentation" focusable="false"
+                                  style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
                                   <path d="m2 16h28m-14-14v28"></path>
                                 </svg>
                               </button>
@@ -1025,14 +981,14 @@
                     <div class="accordion Reservation-form-info-item-more" id="accordionExample">
                       <div class="accordion-item">
                         <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                aria-controls="collapseTwo">
+                          data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                          aria-controls="collapseTwo">
                           Detayları Gör
                           <i class="icon-down-arrow"></i>
                         </button>
 
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                             data-bs-parent="#accordionExample">
+                          data-bs-parent="#accordionExample">
                           <h6>Rezervasyon Detayları</h6>
 
                           <div class="Reservation-form-info-item-more-item">
@@ -1045,7 +1001,7 @@
                             <div class="Reservation-form-info-item-more-item-left">
                               <p>Temizlik Ücreti</p>
                               <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                                 title="Tooltip on right"></i>
+                                title="Tooltip on right"></i>
                             </div>
                             <b>500₺</b>
                           </div>
@@ -1053,7 +1009,7 @@
                             <div class="Reservation-form-info-item-more-item-left">
                               <p>Toplam Tutar</p>
                               <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                                 title="Tooltip on right"></i>
+                                title="Tooltip on right"></i>
                             </div>
                             <b>27.500₺</b>
                           </div>
@@ -1129,7 +1085,6 @@
         </div>
       </div>
     </div>
-
 
     <!-- <section class="content-menubar-section mb-4 mb-sm-5 pb-2">
       <div class="container">
@@ -2761,64 +2716,57 @@
             <h3 class="Gallery-list-title">Mekâna genel bakış</h3>
             <div class="Gallery-list">
 
-              <button type="button" class="Gallery-list-item" id="Gallery_item1" @click="scrollGallery($event)">
-                <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
-                <p>Salon</p>
+              <button type="button" class="Gallery-list-item" :id="'Gallery_item'+index" @click="scrollGallery($event)" v-for="(floor,index) in villa.floorplan.kat" :key="index">
+                <img :src="img.preview_url" class="w-100"  alt="test" v-for="(img,index) in floor.bolum[0].gorsel" :key="index"  v-if="index <= 0"/>
+                <p>{{floor.name}}</p>
               </button>
-              <button type="button" class="Gallery-list-item" id="Gallery_item2" @click="scrollGallery($event)">
-                <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+              <!-- <button type="button" class="Gallery-list-item" id="Gallery_item2" @click="scrollGallery($event)">
+                <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                 <p>Yatak Odası</p>
               </button>
               <button type="button" class="Gallery-list-item" id="Gallery_item3" @click="scrollGallery($event)">
-                <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                 <p>Bahçe</p>
-              </button>
+              </button> -->
             </div>
             <div class="Gallery-detail">
 
-              <div class="Gallery-detail-item Gallery_item1">
+              <div class="Gallery-detail-item Gallery_item1" :class="'Gallery_item'+index" v-for="(floor,index) in villa.floorplan.kat" :key="index">
                 <div class="Gallery-detail-item-left">
-                  <h3>Salon</h3>
+                  <h3>{{floor.name}}</h3>
                 </div>
                 <div class="Gallery-detail-item-right">
-                  <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                     data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
-                  </a>
-                  <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                     data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
-                  </a>
-                  <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                     data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
-                  </a>
-                  <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                     data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
-                  </a>
+                  <template v-for="bolum in floor.bolum">
+                    <a class="Gallery-detail-item-right-img" :href="img.original_url" data-fancybox="gallery"
+                      data-caption="Salon" v-for="(img,index) in bolum.gorsel" :key="index"  v-if="index <= 0">
+                      <img :src="img.original_url" class="w-100"  alt="test" />
+                      
+                    </a>
+                  </template>
+                  
+                  
                 </div>
               </div>
-              <div class="Gallery-detail-item Gallery_item2">
+              <!-- <div class="Gallery-detail-item Gallery_item2">
                 <div class="Gallery-detail-item-left">
                   <h3>Yatak Odası</h3>
                 </div>
                 <div class="Gallery-detail-item-right">
                   <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                     data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                    data-caption="Salon">
+                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                   </a>
                   <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                     data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                    data-caption="Salon">
+                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                   </a>
                   <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                     data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                    data-caption="Salon">
+                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                   </a>
                   <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                     data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                    data-caption="Salon">
+                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                   </a>
                 </div>
               </div>
@@ -2828,19 +2776,19 @@
                 </div>
                 <div class="Gallery-detail-item-right">
                   <a class="Gallery-detail-item-right-img" href="" data-fancybox="gallery" data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                   </a>
                   <a class="Gallery-detail-item-right-img" href="" data-fancybox="gallery" data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                   </a>
                   <a class="Gallery-detail-item-right-img" href="" data-fancybox="gallery" data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                   </a>
                   <a class="Gallery-detail-item-right-img" href="" data-fancybox="gallery" data-caption="Salon">
-                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test"/>
+                    <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
                   </a>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -2897,7 +2845,136 @@ export default {
             spaceBetween: 17,
           }
         },
-      }
+      },
+      date: null,
+      disabledDates: [
+        // { start: null, end: new Date() },
+        { start: new Date(2023, 1, 18), end: new Date(2023, 1, 24) },
+      ],
+      attributes: [
+                {
+                    key: 1,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: true,
+                        end: false,
+                        opsiyon: false
+                    },
+                    dates: new Date(2023, 1, 16),
+                },
+                {
+                    key: 2,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: false,
+                        opsiyon: false
+                    },
+                    dates: new Date(2023, 1, 17),
+                },
+                {
+                    key: 3,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: false,
+                        opsiyon: false
+                    },
+                    dates: new Date(2023, 1, 18),
+                },
+                {
+                    key: 4,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: true,
+                        opsiyon: false
+                    },
+                    dates: new Date(2023, 1, 19),
+                },
+                {
+                    key: 7,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: true,
+                        end: false,
+                        opsiyon: true
+                    },
+                    dates: new Date(2023, 2, 6),
+                },
+                {
+                    key: 8,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: false,
+                        opsiyon: true
+                    },
+                    dates: new Date(2023, 2, 7),
+                },
+                {
+                    key: 9,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: false,
+                        opsiyon: true
+                    },
+                    dates: new Date(2023, 2, 8),
+                },
+                {
+                    key: 10,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: false,
+                        opsiyon: true
+                    },
+                    dates: new Date(2023, 2, 9),
+                },
+                {
+                    key: 11,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: false,
+                        opsiyon: true
+                    },
+                    dates: new Date(2023, 2, 10),
+                },
+                {
+                    key: 12,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: false,
+                        opsiyon: true
+                    },
+                    dates: new Date(2023, 2, 11),
+                },
+                {
+                    key: 13,
+                    customData: {
+                        title: '1800₺',
+                        desc: 'test',
+                        start: false,
+                        end: true,
+                        opsiyon: true
+                    },
+                    dates: new Date(2023, 2, 12),
+                },
+
+            ],
     }
   },
   methods: {
@@ -2912,7 +2989,7 @@ export default {
     scrollGallery(event) {
       const el = this.$el.getElementsByClassName(event.currentTarget.id)[0];
       if (el) {
-        el.scrollIntoView({behavior: 'smooth'});
+        el.scrollIntoView({ behavior: 'smooth' });
       }
     },
     reservationButton(event) {
@@ -2931,8 +3008,126 @@ export default {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
+    document.querySelector('.header').classList.add('villa-detay')
+    console.log('')
+
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 151 || document.documentElement.scrollTop > 151) {
+        document.getElementById("detailTop").classList.add('custom-fixed')
+        document.getElementById("detailMenu").classList.add('custom-fixed', 'custom-fixed-menu')
+      } else {
+        document.getElementById("detailTop").classList.remove('custom-fixed')
+        document.getElementById("detailMenu").classList.remove('custom-fixed', 'custom-fixed-menu')
+      }
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
+        document.querySelector(".View-right-opportunity").classList.add('opacity-0')
+
+      } else {
+        document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
+        document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
+      }
+    }
+
+    console.log('villa', this.villa)
+
   },
 
 
 }
 </script>
+
+<style>
+.vc-container {
+    --gray-500: #A6AFC2 !important;
+    --gray-900: var(--bs-theme-first-dark) !important;
+    border: none!important;
+    position: relative;
+    z-index: 1;
+}
+.vc-container:before{
+  content: "";
+  display: inline-block;
+  width: 100%;height: 48px;
+  background-color: #F2F5FB;
+  position: absolute;
+  left: 0;top: 0;z-index: -1;
+}
+.vc-header{
+  padding: 10px 18px!important;
+    background-color: #F2F5FB;
+}
+
+.vc-day {
+    min-width: 48px !important;
+    min-height: 48px !important;
+}
+
+.vc-pane-layout {
+    gap: 20px;
+}
+
+.vc-weekday {
+    margin-bottom: 15px !important;
+}
+
+.kapali-gun {
+    background-color: #F2F5FB;
+    position: relative;
+}
+
+.kapali-gun.opsiyon {
+    background-color: #FFF8E7;
+    position: relative;
+}
+
+.kapali-gun.giris {
+    background-color: transparent;
+    z-index: 1;
+}
+
+.kapali-gun.giris:before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(225deg, #f3f3ff 49%, transparent 50%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.kapali-gun.opsiyon.giris:before {
+    background-image: linear-gradient(225deg, #FFF8E7 49%, transparent 50%);
+}
+
+.kapali-gun.cikis {
+    background-color: transparent;
+    z-index: 1;
+}
+
+.kapali-gun.cikis:before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, #f3f3ff 49%, transparent 50%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.kapali-gun.opsiyon.cikis:before {
+    background-image: linear-gradient(45deg, #FFF8E7 49%, transparent 50%);
+}
+
+.calendar-price {
+    font-weight: 400;
+    font-size: 11px;
+    color: #989FB5;
+    margin-bottom: 0;
+}</style>

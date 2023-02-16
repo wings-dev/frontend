@@ -403,8 +403,6 @@
         </div>
       </section>
 
-
-
       <Nuxt />
 
     </main>

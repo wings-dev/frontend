@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="header bg-theme-first text-white border-bottom border-theme-first-light position-sticky top-0">
+    <header class="header bg-theme-first text-white border-bottom border-theme-first-light">
       <div class="header-top">
         <div class="container">
           <div class="header-top-in">
@@ -266,11 +266,6 @@
         </div>
       </section>
     </footer>
-
-    <div class="caleran-tooltip-form">
-      <div class="caleran-tooltip-arrow-form"></div>
-      <div class="caleran-tooltip-content-form">Check-in</div>
-    </div>
   </div>
 </template>
 
