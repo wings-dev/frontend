@@ -38,6 +38,7 @@
       <button type="button" data-bs-toggle="modal" data-bs-target="#loginCodeModal">KOD DOĞRULAMA MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#signupModal">KAYIT MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#callModal">SİZİ ARAYALIM MODAL</button>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#favModal">FAV MODAL</button>
 
 
       <!-- Giriş Modal -->
@@ -45,7 +46,7 @@
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-              class="icon-login-close"></i></button>
+                class="icon-login-close"></i></button>
             <div class="Login-in">
               <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
               <div class="Login-right">
@@ -57,7 +58,7 @@
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                       <li class="nav-item" role="presentation">
                         <input type="radio" name="loginFormType" checked id="loginFormRadio" data-bs-toggle="pill"
-                               data-bs-target="#loginFormPhoneContent">
+                          data-bs-target="#loginFormPhoneContent">
                         <label for="loginFormRadio">
                           <i class="icon-login-phone"></i>
                           <span>Telefon ile giriş yap</span>
@@ -65,7 +66,7 @@
                       </li>
                       <li class="nav-item" role="presentation">
                         <input type="radio" name="loginFormType" id="loginFormRadio2" data-bs-toggle="pill"
-                               data-bs-target="#loginFormMailContent">
+                          data-bs-target="#loginFormMailContent">
                         <label for="loginFormRadio2">
                           <i class="icon-login-mail"></i>
                           <span>E-posta ile giriş yap</span>
@@ -74,7 +75,7 @@
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                       <div class="tab-pane fade show active" role="tabpanel" id="loginFormPhoneContent">
-                        <label for="" class="Login-form-item Login-form-item-tr">
+                        <label for="" class="Login-form-item ">
                           <i class="icon-flag-tr"></i>
                           <input type="text" placeholder="+90" value="+90" id="inputTR">
                         </label>
@@ -83,7 +84,7 @@
                         <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
                       </div>
                       <div class="tab-pane fade" role="tabpanel" id="loginFormMailContent">
-                        <label for="" class="Login-form-item Login-form-item-tr">
+                        <label for="" class="Login-form-item ">
                           <input type="text" placeholder="E-mail adresiniz" value="" id="mailInput">
                         </label>
                         <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert"></p>
@@ -101,11 +102,11 @@
       <!-- Doğrulama Kodu Modal -->
 
       <div class="modal fade Login" id="loginCodeModal" tabindex="-1" aria-labelledby="loginCodeModalLabel"
-           aria-hidden="true">
+        aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-              class="icon-login-close"></i></button>
+                class="icon-login-close"></i></button>
             <div class="Login-in">
               <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
               <div class="Login-right">
@@ -115,13 +116,13 @@
                   <form action="" class="Login-form">
                     <fieldset name='number-code' data-number-code-form>
                       <input class="number-code" type="number" min='0' max='9' name='number-code-0'
-                             data-number-code-input='0' required />
+                        data-number-code-input='0' required />
                       <input class="number-code" type="number" min='0' max='9' name='number-code-1'
-                             data-number-code-input='1' required />
+                        data-number-code-input='1' required />
                       <input class="number-code" type="number" min='0' max='9' name='number-code-2'
-                             data-number-code-input='2' required />
+                        data-number-code-input='2' required />
                       <input class="number-code" type="number" min='0' max='9' name='number-code-3'
-                             data-number-code-input='3' required />
+                        data-number-code-input='3' required />
                     </fieldset>
                     <p class="Login-code-info" data-time="50"><b>00:30</b> Tekrar talep etmek için beklemeniz gereken
                       süre
@@ -140,11 +141,11 @@
       <!-- Kayıt Modal -->
 
       <div class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel"
-           aria-hidden="true">
+        aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-              class="icon-login-close"></i></button>
+                class="icon-login-close"></i></button>
             <div class="Login-in">
               <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
               <div class="Login-right">
@@ -159,17 +160,16 @@
                     </label>
                     <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup"></p>
                     <label for="" class="Login-form-item Login-form-item-tr">
-                      <input type="tel" required="required" id="phone" name="phone" class="" autocomplete="off"
-                             placeholder="Telefon Numaranız">
+                      <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"></vue-tel-input>
                     </label>
                     <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert"></p>
                     <label for="gizlilik" class="Login-form-item Login-form-item-check">
                       <input type="checkbox" id="gizlilik">
                       <span></span>
                       <p><a data-bs-toggle="modal" href="#kullanimModal">Kullanım Şartları</a> ve <a
-                        data-bs-toggle="modal" href="#gizlilikModal">Gizlilik bildirimini</a> kabul ediyorum.
+                          data-bs-toggle="modal" href="#gizlilikModal">Gizlilik bildirimini</a> kabul ediyorum.
                         Kişisel Verilerin Korunması ve <a data-bs-toggle="modal"
-                                                          href="#gizlilikPolitikasiModal">Gizlilik Politikasını</a> okudum.</p>
+                          href="#gizlilikPolitikasiModal">Gizlilik Politikasını</a> okudum.</p>
                     </label>
                     <label for="firsat" class="Login-form-item Login-form-item-check">
                       <input type="checkbox" id="firsat">
@@ -191,9 +191,9 @@
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-              class="icon-login-close"></i></button>
+                class="icon-login-close"></i></button>
             <div class="Login-in">
-              <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
+              <div class="Login-left" style="background-image:url(/img/sizi-arayalim-bg.jpg)"></div>
               <div class="Login-right">
                 <div class="Login-right-in">
                   <h2><b>SİZİ </b> ARAYALIM</h2>
@@ -201,20 +201,14 @@
                     <label for="" class="Login-form-item mb-2">
                       <input type="text" placeholder="İsim Soyisim" value="">
                     </label>
-                    <label for="" class="Login-form-item mb-2">
-                      <input type="text" placeholder="E-mail Adresiniz" value="" id="mailInput">
-                    </label>
                     <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup"></p>
                     <label for="" class="Login-form-item Login-form-item-tr mb-2">
-                      <input type="tel" required="required" id="phone" name="phone" class="" autocomplete="off"
-                             placeholder="Telefon Numaranız">
+                      <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"></vue-tel-input>
                     </label>
                     <label for="" class="Login-form-item Login-form-item-select mb-3">
-                      <select class="selectpicker " id="loginFormSubject">
-                        <option value="0" selected="selected">Konu Seçiniz</option>
-                        <option value="1">Z-A</option>
-                        <option value="2">A-z</option>
-                      </select>
+                      <client-only>
+                        <VSelect v-model="callSubject" :options="callValues" :labelTitle="callPlaceholder"/>
+                      </client-only>
                     </label>
                     <h4 class="Login-form-call-title">Ne Zaman Aranmak İstersiniz</h4>
                     <div class="Login-form-call mb-2">
@@ -238,7 +232,7 @@
                       <input type="checkbox" id="gizlilik">
                       <span></span>
                       <p><a data-bs-toggle="modal" href="#kullanimModal">Kullanım Şartları</a> ve <a href="">Gizlilik
-                        bildirimini</a> kabul ediyorum.
+                          bildirimini</a> kabul ediyorum.
                         Kişisel Verilerin Korunması ve <a href="">Gizlilik Politikasını</a> okudum.</p>
                     </label>
                     <label for="firsat" class="Login-form-item Login-form-item-check">
@@ -247,7 +241,6 @@
                       <p><a href="">Fırsat ve kampanyalardan haberdar olmak istiyorum.</a> </p>
                     </label>
                     <button type="submit" class="Login-form-button mt-2">GÖNDER</button>
-
                   </form>
                 </div>
               </div>
@@ -255,12 +248,40 @@
           </div>
         </div>
       </div>
-
+      <!-- Fav Modal -->
+      <div class="modal fade Login" id="favModal" tabindex="-1" aria-labelledby="favModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                class="icon-login-close"></i></button>
+            <div class="Login-in">
+              <div class="Login-left" style="background-image:url(/img/fav-bg.jpg)"></div>
+              <div class="Login-right">
+                <div class="Login-right-in">
+                  <div class="Login-fav">
+                    <img src="/img/fav-heart-big.svg" alt="">
+                    <p class="Login-fav-text">
+                      Beğendiğiniz tesisleri favorilere eklemek için lütfen üye olunuz eğer zaten üyeyseniz giriş
+                      yapınız.
+                    </p>
+                    <div class="Login-buttons">
+                      <button type="submit" class="Login-form-button mt-2">GÖNDER</button>
+                      <button type="submit" class="Login-form-button Login-form-button-white mt-2">KAYIT OL</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Kullanım Şartları Modal -->
       <div class="modal fade Login" id="kullanimModal" tabindex="-1" aria-labelledby="kullanimModalLabel"
-           aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                class="icon-login-close"></i></button>
             <div class="Login-text">
               <h2>Kullanım Şartları</h2>
               <div class="Login-text-in">
@@ -321,18 +342,19 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-theme-first" data-bs-target="#signupModal" data-bs-toggle="modal"
-                      data-bs-dismiss="modal">Geri Dön</button>
+              <button class="btn btn-theme-first" data-bs-dismiss="modal" aria-label="Close"><i
+                  class="icon-arrow-left-2"></i>Geri Dön</button>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Gizlilik Bildirimi Modal -->
       <div class="modal fade Login" id="gizlilikModal" tabindex="-1" aria-labelledby="gizlilikModalLabel"
-           aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                class="icon-login-close"></i></button>
             <div class="Login-text">
               <h2>Gizlilik Bildirimi</h2>
               <div class="Login-text-in">
@@ -393,18 +415,19 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-theme-first" data-bs-target="#signupModal" data-bs-toggle="modal"
-                      data-bs-dismiss="modal">Geri Dön</button>
+              <button class="btn btn-theme-first" data-bs-dismiss="modal" aria-label="Close"><i
+                  class="icon-arrow-left-2"></i>Geri Dön</button>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Gizlilik Politikası Modal -->
       <div class="modal fade Login" id="gizlilikPolitikasiModal" tabindex="-1"
-           aria-labelledby="gizlilikPolitikasiModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        aria-labelledby="gizlilikPolitikasiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                class="icon-login-close"></i></button>
             <div class="Login-text">
               <h2>Gizlilik Politikası</h2>
               <div class="Login-text-in">
@@ -465,15 +488,18 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-theme-first" data-bs-target="#signupModal" data-bs-toggle="modal"
-                      data-bs-dismiss="modal">Geri Dön</button>
+              <button class="btn btn-theme-first" data-bs-dismiss="modal" aria-label="Close"><i
+                  class="icon-arrow-left-2"></i>Geri Dön</button>
             </div>
           </div>
         </div>
       </div>
 
+      <client-only>
+      </client-only>
     </div>
 
+    
     <filter-villa-component></filter-villa-component>
 
     <section class="List">
@@ -515,11 +541,11 @@
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                      aria-expanded="true" aria-controls="collapseOne">
+                aria-expanded="true" aria-controls="collapseOne">
                 Nasıl rezervasyon yapabilirim ?
               </button>
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                   data-bs-parent="#accordionExample">
+                data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
                     yemeklerinizi pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası
@@ -529,11 +555,11 @@
             </div>
             <div class="accordion-item">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Accordion Item #2
               </button>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                   data-bs-parent="#accordionExample">
+                data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
                     yemeklerinizi pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası
@@ -543,11 +569,11 @@
             </div>
             <div class="accordion-item">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 Accordion Item #3
               </button>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                   data-bs-parent="#accordionExample">
+                data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
                     yemeklerinizi pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası
@@ -563,6 +589,8 @@
 </template>
 
 <script>
+import VSelect from "@alfsnd/vue-bootstrap-select";
+
 export default {
   name: 'ListPage',
   head() {
@@ -578,5 +606,53 @@ export default {
       ]
     }
   },
+  data() {
+    return {
+      phoneNumber: '',
+      callValues: [
+        { value: 1, text: "Konaklama Problemi" },
+        { value: 2, text: "Rezervasyon Problemi" },
+        { value: 3, text: "Fatura İşlemleri" },
+        { value: 4, text: "Ek Hizmetler" },
+      ],
+      callSubject: null,
+      callPlaceholder:"Konu Seçiniz"
+    }
+  },
+  components: {
+    VSelect,
+  },
+  methods: {
+    onInput(phone, phoneObject) {
+    },
+    
+  },
+
+  watch: {
+
+  },
+  computed: {
+    phoneProps() {
+      return {
+        enabledFlags: true,
+        dropdownOptions: {
+          showDialCodeInSelection: true,
+          showDialCodeInList: true,
+          showFlags: true,
+        },
+        inputOptions: {
+          maxlength: 13,
+          placeholder: "Telefon Numaranız",
+          type: "tel",
+        },
+        mode: "international",
+        validCharactersOnly: true,
+      };
+    },
+  },
 }
 </script>
+<style>
+/* :deep() */
+
+</style>

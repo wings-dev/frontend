@@ -228,7 +228,8 @@
                             <div class="Search-item-person-item ">
                               <p>Adult</p>
                               <div class="Search-item-person-item-in ">
-                                <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i></button>
+                                <button type="button" class="minus-person" onclick=""><i
+                                    class="icon-minus "></i></button>
                                 <input id="Search_PeopleAdult" class="person" type="text" value="1" max="20" readonly>
                                 <button type="button" class="plus-person"><i class="icon-plus "></i></button>
                               </div>
@@ -236,7 +237,8 @@
                             <div class="Search-item-person-item">
                               <p>Children <br><span>Between 6-17 </span></p>
                               <div class="Search-item-person-item-in ">
-                                <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i></button>
+                                <button type="button" class="minus-person" onclick=""><i
+                                    class="icon-minus "></i></button>
                                 <input id="Search_PeopleChild" class="person" type="text" value="0" max="10" readonly>
                                 <button type="button" class="plus-person"><i class="icon-plus "></i></button>
                               </div>
@@ -386,7 +388,8 @@
                         </ul>
                       </div>
                     </div>
-                    <button type="button" class="Search-item-more-mobile" id="mobileFilter"><i class="icon-filter"></i>
+                    <button type="button" class="Search-item-more-mobile" id="mobileFilter"
+                      @click="showMobileFilter()"><i class="icon-filter"></i>
                       <span class="dropdown-toggle-title">Gelişmiş Arama</span></button>
                     <button type="button" class="Search-button" id="searchVilla" onclick="RunFilter(this)"><img
                         src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
@@ -624,6 +627,12 @@ export default {
       ]
     }
   },
+  methods: {
+    showMobileFilter() {
+      document.querySelector('.Filter-left').classList.add("show")
+      document.querySelector('body').classList.add("over")
+    }
+  },
   mounted() {
     //dropdown-menu içerisinde bir yerlere tıklandığında menünün kapanmaması
     this.$el.addEventListener('click', function (e) {
@@ -638,5 +647,31 @@ export default {
 </script>
 
 <style scoped>
+:deep() .vue-tel-input {
+  width: 100%;
+  border: 1px solid #dadada;
+  padding: 8px;
+  box-shadow: none !important;
+  border-color: #dadada !important;
+}
 
+:deep() .vti__dropdown-list {
+  min-width: 240px;
+}
+
+:deep() .v-select {
+  height: auto !important;
+  border: 1px solid #dadada;
+}
+
+:deep() .v-select-toggle {
+  font-size: 16px !important;
+  padding: 14px !important;
+  color: #a3a3a3 !important;
+  background-color: transparent !important;
+}
+
+:deep() .v-dropdown-item.selected {
+  background-color: var(--bs-theme-second) !important;
+}
 </style>

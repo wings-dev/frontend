@@ -236,7 +236,6 @@
         </div>
       </div>
     </section>
-
     <section class="Ofis Ofis-fethiye">
       <div class="container">
         <div class="Ofis-in">

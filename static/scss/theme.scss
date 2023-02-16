@@ -8,6 +8,7 @@
   --bs-theme-third: #183266;
 
   
+  --bs-theme-first-hover: #1a3363;
   --bs-theme-first-dark-hover: #152b58;
   --bs-theme-second-hover: #f79641;
 
@@ -26,6 +27,17 @@
 }
 .bg-theme-first-dark {
   background-color: rgba(var(--bs-theme-first-dark-rgb), var(--bs-bg-opacity, 1));
+}
+
+.btn-theme-first {
+  color: #fff;
+  background-color: var(--bs-theme-first);
+  border-color: var(--bs-theme-first);
+  &:hover {
+    color: #fff;
+    background-color: var(--bs-theme-first-hover);
+    border-color: var(--bs-theme-first-hover);
+  }
 }
 
 .btn-theme-first-dark {

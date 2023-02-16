@@ -291,4 +291,14 @@ export default {
 
 <style scoped>
 
+:deep() .vue-tel-input{
+  width: 100%;
+  border: 1px solid #dadada;
+  padding: 8px;
+  box-shadow: none!important;
+  border-color: #dadada!important;
+}
+:deep() .vti__dropdown-list{
+  min-width: 240px;
+}
 </style>
