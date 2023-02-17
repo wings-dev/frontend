@@ -99,12 +99,8 @@
 
             <div
               class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-              <img src="/uploads/holiday-banner.jpg" alt=""
-<<<<<<< HEAD:components/FilterVillaComponent.vue
-                class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
-=======
-                   class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
->>>>>>> main:components/filter/FilterVillaComponent.vue
+              <img src="/uploads/holiday-banner.jpg" alt="" class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
+
               <div class="d-flex flex-column position-relative ls-05 pt-3">
                 <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
                 <span class="fs-6 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
