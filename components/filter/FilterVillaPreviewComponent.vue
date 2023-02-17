@@ -15,7 +15,7 @@
       <div class="F_villa-item-head">
         <div class="F_villa-item-head-name">
           <span>Tesis Kodu</span>
-          <a href="">{{ villa.name }}</a>
+          <NuxtLink  :to="villa.url">{{ villa.name }}</NuxtLink>
           <div class="F_villa-item-head-name-star">
             <i class="icon-star active"></i>
             <i class="icon-star active"></i>
@@ -62,11 +62,11 @@
           <h6>Öne çıkan özellikleri</h6>
           <div class="F_villa-item-features-in">
             <p class="F_villa-item-features-item" v-for="amenite in amenitesList(villa)">{{ amenite }}</p>
-            <p class="F_villa-item-features-item F_villa-item-features-more"><a href="" class="">Tümünü Gör</a></p>
+            <p class="F_villa-item-features-item F_villa-item-features-more"><NuxtLink  :to="villa.url">Tümünü Gör</NuxtLink></p>
           </div>
 
         </div>
-        <a href="" class="F_villa-item-show">Villayı İncele</a>
+        <NuxtLink  :to="villa.url">Villayı İncele</NuxtLink>
       </div>
     </div>
   </div>

@@ -449,6 +449,7 @@ export default {
         .post(`/api/website/property?api_token=123456&page=${pageNumber}`, data)
         .then(({ data: responseData }) => {
           this.villas = responseData.data;
+          console.log(this.villas);
           this.per_page = responseData.per_page;
           this.total_items = responseData.total;
           this.current_page = responseData.current_page;
