@@ -4,7 +4,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const app = express()
-app.use(cors())
+app.use(cors({
+  origin: false
+}));
 const jsonParser = bodyParser.json()
 
 const redisClient = Redis.createClient({url: "redis://default:b0c7d82af2ea4796a441b9ee7e91a74f@eu2-definite-liger-31710.upstash.io:31710"})
