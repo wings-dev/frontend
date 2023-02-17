@@ -40,6 +40,7 @@
       <button type="button" data-bs-toggle="modal" data-bs-target="#callModal">SİZİ ARAYALIM MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#favModal">FAV MODAL</button>
 
+      
 
       <!-- Giriş Modal -->
       <div class="modal fade Login" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -591,6 +592,7 @@
 <script>
 import VSelect from "@alfsnd/vue-bootstrap-select";
 
+
 export default {
   name: 'ListPage',
   head() {
@@ -616,7 +618,8 @@ export default {
         { value: 4, text: "Ek Hizmetler" },
       ],
       callSubject: null,
-      callPlaceholder:"Konu Seçiniz"
+      callPlaceholder:"Konu Seçiniz",
+      disableDates:['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28' ]
     }
   },
   components: {
@@ -654,5 +657,16 @@ export default {
 </script>
 <style>
 /* :deep() */
-
+.vhd__datepicker__wrapper{
+  background: none;
+}
+.vhd__datepicker__dummy-wrapper{
+  border: none;
+}
+.vhd__datepicker__input{
+  padding: 0;text-align: left;
+}
+.vhd__datepicker__input:first-child {
+    background-position: 80px;
+}
 </style>
