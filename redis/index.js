@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 
 const app = express()
 app.use(cors({
-  origin: false
+  origin: '*'
 }));
 const jsonParser = bodyParser.json()
 
