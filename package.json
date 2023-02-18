@@ -22,6 +22,7 @@
     "swiper": "^5.4.5",
     "v-calendar": "^2.4.1",
     "vue": "^2.7.10",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-functional-calendar": "^2.9.97",
     "vue-hotel-datepicker": "^4.6.0",
     "vue-server-renderer": "^2.7.10",

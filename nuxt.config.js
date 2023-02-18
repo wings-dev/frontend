@@ -45,6 +45,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    "~/plugins/vue-awesome-swiper.js",
     "~/plugins/fancyapps-ui.js",
     "~/plugins/vue-tel-input",
     { src: '~plugins/vcalendar.js', ssr: false },

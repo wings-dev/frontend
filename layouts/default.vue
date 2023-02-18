@@ -107,8 +107,8 @@
                   <form action="">
                     <div class="Search-left">
                       <div class="Search-item Search-item-region dropdown">
-                        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                          aria-expanded="false">
                           <div
                             class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
                             <i class="icon-pin"></i>
@@ -201,11 +201,12 @@
                         <div class="Search-item-date">
                           <span class="Search-item-name">Giriş / Çıkış Tarihi</span>
                           <div class="Search-item-date-inputs">
-                            <input type="text" id="search_arrival" class="villa_date-input" placeholder="Arrival"
-                              autocomplete="off" name="search_arrival" />
-                            <i class="icon-right-arrows-new"></i>
-                            <input id="search_departure" type="text" class="villa_date-input" placeholder="Departure"
-                              autocomplete="off" name="search_departure" />
+                            <!-- <input type="text" id="search_arrival" class="villa_date-input" placeholder="Arrival"
+                                autocomplete="off" name="search_arrival" />
+                              <i class="icon-right-arrows-new"></i>
+                              <input id="search_departure" type="text" class="villa_date-input" placeholder="Departure"
+                                autocomplete="off" name="search_departure" /> -->
+                            <HotelDatePicker format="DD/MM/YYYY" :disabledDates="disableDates"></HotelDatePicker>
                           </div>
                         </div>
                       </div>
@@ -228,8 +229,7 @@
                             <div class="Search-item-person-item ">
                               <p>Adult</p>
                               <div class="Search-item-person-item-in ">
-                                <button type="button" class="minus-person" onclick=""><i
-                                    class="icon-minus "></i></button>
+                                <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i></button>
                                 <input id="Search_PeopleAdult" class="person" type="text" value="1" max="20" readonly>
                                 <button type="button" class="plus-person"><i class="icon-plus "></i></button>
                               </div>
@@ -237,8 +237,7 @@
                             <div class="Search-item-person-item">
                               <p>Children <br><span>Between 6-17 </span></p>
                               <div class="Search-item-person-item-in ">
-                                <button type="button" class="minus-person" onclick=""><i
-                                    class="icon-minus "></i></button>
+                                <button type="button" class="minus-person" onclick=""><i class="icon-minus "></i></button>
                                 <input id="Search_PeopleChild" class="person" type="text" value="0" max="10" readonly>
                                 <button type="button" class="plus-person"><i class="icon-plus "></i></button>
                               </div>
@@ -264,8 +263,8 @@
                         </ul>
                       </div>
                       <div class="Search-item Search-item-more">
-                        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                          aria-expanded="false">
                           <i class="icon-filter"></i>
                           <span class="dropdown-toggle-title">Gelişmiş Arama</span>
                           <i class="icon-down-chevron"></i>
@@ -274,8 +273,7 @@
                           <div class="Filters-search">
                             <label for="">
                               <i class="icon-search-new"></i>
-                              <input type="search" placeholder="Özellik arayın"
-                                onkeyup="destinationsSearchFilter(this)">
+                              <input type="search" placeholder="Özellik arayın" onkeyup="destinationsSearchFilter(this)">
                             </label>
                           </div>
                           <li class="Filters-item Filters-item-notfound">
@@ -342,32 +340,32 @@
                                 <ul>
                                   <li class="Filters-item">
                                     <label for="konsept_1">
-                                      <input type="checkbox" class="AmenitesID_6" data-type="amenites"
-                                        data-name="Konsept" id="konsept_1" value="6">
+                                      <input type="checkbox" class="AmenitesID_6" data-type="amenites" data-name="Konsept"
+                                        id="konsept_1" value="6">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Deniz manzaralı villa ve evler</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="konsept_2">
-                                      <input type="checkbox" class="AmenitesID_7" data-type="amenites"
-                                        data-name="Konsept" id="konsept_2" value="7">
+                                      <input type="checkbox" class="AmenitesID_7" data-type="amenites" data-name="Konsept"
+                                        id="konsept_2" value="7">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Merkezi konumdaki evler</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="konsept_3">
-                                      <input type="checkbox" class="AmenitesID_8" data-type="amenites"
-                                        data-name="Konsept" id="konsept_3" value="8">
+                                      <input type="checkbox" class="AmenitesID_8" data-type="amenites" data-name="Konsept"
+                                        id="konsept_3" value="8">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Lüks tatil villaları</p>
                                     </label>
                                   </li>
                                   <li class="Filters-item">
                                     <label for="konsept_4">
-                                      <input type="checkbox" class="AmenitesID_9" data-type="amenites"
-                                        data-name="Konsept" id="konsept_4" value="9">
+                                      <input type="checkbox" class="AmenitesID_9" data-type="amenites" data-name="Konsept"
+                                        id="konsept_4" value="9">
                                       <span class="checkspan"></span>
                                       <p class="check-text">Balayı villası</p>
                                     </label>
@@ -388,8 +386,8 @@
                         </ul>
                       </div>
                     </div>
-                    <button type="button" class="Search-item-more-mobile" id="mobileFilter"
-                      @click="showMobileFilter()"><i class="icon-filter"></i>
+                    <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()"><i
+                        class="icon-filter"></i>
                       <span class="dropdown-toggle-title">Gelişmiş Arama</span></button>
                     <button type="button" class="Search-button" id="searchVilla" onclick="RunFilter(this)"><img
                         src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
@@ -580,8 +578,8 @@
               alt="discover card" class="lazy contain flex-shrink-0 me-2">
             <img src="/img/spacer.gif" data-src="/img/tools/Maestro-card-dark.svg" width="50" height="30"
               alt="discover card" class="lazy contain flex-shrink-0 me-2">
-            <img src="/img/spacer.gif" data-src="/img/tools/Visa-card-dark.svg" width="50" height="30"
-              alt="discover card" class="lazy contain flex-shrink-0 me-2">
+            <img src="/img/spacer.gif" data-src="/img/tools/Visa-card-dark.svg" width="50" height="30" alt="discover card"
+              class="lazy contain flex-shrink-0 me-2">
             <img src="/img/spacer.gif" data-src="/img/tools/Mastercard-dark.svg" width="50" height="30"
               alt="discover card" class="lazy contain flex-shrink-0 me-2">
             <img src="/img/spacer.gif" data-src="/img/tools/Americanexpress-card-dark.svg" width="50" height="30"
@@ -614,6 +612,8 @@
 </template>
 
 <script>
+import HotelDatePicker from 'vue-hotel-datepicker'
+import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
 export default {
   name: "default",
   head() {
@@ -624,6 +624,14 @@ export default {
         { rel: 'stylesheet', href: `/css/theme.min.css` },
       ]
     }
+  },
+  data() {
+    return {
+      disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28']
+    }
+  },
+  components: {
+    HotelDatePicker,
   },
   methods: {
     showMobileFilter() {
@@ -671,5 +679,22 @@ export default {
 
 :deep() .v-dropdown-item.selected {
   background-color: var(--bs-theme-second) !important;
+}
+
+:deep() .vhd__datepicker__wrapper {
+  background: none !important;
+}
+
+:deep() .vhd__datepicker__dummy-wrapper {
+  border: none !important;
+}
+
+:deep() .vhd__datepicker__input {
+  padding: 0!important;
+  text-align: left!important;
+}
+
+:deep() .vhd__datepicker__input:first-child {
+  background-position: 80px!important;
 }
 </style>
