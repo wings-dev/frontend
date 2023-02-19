@@ -45,7 +45,7 @@
         <div class="fav-list-wrapper align-self-center me-1">
           <button type="button"
             class="toggle-favs search-button flex-shrink-0 btn btn-theme-first-dark rounded-circle d-flex align-items-center justify-content-center shadow-none p-0"
-            aria-label="Favorileri aç">
+            aria-label="Favorileri aç" id="searchButton" @click="openSearch()">
             <i class="icon-search"></i>
           </button>
           <div class="fav-list"></div>
@@ -202,10 +202,10 @@
                           <span class="Search-item-name">Giriş / Çıkış Tarihi</span>
                           <div class="Search-item-date-inputs">
                             <!-- <input type="text" id="search_arrival" class="villa_date-input" placeholder="Arrival"
-                                autocomplete="off" name="search_arrival" />
-                              <i class="icon-right-arrows-new"></i>
-                              <input id="search_departure" type="text" class="villa_date-input" placeholder="Departure"
-                                autocomplete="off" name="search_departure" /> -->
+                                    autocomplete="off" name="search_arrival" />
+                                  <i class="icon-right-arrows-new"></i>
+                                  <input id="search_departure" type="text" class="villa_date-input" placeholder="Departure"
+                                    autocomplete="off" name="search_departure" /> -->
                             <HotelDatePicker format="DD/MM/YYYY" :disabledDates="disableDates"></HotelDatePicker>
                           </div>
                         </div>
@@ -386,7 +386,7 @@
                         </ul>
                       </div>
                     </div>
-                    <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()"><i
+                    <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter(event)"><i
                         class="icon-filter"></i>
                       <span class="dropdown-toggle-title">Gelişmiş Arama</span></button>
                     <button type="button" class="Search-button" id="searchVilla" onclick="RunFilter(this)"><img
@@ -604,10 +604,297 @@
       </section>
     </footer>
 
-    <div class="caleran-tooltip-form">
-      <div class="caleran-tooltip-arrow-form"></div>
-      <div class="caleran-tooltip-content-form">Check-in</div>
-    </div>
+    <section class="Search-villas">
+      <div class="container">
+        <div class="Search-villas-in">
+          <h3 class="Search-villas-title">Akıllı Arama</h3>
+
+          <ul class="nav nav-pills mb-3 d-none" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+              <div class="Search-villas-top">
+
+                <label for="">
+                  <i class="icon-search"></i>
+                  <input type="text" placeholder="Aramak istediğiniz villa adı  veya kodu">
+                </label>
+                <p>Daha önce gördüğünüz veya konakladığınız villanın adını yazın akıllı arama sizin için bulup getirsin
+                </p>
+              </div>
+              <div class="Search-villas-content">
+                <h4 class="Search-villas-content-title">Arama Sonuçları</h4>
+                <div class="Search-villas-content-list">
+                  <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                <a href="" class="Search-villas-item">
+                  <div class="Search-villas-item-img">
+                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <div class="Search-villas-item-hover">
+                      <i class="icon-search"></i>
+                    </div>
+                  </div>
+                  <div class="Search-villas-item-in">
+                    <div class="Search-villas-item-text">
+                      <p><span>Tesis Kodu</span>VKV1020</p>
+                      <div class="Search-villas-item-rating">
+                        <i class="icon-star"></i>
+                        <span>4.9</span>
+                      </div>
+                    </div>
+                    <div class="Search-villas-item-location">
+                      <i class="icon-pin"></i>
+                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                    </div>
+                  </div>
+                </a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
@@ -637,6 +924,12 @@ export default {
     showMobileFilter() {
       document.querySelector('.Filter-left').classList.add("show")
       document.querySelector('body').classList.add("over")
+    },
+    openSearch(e) {
+      document.querySelector('.Search-villas').classList.toggle('Search-villas-active')
+      document.querySelector('body').classList.toggle("over")
+      document.querySelector('#searchButton i').classList.toggle('icon-search')
+      document.querySelector('#searchButton i').classList.toggle('icon-login-close')
     }
   },
   mounted() {
@@ -690,11 +983,11 @@ export default {
 }
 
 :deep() .vhd__datepicker__input {
-  padding: 0!important;
-  text-align: left!important;
+  padding: 0 !important;
+  text-align: left !important;
 }
 
 :deep() .vhd__datepicker__input:first-child {
-  background-position: 80px!important;
+  background-position: 80px !important;
 }
 </style>

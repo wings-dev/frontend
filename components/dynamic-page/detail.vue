@@ -41,11 +41,11 @@
         <div class="container">
           <div class="View-menu-in">
             <div class="View-menu-left">
-              <a href="" class="View-menu-item active">Genel bakış</a>
-              <a href="" class="View-menu-item">Müsaitlik ve Takvim Fiyatı</a>
-              <a href="" class="View-menu-item">S.S.S.</a>
-              <a href="" class="View-menu-item">Yorumlar</a>
-              <a href="" class="View-menu-item">Bilmeniz Gerekenler</a>
+              <a id="genelbakis" class="View-menu-item active" @click.prevent="scrollItem($event)">Genel bakış</a>
+              <a id="musaitlik" class="View-menu-item" @click.prevent="scrollItem($event)">Müsaitlik ve Takvim Fiyatı</a>
+              <a id="sss" class="View-menu-item" @click.prevent="scrollItem($event)">S.S.S.</a>
+              <a id="comments" class="View-menu-item" @click.prevent="scrollItem($event)">Yorumlar</a>
+              <a id="rules" class="View-menu-item" @click.prevent="scrollItem($event)">Bilmeniz Gerekenler</a>
             </div>
             <div class="View-menu-right">
               <button type="button"
@@ -130,7 +130,7 @@
       <div class="container">
         <div class="View-in">
           <div class="View-left">
-            <div class="View-desc">
+            <div class="View-desc genelbakis">
               <h2 class="View-title">Tesise Genel Bakış</h2>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
                 tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve müthiş
@@ -280,7 +280,7 @@
                 </div>
               </swiper>
             </div>
-            <div class="View-availibility">
+            <div class="View-availibility musaitlik">
               <h2 class="View-title">Musaitlik ve Fiyat Bilgisi</h2>
               <p class="View-text">
                 Aşağıda belirtilen fiyatlar tesisin 1 gecelik konaklama ücretidir. Dönemlere göre konaklama süresine
@@ -589,7 +589,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-reviews">
+            <div class="View-reviews comments">
               <div class="View-reviews-head">
                 <h4 class="View-title">Tesis Değerlendirmesi</h4>
                 <div class="View-reviews-head-stars">
@@ -686,7 +686,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-info">
+            <div class="View-info rules">
               <div class="View-info-in">
                 <h4 class="View-title">Bilmeniz Gerekenler</h4>
                 <div class="View-info-hours">
@@ -796,7 +796,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-faq">
+            <div class="View-faq sss">
               <h4 class="View-title">Sıkça Sorulan Sorular</h4>
               <div class="accordion" id="Faq">
                 <div class="accordion-item">
@@ -2992,8 +2992,13 @@ export default {
         el.scrollIntoView({ behavior: 'smooth' });
       }
     },
+    scrollItem(event) {
+      const el = this.$el.getElementsByClassName(event.currentTarget.id)[0];
+      if (el) {
+        el.scrollIntoView({block: "start", behavior: 'smooth' });
+      }
+    },
     reservationButton(event) {
-      console.log(event.target)
       document.querySelector('.Reservation-form').classList.add("show")
       event.target.textContent = "Ön Rezervasyon Talebi Gönder";
     }
@@ -3009,7 +3014,6 @@ export default {
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
     document.querySelector('.header').classList.add('villa-detay')
-    console.log('')
 
     window.onscroll = function () { scrollFunction() };
 
@@ -3017,9 +3021,12 @@ export default {
       if (document.body.scrollTop > 151 || document.documentElement.scrollTop > 151) {
         document.getElementById("detailTop").classList.add('custom-fixed')
         document.getElementById("detailMenu").classList.add('custom-fixed', 'custom-fixed-menu')
+        document.querySelector(".View").classList.add('View-top')
+       
       } else {
         document.getElementById("detailTop").classList.remove('custom-fixed')
         document.getElementById("detailMenu").classList.remove('custom-fixed', 'custom-fixed-menu')
+        document.querySelector(".View").classList.remove('View-top')
       }
       if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
         document.getElementById("reservationForm").classList.add('custom-fixed-reservation')

@@ -52,21 +52,21 @@ i[class^="flaticon-"] {
   font-family: "Poppins", sans-serif !important;
 }
 
-.header{
+.header {
   position: sticky;
 }
-.header.villa-detay{
+.header.villa-detay {
   position: relative;
 }
-.custom-fixed{
+.custom-fixed {
   position: fixed;
-  top:0;
+  top: 0;
   z-index: 999;
   width: 100%;
-  &-menu{
+  &-menu {
     top: 69px;
   }
-  &-reservation{
+  &-reservation {
     position: fixed;
     z-index: 1;
     max-width: 330px;
@@ -151,10 +151,15 @@ i[class^="flaticon-"] {
   }
 }
 .toggle-favs {
+  transition: all 500ms;
   i {
     font-size: 14px;
+    transition: all 500ms;
     &.icon-search {
       font-size: 18px;
+    }
+    &.icon-login-close {
+      font-size: 24px;
     }
   }
 }
@@ -629,7 +634,7 @@ body.overflow-hidden {
     &-date {
       display: flex;
       flex-direction: column;
-width: 100%;
+      width: 100%;
       &-inputs {
         display: flex;
         align-items: center;
@@ -900,6 +905,181 @@ width: 100%;
     }
   }
 }
+
+.Search-villas {
+  background-color: var(--bs-theme-first-dark);
+  position: absolute;
+  left: 0;
+  top: 151px;
+  width: 100vw;
+  height: 0;
+  padding-top: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 400ms;
+  &-active{
+    height: calc(100vh - 151px); 
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &-in {
+    
+  }
+  &-title {
+    font-size: clamp(20px,1.52vw,28.8px);
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  &-top {
+    label {
+      width: 100%;
+      position: relative;
+      margin-bottom: 22px;
+      input {
+        width: 100%;
+        border-radius: 5px;
+        background-color: #fff;
+        padding: 20px;
+        padding-left: 70px;
+        font-size: clamp(22px,1.62vw,31px);
+        color: var(--bs-theme-first-dark);
+        &::placeholder {
+          opacity: 0.3;
+        }
+      }
+      i {
+        font-size: 24px;
+        color: var(--bs-theme-first-dark);
+        position: absolute;
+        left: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    p {
+      font-size: 15px;
+      font-weight: normal;
+      color: #5578bd;
+    }
+  }
+  &-content {
+   
+
+    &-title {
+      width: 100%;
+      font-size: 20px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 22px;
+    }
+    &-list{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      overflow-y: scroll;
+      height: 500px;
+    }
+  }
+  &-item {
+    width: 23.2%;
+    border: 1px solid #5b6c8f;
+    border-radius: 16px;
+    &-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+    }
+    &-img {
+      width: 100%;
+      position: relative;
+      img {
+        width: 100%;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+      }
+    }
+    &-text {
+      display: flex;
+      align-items: flex-end;
+      p {
+        margin-bottom: 0;
+        font-size: 13.8px;
+        font-weight: 500;
+        color: #fff;
+        line-height: 1.2;
+        span {
+          display: block;
+          font-size: 8px;
+        }
+      }
+    }
+    &-rating {
+      display: flex;
+      align-items: center;
+      margin-left: 4px;
+      .icon-star {
+        font-size: 11px;
+        margin-right: 4px;
+        color: var(--bs-theme-second);
+      }
+      span {
+        font-size: 11.2px;
+        font-weight: 500;
+        color: #e7edff;
+      }
+    }
+    &-location {
+      display: flex;
+      align-items: center;
+      .icon-pin {
+        font-size: 16px;
+        margin-right: 6px;
+        color: var(--bs-theme-second);
+      }
+      p {
+        font-size: 11px;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 0;
+        span {
+          display: block;
+          font-size: 6.6px;
+          font-weight: 500;
+          color: #8a92a8;
+        }
+      }
+    }
+    &-hover {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 89px;
+      height: 89px;
+      border-radius: 50%;
+      background: rgba(24, 50, 101, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 500ms;
+      i {
+        font-size: 31px;
+        color: #fff;
+      }
+    }
+    &:hover{
+      .Search-villas-item-hover{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
 .Filter {
   margin-top: 40px;
   p {
@@ -2407,7 +2587,8 @@ width: 100%;
 .footer {
   padding-top: 128px;
   margin-top: -128px;
-  z-index: 1;position: relative;
+  z-index: 1;
+  position: relative;
   .footer-top {
     .ft-item {
       border-right: 1px solid rgba(var(--bs-theme-first-light-rgb), 0.25);
@@ -2421,6 +2602,7 @@ width: 100%;
     color: var(--bs-theme-second);
   }
 }
+
 
 //RESPONSIVE
 @media only screen and (max-width: 1199px) {
