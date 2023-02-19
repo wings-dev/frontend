@@ -187,6 +187,9 @@ body {
 }
 
 .View {
+  &-top{
+    padding-top: 151px;
+  }
   &-in {
     display: flex;
     justify-content: space-between;
