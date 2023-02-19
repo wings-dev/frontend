@@ -1,6 +1,6 @@
 <template>
   <div class="Filters Filters-region ">
-    <div class="Filters-head" v-bind:class="{ 'border-bottom' : !hideTitleBorder}"><i class="icon-location-1"></i><h5>{{title}}</h5></div>
+    <div v-if="!hideTitle" class="Filters-head" v-bind:class="{ 'border-bottom' : !hideTitleBorder}"><i class="icon-location-1"></i><h5>{{title}}</h5></div>
     <div class="Filters-search" v-if="filterInputPlaceholder.length">
       <label><i class="icon-search-new"></i><input type="search" :placeholder="filterInputPlaceholder" v-model="filterText" @keyup="applyFilter()"></label>
     </div>
@@ -47,6 +47,7 @@ export default {
     checkboxes: {type: Array, default: []},
     filterInputPlaceholder: {type: String, default: ""},
     hideTitleBorder: {type: Boolean, default: false},
+    hideTitle: {type: Boolean, default: false},
   },
   data() {
     return {
