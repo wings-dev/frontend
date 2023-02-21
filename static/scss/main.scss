@@ -1013,17 +1013,15 @@ body.overflow-hidden {
       margin-bottom: 22px;
     }
     &-list {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
       gap: 28px;
       overflow-y: scroll;
-      height: 500px;
+      max-height: 500px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
   }
   &-item {
     width: 23.2%;
-    height: max-content;
-    max-height: 195px;
     border: 1px solid #5b6c8f;
     border-radius: 16px;
     &-in {
@@ -1116,6 +1114,9 @@ body.overflow-hidden {
         opacity: 1;
       }
     }
+  }
+
+  @media (max-width: 991px) {
   }
 }
 
@@ -2425,7 +2426,6 @@ body.overflow-hidden {
   }
 }
 
-
 .owl-carousel .owl-item img {
   width: auto;
 }
@@ -2776,6 +2776,12 @@ body.overflow-hidden {
               color: var(--bs-theme-first);
             }
           }
+          
+        }
+      }
+      &-people{
+        .icon-down-arrow{
+          right: 30px!important;
         }
       }
 
@@ -2786,7 +2792,7 @@ body.overflow-hidden {
           display: flex;
           align-items: center;
 
-          i.filter-icon-filter {
+          i.icon-filter {
             color: var(--bs-theme-second);
             font-size: 16px;
             margin-right: 11px;
