@@ -40,7 +40,7 @@
       <button type="button" data-bs-toggle="modal" data-bs-target="#callModal">SİZİ ARAYALIM MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#favModal">FAV MODAL</button>
 
-      
+
 
       <!-- Giriş Modal -->
       <div class="modal fade Login" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -161,9 +161,9 @@
                     </label>
                     <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup"></p>
                     <label for="" class="Login-form-item Login-form-item-tr">
-                      <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"></vue-tel-input>
+                      <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps" :defaultCountry="'TR'"></vue-tel-input>
                     </label>
-                    <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert"></p>
+                    <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert" v-if="phoneNumberValid === false">Lütfen doğru bir telefon numarası giriniz</p>
                     <label for="gizlilik" class="Login-form-item Login-form-item-check">
                       <input type="checkbox" id="gizlilik">
                       <span></span>
@@ -500,7 +500,7 @@
       </client-only>
     </div>
 
-    
+
     <filter-villa-component></filter-villa-component>
 
     <section class="List">
@@ -611,6 +611,7 @@ export default {
   data() {
     return {
       phoneNumber: '',
+      phoneNumberValid: false,
       callValues: [
         { value: 1, text: "Konaklama Problemi" },
         { value: 2, text: "Rezervasyon Problemi" },
@@ -627,8 +628,14 @@ export default {
   },
   methods: {
     onInput(phone, phoneObject) {
+      setTimeout(() => {
+        this.phoneNumberValid = phoneObject.valid;
+        if (phone && phoneObject.country?.iso2 === 'TR' && !phoneObject.nationalNumber?.startsWith('5')) {
+          this.phoneNumber = '5';
+        }
+      }, 50)
     },
-    
+
   },
 
   watch: {
@@ -644,7 +651,6 @@ export default {
           showFlags: true,
         },
         inputOptions: {
-          maxlength: 13,
           placeholder: "Telefon Numaranız",
           type: "tel",
         },
