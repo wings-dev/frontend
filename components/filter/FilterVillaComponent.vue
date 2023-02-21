@@ -89,9 +89,6 @@
             </div>
           </div>
 
-
-
-
           <div class="F_villa ">
 
             <filter-villa-preview-component v-for="(villa, index) in villas" :key="index"

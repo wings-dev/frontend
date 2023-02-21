@@ -45,7 +45,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    "~/plugins/vue-awesome-swiper.js",
+    // "~/plugins/vue-awesome-swiper.js",
     "~/plugins/fancyapps-ui.js",
     "~/plugins/vue-tel-input",
     { src: '~plugins/vcalendar.js', ssr: false },
@@ -75,7 +75,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    standalone: true,
+    // standalone: true,
+    transpile: ["swiper"]
   },
 
   proxy: {

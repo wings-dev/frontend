@@ -223,6 +223,7 @@ body {
       border: solid 1px transparent;
       border-radius: 4px;
       transition: all 400ms;
+      cursor: pointer;
       &.active {
         border-color: #183266;
       }

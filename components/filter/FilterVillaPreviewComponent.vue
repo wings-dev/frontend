@@ -1,15 +1,17 @@
 <template>
   <div class="F_villa-item">
     <div class="F_villa-item-img">
-      <swiper class=" swiper villa-list-slider" :options="swiperOptions">
-        <div class="swiper-slide" v-for="image in villa.preview_image">
-          <img class="lazyload" :src="image.preview_url"
-               :data-src="image.preview_url"
-               :data-srcset="image.responsive_url"/>
+        <div class="swiper villa-list-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="(image,index) in villa.preview_image" :key="index">
+            <img class="lazyload" :src="image.preview_url" :data-src="image.preview_url"
+              :data-srcset="image.responsive_url" />
+          </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
-      </swiper>
+        
     </div>
     <div class="F_villa-item-right">
       <div class="F_villa-item-head">
@@ -30,7 +32,7 @@
           <div class="F_villa-item-head-location-text">
             <p>{{ villa.city[0].toUpperCase() + villa.city.substring(1) }}
               <span>{{ villa.country[0].toUpperCase() + villa.country.substring(1) }} /
-                            {{ villa.city[0].toUpperCase() + villa.city.substring(1) }} </span>
+                {{ villa.city[0].toUpperCase() + villa.city.substring(1) }} </span>
             </p>
           </div>
         </div>
@@ -62,7 +64,8 @@
           <h6>Öne çıkan özellikleri</h6>
           <div class="F_villa-item-features-in">
             <p class="F_villa-item-features-item" v-for="amenite in amenitesList(villa)">{{ amenite }}</p>
-            <p class="F_villa-item-features-item F_villa-item-features-more"><a :href="villa.url" class="">Tümünü Gör</a></p>
+            <p class="F_villa-item-features-item F_villa-item-features-more"><a :href="villa.url" class="">Tümünü Gör</a>
+            </p>
           </div>
 
         </div>
@@ -73,11 +76,15 @@
 </template>
 
 <script>
-
+import { Swiper, Navigation, Pagination } from 'swiper'
+import 'swiper/swiper-bundle.min.css'
 
 export default {
   name: "FilterVillaPreviewComponent",
   props: ['villa'],
+  components: {
+    Swiper
+  },
   data() {
     return {
       swiperOptions: {
@@ -95,10 +102,23 @@ export default {
     amenitesList(villa) {
       return (Object.values(villa.amenites || {}).flatMap(amenite => amenite.list) || []).filter(i => !!i);
     }
+  },
+  mounted() {
+    Swiper.use([Navigation, Pagination])
+
+    const swiper = new Swiper('.villa-list-slider', {
+      spaceBetween: 18,
+      direction: 'horizontal',
+      loop: true,
+      modules: [Navigation, Pagination],
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      
+    })
   }
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

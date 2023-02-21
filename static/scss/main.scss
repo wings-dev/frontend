@@ -35,18 +35,54 @@ a.no-hover:hover {
   color: inherit;
 }
 
-i[class^="flaticon-"] {
-  line-height: normal !important;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+//custom bootstrap elememt
+.bg-theme-first {
+  background-color: rgba(var(--bs-theme-first-rgb), var(--bs-bg-opacity, 1));
 }
+.bg-theme-first-dark {
+  background-color: rgba(
+    var(--bs-theme-first-dark-rgb),
+    var(--bs-bg-opacity, 1)
+  );
+}
+
+.btn-theme-first {
+  color: #fff;
+  background-color: var(--bs-theme-first);
+  border-color: var(--bs-theme-first);
+  &:hover {
+    color: #fff;
+    background-color: var(--bs-theme-first-hover);
+    border-color: var(--bs-theme-first-hover);
+  }
+}
+
+.btn-theme-first-dark {
+  color: #fff;
+  background-color: var(--bs-theme-first-dark);
+  border-color: var(--bs-theme-first-dark);
+  &:hover {
+    color: #fff;
+    background-color: var(--bs-theme-first-dark-hover);
+    border-color: var(--bs-theme-first-dark-hover);
+  }
+}
+
+.btn-theme-second {
+  color: #000;
+  background-color: var(--bs-theme-second);
+  border-color: var(--bs-theme-second);
+  &:hover {
+    color: #000;
+    background-color: var(--bs-theme-second-hover);
+    border-color: var(--bs-theme-second-hover);
+  }
+}
+
+.text-theme-second {
+  color: rgba(var(--bs-theme-second-rgb), var(--bs-text-opacity, 1)) !important;
+}
+//custom bootstrap elememt
 
 .font-poppins {
   font-family: "Poppins", sans-serif !important;
@@ -601,7 +637,10 @@ body.overflow-hidden {
         }
       }
     }
-
+    .icon-down-arrow {
+      font-size: 9px;
+      color: var(--bs-theme-first-dark);
+    }
     &-region {
       .dropdown-toggle {
         flex-direction: row;
@@ -619,8 +658,9 @@ body.overflow-hidden {
       &-in {
         display: flex;
         flex-direction: column;
+        width: 100%;
       }
-      i.icon-down-chevron {
+      i.icon-down-arrow {
         position: absolute;
         right: 0;
         top: 34%;
@@ -917,17 +957,17 @@ body.overflow-hidden {
   opacity: 0;
   visibility: hidden;
   transition: all 400ms;
-  &-active{
-    height: calc(100vh - 151px); 
+  &-active {
+    height: calc(100vh - 151px);
     opacity: 1;
     visibility: visible;
+    z-index: 9;
   }
 
   &-in {
-    
   }
   &-title {
-    font-size: clamp(20px,1.52vw,28.8px);
+    font-size: clamp(20px, 1.52vw, 28.8px);
     font-weight: 600;
     color: #fff;
     margin-bottom: 12px;
@@ -943,7 +983,7 @@ body.overflow-hidden {
         background-color: #fff;
         padding: 20px;
         padding-left: 70px;
-        font-size: clamp(22px,1.62vw,31px);
+        font-size: clamp(22px, 1.62vw, 31px);
         color: var(--bs-theme-first-dark);
         &::placeholder {
           opacity: 0.3;
@@ -965,8 +1005,6 @@ body.overflow-hidden {
     }
   }
   &-content {
-   
-
     &-title {
       width: 100%;
       font-size: 20px;
@@ -974,12 +1012,12 @@ body.overflow-hidden {
       color: #fff;
       margin-bottom: 22px;
     }
-    &-list{
-      display: flex;
-      flex-wrap: wrap;
+    &-list {
+      display: grid;
       gap: 28px;
       overflow-y: scroll;
-      height: 500px;
+      max-height: 500px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
   }
   &-item {
@@ -1071,14 +1109,16 @@ body.overflow-hidden {
         color: #fff;
       }
     }
-    &:hover{
-      .Search-villas-item-hover{
+    &:hover {
+      .Search-villas-item-hover {
         opacity: 1;
       }
     }
   }
-}
 
+  @media (max-width: 991px) {
+  }
+}
 
 .Filter {
   margin-top: 40px;
@@ -2386,61 +2426,6 @@ body.overflow-hidden {
   }
 }
 
-.availability-calendar .ui-widget-header {
-  background-color: transparent;
-  border: 0px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.availability-calendar .ui-datepicker td {
-  padding: 0px;
-  border: 1px solid var(--bs-light);
-}
-
-.availability-calendar .ui-datepicker th {
-  font-weight: 600;
-  color: var(--bs-theme-first);
-}
-
-.availability-calendar .ui-state-default {
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px;
-  border: 0px;
-  padding: 0.25em 0;
-  color: var(--bs-theme-secondary);
-  font-size: 13px;
-}
-
-.availability-calendar .ui-widget.ui-widget-content {
-  width: 100% !important;
-  font-family: "Poppins", sans-serif;
-  border: 0px;
-  display: flex !important;
-  flex-wrap: wrap;
-  color: var(--bs-theme-secondary);
-}
-
-.availability-calendar .ui-datepicker .ui-datepicker-prev,
-.availability-calendar .ui-datepicker .ui-datepicker-next {
-  cursor: pointer;
-}
-
-.availability-calendar .ui-datepicker .ui-datepicker-prev .ui-icon {
-  background-image: url("../../img/icons/arrow-left-2.svg");
-  background-position: center center;
-  background-size: contain;
-}
-
-.availability-calendar .ui-datepicker .ui-datepicker-next .ui-icon {
-  background-image: url("../../img/icons/arrow-right-2.svg");
-  background-position: center center;
-  background-size: contain;
-}
-
 .owl-carousel .owl-item img {
   width: auto;
 }
@@ -2602,7 +2587,6 @@ body.overflow-hidden {
     color: var(--bs-theme-second);
   }
 }
-
 
 //RESPONSIVE
 @media only screen and (max-width: 1199px) {
@@ -2792,6 +2776,12 @@ body.overflow-hidden {
               color: var(--bs-theme-first);
             }
           }
+          
+        }
+      }
+      &-people{
+        .icon-down-arrow{
+          right: 30px!important;
         }
       }
 
@@ -2802,7 +2792,7 @@ body.overflow-hidden {
           display: flex;
           align-items: center;
 
-          i.filter-icon-filter {
+          i.icon-filter {
             color: var(--bs-theme-second);
             font-size: 16px;
             margin-right: 11px;
