@@ -40,7 +40,7 @@
       <button type="button" data-bs-toggle="modal" data-bs-target="#callModal">SİZİ ARAYALIM MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#favModal">FAV MODAL</button>
 
-      
+
 
       <!-- Giriş Modal -->
       <div class="modal fade Login" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -141,8 +141,7 @@
 
       <!-- Kayıt Modal -->
 
-      <div class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel"
-        aria-hidden="true">
+      <div class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
@@ -169,8 +168,8 @@
                       <span></span>
                       <p><a data-bs-toggle="modal" href="#kullanimModal">Kullanım Şartları</a> ve <a
                           data-bs-toggle="modal" href="#gizlilikModal">Gizlilik bildirimini</a> kabul ediyorum.
-                        Kişisel Verilerin Korunması ve <a data-bs-toggle="modal"
-                          href="#gizlilikPolitikasiModal">Gizlilik Politikasını</a> okudum.</p>
+                        Kişisel Verilerin Korunması ve <a data-bs-toggle="modal" href="#gizlilikPolitikasiModal">Gizlilik
+                          Politikasını</a> okudum.</p>
                     </label>
                     <label for="firsat" class="Login-form-item Login-form-item-check">
                       <input type="checkbox" id="firsat">
@@ -208,7 +207,7 @@
                     </label>
                     <label for="" class="Login-form-item Login-form-item-select mb-3">
                       <client-only>
-                        <VSelect v-model="callSubject" :options="callValues" :labelTitle="callPlaceholder"/>
+                        <VSelect v-model="callSubject" :options="callValues" :labelTitle="callPlaceholder" />
                       </client-only>
                     </label>
                     <h4 class="Login-form-call-title">Ne Zaman Aranmak İstersiniz</h4>
@@ -500,7 +499,7 @@
       </client-only>
     </div>
 
-    
+
     <filter-villa-component></filter-villa-component>
 
     <section class="List">
@@ -618,8 +617,8 @@ export default {
         { value: 4, text: "Ek Hizmetler" },
       ],
       callSubject: null,
-      callPlaceholder:"Konu Seçiniz",
-      disableDates:['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28' ]
+      callPlaceholder: "Konu Seçiniz",
+      disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28']
     }
   },
   components: {
@@ -628,7 +627,7 @@ export default {
   methods: {
     onInput(phone, phoneObject) {
     },
-    
+
   },
 
   watch: {
@@ -653,20 +652,26 @@ export default {
       };
     },
   },
+  mounted() {
+   
+  }
 }
 </script>
 <style>
 /* :deep() */
-.vhd__datepicker__wrapper{
+.vhd__datepicker__wrapper {
   background: none;
 }
-.vhd__datepicker__dummy-wrapper{
+
+.vhd__datepicker__dummy-wrapper {
   border: none;
 }
-.vhd__datepicker__input{
-  padding: 0;text-align: left;
+
+.vhd__datepicker__input {
+  padding: 0;
+  text-align: left;
 }
+
 .vhd__datepicker__input:first-child {
-    background-position: 80px;
-}
-</style>
+  background-position: 80px;
+}</style>

@@ -21,71 +21,139 @@
                         <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
                     </a>
                 </div>
-                <swiper class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1"
-                    :options="swiperOptions">
-                    <div class="swiper-slide" v-for="item in 10">
-                        <div class="list-item rounded-xxl">
-                            <div class="list-image position-relative">
-                                <a href="#!" class="d-block flex-shrink-0">
-                                    <img src="/uploads/villa-image1.jpg" data-src="." width="280" height="186"
-                                        alt="hotel image" class="main-image bg-light lazy cover rounded-xl w-100">
-                                </a>
-                                <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
-                                    <a href="javascript:void(0);"
-                                        class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
-                                        onclick="$(this).toggleClass('active')">
-                                        <i class="icon-heart"></i>
-                                        <i class="icon-heart-full"></i>
-
+                <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="item in 10">
+                            <div class="list-item rounded-xxl">
+                                <div class="list-image position-relative">
+                                    <a href="#!" class="d-block flex-shrink-0">
+                                        <img src="/uploads/villa-image1.jpg" data-src="." width="280" height="186"
+                                            alt="hotel image" class="main-image bg-light lazy cover rounded-xl w-100">
                                     </a>
+                                    <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
+                                        <a href="javascript:void(0);"
+                                            class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
+                                            onclick="$(this).toggleClass('active')">
+                                            <i class="icon-heart"></i>
+                                            <i class="icon-heart-full"></i>
+
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="list-content ps-3 pe-3 pt-2 pb-3">
-                                <div class="d-flex justify-content-between  mb-2 pb-1">
-                                    <div class="d-flex align-items-end">
-                                        <div class="d-flex flex-column item-name">
-                                            <small>Tesis Kodu</small>
-                                            <span
-                                                class="list-title fs-6 lh-sm fw-medium ls-05 d-block me-2">VKV1020</span>
+                                <div class="list-content ps-3 pe-3 pt-2 pb-3">
+                                    <div class="d-flex justify-content-between  mb-2 pb-1">
+                                        <div class="d-flex align-items-end">
+                                            <div class="d-flex flex-column item-name">
+                                                <small>Tesis Kodu</small>
+                                                <span
+                                                    class="list-title fs-6 lh-sm fw-medium ls-05 d-block me-2">VKV1020</span>
+                                            </div>
+                                            <div class="d-flex align-items-center fw-medium text-theme-secondary">
+                                                <i class="icon-star"></i>
+                                                <span>4,9</span>
+                                            </div>
                                         </div>
-                                        <div class="d-flex align-items-center fw-medium text-theme-secondary">
-                                            <i class="icon-star"></i>
-                                            <span>4,9</span>
+                                        <div class="item-location d-flex align-items-center text-theme-secondary">
+                                            <i class="icon-pin"></i>
+                                            <span class="lh-sm d-flex flex-column"><b
+                                                    class="text-theme-first">KALKAN</b>Türkiye / Antalya</span>
                                         </div>
                                     </div>
-                                    <div class="item-location d-flex align-items-center text-theme-secondary">
-                                        <i class="icon-pin"></i>
-                                        <span class="lh-sm d-flex flex-column"><b
-                                                class="text-theme-first">KALKAN</b>Türkiye / Antalya</span>
+                                    <div class="item-infos row gx-2 pe-1 pb-2 d-flex">
+                                        <div class="info  d-flex align-items-center rounded-sm">
+                                            <i class="icon-user"></i>
+                                            <span class="lh-sm text-theme-first text-sm">4 Kişilik</span>
+                                        </div>
+                                        <div class="info  d-flex align-items-center rounded-sm">
+                                            <i class="icon-shower"></i>
+                                            <span class="lh-sm text-theme-first text-sm">2 Yatak Odası</span>
+                                        </div>
+                                        <div class="info  d-flex align-items-center rounded-sm">
+                                            <i class="icon-bed"></i>
+                                            <span class="lh-sm text-theme-first text-sm">2 Banyo</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="item-infos row gx-2 pe-1 pb-2 d-flex">
-                                    <div class="info  d-flex align-items-center rounded-sm">
-                                        <i class="icon-user"></i>
-                                        <span class="lh-sm text-theme-first text-sm">4 Kişilik</span>
+                                    <div class="lh-sm ls-05 mt-1">
+                                        <span class="text-secondary list-item-info">Gecelik <strong
+                                                class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan
+                                            fiyatlarla</span>
                                     </div>
-                                    <div class="info  d-flex align-items-center rounded-sm">
-                                        <i class="icon-shower"></i>
-                                        <span class="lh-sm text-theme-first text-sm">2 Yatak Odası</span>
-                                    </div>
-                                    <div class="info  d-flex align-items-center rounded-sm">
-                                        <i class="icon-bed"></i>
-                                        <span class="lh-sm text-theme-first text-sm">2 Banyo</span>
-                                    </div>
-                                </div>
-                                <div class="lh-sm ls-05 mt-1">
-                                    <span class="text-secondary list-item-info">Gecelik <strong
-                                            class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan
-                                        fiyatlarla</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev list-navigation-prev" slot="button-prev"></div>
-                    <div class="swiper-button-next list-navigation-next" slot="button-next"></div>
-                </swiper>
+                    <!-- If pagination is needed -->
+
+                    <!-- If navigation buttons are needed -->
+                    <div class="swiper-button-prev list-navigation-prev"></div>
+                    <div class="swiper-button-next list-navigation-next"></div>
+                </div>
+                <!-- <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1"
+                            :options="swiperOptions">
+                            <div class="swiper-slide" v-for="item in 10">
+                                <div class="list-item rounded-xxl">
+                                    <div class="list-image position-relative">
+                                        <a href="#!" class="d-block flex-shrink-0">
+                                            <img src="/uploads/villa-image1.jpg" data-src="." width="280" height="186"
+                                                alt="hotel image" class="main-image bg-light lazy cover rounded-xl w-100">
+                                        </a>
+                                        <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
+                                            <a href="javascript:void(0);"
+                                                class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
+                                                onclick="$(this).toggleClass('active')">
+                                                <i class="icon-heart"></i>
+                                                <i class="icon-heart-full"></i>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="list-content ps-3 pe-3 pt-2 pb-3">
+                                        <div class="d-flex justify-content-between  mb-2 pb-1">
+                                            <div class="d-flex align-items-end">
+                                                <div class="d-flex flex-column item-name">
+                                                    <small>Tesis Kodu</small>
+                                                    <span
+                                                        class="list-title fs-6 lh-sm fw-medium ls-05 d-block me-2">VKV1020</span>
+                                                </div>
+                                                <div class="d-flex align-items-center fw-medium text-theme-secondary">
+                                                    <i class="icon-star"></i>
+                                                    <span>4,9</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-location d-flex align-items-center text-theme-secondary">
+                                                <i class="icon-pin"></i>
+                                                <span class="lh-sm d-flex flex-column"><b
+                                                        class="text-theme-first">KALKAN</b>Türkiye / Antalya</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-infos row gx-2 pe-1 pb-2 d-flex">
+                                            <div class="info  d-flex align-items-center rounded-sm">
+                                                <i class="icon-user"></i>
+                                                <span class="lh-sm text-theme-first text-sm">4 Kişilik</span>
+                                            </div>
+                                            <div class="info  d-flex align-items-center rounded-sm">
+                                                <i class="icon-shower"></i>
+                                                <span class="lh-sm text-theme-first text-sm">2 Yatak Odası</span>
+                                            </div>
+                                            <div class="info  d-flex align-items-center rounded-sm">
+                                                <i class="icon-bed"></i>
+                                                <span class="lh-sm text-theme-first text-sm">2 Banyo</span>
+                                            </div>
+                                        </div>
+                                        <div class="lh-sm ls-05 mt-1">
+                                            <span class="text-secondary list-item-info">Gecelik <strong
+                                                    class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan
+                                                fiyatlarla</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-prev list-navigation-prev" slot="button-prev"></div>
+                            <div class="swiper-button-next list-navigation-next" slot="button-next"></div>
+                        </div>  -->
             </div>
         </section>
+
         <section class="holiday-banner-section mb-3 pb-4">
             <div class="container">
                 <div
@@ -126,9 +194,9 @@
                         <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
                     </a>
                 </div>
-                <swiper class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1"
-                    :options="swiperOptions">
-                    <div class="swiper-slide" v-for="item in 10">
+                <div class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="item in 10">
                         <div class="list-item list-item-firsat rounded-xxl">
                             <div class="list-image position-relative">
                                 <a href="#!" class="d-block flex-shrink-0">
@@ -187,9 +255,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev list-navigation-prev" slot="button-prev"></div>
-                    <div class="swiper-button-next list-navigation-next" slot="button-next"></div>
-                </swiper>
+                    </div>
+                    <div class="swiper-button-prev list-navigation-prev"></div>
+                    <div class="swiper-button-next list-navigation-next"></div>
+                </div>
 
             </div>
         </section>
@@ -201,8 +270,8 @@
                 <div class="categories">
                     <a href="#!"
                         class="cat-item no-hover area1 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
-                        <img src="/uploads/category-image1.jpg" data-src="" width="380" height="235"
-                            alt="category image" class="cat-image lazy cover w-100 h-100">
+                        <img src="/uploads/category-image1.jpg" data-src="" width="380" height="235" alt="category image"
+                            class="cat-image lazy cover w-100 h-100">
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -218,8 +287,8 @@
                     </a>
                     <a href="#!"
                         class="cat-item no-hover area2 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
-                        <img src="/uploads/category-image2.jpg" data-src="" width="380" height="235"
-                            alt="category image" class="cat-image lazy cover w-100 h-100">
+                        <img src="/uploads/category-image2.jpg" data-src="" width="380" height="235" alt="category image"
+                            class="cat-image lazy cover w-100 h-100">
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -235,8 +304,8 @@
                     </a>
                     <a href="#!"
                         class="cat-item no-hover area3 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
-                        <img src="/uploads/category-image3.jpg" data-src="" width="380" height="235"
-                            alt="category image" class="cat-image lazy cover w-100 h-100">
+                        <img src="/uploads/category-image3.jpg" data-src="" width="380" height="235" alt="category image"
+                            class="cat-image lazy cover w-100 h-100">
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -252,8 +321,8 @@
                     </a>
                     <a href="#!"
                         class="cat-item no-hover area4 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
-                        <img src="/uploads/category-image4.jpg" data-src="" width="380" height="235"
-                            alt="category image" class="cat-image lazy cover w-100 h-100">
+                        <img src="/uploads/category-image4.jpg" data-src="" width="380" height="235" alt="category image"
+                            class="cat-image lazy cover w-100 h-100">
                         <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1">
                             <small>Yeni Listenenler</small>
                         </div>
@@ -272,8 +341,8 @@
                     </a>
                     <a href="#!"
                         class="cat-item no-hover area5 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
-                        <img src="/uploads/category-image5.jpg" data-src="" width="380" height="235"
-                            alt="category image" class="cat-image lazy cover w-100 h-100">
+                        <img src="/uploads/category-image5.jpg" data-src="" width="380" height="235" alt="category image"
+                            class="cat-image lazy cover w-100 h-100">
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -289,8 +358,8 @@
                     </a>
                     <a href="#!"
                         class="cat-item no-hover area6 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
-                        <img src="/uploads/category-image7.jpg" data-src="" width="380" height="235"
-                            alt="category image" class="cat-image lazy cover w-100 h-100">
+                        <img src="/uploads/category-image7.jpg" data-src="" width="380" height="235" alt="category image"
+                            class="cat-image lazy cover w-100 h-100">
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -321,8 +390,7 @@
                         <i class="info-logo"></i>
                     </div>
                     <div class="col-12 col-md-10 col-lg-9 ps-xl-0">
-                        <span
-                            class="fs-3 ls-05 text-theme-primary d-block mb-3 pb-1 text-md-start text-center">Villakalkan
+                        <span class="fs-3 ls-05 text-theme-primary d-block mb-3 pb-1 text-md-start text-center">Villakalkan
                             ile yazlar sıcak ve eğlenceli</span>
                         <div class="description text-secondary fs-8 ls-1 lh-sm">
                             <strong class="fs-7 fw-medium text-theme-primary ls-05 d-block mb-2">Ucuz tatil
@@ -371,8 +439,14 @@
 </template>
 
 <script>
+import { Swiper, Navigation, Pagination } from 'swiper'
+import 'swiper/swiper-bundle.min.css'
+
 export default {
     name: 'IndexPage',
+    components: {
+        Swiper
+    },
     head() {
         let site_id = process.env.SITE
         return {
@@ -388,38 +462,68 @@ export default {
     },
     data() {
         return {
-            swiperOptions: {
-                slidesPerView: 1.1,
-                spaceBetween: 18,
-
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev'
-                },
-                breakpoints: {
-                    576: {
-                        slidesPerView: 2,
-                        spaceBetween: 18,
-                    },
-                    768: {
-                        slidesPerView: 3,
-                        spaceBetween: 18,
-                    },
-                    1199: {
-                        slidesPerView: 4,
-                        spaceBetween: 18,
-                    },
-                },
-
-            }
+           
         }
     },
-  async asyncData({$getRedisKey}) {
-    console.log(await $getRedisKey("web:4:pages:deneme"));
-  },
+    async asyncData({ $getRedisKey }) {
+        console.log(await $getRedisKey("web:4:pages:deneme"));
+    },
     mounted() {
         console.log(process.env.NODE_ENV);
         console.log(this.$config.message);
+
+        Swiper.use([Navigation, Pagination])
+
+        const swiper = new Swiper('.list-slide-first', {
+            slidesPerView: 1.1,
+            spaceBetween: 18,
+            direction: 'horizontal',
+            loop: true,
+            modules: [Navigation, Pagination],
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 18,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 18,
+                },
+                1199: {
+                    slidesPerView: 4,
+                    spaceBetween: 18,
+                },
+            },
+        })
+        const swiper2 = new Swiper('.list-slide-firsat', {
+            slidesPerView: 1.1,
+            spaceBetween: 18,
+            direction: 'horizontal',
+            loop: true,
+            modules: [Navigation, Pagination],
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 18,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 18,
+                },
+                1199: {
+                    slidesPerView: 4,
+                    spaceBetween: 18,
+                },
+            },
+        })
     }
 
 }

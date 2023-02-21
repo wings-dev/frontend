@@ -2839,9 +2839,11 @@
 </template>
 
 <script>
+
 export default {
   name: 'DetailPage',
   layout: 'no-search',
+ 
   head() {
     let site_id = process.env.SITE
     return {

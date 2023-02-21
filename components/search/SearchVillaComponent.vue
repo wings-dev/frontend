@@ -33,7 +33,9 @@
             <HotelDatePicker
               @check-in-changed="checkInChanged($event)"
               @check-out-changed="checkOutChanged($event)"
-              format="DD/MM/YYYY" :disabledDates="disableDates"></HotelDatePicker>
+              format="DD/MM/YYYY" :minNights="0"
+              :firstDayOfWeek="Number(weekfirstday)"
+              ></HotelDatePicker>
           </div>
         </div>
       </div>
@@ -127,6 +129,7 @@ export default {
       checkOut: null,
       adult: 1,
       children: 0,
+      weekfirstday : process.env.WEEKDAY,
       baby: 0,
       destinations: [
         {
