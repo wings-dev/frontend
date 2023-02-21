@@ -49,7 +49,7 @@ export default {
     "~/plugins/fancyapps-ui.js",
     "~/plugins/vue-tel-input",
     { src: '~plugins/vcalendar.js', ssr: false },
-    '~/plugins/redisHelper.js', 
+    '~/plugins/redisHelper.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -102,7 +102,7 @@ export default {
   ** Server Middleware
   */
   serverMiddleware: {
-    '/redis': '~/redis'
+    '/data': '~/redis'
   },
 
   // 301 yapılacak linkler için alan
