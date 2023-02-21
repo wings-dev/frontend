@@ -3,7 +3,7 @@
     <div class="Search-left">
       <div class="Search-item Search-item-region dropdown">
         <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                aria-expanded="false">
+          aria-expanded="false">
           <div
             class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
             <i class="icon-pin"></i>
@@ -12,12 +12,12 @@
             <span class="Search-item-name">Bölge</span>
             <span class="dropdown-toggle-title">{{ selectedDestinations.length }} destinations</span>
           </div>
-          <i class="icon-down-chevron"></i>
+          <i class="icon-down-arrow"></i>
         </button>
         <ul class="dropdown-menu filtered" aria-labelledby="dropdownMenuButton1">
           <filter-item-checkbox-component :hideTitle="true" filterInputPlaceholder="Bölge Arayın"
-                                          :checkboxes="destinations" :hideTitleBorder="true"
-                                          @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
+            :checkboxes="destinations" :hideTitleBorder="true"
+            @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
 
         </ul>
       </div>
@@ -30,18 +30,14 @@
         <div class="Search-item-date">
           <span class="Search-item-name">Giriş / Çıkış Tarihi {{ checkIn }} {{ checkOut }}</span>
           <div class="Search-item-date-inputs">
-            <HotelDatePicker
-              @check-in-changed="checkInChanged($event)"
-              @check-out-changed="checkOutChanged($event)"
-              format="DD/MM/YYYY" :minNights="0"
-              :firstDayOfWeek="Number(weekfirstday)"
-              ></HotelDatePicker>
+            <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
+              format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker>
           </div>
         </div>
       </div>
       <div class="Search-item Search-item-people">
         <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
-                data-bs-toggle="dropdown" aria-expanded="false">
+          data-bs-toggle="dropdown" aria-expanded="false">
           <div
             class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
             <i class="icon-group-user"></i>
@@ -49,7 +45,7 @@
           <div class="Search-item-people-in">
             <span class="Search-item-name">Kişi Sayısı</span>
             <span class="dropdown-toggle-title">{{ selectedPersonText }}</span>
-            <i class="icon-down-chevron"></i>
+            <i class="icon-down-arrow"></i>
           </div>
 
         </button>
@@ -68,7 +64,7 @@
               <p>Children <br><span>Between 6-17 </span></p>
               <div class="Search-item-person-item-in ">
                 <button type="button" class="minus-person" onclick=""><i class="icon-minus "
-                                                                         @click="children_Decrease"></i></button>
+                    @click="children_Decrease"></i></button>
                 <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
                 <button type="button" class="plus-person"><i class="icon-plus " @click="children_Increase"></i>
                 </button>
@@ -78,11 +74,9 @@
               <p>Children<br><span>Between 0-5</span></p>
               <div class="Search-item-person-item-in ">
 
-                <button type="button" class="minus-person" onclick=""><i class="icon-minus "
-                                                                         @click="baby_Decrease"></i>
+                <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="baby_Decrease"></i>
                 </button>
-                <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5"
-                       readonly>
+                <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
                 <button type="button" class="plus-person"><i class="icon-plus " @click="baby_Increase"></i>
                 </button>
 
@@ -93,27 +87,27 @@
       </div>
       <div class="Search-item Search-item-more">
         <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                aria-expanded="false">
+          aria-expanded="false">
           <i class="icon-filter"></i>
           <span class="dropdown-toggle-title">Gelişmiş Arama</span>
-          <i class="icon-down-chevron"></i>
+          <i class="icon-down-arrow"></i>
         </button>
         <ul class="dropdown-menu filtered " aria-labelledby="dropdownMenuButton3">
           <div class="dropdown-menu-in filtered-in">
             <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
-                                            @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
+              @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
             <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts"
-                                            @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
+              @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
           </div>
         </ul>
       </div>
     </div>
     <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()"><i
-      class="icon-filter"></i>
+        class="icon-filter"></i>
       <span class="dropdown-toggle-title">Gelişmiş Arama</span></button>
     <button type="button" class="Search-button" id="searchVilla" @click="search"><img
-      src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
-      class="contain flex-shrink-0 my-1"></button>
+        src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
+        class="contain flex-shrink-0 my-1"></button>
   </div>
 </template>
 
@@ -129,7 +123,7 @@ export default {
       checkOut: null,
       adult: 1,
       children: 0,
-      weekfirstday : process.env.WEEKDAY,
+      weekfirstday: process.env.WEEKDAY,
       baby: 0,
       destinations: [
         {
@@ -280,10 +274,10 @@ export default {
         ],
       },
       orderValues: [
-        {value: 0, text: "Fiyata Göre Artan"},
-        {value: 1, text: "Fiyata Göre Azalan"},
-        {value: 2, text: "Yeniden Eskiye"},
-        {value: 3, text: "Eskiden Yeniye"},
+        { value: 0, text: "Fiyata Göre Artan" },
+        { value: 1, text: "Fiyata Göre Azalan" },
+        { value: 2, text: "Yeniden Eskiye" },
+        { value: 3, text: "Eskiden Yeniye" },
       ],
       orderValue: null,
       orderPlaceholder: "Sırala:"
@@ -437,5 +431,20 @@ export default {
 
 :deep() .vhd__datepicker__input:first-child {
   background-position: 80px !important;
+}
+
+:deep() .vhd__datepicker__month-day--today .vhd__datepicker__month-day-wrapper {
+  border-color: var(--bs-theme-first);
+}
+
+:deep() .vhd__datepicker__month-day--allowed-checkout:hover,
+:deep() .vhd__datepicker__month-day--valid:hover,
+:deep() .vhd__datepicker__month-day--selected,
+:deep() .vhd__datepicker__month-day--first-day-selected,
+:deep() .vhd__datepicker__month-day--last-day-selected {
+  background-color: var(--bs-theme-first-dark) ;
+}
+:deep() .vhd__datepicker__tooltip{
+  padding: 3px 4px;
 }
 </style>

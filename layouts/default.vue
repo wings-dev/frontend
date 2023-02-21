@@ -45,7 +45,7 @@
         <div class="fav-list-wrapper align-self-center me-1">
           <button type="button"
             class="toggle-favs search-button flex-shrink-0 btn btn-theme-first-dark rounded-circle d-flex align-items-center justify-content-center shadow-none p-0"
-            aria-label="Favorileri aç" id="searchButton" @click="openSearch()">
+            aria-label="Favorileri aç" id="searchButton" @click="openSearch($event)">
             <i class="icon-search"></i>
           </button>
           <div class="fav-list"></div>
@@ -347,7 +347,7 @@ export default {
       document.querySelector('.Filter-left').classList.add("show")
       document.querySelector('body').classList.add("over")
     },
-    openSearch(e) {
+    openSearch(e) {      
       document.querySelector('.Search-villas').classList.toggle('Search-villas-active')
       document.querySelector('body').classList.toggle("over")
       document.querySelector('#searchButton i').classList.toggle('icon-search')

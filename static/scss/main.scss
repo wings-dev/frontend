@@ -637,7 +637,10 @@ body.overflow-hidden {
         }
       }
     }
-
+    .icon-down-arrow {
+      font-size: 9px;
+      color: var(--bs-theme-first-dark);
+    }
     &-region {
       .dropdown-toggle {
         flex-direction: row;
@@ -655,8 +658,9 @@ body.overflow-hidden {
       &-in {
         display: flex;
         flex-direction: column;
+        width: 100%;
       }
-      i.icon-down-chevron {
+      i.icon-down-arrow {
         position: absolute;
         right: 0;
         top: 34%;
@@ -957,6 +961,7 @@ body.overflow-hidden {
     height: calc(100vh - 151px);
     opacity: 1;
     visibility: visible;
+    z-index: 9;
   }
 
   &-in {
@@ -1017,6 +1022,8 @@ body.overflow-hidden {
   }
   &-item {
     width: 23.2%;
+    height: max-content;
+    max-height: 195px;
     border: 1px solid #5b6c8f;
     border-radius: 16px;
     &-in {
