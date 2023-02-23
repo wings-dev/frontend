@@ -383,13 +383,15 @@ export default {
   components: {
     VSelect
   },
-  mounted() {
+  created() {
     this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
     this.applySelectedFilters('amenites', 'highlights');
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
 
+  },
+  mounted() {
     this.filter();
   },
   computed: {
