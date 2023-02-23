@@ -384,14 +384,13 @@ export default {
     VSelect
   },
   mounted() {
-    this.filter();
-    console.log(this.findNestedObject(this.destinations, '1'))
-
     this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
     this.applySelectedFilters('amenites', 'highlights');
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
+
+    this.filter();
   },
   computed: {
     totalPages() {
