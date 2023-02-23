@@ -211,6 +211,9 @@ import VSelect from "@alfsnd/vue-bootstrap-select";
 
 export default {
   name: "FilterVillaComponent",
+  props: {
+    selectedFilters: {type: Object, default: {}},
+  },
   data() {
     return {
       current_page: 1,
@@ -382,6 +385,13 @@ export default {
   },
   mounted() {
     this.filter();
+    console.log(this.findNestedObject(this.destinations, '1'))
+
+    this.applySelectedFilters('destinations', null);
+    this.applySelectedFilters('amenites', 'facilityConcepts');
+    this.applySelectedFilters('amenites', 'highlights');
+    this.applySelectedFilters('amenites', 'facilityTypes');
+    this.applySelectedFilters('amenites', 'facilities');
   },
   computed: {
     totalPages() {
@@ -416,6 +426,22 @@ export default {
     }
   },
   methods: {
+    applySelectedFilters(property, nestedProperty) {
+      let filters = [];
+      if (nestedProperty)
+        filters = this.selectedFilters[property]?.[nestedProperty] || [];
+      else
+        filters = this.selectedFilters[property] || [];
+      let checkboxes = [];
+      if (nestedProperty)
+        checkboxes = this[property][nestedProperty];
+      else
+        checkboxes = this[property];
+      for (let i = 0; i < filters.length; i++) {
+        const checkbox = this.findNestedObject(checkboxes, filters[i].code);
+        checkbox.selected = true;
+      }
+    },
     updateFilter(key, value, sendRequest = true) {
       this[key] = value;
       sendRequest && this.filter();
@@ -455,6 +481,16 @@ export default {
         if (checkbox.children) selected.push(...this.getSelectedObjects(checkbox.children));
         return selected;
       }, []);
+    },
+    findNestedObject(checkboxes, code) {
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].code == code) return checkboxes[i];
+        if (checkboxes[i].children) {
+          const found = this.findNestedObject(checkboxes[i].children, code);
+          if (found) return found;
+        }
+      }
+      return null;
     },
     unselect(item) {
       item.selected = false;

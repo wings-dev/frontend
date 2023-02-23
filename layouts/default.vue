@@ -22,7 +22,7 @@
         </a>
         <nav class="header-menu flex-fill">
           <ul class="menu d-flex flex-column flex-xl-row align-items-xl-center ls-1 fw-medium h-100 mb-xl-0 mb-3">
-            <li class="h-100 me-xl-2 pe-xl-1"><a href="#!"
+            <li class="h-100 me-xl-2 pe-xl-1"><a href="/kalkan-villalari"
                 class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Villa
                 Holidays</a></li>
             <li class="h-100 me-xl-2 pe-xl-1"><a href="#!"
@@ -347,7 +347,7 @@ export default {
       document.querySelector('.Filter-left').classList.add("show")
       document.querySelector('body').classList.add("over")
     },
-    openSearch(e) {      
+    openSearch(e) {
       document.querySelector('.Search-villas').classList.toggle('Search-villas-active')
       document.querySelector('body').classList.toggle("over")
       document.querySelector('#searchButton i').classList.toggle('icon-search')

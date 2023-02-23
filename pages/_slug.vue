@@ -1,12 +1,17 @@
 <template>
   <div>
-    <dynamic-page-detail :villa="componentData" v-if="type === 2"></dynamic-page-detail>
+    <dynamic-detail-page :villa="componentData" v-if="type === 2"></dynamic-detail-page>
+    <dynamic-villa-filter-page :selectedFilters="componentData" v-if="type === 7"></dynamic-villa-filter-page>
   </div>
 </template>
 
 <script>
+import DynamicVillaFilterPage from "@/components/dynamic-page/villa-filter.vue";
+import DynamicDetailPage from "@/components/dynamic-page/detail.vue";
+
 export default {
   name: 'DynamicPage',
+  components: {DynamicDetailPage, DynamicVillaFilterPage},
   layout: "no-search",
   head() {
     return this.headData
@@ -45,6 +50,16 @@ export default {
 
         // villa redis datası
         componentData = await $getRedisKey(`data:villas:${redisData.code}:detail`);
+      }
+
+      // type 7 => filtre sayfası
+      if (redisData.type === 7) {
+        headData.link = [
+          {rel: 'stylesheet', href: `/css/listeleme.min.css`}
+        ]
+
+        // filtre redis datası
+        componentData = redisData.data;
       }
 
       console.log(componentData);
