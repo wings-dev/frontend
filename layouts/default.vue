@@ -58,10 +58,14 @@
           </button>
           <div class="fav-list"></div>
         </div>
-        <button type="button"
-          class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none"
-          data-bs-toggle="modal" data-bs-target="#signupModal">
+        <button v-if="!$auth.loggedIn" type="button"
+                class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none"
+                data-bs-toggle="modal" data-bs-target="#signupModal">
           <span class="d-inline-block px-1 px-xl-2 py-1 py-xl-0">ÜYE GİRİŞİ YAP</span>
+        </button>
+        <button v-else type="button"
+                class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none">
+          <span class="d-inline-block px-1 px-xl-2 py-1 py-xl-0" @click="logout()">{{$auth.user.name}} ÇIKIŞ YAP</span>
         </button>
         <button type="button" class="menu-toggle bg-transparent align-self-center d-xl-none ms-xl-0 ms-md-4"
           onclick="$(this).toggleClass('hide');$('.header-menu').toggleClass('show');$('.header-menu-shadow').toggleClass('show');">
@@ -325,6 +329,7 @@ import HotelDatePicker from 'vue-hotel-datepicker'
 import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
 export default {
   name: "default",
+  middleware: ['jwt'],
   head() {
     let site_id = process.env.SITE
     return {
@@ -343,6 +348,10 @@ export default {
     HotelDatePicker,
   },
   methods: {
+    async logout() {
+      await this.$auth.logout()
+      location.href = '/';
+    },
     showMobileFilter() {
       document.querySelector('.Filter-left').classList.add("show")
       document.querySelector('body').classList.add("over")

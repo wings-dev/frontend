@@ -34,7 +34,14 @@
     </section>
 
     <div class="container mt-2">
-      <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal">GİRİŞ YAP MODAL</button>
+      <client-only>
+        <login-modal>
+          <template #button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal">GİRİŞ YAP MODAL</button>
+          </template>
+        </login-modal>
+      </client-only>
+
       <button type="button" data-bs-toggle="modal" data-bs-target="#loginCodeModal">KOD DOĞRULAMA MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#signupModal">KAYIT MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#callModal">SİZİ ARAYALIM MODAL</button>
@@ -42,102 +49,6 @@
 
 
 
-      <!-- Giriş Modal -->
-      <div class="modal fade Login" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                class="icon-login-close"></i></button>
-            <div class="Login-in">
-              <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
-              <div class="Login-right">
-                <div class="Login-right-in">
-                  <h2><b>MÜŞTERİ </b> GİRİŞİ</h2>
-                  <p>Lütfen bir giriş yöntemi seçiniz.</p>
-                  <span>Yurtdışında yaşayan müşterilerimizin <u>e-posta</u> ile giriş yapması gerekmektedir.</span>
-                  <form action="" class="Login-form">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                      <li class="nav-item" role="presentation">
-                        <input type="radio" name="loginFormType" checked id="loginFormRadio" data-bs-toggle="pill"
-                          data-bs-target="#loginFormPhoneContent">
-                        <label for="loginFormRadio">
-                          <i class="icon-login-phone"></i>
-                          <span>Telefon ile giriş yap</span>
-                        </label>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <input type="radio" name="loginFormType" id="loginFormRadio2" data-bs-toggle="pill"
-                          data-bs-target="#loginFormMailContent">
-                        <label for="loginFormRadio2">
-                          <i class="icon-login-mail"></i>
-                          <span>E-posta ile giriş yap</span>
-                        </label>
-                      </li>
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                      <div class="tab-pane fade show active" role="tabpanel" id="loginFormPhoneContent">
-                        <label for="" class="Login-form-item ">
-                          <i class="icon-flag-tr"></i>
-                          <input type="text" placeholder="+90" value="+90" id="inputTR">
-                        </label>
-                        <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert"></p>
-                        <button type="submit" class="Login-form-button">GÖNDER</button>
-                        <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
-                      </div>
-                      <div class="tab-pane fade" role="tabpanel" id="loginFormMailContent">
-                        <label for="" class="Login-form-item ">
-                          <input type="text" placeholder="E-mail adresiniz" value="" id="mailInput">
-                        </label>
-                        <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert"></p>
-                        <button type="submit" class="Login-form-button">GÖNDER</button>
-                        <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Doğrulama Kodu Modal -->
-
-      <div class="modal fade Login" id="loginCodeModal" tabindex="-1" aria-labelledby="loginCodeModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                class="icon-login-close"></i></button>
-            <div class="Login-in">
-              <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
-              <div class="Login-right">
-                <div class="Login-right-in">
-                  <h2><b>DOĞRULAMA </b> KODU</h2>
-                  <span>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
-                  <form action="" class="Login-form">
-                    <fieldset name='number-code' data-number-code-form>
-                      <input class="number-code" type="number" min='0' max='9' name='number-code-0'
-                        data-number-code-input='0' required />
-                      <input class="number-code" type="number" min='0' max='9' name='number-code-1'
-                        data-number-code-input='1' required />
-                      <input class="number-code" type="number" min='0' max='9' name='number-code-2'
-                        data-number-code-input='2' required />
-                      <input class="number-code" type="number" min='0' max='9' name='number-code-3'
-                        data-number-code-input='3' required />
-                    </fieldset>
-                    <p class="Login-code-info" data-time="50"><b>00:30</b> Tekrar talep etmek için beklemeniz gereken
-                      süre
-                      <a href="">Yeni Doğrulama Kodu Gönder</a>
-                    </p>
-                    <button type="submit" class="Login-form-button mt-1">GÖNDER</button>
-                    <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- Kayıt Modal -->
 
@@ -590,6 +501,7 @@
 
 <script>
 import VSelect from "@alfsnd/vue-bootstrap-select";
+import LoginModal from "@/components/modals/login-modal.vue";
 
 
 export default {
@@ -613,6 +525,7 @@ export default {
     }
   },
   components: {
+    LoginModal,
     VSelect,
   },
   methods: {
