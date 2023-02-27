@@ -50,6 +50,8 @@
 
 <script>
 
+import {mapActions, mapMutations} from "vuex";
+
 export default {
   name: "RegisterModal",
   data() {
@@ -86,8 +88,10 @@ export default {
     formValidated() {
       return this.form.name && this.form.email && this.phoneObject.valid && this.checkboxAcceptRules;
     }
-  }, // TODO actions ile modelleri açtır
+  },
   methods: {
+    ...mapMutations(['setLoginCodeModalData']),
+    ...mapActions(['showLoginCodeModal', 'hideRegisterModal']),
     onInput(phone, phoneObject) {
       setTimeout(() => {
         this.phoneObject = phoneObject;
@@ -108,7 +112,28 @@ export default {
       try {
         const response = await this.$axios.post('/api/register', this.form);
         if (response.data.status === true) {
-          alert(response.data.message)
+
+          const data = {
+            source_id: process.env.SITE
+          };
+          if (this.form.prephone === '90') {
+            data.prephone = '90';
+            data.phone = this.form.phone;
+          } else if (this.loginType === 'email') {
+            data.email = this.form.email;
+          }
+          const response = await this.$axios.post('/api/sendcode', data);
+
+          this.hideRegisterModal();
+
+          this.setLoginCodeModalData({
+            loginType: this.form.prephone === '90' ? 'phone': 'email',
+            phone: this.phone,
+            email: this.email,
+          })
+
+          this.showLoginCodeModal()
+
         } else {
           alert(response.data.message)
         }

@@ -276,6 +276,10 @@
     </client-only>
 
     <client-only>
+      <login-code-modal></login-code-modal>
+    </client-only>
+
+    <client-only>
       <register-modal></register-modal>
     </client-only>
   </div>
@@ -285,10 +289,11 @@
 import { mapActions } from 'vuex'
 import LoginModal from "@/components/modals/login-modal.vue";
 import RegisterModal from "@/components/modals/register-modal.vue";
+import LoginCodeModal from "@/components/modals/login-code-modal.vue";
 
 export default {
   name: "default",
-  components: {RegisterModal, LoginModal},
+  components: {LoginCodeModal, RegisterModal, LoginModal},
   middleware: ['jwt'],
   head() {
     let site_id = process.env.SITE

@@ -7,7 +7,7 @@
           class="icon-login-close"></i></button>
 
         <!-- Kod gönderme içeriği -->
-        <div v-if="step === 'sendcode'" class="Login-in">
+        <div class="Login-in">
           <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
           <div class="Login-right">
             <div class="Login-right-in">
@@ -62,43 +62,6 @@
           </div>
         </div>
 
-        <!-- Kod doğrulama içeriği -->
-        <div v-if="step === 'entercode'" class="Login-in">
-          <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
-          <div class="Login-right">
-            <div class="Login-right-in">
-              <h2><b>DOĞRULAMA </b> KODU</h2>
-              <span>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
-              <form action="" class="Login-form"@submit.prevent="entercode" >
-                <fieldset name='number-code' data-number-code-form>
-                  <input
-                    v-for="(code, index) in codes"
-                    :key="index"
-                    ref="codeInputs"
-                    class="number-code"
-                    type="number"
-                    :name="'number-code-'+index"
-                    :data-number-code-input="index"
-                    min="0"
-                    max="9"
-                    v-model="codes[index]"
-                    @input="onInput($event, index)"
-                    @keydown="onKeyDown($event, index)"
-                    @keyup="onKeyUp($event, index)"
-                    @paste="onPaste"
-                    required
-                  />
-                </fieldset>
-                <p class="Login-code-info" data-time="50"><b>00:30</b> Tekrar talep etmek için beklemeniz gereken
-                  süre
-                  <a href="">Yeni Doğrulama Kodu Gönder</a>
-                </p>
-                <button type="submit" class="Login-form-button mt-1">GÖNDER</button>
-                <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
-              </form>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -106,12 +69,12 @@
 
 <script>
 import jwt_decode from 'jwt-decode'
+import {mapActions, mapMutations} from "vuex";
 
 export default {
   name: "LoginModal",
   data() {
     return {
-      step: 'sendcode',
       loginType: 'phone',
       phone: null,
       email: null,
@@ -124,6 +87,8 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['setLoginCodeModalData']),
+    ...mapActions(['hideLoginModal', 'showLoginCodeModal']),
     async sendcode() {
       try {
         const data = {
@@ -136,7 +101,13 @@ export default {
           data.email = this.email;
         }
         const response = await this.$axios.post('/api/sendcode', data);
-        this.step = 'entercode';
+        this.hideLoginModal()
+        this.setLoginCodeModalData({
+          loginType: 'phone',
+          phone: this.phone,
+          email: this.email,
+        })
+        this.showLoginCodeModal()
       } catch (error) {
         console.error(error);
       }

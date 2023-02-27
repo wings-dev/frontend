@@ -10,5 +10,11 @@ export default {
   },
   hideRegisterModal() {
     $('#signupModal').modal('hide')
+  },
+  showLoginCodeModal() {
+    $('#loginCodeModal').modal('show')
+  },
+  hideLoginCodeModal() {
+    $('#loginCodeModal').modal('hide')
   }
 }
