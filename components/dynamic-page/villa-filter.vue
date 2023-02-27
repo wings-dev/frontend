@@ -42,60 +42,17 @@
         </login-modal>
       </client-only>
 
-      <button type="button" data-bs-toggle="modal" data-bs-target="#loginCodeModal">KOD DOĞRULAMA MODAL</button>
-      <button type="button" data-bs-toggle="modal" data-bs-target="#signupModal">KAYIT MODAL</button>
+      <client-only>
+        <register-modal>
+          <template #button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#signupModal">KAYIT MODAL</button>
+          </template>
+        </register-modal>
+      </client-only>
+
       <button type="button" data-bs-toggle="modal" data-bs-target="#callModal">SİZİ ARAYALIM MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#favModal">FAV MODAL</button>
 
-
-
-
-      <!-- Kayıt Modal -->
-
-      <div class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                class="icon-login-close"></i></button>
-            <div class="Login-in">
-              <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
-              <div class="Login-right">
-                <div class="Login-right-in">
-                  <h2><b>KAYIT </b> OL</h2>
-                  <form action="" class="Login-form">
-                    <label for="" class="Login-form-item mb-2">
-                      <input type="text" placeholder="İsim Soyisim" value="">
-                    </label>
-                    <label for="" class="Login-form-item mb-2">
-                      <input type="text" placeholder="E-mail Adresiniz" value="" id="mailInput">
-                    </label>
-                    <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup"></p>
-                    <label for="" class="Login-form-item Login-form-item-tr">
-                      <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps" :defaultCountry="'TR'"></vue-tel-input>
-                    </label>
-                    <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert" v-if="phoneNumberValid === false">Lütfen doğru bir telefon numarası giriniz</p>
-                    <label for="gizlilik" class="Login-form-item Login-form-item-check">
-                      <input type="checkbox" id="gizlilik">
-                      <span></span>
-                      <p><a data-bs-toggle="modal" href="#kullanimModal">Kullanım Şartları</a> ve <a
-                          data-bs-toggle="modal" href="#gizlilikModal">Gizlilik bildirimini</a> kabul ediyorum.
-                        Kişisel Verilerin Korunması ve <a data-bs-toggle="modal" href="#gizlilikPolitikasiModal">Gizlilik
-                          Politikasını</a> okudum.</p>
-                    </label>
-                    <label for="firsat" class="Login-form-item Login-form-item-check">
-                      <input type="checkbox" id="firsat">
-                      <span></span>
-                      <p><a href="">Fırsat ve kampanyalardan haberdar olmak istiyorum.</a> </p>
-                    </label>
-                    <button type="submit" class="Login-form-button mt-2">KAYIT OL</button>
-
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- Sizi Arayalım Modal -->
       <div class="modal fade Login" id="callModal" tabindex="-1" aria-labelledby="callModalLabel" aria-hidden="true">
@@ -502,6 +459,7 @@
 <script>
 import VSelect from "@alfsnd/vue-bootstrap-select";
 import LoginModal from "@/components/modals/login-modal.vue";
+import RegisterModal from "@/components/modals/register-modal.vue";
 
 
 export default {
@@ -525,6 +483,7 @@ export default {
     }
   },
   components: {
+    RegisterModal,
     LoginModal,
     VSelect,
   },
