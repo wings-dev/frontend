@@ -3,7 +3,7 @@
     <slot name="button"></slot>
 
     <!-- Kayıt Modal -->
-    <div class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div ref="signupModal" class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
@@ -42,6 +42,7 @@
                     <p><a href="">Fırsat ve kampanyalardan haberdar olmak istiyorum.</a></p>
                   </label>
                   <button :disabled="!formValidated" :style="{ 'opacity':  formValidated ? '1' : '.5' }" type="submit" class="Login-form-button mt-2">KAYIT OL</button>
+                  <button class="Login-form-button mt-2" @click="test">test</button>
                 </form>
               </div>
             </div>
