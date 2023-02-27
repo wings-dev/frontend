@@ -161,12 +161,11 @@ export default {
 
         // decode JWT token to get user email
         const tokenPayload = jwt_decode(response.data.access_token)
-        const userEmail = tokenPayload.email
 
-        // manually set user email in auth store
-        this.$auth.setUser({email: userEmail})
+        // manually set user in auth store
+        this.$auth.setUser(tokenPayload)
 
-        location.href = '/';
+        location.reload();
       } catch (error) {
         console.error(error)
       }
