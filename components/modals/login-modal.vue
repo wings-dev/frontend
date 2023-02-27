@@ -18,7 +18,6 @@
                 <p>Lütfen bir giriş yöntemi seçiniz.</p>
                 <span>Yurtdışında yaşayan müşterilerimizin <u>e-posta</u> ile giriş yapması gerekmektedir.</span>
                 <form action="" class="Login-form" @submit.prevent="sendcode">
-                  {{ loginType }}
                   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                       <input v-model="loginType" v-bind:value="'phone'" type="radio" name="loginFormType"
@@ -30,7 +29,7 @@
                       </label>
                     </li>
                     <li class="nav-item" role="presentation">
-                      <input v-model="loginType" v-bind:value="'mail'" type="radio" name="loginFormType"
+                      <input v-model="loginType" v-bind:value="'email'" type="radio" name="loginFormType"
                              id="loginFormRadio2" data-bs-toggle="pill"
                              data-bs-target="#loginFormMailContent">
                       <label for="loginFormRadio2">
@@ -148,21 +147,23 @@ export default {
     },
     async entercode() {
       try {
-        const response = await this.$auth.loginWith('laravelJWT', {
-          data: {
-            prephone: '90',
-            phone: this.phone,
-            password: this.password,
-            source_id: process.env.SITE
-          }
-        })
+        const data = {
+          source_id: process.env.SITE,
+          password: this.password
+        };
+        if (this.loginType === 'phone') {
+          data.prephone = '90';
+          data.phone = this.phone;
+        } else if (this.loginType === 'email') {
+          data.email = this.email;
+        }
+        const response = await this.$auth.loginWith('laravelJWT', {data: data})
 
         // decode JWT token to get user email
         const tokenPayload = jwt_decode(response.data.access_token)
         const userEmail = tokenPayload.email
 
         // manually set user email in auth store
-        // TODO refreshde gidiyor, bunu middleware ile yapmayı dene
         this.$auth.setUser({email: userEmail})
 
         location.href = '/';

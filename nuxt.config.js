@@ -108,7 +108,7 @@ export default {
 
   proxy: {
     "/api/": {
-      target: "http://wings.rentals/",
+      target: "https://wings.rentals/",
       onProxyReq: (proxyReq, req, res) => {
         /*
         if (req._parsedUrl.query) {
