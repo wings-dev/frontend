@@ -350,7 +350,7 @@ export default {
   methods: {
     async logout() {
       await this.$auth.logout()
-      location.href = '/';
+      location.reload();
     },
     showMobileFilter() {
       document.querySelector('.Filter-left').classList.add("show")

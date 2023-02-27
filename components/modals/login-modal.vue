@@ -165,7 +165,7 @@ export default {
         // manually set user in auth store
         this.$auth.setUser(tokenPayload)
 
-        location.reload();
+        location.reload()
       } catch (error) {
         console.error(error)
       }
