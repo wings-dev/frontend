@@ -34,21 +34,10 @@
     </section>
 
     <div class="container mt-2">
-      <client-only>
-        <login-modal>
-          <template #button>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal">GİRİŞ YAP MODAL</button>
-          </template>
-        </login-modal>
-      </client-only>
+      <button type="button" @click="this.showLoginModal">GİRİŞ YAP MODAL</button>
+      <button type="button" @click="this.showRegisterModal">KAYIT MODAL</button>
 
-      <client-only>
-        <register-modal>
-          <template #button>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#signupModal">KAYIT MODAL</button>
-          </template>
-        </register-modal>
-      </client-only>
+
 
       <button type="button" data-bs-toggle="modal" data-bs-target="#callModal">SİZİ ARAYALIM MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#favModal">FAV MODAL</button>
@@ -460,6 +449,7 @@
 import VSelect from "@alfsnd/vue-bootstrap-select";
 import LoginModal from "@/components/modals/login-modal.vue";
 import RegisterModal from "@/components/modals/register-modal.vue";
+import {mapActions} from "vuex";
 
 
 export default {
@@ -488,6 +478,7 @@ export default {
     VSelect,
   },
   methods: {
+    ...mapActions(['showLoginModal', 'hideLoginModal', 'showRegisterModal', 'hideRegisterModal']),
     onInput(phone, phoneObject) {
       setTimeout(() => {
         this.phoneNumberValid = phoneObject.valid;
@@ -521,7 +512,6 @@ export default {
     },
   },
   mounted() {
-
   }
 }
 </script>

@@ -50,6 +50,7 @@ export default {
     "~/plugins/vue-tel-input",
     { src: '~plugins/vcalendar.js', ssr: false },
     '~/plugins/redisHelper.js',
+    { src: '~/plugins/jquery.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

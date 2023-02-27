@@ -270,12 +270,25 @@
         </div>
       </section>
     </footer>
+
+    <client-only>
+      <login-modal></login-modal>
+    </client-only>
+
+    <client-only>
+      <register-modal></register-modal>
+    </client-only>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import LoginModal from "@/components/modals/login-modal.vue";
+import RegisterModal from "@/components/modals/register-modal.vue";
+
 export default {
   name: "default",
+  components: {RegisterModal, LoginModal},
   middleware: ['jwt'],
   head() {
     let site_id = process.env.SITE
@@ -290,7 +303,10 @@ export default {
     async logout() {
       await this.$auth.logout()
       location.reload()
-    }
+    },
+    ...mapActions(['openLoginModal'])
+  },
+  mounted() {
   }
 }
 </script>
