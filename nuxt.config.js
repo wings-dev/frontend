@@ -43,7 +43,7 @@ export default {
   ],
   googleFonts: {
     families: {
-      Montserrat: [200, 300,400,500,700],      
+      Montserrat: [200, 300,400,500,700],
     }
   },
 
@@ -60,7 +60,7 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  target: "static",
+  target: "server",
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [["@nuxtjs/dotenv", { systemvars: true }], "@nuxt/image"],
@@ -140,6 +140,7 @@ export default {
 
   // 301 yapılacak linkler için alan
   router: {
+    trailingSlash:false,
     extendRoutes(routes, resolve) {
       require("./301").apply(routes, resolve);
     }
