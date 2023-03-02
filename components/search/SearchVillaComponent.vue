@@ -28,7 +28,7 @@
         </div>
 
         <div class="Search-item-date">
-          <span class="Search-item-name">Giriş / Çıkış Tarihi {{ checkIn }} {{ checkOut }}</span>
+          <span class="Search-item-name">Giriş / Çıkış Tarihi</span>
           <div class="Search-item-date-inputs">
             <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker>
@@ -113,6 +113,7 @@
 
 <script>
 import HotelDatePicker from "vue-hotel-datepicker";
+import {mapState} from "vuex";
 
 export default {
   name: "SearchVillaComponent",
@@ -125,153 +126,12 @@ export default {
       children: 0,
       weekfirstday: process.env.WEEKDAY,
       baby: 0,
-      destinations: [
-        {
-          text: "Antalya",
-          code: 0,
-          selected: false,
-          children: [
-            {
-              text: "Kaş",
-              code: 2,
-              selected: false,
-              children: [
-                {
-                  text: "Kalkan",
-                  code: 1,
-                  selected: false,
-                }
-              ]
-            }
-          ]
-        },
-        {
-          text: "Çavdır",
-          code: 0,
-          selected: false,
-          children: [
-            {
-              text: "Fethiye",
-              code: 6,
-              selected: false,
-            },
-            {
-              text: "Marmaris",
-              code: 0,
-              selected: false,
-            }
-          ]
-        }
-      ],
+      destinations: [],
       amenites: {
-        facilityTypes: [
-          {
-            text: "Villa",
-            code: "234",
-            selected: false,
-          },
-          {
-            text: "Ev",
-            code: "233",
-            selected: false,
-          },
-          {
-            text: "Suite",
-            code: "232",
-            selected: false,
-          },
-          {
-            text: "Dubleks",
-            code: "231",
-            selected: false,
-          },
-          {
-            text: "Bungalov",
-            code: "230",
-            selected: false,
-          },
-        ],
-        facilityConcepts: [
-          {
-            text: "Deniz manzaralı villa ve evler",
-            code: "229",
-            selected: false,
-          },
-          {
-            text: "Merkezi konumdaki evler",
-            code: "228",
-            selected: false,
-          },
-          {
-            text: "Lüks tatil villaları",
-            code: "227",
-            selected: false,
-          },
-          {
-            text: "Lüks tatil villaları",
-            code: "226",
-            selected: false,
-          },
-          {
-            text: "Muhafazakar villa",
-            code: "225",
-            selected: false,
-          },
-        ],
-        highlights: [
-          {
-            text: "Özel Havuz",
-            code: "224",
-            selected: false,
-          },
-          {
-            text: "Şezlong",
-            code: "223",
-            selected: false,
-          },
-          {
-            text: "Ortak Havuz",
-            code: "222",
-            selected: false,
-          },
-          {
-            text: "Isıtmalı Havuz",
-            code: "221",
-            selected: false,
-          },
-          {
-            text: "Kapalı Havuz",
-            code: "220",
-            selected: false,
-          },
-        ],
-        facilities: [
-          {
-            text: "Çamaşır Makinesi",
-            code: "219",
-            selected: false,
-          },
-          {
-            text: "Hamam",
-            code: "218",
-            selected: false,
-          },
-          {
-            text: "Sauna",
-            code: "217",
-            selected: false,
-          },
-          {
-            text: "Küvetli Banyo",
-            code: "216",
-            selected: false,
-          },
-          {
-            text: "Fırın",
-            code: "215",
-            selected: false,
-          },
-        ],
+        facilityTypes: [],
+        facilityConcepts: [],
+        highlights: [],
+        facilities: [],
       },
       orderValues: [
         { value: 0, text: "Fiyata Göre Artan" },
@@ -286,9 +146,14 @@ export default {
   components: {
     HotelDatePicker
   },
+  created() {
+    this.destinations = JSON.parse(JSON.stringify(this.searchData.destinations));
+    this.amenites = JSON.parse(JSON.stringify(this.searchData.amenites));
+  },
   mounted() {
   },
   computed: {
+    ...mapState(['searchData']),
     selectedDestinations() {
       return this.getSelectedObjects(this.destinations);
     },
@@ -370,18 +235,23 @@ export default {
       }
     },
     search() {
-      this.$router.push({
-        name: 'listele', query: {
-          destinations: this.selectedDestinations.map(item => item.code),
-          checkIn: this.checkIn,
-          checkOut: this.checkOut,
-          adult: this.adult,
-          children: this.children,
-          baby: this.baby,
-          facilityTypes: this.selectedFacilityTypes.map(item => item.code),
-          facilityConcepts: this.selectedFacilityConcepts.map(item => item.code),
-        }
-      })
+      const queryParams = {
+        destinations: this.selectedDestinations.map(item => item.code),
+        checkIn: this.checkIn,
+        checkOut: this.checkOut,
+        adult: this.adult,
+        children: this.children,
+        baby: this.baby,
+        facilityTypes: this.selectedFacilityTypes.map(item => item.code),
+        facilityConcepts: this.selectedFacilityConcepts.map(item => item.code),
+      };
+
+      const urlSearchParams = Object.entries(queryParams)
+        .filter(([key, value]) => value !== undefined && value !== null && value !== '')
+        .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
+        .join('&');
+
+      window.location.href = `${window.location.origin}/listele?${urlSearchParams}`;
     }
   }
 }
