@@ -23,7 +23,6 @@ export default {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "stylesheet", href: "/fonts/sf-pro/stylesheet.css" },
       { rel: "stylesheet", href: "/css/custom-bootstrap.min.css" },
       { rel: "stylesheet", href: "/css/main.min.css" },
 
@@ -42,6 +41,11 @@ export default {
       lang: "css",
     },
   ],
+  googleFonts: {
+    families: {
+      Montserrat: [200, 300,400,500,700],      
+    }
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -66,6 +70,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     '@nuxtjs/auth-next',
+    '@nuxtjs/google-fonts'
   ],
 
   auth: {
