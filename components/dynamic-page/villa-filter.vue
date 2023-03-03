@@ -532,4 +532,16 @@ export default {
 
 .vhd__datepicker__input:first-child {
   background-position: 80px;
-}</style>
+}
+
+.arrow-down{
+  margin-top: 2px!important;
+}
+.v-select{
+  height: 100%!important;
+}
+.v-select-toggle{
+  align-items: center;
+}
+
+</style>
