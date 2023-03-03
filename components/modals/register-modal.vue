@@ -69,6 +69,7 @@ export default {
       checkboxAcceptRules: false,
       phoneNumberValid: false,
       phoneProps: {
+        autoFormat: false,
         enabledFlags: true,
         dropdownOptions: {
           showDialCodeInSelection: true,
