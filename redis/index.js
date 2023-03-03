@@ -1,4 +1,4 @@
-const express = require('express')
+/*const express = require('express')
 const Redis = require('redis')
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -65,4 +65,4 @@ app.post('/villa-search', (req, res) => {
 export default {
   path: '/data',
   handler: app
-}
+}*/

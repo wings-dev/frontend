@@ -114,29 +114,19 @@ export default {
 
   proxy: {
     "/api/": {
-      target: "https://wings.rentals/",
-      onProxyReq: (proxyReq, req, res) => {
-        /*
-        if (req._parsedUrl.query) {
-          req.url += "&api_key=123456";
-        } else {
-          req.url += "?api_key=123456";
-        }
-        console.log( req.url);
-         */
-      },
-      onError: (err, req, res) => {
-        // console.error(`Proxy error: ${err.message}`);
-      },
+      target: "https://wings.rentals/"
     },
+    "/data": {
+      target: "http://164.92.226.251:4000/"
+    }
   },
 
   /*
   ** Server Middleware
-  */
+
   serverMiddleware: {
-    '/data': '~/redis'
-  },
+    // '/data': '~/redis'
+  },*/
 
   // 301 yapılacak linkler için alan
   router: {
