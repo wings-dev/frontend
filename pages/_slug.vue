@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dynamic-detail-page :villa="componentData" v-if="type === 2"></dynamic-detail-page>
+    <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1" v-if="type === 2"></dynamic-detail-page>
     <dynamic-villa-filter-page :selectedFilters="componentData" v-if="type === 7"></dynamic-villa-filter-page>
   </div>
 </template>
@@ -20,7 +20,9 @@ export default {
     return {
       type: null,
       headData: {},
-      componentData: {}
+      componentData: {},
+      calendar: [],
+      price_list_1: [],
     }
   },
   async asyncData({$getRedisKey, route}) {
@@ -31,6 +33,8 @@ export default {
     let redisData = await $getRedisKey(`web:${site_id}:pages:${path}`);
 
     let componentData = {};
+    let calendar = [];
+    let price_list_1 = [];
 
     if (redisData) {
       console.log(redisData);
@@ -50,6 +54,11 @@ export default {
 
         // villa redis datası
         componentData = await $getRedisKey(`data:villas:${redisData.code}:detail`);
+        let calenderData = await $getRedisKey(`data:villas:${redisData.code}:calendar`);
+        calendar = calenderData.calendar;
+
+        let priceData = await $getRedisKey(`data:villas:${redisData.code}:price`);
+        price_list_1 = priceData.price_list_1;
       }
 
       // type 7 => filtre sayfası
@@ -62,9 +71,8 @@ export default {
         componentData = redisData.data;
       }
 
-      console.log(componentData);
 
-      return {type, headData, componentData}
+      return {type, headData, componentData, calendar, price_list_1}
     } else {
       return {} ; // TODO 404 verilmeli
     }

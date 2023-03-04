@@ -313,11 +313,16 @@
                   <template v-slot:day-content="{ day, attributes }">
                     <div v-for="(attr, index) in attributes" :key="index"
                       class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
-                      :class="{ kapali: attr.customData.status !== 0, giris: attr.customData.dateStatus == 0, cikis: attr.customData.dateStatus == 2, opsiyon: attr.customData.status == 2 }">
+                      :class="{
+                      kapali: !attr.customData.status.includes(0),
+                      giris: attr.customData.dateStatus.includes(0),
+                      cikis: attr.customData.dateStatus.includes(2),
+                      opsiyon: attr.customData.status.includes(2)
+                    }">
                       <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
                       <div class="flex-grow overflow-y-auto overflow-x-auto">
                         <p class="calendar-price" style="" :class="attr.customData.class">
-                          {{ attr.customData.status !== 1 ? attr.customData.price : '' }}
+                          {{ !attr.customData.status.includes(1) ? attr.customData.price : '' }}
                         </p>
                       </div>
                       <!-- A6AFC2 -->
@@ -1198,7 +1203,7 @@
                     <div class="swiper-button-prev list-navigation-prev"></div>
                     <div class="swiper-button-next list-navigation-next"></div>
                 </div>
-                
+
             </div>
         </section>
 
@@ -2951,7 +2956,7 @@
                                   <p>Barbekü / Mangal Alanı</p>
                                 </div>
                               </div>
-                              
+
                           </div>
                     </div>
                   </div>
@@ -2967,7 +2972,7 @@ import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 
 export default {
   name: 'DynamicDetailPage',
-  props: ['villa'],
+  props: ['villa', 'calendar', 'price_list_1'],
   components: {
     Swiper,
     HotelDatePicker,
@@ -2996,197 +3001,6 @@ export default {
       iconSize: [140, 140],
       // status : 0 - Boş gün , 1 - Dolu gün, 2 - Opsiyon
       // dateStatus : 0 - Giriş , 1 - Normal gün, 2 - Çıkış
-
-      attributes: [
-        {
-          customData: {
-            price: '1800₺',
-            status: 0,
-            dateStatus: 0,
-          },
-          dates: new Date(2023, 2, 6),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 0,
-            dateStatus: 0,
-          },
-          dates: new Date(2023, 2, 7),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 0,
-          },
-          dates: new Date(2023, 2, 8),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 2, 9),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 2, 10),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 2,
-          },
-          dates: new Date(2023, 2, 11),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 0,
-            dateStatus: 0,
-          },
-          dates: new Date(2023, 2, 12),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 0,
-          },
-          dates: new Date(2023, 2, 20),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 2, 21),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 2, 22),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 2,
-          },
-          dates: new Date(2023, 2, 23),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 2,
-            dateStatus: 0,
-          },
-          dates: new Date(2023, 2, 23),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 2,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 2, 24),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 2,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 2, 25),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 2,
-            dateStatus: 2,
-          },
-          dates: new Date(2023, 2, 26),
-        },
-
-        {
-          customData: {
-            price: '1800₺',
-            status: 2,
-            dateStatus: 0,
-          },
-          dates: new Date(2023, 3, 3),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 2,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 3, 4),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 2,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 3, 5),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 2,
-            dateStatus: 2,
-          },
-          dates: new Date(2023, 3, 6),
-        },
-
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 0,
-          },
-          dates: new Date(2023, 3, 6),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 3, 7),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 1,
-          },
-          dates: new Date(2023, 3, 8),
-        },
-        {
-          customData: {
-            price: '1800₺',
-            status: 1,
-            dateStatus: 2,
-          },
-          dates: new Date(2023, 3, 9),
-        },
-
-
-      ],
     }
   },
   methods: {
@@ -3368,7 +3182,44 @@ console.log('scrollY',scrollY,document.querySelector('#more-villas').offsetTop)
 
   },
   computed: {
+    attributes() {
+      const dates = new Set();
 
+      // Add all unique dates from calendar and price_list_1
+      this.calendar.forEach(item => dates.add(item.dates));
+      this.price_list_1.forEach(item => dates.add(item.dates));
+
+      const attributes = [];
+
+      // Create a new object for each unique date
+      dates.forEach(date => {
+        const customData = {
+          price: null,
+          status: [],
+          dateStatus: [],
+        };
+
+        // Merge data from matching calendar items
+        const matchingCalendarItems = this.calendar.filter(item => item.dates === date);
+        matchingCalendarItems.forEach(item => {
+          customData.status.push(...item.status);
+          customData.dateStatus.push(...item.datestatus);
+        });
+
+        // Add price data from matching price_list_1 item
+        const matchingPriceItem = this.price_list_1.find(item => item.dates === date);
+        if (matchingPriceItem) {
+          customData.price = matchingPriceItem.price;
+        }
+
+        attributes.push({
+          customData,
+          dates: new Date(date),
+        });
+      });
+
+      return attributes;
+    }
   }
 }
 </script>
