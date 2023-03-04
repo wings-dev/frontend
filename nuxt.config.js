@@ -54,7 +54,7 @@ export default {
     "~/plugins/vue-tel-input",
     { src: '~plugins/vcalendar.js', ssr: false },
     '~/plugins/redisHelper.js',
-    { src: '~/plugins/jquery.js', mode: 'client' }
+    { src: '~/plugins/jquery.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -70,7 +70,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     '@nuxtjs/auth-next',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    'nuxt-leaflet',
   ],
 
   auth: {

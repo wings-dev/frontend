@@ -117,7 +117,10 @@
       </section>
 
       <Nuxt />
-
+      <div class="header-call">
+      <a href="" class="header-call-phone"><i class="icon-header-phone"></i><p><b>SİZİ</b>ARAYALIM</p></a>
+      <a href="" class="header-call-assistant"><i class="icon-header-assistant"></i><p><b>TATİL</b>ASİSTANI</p></a>
+    </div>
     </main>
     <section class="newsletter-section position-relative">
       <div class="container-wide">
@@ -320,13 +323,13 @@
     </footer>
 
     <live-villa-search></live-villa-search>
-
+    
   </div>
 </template>
 
 <script>
-import HotelDatePicker from 'vue-hotel-datepicker'
-import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
+import HotelDatePicker from "vue-hotel-datepicker2";
+import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 export default {
   name: "default",
   middleware: ['jwt'],

@@ -1,7 +1,7 @@
 @import "icons";
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--bs-dark);
   font-size: 0.875rem;
 }
@@ -94,6 +94,66 @@ a.no-hover:hover {
 .header.villa-detay {
   position: relative;
 }
+
+.header-call {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  top: 300px;
+  z-index: 99;
+
+  &-phone {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bs-theme-second);
+    padding: 12px 7px;
+    margin-bottom: 4px;
+    .icon-header-phone {
+      width: 29px;height: 29px;
+      color: #fff;
+      margin-bottom: 6px;
+      background-image: url(../img/header-phone.svg);;
+    }
+    p {
+      display: flex;
+      flex-direction: column;
+      font-size: 10px;
+      font-weight: normal;
+      color: #fff;
+      margin-bottom: 0;
+      line-height: 1;
+      b{
+        font-size: 16px;
+      }
+    }
+  }
+  &-assistant {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bs-theme-first);
+    padding: 12px 7px;
+    .icon-header-assistant {
+      width: 34px;height: 31px;
+      color: #fff;
+      margin-bottom: 6px;
+      background-image: url(../img/header-assistant.svg);;
+    }
+    p {
+      display: flex;
+      flex-direction: column;
+      font-size: 10px;
+      font-weight: normal;
+    color: #fff;
+    margin-bottom: 0;
+    line-height: 1;
+      b{
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 .custom-fixed {
   position: fixed;
   top: 0;
@@ -101,6 +161,9 @@ a.no-hover:hover {
   width: 100%;
   &-menu {
     top: 69px;
+    @media (max-width: 991px) {
+      position: static;
+    }
   }
   &-reservation {
     position: fixed;
@@ -108,6 +171,13 @@ a.no-hover:hover {
     max-width: 330px;
     // right: calc((100vw - 1170px) / 2);
     top: 160px;
+
+    @media (max-width: 991px) {
+      position: static;
+    }
+  }
+  .view-top {
+    margin-bottom: 0 !important;
   }
 }
 
@@ -2776,12 +2846,11 @@ body.overflow-hidden {
               color: var(--bs-theme-first);
             }
           }
-          
         }
       }
-      &-people{
-        .icon-down-arrow{
-          right: 30px!important;
+      &-people {
+        .icon-down-arrow {
+          right: 30px !important;
         }
       }
 

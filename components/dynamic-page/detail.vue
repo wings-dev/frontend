@@ -42,10 +42,13 @@
           <div class="View-menu-in">
             <div class="View-menu-left">
               <a id="genelbakis" class="View-menu-item desc-content" @click.prevent="scrollItem($event)">Genel bakış</a>
-              <a id="musaitlik" class="View-menu-item availibility-content" @click.prevent="scrollItem($event)">Müsaitlik ve Takvim Fiyatı</a>
+              <a id="musaitlik" class="View-menu-item availibility-content" @click.prevent="scrollItem($event)">Müsaitlik
+                ve Takvim Fiyatı</a>
+              <a id="location" class="View-menu-item location-content" @click.prevent="scrollItem($event)">Konum</a>
               <a id="comments" class="View-menu-item reviews-content" @click.prevent="scrollItem($event)">Yorumlar</a>
-              <a id="rules" class="View-menu-item rules-content" @click.prevent="scrollItem($event)">Bilmeniz Gerekenler</a>
               <a id="sss" class="View-menu-item sss-content" @click.prevent="scrollItem($event)">S.S.S.</a>
+              <a id="rules" class="View-menu-item rules-content" @click.prevent="scrollItem($event)">*Bilmeniz
+                Gerekenler</a>
             </div>
             <div class="View-menu-right">
               <button type="button"
@@ -62,6 +65,14 @@
                 </span>
                 <span class="action-btn-text">Arkadaşın ile Paylaş</span>
               </button>
+              <button type="button"
+                class="up-button d-none fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                @click.prevent="scrollTop">
+                <span class="action-btn-icon">
+                  <i class="icon-up-arrow"></i>
+                </span>
+                <span class="action-btn-text">Yukarı Çık</span>
+              </button>
             </div>
           </div>
         </div>
@@ -71,8 +82,8 @@
           <div class="area-1">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img :src="villa.watermark_images[0].original_url" width="585" height="387" alt="view-image"
-                class="lazy cover rounded-xl w-100 h-100">
+              <img :src="villa.watermark_images[0].original_url" :srcset="villa.watermark_images[0].responsive"
+                width="585" height="387" alt="view-image" class="lazy cover rounded-xl w-100 h-100">
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -167,7 +178,7 @@
                   <p>Barbekü / Mangal Alanı</p>
                   <p>Barbekü / Mangal Alanı</p>
                 </div>
-                <button type="button" class="View-desc-amenites-more">Tüm Olanaklar</button>
+                <button type="button" class="View-desc-amenites-more" data-bs-toggle="modal" data-bs-target="#amenitesModal">Tüm Olanaklar</button>
               </div>
             </div>
             <div class="View-months">
@@ -177,10 +188,10 @@
                 mümkündür.
               </p>
 
-              <div class="swiper swiper-months">
+              <div class="swiper swiper-months swiper-overflow">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="View-months-item disabled">
+                  <div class="swiper-slide disabled">
+                    <div class="View-months-item ">
                       <div class="View-months-item-title">
                         <h5>MAYIS </h5>
                       </div>
@@ -191,13 +202,14 @@
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information"></i></b>
+                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Tooltip on right"></i></b>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="swiper-slide">
-                    <div class="View-months-item disabled">
+                  <div class="swiper-slide disabled">
+                    <div class="View-months-item ">
                       <div class="View-months-item-title">
                         <h5>MAYIS </h5>
                       </div>
@@ -208,13 +220,14 @@
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information"></i></b>
+                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Tooltip on right"></i></b>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="swiper-slide">
-                    <div class="View-months-item disabled">
+                  <div class="swiper-slide disabled">
+                    <div class="View-months-item ">
                       <div class="View-months-item-title">
                         <h5>MAYIS </h5>
                       </div>
@@ -225,7 +238,8 @@
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information"></i></b>
+                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Tooltip on right"></i></b>
                         </div>
                       </div>
                     </div>
@@ -242,7 +256,8 @@
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information"></i></b>
+                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Tooltip on right"></i></b>
                         </div>
                       </div>
                     </div>
@@ -259,7 +274,8 @@
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information"></i></b>
+                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Tooltip on right"></i></b>
                         </div>
                       </div>
                     </div>
@@ -276,7 +292,8 @@
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information"></i></b>
+                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Tooltip on right"></i></b>
                         </div>
                       </div>
                     </div>
@@ -294,13 +311,13 @@
                 <v-calendar class="custom-calendar" :attributes="attributes" :columns="2" :disabled-dates="disabledDates"
                   disable-page-swipe :step="1">
                   <template v-slot:day-content="{ day, attributes }">
-                    <div v-for="attr in attributes" :key="attr.key"
-                      class="d-flex flex-column kapali-gun align-items-center justify-content-center h-100 z-10 overflow-hidden"
-                      :class="{ giris: attr.customData.start, cikis: attr.customData.end, opsiyon: attr.customData.opsiyon }">
+                    <div v-for="(attr, index) in attributes" :key="index"
+                      class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
+                      :class="{ kapali: attr.customData.status !== 0, giris: attr.customData.dateStatus == 0, cikis: attr.customData.dateStatus == 2, opsiyon: attr.customData.status == 2 }">
                       <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
                       <div class="flex-grow overflow-y-auto overflow-x-auto">
                         <p class="calendar-price" style="" :class="attr.customData.class">
-                          {{ attr.customData.title }}
+                          {{ attr.customData.status !== 1 ? attr.customData.price : '' }}
                         </p>
                       </div>
                       <!-- A6AFC2 -->
@@ -310,6 +327,16 @@
                 </v-calendar>
 
               </client-only>
+              <div class="View-availibility-legand">
+                <div class="View-availibility-legand-item">
+                  <span class="close-day"></span>
+                  <p>Dolu</p>
+                </div>
+                <div class="View-availibility-legand-item">
+                  <span></span>
+                  <p>Onay Bekleniyor</p>
+                </div>
+              </div>
             </div>
             <div class="View-beds">
               <h2 class="View-title">Yatak ve Kişi Kapasitesi</h2>
@@ -340,7 +367,8 @@
                 </div>
               </div>
             </div>
-            <div class="View-rooms rooms-section position-relative">
+
+            <div class="View-rooms rooms-section position-relative d-none">
               <div class="rooms-caption d-flex flex-column flex-sm-row align-items-sm-center flex-wrap mb-3 mb-sm-4 pb-1">
                 <h4 class="View-title me-4 pe-2">
                   Kat Planı
@@ -559,16 +587,19 @@
               </div>
 
             </div>
-            <div class="View-location">
+            <div class="View-location location view-menu-content-item" id="location-content">
               <div class="View-location-head mb-3">
                 <h4 class="View-title">
                   Konum
                 </h4>
-                <p class="View-text">Yakınından Neler Var</p>
+                <p class="View-text">Yakınında Neler Var</p>
 
               </div>
+
+
+
               <div class="View-location-in">
-                <div class="View-location-left">
+                <div class="View-location-left d-none">
                   <div class="View-location-item" v-for="(place, index) in villa.places" :key="index">
                     <p>{{ index.substr(6) }} -) {{ place.place_type }}</p>
                     <span>7 Km</span>
@@ -590,9 +621,25 @@
                                       <span>3 Km</span>
                                     </div> -->
                 </div>
-                <div class="View-location-right">
-                  <p>harita yapılmadı. ne yapacağğımızı görmek için görsel olarak koydum</p>
-                  <img src="/img/villamap.png" alt="" class="w-100">
+                <div class="View-location-right w-100">
+                  <div id="map-wrap" style="height: 400px;">
+                    <client-only>
+                      <l-map :zoom=13 :center="center" :maxZoom=16>
+                        <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
+                        <l-marker :lat-lng="center">
+                          <l-icon iconUrl="img/map-center.svg" :iconSize=iconSize></l-icon>
+                        </l-marker>
+                        <!-- <l-marker v-for="(marker, index) in markers" :key="index" :lat-lng="marker">
+                        <l-popup>
+                          <div >
+                            Tooltip {{index}}
+                          </div>
+                        </l-popup>
+                    </l-marker> -->
+
+                      </l-map>
+                    </client-only>
+                  </div>
                 </div>
               </div>
             </div>
@@ -807,11 +854,11 @@
               <h4 class="View-title">Sıkça Sorulan Sorular</h4>
               <div class="accordion" id="Faq">
                 <div class="accordion-item">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
-                    aria-expanded="true" aria-controls="faq1">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
                     Nasıl rezervasyon yapabilirim ?
                   </button>
-                  <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#Faq">
+                  <div id="faq1" class="accordion-collapse collapse " data-bs-parent="#Faq">
                     <div class="accordion-body">
                       <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
                         pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
@@ -864,28 +911,11 @@
               <div class="Reservation-form-top">
                 <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
                 <div class="Reservation-form-in">
-                  <div class="Reservation-form-item">
-                    <label for="">
-                      <div class="Reservation-form-item-icon">
-                        <i class="icon-calendar"></i>
-                      </div>
-                      <div class="Reservation-form-item-input">
-                        <span>Giriş Tarihi</span>
-                        <input type="text" placeholder="14 EYL">
-                      </div>
-                    </label>
+                  <div class="Reservation-form-item w-100">
+                    <HotelDatePicker format="DD-MM-YYYY" :positionRight="true" :disabledDates="disableReservation">
+                    </HotelDatePicker>
                   </div>
-                  <div class="Reservation-form-item">
-                    <label for="">
-                      <div class="Reservation-form-item-icon">
-                        <i class="icon-calendar"></i>
-                      </div>
-                      <div class="Reservation-form-item-input">
-                        <span>Giriş Tarihi</span>
-                        <input type="text" placeholder="14 EYL">
-                      </div>
-                    </label>
-                  </div>
+
                   <div class="Reservation-form-item Reservation-form-item-person">
                     <label for="">
                       <div class="Reservation-form-item-icon">
@@ -1049,7 +1079,7 @@
             <div class="View-right-opportunity">
               <h4>Kısa Süreli Fırsatlar</h4>
 
-              <div class="swiper swiper-opportunity">
+              <div class="swiper swiper-opportunity swiper-overflow">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
                     <div class="View-right-opportunity-item">
@@ -1095,6 +1125,82 @@
         </div>
       </div>
     </div>
+
+    <section class="popular-section bg-white overflow-hidden pb-sm-5 mt-4" id="more-villas">
+            <div class="container ">
+                <div class="section-caption d-flex align-items-center mb-3 pb-1">
+                    <h4 class="primary-title fw-medium ls-05 lh-1">Bu bölgedeki Yakın Tesisler</h4>
+                </div>
+                <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="item in 10">
+                            <div class="list-item rounded-xxl">
+                                <div class="list-image position-relative">
+                                    <a href="#!" class="d-block flex-shrink-0">
+                                        <img src="/uploads/villa-image1.jpg" data-src="." width="280" height="186"
+                                            alt="hotel image" class="main-image bg-light lazy cover rounded-xl w-100">
+                                    </a>
+                                    <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
+                                        <a href="javascript:void(0);"
+                                            class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
+                                            onclick="$(this).toggleClass('active')">
+                                            <i class="icon-heart"></i>
+                                            <i class="icon-heart-full"></i>
+
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="list-content ps-3 pe-3 pt-2 pb-3">
+                                    <div class="d-flex justify-content-between  mb-2 pb-1">
+                                        <div class="d-flex align-items-end">
+                                            <div class="d-flex flex-column item-name">
+                                                <small>Tesis Kodu</small>
+                                                <span
+                                                    class="list-title fs-6 lh-sm fw-medium ls-05 d-block me-2">VKV1020</span>
+                                            </div>
+                                            <div class="d-flex align-items-center fw-medium text-theme-secondary">
+                                                <i class="icon-star"></i>
+                                                <span>4,9</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-location d-flex align-items-center text-theme-secondary">
+                                            <i class="icon-pin"></i>
+                                            <span class="lh-sm d-flex flex-column"><b
+                                                    class="text-theme-first">KALKAN</b>Türkiye / Antalya</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-infos row gx-2 pe-1 pb-2 d-flex">
+                                        <div class="info  d-flex align-items-center rounded-sm">
+                                            <i class="icon-user"></i>
+                                            <span class="lh-sm text-theme-first text-sm">4 Kişilik</span>
+                                        </div>
+                                        <div class="info  d-flex align-items-center rounded-sm">
+                                            <i class="icon-shower"></i>
+                                            <span class="lh-sm text-theme-first text-sm">2 Yatak Odası</span>
+                                        </div>
+                                        <div class="info  d-flex align-items-center rounded-sm">
+                                            <i class="icon-bed"></i>
+                                            <span class="lh-sm text-theme-first text-sm">2 Banyo</span>
+                                        </div>
+                                    </div>
+                                    <div class="lh-sm ls-05 mt-1">
+                                        <span class="text-secondary list-item-info">Gecelik <strong
+                                                class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan
+                                            fiyatlarla</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- If pagination is needed -->
+
+                    <!-- If navigation buttons are needed -->
+                    <div class="swiper-button-prev list-navigation-prev"></div>
+                    <div class="swiper-button-next list-navigation-next"></div>
+                </div>
+                
+            </div>
+        </section>
 
     <!-- <section class="content-menubar-section mb-4 mb-sm-5 pb-2">
                         <div class="container">
@@ -2743,7 +2849,7 @@
             </div>
             <div class="Gallery-detail">
 
-              <div class="Gallery-detail-item Gallery_item1" :class="'Gallery_item' + index"
+              <div class="Gallery-detail-item " :class="'Gallery_item' + index"
                 v-for="(floor, index) in villa.floorplan.kat" :key="index">
                 <div class="Gallery-detail-item-left">
                   <h3>{{ floor.name }}</h3>
@@ -2807,147 +2913,278 @@
         </div>
       </div>
     </section>
+    <div class="modal fade Amenites" id="amenitesModal" tabindex="-1" aria-labelledby="amenitesModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                          class="icon-login-close"></i></button>
+                          <h3 class="Amenites-title">Tesisin tüm olanakları</h3>
+                          <div class="Amenites-in">
+                              <div class="Amenites-item">
+                                <span class="Amenites-item-title">Bahçe Alanı</span>
+                                <div class="Amenites-item-in">
+                                  <p>Jakuzi</p>
+                                  <p>Jakuzi</p>
+                                  <p>Bilardo Masası</p>
+                                  <p>Barbekü / Mangal Alanı</p>
+                                  <p>Barbekü / Mangal Alanı</p>
+                                </div>
+                              </div>
+                              <div class="Amenites-item">
+                                <span class="Amenites-item-title">Bahçe Alanı</span>
+                                <div class="Amenites-item-in">
+                                  <p>Jakuzi</p>
+                                  <p>Jakuzi</p>
+                                  <p>Bilardo Masası</p>
+                                  <p>Barbekü / Mangal Alanı</p>
+                                  <p>Barbekü / Mangal Alanı</p>
+                                </div>
+                              </div>
+                              <div class="Amenites-item">
+                                <span class="Amenites-item-title">Bahçe Alanı</span>
+                                <div class="Amenites-item-in">
+                                  <p>Jakuzi</p>
+                                  <p>Jakuzi</p>
+                                  <p>Bilardo Masası</p>
+                                  <p>Barbekü / Mangal Alanı</p>
+                                  <p>Barbekü / Mangal Alanı</p>
+                                </div>
+                              </div>
+                              
+                          </div>
+                    </div>
+                  </div>
+                </div>
   </div>
 </template>
 
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
+import HotelDatePicker from "vue-hotel-datepicker2";
+import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
+
 export default {
   name: 'DynamicDetailPage',
   props: ['villa'],
   components: {
-    Swiper
+    Swiper,
+    HotelDatePicker,
   },
   data() {
     return {
       date: null,
+      disableReservation: ['2023-03-20', '2023-03-21', '2023-03-22', '2023-03-23', '2023-03-24', '2023-03-25', '2023-03-26', '2023-03-27'],
       disabledDates: [
         // { start: null, end: new Date() },
-        { start: new Date(2023, 1, 18), end: new Date(2023, 1, 24) },
+        { start: null, end: new Date() },
       ],
+      center: [36.618867138910204, 29.145069037654377],
+      circle: {
+        center: [36.618867138910204, 29.145069037654377],
+        radius: 100
+      },
+      markers: [
+        [36.61751702707028, 29.143651464471198], [36.61814341192442, 29.143354164069745]
+      ],
+      // icon: icon({
+      //   iconUrl: "static/img/map-center.svg",
+      //   iconSize: [32, 37],
+      //   iconAnchor: [16, 37]
+      // }),
+      iconSize: [140, 140],
+      // status : 0 - Boş gün , 1 - Dolu gün, 2 - Opsiyon
+      // dateStatus : 0 - Giriş , 1 - Normal gün, 2 - Çıkış
+
       attributes: [
         {
-          key: 1,
           customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: true,
-            end: false,
-            opsiyon: false
-          },
-          dates: new Date(2023, 1, 16),
-        },
-        {
-          key: 2,
-          customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: false,
-            opsiyon: false
-          },
-          dates: new Date(2023, 1, 17),
-        },
-        {
-          key: 3,
-          customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: false,
-            opsiyon: false
-          },
-          dates: new Date(2023, 1, 18),
-        },
-        {
-          key: 4,
-          customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: true,
-            opsiyon: false
-          },
-          dates: new Date(2023, 1, 19),
-        },
-        {
-          key: 7,
-          customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: true,
-            end: false,
-            opsiyon: true
+            price: '1800₺',
+            status: 0,
+            dateStatus: 0,
           },
           dates: new Date(2023, 2, 6),
         },
         {
-          key: 8,
           customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: false,
-            opsiyon: true
+            price: '1800₺',
+            status: 0,
+            dateStatus: 0,
           },
           dates: new Date(2023, 2, 7),
         },
         {
-          key: 9,
           customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: false,
-            opsiyon: true
+            price: '1800₺',
+            status: 1,
+            dateStatus: 0,
           },
           dates: new Date(2023, 2, 8),
         },
         {
-          key: 10,
           customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: false,
-            opsiyon: true
+            price: '1800₺',
+            status: 1,
+            dateStatus: 1,
           },
           dates: new Date(2023, 2, 9),
         },
         {
-          key: 11,
           customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: false,
-            opsiyon: true
+            price: '1800₺',
+            status: 1,
+            dateStatus: 1,
           },
           dates: new Date(2023, 2, 10),
         },
         {
-          key: 12,
           customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: false,
-            opsiyon: true
+            price: '1800₺',
+            status: 1,
+            dateStatus: 2,
           },
           dates: new Date(2023, 2, 11),
         },
         {
-          key: 13,
           customData: {
-            title: '1800₺',
-            desc: 'test',
-            start: false,
-            end: true,
-            opsiyon: true
+            price: '1800₺',
+            status: 0,
+            dateStatus: 0,
           },
           dates: new Date(2023, 2, 12),
         },
+        {
+          customData: {
+            price: '1800₺',
+            status: 1,
+            dateStatus: 0,
+          },
+          dates: new Date(2023, 2, 20),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 1,
+            dateStatus: 1,
+          },
+          dates: new Date(2023, 2, 21),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 1,
+            dateStatus: 1,
+          },
+          dates: new Date(2023, 2, 22),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 1,
+            dateStatus: 2,
+          },
+          dates: new Date(2023, 2, 23),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 2,
+            dateStatus: 0,
+          },
+          dates: new Date(2023, 2, 23),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 2,
+            dateStatus: 1,
+          },
+          dates: new Date(2023, 2, 24),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 2,
+            dateStatus: 1,
+          },
+          dates: new Date(2023, 2, 25),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 2,
+            dateStatus: 2,
+          },
+          dates: new Date(2023, 2, 26),
+        },
+
+        {
+          customData: {
+            price: '1800₺',
+            status: 2,
+            dateStatus: 0,
+          },
+          dates: new Date(2023, 3, 3),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 2,
+            dateStatus: 1,
+          },
+          dates: new Date(2023, 3, 4),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 2,
+            dateStatus: 1,
+          },
+          dates: new Date(2023, 3, 5),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 2,
+            dateStatus: 2,
+          },
+          dates: new Date(2023, 3, 6),
+        },
+
+        {
+          customData: {
+            price: '1800₺',
+            status: 1,
+            dateStatus: 0,
+          },
+          dates: new Date(2023, 3, 6),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 1,
+            dateStatus: 1,
+          },
+          dates: new Date(2023, 3, 7),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 1,
+            dateStatus: 1,
+          },
+          dates: new Date(2023, 3, 8),
+        },
+        {
+          customData: {
+            price: '1800₺',
+            status: 1,
+            dateStatus: 2,
+          },
+          dates: new Date(2023, 3, 9),
+        },
+
 
       ],
     }
@@ -2964,7 +3201,7 @@ export default {
     scrollGallery(event) {
       const el = this.$el.getElementsByClassName(event.currentTarget.id)[0];
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
+        el.scrollIntoView({ block: "start", behavior: 'smooth' });
       }
     },
     scrollItem(event) {
@@ -2973,10 +3210,15 @@ export default {
         el.scrollIntoView({ block: "start", behavior: 'smooth' });
       }
     },
+    scrollTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+
     reservationButton(event) {
       document.querySelector('.Reservation-form').classList.add("show")
       event.target.textContent = "Ön Rezervasyon Talebi Gönder";
-    }
+    },
+
   },
   mounted() {
 
@@ -2986,8 +3228,8 @@ export default {
       slidesPerView: 4,
       spaceBetween: 18,
       breakpoints: {
-        576: {
-          slidesPerView: 2,
+        200: {
+          slidesPerView: 2.2,
           spaceBetween: 18,
         },
         768: {
@@ -3026,6 +3268,32 @@ export default {
       },
     })
 
+        const swiperMore = new Swiper('.list-slide-first', {
+            slidesPerView: 1.1,
+            spaceBetween: 18,
+            direction: 'horizontal',
+            loop: true,
+            modules: [Navigation, Pagination],
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 18,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 18,
+                },
+                1199: {
+                    slidesPerView: 4,
+                    spaceBetween: 18,
+                },
+            },
+        })
+
     this.$el.addEventListener('click', function (e) {
       if (e.target.closest('.dropdown-menu')) {
         e.stopPropagation();
@@ -3045,11 +3313,10 @@ export default {
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 180) {
+        if (scrollY >= sectionTop - 180) {
           current = section.getAttribute("id");
-          console.log(current)
         }
-        
+
       });
 
       navLi.forEach((li) => {
@@ -3058,6 +3325,16 @@ export default {
           li.classList.add("active");
         }
       });
+
+
+console.log('scrollY',scrollY,document.querySelector('#more-villas').offsetTop)
+// console.log(document.querySelector('#more-villas').offsetTop)
+      if(scrollY >= document.querySelector('#more-villas').offsetTop - 500){
+        document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
+      }else{
+
+      }
+
     };
 
     function scrollFunction() {
@@ -3065,11 +3342,16 @@ export default {
         document.getElementById("detailTop").classList.add('custom-fixed')
         document.getElementById("detailMenu").classList.add('custom-fixed', 'custom-fixed-menu')
         document.querySelector(".View").classList.add('View-top')
-
+        document.querySelector("body").classList.add('body-fixed')
+        document.querySelector('.share-btn').classList.add('d-none')
+        document.querySelector('.up-button').classList.remove('d-none')
       } else {
         document.getElementById("detailTop").classList.remove('custom-fixed')
         document.getElementById("detailMenu").classList.remove('custom-fixed', 'custom-fixed-menu')
         document.querySelector(".View").classList.remove('View-top')
+        document.querySelector("body").classList.remove('body-fixed')
+        document.querySelector('.share-btn').classList.remove('d-none')
+        document.querySelector('.up-button').classList.add('d-none')
       }
       if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
         document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
@@ -3081,13 +3363,13 @@ export default {
       }
     }
 
-    
 
     console.log('villa', this.villa)
 
   },
+  computed: {
 
-
+  }
 }
 </script>
 
@@ -3103,7 +3385,7 @@ body {
   border: none !important;
   position: relative;
   z-index: 1;
-  width: 100%!important;
+  width: 100% !important;
 }
 
 .vc-container:before {
@@ -3136,56 +3418,58 @@ body {
   margin-bottom: 15px !important;
 }
 
-.kapali-gun {
+.kapali {
   background-color: #F2F5FB;
   position: relative;
 }
 
-.kapali-gun.opsiyon {
+.kapali.opsiyon {
   background-color: #FFF8E7;
   position: relative;
 }
 
-.kapali-gun.giris {
+.kapali.giris {
   background-color: transparent;
   z-index: 1;
 }
 
-.kapali-gun.giris:before {
+.kapali.giris:before {
   content: "";
   display: inline-block;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(225deg, #f3f3ff 49%, transparent 50%);
+  background-image: linear-gradient(315deg, #f3f3ff 49%, transparent 50%);
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
 }
 
-.kapali-gun.opsiyon.giris:before {
-  background-image: linear-gradient(225deg, #FFF8E7 49%, transparent 50%);
+.kapali.opsiyon.giris:before {
+  background-image: linear-gradient(315deg, #FFF8E7 49%, transparent 50%);
 }
 
-.kapali-gun.cikis {
+.kapali.cikis {
   background-color: transparent;
   z-index: 1;
 }
 
-.kapali-gun.cikis:before {
+.kapali.cikis:before {
   content: "";
   display: inline-block;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(45deg, #f3f3ff 49%, transparent 50%);
+  background-image: linear-gradient(135deg, #f3f3ff 49%, transparent 50%);
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
 }
 
-.kapali-gun.opsiyon.cikis:before {
-  background-image: linear-gradient(45deg, #FFF8E7 49%, transparent 50%);
+.kapali.giris.cikis {}
+
+.kapali.opsiyon.cikis:before {
+  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
 }
 
 .calendar-price {
@@ -3195,7 +3479,22 @@ body {
   margin-bottom: 0;
 }
 
-.swiper {
+.swiper-overflow {
   overflow: hidden;
 }
-</style>
+
+#mapContainer {
+  width: 300px;
+  height: 300px;
+}
+
+.vc-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.day-label {
+  margin-top: 5px;
+}</style>

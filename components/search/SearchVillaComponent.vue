@@ -31,7 +31,10 @@
           <span class="Search-item-name">Giriş / Çıkış Tarihi</span>
           <div class="Search-item-date-inputs">
             <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-              format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker>
+              format="DD/MM/YYYY" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker>
+
+              <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
+              format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
           </div>
         </div>
       </div>
@@ -112,7 +115,9 @@
 </template>
 
 <script>
-import HotelDatePicker from "vue-hotel-datepicker";
+// import HotelDatePicker from "vue-hotel-datepicker";
+import HotelDatePicker from "vue-hotel-datepicker2";
+import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import {mapState} from "vuex";
 
 export default {
@@ -144,7 +149,7 @@ export default {
     }
   },
   components: {
-    HotelDatePicker
+    HotelDatePicker,
   },
   created() {
     this.destinations = JSON.parse(JSON.stringify(this.searchData.destinations));
@@ -285,8 +290,7 @@ export default {
 :deep() .v-dropdown-item.selected {
   background-color: var(--bs-theme-second) !important;
 }
-
-:deep() .vhd__datepicker__wrapper {
+/* :deep() .vhd__datepicker__wrapper {
   background: none !important;
 }
 
@@ -316,5 +320,6 @@ export default {
 }
 :deep() .vhd__datepicker__tooltip{
   padding: 3px 4px;
-}
+} */
+
 </style>

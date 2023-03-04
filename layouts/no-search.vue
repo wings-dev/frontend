@@ -78,12 +78,16 @@
       <div class="header-menu-shadow position-fixed top-0 start-0 w-100 h-100 bg-black bg-opacity-25"
            onclick="$(this).removeClass('show');$('.header-menu').removeClass('show');$('.menu-toggle').removeClass('hide');"></div>
     </header>
-
+    
     <main class="main">
 
 
       <Nuxt />
-
+      
+      <div class="header-call">
+      <a href="" class="header-call-phone"><i class="icon-header-phone"></i><p><b>SİZİ</b>ARAYALIM</p></a>
+      <a href="" class="header-call-assistant"><i class="icon-header-assistant"></i><p><b>TATİL</b>ASİSTANI</p></a>
+    </div>
     </main>
     <section class="newsletter-section position-relative">
       <div class="container-wide">
@@ -282,6 +286,8 @@
     <client-only>
       <register-modal></register-modal>
     </client-only>
+
+  
   </div>
 </template>
 
