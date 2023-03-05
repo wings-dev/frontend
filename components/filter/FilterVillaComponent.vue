@@ -29,16 +29,16 @@
             <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts"
               @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
 
-            <!-- <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights"
+            <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights"
               @updated="updateFilter('amenites.highlights', $event)"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
-              @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component> -->
-              <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
+              @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component>
+              <!-- <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
               :checkboxes="amenites.facilities" :hideTitleBorder="true"
               @updated="updateFilter('amenites.facilities', $event)"
               :isFacilities="true"
-              ></filter-item-checkbox-component>
+              ></filter-item-checkbox-component> -->
 
               <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
               @max_price="updateFilter('max_price', $event)"></filter-price-between-component>

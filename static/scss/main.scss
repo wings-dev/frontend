@@ -34,15 +34,31 @@ a.boceksoft:hover {
 a.no-hover:hover {
   color: inherit;
 }
-@media (min-width: 992px){
-.container-lg, .container-md, .container-sm, .container {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+@media (min-width: 992px) {
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
     max-width: 98%;
+  }
 }
-}
-@media (min-width: 1200px){
-.container-xl, .container-lg, .container-md, .container-sm, .container {
+@media (min-width: 1200px) {
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
     max-width: 1198px;
-}
+  }
 }
 //custom bootstrap elememt
 .bg-theme-first {
@@ -101,7 +117,7 @@ a.no-hover:hover {
   position: sticky;
 }
 .header.villa-detay {
-  position: relative;
+  position: relative !important;
 }
 
 .header-call {
@@ -163,7 +179,7 @@ a.no-hover:hover {
       }
     }
   }
-  @media screen and (max-width:1320px) {
+  @media screen and (max-width: 1320px) {
     display: none;
   }
 }
@@ -270,9 +286,9 @@ a.no-hover:hover {
     }
   }
 }
-.villa-item-fav{
+.villa-item-fav {
   z-index: 2;
-  .icon-heart{
+  .icon-heart {
     color: #fff;
   }
 }
@@ -395,7 +411,9 @@ body.overflow-hidden {
     visibility: visible;
   }
 }
-
+.menu-link {
+  font-size: 12px;
+}
 .membership {
   transition: all 500ms;
   span {
@@ -1040,9 +1058,9 @@ body.overflow-hidden {
 
 .Search-villas {
   background-color: var(--bs-theme-first-dark);
-  position: absolute;
+  position: fixed;
   left: 0;
-  top: 151px;
+  top: 148px;
   width: 100vw;
   height: 0;
   padding-top: 40px;
@@ -1050,7 +1068,7 @@ body.overflow-hidden {
   visibility: hidden;
   transition: all 400ms;
   &-active {
-    height: calc(100vh - 151px);
+    height: calc(100vh - 148px);
     opacity: 1;
     visibility: visible;
     z-index: 9;
@@ -2385,6 +2403,23 @@ body.overflow-hidden {
       text-align: center;
       color: var(--bs-theme-third) !important;
       margin-bottom: 45px !important;
+    }
+    &-pass {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      font-size: 17px;
+      margin-top: 40px;
+      color: var(--bs-theme-first);
+      transition: all 300ms;
+      i {
+        font-size: 22px;
+        margin-left: 5px;
+        transition: all 300ms;
+      }
+      &:hover i{
+        transform: translateX(5px);
+      }
     }
   }
   &-buttons {

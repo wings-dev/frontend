@@ -315,8 +315,10 @@
                     <div v-for="(attr, index) in attributes" :key="index"
                       class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
                       :class="{
-                        kapali: !attr.customData.status.includes(0),
+                        kapali: attr.customData.status.includes(1),
                         giris: attr.customData.dateStatus.includes(0),
+                        doubleday: attr.customData.dateStatus.includes(0) && attr.customData.status.includes(2) && attr.customData.status.includes(1),
+                        doubledaykapali: attr.customData.dateStatus.includes(0) && attr.customData.dateStatus.includes(2),
                         cikis: attr.customData.dateStatus.includes(2),
                         opsiyon: attr.customData.status.includes(2)
                       }">
@@ -3143,7 +3145,7 @@ export default {
       });
 
 
-      console.log('scrollY', scrollY, document.querySelector('#more-villas').offsetTop)
+      // console.log('scrollY', scrollY, document.querySelector('#more-villas').offsetTop)
       // console.log(document.querySelector('#more-villas').offsetTop)
       if (scrollY >= document.querySelector('#more-villas').offsetTop - 500) {
         document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')

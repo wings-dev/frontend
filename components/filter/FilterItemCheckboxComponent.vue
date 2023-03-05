@@ -36,7 +36,8 @@
           </ul>
         </li>
       </ul>
-      <ul class="Filters-first" v-if="isFacilities">
+
+      <!-- <ul class="Filters-first" v-if="isFacilities">
         <div v-if="!hideTitle" class="Filters-head border-bottom mb-3 mt-1 "><h5>{{title}}</h5></div>
         <li class="Filters-item Filters-item-notfound" v-bind:style="filterText.length && !filteredCheckboxes.length ? 'display:block' : 'display:none'">
           <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
@@ -66,7 +67,7 @@
             </li>
           </ul>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>

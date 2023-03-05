@@ -16,5 +16,12 @@ export default {
   },
   hideLoginCodeModal() {
     $('#loginCodeModal').modal('hide')
-  }
+  },
+  showCallModal() {
+    $('#callModal').modal('show')
+  },
+  showFavModal() {
+    $('#favModal').modal('show')
+  },
+
 }
