@@ -8,7 +8,7 @@ export default () => ({
     destinations: [
       {
         text: "Antalya",
-        code: 0,
+        code: 8,
         selected: false,
         children: [
           {
@@ -26,18 +26,13 @@ export default () => ({
         ]
       },
       {
-        text: "Çavdır",
-        code: 0,
+        text: "Muğla",
+        code: 7,
         selected: false,
         children: [
           {
             text: "Fethiye",
             code: 6,
-            selected: false,
-          },
-          {
-            text: "Marmaris",
-            code: 0,
             selected: false,
           }
         ]
@@ -46,55 +41,55 @@ export default () => ({
     amenites: {
       facilityTypes: [
         {
-          text: "Villa",
-          code: "234",
-          selected: false,
-        },
-        {
-          text: "Ev",
-          code: "233",
-          selected: false,
-        },
-        {
-          text: "Suite",
-          code: "232",
-          selected: false,
-        },
-        {
-          text: "Dubleks",
-          code: "231",
-          selected: false,
-        },
-        {
           text: "Bungalov",
-          code: "230",
+          code: "171",
           selected: false,
         },
+        {
+          text: "Suit Daire",
+          code: "172",
+          selected: false,
+        },
+        {
+          text: "Tiny House",
+          code: "170",
+          selected: false,
+        },
+        {
+          text: "Villa",
+          code: "173",
+          selected: false,
+        }
       ],
       facilityConcepts: [
         {
-          text: "Deniz manzaralı villa ve evler",
-          code: "229",
+          text: "Balayı Villaları",
+          code: "175",
           selected: false,
         },
         {
-          text: "Merkezi konumdaki evler",
-          code: "228",
+          text: "Deniz Manzaralı",
+          code: "177",
           selected: false,
         },
         {
-          text: "Lüks tatil villaları",
-          code: "227",
+          text: "Havuzu Görünmeyen (Muhafazakar)",
+          code: "174",
           selected: false,
         },
         {
-          text: "Lüks tatil villaları",
-          code: "226",
+          text: "Kalabalık Ailelere Uygun",
+          code: "195",
           selected: false,
         },
         {
-          text: "Muhafazakar villa",
-          code: "225",
+          text: "Kış Aylarına Uygun",
+          code: "180",
+          selected: false,
+        },
+        {
+          text: "Premium Villalar",
+          code: "176",
           selected: false,
         },
       ],
@@ -127,28 +122,58 @@ export default () => ({
       ],
       facilities: [
         {
-          text: "Çamaşır Makinesi",
-          code: "219",
+          text: "Bahçe Alanı",
+          code: "185",
           selected: false,
         },
         {
-          text: "Hamam",
-          code: "218",
+          text: "Bilardo Masası",
+          code: "75",
+          selected: false,
+        },
+        {
+          text: "Denize Sıfır",
+          code: "194",
+          selected: false,
+        },
+        {
+          text: "Isıtmalı Zemin",
+          code: "148",
+          selected: false,
+        },
+        {
+          text: "Jakuzi",
+          code: "143",
+          selected: false,
+        },
+        {
+          text: "Kapalı Havuz",
+          code: "137",
           selected: false,
         },
         {
           text: "Sauna",
-          code: "217",
+          code: "79",
           selected: false,
         },
         {
-          text: "Küvetli Banyo",
-          code: "216",
+          text: "Sinema",
+          code: "196",
           selected: false,
         },
         {
-          text: "Fırın",
-          code: "215",
+          text: "Spor Ekipmanları",
+          code: "197",
+          selected: false,
+        },
+        {
+          text: "Türk Hamamı",
+          code: "56",
+          selected: false,
+        },
+        {
+          text: "Şömine",
+          code: "64",
           selected: false,
         },
       ],

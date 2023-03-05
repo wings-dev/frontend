@@ -97,48 +97,48 @@
             <h3 class="new-title">Resmi belgelerimiz</h3>
             <div class="Info-right-in">
               <div class="Info-right-item">
-                <a href="https://villakalkan.com.tr/images/belgeler/marka-tescil-1.jpeg" data-fancybox="group_1"
-                  class="global_link"></a>
+                <a href="https://villakalkan.com.tr/images/belgeler/marka-tescil-1.jpeg" data-fancybox="group_1" class="w-100">
                 <div class="Info-right-item-text">
                   <h5>Marka Tescil Belgesi</h5>
                 </div>
                 <div class="Info-right-item-link">
                   <p><i class="icon-info-pdf"></i>Belgeyi Görüntüle</p>
                 </div>
+              </a>
                 <a href="https://villakalkan.com.tr/images/belgeler/marka-tescil-2.png" data-fancybox="group_1"
                   style="display:none;"></a>
                 <a href="https://villakalkan.com.tr/images/belgeler/marka-tescil-3.png" data-fancybox="group_1"
                   style="display:none;"></a>
               </div>
               <div class="Info-right-item">
-                <a href="https://villakalkan.com.tr/images/belgeler/tursab.jpeg" data-fancybox="group_1"
-                  class="global_link"></a>
+                <a href="https://villakalkan.com.tr/images/belgeler/tursab.jpeg" data-fancybox="group_1" class="w-100">
                 <div class="Info-right-item-text">
                   <h5>TURSAB Belgesi</h5>
                 </div>
                 <div class="Info-right-item-link">
                   <p><i class="icon-info-pdf"></i>Belgeyi Görüntüle</p>
                 </div>
+              </a>
               </div>
               <div class="Info-right-item">
-                <a href="https://villakalkan.com.tr/images/belgeler/vergilevhasi.png" data-fancybox="group_1"
-                  class="global_link"></a>
+                <a href="https://villakalkan.com.tr/images/belgeler/vergilevhasi.png" data-fancybox="group_1" class="w-100">
                 <div class="Info-right-item-text">
                   <h5>Vergi Levhası</h5>
                 </div>
                 <div class="Info-right-item-link">
                   <p><i class="icon-info-pdf"></i>Belgeyi Görüntüle</p>
                 </div>
+              </a>
               </div>
               <div class="Info-right-item">
-                <a href="https://villakalkan.com.tr/images/belgeler/ticaret-sicil.jpeg" data-fancybox="group_1"
-                  class="global_link"></a>
+                <a href="https://villakalkan.com.tr/images/belgeler/ticaret-sicil.jpeg" data-fancybox="group_1" class="w-100">
                 <div class="Info-right-item-text">
                   <h5>Ticaret Sicil Belgesi </h5>
                 </div>
                 <div class="Info-right-item-link">
                   <p><i class="icon-info-pdf"></i>Belgeyi Görüntüle</p>
                 </div>
+              </a>
               </div>
             </div>
           </div>

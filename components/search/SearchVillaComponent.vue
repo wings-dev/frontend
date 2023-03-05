@@ -28,10 +28,19 @@
         </div>
 
         <div class="Search-item-date">
-          <span class="Search-item-name">Giriş / Çıkış Tarihi</span>
+          <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs">
             <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-              format="DD/MM/YYYY" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker>
+              format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)" ref="datePicker">
+
+              <div slot="content">
+                <div class="d-flex align-items-center justify-content-end mt-1">
+                <button @click.prevent="clearDates()" class="me-1">Temizle</button>
+                <button @click.prevent="hidePicker()">Kapat</button>
+              </div>
+              </div>
+            
+            </HotelDatePicker>
 
               <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
@@ -257,6 +266,12 @@ export default {
         .join('&');
 
       window.location.href = `${window.location.origin}/listele?${urlSearchParams}`;
+    },
+    clearDates() {
+        this.$refs.datePicker.clearSelection();
+    },
+    hidePicker() {
+        this.$refs.datePicker.hideDatepicker();
     }
   }
 }
@@ -321,5 +336,14 @@ export default {
 :deep() .vhd__datepicker__tooltip{
   padding: 3px 4px;
 } */
-
+:deep() .datepicker__wrapper{
+  width: 100%;
+}
+:deep() .datepicker__dummy-wrapper{
+  border: none;
+  background:none;
+}
+:deep() .datepicker__input--first{
+  padding-left: 0;
+}
 </style>

@@ -34,7 +34,32 @@ a.boceksoft:hover {
 a.no-hover:hover {
   color: inherit;
 }
-
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+@media (min-width: 992px) {
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 98%;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1198px;
+  }
+}
 //custom bootstrap elememt
 .bg-theme-first {
   background-color: rgba(var(--bs-theme-first-rgb), var(--bs-bg-opacity, 1));
@@ -92,7 +117,7 @@ a.no-hover:hover {
   position: sticky;
 }
 .header.villa-detay {
-  position: relative;
+  position: relative !important;
 }
 
 .header-call {
@@ -110,10 +135,11 @@ a.no-hover:hover {
     padding: 12px 7px;
     margin-bottom: 4px;
     .icon-header-phone {
-      width: 29px;height: 29px;
+      width: 29px;
+      height: 29px;
       color: #fff;
       margin-bottom: 6px;
-      background-image: url(../img/header-phone.svg);;
+      background-image: url(../img/header-phone.svg);
     }
     p {
       display: flex;
@@ -123,7 +149,7 @@ a.no-hover:hover {
       color: #fff;
       margin-bottom: 0;
       line-height: 1;
-      b{
+      b {
         font-size: 16px;
       }
     }
@@ -134,23 +160,27 @@ a.no-hover:hover {
     background-color: var(--bs-theme-first);
     padding: 12px 7px;
     .icon-header-assistant {
-      width: 34px;height: 31px;
+      width: 34px;
+      height: 31px;
       color: #fff;
       margin-bottom: 6px;
-      background-image: url(../img/header-assistant.svg);;
+      background-image: url(../img/header-assistant.svg);
     }
     p {
       display: flex;
       flex-direction: column;
       font-size: 10px;
       font-weight: normal;
-    color: #fff;
-    margin-bottom: 0;
-    line-height: 1;
-      b{
+      color: #fff;
+      margin-bottom: 0;
+      line-height: 1;
+      b {
         font-size: 16px;
       }
     }
+  }
+  @media screen and (max-width: 1320px) {
+    display: none;
   }
 }
 
@@ -256,6 +286,12 @@ a.no-hover:hover {
     }
   }
 }
+.villa-item-fav {
+  z-index: 2;
+  .icon-heart {
+    color: #fff;
+  }
+}
 .toggle-favs {
   transition: all 500ms;
   i {
@@ -290,7 +326,7 @@ body.overflow-hidden {
 }
 
 .header {
-  z-index: 9;
+  z-index: 99;
   border-color: var(--bs-theme-first) !important;
 
   &-top {
@@ -375,7 +411,9 @@ body.overflow-hidden {
     visibility: visible;
   }
 }
-
+.menu-link {
+  font-size: 12px;
+}
 .membership {
   transition: all 500ms;
   span {
@@ -722,6 +760,7 @@ body.overflow-hidden {
       }
     }
     &-people {
+      width: 27%;
       .dropdown-toggle {
         flex-direction: row;
       }
@@ -829,6 +868,7 @@ body.overflow-hidden {
     }
 
     &-more {
+      width: 20%;
       .dropdown-toggle {
         flex-direction: row;
         i.icon-filter {
@@ -861,7 +901,7 @@ body.overflow-hidden {
 
         &-first {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
         }
 
         &-head {
@@ -1018,9 +1058,9 @@ body.overflow-hidden {
 
 .Search-villas {
   background-color: var(--bs-theme-first-dark);
-  position: absolute;
+  position: fixed;
   left: 0;
-  top: 151px;
+  top: 148px;
   width: 100vw;
   height: 0;
   padding-top: 40px;
@@ -1028,7 +1068,7 @@ body.overflow-hidden {
   visibility: hidden;
   transition: all 400ms;
   &-active {
-    height: calc(100vh - 151px);
+    height: calc(100vh - 148px);
     opacity: 1;
     visibility: visible;
     z-index: 9;
@@ -1201,7 +1241,7 @@ body.overflow-hidden {
   }
 
   &-left {
-    width: 300px;
+    width: 275px;
 
     &-head {
       display: none;
@@ -1246,7 +1286,7 @@ body.overflow-hidden {
   }
 
   &-right {
-    width: calc(100% - 330px);
+    width: calc(100% - 300px);
     display: flex;
     flex-direction: column;
 
@@ -1420,10 +1460,11 @@ body.overflow-hidden {
         font-weight: 500;
         color: #8a92a8;
         margin-right: 10px;
+        line-height: 1;
         transition: all 500ms;
-
+        font-weight: 400;
         i {
-          font-size: 22px;
+          font-size: 17px;
           color: var(--bs-theme-second);
           margin-left: 8px;
           transition: all 500ms;
@@ -1440,9 +1481,9 @@ body.overflow-hidden {
         color: var(--bs-theme-second);
         text-decoration: underline;
         font-weight: 600;
-        font-size: 13px;
+        font-size: 12px;
         border: 1px solid #f5f5f5;
-        padding: 8px 12px;
+        padding: 8px 14px;
         border-radius: 34px;
         transition: all 500ms;
         cursor: pointer;
@@ -1450,7 +1491,7 @@ body.overflow-hidden {
 
         &:hover {
           background-color: var(--bs-theme-second);
-          color: var(--bs-theme-first);
+          color: #fff;
         }
       }
     }
@@ -1479,6 +1520,7 @@ body.overflow-hidden {
       font-size: 14px;
       font-weight: bold;
       color: #162651;
+      margin-bottom: 0;
     }
 
     &.border-bottom {
@@ -1586,7 +1628,7 @@ body.overflow-hidden {
         background-color: #eff0f5;
         margin-right: 10px;
         position: relative;
-
+        flex-shrink: 0;
         &:after {
           content: "";
           display: inline-block;
@@ -1604,7 +1646,7 @@ body.overflow-hidden {
 
       p {
         font-size: 13px;
-        font-weight: 600;
+        font-weight: 400;
         color: #122754;
         margin-bottom: 0;
       }
@@ -2362,6 +2404,23 @@ body.overflow-hidden {
       color: var(--bs-theme-third) !important;
       margin-bottom: 45px !important;
     }
+    &-pass {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      font-size: 17px;
+      margin-top: 40px;
+      color: var(--bs-theme-first);
+      transition: all 300ms;
+      i {
+        font-size: 22px;
+        margin-left: 5px;
+        transition: all 300ms;
+      }
+      &:hover i{
+        transform: translateX(5px);
+      }
+    }
   }
   &-buttons {
     display: flex;
@@ -2370,59 +2429,6 @@ body.overflow-hidden {
       margin-left: 16px;
     }
   }
-}
-
-.caleran-tooltip {
-  display: none;
-  position: absolute;
-  pointer-events: none;
-  margin-top: 5px;
-  left: 0;
-  top: 0;
-  padding: 0 5px 5px;
-  border-radius: 3px;
-  font-size: 12px;
-  background-color: #63718d;
-  color: white;
-}
-
-.caleran-tooltip-arrow {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 5px 5px 5px;
-  border-color: transparent transparent #63718d transparent;
-  transform: translateX(-50%);
-  position: relative;
-  top: -5px;
-  left: 50%;
-}
-
-.caleran-tooltip-form {
-  display: none;
-  position: absolute;
-  pointer-events: none;
-  margin-top: 5px;
-  left: 0;
-  top: 0;
-  padding: 0 5px 5px;
-  border-radius: 3px;
-  font-size: 12px;
-  background-color: #63718d;
-  color: white;
-  z-index: 10;
-}
-
-.caleran-tooltip-arrow-form {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 5px 5px 5px;
-  border-color: transparent transparent #63718d transparent;
-  transform: translateX(-50%);
-  position: relative;
-  top: -5px;
-  left: 50%;
 }
 
 .reservationSearchCalendar {
