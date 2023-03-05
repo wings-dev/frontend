@@ -20,7 +20,7 @@
                 </label>
                 <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup"></p>
                 <label for="" class="Login-form-item Login-form-item-tr">
-                  <vue-tel-input @input="onInput" v-bind="phoneProps"
+                  <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"
                                  :defaultCountry="'TR'"></vue-tel-input>
                 </label>
                 <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert" v-if="phoneNumberValid === false">
@@ -63,12 +63,19 @@ export default {
         phone: null,
         source_id: process.env.SITE,
       },
+      phoneNumber: '',
       phoneObject: {
         valid: false
       },
       checkboxAcceptRules: false,
       phoneNumberValid: false,
       phoneProps: {
+        "country": {
+          "name": "Turkey (Türkiye)",
+          "iso2": "TR",
+          "dialCode": "90"
+        },
+        autoFormat: false,
         enabledFlags: true,
         dropdownOptions: {
           showDialCodeInSelection: true,
