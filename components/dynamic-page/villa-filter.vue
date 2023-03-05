@@ -5,7 +5,7 @@
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
             <h1 class="highlight-section-title">Fethiye Kiralık Villa</h1>
-            <p class="highlight-section-desc">
+            <!-- <p class="highlight-section-desc">
               Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
               masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
               mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
@@ -27,13 +27,13 @@
               kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
               Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.</p>
             <div class="highlight-section-desc-more-button read-more-button">+ TÜMÜNÜ OKU</div>
-            <div class="highlight-section-desc-more-button">- DARALT</div>
+            <div class="highlight-section-desc-more-button">- DARALT</div> -->
           </div>
         </div>
       </div>
     </section>
 
-    <div class="container mt-2">
+    <div class="container mt-2 d-none">
       <button type="button" @click="this.showLoginModal">GİRİŞ YAP MODAL</button>
       <button type="button" @click="this.showRegisterModal">KAYIT MODAL</button>
 
@@ -359,7 +359,8 @@
 
     <filter-villa-component :selectedFilters="selectedFilters"></filter-villa-component>
 
-    <section class="List">
+
+    <!-- <section class="List">
       <div class="container">
         <div class="List-in">
           <h3>Fethiye Villa Kiralama </h3>
@@ -441,7 +442,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 

@@ -1,23 +1,29 @@
 <template>
   <div class="F_villa-item">
     <div class="F_villa-item-img">
-        <div class="swiper villa-list-slider">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="(image,index) in villa.preview_image" :key="index">
-            <img class="lazyload" :src="image.preview_url" :data-src="image.preview_url"
-              :data-srcset="image.responsive_url" />
+      <div class="swiper villa-list-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
+            <img class="lazyload" :src="image.preview_url" :data-src="image.preview_url" :srcset="image.responsive_url" />
           </div>
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
         </div>
-        
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <div class="villa-item-fav position-absolute top-0 end-0 pt-1 mt-1 pe-1">
+        <a href="javascript:void(0);" class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
+          onclick="">
+          <i class="icon-heart"></i>
+          <!-- <i class="icon-heart-full"></i> -->
+
+        </a>
+      </div>
     </div>
     <div class="F_villa-item-right">
       <div class="F_villa-item-head">
         <div class="F_villa-item-head-name">
           <span>Tesis Kodu</span>
-          <a :href="villa.url">{{ villa.name }}</a>
+          <a :href="villa.url">{{ prefix + villa.code }}</a>
           <div class="F_villa-item-head-name-star">
             <i class="icon-star active"></i>
             <i class="icon-star active"></i>
@@ -63,9 +69,8 @@
         <div class="F_villa-item-features">
           <h6>Öne çıkan özellikleri</h6>
           <div class="F_villa-item-features-in">
-            <p class="F_villa-item-features-item" v-for="amenite in amenitesList(villa)">{{ amenite }}</p>
-            <p class="F_villa-item-features-item F_villa-item-features-more"><a :href="villa.url" class="">Tümünü Gör</a>
-            </p>
+            <p class="F_villa-item-features-item" v-for="(amenite, index) in amenitesList(villa)" :key="index">{{ amenite }}</p>
+            <!-- <p class="F_villa-item-features-item F_villa-item-features-more"><a :href="villa.url" class="">Tümünü Gör</a> -->
           </div>
 
         </div>
@@ -96,6 +101,7 @@ export default {
           prevEl: '.swiper-button-prev'
         }
       },
+      prefix: process.env.PREFIX
     }
   },
   methods: {
@@ -115,7 +121,7 @@ export default {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
-      
+
     })
   }
 }

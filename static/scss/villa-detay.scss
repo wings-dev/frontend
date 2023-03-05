@@ -1547,6 +1547,32 @@ body {
       padding: 23px 14px;
       position: relative;
       z-index: 2;
+
+      .tarihsec {
+        position: absolute;
+        right: 40px;
+        top: 34px;
+        background-image: url(../../img/tarih-sec.svg);
+        opacity: 1 !important;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px;
+        background-size: 100px 33px;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        display: flex;
+        width: 93px;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 13px;
+        color: #fff;
+        transition: all 400ms;
+        &-active{
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
     }
 
     &-title {

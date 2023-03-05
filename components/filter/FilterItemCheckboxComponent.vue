@@ -5,7 +5,39 @@
       <label><i class="icon-search-new"></i><input type="search" :placeholder="filterInputPlaceholder" v-model="filterText" @keyup="applyFilter()"></label>
     </div>
     <div class="Filters-in">
-      <ul class="Filters-first">
+      
+      <ul class="Filters-first" v-if="!isFacilities">
+        <li class="Filters-item Filters-item-notfound" v-bind:style="filterText.length && !filteredCheckboxes.length ? 'display:block' : 'display:none'">
+          <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
+        </li>
+        <li class="Filters-item" v-for="checkbox1 in (filterText.length ? filteredCheckboxes : checkboxes)">
+          <label>
+            <input type="checkbox" v-model="checkbox1.selected" @change="selectCheckbox(checkbox1)">
+            <span class="checkspan"></span>
+            <p class="check-text" v-text="checkbox1.text"></p>
+          </label>
+          <ul class="Filter-second" v-for="checkbox2 in checkbox1.children">
+            <li>
+              <label>
+                <input type="checkbox" v-model="checkbox2.selected" @change="selectCheckbox(checkbox2)">
+                <span class="checkspan"></span>
+                <p class="check-text" v-text="checkbox2.text"></p>
+              </label>
+              <ul class="Filter-third" v-for="checkbox3 in checkbox2.children">
+                <li>
+                  <label>
+                    <input type="checkbox" v-model="checkbox3.selected" @change="selectCheckbox(checkbox3)">
+                    <span class="checkspan"></span>
+                    <p class="check-text" v-text="checkbox3.text"></p>
+                  </label>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="Filters-first" v-if="isFacilities">
+        <div v-if="!hideTitle" class="Filters-head border-bottom mb-3 mt-1 "><h5>{{title}}</h5></div>
         <li class="Filters-item Filters-item-notfound" v-bind:style="filterText.length && !filteredCheckboxes.length ? 'display:block' : 'display:none'">
           <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
         </li>
@@ -48,6 +80,7 @@ export default {
     filterInputPlaceholder: {type: String, default: ""},
     hideTitleBorder: {type: Boolean, default: false},
     hideTitle: {type: Boolean, default: false},
+    isFacilities: {type: Boolean, default: false},
   },
   data() {
     return {

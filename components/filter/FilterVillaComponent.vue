@@ -6,8 +6,7 @@
           <div class="Filter-left-head">
             <h4>Gelişmiş Arama</h4>
             <button type="button" class="Search-clear" onclick="filterClear()">Temizle</button>
-            <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter"><i
-                class="icon-search-close"></i></button>
+            <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter"><i class="icon-search-close"></i></button>
           </div>
           <div class="Filters-search mobile">
             <label for="">
@@ -27,17 +26,22 @@
             <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
               @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
 
-            <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
-              @max_price="updateFilter('max_price', $event)"></filter-price-between-component>
-
-            <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts"
+            <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts"
               @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights"
+            <!-- <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights"
               @updated="updateFilter('amenites.highlights', $event)"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
-              @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component>
+              @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component> -->
+              <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
+              :checkboxes="amenites.facilities" :hideTitleBorder="true"
+              @updated="updateFilter('amenites.facilities', $event)"
+              :isFacilities="true"
+              ></filter-item-checkbox-component>
+
+              <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
+              @max_price="updateFilter('max_price', $event)"></filter-price-between-component>
           </div>
 
         </div>
@@ -255,7 +259,10 @@ export default {
   },
   mounted() {
     this.filter();
+
+    
   },
+ 
   computed: {
     ...mapState(['searchData']),
     totalPages() {
@@ -316,6 +323,8 @@ export default {
       this.filter(pageNumber);
     },
     filter(pageNumber = 1) {
+
+      console.log('TSET')
       const data = {
         destination: this.selectedDestinations.map(({ code }) => code),
         amenites: [
@@ -332,7 +341,7 @@ export default {
         .post(`/api/website/property?api_token=123456&page=${pageNumber}`, data)
         .then(({ data: responseData }) => {
           this.villas = responseData.data;
-          console.log(this.villas);
+          console.log('this.villas',this.villas);
           this.per_page = responseData.per_page;
           this.total_items = responseData.total;
           this.current_page = responseData.current_page;
@@ -389,10 +398,10 @@ export default {
 }
 
 :deep() .Filter-right-head-buttons-item .v-select-toggle {
-  height: 55px;
+  height: 45px;
   cursor: pointer;
   border-radius: 6px;
   color: #fff!important;
-  background-image: linear-gradient(to right, #5e728d, #51637c)!important;
+  background-color: var(--bs-theme-first)!important;
 }
 </style>
