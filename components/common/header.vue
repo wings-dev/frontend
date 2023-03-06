@@ -80,7 +80,7 @@
                     </a>
                     <div class="Header-top-menu">
                         <a href="" class="Header-top-menu-item">S.S.S</a>
-                        <a href="/kurumsal" class="Header-top-menu-item">Hakkımızda</a>
+                        <NuxtLink to="/kurumsal" class="Header-top-menu-item">Hakkımızda</NuxtLink>
                         <a href="" class="Header-top-menu-item">İletişim</a>
                     </div>
                 </div>
@@ -90,11 +90,13 @@
         <div class="Header-inner">
             <div class="container h-100">
                 <div class="Header-inner-in">
-                    <a href="" class="Header-logo">
+                    <NuxtLink to="/" class="Header-logo">
                         <img :src="'/img/site'+ site_id +'/logo.svg'" alt="Logo">
-                    </a>
+                    </NuxtLink>
+                    
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
-                        <div class="Header-menu-item"><a href="" class="Header-menu-item-link">Kiralık Villalar </a></div>
+                        <div class="Header-menu-item"><NuxtLink to="/listele" class="Header-menu-item-link">Kiralık Villalar</NuxtLink></div>
+                        
                         <div class="Header-menu-item " :class="{ active: subMenuActive }">
                             <!--  -->
                             <button type="button" class="Header-menu-item-link "  @click="subMenuOpen($event)">Popüler
@@ -248,7 +250,7 @@ export default {
     },
     methods: {
         openSearch(e) {
-            document.querySelector('.Search-villas').classList.toggle('Search-villas-active')
+            document.querySelector('.Search-villas').classList.toggle('Search_villas_active')
             document.querySelector('body').classList.toggle("over")
             document.querySelector('#searchButton i').classList.toggle('icon-search')
             document.querySelector('#searchButton i').classList.toggle('icon-login-close')
@@ -279,6 +281,20 @@ export default {
         },
     },
     mounted() {
+
+        window.onscroll = function () {
+      
+      
+    //   console.log('scrollY', scrollY)
+      // console.log(document.querySelector('#more-villas').offsetTop)
+      if (scrollY >= 65) {
+        document.querySelector('.Header-inner').classList.add('Header-inner-fixed')
+      } else {
+        document.querySelector('.Header-inner').classList.remove('Header-inner-fixed')
+      }
+
+    };
+
         // window.onclick = function (event) {
         //     if (!event.target.matches('.Header-menu-item-in')) {
         //         console.log('this.submenuMenuActive',this.submenuMenuActive)
