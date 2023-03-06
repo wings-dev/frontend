@@ -121,7 +121,7 @@ h6 {
 .Header {
   height: 145px;
   position: relative;
-  z-index: 99;
+  z-index: 999;
   &-top {
     &-in {
       padding: 10px 0;
@@ -1715,18 +1715,25 @@ body.overflow-hidden {
   background-color: var(--bs-theme-first-dark);
   position: fixed;
   left: 0;
-  top: 148px;
   width: 100vw;
   height: 0;
   padding-top: 40px;
   opacity: 0;
   visibility: hidden;
   transition: all 400ms;
+
+
   &.Search_villas_active {
-    height: calc(100vh - 148px);
+    height: calc(100vh - 145px);
+    top: 145px;
     opacity: 1;
     visibility: visible;
-    z-index: 9;
+    z-index: 99;
+  }
+
+  &.Search_villas_active.Search-villas-scroll {
+    height: calc(100vh - 80px);
+    top: 80px;
   }
 
   &-title {

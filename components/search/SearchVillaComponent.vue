@@ -311,37 +311,7 @@ export default {
 :deep() .v-dropdown-item.selected {
   background-color: var(--bs-theme-second) !important;
 }
-/* :deep() .vhd__datepicker__wrapper {
-  background: none !important;
-}
 
-:deep() .vhd__datepicker__dummy-wrapper {
-  border: none !important;
-}
-
-:deep() .vhd__datepicker__input {
-  padding: 0 !important;
-  text-align: left !important;
-}
-
-:deep() .vhd__datepicker__input:first-child {
-  background-position: 80px !important;
-}
-
-:deep() .vhd__datepicker__month-day--today .vhd__datepicker__month-day-wrapper {
-  border-color: var(--bs-theme-first);
-}
-
-:deep() .vhd__datepicker__month-day--allowed-checkout:hover,
-:deep() .vhd__datepicker__month-day--valid:hover,
-:deep() .vhd__datepicker__month-day--selected,
-:deep() .vhd__datepicker__month-day--first-day-selected,
-:deep() .vhd__datepicker__month-day--last-day-selected {
-  background-color: var(--bs-theme-first-dark) ;
-}
-:deep() .vhd__datepicker__tooltip{
-  padding: 3px 4px;
-} */
 :deep() .datepicker__wrapper{
   width: 100%;
 }

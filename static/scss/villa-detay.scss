@@ -172,10 +172,25 @@ body {
       font-size: 9px;
       transform: translate(-3px, -1px);
     }
-    &:hover {
-      .action-btn-icon {
+   
+    .action-btn {
+      
+      &-text {
+        font-weight: bold;
+      }
+      &-icon{
         background-color: var(--bs-theme-second);
         border-color: var(--bs-theme-second);
+        i{
+          color: #fff;
+        }
+      }
+      
+    }
+    &:hover {
+      .action-btn-icon {
+        background-color: var(--bs-theme-first);
+        border-color: var(--bs-theme-first);
         i {
           color: #fff;
         }
