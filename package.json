@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "nuxt generate && nuxt build && nuxt start"
+    "deploy": "node update.js && nuxt generate && nuxt build && nuxt start"
   },
   "dependencies": {
     "@alfsnd/vue-bootstrap-select": "^0.4.4",

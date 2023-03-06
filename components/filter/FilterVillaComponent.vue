@@ -29,9 +29,6 @@
             <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts" :groups="amenites.groups.facilityConcepts"
               @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights" :groups="amenites.groups.highlights"
-              @updated="updateFilter('amenites.highlights', $event)"></filter-item-checkbox-component>
-
             <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities" :groups="amenites.groups.facilities"
               @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component>
               <!-- <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
@@ -77,11 +74,6 @@
               <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">
                 Konsept:{{ facilityConcept.text }}
                 <i class="icon-search-close" @click="unselect(facilityConcept)"></i>
-              </a>
-
-              <a v-for="highlight in selectedHighlights" class="Filter-right-selected-item">
-                Özellik:{{ highlight.text }}
-                <i class="icon-search-close" @click="unselect(highlight)"></i>
               </a>
 
               <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
@@ -232,12 +224,10 @@ export default {
         groups: {
           facilityTypes: [],
           facilityConcepts: [],
-          highlights: [],
           facilities: []
         },
         facilityTypes: [],
         facilityConcepts: [],
-        highlights: [],
         facilities: [],
       },
       orderValues: [
@@ -254,12 +244,13 @@ export default {
     VSelect
   },
   created() {
-    this.destinations = JSON.parse(JSON.stringify(this.searchData.destinations));
-    this.amenites = JSON.parse(JSON.stringify(this.searchData.amenites));
+    const searchData = this.$store.state['site_' + process.env.SITE + '/test/'].searchData;
+
+    this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
+    this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
     this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
-    this.applySelectedFilters('amenites', 'highlights');
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
 
@@ -275,7 +266,6 @@ export default {
   },
 
   computed: {
-    ...mapState(['searchData']),
     totalPages() {
       return Math.ceil(this.total_items / this.per_page);
     },
@@ -291,9 +281,6 @@ export default {
     selectedFacilityConcepts() {
       return this.getSelectedObjects(this.amenites.facilityConcepts);
     },
-    selectedHighlights() {
-      return this.getSelectedObjects(this.amenites.highlights);
-    },
     selectedFacilities() {
       return this.getSelectedObjects(this.amenites.facilities);
     },
@@ -302,8 +289,7 @@ export default {
         ...this.selectedDestinations,
         ...this.selectedFacilityConcepts,
         ...this.selectedFacilityTypes,
-        ...this.selectedFacilities,
-        ...this.selectedHighlights,
+        ...this.selectedFacilities
       ].length;
     }
   },
@@ -342,7 +328,6 @@ export default {
           ...this.selectedFacilityConcepts,
           ...this.selectedFacilityTypes,
           ...this.selectedFacilities,
-          ...this.selectedHighlights,
         ].map(({ code }) => code),
         min_price: this.min_price,
         max_price: this.max_price
@@ -390,7 +375,6 @@ export default {
         ...this.amenites.facilityConcepts,
         ...this.amenites.facilityTypes,
         ...this.amenites.facilities,
-        ...this.amenites.highlights
       ].forEach(checkbox => this.updateSelection(checkbox, false));
       this.filter();
     },

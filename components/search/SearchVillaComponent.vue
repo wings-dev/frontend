@@ -41,7 +41,7 @@
                 <button @click.prevent="hidePicker()">Kapat</button>
               </div>
               </div>
-            
+
             </HotelDatePicker>
 
               <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
@@ -150,7 +150,6 @@ export default {
       amenites: {
         facilityTypes: [],
         facilityConcepts: [],
-        highlights: [],
         facilities: [],
       },
       orderValues: [

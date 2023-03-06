@@ -42,7 +42,6 @@ export default () => ({
       groups:{
         facilityTypes: [],
         facilityConcepts: [],
-        highlights: [],
         facilities: [
           { id: 1, title: 'ÖNE ÇIKAN ÖZELLİKLER'},
           { id: 2, title: 'MUTFAK'}
