@@ -39,26 +39,39 @@ export default () => ({
       }
     ],
     amenites: {
+      groups:{
+        facilityTypes: [],
+        facilityConcepts: [],
+        highlights: [],
+        facilities: [
+          { id: 1, title: 'ÖNE ÇIKAN ÖZELLİKLER'},
+          { id: 2, title: 'MUTFAK'}
+        ],
+      },
       facilityTypes: [
         {
           text: "Bungalov",
           code: "171",
           selected: false,
+          group_id: 1
         },
         {
           text: "Suit Daire",
           code: "172",
           selected: false,
+          group_id: 1
         },
         {
           text: "Tiny House",
           code: "170",
           selected: false,
+          group_id: 2
         },
         {
           text: "Villa",
           code: "173",
           selected: false,
+          group_id: 2
         }
       ],
       facilityConcepts: [
@@ -122,60 +135,137 @@ export default () => ({
       ],
       facilities: [
         {
-          text: "Bahçe Alanı",
-          code: "185",
-          selected: false,
+          "code": 185,
+          "text": "Bahçe Alanı",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Bilardo Masası",
-          code: "75",
-          selected: false,
+          "code": 75,
+          "text": "Bilardo Masası",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Denize Sıfır",
-          code: "194",
-          selected: false,
+          "code": 194,
+          "text": "Denize Sıfır",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Isıtmalı Zemin",
-          code: "148",
-          selected: false,
+          "code": 148,
+          "text": "Isıtmalı Zemin",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Jakuzi",
-          code: "143",
-          selected: false,
+          "code": 143,
+          "text": "Jakuzi",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Kapalı Havuz",
-          code: "137",
-          selected: false,
+          "code": 137,
+          "text": "Kapalı Havuz",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Sauna",
-          code: "79",
-          selected: false,
+          "code": 79,
+          "text": "Sauna",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Sinema",
-          code: "196",
-          selected: false,
+          "code": 196,
+          "text": "Sinema",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Spor Ekipmanları",
-          code: "197",
-          selected: false,
+          "code": 197,
+          "text": "Spor Ekipmanları",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Türk Hamamı",
-          code: "56",
-          selected: false,
+          "code": 56,
+          "text": "Türk Hamamı",
+          "selected": true,
+          "group_id": 1,
         },
         {
-          text: "Şömine",
-          code: "64",
-          selected: false,
+          "code": 64,
+          "text": "Şömine",
+          "selected": true,
+          "group_id": 1,
         },
+        {
+          "code": 185,
+          "text": "Bahçe Alanı",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 75,
+          "text": "Bilardo Masası",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 194,
+          "text": "Denize Sıfır",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 148,
+          "text": "Isıtmalı Zemin",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 143,
+          "text": "Jakuzi",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 137,
+          "text": "Kapalı Havuz",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 79,
+          "text": "Sauna",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 196,
+          "text": "Sinema",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 197,
+          "text": "Spor Ekipmanları",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 56,
+          "text": "Türk Hamamı",
+          "selected": true,
+          "group_id": 2
+        },
+        {
+          "code": 64,
+          "text": "Şömine",
+          "selected": true,
+          "group_id": 2
+        }
       ],
     },
   }

@@ -23,16 +23,16 @@
               :checkboxes="destinations" :hideTitleBorder="true"
               @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
+            <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes" :groups="amenites.groups.facilityTypes"
               @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts"
+            <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts" :groups="amenites.groups.facilityConcepts"
               @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights"
+            <filter-item-checkbox-component title="ÖNE ÇIKAN ÖZELLİKLER" :checkboxes="amenites.highlights" :groups="amenites.groups.highlights"
               @updated="updateFilter('amenites.highlights', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
+            <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities" :groups="amenites.groups.facilities"
               @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component>
               <!-- <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
               :checkboxes="amenites.facilities" :hideTitleBorder="true"
@@ -229,6 +229,12 @@ export default {
       max_price: null,
       destinations: [],
       amenites: {
+        groups: {
+          facilityTypes: [],
+          facilityConcepts: [],
+          highlights: [],
+          facilities: []
+        },
         facilityTypes: [],
         facilityConcepts: [],
         highlights: [],
@@ -256,13 +262,18 @@ export default {
     this.applySelectedFilters('amenites', 'highlights');
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
+
+    console.log(JSON.stringify({
+      destinations: this.destinations,
+      amenites: this.amenites,
+    }))
   },
   mounted() {
     this.filter();
 
-    
+
   },
- 
+
   computed: {
     ...mapState(['searchData']),
     totalPages() {
