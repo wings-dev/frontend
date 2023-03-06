@@ -321,7 +321,7 @@ export default () => ({
     "destinations": [
       {
         "code": 2,
-        "text": "TÜRKİYE 2",
+        "text": "TÜRKİYE",
         "children": [
           {
             "code": 4,

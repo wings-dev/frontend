@@ -1,15 +1,30 @@
 const https = require('https');
 const fs = require('fs');
+const unzipper = require('unzipper');
+const path = require('path');
 
-const fileURL = 'https://wings-web.s3.us-east-2.amazonaws.com/test/filter.json';
-const fileName = 'filter.json';
+const url = 'https://wings-web.s3.us-east-2.amazonaws.com/test/store.zip';
+const outputDir = './';
 
-https.get(fileURL, (res) => {
-  let fileStream = fs.createWriteStream(fileName);
-  res.pipe(fileStream);
+// Dosya indirme işlemi
+https.get(url, (response) => {
+  const fileStream = fs.createWriteStream('store.zip');
+  response.pipe(fileStream);
   fileStream.on('finish', () => {
-    console.log(`Dosya "${fileName}" başarıyla kaydedildi.`);
+    console.log('Dosya indirme işlemi tamamlandı.');
+
+    // Dosya çıkarma işlemi
+    fs.createReadStream('store.zip')
+      .pipe(unzipper.Extract({ path: outputDir }))
+      .on('close', () => {
+        console.log('Dosya çıkarma işlemi tamamlandı.');
+
+        // İndirilen dosya silme işlemi
+        fs.unlinkSync('store.zip');
+
+        console.log('Program sonlandı.');
+      });
   });
 }).on('error', (err) => {
-  console.error(`Hata oluştu: ${err.message}`);
+  console.error(`Hata: ${err.message}`);
 });

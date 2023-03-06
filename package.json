@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "update-state": "node update.js",
     "deploy": "node update.js && nuxt generate && nuxt build && nuxt start"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "nuxt-leaflet": "^0.0.27",
     "redis": "^4.6.4",
     "swiper": "^6.4.1",
+    "unzipper": "^0.10.11",
     "v-calendar": "^2.4.1",
     "vue": "^2.7.10",
     "vue-functional-calendar": "^2.9.97",
