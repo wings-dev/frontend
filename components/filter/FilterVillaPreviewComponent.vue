@@ -4,7 +4,8 @@
       <div class="swiper villa-list-slider">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
-            <img class="lazyload" :src="image.preview_url" :data-src="image.preview_url" :srcset="image.responsive_url" />
+            <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" sizes="sm:100vw md:50vw lg:400px"/>
+            
           </div>
         </div>
         <div class="swiper-button-prev"></div>
@@ -116,7 +117,6 @@ export default {
     const swiper = new Swiper('.villa-list-slider', {
       spaceBetween: 18,
       direction: 'horizontal',
-      loop: true,
       modules: [Navigation, Pagination],
       navigation: {
         nextEl: '.swiper-button-next',
