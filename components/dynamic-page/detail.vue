@@ -85,8 +85,9 @@
           <div class="area-1">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img :src="villa.watermark_images[0].original_url" :srcset="villa.watermark_images[0].responsive"
-                width="585" height="387" alt="view-image" class="lazy cover rounded-xl w-100 h-100">
+              <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
+                 alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
+                <nuxt-img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive" width="585" height="387" sizes="sm:100vw md:50vw lg:585px"/>
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -96,8 +97,7 @@
           <div class="area-2 d-md-block d-none">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img :src="villa.watermark_images[1].original_url" width="585" height="387" alt="view-image"
-                class="lazy cover rounded-xl w-100 h-100">
+                <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[0].responsive" width="284" height="187" sizes="sm:100vw md:50vw lg:284px"/>
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -107,8 +107,7 @@
           <div class="area-3 d-md-block d-none">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img :src="villa.watermark_images[2].original_url" width="585" height="387" alt="view-image"
-                class="lazy cover rounded-xl w-100 h-100">
+              <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[0].responsive" width="284" height="187" sizes="sm:100vw md:50vw lg:284px"/>
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -118,8 +117,7 @@
           <div class="area-4 d-none d-lg-block">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img :src="villa.watermark_images[3].original_url" width="585" height="387" alt="view-image"
-                class="lazy cover rounded-xl w-100 h-100">
+              <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[0].responsive" width="284" height="187" sizes="sm:100vw md:50vw lg:284px"/>
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -129,8 +127,7 @@
           <div class="area-5 d-none d-lg-block">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img :src="villa.watermark_images[4].original_url" width="585" height="387" alt="view-image"
-                class="lazy cover rounded-xl w-100 h-100">
+              <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[0].responsive" width="284" height="187" sizes="sm:100vw md:50vw lg:284px"/>
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -156,6 +153,7 @@
                 alan
                 perde sistemi ile havuz alanı korunaklı hale getirilebilmektedir.
               </p>
+
               <p>Suitimizin üst katında deniz manzaralı ve ferah bir salon ve açık mutfak bulunmaktadır. Salondan giriş
                 yapılan ana yatak odasında 1.20 x 1.85 ebatında deniz manzaralı jakuzi, tv, king size çift kişilik yatak
                 ve
@@ -2874,8 +2872,8 @@
                   <template v-for="bolum in floor.bolum">
                     <a class="Gallery-detail-item-right-img" :href="img.original_url" data-fancybox="gallery"
                       data-caption="Salon" v-for="(img, index) in bolum.gorsel" :key="index" v-if="index <= 0">
-                      <img :src="img.original_url" class="w-100" alt="test" />
-
+                      <!-- <img :src="img.original_url" class="w-100" alt="test" /> -->
+                      <nuxt-img :src="img.original_url" :srcset="img.responsive" sizes="sm:100vw md:50vw lg:756px"/>
                     </a>
                   </template>
 
