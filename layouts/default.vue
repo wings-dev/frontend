@@ -47,8 +47,9 @@
 
     <common-footer></common-footer>
 
+    <client-only>
     <live-villa-search></live-villa-search>
-
+  </client-only>
     <client-only>
       <login-modal></login-modal>
     </client-only>
@@ -87,8 +88,7 @@ export default {
     let site_id = process.env.SITE
     return {
       link: [
-        // { rel: 'stylesheet', href: `/css/site_${site_id}/theme.min.css` },
-        { rel: 'stylesheet', href: `/css/theme.min.css` },
+        { rel: 'stylesheet', href: `/css/site${site_id}/theme.min.css` },
       ]
     }
   },

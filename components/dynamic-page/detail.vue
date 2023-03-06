@@ -1,78 +1,81 @@
 <template>
   <div>
     <section class="view-detail-section">
-      <div class="detail-top bg-theme-first-dark" id="detailTop">
-        <div class="container">
-          <div class="view-top d-flex">
+      <div class="view-detail-section-menus">
+        <div class="detail-top bg-theme-first-dark" id="detailTop">
+          <div class="container">
+            <div class="view-top d-flex">
 
-            <div class="view-top-title">
-              <h1><span>Tesis Kodu</span>VKV1020</h1>
-            </div>
+              <div class="view-top-title">
+                <h1><span>Tesis Kodu</span>{{ villa_prefix }}{{ villa.code }}</h1>
+              </div>
 
-            <div class="item-infos d-flex flex-wrap mb-sm-0 ">
-              <div class="info flex-shrink-0 d-flex align-items-center">
-                <i class="icon-user"></i>
-                <span class="lh-sm pe-1">{{ villa.max_adult }} Kişilik</span>
+              <div class="item-infos d-flex flex-wrap mb-sm-0 ">
+                <div class="info flex-shrink-0 d-flex align-items-center">
+                  <i class="icon-user"></i>
+                  <span class="lh-sm pe-1">{{ villa.max_adult }} Kişilik</span>
+                </div>
+                <div class="info flex-shrink-0 d-flex align-items-center">
+                  <i class="icon-bed"></i>
+                  <span class="lh-sm pe-1">{{ villa.bedroom }} Yatak Odası</span>
+                </div>
+                <div class="info flex-shrink-0 d-flex align-items-center">
+                  <i class="icon-shower"></i>
+                  <span class="lh-sm pe-1">{{ villa.bathrooms }} Banyo</span>
+                </div>
               </div>
-              <div class="info flex-shrink-0 d-flex align-items-center">
-                <i class="icon-bed"></i>
-                <span class="lh-sm pe-1">{{ villa.bedroom }} Yatak Odası</span>
-              </div>
-              <div class="info flex-shrink-0 d-flex align-items-center">
-                <i class="icon-shower"></i>
-                <span class="lh-sm pe-1">{{ villa.bathrooms }} Banyo</span>
-              </div>
-            </div>
-            <div class="view-top-right">
-              <div class="d-flex align-items-center text-theme-secondary">
-                <i class="icon-pin"></i>
-                <p class="view-top-right-location">FETHİYE<span class="lh-sm">Turkey / Muğla</span></p>
-              </div>
-              <div class="view-top-right-price">
-                <span>GECELİK</span>
-                <p>7500 <span>₺</span></p>
-                <small>'den başlayan fiyatlar'</small>
+              <div class="view-top-right">
+                <div class="d-flex align-items-center text-theme-secondary">
+                  <i class="icon-pin"></i>
+                  <p class="view-top-right-location">FETHİYE<span class="lh-sm">Turkey / Muğla</span></p>
+                </div>
+                <div class="view-top-right-price">
+                  <span>GECELİK</span>
+                  <p>7500 <span>₺</span></p>
+                  <small>'den başlayan fiyatlar'</small>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="View-menu" id="detailMenu">
-        <div class="container">
-          <div class="View-menu-in">
-            <div class="View-menu-left">
-              <a id="genelbakis" class="View-menu-item desc-content" @click.prevent="scrollItem($event)">Genel bakış</a>
-              <a id="musaitlik" class="View-menu-item availibility-content" @click.prevent="scrollItem($event)">Müsaitlik
-                ve Takvim Fiyatı</a>
-              <a id="location" class="View-menu-item location-content" @click.prevent="scrollItem($event)">Konum</a>
-              <a id="comments" class="View-menu-item reviews-content" @click.prevent="scrollItem($event)">Yorumlar</a>
-              <a id="sss" class="View-menu-item sss-content" @click.prevent="scrollItem($event)">S.S.S.</a>
-              <a id="rules" class="View-menu-item rules-content" @click.prevent="scrollItem($event)">*Bilmeniz
-                Gerekenler</a>
-            </div>
-            <div class="View-menu-right">
-              <button type="button"
-                class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4">
-                <span class="action-btn-icon">
-                  <i class="icon-heart"></i>
-                </span>
-                <span class="action-btn-text">Favorilere Ekle</span>
-              </button>
-              <button type="button"
-                class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
-                <span class="action-btn-icon">
-                  <i class="icon-share"></i>
-                </span>
-                <span class="action-btn-text">Arkadaşın ile Paylaş</span>
-              </button>
-              <button type="button"
-                class="up-button d-none fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
-                @click.prevent="scrollTop">
-                <span class="action-btn-icon">
-                  <i class="icon-up-arrow"></i>
-                </span>
-                <span class="action-btn-text">Yukarı Çık</span>
-              </button>
+        <div class="View-menu" id="detailMenu">
+          <div class="container">
+            <div class="View-menu-in">
+              <div class="View-menu-left">
+                <a id="genelbakis" class="View-menu-item desc-content" @click.prevent="scrollItem($event)">Genel bakış</a>
+                <a id="musaitlik" class="View-menu-item availibility-content"
+                  @click.prevent="scrollItem($event)">Müsaitlik
+                  ve Takvim Fiyatı</a>
+                <a id="location" class="View-menu-item location-content" @click.prevent="scrollItem($event)">Konum</a>
+                <a id="comments" class="View-menu-item reviews-content" @click.prevent="scrollItem($event)">Yorumlar</a>
+                <a id="sss" class="View-menu-item sss-content" @click.prevent="scrollItem($event)">S.S.S.</a>
+                <a id="rules" class="View-menu-item rules-content" @click.prevent="scrollItem($event)">*Bilmeniz
+                  Gerekenler</a>
+              </div>
+              <div class="View-menu-right">
+                <button type="button"
+                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4">
+                  <span class="action-btn-icon">
+                    <i class="icon-heart"></i>
+                  </span>
+                  <span class="action-btn-text">Favorilere Ekle</span>
+                </button>
+                <button type="button"
+                  class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
+                  <span class="action-btn-icon">
+                    <i class="icon-share"></i>
+                  </span>
+                  <span class="action-btn-text">Arkadaşın ile Paylaş</span>
+                </button>
+                <button type="button"
+                  class="up-button d-none fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                  @click.prevent="scrollTop">
+                  <span class="action-btn-icon">
+                    <i class="icon-up-arrow"></i>
+                  </span>
+                  <span class="action-btn-text">Yukarı Çık</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -308,9 +311,9 @@
                 Aşağıda belirtilen fiyatlar tesisin 1 gecelik konaklama ücretidir. Dönemlere göre konaklama süresine
                 göre ekstra temizlik ücreti eklenebilmektedir.
               </p>
-              <client-only>
-                <v-calendar class="custom-calendar" :attributes="attributes" :columns="2" :disabled-dates="disabledDates"
-                  disable-page-swipe :step="1">
+              <!-- <client-only>
+                <v-calendar v-if="attributes.length"  class="custom-calendar" :attributes="attributes" :columns="2"
+                  :disabled-dates="disabledDates" disable-page-swipe :step="1">
                   <template v-slot:day-content="{ day, attributes }">
                     <div v-for="(attr, index) in attributes" :key="index"
                       class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
@@ -328,13 +331,11 @@
                           {{ !attr.customData.status.includes(1) ? attr.customData.price : '' }}
                         </p>
                       </div>
-                      <!-- A6AFC2 -->
-                      <!-- 989FB5 -->
                     </div>
                   </template>
                 </v-calendar>
 
-              </client-only>
+              </client-only> -->
               <div class="View-availibility-legand">
                 <div class="View-availibility-legand-item">
                   <span class="close-day"></span>
@@ -580,9 +581,9 @@
               <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
                 <div class="pool-item-left">
                   <img src="/uploads/003-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
-                    v-if="poolitem.pool == 8">
+                    v-if="poolitem.pool == 52">
                   <img src="/uploads/005-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
-                    v-if="poolitem.pool == 9">
+                    v-if="poolitem.pool == 58">
                   <!-- <img src="/uploads/002-watch-your-children.svg" width="28" height="28" alt="pool icon" -->
                   <span class="">{{ poolitem.name }}</span>
                 </div>
@@ -600,7 +601,7 @@
                 <h4 class="View-title">
                   Konum
                 </h4>
-                <p class="View-text">Yakınında Neler Var</p>
+                <p class="View-text">Yakınında Neler Var </p>
 
               </div>
 
@@ -765,14 +766,17 @@
                     <div class="View-info-hours-item-right">
                       <div class="View-info-hours-status">
                         <div class="View-info-hours-status-in" style="grid-column: 14/23;">
-                          <div class="View-info-hours-status-lefthours">
-                            <span>{{ villa.checkin.substr(0, 5) }}</span>
+                           <div class="View-info-hours-status-lefthours">
+                            <span>{{ villa.checkin !==null ? villa.checkin.substr(0, 5) : ' '  }}</span>
                           </div>
+                          
                           <div class="View-info-hours-status-righthours">
-                            <span>{{ villa.checkin_end.substr(0, 5) }}</span>
+                            <span>
+                                   {{ villa.checkin_end !==null ? villa.checkin_end.substr(0, 5) : ' '  }}
+                            </span>
                           </div>
-                          <div class="View-info-hours-status-tophours">
-                            <span>{{ villa.checkin.substr(0, 5) }} - {{ villa.checkin_end.substr(0, 5) }} Arası</span>
+                          <div class="View-info-hours-status-tophours" v-if="villa.checkin !== null">
+                            <span>{{ villa.checkin !==null ? villa.checkin.substr(0, 5) : ' ' }} - {{ villa.checkin_end !==null ? villa.checkin_end.substr(0, 5) : ' '  }} Arası</span>
                           </div>
                         </div>
                       </div>
@@ -791,14 +795,18 @@
                     <div class="View-info-hours-item-right">
                       <div class="View-info-hours-status">
                         <div class="View-info-hours-status-in" style="grid-column: 4/9;">
+ 
                           <div class="View-info-hours-status-lefthours">
-                            <span><span>{{ villa.checkout.substr(0, 5) }}</span></span>
+                            <span>{{ villa.checkout !==null ? villa.checkout.substr(0, 5) : ' '  }}</span>
                           </div>
+                          
                           <div class="View-info-hours-status-righthours">
-                            <span>{{ villa.checkout_end.substr(0, 5) }}</span>
+                            <span>
+                                   {{ villa.checkout_end !==null ? villa.checkout_end.substr(0, 5) : ' '  }}
+                            </span>
                           </div>
-                          <div class="View-info-hours-status-tophours">
-                            <span>{{ villa.checkout.substr(0, 5) }} - {{ villa.checkout_end.substr(0, 5) }} Arası</span>
+                          <div class="View-info-hours-status-tophours" v-if="villa.checkout !== null">
+                            <span>{{ villa.checkout !==null ? villa.checkout.substr(0, 5) : ' ' }} - {{ villa.checkout_end !==null ? villa.checkout_end.substr(0, 5) : ' '  }} Arası</span>
                           </div>
                         </div>
                       </div>
@@ -2976,12 +2984,14 @@ import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 export default {
   name: 'DynamicDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
+  // props: ['villa', 'calendar', 'price_list_1'],
   components: {
     Swiper,
     HotelDatePicker,
   },
   data() {
     return {
+      villa_prefix : process.env.PREFIX,
       date: null,
       disableReservation: ['2023-03-20', '2023-03-21', '2023-03-22', '2023-03-23', '2023-03-24', '2023-03-25', '2023-03-26', '2023-03-27'],
       disabledDates: [
@@ -3120,7 +3130,7 @@ export default {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-    document.querySelector('.header').classList.add('villa-detay')
+    document.querySelector('.Header').classList.add('villa-detay')
 
     const sections = document.querySelectorAll(".view-menu-content-item");
     const navLi = document.querySelectorAll(".View-menu-item");
@@ -3184,45 +3194,45 @@ export default {
 
     console.log('villa', this.villa)
 
+
   },
   computed: {
+
     attributes() {
-      const dates = new Set();
-
-      // Add all unique dates from calendar and price_list_1
-      this.calendar.forEach(item => dates.add(item.dates));
-      this.price_list_1.forEach(item => dates.add(item.dates));
-
-      const attributes = [];
-
-      // Create a new object for each unique date
-      dates.forEach(date => {
-        const customData = {
-          price: null,
-          status: [],
-          dateStatus: [],
-        };
-
-        // Merge data from matching calendar items
-        const matchingCalendarItems = this.calendar.filter(item => item.dates === date);
-        matchingCalendarItems.forEach(item => {
-          customData.status.push(...item.status);
-          customData.dateStatus.push(...item.datestatus);
+      if (this.calendar.length && this.price_list_1.length) {
+        const dates = new Set();
+        // Add all unique dates from calendar and price_list_1
+        this.calendar.forEach(item => dates.add(item.dates));
+        this.price_list_1.forEach(item => dates.add(item.dates));
+        const attributes = [];
+        // Create a new object for each unique date
+        dates.forEach(date => {
+          const customData = {
+            price: null,
+            status: [],
+            dateStatus: [],
+          };
+          // Merge data from matching calendar items
+          const matchingCalendarItems = this.calendar.filter(item => item.dates === date);
+          matchingCalendarItems.forEach(item => {
+            customData.status.push(...item.status);
+            customData.dateStatus.push(...item.datestatus);
+          });
+          // Add price data from matching price_list_1 item
+          const matchingPriceItem = this.price_list_1.find(item => item.dates === date);
+          if (matchingPriceItem) {
+            customData.price = matchingPriceItem.price;
+          }
+          attributes.push({
+            customData,
+            dates: new Date(date),
+          });
         });
-
-        // Add price data from matching price_list_1 item
-        const matchingPriceItem = this.price_list_1.find(item => item.dates === date);
-        if (matchingPriceItem) {
-          customData.price = matchingPriceItem.price;
-        }
-
-        attributes.push({
-          customData,
-          dates: new Date(date),
-        });
-      });
-
-      return attributes;
+        console.log('attributes',attributes)
+        return attributes;
+      } else{
+        return attributes=[];
+      }
     }
   }
 }
@@ -3387,4 +3397,5 @@ body {
 
 .day-label {
   margin-top: 5px;
-}</style>
+}
+</style>

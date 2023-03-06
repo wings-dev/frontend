@@ -3,9 +3,9 @@ html {
 }
 body {
   --page-light: #f0f5f6;
-  &.body-fixed {
-    padding-top: 150px;
-  }
+  // &.body-fixed {
+  //   padding-top: 150px;
+  // }
 }
 
 .bg-page-light {
@@ -231,6 +231,9 @@ body {
     left: 0;
     top: 0;
     z-index: -1;
+  }
+  &-menus{
+    height: 140px;
   }
 }
 
@@ -1646,6 +1649,7 @@ body {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          font-size: 10px;
           p {
             margin-bottom: 0;
             font-size: 14px;
@@ -1657,7 +1661,7 @@ body {
             }
           }
           &:after {
-            content: "";
+            content: '\e824';
             border: none;
             font-family: "icon";
             font-style: normal;
@@ -1665,13 +1669,11 @@ body {
             speak: never;
             display: inline-block;
             text-decoration: inherit;
-            width: 1em;
             margin-right: 0.2em;
             text-align: center;
             font-variant: normal;
             text-transform: none;
             line-height: 1em;
-            margin-left: 0.2em;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
           }
