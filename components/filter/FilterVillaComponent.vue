@@ -245,8 +245,6 @@ export default {
   },
   created() {
     const searchData = this.$store.state['site_' + process.env.SITE].searchData;
-    const searchData2 = this.$store.state["site_2/routes"];
-    console.log('searchData2', searchData2);
 
     this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
