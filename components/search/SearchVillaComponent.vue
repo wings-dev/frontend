@@ -14,12 +14,14 @@
           </div>
           <i class="icon-down-arrow"></i>
         </button>
+        <client-only>
         <ul class="dropdown-menu filtered" aria-labelledby="dropdownMenuButton1">
           <filter-item-checkbox-component :hideTitle="true" filterInputPlaceholder="Bölge Arayın"
             :checkboxes="destinations" :hideTitleBorder="true"
             @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
 
         </ul>
+      </client-only>
       </div>
       <div class="Search-item date">
         <div
@@ -61,6 +63,7 @@
           </div>
 
         </button>
+        <client-only>
         <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton2">
           <div class="Search-item-person">
             <div class="Search-item-person-item ">
@@ -96,6 +99,7 @@
             </div>
           </div>
         </ul>
+      </client-only>
       </div>
       <div class="Search-item Search-item-more">
         <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -104,6 +108,7 @@
           <span class="dropdown-toggle-title">Gelişmiş Arama</span>
           <i class="icon-down-arrow"></i>
         </button>
+        <client-only>
         <ul class="dropdown-menu filtered " aria-labelledby="dropdownMenuButton3">
           <div class="dropdown-menu-in filtered-in">
             <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
@@ -112,6 +117,7 @@
               @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
           </div>
         </ul>
+      </client-only>
       </div>
     </div>
     <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()"><i

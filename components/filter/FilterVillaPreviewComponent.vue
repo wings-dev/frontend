@@ -23,6 +23,7 @@
       <div class="F_villa-item-head">
         <div class="F_villa-item-head-name">
           <span>Tesis Kodu</span>
+          
           <a :href="villa.url">{{ prefix + villa.code }}</a>
           <div class="F_villa-item-head-name-star">
             <i class="icon-star active"></i>

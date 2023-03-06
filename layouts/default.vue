@@ -47,8 +47,9 @@
 
     <common-footer></common-footer>
 
+    <client-only>
     <live-villa-search></live-villa-search>
-
+  </client-only>
     <client-only>
       <login-modal></login-modal>
     </client-only>
