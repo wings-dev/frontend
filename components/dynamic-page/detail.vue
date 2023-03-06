@@ -7,7 +7,7 @@
             <div class="view-top d-flex">
 
               <div class="view-top-title">
-                <h1><span>Tesis Kodu</span>VKV1020</h1>
+                <h1><span>Tesis Kodu</span>{{ villa_prefix }}{{ villa.code }}</h1>
               </div>
 
               <div class="item-infos d-flex flex-wrap mb-sm-0 ">
@@ -2991,6 +2991,7 @@ export default {
   },
   data() {
     return {
+      villa_prefix : process.env.PREFIX,
       date: null,
       disableReservation: ['2023-03-20', '2023-03-21', '2023-03-22', '2023-03-23', '2023-03-24', '2023-03-25', '2023-03-26', '2023-03-27'],
       disabledDates: [
