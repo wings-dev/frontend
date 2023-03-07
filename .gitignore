@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+store/routes/state.js
+store/settings/state.js
