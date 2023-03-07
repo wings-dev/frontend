@@ -2,8 +2,10 @@ const https = require('https');
 const fs = require('fs');
 const unzipper = require('unzipper');
 const path = require('path');
+require("dotenv").config();
 
-const url = 'https://wings-web.s3.us-east-2.amazonaws.com/test/store.zip';
+
+const url = 'https://wings-web.s3.us-east-2.amazonaws.com/nuxt/' + process.env.SITE  + '.zip';
 const outputDir = './';
 
 // Dosya indirme işlemi
