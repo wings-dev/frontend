@@ -16,6 +16,11 @@ body {
   padding-bottom: 50px;
   position: relative;
   z-index: 99;
+
+&-z{
+  z-index: 999;
+}
+
 }
 
 .view {

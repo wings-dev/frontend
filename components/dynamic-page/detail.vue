@@ -98,7 +98,7 @@
           <div class="area-2 d-md-block d-none">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[0].responsive"
+              <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
@@ -109,7 +109,7 @@
           <div class="area-3 d-md-block d-none">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[0].responsive"
+              <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
@@ -120,7 +120,7 @@
           <div class="area-4 d-none d-lg-block">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[0].responsive"
+              <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
@@ -131,7 +131,7 @@
           <div class="area-5 d-none d-lg-block">
             <a href="#" @click.prevent="showGallery()"
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[0].responsive"
+              <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
@@ -934,11 +934,11 @@
                 <span class="tarihsec">TARİH SEÇ</span>
                 <div class="Reservation-form-in">
                   <div class="Reservation-form-item w-100">
-                    <HotelDatePicker format="DD-MM-YYYY" :positionRight="true" :disabledDates="disableReservation">
+                    <HotelDatePicker format="DD-MM-YYYY" :positionRight="true" :disabledDates="disableReservation" ref="datePicker">
                       <div slot="content">
                         <div class="d-flex align-items-center justify-content-end mt-1">
-                          <button @click.prevent="clearDates()" class="me-1">Temizle</button>
-                          <button @click.prevent="hidePicker()">Kapat</button>
+                          <button @click.prevent="clearDatesRez()" class="me-1">Temizle</button>
+                          <button @click.prevent="hidePickerRez()">Kapat</button>
                         </div>
                       </div>
                     </HotelDatePicker>
@@ -1412,10 +1412,12 @@ export default {
     showGallery() {
       document.querySelector('.Gallery').classList.add("show")
       document.querySelector('body').classList.add("over")
+      document.querySelector('.main').classList.add("main-z")
     },
     closeGallery() {
       document.querySelector('.Gallery').classList.remove("show")
       document.querySelector('body').classList.remove("over")
+      document.querySelector('.main').classList.remove("main-z")
     },
     scrollGallery(event) {
       const el = this.$el.getElementsByClassName(event.currentTarget.id)[0];
@@ -1438,6 +1440,12 @@ export default {
       document.querySelector('.tarihsec').classList.add("tarihsec-active")
       event.target.textContent = "Ön Rezervasyon Talebi Gönder";
     },
+    clearDatesRez() {
+        this.$refs.datePicker.clearSelection();
+    },
+    hidePickerRez() {
+        this.$refs.datePicker.hideDatepicker();
+    }
 
   },
   mounted() {
