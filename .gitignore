@@ -89,5 +89,6 @@ sw.*
 # Vim swap files
 *.swp
 
+__MACOSX
 store/routes/state.js
 store/settings/state.js
