@@ -118,7 +118,7 @@ export default {
       target: "https://office.wingss.xyz/"
     },
     "/data": {
-      target: "https://api.wingss.xyz/"
+      target: "http://93.115.79.123/"
     }
   },
 
