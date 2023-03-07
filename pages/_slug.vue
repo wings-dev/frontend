@@ -24,11 +24,12 @@ export default {
       price_list_1: [],
     }
   },
-  async asyncData({$getRedisKey, route}) {
+  async asyncData({$getRedisKey, route, store}) {
     const site_id = process.env.SITE;
     const path = route.params.slug;
     // Gelen sayfanın redisteki datası
-    let redisData = await $getRedisKey(`web:${site_id}:pages:${path}`);
+
+    let redisData = store.state['routes'].routes[path]; // await $getRedisKey(`web:${site_id}:pages:${path}`);
     let componentData = {};
     let calendar = [];
     let price_list_1 = [];
@@ -45,10 +46,10 @@ export default {
           {rel: 'stylesheet', href: `/css/villa-detay.min.css`}
         ]
         // villa redis datası
-        componentData = await $getRedisKey(`data:villas:${redisData.code}:detail`);
-        let calenderData = await $getRedisKey(`data:villas:${redisData.code}:calendar`);
+        componentData = await $getRedisKey(`data:villas:${path}:detail`);
+        let calenderData = await $getRedisKey(`data:villas:${path}:calendar`);
         calendar = calenderData.calendar;
-        let priceData = await $getRedisKey(`data:villas:${redisData.code}:price`);
+        let priceData = await $getRedisKey(`data:villas:${path}:price`);
         price_list_1 = priceData.price_list_1;
       }
       // type 7 => filtre sayfası

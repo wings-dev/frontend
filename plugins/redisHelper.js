@@ -1,13 +1,25 @@
 export default ({ $axios, $config }, inject) => {
   const getRedisKey = async (key) => {
+    console.log('redis key aliniyor => ' + key);
+
+    // Başlangıç zamanı
+    const startTime = new Date().getTime();
+
     try {
-      const response = await $axios.post(`http://localhost:3000/data`, { key })
-      return response.data
+      const response = await $axios.post(`http://localhost:3000/data`, { key });
+
+      // Bitiş zamanı
+      const endTime = new Date().getTime();
+
+      // İşlem süresi hesaplama
+      const duration = endTime - startTime;
+      console.log(`İşlem ${duration} milisaniye sürdü.`);
+
+      return response.data;
     } catch (error) {
-      console.error(error)
-      return null
+      console.error(error);
+      return null;
     }
   }
-
   inject('getRedisKey', getRedisKey)
 }
