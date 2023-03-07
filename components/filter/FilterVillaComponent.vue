@@ -244,7 +244,7 @@ export default {
     VSelect
   },
   created() {
-    const searchData = this.$store.state['site_' + process.env.SITE].searchData;
+    const searchData = this.$store.state['settings'].searchData;
 
     this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
