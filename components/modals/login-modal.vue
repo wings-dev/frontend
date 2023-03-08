@@ -45,7 +45,7 @@
                       </div>
                     </div>
                     <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert"></p>
-                    <button type="submit" class="Login-form-button">GÖNDER</button>
+                    <button :disabled="!enabledLoginButton" type="submit" class="Login-form-button">GÖNDER</button>
                     <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
                   </div>
                   <div class="tab-pane fade" role="tabpanel" id="loginFormMailContent">
@@ -53,7 +53,7 @@
                       <input v-model="email" type="text" placeholder="E-mail adresiniz" value="" id="mailInput">
                     </label>
                     <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert"></p>
-                    <button type="submit" class="Login-form-button">GÖNDER</button>
+                    <button :disabled="!enabledLoginButton" type="submit" class="Login-form-button">GÖNDER</button>
                     <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
                   </div>
                 </div>
@@ -76,15 +76,41 @@ export default {
   data() {
     return {
       loginType: 'phone',
-      phone: null,
-      email: null,
+      phone: '',
+      email: '',
       codes: ['', '', '', ''],
     }
   },
   computed: {
     password() {
       return this.codes.join('');
+    },
+    enabledLoginButton() {
+      if (this.loginType === 'phone' && this.phone.length === 10) {
+        return true;
+      }
     }
+  },
+  watch: {
+    phone(newValue) {
+      // Remove any non-digit characters
+      let cleaned = newValue.replace(/\D/g, '');
+
+      // Make sure the first character is always '5'
+      if (cleaned.length > 0 && cleaned.charAt(0) !== '5') {
+        cleaned = '5' + cleaned.substring(1);
+      } else if (cleaned.length === 0) {
+        cleaned = '5';
+      }
+
+      // Limit the input to 10 characters
+      if (cleaned.length > 10) {
+        cleaned = cleaned.substring(0, 10);
+      }
+
+      // Update the phone number value
+      this.phone = cleaned;
+    },
   },
   methods: {
     ...mapMutations(['setLoginCodeModalData']),
