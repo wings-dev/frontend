@@ -86,17 +86,17 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Header-inner">
             <div class="container h-100">
                 <div class="Header-inner-in">
                     <NuxtLink to="/" class="Header-logo">
                         <img :src="'/img/site'+ site_id +'/logo.svg'" alt="Logo">
                     </NuxtLink>
-                    
+
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
                         <div class="Header-menu-item"><NuxtLink to="/listele" class="Header-menu-item-link">Kiralık Villalar</NuxtLink></div>
-                        
+
                         <div class="Header-menu-item " :class="{ active: subMenuActive }">
                             <!--  -->
                             <button type="button" class="Header-menu-item-link "  @click="subMenuOpen($event)">Popüler
@@ -211,7 +211,7 @@
                             <i class="icon-heart-full"></i>
                         </button>
                         <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
-                            data-bs-target="#signupModal">
+                            data-bs-target="#loginModal">
                             <i class="icon-user"></i><span class="">ÜYE GİRİŞİ YAP </span>
                         </button>
                         <button v-else type="button"
@@ -232,7 +232,7 @@
         </div>
     </header>
 </template>
-  
+
 <script>
 
 export default {
@@ -283,8 +283,8 @@ export default {
     mounted() {
 
         window.onscroll = function () {
-      
-      
+
+
     //   console.log('scrollY', scrollY)
       // console.log(document.querySelector('#more-villas').offsetTop)
       if (scrollY >= 65) {
@@ -314,4 +314,3 @@ export default {
     }
 }
 </script>
-  
