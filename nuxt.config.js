@@ -115,7 +115,7 @@ export default {
 
   proxy: {
     "/api/": {
-      target: "https://office.wingss.xyz/"
+      target: "https://wings.rentals/"
     },
     "/data": {
       target: "http://93.115.79.123/"
