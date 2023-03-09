@@ -38,7 +38,7 @@
                   <a href="">Yeni Doğrulama Kodu Gönder</a>
                 </p>
                 <button type="submit" class="Login-form-button mt-1">GÖNDER</button>
-                <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
+                <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye Ol!</a></p>
               </form>
             </div>
           </div>
@@ -66,7 +66,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['hideReservationCodeModal']),
+    ...mapActions(['hideReservationCodeModal', 'hideReservationCodeModal', 'showRegisterModal']),
+    openRegister() {
+      this.hideReservationCodeModal();
+      this.showRegisterModal();
+    },
     async entercode() {
 
       const data = {

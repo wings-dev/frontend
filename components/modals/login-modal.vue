@@ -46,7 +46,7 @@
                     </div>
                     <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert"></p>
                     <button :disabled="!enabledLoginButton" type="submit" class="Login-form-button">GÖNDER</button>
-                    <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
+                    <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye Ol!</a></p>
                   </div>
                   <div class="tab-pane fade" role="tabpanel" id="loginFormMailContent">
                     <label for="" class="Login-form-item ">
@@ -54,7 +54,7 @@
                     </label>
                     <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert"></p>
                     <button :disabled="!enabledLoginButton" type="submit" class="Login-form-button">GÖNDER</button>
-                    <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
+                    <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye Ol!</a></p>
                   </div>
                 </div>
               </form>
@@ -114,7 +114,11 @@ export default {
   },
   methods: {
     ...mapMutations(['setLoginCodeModalData']),
-    ...mapActions(['hideLoginModal', 'showLoginCodeModal']),
+    ...mapActions(['hideLoginModal', 'showLoginCodeModal', 'showRegisterModal']),
+    openRegister() {
+      this.hideLoginModal();
+      this.showRegisterModal();
+    },
     async sendcode() {
       try {
         const data = {
