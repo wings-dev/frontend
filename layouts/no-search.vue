@@ -87,6 +87,9 @@ export default {
     ...mapActions(['openLoginModal', 'showCallModal', 'showFavModal'])
   },
   mounted() {
+    this.$store.dispatch('initializeVisitorId')
+    this.$store.dispatch('favorite/initializeFavorites')
+
   }
 }
 </script>
