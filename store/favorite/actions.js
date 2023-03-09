@@ -21,7 +21,7 @@ export default {
 
     const timeoutId = setTimeout(async () => {
       try {
-        await this.$axios.$post('https://office.wingss.xyz/chat/api',
+        await this.$axios.$post('/visitor/api',
           {
             favorites: state.favorites,
             visitorId: localStorage.getItem('visitorId'),
