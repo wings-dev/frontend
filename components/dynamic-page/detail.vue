@@ -810,7 +810,8 @@
                             </span>
                           </div>
                           <div class="View-info-hours-status-tophours" v-if="villa.checkout !== null">
-                            <span>{{ villa.checkout !== null ? villa.checkout.substr(0, 5) : ' ' }} - {{ villa.checkout_end
+                            <span>{{ villa.checkout !== null ? villa.checkout.substr(0, 5) : ' ' }} - {{
+                              villa.checkout_end
                               !== null ? villa.checkout_end.substr(0, 5) : ' ' }} Arası</span>
                           </div>
                         </div>
@@ -1055,7 +1056,7 @@
       </div>
     </section>
 
-    <section class="Gallery">
+    <section class="Gallery" @keydown.esc="closeGallery">
       <div class="container">
         <div class="Gallery-head">
           <button type="button" class="Gallery-close" @click="closeGallery"><i class="icon-search-close"></i></button>
@@ -1065,83 +1066,32 @@
           <div class="Gallery-in">
             <h3 class="Gallery-list-title">Mekâna genel bakış</h3>
             <div class="Gallery-list">
+              <template v-for="(floor, index) in villa.floorplan.kat">
+                <button type="button" class="Gallery-list-item" :id="'Gallery_item' + index"
+                  @click="scrollGallery($event)" v-for="(bolum, index) in floor.bolum" :key="index">
+                  <img :src="bolum.gorsel[0].preview_url" class="w-100" alt="test" />
+                  <p>{{ bolum.name }} <br> <span>({{ floor.name }})</span></p>
+                </button>
+              </template>
 
-              <button type="button" class="Gallery-list-item" :id="'Gallery_item' + index" @click="scrollGallery($event)"
-                v-for="(floor, index) in villa.floorplan.kat" :key="index">
-                <img :src="img.preview_url" class="w-100" alt="test" v-for="(img, index) in floor.bolum[0].gorsel"
-                  :key="index" v-if="index <= 0" />
-                <p>{{ floor.name }}</p>
-              </button>
-              <!-- <button type="button" class="Gallery-list-item" id="Gallery_item2" @click="scrollGallery($event)">
-                                  <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                  <p>Yatak Odası</p>
-                                </button>
-                                <button type="button" class="Gallery-list-item" id="Gallery_item3" @click="scrollGallery($event)">
-                                  <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                  <p>Bahçe</p>
-                                </button> -->
             </div>
             <div class="Gallery-detail">
+              <template v-for="(floor, index) in villa.floorplan.kat">
+                <div class="Gallery-detail-item" :class="'Gallery_item' + index" v-for="(bolum, index) in floor.bolum"
+                  :key="index">
+                  <div class="Gallery-detail-item-left">
+                    <h3>{{ bolum.name }}</h3>
+                  </div>
+                  <div class="Gallery-detail-item-right">
 
-              <div class="Gallery-detail-item " :class="'Gallery_item' + index"
-                v-for="(floor, index) in villa.floorplan.kat" :key="index">
-                <div class="Gallery-detail-item-left">
-                  <h3>{{ floor.name }}</h3>
-                </div>
-                <div class="Gallery-detail-item-right">
-                  <template v-for="bolum in floor.bolum">
                     <a class="Gallery-detail-item-right-img" :href="img.original_url" data-fancybox="gallery"
-                      data-caption="Salon" v-for="(img, index) in bolum.gorsel" :key="index" v-if="index <= 0">
-                      <!-- <img :src="img.original_url" class="w-100" alt="test" /> -->
-                      <nuxt-img :src="img.original_url" :srcset="img.responsive" sizes="sm:100vw md:50vw lg:756px" />
+                      data-caption="Salon" v-for="(img, index) in bolum.gorsel" :key="index">
+                      <nuxt-img :src="img.preview_url" :srcset="img.responsive" sizes="sm:100vw md:50vw lg:756px" />
                     </a>
-                  </template>
 
-
+                  </div>
                 </div>
-              </div>
-              <!-- <div class="Gallery-detail-item Gallery_item2">
-                                  <div class="Gallery-detail-item-left">
-                                    <h3>Yatak Odası</h3>
-                                  </div>
-                                  <div class="Gallery-detail-item-right">
-                                    <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                                      data-caption="Salon">
-                                      <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                    </a>
-                                    <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                                      data-caption="Salon">
-                                      <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                    </a>
-                                    <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                                      data-caption="Salon">
-                                      <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                    </a>
-                                    <a class="Gallery-detail-item-right-img" href="/uploads/hotel-image1.jpg" data-fancybox="gallery"
-                                      data-caption="Salon">
-                                      <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                    </a>
-                                  </div>
-                                </div>
-                                <div class="Gallery-detail-item Gallery_item3">
-                                  <div class="Gallery-detail-item-left">
-                                    <h3>Bahçe</h3>
-                                  </div>
-                                  <div class="Gallery-detail-item-right">
-                                    <a class="Gallery-detail-item-right-img" href="" data-fancybox="gallery" data-caption="Salon">
-                                      <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                    </a>
-                                    <a class="Gallery-detail-item-right-img" href="" data-fancybox="gallery" data-caption="Salon">
-                                      <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                    </a>
-                                    <a class="Gallery-detail-item-right-img" href="" data-fancybox="gallery" data-caption="Salon">
-                                      <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                    </a>
-                                    <a class="Gallery-detail-item-right-img" href="" data-fancybox="gallery" data-caption="Salon">
-                                      <nuxt-img src="/uploads/hotel-image1.jpg" class="w-100" placeholder alt="test" />
-                                    </a>
-                                  </div>
-                                </div> -->
+              </template>
             </div>
           </div>
         </div>
@@ -1209,6 +1159,7 @@ export default {
   },
   data() {
     return {
+      galleryIsOpen:false,
       villa_prefix: process.env.PREFIX,
       date: null,
       disableReservation: ['2023-03-20', '2023-03-21', '2023-03-22', '2023-03-23', '2023-03-24', '2023-03-25', '2023-03-26', '2023-03-27'],
@@ -1224,14 +1175,8 @@ export default {
       markers: [
         [36.61751702707028, 29.143651464471198], [36.61814341192442, 29.143354164069745]
       ],
-      // icon: icon({
-      //   iconUrl: "static/img/map-center.svg",
-      //   iconSize: [32, 37],
-      //   iconAnchor: [16, 37]
-      // }),
       iconSize: [140, 140],
-      // status : 0 - Boş gün , 1 - Dolu gün, 2 - Opsiyon
-      // dateStatus : 0 - Giriş , 1 - Normal gün, 2 - Çıkış
+      
     }
   },
   methods: {
@@ -1246,11 +1191,13 @@ export default {
       document.querySelector('.Gallery').classList.add("show")
       document.querySelector('body').classList.add("over")
       document.querySelector('.main').classList.add("main-z")
+      this.galleryIsOpen = true
     },
     closeGallery() {
       document.querySelector('.Gallery').classList.remove("show")
       document.querySelector('body').classList.remove("over")
       document.querySelector('.main').classList.remove("main-z")
+      this.galleryIsOpen = false
     },
     scrollGallery(event) {
       const el = this.$el.getElementsByClassName(event.currentTarget.id)[0];
@@ -1266,6 +1213,19 @@ export default {
     },
     scrollTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    onEscapeKeyUp(event) {
+      if (event.which === 27) {
+        document.querySelector('.Gallery').classList.remove("show")
+        document.querySelector('body').classList.remove("over")
+        document.querySelector('.main').classList.remove("main-z")
+        this.galleryIsOpen = false
+      }
+    }
+  },
+  watch:{
+    galleryIsOpen (){
+      window.addEventListener("keyup", this.onEscapeKeyUp);
     }
   },
   mounted() {
@@ -1409,7 +1369,6 @@ export default {
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
       }
     }
-
 
     console.log('villa', this.villa)
 

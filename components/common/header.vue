@@ -1,75 +1,4 @@
 <template>
-    <!-- <header class="header bg-theme-first text-white border-bottom border-theme-first-light position-sticky top-0">
-        <div class="header-top">
-            <div class="container">
-                <div class="header-top-in">
-                    <a href="" class="header-top-contact">
-                        <i class="icon-phone-call"></i>
-                        <p><span>Yardım / Destek</span>444 8 484</p>
-                    </a>
-                    <div class="header-top-menu">
-                        <a href="" class="header-top-menu-item">S.S.S</a>
-                        <a href="/kurumsal" class="header-top-menu-item">Hakkımızda</a>
-                        <a href="" class="header-top-menu-item">İletişim</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container d-flex py-2">
-            <a href="/" class="header-logo logo-wrapper d-block py-3 py-sm-4 flex-shrink-0 me-auto me-xl-4 pe-3">
-
-            </a>
-            <nav class="header-menu flex-fill">
-                <ul class="menu d-flex flex-column flex-xl-row align-items-xl-center ls-1 fw-medium h-100 mb-xl-0 mb-3">
-                    <li class="h-100 me-xl-2 pe-xl-1"><a href="/kalkan-villalari" class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Kiralık Villa</a></li>
-                    <li class="h-100 me-xl-2 pe-xl-1"><a href="#!" class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Bölgeler</a>
-                    </li>
-                    <li class="h-100 me-xl-2 pe-xl-1"><a href="#!" class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Villa Seçenekleri</a></li>
-                    <li class="h-100 me-xl-2 pe-xl-1"><a href="#!" class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Nasıl Kiralarım</a></li>
-                    <li class="h-100 me-xl-2 pe-xl-1"><a href="#!" class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">Hakkımızda</a></li>
-                    <li class="h-100 me-xl-2 pe-xl-1"><a href="#!" class="menu-link d-flex align-items-center position-relative h-100 px-xl-2 py-3 py-xl-4">İletişim</a></li>
-                </ul>
-                <div class="btn btn-theme-first fs-7 ls-1 fw-medium w-100 py-2 d-md-none">
-                    <span class="d-block py-1">ÜYE GİRİŞİ YAP</span>
-                </div>
-            </nav>
-            <div class="fav-list-wrapper align-self-center me-1">
-                <button type="button"
-                    class="toggle-favs search-button flex-shrink-0 btn btn-theme-first-dark rounded-circle d-flex align-items-center justify-content-center shadow-none p-0"
-                    aria-label="Favorileri aç" id="searchButton" @click="openSearch($event)">
-                    <i class="icon-search"></i>
-                </button>
-                <div class="fav-list"></div>
-            </div>
-            <div class="fav-list-wrapper align-self-center me-3">
-                <button type="button"
-                    class="toggle-favs flex-shrink-0 btn btn-theme-second rounded-circle d-flex align-items-center justify-content-center shadow-none p-0"
-                    aria-label="Favorileri aç" data-bs-toggle="modal" data-bs-target="#favModal">
-                    <i class="icon-heart-full"></i>
-                </button>
-                <div class="fav-list"></div>
-            </div>
-            <button v-if="!$auth.loggedIn" type="button"
-                class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none"
-                data-bs-toggle="modal" data-bs-target="#signupModal">
-                <span class="d-inline-block px-1 px-xl-2 py-1 py-xl-0">ÜYE GİRİŞİ YAP</span>
-            </button>
-            <button v-else type="button"
-                class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none">
-                <span class="d-inline-block px-1 px-xl-2 py-1 py-xl-0" @click="logout()">{{ $auth.user.name }} ÇIKIŞ
-                    YAP</span>
-            </button>
-            <button type="button" class="menu-toggle bg-transparent align-self-center d-xl-none ms-xl-0 ms-md-4">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-        <div class="header-menu-shadow position-fixed top-0 start-0 w-100 h-100 bg-black bg-opacity-25">
-        </div>
-    </header> -->
-
     <header class="Header">
         <div class="Header-top">
             <div class="container">
@@ -79,9 +8,9 @@
                         <p><span>Yardım / Destek</span>444 8 484</p>
                     </a>
                     <div class="Header-top-menu">
-                        <a href="" class="Header-top-menu-item">S.S.S</a>
-                        <NuxtLink to="/kurumsal" class="Header-top-menu-item">Hakkımızda</NuxtLink>
-                        <a href="" class="Header-top-menu-item">İletişim</a>
+                        <NuxtLink :to="'/' + item.href" class="Header-top-menu-item" v-for="(item, index) in topMenu"
+                            :key="index">{{ item.text }}</NuxtLink>
+
                     </div>
                 </div>
             </div>
@@ -91,36 +20,79 @@
             <div class="container h-100">
                 <div class="Header-inner-in">
                     <NuxtLink to="/" class="Header-logo">
-                        <img :src="'/img/site'+ site_id +'/logo.svg'" alt="Logo">
+                        <img :src="'/img/site' + site_id + '/logo.svg'" alt="Logo">
                     </NuxtLink>
 
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
-                        <div class="Header-menu-item"><NuxtLink to="/listele" class="Header-menu-item-link">Kiralık Villalar</NuxtLink></div>
+                        <template v-for="(item, index) in mainMenu">
+                            <div class="Header-menu-item" v-if="!item.children">
+                                <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}a</NuxtLink>
+                            </div>
+                            <div class="Header-menu-item" :class="{ active: subMenuActive }" v-else :id="index">
+                                <!--  -->
+                                <button type="button" class="Header-menu-item-link " @click="subMenuOpen($event)"
+                                    :id="index">{{
+                                        item.text }} b <i class="icon-right-arrows-new"></i></button>
 
-                        <div class="Header-menu-item " :class="{ active: subMenuActive }">
-                            <!--  -->
-                            <button type="button" class="Header-menu-item-link "  @click="subMenuOpen($event)">Popüler
-                                Bölgeler <i class="icon-right-arrows-new"></i></button>
+                                <div class="Header-menu-item-in" :class="{ active: subMenuActive }">
+                                    <template v-for="(subitem, index) in item.children">
 
-                            <div class="Header-menu-item-in" :class="{ active: subMenuActive }">
-                                <button type="button" class="mobile-back-button"><i
-                                        class="icon-right-arrows-new" @click="closeSubMenu($event)"></i>Antalya Kiralık Villa</button>
-                                <div class="Header-menu-sub-item">
-                                    <h5>Antalya Kiralık Villa</h5>
-                                    <div class="Header-menu-sub-item-list">
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                    </div>
-                                </div>
-                                <div class="Header-menu-sub-item">
+                                        <button type="button" class="mobile-back-button"><i class="icon-right-arrows-new"
+                                                @click="closeSubMenu($event)"></i>{{ subitem.text }}c</button>
+
+                                        <div class="Header-menu-sub-item " :class="{ 'single': index === 2 }" v-if="subitem.href !== 'ozel-bolge'">
+                                            <h5>{{ subitem.text }}{{ subitem.href }}</h5>
+                                            <div class="Header-menu-sub-item-list">
+                                                <NuxtLink :to="'/' + subitemchildren.href" class="Header-top-menu-item"
+                                                    v-for="(subitemchildren, index) in subitem.children" :key="index">{{
+                                                        subitemchildren.text }}</NuxtLink>
+                                            </div>
+                                        </div>
+
+                                        <div class="Header-menu-sub-villa" v-else>
+                                            <a href="/asd" class="Header-menu-sub-villa-item">
+                                                <i class="icon-child-pool-villas"></i>
+                                                <span>Çocuk Havuzlu</span>
+                                            </a>
+                                            <a href="" class="Header-menu-sub-villa-item">
+                                                <i class="icon-seaview-villas"></i>
+                                                <span>Deniz Manzaralı</span>
+                                            </a>
+                                            <a href="" class="Header-menu-sub-villa-item">
+                                                <i class="icon-honeymoon-villas"></i>
+                                                <span>Özel Havuzlu</span>
+                                            </a>
+                                            <a href="" class="Header-menu-sub-villa-item">
+                                                <i class="icon-jacuzi-villas"></i>
+                                                <span>Jakuzili Villalar</span>
+                                            </a>
+                                            <a href="" class="Header-menu-sub-villa-item">
+                                                <i class="icon-lux-villas"></i>
+                                                <span>Lüks Villalar</span>
+                                            </a>
+                                            <a href="" class="Header-menu-sub-villa-item">
+                                                <i class="icon-honeymoon-villas"></i>
+                                                <span>Balayı Villaları</span>
+                                            </a>
+                                        </div>
+                                        <!-- <div class="Header-menu-sub-item popular">
+                                            <h5>Popüler Villa Seçenekleri</h5>
+                                            <div class="Header-menu-sub-item-list">
+                                                <a href="">Fethiye Kiralık Villa</a>
+                                                <a href="">Bodrum Kiralık Villa</a>
+                                                <a href="">Dalaman Kiralık Villa</a>
+                                                <a href="">Fethiye Kiralık Villa</a>
+                                                <a href="">Bodrum Kiralık Villa</a>
+                                                <a href="">Dalaman Kiralık Villa</a>
+                                                <a href="">Fethiye Kiralık Villa</a>
+                                                <a href="">Bodrum Kiralık Villa</a>
+                                                <a href="">Dalaman Kiralık Villa</a>
+                                                <a href="">Dalaman Kiralık Villa</a>
+                                            </div>
+                                        </div> -->
+
+                                    </template>
+                                    <!-- <div class="Header-menu-sub-item">
                                     <h5>Muğla Kiralık Villa</h5>
                                     <div class="Header-menu-sub-item-list">
                                         <a href="">Fethiye Kiralık Villa</a>
@@ -144,62 +116,12 @@
                                         <a href="">Fethiye Kiralık Villa</a>
                                         <a href="">Bodrum Kiralık Villa</a>
                                     </div>
+                                </div> -->
                                 </div>
+
                             </div>
+                        </template>
 
-                        </div>
-                        <div class="Header-menu-item " :class="{ active: subMenuVillasActive }" @click="subMenuVillasOpen($event)">
-                            <button type="button" class="Header-menu-item-link ">Villa Seçenekleri <i
-                                    class="icon-right-arrows-new"></i></button>
-
-                            <div class="Header-menu-item-in" :class="{ active: subMenuVillasActive }">
-                                <button type="button" class="mobile-back-button"><i
-                                        class="icon-right-arrows-new" @click="closeSubMenu($event)"></i>Antalya Kiralık Villa</button>
-                                <div class="Header-menu-sub-villa">
-                                    <a href="/asd" class="Header-menu-sub-villa-item">
-                                        <i class="icon-child-pool-villas"></i>
-                                        <span>Çocuk Havuzlu</span>
-                                    </a>
-                                    <a href="" class="Header-menu-sub-villa-item">
-                                        <i class="icon-seaview-villas"></i>
-                                        <span>Deniz Manzaralı</span>
-                                    </a>
-                                    <a href="" class="Header-menu-sub-villa-item">
-                                        <i class="icon-honeymoon-villas"></i>
-                                        <span>Özel Havuzlu</span>
-                                    </a>
-                                    <a href="" class="Header-menu-sub-villa-item">
-                                        <i class="icon-jacuzi-villas"></i>
-                                        <span>Jakuzili Villalar</span>
-                                    </a>
-                                    <a href="" class="Header-menu-sub-villa-item">
-                                        <i class="icon-lux-villas"></i>
-                                        <span>Lüks Villalar</span>
-                                    </a>
-                                    <a href="" class="Header-menu-sub-villa-item">
-                                        <i class="icon-honeymoon-villas"></i>
-                                        <span>Balayı Villaları</span>
-                                    </a>
-                                </div>
-                                <div class="Header-menu-sub-item popular">
-                                    <h5>Popüler Villa Seçenekleri</h5>
-                                    <div class="Header-menu-sub-item-list">
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="Header-menu-item"><a href="" class="Header-menu-item-link">İletişim</a></div>
                     </div>
                     <div class="Header-buttons">
                         <button type="button" class="search-button" aria-label="Favorileri aç" id="searchButton"
@@ -220,7 +142,8 @@
                                 ÇIKIŞ
                                 YAP</span>
                         </button>
-                        <button type="button" class="menu-toggle" @click="mobileMenuOpen" :class="{ hide: mobileMenuActive }">
+                        <button type="button" class="menu-toggle" @click="mobileMenuOpen"
+                            :class="{ hide: mobileMenuActive }">
                             <span></span>
                             <span></span>
                             <span></span>
@@ -241,8 +164,10 @@ export default {
         return {
             mobileMenuActive: false,
             subMenuActive: false,
-            subMenuVillasActive: false,
-            site_id : process.env.SITE,
+            site_id: process.env.SITE,
+            topMenu: [],
+            mainMenu: [],
+            footerMenu: [],
         }
     },
     computed: {
@@ -260,22 +185,28 @@ export default {
             document.querySelector('body').classList.toggle("over")
         },
         subMenuOpen(e) {
-            this.subMenuActive = !this.subMenuActive;
-            if(this.subMenuVillasActive == true){
-                this.subMenuVillasActive = false
-            }
+            // e.stopPropagation()
+            // console.log(e.target.nextElementSibling)
+            // this.subMenuActive = !this.subMenuActive;
+
+            document.querySelectorAll('.Header-menu-item').forEach(element => {
+                if (element.classList.contains('active') && element.id !== e.target.id) {
+                    element.classList.remove('active')
+                    element.querySelector('.Header-menu-item-in').classList.remove('active')
+                }
+                if (element.id == e.target.id) {
+                    e.target.parentNode.classList.toggle('active')
+                    e.target.nextElementSibling.classList.toggle('active')
+                }
+            });
+
         },
-        subMenuVillasOpen(e) {
-            this.subMenuVillasActive = !this.subMenuVillasActive;
-            if(this.subMenuActive == true){
-                this.subMenuActive = false
-            }
-        },
+
         closeSubMenu(e) {
-            if(this.subMenuActive == true){
+            if (this.subMenuActive == true) {
                 this.subMenuActive = false
             }
-            if(this.subMenuVillasActive == true){
+            if (this.subMenuVillasActive == true) {
                 this.subMenuVillasActive = false
             }
         },
@@ -285,17 +216,17 @@ export default {
         window.onscroll = function () {
 
 
-    //   console.log('scrollY', scrollY)
-      // console.log(document.querySelector('#more-villas').offsetTop)
-      if (scrollY >= 65) {
-        document.querySelector('.Header-inner').classList.add('Header-inner-fixed');
-        document.querySelector('.Search-villas').classList.add('Search-villas-scroll');
-      } else {
-        document.querySelector('.Header-inner').classList.remove('Header-inner-fixed')
-        document.querySelector('.Search-villas').classList.remove('Search-villas-scroll')
-      }
+            //   console.log('scrollY', scrollY)
+            // console.log(document.querySelector('#more-villas').offsetTop)
+            if (scrollY >= 65) {
+                document.querySelector('.Header-inner').classList.add('Header-inner-fixed');
+                document.querySelector('.Search-villas').classList.add('Search-villas-scroll');
+            } else {
+                document.querySelector('.Header-inner').classList.remove('Header-inner-fixed')
+                document.querySelector('.Search-villas').classList.remove('Search-villas-scroll')
+            }
 
-    };
+        };
 
         // window.onclick = function (event) {
         //     if (!event.target.matches('.Header-menu-item-in')) {
@@ -311,6 +242,21 @@ export default {
         //         }
         //     }
         // }
-    }
+    },
+    created() {
+        const menuData = this.$store.state['settings'].menuData;
+
+        this.topMenu = JSON.parse(JSON.stringify(menuData.topmenu));
+        this.mainMenu = JSON.parse(JSON.stringify(menuData.mainmenu));
+        this.footerMenu = JSON.parse(JSON.stringify(menuData.footermenu));
+        // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
+
+
+        console.log(JSON.stringify({
+            topmenu: this.topMenu,
+            //   amenites: this.amenites,
+        }))
+        console.log(this.mainMenu)
+    },
 }
 </script>

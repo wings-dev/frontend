@@ -79,7 +79,7 @@ export default {
       };
 
       try {
-        const response = await this.$axios.post('/api/website/pre_reservation_code?api_token=123456', data)
+        const response = await this.$axios.post(`/api/website/pre_reservation_code?api_token=${process.env.WEBSITE_TOKEN}`, data)
       } catch (error) {
         if (error.response) {
           if (error.response.data.status) {

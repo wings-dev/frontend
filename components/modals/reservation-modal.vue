@@ -61,7 +61,7 @@ export default {
         email: null,
         prephone: null,
         phone: null,
-        source_id: process.env.SITE,
+        source_id: process.env.SOURCE_ID,
       },
       phoneNumber: '',
       phoneObject: {
@@ -122,7 +122,7 @@ export default {
 
       let reservationID;
       try {
-        const response = await this.$axios.post('/api/website/pre_reservation?api_token=123456', data);
+        const response = await this.$axios.post(`/api/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, data);
         reservationID = response.data.reservationID;
       } catch (error) {
         if (error.response) {
