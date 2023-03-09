@@ -65,7 +65,15 @@
     </client-only>
 
     <client-only>
+      <reservation-code-modal></reservation-code-modal>
+    </client-only>
+
+    <client-only>
       <register-modal></register-modal>
+    </client-only>
+
+    <client-only>
+      <reservation-modal></reservation-modal>
     </client-only>
 
     <client-only>
@@ -87,6 +95,8 @@ import RegisterModal from "@/components/modals/register-modal.vue";
 import LoginCodeModal from "@/components/modals/login-code-modal.vue";
 import CallModal from "@/components/modals/call-modal.vue";
 import FavModal from "@/components/modals/fav-modal.vue";
+import ReservationModal from "@/components/modals/reservation-modal.vue";
+import ReservationCodeModal from "@/components/modals/reservation-code-modal.vue";
 export default {
   name: "default",
   middleware: ['jwt'],
@@ -104,6 +114,8 @@ export default {
     }
   },
   components: {
+    ReservationCodeModal,
+    ReservationModal,
     HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal
   },
   methods: {
@@ -125,7 +137,7 @@ export default {
       }
     });
 
-    
+
 
 
   },

@@ -1,6 +1,6 @@
 <template>
-  <!-- Kayıt Modal -->
-  <div class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <!-- Rezervasyon Modal -->
+  <div class="modal fade Login" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
@@ -9,8 +9,9 @@
           <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
           <div class="Login-right">
             <div class="Login-right-in">
-              <h2><b>KAYIT </b> OL</h2>
+              <h2><b>REZERVASYON </b> YAP</h2>
               <form action="" class="Login-form" @submit.prevent="register">
+                {{reservationModalData}}
                 <label for="" class="Login-form-item mb-2">
                   <input type="text" placeholder="İsim Soyisim" v-model="form.name" required>
                 </label>
@@ -37,7 +38,7 @@
                   <span></span>
                   <p><a href="">Fırsat ve kampanyalardan haberdar olmak istiyorum.</a></p>
                 </label>
-                <button :disabled="!formValidated" :style="{ 'opacity':  formValidated ? '1' : '.5' }" type="submit" class="Login-form-button mt-2">KAYIT OL</button>
+                <button :disabled="!formValidated" :style="{ 'opacity':  formValidated ? '1' : '.5' }" type="submit" class="Login-form-button mt-2">GÖNDER</button>
               </form>
             </div>
           </div>
@@ -49,10 +50,10 @@
 
 <script>
 
-import {mapActions, mapMutations} from "vuex";
+import {mapActions, mapMutations, mapState} from "vuex";
 
 export default {
-  name: "RegisterModal",
+  name: "ReservationModal",
   data() {
     return {
       form: {
@@ -91,13 +92,14 @@ export default {
     }
   },
   computed: {
+    ...mapState(['reservationModalData']),
     formValidated() {
       return this.form.name && this.form.email && this.phoneObject.valid && this.checkboxAcceptRules;
     }
   },
   methods: {
-    ...mapMutations(['setLoginCodeModalData']),
-    ...mapActions(['showLoginCodeModal', 'hideRegisterModal']),
+    ...mapMutations(['setReservationModalData']),
+    ...mapActions(['showReservationCodeModal', 'hidePreReservationModal']),
     onInput(phone, phoneObject) {
       setTimeout(() => {
         this.phoneObject = phoneObject;
@@ -115,37 +117,29 @@ export default {
       }, 50)
     },
     async register() {
+      const data = Object.assign({}, this.reservationModalData, this.form);
+      this.setReservationModalData(data);
+
+      let reservationID;
       try {
-        const response = await this.$axios.post('/api/register', this.form);
-        if (response.data.status === true) {
-
-          const data = {
-            source_id: process.env.SITE
-          };
-          if (this.form.prephone === '90') {
-            data.prephone = '90';
-            data.phone = this.form.phone;
-          } else if (this.loginType === 'email') {
-            data.email = this.form.email;
-          }
-          const response = await this.$axios.post('/api/sendcode', data);
-
-          this.hideRegisterModal();
-
-          this.setLoginCodeModalData({
-            loginType: this.form.prephone === '90' ? 'phone': 'email',
-            phone: this.phone,
-            email: this.email,
-          })
-
-          this.showLoginCodeModal()
-
-        } else {
-          alert(response.data.message)
-        }
+        const response = await this.$axios.post('/api/website/pre_reservation?api_token=123456', data);
+        reservationID = response.data.reservationID;
       } catch (error) {
-        console.error(error);
+        if (error.response) {
+          reservationID = error.response.data.reservationID;
+        } else {
+          console.error(error);
+        }
       }
+
+      if (reservationID) {
+        console.log(reservationID);
+        this.setReservationModalData(Object.assign({}, data, {reservationID}));
+        this.hidePreReservationModal();
+        this.showReservationCodeModal();
+      }
+
+
     }
   }
 }

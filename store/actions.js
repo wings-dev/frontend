@@ -17,6 +17,18 @@ export default {
   hideLoginCodeModal() {
     $('#loginCodeModal').modal('hide')
   },
+  showPreReservationModal() {
+    $('#reservationModal').modal('show')
+  },
+  hidePreReservationModal() {
+    $('#reservationModal').modal('hide')
+  },
+  showReservationCodeModal() {
+    $('#reservationCodeModal').modal('show')
+  },
+  hideReservationCodeModal() {
+    $('#reservationCodeModal').modal('hide')
+  },
   showCallModal() {
     $('#callModal').modal('show')
   },
