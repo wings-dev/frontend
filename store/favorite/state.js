@@ -1,3 +1,6 @@
 export default () => ({
-  favorites: []
+  favorites: [],
+  lastUpdated: null,
+  updateTimeoutId: null,
+  updateController: null
 })

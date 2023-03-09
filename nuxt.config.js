@@ -119,6 +119,9 @@ export default {
     },
     "/data": {
       target: process.env.PROXY_DATA
+    },
+    "/visitor": {
+      target: process.env.PROXY_VISITOR
     }
   },
 
