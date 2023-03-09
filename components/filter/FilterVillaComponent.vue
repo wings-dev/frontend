@@ -334,7 +334,7 @@ export default {
       };
 
       this.$axios
-        .post(`/api/website/property?api_token=123456&page=${pageNumber}`, data)
+        .post(`/api/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`, data)
         .then(({ data: responseData }) => {
           this.villas = responseData.data;
           console.log('this.villas',this.villas);

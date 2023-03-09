@@ -73,7 +73,7 @@ export default {
     async entercode() {
       try {
         const data = {
-          source_id: process.env.SITE,
+          source_id: process.env.SOURCE_ID,
           password: this.password
         };
         if (this.loginType === 'phone') {

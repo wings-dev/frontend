@@ -60,7 +60,7 @@ export default {
         email: null,
         prephone: null,
         phone: null,
-        source_id: process.env.SITE,
+        source_id: process.env.SOURCE_ID,
       },
       phoneNumber: '',
       phoneObject: {

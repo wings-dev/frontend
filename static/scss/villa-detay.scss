@@ -2561,6 +2561,11 @@ body {
         padding-top: 8px;
         font-weight: 400;
         text-align: left;
+        span{
+          font-size: 12px;
+          font-weight: 500;
+          color: var(--bs-theme-first);
+        }
       }
     }
   }
@@ -2644,14 +2649,11 @@ body {
 
   &-detail {
     &-item {
-      margin-top: 30px;
+      padding-top: 30px;
       display: flex;
       justify-content: space-between;
       margin-bottom: 40px;
-      &:first-child {
-        padding-top: 30px;
-        margin-top: 0;
-      }
+      
       &-left {
         width: 30%;
 

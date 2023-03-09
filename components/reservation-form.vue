@@ -9,6 +9,7 @@
             :disabled="true"
             @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
             format="DD-MM-YYYY" :positionRight="true" :disabledDates="disableReservation" ref="datePicker"
+            :i18n="i18n" :firstDayOfWeek="firstDayOfWeek"
           >
             <div slot="content">
               <div class="d-flex align-items-center justify-content-end mt-1">
@@ -199,7 +200,25 @@ export default {
       adult: 1,
       child: 0,
       baby: 0,
-      availabilityChecked: false
+      availabilityChecked: false,
+      i18n: {
+        night: 'Gece',
+        nights: 'Gece',
+        'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt','Paz'],
+        'check-in': 'Giriş Tarihi',
+        'check-out': 'Çıkış Tarihi',
+        'month-names': ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+        tooltip: {
+          halfDayCheckIn: "Girişe Uygun",
+          halfDayCheckOut: "Çıkışa Uygun",
+          saturdayToSaturday: "Sadece Cumartesi'den Cumartesi'ne",
+          sundayToSunday: "Sadece Pazar'dan Pazar'a",
+          minimumRequiredPeriod: "Minimum <br/> %{minNightInPeriod} %{night}."
+        },
+        week: "hafta",
+        weeks: "haftalar",
+      },
+      firstDayOfWeek:1,
     }
   },
   computed: {
@@ -410,6 +429,8 @@ body {
 .kapali:after {
   background-image: linear-gradient(135deg, #f3f3ff 49%, transparent 50%);
 }
+
+
 
 /* .kapali.opsiyon.cikis:before {
   background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
