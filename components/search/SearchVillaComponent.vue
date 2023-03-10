@@ -33,7 +33,7 @@
           <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs">
             <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-              format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)" ref="datePicker">
+              format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)" :i18n="calendarLanguage" ref="datePicker">
 
               <div slot="content">
                 <div class="d-flex align-items-center justify-content-end mt-1">
@@ -57,7 +57,7 @@
             <i class="icon-group-user"></i>
           </div>
           <div class="Search-item-people-in">
-            <span class="Search-item-name">Kişi Sayısı</span>
+            <span class="Search-item-name">Kişi Sayısı </span>
             <span class="dropdown-toggle-title">{{ selectedPersonText }}</span>
             <i class="icon-down-arrow"></i>
           </div>
@@ -159,7 +159,24 @@ export default {
         { value: 3, text: "Eskiden Yeniye" },
       ],
       orderValue: null,
-      orderPlaceholder: "Sırala:"
+      orderPlaceholder: "Sırala:",
+      calendarLanguage: {
+        night: 'Gece',
+        nights: 'Gece',
+        'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt','Paz'],
+        'check-in': 'Giriş Tarihi',
+        'check-out': 'Çıkış Tarihi',
+        'month-names': ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+        tooltip: {
+          halfDayCheckIn: "Girişe Uygun",
+          halfDayCheckOut: "Çıkışa Uygun",
+          saturdayToSaturday: "Sadece Cumartesi'den Cumartesi'ne",
+          sundayToSunday: "Sadece Pazar'dan Pazar'a",
+          minimumRequiredPeriod: "Minimum <br/> %{minNightInPeriod} %{night}."
+        },
+        week: "hafta",
+        weeks: "haftalar",
+      },
     }
   },
   components: {
