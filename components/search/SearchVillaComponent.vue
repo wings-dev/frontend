@@ -183,8 +183,9 @@ export default {
     HotelDatePicker,
   },
   created() {
-    this.destinations = JSON.parse(JSON.stringify(this.searchData.destinations));
-    this.amenites = JSON.parse(JSON.stringify(this.searchData.amenites));
+    this.destinations = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.destinations));
+    this.amenites = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.amenites));
+    // console.log()
   },
   mounted() {
   },
