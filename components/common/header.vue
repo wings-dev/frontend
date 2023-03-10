@@ -26,19 +26,19 @@
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
                         <template v-for="(item, index) in mainMenu">
                             <div class="Header-menu-item" v-if="!item.children">
-                                <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}a</NuxtLink>
+                                <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}</NuxtLink>
                             </div>
                             <div class="Header-menu-item" :class="{ active: subMenuActive }" v-else :id="index">
                                 <!--  -->
                                 <button type="button" class="Header-menu-item-link " @click="subMenuOpen($event)"
                                     :id="index">{{
-                                        item.text }} b <i class="icon-right-arrows-new"></i></button>
+                                        item.text }}  <i class="icon-right-arrows-new"></i></button>
 
                                 <div class="Header-menu-item-in" :class="{ active: subMenuActive }">
                                     <template v-for="(subitem, index) in item.children">
 
                                         <button type="button" class="mobile-back-button"><i class="icon-right-arrows-new"
-                                                @click="closeSubMenu($event)"></i>{{ subitem.text }}c</button>
+                                                @click="closeSubMenu($event)"></i>{{ subitem.text }}</button>
 
                                         <div class="Header-menu-sub-item " :class="{ 'single': index === 2 }" v-if="subitem.href !== 'ozel-bolge'">
                                             <h5>{{ subitem.text }}{{ subitem.href }}</h5>
@@ -244,11 +244,13 @@ export default {
         // }
     },
     created() {
-        const menuData = this.$store.state['settings'].menuData;
+        const menuData = {"topmenu":[{"text":"S.S.S","href":"sss","target":"_self"},{"text":"Hakkımızda","href":"hakkimizda","target":"_self"},{"text":"İletişim","href":"iletisim","target":"_self"}],
+"mainmenu":[{"text":"Kiralık Villa","href":"listele","target":"_self"},{"text":"Villa Seçenekleri","href":"","target":"_self","children":[{"text":"Antalya Kiralık Villa","href":"","target":"_self","children":[{"text":"Fethiye Kiralık Villa","href":"fethiye-kiralik-villa","target":"_self"},{"text":"Dalaman Kiralık Villa","href":"dalaman-kiralik-villa","target":"_self"},{"text":"Bodrum Kiralık Villa","href":"bodrum-kiralik-villa","target":"_self"}]},{"text":"Muğla Kiralık Villa","href":"","target":"_self","children":[{"text":"Fethiye Kiralık Villa","href":"fethiye-kiralik-villa","target":"_self"},{"text":"Dalaman Kiralık Villa","href":"dalaman-kiralik-villa","target":"_self"},{"text":"Bodrum Kiralık Villa","href":"bodrum-kiralik-villa","target":"_self"}]}]},{"text":"Popüler Bölgeler","href":"","target":"_self","children":[{"text":"Özel Bölgeler","href":"","target":"_self","children":[{"text":"Çocuk Havuzlu","href":"cocuk-havuzlu","target":"_self"},{"text":"Deniz Manzaralı","href":"deniz-manzarali","target":"_self"}]},{"text":"Popüler Villa Seçenekleri","href":"","target":"_self","children":[{"text":"Fethiye Kiralık Villa","href":"fethiye-kiralik-villa","target":"_self"},{"text":"Dalaman Kiralık Villa","href":"dalaman-kiralik-villa","target":"_self"}]}]},{"text":"İletişim","href":"iletisim","target":"_self"}],
+"footermenu":[{"text":"Otelbnb","href":"","target":"_self","children":[{"text":"Gizlilik Şartları","href":"gizlilik-sartlari","target":"_self"},{"text":"İptal Şartları","href":"iptal-sartlari","target":"_self"},{"text":"Banka Hesapları","href":"banka-hesaplari","target":"_self"}]},{"text":"Popüler Rotalar","href":"","target":"_self","children":[{"text":"Marmaris","href":"marmaris","target":"_self"},{"text":"Fethiye","href":"fethiye","target":"_self"},{"text":"Bodrum","href":"bodrum","target":"_self"}]},{"text":"Oteller","href":"","target":"_self","children":[{"text":"Antalya Otelleri","href":"antalya-otelleri","target":"_self"},{"text":"Muğla Otelleri","href":"mugla-otelleri","target":"_self"},{"text":"Fethiye Otelleri","href":"fethiye-otelleri","target":"_self"}]},{"text":"Villa Kategorileri","href":"","target":"_self","children":[{"text":"Balayı Villaları","href":"balayi-villalari","target":"_self"},{"text":"Deniz Manzaralı Villalar","href":"deniz-manzarali-villalar","target":"_self"},{"text":"Jakuzili Villalar","href":"jakuzili-villalar","target":"_self"}]}]};
 
-        this.topMenu = JSON.parse(JSON.stringify(menuData.topmenu));
-        this.mainMenu = JSON.parse(JSON.stringify(menuData.mainmenu));
-        this.footerMenu = JSON.parse(JSON.stringify(menuData.footermenu));
+        this.topMenu = menuData.topmenu;
+        this.mainMenu = menuData.mainmenu;
+        this.footerMenu = menuData.footermenu;
         // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
 
