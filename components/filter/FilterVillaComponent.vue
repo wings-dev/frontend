@@ -160,12 +160,26 @@
               </li>
 
               <!-- Page numbers -->
-              <li class="page-item me-2 me-sm-3 mb-1" v-for="(pageNumber, index) in pageNumbers" :key="index">
+              <li class="page-item me-2 me-sm-3 mb-1" v-if="showLeftDots">
                 <a href="javascript:void(0)"
-                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
-                  :class="{ 'active': pageNumber === current_page }" @click.prevent="goToPage(pageNumber)">{{
-                    pageNumber
-                  }}</a>
+                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
+                   >
+                  <span aria-hidden="true">&hellip;</span>
+                </a>
+              </li>
+              <li class="page-item me-2 me-sm-3 mb-1" v-for="(pageNumber, index) in displayedPageNumbers" :key="index">
+                <a href="javascript:void(0)"
+                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
+                   :class="{ 'active': pageNumber === current_page }" @click.prevent="goToPage(pageNumber)">
+                  {{ pageNumber }}
+                </a>
+              </li>
+              <li class="page-item me-2 me-sm-3 mb-1" v-if="showRightDots">
+                <a href="javascript:void(0)"
+                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
+                   >
+                  <span aria-hidden="true">&hellip;</span>
+                </a>
               </li>
 
               <!-- 3 dots -->
@@ -307,6 +321,21 @@ export default {
         ...this.selectedFacilityTypes,
         ...this.selectedFacilities
       ].length;
+    },
+    displayedPageNumbers() {
+      const currentIndex = this.pageNumbers.indexOf(this.current_page);
+      const leftIndex = Math.max(currentIndex - 3, 0);
+      const rightIndex = Math.min(currentIndex + 3, this.pageNumbers.length - 1);
+      const displayedNumbers = this.pageNumbers.slice(leftIndex, rightIndex + 1);
+      return displayedNumbers;
+    },
+    showLeftDots() {
+      const currentIndex = this.pageNumbers.indexOf(this.current_page);
+      return currentIndex > 3;
+    },
+    showRightDots() {
+      const currentIndex = this.pageNumbers.indexOf(this.current_page);
+      return currentIndex < this.pageNumbers.length - 4;
     }
   },
   methods: {

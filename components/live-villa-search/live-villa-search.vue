@@ -89,7 +89,7 @@ export default {
       try {
         const response = await this.$axios.post(
           '/data/villa-search',
-          { keyword: keyword },
+          { keyword: keyword, site_id: process.env.SITE },
           { cancelToken: this.cancelToken.token }
         )
         this.villas = response.data
