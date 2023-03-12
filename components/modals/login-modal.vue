@@ -1,6 +1,7 @@
 <template>
   <b-modal id="loginModal" class="Login" size="xl" :hide-header="true" hide-footer>
-    <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('loginModal')"><i class="icon-login-close"></i></button>
+    <div class="Login">
+      <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('loginModal')"><i class="icon-login-close"></i></button>
     <div class="Login-in">
       <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
       <div class="Login-right">
@@ -54,6 +55,7 @@
           </form>
         </div>
       </div>
+    </div>
     </div>
   </b-modal>
 </template>
