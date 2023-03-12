@@ -53,12 +53,12 @@
                   Gerekenler</a>
               </div>
               <div class="View-menu-right">
-                <button type="button"
+                <button type="button" @click="toggleFavorite"
                   class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4">
                   <span class="action-btn-icon">
                     <i class="icon-heart"></i>
                   </span>
-                  <span class="action-btn-text">Favorilere Ekle</span>
+                  <span class="action-btn-text">{{ isFavorite ? 'Favorilerden Sil' : 'Favorilere Ekle' }}</span>
                 </button>
                 <button type="button"
                   class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
@@ -1213,6 +1213,13 @@ export default {
     }
   },
   methods: {
+    toggleFavorite() {
+      if (this.isFavorite) {
+        this.$store.dispatch('favorite/removeFavorite', this.villa.code)
+      } else {
+        this.$store.dispatch('favorite/addFavorite', this.villa.code)
+      }
+    },
     showGallery() {
       document.querySelector('.Gallery').classList.add("show")
       document.querySelector('body').classList.add("over")
@@ -1255,7 +1262,6 @@ export default {
     }
   },
   mounted() {
-
     Swiper.use([Navigation, Pagination])
 
     const swiper = new Swiper('.swiper-months', {
@@ -1402,7 +1408,9 @@ export default {
 
   },
   computed: {
-
+    isFavorite() {
+      return this.$store.state.favorite.favorites.includes(this.villa.code)
+    },
     attributes() {
       if (this.calendar.length && this.price_list_1.length) {
         const dates = new Set();

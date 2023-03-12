@@ -1,4 +1,12 @@
 export default {
+  initializeVisitorId({ commit }) {
+    let id = localStorage.getItem('visitorId')
+    if (!id) {
+      id = Math.random().toString(36).substr(2, 9)
+      localStorage.setItem('visitorId', id)
+    }
+    commit('setVisitorId', id)
+  },
   showLoginModal() {
     $('#loginModal').modal('show')
   },

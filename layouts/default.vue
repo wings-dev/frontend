@@ -130,6 +130,9 @@ export default {
     ...mapActions(['openLoginModal', 'showCallModal', 'showFavModal'])
   },
   mounted() {
+    this.$store.dispatch('initializeVisitorId')
+    this.$store.dispatch('favorite/initializeFavorites')
+
     //dropdown-menu içerisinde bir yerlere tıklandığında menünün kapanmaması
     this.$el.addEventListener('click', function (e) {
       if (e.target.closest('.dropdown-menu')) {

@@ -89,7 +89,10 @@
                         <div class="col-6 col-md-4 col-lg-3 pe-4 mb-lg-0 mb-4">
                             <div class="menu-title fs-6 fw-medium text-theme-primary lh-lg ls-05 mb-3 pb-1">OtelBnb</div>
                             <ul class="footer-menu ls-05 text-black text-opacity-50 fw-medium">
-                                <li><a href="#!" class="d-block py-1 mb-2">Gizlilik Şartları</a></li>
+                                <li>
+                                    <nuxt-link to="/uyelik" class="d-block py-1 mb-2">
+                                    Üyelik
+                                </nuxt-link></li>
                                 <li><a href="#!" class="d-block py-1 mb-2">İptal Şartları</a></li>
                                 <li><a href="#!" class="d-block py-1 mb-2">Banka Hesapları</a></li>
                                 <li><a href="#!" class="d-block py-1 mb-2">Kiralama Sözleşmesi</a></li>

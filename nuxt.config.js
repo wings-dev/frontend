@@ -193,10 +193,13 @@ export default {
 
   proxy: {
     "/api/": {
-      target: "https://office.wingss.xyz/"
+      target: process.env.PROXY_API
     },
     "/data": {
-      target: "http://93.115.79.123/"
+      target: process.env.PROXY_DATA
+    },
+    "/visitor": {
+      target: process.env.PROXY_VISITOR
     }
   },
 

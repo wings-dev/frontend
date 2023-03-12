@@ -33,10 +33,9 @@
                     required
                   />
                 </fieldset>
-                <p class="Login-code-info" data-time="50"><b>00:30</b> Tekrar talep etmek için beklemeniz gereken
-                  süre
-                  <a href="">Yeni Doğrulama Kodu Gönder</a>
-                </p>
+
+                <code-count-down :countdown-time="30"></code-count-down>
+
                 <button type="submit" class="Login-form-button mt-1">GÖNDER</button>
                 <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
               </form>
