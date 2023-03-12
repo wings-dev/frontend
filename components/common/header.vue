@@ -26,21 +26,22 @@
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
                         <template v-for="(item, index) in mainMenu">
                             <div class="Header-menu-item" v-if="!item.children">
-                                <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}a</NuxtLink>
+                                <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}</NuxtLink>
                             </div>
                             <div class="Header-menu-item" :class="{ active: subMenuActive }" v-else :id="index">
                                 <!--  -->
                                 <button type="button" class="Header-menu-item-link " @click="subMenuOpen($event)"
                                     :id="index">{{
-                                        item.text }} b <i class="icon-right-arrows-new"></i></button>
+                                        item.text }} <i class="icon-right-arrows-new"></i></button>
 
                                 <div class="Header-menu-item-in" :class="{ active: subMenuActive }">
                                     <template v-for="(subitem, index) in item.children">
 
                                         <button type="button" class="mobile-back-button"><i class="icon-right-arrows-new"
-                                                @click="closeSubMenu($event)"></i>{{ subitem.text }}c</button>
+                                                @click="closeSubMenu($event)"></i>{{ subitem.text }}</button>
 
-                                        <div class="Header-menu-sub-item " :class="{ 'single': index === 2 }" v-if="subitem.href !== 'ozel-bolge'">
+                                        <div class="Header-menu-sub-item " :class="{ 'single': index === 2 }"
+                                            v-if="subitem.href !== 'ozel-bolge'">
                                             <h5>{{ subitem.text }}{{ subitem.href }}</h5>
                                             <div class="Header-menu-sub-item-list">
                                                 <NuxtLink :to="'/' + subitemchildren.href" class="Header-top-menu-item"
@@ -132,16 +133,29 @@
                             data-bs-target="#favModal">
                             <i class="icon-heart-full"></i>
                         </button>
-                        <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
+                         <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
                             data-bs-target="#loginModal">
                             <i class="icon-user"></i><span class="">ÜYE GİRİŞİ YAP </span>
                         </button>
+                        <!--
                         <button v-else type="button"
                             class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none">
                             <span class="d-inline-block px-1 px-xl-2 py-1 py-xl-0" @click="logout()">{{ $auth.user.name }}
                                 ÇIKIŞ
                                 YAP</span>
-                        </button>
+                        </button> -->
+                        <div class="dropdown" v-else >
+                            <button class="Login-button-user dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="icon-good-night"></i>
+                                <p><span>İyi Akşamlar</span>{{ $auth.user.name }}</p>
+                            </button>
+                            <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>BİLGİLERİNİZ</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>FAVORİLERİM</a></li>
+                                <li><a class="dropdown-item" href="#"  @click.prevent="logout()"><i class="icon-right-arrows-new"></i>ÇIKIŞ YAP</a></li>
+                            </ul>
+                        </div>
                         <button type="button" class="menu-toggle" @click="mobileMenuOpen"
                             :class="{ hide: mobileMenuActive }">
                             <span></span>
@@ -246,9 +260,13 @@ export default {
     created() {
         const menuData = this.$store.state['settings'].menuData;
 
-        this.topMenu = JSON.parse(JSON.stringify(menuData.topmenu));
-        this.mainMenu = JSON.parse(JSON.stringify(menuData.mainmenu));
-        this.footerMenu = JSON.parse(JSON.stringify(menuData.footermenu));
+        // this.topMenu = JSON.parse(JSON.stringify(menuData.topmenu));
+        // this.mainMenu = JSON.parse(JSON.stringify(menuData.mainmenu));
+        // this.footerMenu = JSON.parse(JSON.stringify(menuData.footermenu));
+
+        this.topMenu = menuData.topmenu;
+        this.mainMenu = menuData.mainmenu;
+        this.footerMenu = menuData.footermenu;
         // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
 

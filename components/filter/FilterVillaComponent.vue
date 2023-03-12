@@ -100,6 +100,12 @@
                 </div>
               </div>
 
+              <div class="No-villas" v-if="villas.length <= 0">
+                <img src="img/villa-loading.svg" alt="">
+                <h2>Villalar hazırlanıyor.</h2>
+                <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
+              </div>
+
             <div
               class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
               <img src="/uploads/holiday-banner.jpg" alt="" class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">

@@ -72,7 +72,85 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/google-fonts',
     'nuxt-leaflet',
+    [
+      "nuxt-cookie-control",
+      {
+        barPosition: "bottom-left",
+        blockIframe: true,
+        colors: {
+          barTextColor: "#000",
+          barBackground: "#fff",
+          barButtonColor: "#fff",
+          barButtonBackground: "#102754",
+          barButtonHoverColor: "#fff",
+          barButtonHoverBackground: "#2e495e",
+          modalButtonBackground: "#102754",
+          modalButtonHoverColor: "#fff",
+          controlButtonBackground: "#12957b",
+          controlButtonHoverBackground: "#2e495e",
+          controlButtonIconHoverColor: "#fff",
+          controlButtonIconColor: "#fff",
+          modalButtonHoverBackground: "#2e495e",
+          checkboxActiveBackground: "#2e495e",
+          checkboxInactiveBackground: "#ede1e1",
+          checkboxActiveCircleBackground: "#00c58e",
+          checkboxInactiveCircleBackground: "#f44336",
+          checkboxDisabledBackground: "#ddd",
+          checkboxDisabledCircleBackground: "#fff"
+        },
+        text: {
+          locale: {
+            en: {
+              barTitle:  'Çerezler',
+              barDescription:  'We use our own cookies and third-party...',
+            }
+          },
+        }
+      }
+    ]
   ],
+
+  cookies: {
+    necessary: [
+      {
+        name: {
+          en: "Default cookies",
+        },
+
+        description: {
+          en: "Used for cookie control."
+        },
+        cookies: ["cookie_control_consent", "cookie_control_enabled_cookies"]
+      }
+    ],
+    optional: [
+      {
+        name: {
+          en: "Google Analytics",
+          de: "Google Analytics",
+          es: "Google Analytics",
+          fr: "Google Analytics",
+          hr: "Google Analitika",
+          it: "Google Analytics"
+        },
+        description: {
+          en:
+            "Google Analytics is a web analytics service offered by Google that tracks and reports website traffic."
+        },
+        src: "https://www.googletagmanager.com/gtag/js?id=UA-138616567-1",
+        async: true,
+        cookies: ["_ga", "_gat_gtag_UA_138616567_1", "_gid"],
+        accepted: () => {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", "UA-138616567-1");
+        }
+      }
+    ]
+  },
 
   auth: {
     strategies: {
