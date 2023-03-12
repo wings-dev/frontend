@@ -110,6 +110,8 @@ export default {
         villaData['detail'] = villa.detail;
         villaData['price'] = villa.price;
         this.villas.push(villaData)
+
+        console.log(villaData)
       }
     }
   }
