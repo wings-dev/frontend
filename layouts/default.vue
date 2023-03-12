@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-button v-b-modal.loginModal>Launch demo modal</b-button>
+
+
     <common-header></common-header>
 
     <main class="main">

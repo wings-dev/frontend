@@ -1,70 +1,61 @@
 <template>
-  <!-- Giriş Modal -->
-  <div class="modal fade Login" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-          class="icon-login-close"></i></button>
-
-        <!-- Kod gönderme içeriği -->
-        <div class="Login-in">
-          <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
-          <div class="Login-right">
-            <div class="Login-right-in">
-              <h2><b>MÜŞTERİ </b> GİRİŞİ</h2>
-              <p>Lütfen bir giriş yöntemi seçiniz.</p>
-              <span>Yurtdışında yaşayan müşterilerimizin <u>e-posta</u> ile giriş yapması gerekmektedir.</span>
-              <form action="" class="Login-form" @submit.prevent="sendcode">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <input v-model="loginType" v-bind:value="'phone'" type="radio" name="loginFormType"
-                           id="loginFormRadio" data-bs-toggle="pill"
-                           data-bs-target="#loginFormPhoneContent">
-                    <label for="loginFormRadio">
-                      <i class="icon-login-phone"></i>
-                      <span>Telefon ile giriş yap</span>
-                    </label>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <input v-model="loginType" v-bind:value="'email'" type="radio" name="loginFormType"
-                           id="loginFormRadio2" data-bs-toggle="pill"
-                           data-bs-target="#loginFormMailContent">
-                    <label for="loginFormRadio2">
-                      <i class="icon-login-mail"></i>
-                      <span>E-posta ile giriş yap</span>
-                    </label>
-                  </li>
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                  <div class="tab-pane fade show active" role="tabpanel" id="loginFormPhoneContent">
-                    <div class="Login-form-item">
-                      <div class="input-group">
-                        <span class="input-group-text">+90</span>
-                        <input v-model="phone" type="text" class="form-control" id="inputTR"
-                               placeholder="Telefon Numaranız">
-                      </div>
-                    </div>
-                    <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert"></p>
-                    <button :disabled="!enabledLoginButton" type="submit" class="Login-form-button">GÖNDER</button>
-                    <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye Ol!</a></p>
-                  </div>
-                  <div class="tab-pane fade" role="tabpanel" id="loginFormMailContent">
-                    <label for="" class="Login-form-item ">
-                      <input v-model="email" type="text" placeholder="E-mail adresiniz" value="" id="mailInput">
-                    </label>
-                    <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert"></p>
-                    <button :disabled="!enabledLoginButton" type="submit" class="Login-form-button">GÖNDER</button>
-                    <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye Ol!</a></p>
+  <b-modal id="loginModal" class="Login" size="xl" :hide-header="true" hide-footer>
+    <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('loginModal')"><i class="icon-login-close"></i></button>
+    <div class="Login-in">
+      <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
+      <div class="Login-right">
+        <div class="Login-right-in">
+          <h2><b>MÜŞTERİ </b> GİRİŞİ</h2>
+          <p>Lütfen bir giriş yöntemi seçiniz.</p>
+          <span>Yurtdışında yaşayan müşterilerimizin <u>e-posta</u> ile giriş yapması gerekmektedir.</span>
+          <form action="" class="Login-form" @submit.prevent="sendcode">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <input v-model="loginType" v-bind:value="'phone'" type="radio" name="loginFormType"
+                       id="loginFormRadio" data-bs-toggle="pill"
+                       data-bs-target="#loginFormPhoneContent">
+                <label for="loginFormRadio">
+                  <i class="icon-login-phone"></i>
+                  <span>Telefon ile giriş yap</span>
+                </label>
+              </li>
+              <li class="nav-item" role="presentation">
+                <input v-model="loginType" v-bind:value="'email'" type="radio" name="loginFormType"
+                       id="loginFormRadio2" data-bs-toggle="pill"
+                       data-bs-target="#loginFormMailContent">
+                <label for="loginFormRadio2">
+                  <i class="icon-login-mail"></i>
+                  <span>E-posta ile giriş yap</span>
+                </label>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" role="tabpanel" id="loginFormPhoneContent">
+                <div class="Login-form-item">
+                  <div class="input-group">
+                    <span class="input-group-text">+90</span>
+                    <input v-model="phone" type="text" class="form-control" id="inputTR"
+                           placeholder="Telefon Numaranız">
                   </div>
                 </div>
-              </form>
+                <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert"></p>
+                <button :disabled="!enabledLoginButton" type="submit" class="Login-form-button">GÖNDER</button>
+                <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye Ol!</a></p>
+              </div>
+              <div class="tab-pane fade" role="tabpanel" id="loginFormMailContent">
+                <label for="" class="Login-form-item ">
+                  <input v-model="email" type="text" placeholder="E-mail adresiniz" value="" id="mailInput">
+                </label>
+                <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert"></p>
+                <button :disabled="!enabledLoginButton" type="submit" class="Login-form-button">GÖNDER</button>
+                <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye Ol!</a></p>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
-
       </div>
     </div>
-  </div>
+  </b-modal>
 </template>
 
 <script>
