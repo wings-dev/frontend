@@ -8,6 +8,7 @@
                         <p><span>Yardım / Destek</span>444 8 484</p>
                     </a>
                     <div class="Header-top-menu">
+                        <NuxtLink to="/blog" class="Header-top-menu-item">Blog</NuxtLink>
                         <NuxtLink :to="'/' + item.href" class="Header-top-menu-item" v-for="(item, index) in topMenu"
                             :key="index">{{ item.text }}</NuxtLink>
 

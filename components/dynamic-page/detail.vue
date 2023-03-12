@@ -149,6 +149,8 @@
           <div class="View-left">
             <div class="View-desc genelbakis view-menu-content-item" id="desc-content">
               <h2 class="View-title">Tesise Genel Bakış</h2>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#closeVillaModal">Kapalı Villa</button>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
                 tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve müthiş
                 manzarası ile sizleri mest edecek olan Mabel, dubleks bir dairedir. Giriş katında, harika deniz
@@ -188,6 +190,7 @@
                   data-bs-target="#amenitesModal">Tüm Olanaklar</button>
               </div>
             </div>
+
             <div class="View-months">
               <h2 class="View-title">Aylara Göre Genel Bakış</h2>
               <p class="View-text">
@@ -1097,7 +1100,7 @@
         </div>
       </div>
     </section>
-    <div class="modal fade Amenites" id="amenitesModal" tabindex="-1" aria-labelledby="amenitesModalLabel"
+    <div class="modal fade Amenites modal-z" id="amenitesModal" tabindex="-1" aria-labelledby="amenitesModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -1140,15 +1143,44 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade Login Satis-modal modal-z" id="closeVillaModal" tabindex="-1"
+      aria-labelledby="reservationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+              class="icon-login-close"></i></button>
+          <div class="Login-in">
+            <div class="Login-left" style="background-image:url('/img/satisa-kapali.jpg')">
+              <div class="Satis-modal-text">
+                <h3>Diğer binlerce villamıza göz atmaya devam edebilirsiniz.</h3>
+                <a href="">DİĞER VİLLALAR</a>
+              </div>
+            </div>
+            <div class="Login-right">
+              <div class="Login-right-in">
+                <h2>SATIŞA KAPALI!</h2>
+                <div class="Satis-modal-right-text">
+                  <h4>ARADIĞINIZ VİLLA</h4>
+                  <h3>ŞU ANDA <b>SATIŞTA</b> DEĞİLDİR.</h3>
+                  <a href="">ANASAYFA</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
+
 
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
-
 export default {
   name: 'DynamicDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
@@ -1159,7 +1191,8 @@ export default {
   },
   data() {
     return {
-      galleryIsOpen:false,
+      galleryIsOpen: false,
+      modalIsOpen: false,
       villa_prefix: process.env.PREFIX,
       date: null,
       disableReservation: ['2023-03-20', '2023-03-21', '2023-03-22', '2023-03-23', '2023-03-24', '2023-03-25', '2023-03-26', '2023-03-27'],
@@ -1176,7 +1209,7 @@ export default {
         [36.61751702707028, 29.143651464471198], [36.61814341192442, 29.143354164069745]
       ],
       iconSize: [140, 140],
-      
+
     }
   },
   methods: {
@@ -1216,8 +1249,8 @@ export default {
       }
     }
   },
-  watch:{
-    galleryIsOpen (){
+  watch: {
+    galleryIsOpen() {
       window.addEventListener("keyup", this.onEscapeKeyUp);
     }
   },
@@ -1363,7 +1396,7 @@ export default {
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
       }
     }
-
+    
     console.log('villa', this.villa)
 
 
@@ -1569,4 +1602,5 @@ body {
 
 .day-label {
   margin-top: 5px;
-}</style>
+}
+</style>

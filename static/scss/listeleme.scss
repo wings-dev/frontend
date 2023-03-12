@@ -1051,6 +1051,119 @@
   }
 }
 
+.No-villas {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100px;
+    width: 100%;
+    margin-bottom: clamp(30px, 3.125vw, 60px);
+  }
+  h2 {
+    // font-size: clamp(16px, 1.3vw, 25px);
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1.01;
+    letter-spacing: -1.92px;
+    color: var(--bs-theme-first-dark);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  p {
+    // font-size: clamp(14px,1.06vw,20.1px);
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.21;
+    letter-spacing: -1.55px;
+    color: var(--bs-theme-first-dark);
+    text-align: center;
+  }
+  &-buttons {
+    margin-top: clamp(20px, 2.35vw, 45px);
+    display: flex;
+    align-items: center;
+
+    button {
+      border: solid 1px var(--bs-theme-first-dark);
+      font-size: 11.6px;
+      font-weight: bold;
+      letter-spacing: 1.86px;
+      text-align: center;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: max-content;
+      transition: all 300ms;
+      &:first-child {
+        margin-right: 30px;
+      }
+    }
+
+    .change-date {
+      color: var(--bs-theme-first-dark);
+      background-color: transparent;
+      padding: 16px 27px;
+      &:hover{
+        background-color: var(--bs-theme-first-dark);
+        color: #fff;
+      }
+    }
+    .assistans {
+      background-color: #162651;
+      color: #fff;
+      padding: 16px 12px;
+      i {
+        font-size: 31px;
+        margin-right: 20px;
+      }
+      &:hover{
+        transform: scale(0.98);
+      }
+    }
+  }
+  @media (max-width:768px) {
+    h2 {
+      // font-size: clamp(16px, 1.3vw, 25px);
+      font-size: 18px;
+      letter-spacing: 0;
+     
+    }
+    p {
+      // font-size: clamp(14px,1.06vw,20.1px);
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+    &-buttons {
+      
+      flex-direction: column;
+  
+      button {
+       
+        height: 46px;
+        &:first-child {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+      }
+      .assistans {
+        padding: 16px 12px;
+        max-width: 90%;
+        i {
+          display: none;
+          font-size: 24px;
+          margin-right: 10px;
+        }
+       
+      }
+    }
+  }
+}
+
 @media (max-width: 1490px) {
   .F_villa {
     &-prices {
