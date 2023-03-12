@@ -1,9 +1,11 @@
 export default {
   addFavorite({commit, dispatch}, villaCode) {
+    alert('favoriye eklendi')
     commit('addFavorite', villaCode)
     dispatch('updateFavorites')
   },
   removeFavorite({commit, dispatch}, villaCode) {
+    alert('favoriden eklendi')
     commit('removeFavorite', villaCode)
     dispatch('updateFavorites')
   },
