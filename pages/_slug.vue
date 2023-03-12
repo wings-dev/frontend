@@ -60,6 +60,15 @@ export default {
         // filtre redis datası
         componentData = redisData.data;
       }
+      // type 10 => hakkimizda sayfası
+      // if (redisData.type === 10) {
+      //   headData.link = [
+      //     {rel: 'stylesheet', href: `/css/hakkimizda.min.css`}
+      //   ]
+      //   // filtre redis datası
+      //   componentData = await $getRedisKey(`web:${{site_id}}:pages:${path}`);
+      //   // componentData = redisData.data;
+      // }
       return {type, headData, componentData, calendar, price_list_1}
     } else {
       return {} ; // TODO 404 verilmeli

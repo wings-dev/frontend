@@ -9,7 +9,7 @@
             :disabled="true"
             @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
             format="DD-MM-YYYY" :positionRight="true" :disabledDates="disableReservation" ref="datePicker"
-            :i18n="i18n" :firstDayOfWeek="firstDayOfWeek"
+            :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
           >
             <div slot="content">
               <div class="d-flex align-items-center justify-content-end mt-1">
@@ -201,7 +201,7 @@ export default {
       child: 0,
       baby: 0,
       availabilityChecked: false,
-      i18n: {
+      calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
         'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt','Paz'],

@@ -43,5 +43,8 @@ export default {
   showFavModal() {
     $('#favModal').modal('show')
   },
+  showCloseVillaModal() {
+    $('#closeVillaModal').modal('show')
+  },
 
 }

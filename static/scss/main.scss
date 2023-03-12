@@ -295,7 +295,7 @@ h6 {
 
       &.single {
         width: 20%;
-        h5{
+        h5 {
           font-size: 19px;
         }
         .Header-menu-sub-item-list {
@@ -386,7 +386,6 @@ h6 {
       font-size: 29px;
       color: #fff;
       margin-bottom: 6px;
-      
     }
     p {
       display: flex;
@@ -1370,8 +1369,8 @@ body.overflow-hidden {
       }
     }
 
-    .Filters{
-      padding: 10px ;
+    .Filters {
+      padding: 10px;
       border: none;
     }
 
@@ -1729,7 +1728,6 @@ body.overflow-hidden {
   opacity: 0;
   visibility: hidden;
   transition: all 400ms;
-
 
   &.Search_villas_active {
     height: calc(100vh - 145px);
@@ -3095,6 +3093,48 @@ body.overflow-hidden {
     align-items: center;
     .Login-form-button-white {
       margin-left: 16px;
+    }
+  }
+}
+
+.Notfound {
+  img {
+    max-width: 516px;
+  }
+  h1 {
+    font-size: clamp(30px, 3.6vw, 69.3px);
+    font-weight: bold;
+    text-align: center;
+    color: #183266;
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(20px, 1.83vw, 35.2px);
+    font-weight: 500;
+    line-height: 1.46;
+    color: #183266;
+
+    span {
+      font-size: clamp(16px, 1.3vw, 24.3px);
+      font-weight: 500;
+      line-height: 1.46;
+      color: #183266;
+      margin-bottom: 9px;
+    }
+  }
+  a {
+    border-radius: 9.2px;
+    background-color: #183266;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(15px,1vw,19px);
+    font-weight: 500;
+    padding: 20px 40px;
+    i.icon-arrow-left-2 {
+
     }
   }
 }
