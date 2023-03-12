@@ -841,6 +841,88 @@ h6 {
       color: #fff;
     }
   }
+
+  &-user {
+    width: 170px;
+    border-radius: 25px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    height: 50px;
+    margin-left: 18px;
+    transition: all 400ms;
+    background-color: #193367;
+    i {
+      font-size: 21px;
+      color: #fff;
+      margin-right: 8px;
+    }
+    p {
+      color: #fff;
+      font-size: 11.4px;
+      font-weight: bold;
+      text-align: left;
+      span {
+        font-size: 8px;
+        font-weight: normal;
+        display: block;
+      }
+    }
+
+    &:after {
+      border: none;
+      font-family: "icon";
+      content: "";
+      font-style: normal;
+      font-weight: normal;
+      speak: never;
+      display: inline-block;
+      text-decoration: inherit;
+      width: 1em;
+      font-size: 7px;
+      color: #fff;
+      text-align: center;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1em;
+      -webkit-font-smoothing: antialiased;
+      margin-left: auto;
+    }
+
+    &[aria-expanded="true"] {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &-menu {
+      background-color: #193367;
+      width: 170px;
+      border: none;
+      border-radius: 0;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      margin-top: -2px !important;
+      transition: all 500ms;
+      .dropdown-item {
+        font-size: 11px;
+        font-weight: normal;
+        color: #b3c0dc;
+        border-bottom: 1px solid rgb(var(--bs-theme-first-rgb, 0.6));
+        i {
+          opacity: 0;
+        }
+        &:hover {
+          background-color: transparent;
+          color: var(--bs-theme-second);
+          i {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
 }
 
 .custom-fixed {
@@ -3130,11 +3212,10 @@ body.overflow-hidden {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(15px,1vw,19px);
+    font-size: clamp(15px, 1vw, 19px);
     font-weight: 500;
     padding: 20px 40px;
     i.icon-arrow-left-2 {
-
     }
   }
 }
@@ -3170,6 +3251,7 @@ body.overflow-hidden {
   z-index: 10;
   background-color: transparent;
   margin-left: 20px;
+  flex-shrink: 0;
   span {
     display: block;
     position: absolute;

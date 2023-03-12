@@ -40,7 +40,8 @@
                                         <button type="button" class="mobile-back-button"><i class="icon-right-arrows-new"
                                                 @click="closeSubMenu($event)"></i>{{ subitem.text }}</button>
 
-                                        <div class="Header-menu-sub-item " :class="{ 'single': index === 2 }" v-if="subitem.href !== 'ozel-bolge'">
+                                        <div class="Header-menu-sub-item " :class="{ 'single': index === 2 }"
+                                            v-if="subitem.href !== 'ozel-bolge'">
                                             <h5>{{ subitem.text }}{{ subitem.href }}</h5>
                                             <div class="Header-menu-sub-item-list">
                                                 <NuxtLink :to="'/' + subitemchildren.href" class="Header-top-menu-item"
@@ -132,16 +133,29 @@
                             data-bs-target="#favModal">
                             <i class="icon-heart-full"></i>
                         </button>
-                        <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
+                         <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
                             data-bs-target="#loginModal">
                             <i class="icon-user"></i><span class="">ÜYE GİRİŞİ YAP </span>
                         </button>
+                        <!--
                         <button v-else type="button"
                             class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none">
                             <span class="d-inline-block px-1 px-xl-2 py-1 py-xl-0" @click="logout()">{{ $auth.user.name }}
                                 ÇIKIŞ
                                 YAP</span>
-                        </button>
+                        </button> -->
+                        <div class="dropdown" v-else >
+                            <button class="Login-button-user dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="icon-good-night"></i>
+                                <p><span>İyi Akşamlar</span>{{ $auth.user.name }}</p>
+                            </button>
+                            <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>BİLGİLERİNİZ</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>FAVORİLERİM</a></li>
+                                <li><a class="dropdown-item" href="#"  @click.prevent="logout()"><i class="icon-right-arrows-new"></i>ÇIKIŞ YAP</a></li>
+                            </ul>
+                        </div>
                         <button type="button" class="menu-toggle" @click="mobileMenuOpen"
                             :class="{ hide: mobileMenuActive }">
                             <span></span>
@@ -249,6 +263,10 @@ export default {
     //     "footermenu":[{"text":"Otelbnb","href":"","target":"_self","children":[{"text":"Gizlilik Şartları","href":"gizlilik-sartlari","target":"_self"},{"text":"İptal Şartları","href":"iptal-sartlari","target":"_self"},{"text":"Banka Hesapları","href":"banka-hesaplari","target":"_self"}]},{"text":"Popüler Rotalar","href":"","target":"_self","children":[{"text":"Marmaris","href":"marmaris","target":"_self"},{"text":"Fethiye","href":"fethiye","target":"_self"},{"text":"Bodrum","href":"bodrum","target":"_self"}]},{"text":"Oteller","href":"","target":"_self","children":[{"text":"Antalya Otelleri","href":"antalya-otelleri","target":"_self"},{"text":"Muğla Otelleri","href":"mugla-otelleri","target":"_self"},{"text":"Fethiye Otelleri","href":"fethiye-otelleri","target":"_self"}]},{"text":"Villa Kategorileri","href":"","target":"_self","children":[{"text":"Balayı Villaları","href":"balayi-villalari","target":"_self"},{"text":"Deniz Manzaralı Villalar","href":"deniz-manzarali-villalar","target":"_self"},{"text":"Jakuzili Villalar","href":"jakuzili-villalar","target":"_self"}]}]};
     const menuData = {"topmenu":[{"href":"sss","text":"S.S.S","target":"_self"},{"href":"hakkimizda","text":"Hakk\u0131m\u0131zda","target":"_self"},{"href":"blog","text":"Blog","target":"_self"},{"href":"iletisim","text":"\u0130leti\u015fim","target":"_self"}],"mainmenu":[{"href":"kiralik-villa","text":"Kiral\u0131k Villalar","target":"_self"},{"href":"","text":"Villa Se\u00e7enekleri","target":"_self","children":[{"href":"","text":"Antalya Kiral\u0131k Villa","target":"_self","children":[{"href":"fethiye-kiralik-villa","text":"Fethiye Kiral\u0131k Villa","target":"_self"},{"href":"dalaman-kiralik-villa","text":"Dalaman Kiral\u0131k Villa","target":"_self"},{"href":"bodrum-kiralik-villa","text":"Bodrum Kiral\u0131k Villa","target":"_self"}]},{"href":"","text":"Mu\u011fla Kiral\u0131k Villa","target":"_self","children":[{"href":"fethiye-kiralik-villa","text":"Fethiye Kiral\u0131k Villa","target":"_self"},{"href":"dalaman-kiralik-villa","text":"Dalaman Kiral\u0131k Villa","target":"_self"},{"href":"bodrum-kiralik-villa","text":"Bodrum Kiral\u0131k Villa","target":"_self"}]}]},{"href":"","text":"Pop\u00fcler B\u00f6lgeler","target":"_self","children":[{"href":"ozel-bolge","text":"\u00d6zel B\u00f6lgeler","target":"_self","children":[{"href":"cocuk-havuzlu","text":"\u00c7ocuk Havuzlu","target":"_self"},{"href":"deniz-manzarali","text":"Deniz Manzaral\u0131","target":"_self"},{"href":"ozel-havuzlu","text":"\u00d6zel Havuzlu","target":"_self"},{"href":"jakuzili-villalar","text":"Jakuzili Villalar","target":"_self"},{"href":"luks-villalar","text":"L\u00fcks Villalar","target":"_self"},{"href":"balayi-villalari","text":"Balay\u0131 Villalar\u0131","target":"_self"}]},{"href":"","text":"Pop\u00fcler Villa Se\u00e7enekleri","target":"_self","children":[{"href":"fethiye-kiralik-villa","text":"Fethiye Kiral\u0131k Villa","target":"_self"},{"href":"dalaman-kiralik-villa","text":"Dalaman Kiral\u0131k Villa","target":"_self"},{"href":"bodrum-kiralik-villa","text":"Bodrum Kiral\u0131k Villa","target":"_self"},{"href":"marmaris-kiralik-villa","text":"Marmaris Kiral\u0131k Villa","target":"_self"}]}]},{"href":"iletisim","text":"\u0130leti\u015fim","target":"_self"}],"foootermenu":[{"href":"","text":"Villa Kalkan","target":"_self"},{"href":"gizlilik-politikasi","text":"Gizlilik Politikas\u0131","target":"_self"},{"href":"kvkk-aydinlatma-metni","text":"KVKK","target":"_self"},{"href":"rezervasyon-kosullari","text":"Rezervasyon Ko\u015fullar\u0131","target":"_self"}]}
     // const menuData = this.$store.state['settings'].menuData;
+
+        // this.topMenu = menuData.topmenu;
+        // this.mainMenu = menuData.mainmenu;
+        // this.footerMenu = menuData.footermenu;
 
         this.topMenu = menuData.topmenu;
         this.mainMenu = menuData.mainmenu;
