@@ -46,7 +46,7 @@
           <div class="Filter-right-head">
             <div class="Filter-right-head-info">
               <i class="icon-list"></i>
-              <p>{{ villas.length }} villa listeleniyor</p>
+              <p>{{ total_items }} villa listeleniyor</p>
             </div>
             <div class="Filter-right-head-buttons">
 
