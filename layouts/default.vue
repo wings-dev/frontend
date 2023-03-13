@@ -82,7 +82,7 @@
     <client-only>
       <fav-modal></fav-modal>
     </client-only>
-    <CookieControl :locale="en"/>
+    <CookieControl locale="en"/>
   </div>
 </template>
 
