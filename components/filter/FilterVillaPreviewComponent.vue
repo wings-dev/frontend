@@ -1,5 +1,5 @@
 <template>
-  <a :href="villa.url" class="F_villa-item">
+  <NuxtLink :to="villa.url" class="F_villa-item">
     <div class="F_villa-item-img">
       <div class="swiper villa-list-slider">
         <div class="swiper-wrapper">
@@ -88,7 +88,7 @@
         <a :href="villa.url" class="F_villa-item-show">Villayı İncele</a>
       </div>
     </div>
-  </a>
+  </NuxtLink>
 
 </template>
 
