@@ -85,7 +85,7 @@
     <client-only>
       <fav-modal></fav-modal>
     </client-only>
-    <CookieControl :locale="en" />
+    <CookieControl locale="en" />
   </div>
 </template>
 
@@ -256,4 +256,10 @@ export default {
   .modal-xl {
     max-width: 1140px;
   }
-}</style>
+}
+
+:deep() .cookieControl__ControlButton{
+  display: none!important;
+}
+
+</style>

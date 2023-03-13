@@ -14,16 +14,17 @@
 
         <section class="Contact-offices">
             <div class="Contact-offices-map">
-                <div id="map-wrap" >
-                    <client-only>
+                <client-only>
+                    <div id="map-wrap">
+
                         <l-map :zoom=13 :center="center" :maxZoom=16>
                             <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
                             <l-marker :lat-lng="center">
                                 <l-icon iconUrl="img/map-center.svg" :iconSize=iconSize></l-icon>
                             </l-marker>
                         </l-map>
-                    </client-only>
-                </div>
+                    </div>
+                </client-only>
             </div>
             <div class="Contact-offices-tab">
                 <ul class="nav nav-pills" id="pills-tab" role="tablist">
@@ -197,12 +198,13 @@
                             <label for="marka">
                                 <input type="checkbox" id="marka">
                                 <span></span>
-                                <p>Markamız ile ilgili gelişmelerden haberdar olmak için tarafıma elektronik ileti gönderilmesini kabul ederim.</p>
+                                <p>Markamız ile ilgili gelişmelerden haberdar olmak için tarafıma elektronik ileti
+                                    gönderilmesini kabul ederim.</p>
                             </label>
                         </div>
 
                         <button type="submit">GÖNDER</button>
-                        
+
                     </form>
                 </div>
             </div>
@@ -239,15 +241,15 @@ export default {
             iconSize: [140, 140],
         }
     },
-    methods:{
-        changeMap(e){
-            if(e == 'merkez'){
+    methods: {
+        changeMap(e) {
+            if (e == 'merkez') {
                 this.center = [36.618867138910204, 29.145069037654377]
             }
-            if(e == 'londra'){
+            if (e == 'londra') {
                 this.center = [34.618867138910204, 32.145069037654377]
             }
-            if(e == 'fethiye'){
+            if (e == 'fethiye') {
                 this.center = [32.618867138910204, 32.145069037654377]
             }
         }

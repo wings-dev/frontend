@@ -162,7 +162,7 @@ body {
       color: #183266;
       margin-left: 10px;
     }
-    &:hover {
+    &:hover,&.active {
       .action-btn-icon {
         background-color: #183266;
         i {

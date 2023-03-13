@@ -5,7 +5,7 @@
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
             <h1 class="highlight-section-title">Fethiye Kiralık Villa</h1>
-            <!-- <p class="highlight-section-desc">
+            <p class="highlight-section-desc">
               Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
               masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
               mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
@@ -27,22 +27,22 @@
               kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
               Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.</p>
             <div class="highlight-section-desc-more-button read-more-button">+ TÜMÜNÜ OKU</div>
-            <div class="highlight-section-desc-more-button">- DARALT</div> -->
+            <div class="highlight-section-desc-more-button">- DARALT</div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="container mt-2 d-none">
+    <div class="container mt-2 d-">
       <button type="button" @click="this.showLoginModal">GİRİŞ YAP MODAL</button>
       <button type="button" @click="this.showRegisterModal">KAYIT MODAL</button>
-
-
 
       <button type="button" data-bs-toggle="modal" data-bs-target="#callModal">SİZİ ARAYALIM MODAL</button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#favModal">FAV MODAL</button>
 
-      
+      <button type="button" data-bs-toggle="modal" data-bs-target="#kullanimModal">Kullanım şartları</button>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#reservationSuccessModal">başarılı</button>
+
       <!-- Kullanım Şartları Modal -->
       <div class="modal fade Login" id="kullanimModal" tabindex="-1" aria-labelledby="kullanimModalLabel"
         aria-hidden="true">
@@ -263,6 +263,23 @@
         </div>
       </div>
 
+      <!-- Kullanım Şartları Modal -->
+      <div class="modal fade Login" id="reservationSuccessModal" tabindex="-1"
+        aria-labelledby="reservationSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                class="icon-login-close"></i></button>
+            <div class="Login-success">
+              <img src="/img/success-check.svg" alt="">
+              <h3>Rezervasyon Talebi Alındı</h3>
+              <h4>Ödeme yaptığınız takdirde adınıza rezerve edilecektir.</h4>
+              <p>Satış temsilcilerimiz size en kısa sürede dönüş yapacaktır.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <client-only>
       </client-only>
     </div>
@@ -270,43 +287,43 @@
 
     <filter-villa-component :selectedFilters="selectedFilters"></filter-villa-component>
 
-
-    <!-- <section class="List">
+    <section class="highlight-section bg-theme-light-2 pt-5 pb-4">
       <div class="container">
-        <div class="List-in">
-          <h3>Fethiye Villa Kiralama </h3>
-          <div class="List-img">
-            <img src="/img/list.png" alt="">
-          </div>
-          <div class="List-text">
-            <p>İslamlar kiralık villa seçenekleriyle son derece meşhur bir bölgedir. Dört bir yanı zeytin
-              ağaçları ile çevrili olan bu şirin köy, Antalya tatilcilerinin her dönem ilgi odağındadır. Villa
-              tatili ile doğa tatilini birleştiriyor olması bu ünün altında yatan en önemli nedenlerden
-              biridir. Birbirinden güzel kiralık villa seçenekleriyle tatilciler konforlu bir konaklama imkanı
-              yakalarlar. Bunun yanı sıra, villalarından dışarıya atacakları bir adım ile kendilerini doğa ile
-              iç içe bulurlar.
-              Hem lüksün hem de doğanın bir arada olması büyük bir avantajdır. Gün içerisinde doğa yürüyüşleri
-              yapılabilir akşamları ise villanın keyfi sürülebilir olur. Tabii ki yaz tatili için gelen
-              ziyaretçiler deniz manzaralı villalara daha büyük ilgi duyarlar. Öyle ki, günün her saatini
-              denizin etkileyici görüntüsüne karşı yaşarlar. Bir deniz tatili için bu durum hemen hemen herkes
-              tarafından istenilen bir durumdur.
-              İslamlar bu açıdan da şanslıdır. İslamlar Köyü, çevrede yer alan bir birinden güzel koylara
-              yakın mesafededir. Özellikle Kaş’ın kıymetli plajlarından olan Kaputaş ve Patara Plajı,
-              İslamlar’a oldukça yakındır. Küçük bir araba yolculuğu ile denizin mükemmel serinliğine kavuşmak
-              mümkündür. Antalya yaz sezonunda oldukça sıcak bir yer olduğu için denize yakınlık bu noktada
-              ekstra daha önemlidir.
-              Antalya’nın sıcak olması İslamlar kiralık villa bakanlar için bazı kategorileri daha da ön plana
-              çıkarır. Özellikle denizden çok havuzda vakit geçirmeyi seven tatilciler havuzlu villa arayışına
-              girerler. İslamlar havuzlu villalar veya İslamlar kapalı havuzlu villalar bu noktada devreye
-              girmektedir. Kapalı havuzlu villalar özellikle sezon dışı dönemlerde tercih edilir. Bu sayede
-              kişiler her zaman diledikleri gibi havuz keyfi yapabilirler. Hava soğuk olsa dahi kişiler
-              diledikleri gibi havuzlarında yüzebilirler. Açık havuzlu villalar ise yaz tatili eğlencesine
-              daha çok eğlence katan niteliktedir. Ailenin tüm üyeleri kendilerine özel olan havuzlarında doya
-              doya yüzüp diledikleri gibi serinleyebilirler.</p>
+        <div class="row pt-4 pb-md-2">
+          <div class="note-box col-12 col-lg-12 pe-lg-5">
+            <h1 class="highlight-section-title">Fethiye Kiralık Villa</h1>
+            <p class="highlight-section-desc">
+              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
+              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
+              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
+              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
+              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
+              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
+              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
+              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
+              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
+              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
+              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
+              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
+              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
+              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
+              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
+              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
+              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
+              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
+              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
+              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.</p>
+            <div class="highlight-section-desc-more-button read-more-button">+ TÜMÜNÜ OKU</div>
+            <div class="highlight-section-desc-more-button">- DARALT</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="List">
+      <div class="container">
         <div class="List-sss">
-          <h3>Sıkça Sorulan Sorular </h3>
+          <h3>En çok sorulan sorular </h3>
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -325,7 +342,7 @@
             <div class="accordion-item">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
+                Ücrete neler dahil ?
               </button>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample">
@@ -339,7 +356,7 @@
             <div class="accordion-item">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Accordion Item #3
+                Kaç Kişi Konaklayabiliyoruz ?
               </button>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                 data-bs-parent="#accordionExample">
@@ -353,7 +370,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
   </div>
 </template>
 
@@ -361,13 +378,13 @@
 import VSelect from "@alfsnd/vue-bootstrap-select";
 import LoginModal from "@/components/modals/login-modal.vue";
 import RegisterModal from "@/components/modals/register-modal.vue";
-import {mapActions} from "vuex";
+import { mapActions } from "vuex";
 
 
 export default {
   name: 'DynamicVillaFilterPage',
   props: {
-    selectedFilters: {type: Object, default: {}},
+    selectedFilters: { type: Object, default: {} },
   },
   data() {
     return {
@@ -399,6 +416,21 @@ export default {
         }
       }, 50)
     },
+    SliderReadMore() {
+      let currentHeight = box.innerHeight;
+
+      // get height with auto applied
+      let autoHeight = box.css('height', 'auto').innerHeight;
+
+      // reset height and revert to original if current and auto are equal
+      let newHeight = (currentHeight | 0) === (autoHeight | 0) ? minimumHeight : autoHeight;
+
+      box.css('height', currentHeight).animate({
+        height: (newHeight)
+      })
+
+      document.querySelector('.highlight-section-desc-more-button').classList.toggleClass('show')
+    }
 
   },
 
@@ -424,6 +456,15 @@ export default {
     },
   },
   mounted() {
+
+    let box = document.querySelector('.highlight-section-desc');
+    let minimumHeight = 60; // max height in pixels
+    let initialHeight = box.innerHeight;
+    // reduce the text if it's longer than 200px
+    if (initialHeight > minimumHeight) {
+      box.css('height', minimumHeight);
+      document.querySelector('.read-more-button').classList.add('show')
+    }
   }
 }
 </script>
@@ -446,14 +487,15 @@ export default {
   background-position: 80px;
 }
 
-.arrow-down{
-  margin-top: 2px!important;
-}
-.v-select{
-  height: 100%!important;
-}
-.v-select-toggle{
-  align-items: center;
+.arrow-down {
+  margin-top: 2px !important;
 }
 
+.v-select {
+  height: 100% !important;
+}
+
+.v-select-toggle {
+  align-items: center;
+}
 </style>

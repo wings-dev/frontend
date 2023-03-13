@@ -1,5 +1,5 @@
 <template>
-  <div class="F_villa-item">
+  <a :href="villa.url" class="F_villa-item">
     <div class="F_villa-item-img">
       <div class="swiper villa-list-slider">
         <div class="swiper-wrapper">
@@ -79,7 +79,8 @@
         <a :href="villa.url" class="F_villa-item-show">Villayı İncele</a>
       </div>
     </div>
-  </div>
+  </a>
+  
 </template>
 
 <script>
@@ -109,7 +110,14 @@ export default {
   methods: {
     amenitesList(villa) {
       return (Object.values(villa.amenites || {}).flatMap(amenite => amenite.list) || []).filter(i => !!i);
-    }
+    },
+    toggleFavorite() {
+      if (this.isFavorite) {
+        this.$store.dispatch('favorite/removeFavorite', this.villa.code)
+      } else {
+        this.$store.dispatch('favorite/addFavorite', this.villa.code)
+      }
+    },
   },
   mounted() {
     Swiper.use([Navigation, Pagination])

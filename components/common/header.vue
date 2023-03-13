@@ -129,10 +129,14 @@
                             @click="openSearch($event)">
                             <i class="icon-search"></i>
                         </button>
-                        <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
+                        <Nuxt-link to="/favs" class="Fav-button">
+                        
+                            <i class="icon-heart-full"></i>
+                    </Nuxt-link>
+                        <!-- <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
                             data-bs-target="#favModal">
                             <i class="icon-heart-full"></i>
-                        </button>
+                        </button> -->
                          <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
                             data-bs-target="#loginModal">
                             <i class="icon-user"></i><span class="">ÜYE GİRİŞİ YAP </span>

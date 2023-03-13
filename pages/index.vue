@@ -465,9 +465,9 @@ export default {
            
         }
     },
-    async asyncData({ $getRedisKey }) {
-        console.log(await $getRedisKey("web:4:pages:deneme"));
-    },
+    // async asyncData({ $getRedisKey }) {
+    //     console.log(await $getRedisKey("web:4:pages:deneme"));
+    // },
     mounted() {
         console.log(process.env.NODE_ENV);
         console.log(this.$config.message);

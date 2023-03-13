@@ -25,7 +25,6 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: "/css/custom-bootstrap.min.css" },
       { rel: "stylesheet", href: "/css/main.min.css" },
-
     ],
     script: [
       {
@@ -43,8 +42,8 @@ export default {
   ],
   googleFonts: {
     families: {
-      Montserrat: [200, 300,400,500,700],
-    }
+      Montserrat: [200, 300, 400, 500, 700],
+    },
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -52,9 +51,9 @@ export default {
     // "~/plugins/vue-awesome-swiper.js",
     "~/plugins/fancyapps-ui.js",
     "~/plugins/vue-tel-input",
-    { src: '~plugins/vcalendar.js', ssr: false },
-    '~/plugins/redisHelper.js',
-    { src: '~/plugins/jquery.js', mode: 'client' },
+    { src: "~plugins/vcalendar.js", ssr: false },
+    "~/plugins/redisHelper.js",
+    { src: "~/plugins/jquery.js", mode: "client" },
     { src: '~/plugins/bootstrap.js', mode: 'client' }
   ],
 
@@ -70,9 +69,9 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    '@nuxtjs/auth-next',
-    '@nuxtjs/google-fonts',
-    'nuxt-leaflet',
+    "@nuxtjs/auth-next",
+    "@nuxtjs/google-fonts",
+    "nuxt-leaflet",
     [
       "nuxt-cookie-control",
       {
@@ -97,19 +96,24 @@ export default {
           checkboxActiveCircleBackground: "#00c58e",
           checkboxInactiveCircleBackground: "#f44336",
           checkboxDisabledBackground: "#ddd",
-          checkboxDisabledCircleBackground: "#fff"
+          checkboxDisabledCircleBackground: "#fff",
         },
         text: {
           locale: {
             en: {
-              barTitle:  'Çerezler',
-              barDescription:  'We use our own cookies and third-party...',
-            }
+              barTitle: "Çerezler",
+              barDescription: "We use our own cookies and third-party...",
+            },
           },
-        }
-      }
-    ]
+        },
+      },
+    ],
+    "@nuxtjs/toast",
   ],
+  toast: {
+    position: "top-right",
+    duration:2000
+  },
 
   cookies: {
     necessary: [
@@ -119,10 +123,10 @@ export default {
         },
 
         description: {
-          en: "Used for cookie control."
+          en: "Used for cookie control.",
         },
-        cookies: ["cookie_control_consent", "cookie_control_enabled_cookies"]
-      }
+        cookies: ["cookie_control_consent", "cookie_control_enabled_cookies"],
+      },
     ],
     optional: [
       {
@@ -132,11 +136,10 @@ export default {
           es: "Google Analytics",
           fr: "Google Analytics",
           hr: "Google Analitika",
-          it: "Google Analytics"
+          it: "Google Analytics",
         },
         description: {
-          en:
-            "Google Analytics is a web analytics service offered by Google that tracks and reports website traffic."
+          en: "Google Analytics is a web analytics service offered by Google that tracks and reports website traffic.",
         },
         src: "https://www.googletagmanager.com/gtag/js?id=UA-138616567-1",
         async: true,
@@ -148,35 +151,35 @@ export default {
           }
           gtag("js", new Date());
           gtag("config", "UA-138616567-1");
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
 
   auth: {
     strategies: {
       laravelJWT: {
-        provider: 'laravel/jwt',
-        url: '/',
+        provider: "laravel/jwt",
+        url: "/",
         endpoints: {
           login: {
-            url: '/api/login',
-            method: 'post',
-            propertyName: 'access_token'
+            url: "/api/login",
+            method: "post",
+            propertyName: "access_token",
           },
           logout: false,
-          user: false // disables the default /api/auth/user endpoint
+          user: false, // disables the default /api/auth/user endpoint
         },
         token: {
-          property: 'access_token',
-          maxAge: 60 * 60
+          property: "access_token",
+          maxAge: 60 * 60,
         },
         refreshToken: {
-          maxAge: 20160 * 60
+          maxAge: 20160 * 60,
         },
-        redirect: false
-      }
-    }
+        redirect: false,
+      },
+    },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -189,19 +192,19 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     // standalone: true,
-    transpile: ["swiper"]
+    transpile: ["swiper"],
   },
 
   proxy: {
     "/api/": {
-      target: process.env.PROXY_API
+      target: process.env.PROXY_API,
     },
     "/data": {
-      target: process.env.PROXY_DATA
+      target: process.env.PROXY_DATA,
     },
     "/visitor": {
-      target: process.env.PROXY_VISITOR
-    }
+      target: process.env.PROXY_VISITOR,
+    },
   },
 
   /*
@@ -213,10 +216,10 @@ export default {
 
   // 301 yapılacak linkler için alan
   router: {
-    trailingSlash:false,
+    trailingSlash: false,
     extendRoutes(routes, resolve) {
       require("./301").apply(routes, resolve);
-    }
+    },
   },
 
   /*server: {
@@ -224,4 +227,4 @@ export default {
     host: '0.0.0.0', // default: localhost,
     timing: false
   }*/
-}
+};

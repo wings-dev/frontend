@@ -6,7 +6,8 @@
           <div class="Filter-left-head">
             <h4>Gelişmiş Arama</h4>
             <button type="button" class="Search-clear" onclick="filterClear()">Temizle</button>
-            <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter"><i class="icon-search-close"></i></button>
+            <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter"><i
+                class="icon-search-close"></i></button>
           </div>
           <div class="Filters-search mobile">
             <label for="">
@@ -19,25 +20,27 @@
               <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
             </div>
 
-            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın"
-              :checkboxes="destinations" :hideTitleBorder="true"
-              @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
+            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations"
+              :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes" :groups="amenites.groups.facilityTypes"
+            <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
+              :groups="amenites.groups.facilityTypes"
               @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts" :groups="amenites.groups.facilityConcepts"
+            <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts"
+              :groups="amenites.groups.facilityConcepts"
               @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities" :groups="amenites.groups.facilities"
+            <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
+              :groups="amenites.groups.facilities"
               @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component>
-              <!-- <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
+            <!-- <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
               :checkboxes="amenites.facilities" :hideTitleBorder="true"
               @updated="updateFilter('amenites.facilities', $event)"
               :isFacilities="true"
               ></filter-item-checkbox-component> -->
 
-              <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
+            <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
               @max_price="updateFilter('max_price', $event)"></filter-price-between-component>
           </div>
 
@@ -90,25 +93,10 @@
             <filter-villa-preview-component v-for="(villa, index) in villas" :key="index"
               :villa="villa"></filter-villa-preview-component>
 
-              <div class="No-villas" v-if="villas.length <= 0">
-                <img src="img/no-villas.svg" alt="">
-                <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
-                <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
-                <div class="No-villas-buttons">
-                  <button type="button" class="change-date">TARİHİ DEĞİŞTİR</button>
-                  <button type="button" class="assistans"><i class="icon-header-assistant"></i>TATİL ASİSTANINDAN DESTEK ALABİLİRSİNİZ</button>
-                </div>
-              </div>
-
-              <div class="No-villas" v-if="villas.length <= 0">
-                <img src="img/villa-loading.svg" alt="">
-                <h2>Villalar hazırlanıyor.</h2>
-                <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
-              </div>
-
             <div
               class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-              <img src="/uploads/holiday-banner.jpg" alt="" class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
+              <img src="/uploads/holiday-banner.jpg" alt=""
+                class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
 
               <div class="d-flex flex-column position-relative ls-05 pt-3">
                 <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
@@ -131,6 +119,25 @@
                 </g>
               </svg>
             </div>
+
+            <div class="No-villas" v-if="loading == false && villas.length <= 0">
+              <img src="img/no-villas.svg" alt="">
+              <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
+              <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
+              <div class="No-villas-buttons">
+                <button type="button" class="change-date">TARİHİ DEĞİŞTİR</button>
+                <button type="button" class="assistans"><i class="icon-header-assistant"></i>TATİL ASİSTANINDAN DESTEK
+                  ALABİLİRSİNİZ</button>
+              </div>
+            </div>
+
+            <div class="No-villas" v-if="loading">
+              <img src="img/villa-loading.svg" alt="">
+              <h2>Villalar hazırlanıyor.</h2>
+              <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
+            </div>
+
+
 
           </div>
 
@@ -162,22 +169,20 @@
               <!-- Page numbers -->
               <li class="page-item me-2 me-sm-3 mb-1" v-if="showLeftDots">
                 <a href="javascript:void(0)"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
-                   >
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
                   <span aria-hidden="true">&hellip;</span>
                 </a>
               </li>
               <li class="page-item me-2 me-sm-3 mb-1" v-for="(pageNumber, index) in displayedPageNumbers" :key="index">
                 <a href="javascript:void(0)"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
-                   :class="{ 'active': pageNumber === current_page }" @click.prevent="goToPage(pageNumber)">
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
+                  :class="{ 'active': pageNumber === current_page }" @click.prevent="goToPage(pageNumber)">
                   {{ pageNumber }}
                 </a>
               </li>
               <li class="page-item me-2 me-sm-3 mb-1" v-if="showRightDots">
                 <a href="javascript:void(0)"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
-                   >
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
                   <span aria-hidden="true">&hellip;</span>
                 </a>
               </li>
@@ -234,12 +239,12 @@
 
 <script>
 import VSelect from "@alfsnd/vue-bootstrap-select";
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "FilterVillaComponent",
   props: {
-    selectedFilters: {type: Object, default: {}},
+    selectedFilters: { type: Object, default: {} },
   },
   data() {
     return {
@@ -267,7 +272,9 @@ export default {
         { value: 3, text: "Eskiden Yeniye" },
       ],
       orderValue: null,
-      orderPlaceholder: "Sırala:"
+      orderPlaceholder: "Sırala:",
+      loading: true,
+      novillas: false,
     }
   },
   components: {
@@ -284,15 +291,13 @@ export default {
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
 
-    console.log(JSON.stringify({
-      destinations: this.destinations,
-      amenites: this.amenites,
-    }))
+    // console.log(JSON.stringify({
+    //   destinations: this.destinations,
+    //   amenites: this.amenites,
+    // }))
   },
   mounted() {
     this.filter();
-
-
   },
 
   computed: {
@@ -382,12 +387,15 @@ export default {
         .post(`/api/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`, data)
         .then(({ data: responseData }) => {
           this.villas = responseData.data;
-          console.log('this.villas',this.villas);
+          console.log('this.villas', this.villas);
           this.per_page = responseData.per_page;
           this.total_items = responseData.total;
           this.current_page = responseData.current_page;
         })
-        .catch(console.error);
+        .catch(console.error)
+        .finally(() => {
+          this.loading = false
+        });
     },
     getSelectedObjects(checkboxes) {
       return checkboxes.reduce((selected, checkbox) => {
@@ -441,7 +449,6 @@ export default {
   height: 45px;
   cursor: pointer;
   border-radius: 6px;
-  color: #fff!important;
-  background-color: var(--bs-theme-first)!important;
-}
-</style>
+  color: #fff !important;
+  background-color: var(--bs-theme-first) !important;
+}</style>

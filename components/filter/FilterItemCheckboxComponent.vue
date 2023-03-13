@@ -37,7 +37,6 @@
         </li>
       </ul>
 
-
       <ul class="Filters-first" v-if="groups.length > 0">
         <li class="Filters-item Filters-item-notfound" v-bind:style="filterText.length && !filteredCheckboxes.length ? 'display:block' : 'display:none'">
           <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
@@ -84,7 +83,7 @@ export default {
     filterInputPlaceholder: {type: String, default: ""},
     hideTitleBorder: {type: Boolean, default: false},
     hideTitle: {type: Boolean, default: false},
-    groups: {type: Array, default: []},
+    groups: {type: Array, default: () => []},
   },
   data() {
     return {
@@ -204,6 +203,9 @@ export default {
     applyFilter() {
       this.filteredCheckboxes = this.filterCheckboxes(this.filterText);
     }
+  },
+  mounted(){
+    console.log(JSON.stringify(this.checkboxes))
   }
 }
 </script>
