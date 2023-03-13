@@ -20,8 +20,7 @@
             <div class="container h-100">
                 <div class="Header-inner-in">
                     <NuxtLink to="/" class="Header-logo">
-                        <nuxt-img :src="'/img/site' + site_id + '/logo.svg'" alt="Logo" />
-                        
+                        <img :src="'/img/site' + site_id + '/logo.svg'" alt="Logo">
                     </NuxtLink>
 
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
@@ -32,7 +31,8 @@
                             <div class="Header-menu-item" :class="{ active: subMenuActive }" v-else :id="index">
                                 <!--  -->
                                 <button type="button" class="Header-menu-item-link " @click="subMenuOpen($event)"
-                                    :id="index">{{ item.text }}<i class="icon-right-arrows-new"></i></button>
+                                    :id="index">{{
+                                        item.text }}<i class="icon-right-arrows-new"></i></button>
 
                                 <div class="Header-menu-item-in" :class="{ active: subMenuActive }">
                                     <template v-for="(subitem, index) in item.children">
@@ -125,17 +125,15 @@
 
                     </div>
                     <div class="Header-buttons">
-                      
                         <button type="button" class="search-button" aria-label="Favorileri aç" id="searchButton"
                             @click="openSearch($event)">
                             <i class="icon-search"></i>
                         </button>
-                        <Nuxt-link to="/favs" class="Fav-button" ><i class="icon-heart-full"></i></Nuxt-link>
-                        <!-- <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
+                        <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
                             data-bs-target="#favModal">
                             <i class="icon-heart-full"></i>
-                        </button> -->
-                        <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
+                        </button>
+                         <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
                             data-bs-target="#loginModal">
                             <i class="icon-user"></i><span class="">ÜYE GİRİŞİ YAP </span>
                         </button>
@@ -146,19 +144,16 @@
                                 ÇIKIŞ
                                 YAP</span>
                         </button> -->
-                        <div class="dropdown" v-else>
+                        <div class="dropdown" v-else >
                             <button class="Login-button-user dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="icon-good-night"></i>
                                 <p><span>İyi Akşamlar</span>{{ $auth.user.name }}</p>
                             </button>
                             <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>BİLGİLERİNİZ</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>FAVORİLERİM</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#" @click.prevent="logout()"><i
-                                            class="icon-right-arrows-new"></i>ÇIKIŞ YAP</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>BİLGİLERİNİZ</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>FAVORİLERİM</a></li>
+                                <li><a class="dropdown-item" href="#"  @click.prevent="logout()"><i class="icon-right-arrows-new"></i>ÇIKIŞ YAP</a></li>
                             </ul>
                         </div>
                         <button type="button" class="menu-toggle" @click="mobileMenuOpen"
@@ -247,9 +242,32 @@ export default {
 
         };
 
+        // window.onclick = function (event) {
+        //     if (!event.target.matches('.Header-menu-item-in')) {
+        //         console.log('this.submenuMenuActive',this.submenuMenuActive)
+        //         var dropdowns = document.getElementsByClassName("Header-menu-item-in");
+        //         var i;
+        //         for (i = 0; i < dropdowns.length; i++) {
+        //             var openDropdown = dropdowns[i];
+
+        //             if (openDropdown.classList.contains('active')) {
+        //                 openDropdown.classList.remove('active');
+        //             }
+        //         }
+        //     }
+        // }
     },
     created() {
-        const menuData = this.$store.state['settings'].menuData;
+    //     const menuData = {"topmenu":[{"text":"S.S.S","href":"sss","target":"_self"},{"text":"Hakkımızda","href":"hakkimizda","target":"_self"},{"text":"İletişim","href":"iletisim","target":"_self"}],
+    // "mainmenu":[{"text":"Kiralık Villa","href":"listele","target":"_self"},{"text":"Villa Seçenekleri","href":"","target":"_self","children":[{"text":"Antalya Kiralık Villa","href":"","target":"_self","children":[{"text":"Fethiye Kiralık Villa","href":"fethiye-kiralik-villa","target":"_self"},{"text":"Dalaman Kiralık Villa","href":"dalaman-kiralik-villa","target":"_self"},{"text":"Bodrum Kiralık Villa","href":"bodrum-kiralik-villa","target":"_self"}]},{"text":"Muğla Kiralık Villa","href":"","target":"_self","children":[{"text":"Fethiye Kiralık Villa","href":"fethiye-kiralik-villa","target":"_self"},{"text":"Dalaman Kiralık Villa","href":"dalaman-kiralik-villa","target":"_self"},{"text":"Bodrum Kiralık Villa","href":"bodrum-kiralik-villa","target":"_self"}]}]},{"text":"Popüler Bölgeler","href":"","target":"_self","children":[{"text":"Özel Bölgeler","href":"ozel-bolge","target":"_self","children":[{"text":"Çocuk Havuzlu","href":"cocuk-havuzlu","target":"_self"},{"text":"Deniz Manzaralı","href":"deniz-manzarali","target":"_self"}]},{"text":"Popüler Villa Seçenekleri","href":"","target":"_self","children":[{"text":"Fethiye Kiralık Villa","href":"fethiye-kiralik-villa","target":"_self"},{"text":"Dalaman Kiralık Villa","href":"dalaman-kiralik-villa","target":"_self"}]}]},{"text":"İletişim","href":"iletisim","target":"_self"}],
+    //     "footermenu":[{"text":"Otelbnb","href":"","target":"_self","children":[{"text":"Gizlilik Şartları","href":"gizlilik-sartlari","target":"_self"},{"text":"İptal Şartları","href":"iptal-sartlari","target":"_self"},{"text":"Banka Hesapları","href":"banka-hesaplari","target":"_self"}]},{"text":"Popüler Rotalar","href":"","target":"_self","children":[{"text":"Marmaris","href":"marmaris","target":"_self"},{"text":"Fethiye","href":"fethiye","target":"_self"},{"text":"Bodrum","href":"bodrum","target":"_self"}]},{"text":"Oteller","href":"","target":"_self","children":[{"text":"Antalya Otelleri","href":"antalya-otelleri","target":"_self"},{"text":"Muğla Otelleri","href":"mugla-otelleri","target":"_self"},{"text":"Fethiye Otelleri","href":"fethiye-otelleri","target":"_self"}]},{"text":"Villa Kategorileri","href":"","target":"_self","children":[{"text":"Balayı Villaları","href":"balayi-villalari","target":"_self"},{"text":"Deniz Manzaralı Villalar","href":"deniz-manzarali-villalar","target":"_self"},{"text":"Jakuzili Villalar","href":"jakuzili-villalar","target":"_self"}]}]};
+    const menuData = {"topmenu":[{"href":"sss","text":"S.S.S","target":"_self"},{"href":"hakkimizda","text":"Hakk\u0131m\u0131zda","target":"_self"},{"href":"blog","text":"Blog","target":"_self"},{"href":"iletisim","text":"\u0130leti\u015fim","target":"_self"}],"mainmenu":[{"href":"kiralik-villa","text":"Kiral\u0131k Villalar","target":"_self"},{"href":"","text":"Villa Se\u00e7enekleri","target":"_self","children":[{"href":"","text":"Antalya Kiral\u0131k Villa","target":"_self","children":[{"href":"fethiye-kiralik-villa","text":"Fethiye Kiral\u0131k Villa","target":"_self"},{"href":"dalaman-kiralik-villa","text":"Dalaman Kiral\u0131k Villa","target":"_self"},{"href":"bodrum-kiralik-villa","text":"Bodrum Kiral\u0131k Villa","target":"_self"}]},{"href":"","text":"Mu\u011fla Kiral\u0131k Villa","target":"_self","children":[{"href":"fethiye-kiralik-villa","text":"Fethiye Kiral\u0131k Villa","target":"_self"},{"href":"dalaman-kiralik-villa","text":"Dalaman Kiral\u0131k Villa","target":"_self"},{"href":"bodrum-kiralik-villa","text":"Bodrum Kiral\u0131k Villa","target":"_self"}]}]},{"href":"","text":"Pop\u00fcler B\u00f6lgeler","target":"_self","children":[{"href":"ozel-bolge","text":"\u00d6zel B\u00f6lgeler","target":"_self","children":[{"href":"cocuk-havuzlu","text":"\u00c7ocuk Havuzlu","target":"_self"},{"href":"deniz-manzarali","text":"Deniz Manzaral\u0131","target":"_self"},{"href":"ozel-havuzlu","text":"\u00d6zel Havuzlu","target":"_self"},{"href":"jakuzili-villalar","text":"Jakuzili Villalar","target":"_self"},{"href":"luks-villalar","text":"L\u00fcks Villalar","target":"_self"},{"href":"balayi-villalari","text":"Balay\u0131 Villalar\u0131","target":"_self"}]},{"href":"","text":"Pop\u00fcler Villa Se\u00e7enekleri","target":"_self","children":[{"href":"fethiye-kiralik-villa","text":"Fethiye Kiral\u0131k Villa","target":"_self"},{"href":"dalaman-kiralik-villa","text":"Dalaman Kiral\u0131k Villa","target":"_self"},{"href":"bodrum-kiralik-villa","text":"Bodrum Kiral\u0131k Villa","target":"_self"},{"href":"marmaris-kiralik-villa","text":"Marmaris Kiral\u0131k Villa","target":"_self"}]}]},{"href":"iletisim","text":"\u0130leti\u015fim","target":"_self"}],"foootermenu":[{"href":"","text":"Villa Kalkan","target":"_self"},{"href":"gizlilik-politikasi","text":"Gizlilik Politikas\u0131","target":"_self"},{"href":"kvkk-aydinlatma-metni","text":"KVKK","target":"_self"},{"href":"rezervasyon-kosullari","text":"Rezervasyon Ko\u015fullar\u0131","target":"_self"}]}
+    // const menuData = this.$store.state['settings'].menuData;
+
+        // this.topMenu = menuData.topmenu;
+        // this.mainMenu = menuData.mainmenu;
+        // this.footerMenu = menuData.footermenu;
+
         this.topMenu = menuData.topmenu;
         this.mainMenu = menuData.mainmenu;
         this.footerMenu = menuData.footermenu;

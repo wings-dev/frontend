@@ -14,9 +14,8 @@
           <div class="Favs-list">
             <div class="list-item rounded-xxl" v-for="villa in villas">
               <div class="list-image position-relative">
-                <a href="#!" class="d-block flex-shrink-0">
-                  <img src="/uploads/villa-image1.jpg" data-src="." width="280" height="186" alt="hotel image"
-                    class="main-image bg-light lazy cover rounded-xl w-100">
+                <a :href="villa.url" class="d-block flex-shrink-0">
+                  <nuxt-img :src="villa.detail.watermark_images[0].preview_url" width="280" height="186"  class="main-image bg-light lazy cover rounded-xl w-100"/>
                 </a>
                 <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
                   <a href="javascript:void(0);"
@@ -42,24 +41,25 @@
                   </div>
                   <div class="item-location d-flex align-items-center text-theme-secondary">
                     <i class="icon-pin"></i>
-                    <span class="lh-sm d-flex flex-column"><b class="text-theme-first">KALKAN</b>Türkiye / Antalya</span>
+                    <span class="lh-sm d-flex flex-column"><b class="text-theme-first">{{villa.detail.location.district.name}}</b>{{villa.detail.location.country.name}} / {{villa.detail.location.city.name}}</span>
                   </div>
                 </div>
+                
                 <div class="item-infos row gx-2 pe-1 pb-2 d-flex">
                   <div class="info  d-flex align-items-center rounded-sm">
                     <i class="icon-user"></i>
-                    <span class="lh-sm text-theme-first text-sm">4 Kişilik</span>
+                    <span class="lh-sm text-theme-first text-sm">{{ villa.detail.max_adult }} Kişilik</span>
                   </div>
                   <div class="info  d-flex align-items-center rounded-sm">
                     <i class="icon-shower"></i>
-                    <span class="lh-sm text-theme-first text-sm">2 Yatak Odası</span>
+                    <span class="lh-sm text-theme-first text-sm">{{ villa.detail.bedroom }} Yatak Odası</span>
                   </div>
                   <div class="info  d-flex align-items-center rounded-sm">
                     <i class="icon-bed"></i>
-                    <span class="lh-sm text-theme-first text-sm">2 Banyo</span>
+                    <span class="lh-sm text-theme-first text-sm">{{ villa.detail.bathrooms }} Banyo</span>
                   </div>
                 </div>
-                <div class="lh-sm ls-05 mt-1">
+                <div class="lh-sm ls-05 mt-1" v-if="villa.price !== null">
                   <span class="text-secondary list-item-info">Gecelik <strong
                       class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan
                     fiyatlarla</span>
