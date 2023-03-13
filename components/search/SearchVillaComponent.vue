@@ -67,7 +67,7 @@
         <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton2">
           <div class="Search-item-person">
             <div class="Search-item-person-item ">
-              <p>Adult</p>
+              <p>Yetişkin</p>
               <div class="Search-item-person-item-in ">
                 <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="adultDecrease"></i>
                 </button>
@@ -76,7 +76,7 @@
               </div>
             </div>
             <div class="Search-item-person-item">
-              <p>Children <br><span>Between 6-17 </span></p>
+              <p>Çocuk <br><span>6-17 arası</span></p>
               <div class="Search-item-person-item-in ">
                 <button type="button" class="minus-person" onclick=""><i class="icon-minus "
                     @click="children_Decrease"></i></button>
@@ -86,7 +86,7 @@
               </div>
             </div>
             <div class="Search-item-person-item ">
-              <p>Children<br><span>Between 0-5</span></p>
+              <p>Bebek<br><span>0-5 arası</span></p>
               <div class="Search-item-person-item-in ">
 
                 <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="baby_Decrease"></i>
@@ -288,7 +288,7 @@ export default {
         .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
         .join('&');
 
-      window.location.href = `${window.location.origin}/listele?${urlSearchParams}`;
+      window.location.href = `${window.location.origin}/kiralik-villa?${urlSearchParams}`;
     },
     clearDates() {
         this.$refs.datePicker.clearSelection();
