@@ -217,4 +217,7 @@ color: var(--bs-theme-first);
 :deep() .cookieControl__BarButtons{
   flex-direction: row!important;
 }
+:deep() .cookieControl__ControlButton{
+  display: none!important;
+}
 </style>

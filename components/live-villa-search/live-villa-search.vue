@@ -95,6 +95,7 @@ export default {
           { cancelToken: this.cancelToken.token }
         )
         this.villas = response.data
+        console.log(response.data)
       } catch (error) {
         console.error(error)
       }

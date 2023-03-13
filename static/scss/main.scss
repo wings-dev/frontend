@@ -1887,7 +1887,6 @@ body.overflow-hidden {
     }
   }
   &-item {
-    
     border: 1px solid #5b6c8f;
     border-radius: 16px;
     &-in {
@@ -3133,6 +3132,7 @@ body.overflow-hidden {
     &-in {
       overflow-y: scroll;
       height: 100%;
+      padding-right: clamp(20px, 2.6vw, 50px);
     }
     h2 {
       font-size: 41.2px;
@@ -3183,6 +3183,43 @@ body.overflow-hidden {
     align-items: center;
     .Login-form-button-white {
       margin-left: 16px;
+    }
+  }
+  &-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 21% 0;
+    img {
+      width: clamp(100px,7.3vw,140px);
+      height: clamp(100px,7.3vw,140px);
+      margin-bottom: 30px;
+    }
+    h3 {
+      font-size: clamp(22px, 1.75vw, 33.6px);
+      font-weight: 500;
+      line-height: 1.37;
+      color: var(--bs-theme-second);
+      margin-bottom: 14px;
+    }
+    h4 {
+      font-size: clamp(22px, 1.75vw, 33.6px);
+      font-weight: 500;
+      line-height: 1.37;
+      color: var(--bs-theme-first-dark);
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 14.8px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
     }
   }
 }
