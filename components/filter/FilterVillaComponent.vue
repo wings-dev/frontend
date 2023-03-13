@@ -90,7 +90,7 @@
             <filter-villa-preview-component v-for="(villa, index) in villas" :key="index"
               :villa="villa"></filter-villa-preview-component>
 
-              <div class="No-villas" v-if="villas.length <= 0">
+              <div class="No-villas" v-if="loading == false && villas.length <= 0">
                 <img src="img/no-villas.svg" alt="">
                 <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
                 <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
@@ -100,7 +100,7 @@
                 </div>
               </div>
 
-              <div class="No-villas" v-if="villas.length <= 0">
+              <div class="No-villas" v-if="loading">
                 <img src="img/villa-loading.svg" alt="">
                 <h2>Villalar hazırlanıyor.</h2>
                 <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
@@ -267,7 +267,9 @@ export default {
         { value: 3, text: "Eskiden Yeniye" },
       ],
       orderValue: null,
-      orderPlaceholder: "Sırala:"
+      orderPlaceholder: "Sırala:",
+      loading:true,
+      novillas:false,
     }
   },
   components: {
@@ -291,8 +293,6 @@ export default {
   },
   mounted() {
     this.filter();
-
-
   },
 
   computed: {
@@ -387,7 +387,10 @@ export default {
           this.total_items = responseData.total;
           this.current_page = responseData.current_page;
         })
-        .catch(console.error);
+        .catch(console.error)
+        .finally(() => {
+          this.loading = false
+        });
     },
     getSelectedObjects(checkboxes) {
       return checkboxes.reduce((selected, checkbox) => {

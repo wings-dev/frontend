@@ -20,7 +20,8 @@
             <div class="container h-100">
                 <div class="Header-inner-in">
                     <NuxtLink to="/" class="Header-logo">
-                        <img :src="'/img/site' + site_id + '/logo.svg'" alt="Logo">
+                        <nuxt-img :src="'/img/site' + site_id + '/logo.svg'" alt="Logo" />
+                        
                     </NuxtLink>
 
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
@@ -124,14 +125,16 @@
 
                     </div>
                     <div class="Header-buttons">
+                      
                         <button type="button" class="search-button" aria-label="Favorileri aç" id="searchButton"
                             @click="openSearch($event)">
                             <i class="icon-search"></i>
                         </button>
-                        <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
+                        <Nuxt-link to="/favs" class="Fav-button" ><i class="icon-heart-full"></i></Nuxt-link>
+                        <!-- <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
                             data-bs-target="#favModal">
                             <i class="icon-heart-full"></i>
-                        </button>
+                        </button> -->
                         <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
                             data-bs-target="#loginModal">
                             <i class="icon-user"></i><span class="">ÜYE GİRİŞİ YAP </span>
