@@ -286,10 +286,10 @@ export default {
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
 
-    console.log(JSON.stringify({
-      destinations: this.destinations,
-      amenites: this.amenites,
-    }))
+    // console.log(JSON.stringify({
+    //   destinations: this.destinations,
+    //   amenites: this.amenites,
+    // }))
   },
   mounted() {
     this.filter();

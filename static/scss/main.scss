@@ -1883,7 +1883,7 @@ body.overflow-hidden {
       gap: 28px;
       overflow-y: scroll;
       max-height: 500px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 270px));
     }
   }
   &-item {

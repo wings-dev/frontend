@@ -31,14 +31,16 @@
               <h4 class="Search-villas-content-title">Arama Sonuçları</h4>
               <div class="Search-villas-content-list">
 
-                <a href="" class="Search-villas-item" v-for="villa in villas">
+                <a :href="villa.url" class="Search-villas-item" v-for="villa in villas">
                   <div class="Search-villas-item-img">
-                    <img src="/uploads/villa-image1.jpg" alt="">
+                    <nuxt-img :src="villa.preview_image[0].preview_url" />
+                    
                     <div class="Search-villas-item-hover">
                       <i class="icon-search"></i>
                     </div>
                   </div>
                   <div class="Search-villas-item-in">
+                    
                     <div class="Search-villas-item-text">
                       <p><span>Tesis Kodu</span>{{ villa.code }}</p>
                       <div class="Search-villas-item-rating">
@@ -48,7 +50,7 @@
                     </div>
                     <div class="Search-villas-item-location">
                       <i class="icon-pin"></i>
-                      <p>KALKAN <span>Turkey / Antalya</span></p>
+                      <p>{{villa.location.destination}} <span>{{villa.location.country}} / {{villa.location.city}}</span></p>
                     </div>
                   </div>
                 </a>
