@@ -54,7 +54,7 @@
               </div>
               <div class="View-menu-right">
                 <button type="button" @click="toggleFavorite"
-                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4">
+                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 " :class="isFavorite ? 'active' : ''">
                   <span class="action-btn-icon">
                     <i class="icon-heart"></i>
                   </span>
@@ -198,7 +198,7 @@
                 mümkündür.
               </p>
 
-              <div class="swiper swiper-months swiper-overflow">
+              <div class="swiper swiper-months swiper-overflow mt-4">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide disabled">
                     <div class="View-months-item ">
@@ -442,134 +442,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="tab-pane fade" id="floor-2" role="tabpanel" aria-labelledby="floor-2-tab">
-                                    <swiper class="" :options="swiperOptionsRooms">
-                                      <div class="swiper-slide">
-                                        <div class="room-item">
-                                          <div class="img-box w-100">
-                                            <img src="/uploads/room1.jpg" width="312" height="213" alt="room image"
-                                              class="lazy cover rounded-xl w-100">
-                                          </div>
-                                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                                            <span class="room-item-title">Yatak Odası</span>
-                                            <p class="room-item-text">
-                                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="swiper-slide">
-                                        <div class="room-item">
-                                          <div class="img-box w-100">
-                                            <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                                              class="lazy cover rounded-xl w-100">
-                                          </div>
-                                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                                            <span class="room-item-title">Yatak Odası</span>
-                                            <p class="room-item-text">
-                                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="swiper-slide">
-                                        <div class="room-item">
-                                          <div class="img-box w-100">
-                                            <img src="/uploads/room3.jpg" width="312" height="213" alt="room image"
-                                              class="lazy cover rounded-xl w-100">
-                                          </div>
-                                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                                            <span class="room-item-title">Yatak Odası</span>
-                                            <p class="room-item-text">
-                                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="swiper-slide">
-                                        <div class="room-item">
-                                          <div class="img-box w-100">
-                                            <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                                              class="lazy cover rounded-xl w-100">
-                                          </div>
-                                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                                            <span class="room-item-title">Yatak Odası</span>
-                                            <p class="room-item-text">
-                                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </swiper>
-                                  </div>
-                                  <div class="tab-pane fade" id="floor-3" role="tabpanel" aria-labelledby="floor-3-tab">
-                                    <swiper class="" :options="swiperOptionsRooms">
-                                      <div class="swiper-slide">
-                                        <div class="room-item">
-                                          <div class="img-box w-100">
-                                            <img src="/uploads/room1.jpg" width="312" height="213" alt="room image"
-                                              class="lazy cover rounded-xl w-100">
-                                          </div>
-                                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                                            <span class="room-item-title">Yatak Odası</span>
-                                            <p class="room-item-text">
-                                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="swiper-slide">
-                                        <div class="room-item">
-                                          <div class="img-box w-100">
-                                            <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                                              class="lazy cover rounded-xl w-100">
-                                          </div>
-                                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                                            <span class="room-item-title">Yatak Odası</span>
-                                            <p class="room-item-text">
-                                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="swiper-slide">
-                                        <div class="room-item">
-                                          <div class="img-box w-100">
-                                            <img src="/uploads/room3.jpg" width="312" height="213" alt="room image"
-                                              class="lazy cover rounded-xl w-100">
-                                          </div>
-                                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                                            <span class="room-item-title">Yatak Odası</span>
-                                            <p class="room-item-text">
-                                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="swiper-slide">
-                                        <div class="room-item">
-                                          <div class="img-box w-100">
-                                            <img src="/uploads/room2.jpg" width="312" height="213" alt="room image"
-                                              class="lazy cover rounded-xl w-100">
-                                          </div>
-                                          <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                                            <span class="room-item-title">Yatak Odası</span>
-                                            <p class="room-item-text">
-                                              Banyo - Banyo Havlusu - Çift Kişilik Yatak - El Havlusu - Elbise Dolabı - Klima - Komodin
-                                              - Saç Kurutma Makinesi - WC - Yüz Havlusu
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </swiper>
-                                  </div> -->
+               
               </div>
             </div>
             <div class="View-pools">

@@ -58,7 +58,7 @@
           <div class="Info-left">
             <h3 class="new-title">Banka Bilgilerimiz</h3>
             <div class="Info-left-in">
-              <img src="~/static/img/garanti-bankasi-logo.png" alt="">
+              <nuxt-img src="/img/garanti-bankasi-logo.png" />
               <div class="Info-left-item">
                 <span>Alıcı Ünvan</span>
                 <p>Wings Seyahat Turizm Sanayi ve Ticaret Ltd.Şti.</p>
@@ -70,7 +70,7 @@
                 </p>
               </div>
               <hr>
-              <img src="~/static/img/garanti-bankasi-logo.png" alt="">
+              <nuxt-img src="/img/garanti-bankasi-logo.png" />
               <div class="Info-left-item">
                 <span>Alıcı Ünvan</span>
                 <p>Wings Seyahat Turizm Sanayi ve Ticaret Ltd.Şti.</p>

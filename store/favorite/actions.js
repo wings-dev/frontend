@@ -1,11 +1,12 @@
 export default {
   addFavorite({commit, dispatch}, villaCode) {
-    alert('favoriye eklendi')
+    // alert('favoriye eklendi')
+    this.$toast.success('Villa favori listenize eklendi!')
     commit('addFavorite', villaCode)
     dispatch('updateFavorites')
   },
   removeFavorite({commit, dispatch}, villaCode) {
-    alert('favoriden eklendi')
+    this.$toast.error('Villa favori listenizden çıkarıldı!')
     commit('removeFavorite', villaCode)
     dispatch('updateFavorites')
   },
