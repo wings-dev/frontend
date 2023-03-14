@@ -15,12 +15,10 @@ body {
 .main {
   padding-bottom: 50px;
   position: relative;
-  
 
   &-z {
     z-index: 999;
   }
-  
 }
 
 .view {
@@ -162,7 +160,8 @@ body {
       color: #183266;
       margin-left: 10px;
     }
-    &:hover,&.active {
+    &:hover,
+    &.active {
       .action-btn-icon {
         background-color: #183266;
         i {
@@ -1606,7 +1605,7 @@ body {
     }
 
     &-in {
-      padding: 12px;
+      padding: 12px 0;
       border-radius: 19px;
       box-shadow: 0 22px 114px 0 rgba(135, 131, 153, 0.06);
       background-color: #fff;
@@ -1616,14 +1615,24 @@ body {
     &-item {
       width: 50%;
       margin-bottom: 12px;
+      position: relative;
+      
+      padding: 0 12px;
+      &:first-child{
+        margin-bottom: 24px;
+        border-bottom: 1px solid #eceff5;
+      }
       label {
         display: flex;
       }
-
+      &-title {
+        position: absolute;
+        font-size: 12px;
+        font-weight: 500;
+        color: #899abd;
+        top: -17px;
+      }
       &-icon {
-        border-radius: 8px;
-        background-color: #eff2f8;
-        padding: 16px 12px;
         display: flex;
         align-items: center;
         justify-content: center;

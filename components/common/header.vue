@@ -130,9 +130,8 @@
                             <i class="icon-search"></i>
                         </button>
                         <Nuxt-link to="/favs" class="Fav-button">
-                        
                             <i class="icon-heart-full"></i>
-                    </Nuxt-link>
+                        </Nuxt-link>
                         <!-- <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
                             data-bs-target="#favModal">
                             <i class="icon-heart-full"></i>
@@ -155,8 +154,9 @@
                                 <p><span>İyi Akşamlar</span>{{ $auth.user.name }}</p>
                             </button>
                             <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>BİLGİLERİNİZ</a></li>
+                                <li><a class="dropdown-item" href="/uyelik"><i class="icon-right-arrows-new"></i>BİLGİLERİNİZ</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>FAVORİLERİM</a></li>
+                                <li><a class="dropdown-item" href="/rezervasyonlar"><i class="icon-right-arrows-new"></i>REZERVASYONLARIM</a></li>
                                 <li><a class="dropdown-item" href="#"  @click.prevent="logout()"><i class="icon-right-arrows-new"></i>ÇIKIŞ YAP</a></li>
                             </ul>
                         </div>
