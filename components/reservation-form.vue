@@ -5,12 +5,10 @@
       <span class="tarihsec">TARİH SEÇ</span>
       <div class="Reservation-form-in">
         <div class="Reservation-form-item w-100">
-          <HotelDatePicker
-            :disabled="true"
-            @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-            format="DD-MM-YYYY" :positionRight="true" :disabledDates="disableReservation" ref="datePicker"
-            :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
-          >
+          <HotelDatePicker :disabled="true" @check-in-changed="checkInChanged($event)"
+            @check-out-changed="checkOutChanged($event)" format="DD-MM-YYYY" :positionRight="true"
+            :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage"
+            :firstDayOfWeek="firstDayOfWeek">
             <div slot="content">
               <div class="d-flex align-items-center justify-content-end mt-1">
                 <button @click.prevent="clearDatesRez()" class="me-1">Temizle</button>
@@ -22,15 +20,15 @@
 
         <div class="Reservation-form-item Reservation-form-item-person">
           <label for="">
+            <span class="Reservation-form-item-title">Kişi Sayısı</span>
             <div class="Reservation-form-item-icon">
-              <i class="icon-calendar"></i>
+              <i class="icon-user"></i>
             </div>
             <div class="Reservation-form-item-input">
-              <span>Kişi Sayısı</span>
               <button class=" dropdown-toggle" type="button" id="dropdownPerson" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                <p><span class="adult-people">{{adult}}</span> Yetişkin,
-                  <span class="child-people">{{child}}</span> Çocuk
+                aria-expanded="false">
+                <p><span class="adult-people">{{ adult }}</span> Yetişkin,
+                  <span class="child-people">{{ child }}</span> Çocuk
                 </p>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -40,24 +38,29 @@
                     <span class="text-theme-secondary text-opacity-75">13 yaş ve üzeri</span>
                   </div>
                   <div class="d-flex align-items-center text-center">
-                    <button type="button"
-                            @click="adultDecrease"
-                            class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                           role="presentation" focusable="false"
-                           style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                        <path d="m2 16h28"></path>
+                    <button type="button" @click="adultDecrease"
+                      class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                        <path
+                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                          stroke="#1C274C" stroke-linecap="round" />
                       </svg>
+
                     </button>
                     <input v-model="adult" type="text" name="yetiskinler" class="select-input text-center fs-5 px-2"
-                           data-min="1" data-max="10" data-text="Yetişkin, " readonly>
+                      data-min="1" data-max="10" data-text="Yetişkin, " readonly>
                     <button type="button" @click="adultIncrease"
-                            class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                           role="presentation" focusable="false"
-                           style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                        <path d="m2 16h28m-14-14v28"></path>
+                      class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                          stroke="#1C274C" stroke-linecap="round" />
+                        <path
+                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                          stroke="#1C274C" stroke-linecap="round" />
                       </svg>
+
                     </button>
                   </div>
                 </div>
@@ -68,22 +71,28 @@
                   </div>
                   <div class="d-flex align-items-center text-center">
                     <button type="button" @click="children_Decrease"
-                            class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                           role="presentation" focusable="false"
-                           style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                        <path d="m2 16h28"></path>
+                      class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                        <path
+                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                          stroke="#1C274C" stroke-linecap="round" />
                       </svg>
+
                     </button>
                     <input v-model="child" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
-                           data-min="0" data-max="10" data-text="Çocuk" readonly>
+                      data-min="0" data-max="10" data-text="Çocuk" readonly>
                     <button type="button" @click="children_Increase"
-                            class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                           role="presentation" focusable="false"
-                           style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                        <path d="m2 16h28m-14-14v28"></path>
+                      class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                          stroke="#1C274C" stroke-linecap="round" />
+                        <path
+                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                          stroke="#1C274C" stroke-linecap="round" />
                       </svg>
+
                     </button>
                   </div>
                 </div>
@@ -121,14 +130,13 @@
           <div class="accordion Reservation-form-info-item-more" id="accordionExample">
             <div class="accordion-item">
               <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
-                      data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                      aria-controls="collapseTwo">
+                data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Detayları Gör
                 <i class="icon-down-arrow"></i>
               </button>
 
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                   data-bs-parent="#accordionExample">
+                data-bs-parent="#accordionExample">
                 <h6>Rezervasyon Detayları</h6>
 
                 <div class="Reservation-form-info-item-more-item">
@@ -141,7 +149,7 @@
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Temizlik Ücreti</p>
                     <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                       title="Tooltip on right"></i>
+                      title="Tooltip on right"></i>
                   </div>
                   <b>500₺</b>
                 </div>
@@ -149,7 +157,7 @@
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Toplam Tutar</p>
                     <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                       title="Tooltip on right"></i>
+                      title="Tooltip on right"></i>
                   </div>
                   <b>27.500₺</b>
                 </div>
@@ -174,7 +182,8 @@
         </div>
       </div>
     </div>
-    <button v-if="!availabilityChecked" :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="availabilityCheck()">
+    <button v-if="!availabilityChecked" :disabled="!dateSelected" class="Reservation-form-submit"
+      @click.prevent="availabilityCheck()">
       Müsaitlik Sorgula
     </button>
     <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
@@ -186,7 +195,7 @@
 <script>
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
-import {mapMutations} from "vuex";
+import { mapMutations } from "vuex";
 export default {
   name: "ReservationForm",
   props: ['propertyCode', 'disableReservation'],
@@ -204,7 +213,7 @@ export default {
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
-        'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt','Paz'],
+        'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt', 'Paz'],
         'check-in': 'Giriş Tarihi',
         'check-out': 'Çıkış Tarihi',
         'month-names': ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
@@ -218,7 +227,7 @@ export default {
         week: "hafta",
         weeks: "haftalar",
       },
-      firstDayOfWeek:1,
+      firstDayOfWeek: 1,
     }
   },
   computed: {
@@ -461,4 +470,39 @@ body {
 
 .day-label {
   margin-top: 5px;
+}
+
+.datepicker__dummy-wrapper {
+  background: none;
+  border: none;
+  flex-wrap: nowrap;
+}
+
+.datepicker__input {
+  width: 50%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #24252e;
+  position: relative;
+}
+
+.datepicker__input--first {
+  padding-left: 5px;
+  margin-right: 16px;
+}
+.datepicker__input--first:after{
+  font-size: 14px;
+  position: absolute;
+  right: -20px;
+  color: #c1c1c1;
+}
+.datepicker__input:before {
+  content: "";
+  display: inline-block;
+  background-image: url(/img/date-new.svg);
+  width: 24px;
+  height: 24px;
+  background-size: 100% 100%;
+  margin-right: 10px;
+  flex-shrink: 0;
 }</style>

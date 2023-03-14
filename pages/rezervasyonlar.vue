@@ -9,8 +9,8 @@
             </div>
         </section>
 
-        <user-information></user-information>
-        <!-- <user-reservation></user-reservation> -->
+        <!-- <user-information></user-information> -->
+        <user-reservation></user-reservation>
         
     </main>
 </template>

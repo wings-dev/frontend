@@ -14,7 +14,9 @@
 
                     </div>
                     <div class="User-right">
-                        <h2>Üyelik Bilgileriniz</h2>
+                        <div class="User-right-head">
+                            <h2>Üyelik Bilgileriniz</h2>
+                        </div>
                         <form action="" class="User-form">
                             <div class="User-form-item">
                                 <label for="">
