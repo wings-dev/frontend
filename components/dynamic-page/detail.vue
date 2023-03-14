@@ -1314,7 +1314,7 @@ export default {
             cikis: customData.dateStatus.includes(2),
             opsiyon: customData.status.includes(2),
             "cikis-kapali": customData.status.includes(2) && customData.dateStatus.includes(2),
-            "cikis-opsiyon": customData.status.includes(2) && customData.dateStatus.includes(1),
+            "cikis-opsiyon": customData.status.includes(1) && customData.dateStatus.includes(2),
           }
 
           attributes.push({
@@ -1323,6 +1323,7 @@ export default {
           });
         });
       }
+      console.log(attributes)
       return attributes;
     }
   }
@@ -1449,11 +1450,14 @@ body {
   display: inline-block;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(327deg, #F2F5FB 49%, transparent 50%), linear-gradient(149deg, #FFF8E7 49%, transparent 50%);
+  background-image: linear-gradient(318deg, #F2F5FB 49%, transparent 50%), linear-gradient(138deg, #FFF8E7 49%, transparent 50%);
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
+}
+.opsiyon.cikis-kapali:after{
+  display: none;
 }
 
 .opsiyon.cikis-opsiyon:before {

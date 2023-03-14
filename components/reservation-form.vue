@@ -42,106 +42,106 @@
                 </p>
               </button>
               <client-only>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <div class="select-item d-flex align-items-center justify-content-between ">
-                  <div class="d-flex flex-column">
-                    <strong class="">Yetişkinler</strong>
-                    <span class="">13 yaş ve üzeri</span>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <div class="select-item d-flex align-items-center justify-content-between ">
+                    <div class="d-flex flex-column">
+                      <strong class="">Yetişkinler</strong>
+                      <span class="">13 yaş ve üzeri</span>
+                    </div>
+                    <div class="d-flex align-items-center text-center">
+                      <button type="button" @click="adultDecrease"
+                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
+
+                      </button>
+                      <input v-model="adult" type="text" name="yetiskinler" class="select-input text-center fs-5 px-2"
+                        data-min="1" data-max="10" data-text="Yetişkin, " readonly>
+                      <button type="button" @click="adultIncrease"
+                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                            stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
+
+                      </button>
+                    </div>
                   </div>
-                  <div class="d-flex align-items-center text-center">
-                    <button type="button" @click="adultDecrease"
-                      class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                        <path
-                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                          stroke="#1C274C" stroke-linecap="round" />
-                      </svg>
+                  <div class="select-item d-flex align-items-center justify-content-between ">
+                    <div class="d-flex flex-column">
+                      <strong class="fw-medium fs-6">Çocuklar</strong>
+                      <span class="text-theme-secondary text-opacity-75">2-12 yaş</span>
+                    </div>
+                    <div class="d-flex align-items-center text-center">
+                      <button type="button" @click="children_Decrease"
+                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
 
-                    </button>
-                    <input v-model="adult" type="text" name="yetiskinler" class="select-input text-center fs-5 px-2"
-                      data-min="1" data-max="10" data-text="Yetişkin, " readonly>
-                    <button type="button" @click="adultIncrease"
-                      class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                          stroke="#1C274C" stroke-linecap="round" />
-                        <path
-                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                          stroke="#1C274C" stroke-linecap="round" />
-                      </svg>
+                      </button>
+                      <input v-model="child" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
+                        data-min="0" data-max="10" data-text="Çocuk" readonly>
+                      <button type="button" @click="children_Increase"
+                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                            stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
 
-                    </button>
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div class="select-item d-flex align-items-center justify-content-between ">
-                  <div class="d-flex flex-column">
-                    <strong class="fw-medium fs-6">Çocuklar</strong>
-                    <span class="text-theme-secondary text-opacity-75">2-12 yaş</span>
+                  <div class="select-item d-flex align-items-center justify-content-between ">
+                    <div class="d-flex flex-column">
+                      <strong class="fw-medium fs-6">Bebek</strong>
+                      <span class="text-theme-secondary text-opacity-75">0-2 yaş</span>
+                    </div>
+                    <div class="d-flex align-items-center text-center">
+                      <button type="button" @click="baby_Decrease"
+                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
+
+                      </button>
+                      <input v-model="baby" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
+                        data-min="0" data-max="10" data-text="Çocuk" readonly>
+                      <button type="button" @click="baby_Increase"
+                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                            stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
+
+                      </button>
+                    </div>
                   </div>
-                  <div class="d-flex align-items-center text-center">
-                    <button type="button" @click="children_Decrease"
-                      class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                        <path
-                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                          stroke="#1C274C" stroke-linecap="round" />
-                      </svg>
 
-                    </button>
-                    <input v-model="child" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
-                      data-min="0" data-max="10" data-text="Çocuk" readonly>
-                    <button type="button" @click="children_Increase"
-                      class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                          stroke="#1C274C" stroke-linecap="round" />
-                        <path
-                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                          stroke="#1C274C" stroke-linecap="round" />
-                      </svg>
-
-                    </button>
-                  </div>
-                </div>
-                <div class="select-item d-flex align-items-center justify-content-between ">
-                  <div class="d-flex flex-column">
-                    <strong class="fw-medium fs-6">Bebek</strong>
-                    <span class="text-theme-secondary text-opacity-75">0-2 yaş</span>
-                  </div>
-                  <div class="d-flex align-items-center text-center">
-                    <button type="button" @click="baby_Decrease"
-                      class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                        <path
-                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                          stroke="#1C274C" stroke-linecap="round" />
-                      </svg>
-
-                    </button>
-                    <input v-model="baby" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
-                      data-min="0" data-max="10" data-text="Çocuk" readonly>
-                    <button type="button" @click="baby_Increase"
-                      class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                          stroke="#1C274C" stroke-linecap="round" />
-                        <path
-                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                          stroke="#1C274C" stroke-linecap="round" />
-                      </svg>
-
-                    </button>
-                  </div>
-                </div>
-
-              </ul>
-            </client-only>
+                </ul>
+              </client-only>
             </div>
 
           </label>
@@ -341,7 +341,7 @@ export default {
 
       const datepickerInput = $('[data-qa="datepickerInput"][tabindex="' + tabIndex + '"]');
 
-      datepickerInput.html(`<div>${formattedDate}</div><div>${formattedDay}</div>`);
+      datepickerInput.html(`<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`);
     },
     formatDate(value) {
       if (value) {
@@ -386,7 +386,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 html,
 body {
   scroll-padding-top: 160px;
@@ -586,5 +586,20 @@ body {
   background-size: 100% 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.datepicker__input .formatted-date {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+  color: #24252e;
+
+}
+
+.datepicker__input .formatted-date span {
+  font-size: 9px;
+  font-weight: 500;
+  color: #c1c1c1;
 }
 </style>
