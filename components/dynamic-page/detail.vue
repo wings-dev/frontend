@@ -1295,7 +1295,7 @@ export default {
       if (this.calendar.length && this.price_list_1.length) {
         this.calendar.forEach(item => dates.add(item.dates));
         this.price_list_1.forEach(item => dates.add(item.dates));
-        
+
         // Create a new object for each unique date
         dates.forEach(date => {
           const customData = {
@@ -1431,6 +1431,22 @@ body {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.opsiyon.cikis-kapali {
+  background-color: transparent;
+}
+
+.opsiyon.cikis-kapali:before {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(327deg, #F2F5FB 49%, transparent 50%), linear-gradient(149deg, #FFF8E7 49%, transparent 50%);
   position: absolute;
   left: 0;
   top: 0;
