@@ -151,11 +151,11 @@
         <div class="Reservation-form-info-item">
           <div class="Reservation-form-info-item-in">
             <div class="Reservation-form-info-item-left">
-              <h5>Şimdi Ödenecek Tutar</h5>
+              <h5>Ön Ödeme Tutarı</h5>
               <p>5500 TL %20 Ödeme Kalan Tutar Tesise Girişte Ödenecektir 22.000 TL</p>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>5.500 TL</b>
+              <b>{{availabilityData.advance_payment}} TL</b>
             </div>
           </div>
 
@@ -167,7 +167,7 @@
               <p><span class="day">5</span> gece için konaklama ve temizlik giderleri dahil toplam fiyat</p>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>27.500 TL</b>
+              <b>{{availabilityData.total_payment}} TL</b>
             </div>
           </div>
           <div class="accordion Reservation-form-info-item-more" id="accordionExample">
@@ -184,9 +184,9 @@
 
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
-                    <p>5 Gece Konaklama Tutarı</p>
+                    <p>{{availabilityData.day}} Gece Konaklama Tutarı</p>
                   </div>
-                  <b>27.000₺</b>
+                  <b>{{availabilityData.total_price}}{{availabilityData.night_price_currency_symbol}}</b>
                 </div>
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
@@ -194,29 +194,26 @@
                     <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                       title="Tooltip on right"></i>
                   </div>
-                  <b>500₺</b>
-                </div>
-                <div class="Reservation-form-info-item-more-item">
-                  <div class="Reservation-form-info-item-more-item-left">
-                    <p>Toplam Tutar</p>
-                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                      title="Tooltip on right"></i>
-                  </div>
-                  <b>27.500₺</b>
+                  <b>{{availabilityData.cleaning_fee}}{{availabilityData.night_price_currency_symbol}}</b>
                 </div>
 
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Girişte Ödenecek</p>
                   </div>
-                  <b>22.000₺</b>
+                  <b>{{availabilityData.remaining_payment}}{{availabilityData.night_price_currency_symbol}}</b>
                 </div>
+
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
-                    <p>Şimdi Ödenecek</p>
+                    <p>Toplam Tutar</p>
+                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                      title="Tooltip on right"></i>
                   </div>
-                  <b>5.500₺</b>
+                  <b>{{availabilityData.total_price}}{{availabilityData.night_price_currency_symbol}}</b>
                 </div>
+
+
 
               </div>
             </div>
@@ -225,7 +222,7 @@
         </div>
       </div>
     </div>
-    <button v-if="!availabilityChecked" :disabled="!dateSelected" class="Reservation-form-submit"
+    <button v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading" class="Reservation-form-submit"
       @click.prevent="availabilityCheck()">
       Müsaitlik Sorgula
     </button>
@@ -271,6 +268,28 @@ export default {
         weeks: "haftalar",
       },
       firstDayOfWeek: 1,
+      availabilityLoading: false,
+      availabilityData: {
+        "status": null,
+        "total_price": 0,
+        "day": 0,
+        "night_price_currency_symbol": "₺",
+        "cleaning_fee": 0,
+        "min_cleaning_day": 0,
+        "min_day": 0,
+        "night_price": [
+          {
+            "price": 0,
+            "price_date": null
+          }
+        ],
+        "damage_deposit": 0,
+        "price": 0,
+        "total_payment": 0,
+        "advance_payment": 0,
+        "remaining_payment": 0
+      }
+
     }
   },
   computed: {
@@ -288,10 +307,22 @@ export default {
   },
   methods: {
     ...mapMutations(['setReservationModalData']),
-    availabilityCheck() {
+    async availabilityCheck() {
+      this.availabilityLoading = true;
+
+      const data = {
+        propertyCode: this.propertyCode,
+        startDate: this.checkIn,
+        endData: this.checkOut,
+      }
+
+      const response = await this.$axios.post(`/api/website/check_availability?api_token=${process.env.WEBSITE_TOKEN}`, data)
+      this.availabilityData = response.data.data;
+
+      this.availabilityLoading = false;
+
       this.availabilityChecked = true;
       document.querySelector('.Reservation-form').classList.add("show")
-
     },
     preReservation() {
       this.setReservationModalData({
