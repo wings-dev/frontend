@@ -50,8 +50,8 @@ export default {
         // villa redis datası
         componentData = await $getRedisKey(`data:villas:${path}:detail`);
         let calenderData = await $getRedisKey(`data:villas:${path}:calendar`);
-        calendar = calenderData.calendar;
-        let priceData = await $getRedisKey(`data:villas:${path}:price`);
+        calendar = calenderData;
+        let priceData = await $getRedisKey(`data:villas:${path}:prices`);
         price_list_1 = priceData.price_list_1;
       }
       // type 7 => filtre sayfası

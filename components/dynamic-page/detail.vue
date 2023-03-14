@@ -54,7 +54,8 @@
               </div>
               <div class="View-menu-right">
                 <button type="button" @click="toggleFavorite"
-                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 " :class="isFavorite ? 'active' : ''">
+                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
+                  :class="isFavorite ? 'active' : ''">
                   <span class="action-btn-icon">
                     <i class="icon-heart"></i>
                   </span>
@@ -317,9 +318,9 @@
                 Aşağıda belirtilen fiyatlar tesisin 1 gecelik konaklama ücretidir. Dönemlere göre konaklama süresine
                 göre ekstra temizlik ücreti eklenebilmektedir.
               </p>
-              <!-- <client-only>
-                <v-calendar v-if="attributes.length"  class="custom-calendar" :attributes="attributes" :columns="2"
-                  :disabled-dates="disabledDates" disable-page-swipe :step="1">
+              <client-only>
+                <v-calendar class="custom-calendar" :attributes="attributes" :columns="2" :disabled-dates="disabledDates"
+                  disable-page-swipe :step="1">
                   <template v-slot:day-content="{ day, attributes }">
                     <div v-for="(attr, index) in attributes" :key="index"
                       class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
@@ -341,7 +342,7 @@
                   </template>
                 </v-calendar>
 
-              </client-only> -->
+              </client-only>
               <div class="View-availibility-legand">
                 <div class="View-availibility-legand-item">
                   <span class="close-day"></span>
@@ -442,7 +443,7 @@
                     </div>
                   </div>
                 </div>
-               
+
               </div>
             </div>
             <div class="View-pools">
@@ -1275,8 +1276,10 @@ export default {
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
       }
     }
-    
-    console.log('villa', this.villa)
+
+    // console.log('villa', this.villa)
+    // console.log('calendar', this.calendar)
+    // console.log('price_list_1', this.price_list_1)
 
 
   },
@@ -1285,12 +1288,14 @@ export default {
       return this.$store.state.favorite.favorites.includes(this.villa.code)
     },
     attributes() {
+      const dates = new Set();
+      const attributes = [];
+      // Add all unique dates from calendar and price_list_1
+      console.log(this.calendar.length)
       if (this.calendar.length && this.price_list_1.length) {
-        const dates = new Set();
-        // Add all unique dates from calendar and price_list_1
         this.calendar.forEach(item => dates.add(item.dates));
         this.price_list_1.forEach(item => dates.add(item.dates));
-        const attributes = [];
+        
         // Create a new object for each unique date
         dates.forEach(date => {
           const customData = {
@@ -1302,7 +1307,7 @@ export default {
           const matchingCalendarItems = this.calendar.filter(item => item.dates === date);
           matchingCalendarItems.forEach(item => {
             customData.status.push(...item.status);
-            customData.dateStatus.push(...item.datestatus);
+            customData.dateStatus.push(...item.dateStatus);
           });
           // Add price data from matching price_list_1 item
           const matchingPriceItem = this.price_list_1.find(item => item.dates === date);
@@ -1314,13 +1319,11 @@ export default {
             dates: new Date(date),
           });
         });
-        console.log('attributes', attributes)
-        return attributes;
-      } else {
-        return attributes = [];
       }
+      return attributes;
     }
   }
+
 }
 </script>
 

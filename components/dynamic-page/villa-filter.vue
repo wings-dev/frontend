@@ -416,22 +416,6 @@ export default {
         }
       }, 50)
     },
-    SliderReadMore() {
-      let currentHeight = box.innerHeight;
-
-      // get height with auto applied
-      let autoHeight = box.css('height', 'auto').innerHeight;
-
-      // reset height and revert to original if current and auto are equal
-      let newHeight = (currentHeight | 0) === (autoHeight | 0) ? minimumHeight : autoHeight;
-
-      box.css('height', currentHeight).animate({
-        height: (newHeight)
-      })
-
-      document.querySelector('.highlight-section-desc-more-button').classList.toggleClass('show')
-    }
-
   },
 
   watch: {
@@ -457,14 +441,7 @@ export default {
   },
   mounted() {
 
-    let box = document.querySelector('.highlight-section-desc');
-    let minimumHeight = 60; // max height in pixels
-    let initialHeight = box.innerHeight;
-    // reduce the text if it's longer than 200px
-    if (initialHeight > minimumHeight) {
-      box.css('height', minimumHeight);
-      document.querySelector('.read-more-button').classList.add('show')
-    }
+    
   }
 }
 </script>
