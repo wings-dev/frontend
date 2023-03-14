@@ -15,12 +15,10 @@ body {
 .main {
   padding-bottom: 50px;
   position: relative;
-  
 
   &-z {
     z-index: 999;
   }
-  
 }
 
 .view {
@@ -162,7 +160,8 @@ body {
       color: #183266;
       margin-left: 10px;
     }
-    &:hover,&.active {
+    &:hover,
+    &.active {
       .action-btn-icon {
         background-color: #183266;
         i {
@@ -311,10 +310,10 @@ body {
     }
   }
   &-left {
-    width: calc((100% - 330px) - clamp(30px, 2.6vw, 50px));
+    width: calc((100% - 350px) - clamp(30px, 2.6vw, 50px));
   }
   &-right {
-    width: 330px;
+    width: 350px;
 
     &-opportunity {
       padding: 21px 28px;
@@ -1562,8 +1561,6 @@ body {
     margin-bottom: 12px;
 
     &-top {
-      border-top-left-radius: 19px;
-      border-top-right-radius: 19px;
       backdrop-filter: blur(54.4px);
       box-shadow: 0 22px 114px 0 rgba(135, 131, 153, 0.06);
       background-color: #f2f5fb;
@@ -1591,10 +1588,23 @@ body {
         padding-bottom: 13px;
         color: #fff;
         transition: all 400ms;
+        animation-name: tarih;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
         &-active {
           opacity: 0;
           visibility: hidden;
         }
+      }
+    }
+
+    @keyframes tarih {
+      from {
+        transform: translateY(-10px);
+      }
+      to {
+        transform: translateY(0);
       }
     }
 
@@ -1606,8 +1616,8 @@ body {
     }
 
     &-in {
-      padding: 12px;
-      border-radius: 19px;
+      padding: 12px 0;
+      // border-radius: 19px;
       box-shadow: 0 22px 114px 0 rgba(135, 131, 153, 0.06);
       background-color: #fff;
       display: flex;
@@ -1616,24 +1626,30 @@ body {
     &-item {
       width: 50%;
       margin-bottom: 12px;
+      position: relative;
+      padding: 0 12px;
       label {
         display: flex;
       }
 
       &-icon {
-        border-radius: 8px;
-        background-color: #eff2f8;
-        padding: 16px 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: 18px;
+        margin-right: 10px;
         i {
           font-size: 18px;
           color: #102754;
         }
       }
-
+      &-title {
+        font-size: 12px;
+        font-weight: 500;
+        color: #899abd;
+        position: absolute;
+        left: 12px;
+        top: 10px;
+      }
       &-input {
         width: 100%;
         display: flex;
@@ -1660,6 +1676,8 @@ body {
       &-person {
         width: 100%;
         margin-bottom: 0;
+        padding-top: 30px;
+        border-top: 1px solid #eceff5;
         .dropdown-toggle {
           width: 100%;
           background-color: transparent;
@@ -1667,12 +1685,14 @@ body {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          font-size: 10px;
+          font-size: 12px;
+          font-weight: 500;
+          color: #102754;
           p {
             margin-bottom: 0;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
-            color: #24252e;
+            color: #102754;
             span {
               font-size: 14px;
               color: #24252e;
@@ -1694,20 +1714,54 @@ body {
             line-height: 1em;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            font-size: 10px;
           }
         }
         .dropdown-menu {
-          width: calc(100% - 28px);
-          padding: 27px 24px;
-          border-radius: 19px;
+          width: 100%;
+          padding-top: 10px;
+          border-radius: 0;
           background-color: #fff;
           border: none;
           min-width: auto;
-          transform: translate3d(14px, 225px, 0px) !important;
+          transform: translate3d(0px, 69px, 0px) !important;
           box-shadow: 0px 22px 114px 0px rgb(135 131 153 / 30%);
+
+          .select-item {
+            border-bottom: 1px solid #eceff5;
+            padding: 0 16px;
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+            &:last-child {
+              border-bottom: none;
+              margin-bottom: 0;
+            }
+            strong {
+              font-size: 15px;
+              font-weight: 500;
+              color: #24252e;
+            }
+            span {
+              font-size: 10px;
+              font-weight: 500;
+              color: #c1c1c1;
+            }
+          }
         }
         .select-input {
           width: 40px;
+          font-size: 18px;
+          font-weight: 500;
+          color: #142b57;
+        }
+      }
+
+      .dates {
+        margin-bottom: 5px;
+        .date-title {
+          font-size: 12px;
+          font-weight: 500;
+          color: #899abd;
         }
       }
     }
@@ -1853,8 +1907,6 @@ body {
 
     &-submit {
       width: 100%;
-      border-bottom-left-radius: 19px;
-      border-bottom-right-radius: 19px;
       backdrop-filter: blur(54.4px);
       box-shadow: 0 22px 114px 0 rgba(135, 131, 153, 0.06);
       background-color: #112855;
@@ -1880,6 +1932,33 @@ body {
       }
       .Reservation-form-submit {
         background-color: var(--bs-theme-second);
+      }
+    }
+
+    .calendar-buttons {
+      
+      button {
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--bs-theme-first);
+        &:last-child{
+          color: var(--bs-theme-second);
+        }
+        i {
+          width: 20px;
+          height: 20px;
+          background-size: 100% 100%;
+          margin-right: 5px;
+          &.icon-date-clear {
+            background-image: url(../img/icon-date-clear.svg);
+          }
+          &.icon-date-close {
+            background-image: url(../img/icon-date-close.svg);
+          }
+        }
       }
     }
   }

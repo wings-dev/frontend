@@ -1316,6 +1316,7 @@ export default {
             cikis: customData.dateStatus.includes(2),
             opsiyon: customData.status.includes(2),
             "cikis-kapali": customData.status.includes(2) && customData.dateStatus.includes(2),
+            "cikis-opsiyon": customData.status.includes(2) && customData.dateStatus.includes(1),
           }
 
           attributes.push({
@@ -1452,6 +1453,18 @@ body {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(327deg, #F2F5FB 49%, transparent 50%), linear-gradient(149deg, #FFF8E7 49%, transparent 50%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.opsiyon.cikis-opsiyon:before {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(315deg, #f3f3ff 49%, transparent 50%);
   position: absolute;
   left: 0;
   top: 0;

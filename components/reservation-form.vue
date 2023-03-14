@@ -5,14 +5,23 @@
       <span class="tarihsec">TARİH SEÇ</span>
       <div class="Reservation-form-in">
         <div class="Reservation-form-item w-100">
+          <div class="dates d-flex">
+            <div class="date-title w-50">
+              Giriş Tarihi
+            </div>
+            <div class="date-title w-50">
+              Çıkış Tarihi
+            </div>
+          </div>
+
           <HotelDatePicker :disabled="true" @check-in-changed="checkInChanged($event)"
-            @check-out-changed="checkOutChanged($event)" format="DD-MM-YYYY" :positionRight="true"
-            :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage"
-            :firstDayOfWeek="firstDayOfWeek">
+            @check-out-changed="checkOutChanged($event)" format="DD dddd" :positionRight="true"
+            :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
+            :displayClearButton=false>
             <div slot="content">
-              <div class="d-flex align-items-center justify-content-end mt-1">
-                <button @click.prevent="clearDatesRez()" class="me-1">Temizle</button>
-                <button @click.prevent="hidePickerRez()">Kapat</button>
+              <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
+                <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
+                <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
               </div>
             </div>
           </HotelDatePicker>
@@ -20,23 +29,24 @@
 
         <div class="Reservation-form-item Reservation-form-item-person">
           <label for="">
-            
+            <span class="Reservation-form-item-title">Kişi Sayısı</span>
             <div class="Reservation-form-item-icon">
               <i class="icon-user"></i>
             </div>
             <div class="Reservation-form-item-input">
-              <span class="Reservation-form-item-title">Kişi Sayısı</span>
               <button class=" dropdown-toggle" type="button" id="dropdownPerson" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <p><span class="adult-people">{{ adult }}</span> Yetişkin,
-                  <span class="child-people">{{ child }}</span> Çocuk
+                  <span class="child-people">{{ child }}</span> Çocuk,
+                  <span class="child-people">{{ baby }}</span> Bebek
                 </p>
               </button>
+              <client-only>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <div class="select-item d-flex align-items-center justify-content-between lh-sm mb-3 pb-1">
+                <div class="select-item d-flex align-items-center justify-content-between ">
                   <div class="d-flex flex-column">
-                    <strong class="fw-medium fs-6">Yetişkinler</strong>
-                    <span class="text-theme-secondary text-opacity-75">13 yaş ve üzeri</span>
+                    <strong class="">Yetişkinler</strong>
+                    <span class="">13 yaş ve üzeri</span>
                   </div>
                   <div class="d-flex align-items-center text-center">
                     <button type="button" @click="adultDecrease"
@@ -65,7 +75,7 @@
                     </button>
                   </div>
                 </div>
-                <div class="select-item d-flex align-items-center justify-content-between lh-sm">
+                <div class="select-item d-flex align-items-center justify-content-between ">
                   <div class="d-flex flex-column">
                     <strong class="fw-medium fs-6">Çocuklar</strong>
                     <span class="text-theme-secondary text-opacity-75">2-12 yaş</span>
@@ -97,9 +107,41 @@
                     </button>
                   </div>
                 </div>
+                <div class="select-item d-flex align-items-center justify-content-between ">
+                  <div class="d-flex flex-column">
+                    <strong class="fw-medium fs-6">Bebek</strong>
+                    <span class="text-theme-secondary text-opacity-75">0-2 yaş</span>
+                  </div>
+                  <div class="d-flex align-items-center text-center">
+                    <button type="button" @click="baby_Decrease"
+                      class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                        <path
+                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                          stroke="#1C274C" stroke-linecap="round" />
+                      </svg>
 
+                    </button>
+                    <input v-model="baby" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
+                      data-min="0" data-max="10" data-text="Çocuk" readonly>
+                    <button type="button" @click="baby_Increase"
+                      class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                          stroke="#1C274C" stroke-linecap="round" />
+                        <path
+                          d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                          stroke="#1C274C" stroke-linecap="round" />
+                      </svg>
+
+                    </button>
+                  </div>
+                </div>
 
               </ul>
+            </client-only>
             </div>
 
           </label>
@@ -241,7 +283,7 @@ export default {
     availabilityCheck() {
       this.availabilityChecked = true;
       document.querySelector('.Reservation-form').classList.add("show")
-      document.querySelector('.tarihsec').classList.add("tarihsec-active")
+      
     },
     preReservation() {
       this.setReservationModalData({
@@ -273,6 +315,7 @@ export default {
     },
     checkInChanged(value) {
       this.checkIn = this.formatDate(value);
+      document.querySelector('.tarihsec').classList.add("tarihsec-active")
     },
     checkOutChanged(value) {
       this.checkOut = this.formatDate(value);
@@ -304,6 +347,16 @@ export default {
     children_Decrease() {
       if (this.child > 0) {
         this.child -= 1;
+      }
+    },
+    baby_Increase() {
+      if (this.baby < 10) {
+        this.baby += 1;
+      }
+    },
+    baby_Decrease() {
+      if (this.baby > 0) {
+        this.baby -= 1;
       }
     }
   }
@@ -473,4 +526,42 @@ body {
   margin-top: 5px;
 }
 
+.datepicker__dummy-wrapper {
+  border: none;
+  background: none;
+  flex-wrap: nowrap;
+}
+
+.datepicker__input {
+  font-size: 13px;
+  font-weight: 500;
+  color: #24252e;
+  width: 50%;
+  height: auto;
+  white-space: nowrap;
+}
+
+.datepicker__input:before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: 100% 100%;
+  background-image: url(/img/date-new.svg);
+  margin-right: 9px;
+}
+
+.datepicker__input--first {
+  padding-left: 0;
+}
+
+.datepicker__input--first:after {
+  content: "";
+  width: 18px;
+  height: 10px;
+  background-image: url(/img/date-right.svg);
+  background-size: 100% 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
