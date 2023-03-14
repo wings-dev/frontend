@@ -20,11 +20,12 @@
 
         <div class="Reservation-form-item Reservation-form-item-person">
           <label for="">
-            <span class="Reservation-form-item-title">Kişi Sayısı</span>
+            
             <div class="Reservation-form-item-icon">
               <i class="icon-user"></i>
             </div>
             <div class="Reservation-form-item-input">
+              <span class="Reservation-form-item-title">Kişi Sayısı</span>
               <button class=" dropdown-toggle" type="button" id="dropdownPerson" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <p><span class="adult-people">{{ adult }}</span> Yetişkin,
@@ -472,37 +473,4 @@ body {
   margin-top: 5px;
 }
 
-.datepicker__dummy-wrapper {
-  background: none;
-  border: none;
-  flex-wrap: nowrap;
-}
-
-.datepicker__input {
-  width: 50%;
-  font-size: 14px;
-  font-weight: 500;
-  color: #24252e;
-  position: relative;
-}
-
-.datepicker__input--first {
-  padding-left: 5px;
-  margin-right: 16px;
-}
-.datepicker__input--first:after{
-  font-size: 14px;
-  position: absolute;
-  right: -20px;
-  color: #c1c1c1;
-}
-.datepicker__input:before {
-  content: "";
-  display: inline-block;
-  background-image: url(/img/date-new.svg);
-  width: 24px;
-  height: 24px;
-  background-size: 100% 100%;
-  margin-right: 10px;
-  flex-shrink: 0;
-}</style>
+</style>
