@@ -312,8 +312,8 @@ export default {
 
       const data = {
         propertyCode: this.propertyCode,
-        startDate: this.checkIn,
-        endData: this.checkOut,
+        startDate: this.formatDateDMY(this.checkIn),
+        endDate: this.formatDateDMY(this.checkOut),
       }
 
       const response = await this.$axios.post(`/api/website/check_availability?api_token=${process.env.WEBSITE_TOKEN}`, data)
@@ -381,6 +381,15 @@ export default {
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const day = date.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
+      }
+    },
+    formatDateDMY(value) {
+      if (value) {
+        const date = new Date(value);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${month}/${day}/${year}`;
       }
     },
     adultIncrease() {
