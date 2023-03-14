@@ -1284,11 +1284,9 @@ export default {
       const dates = new Set();
       const attributes = [];
       // Add all unique dates from calendar and price_list_1
-      console.log(this.calendar.length)
       if (this.calendar.length && this.price_list_1.length) {
-        this.calendar.forEach(item => dates.add(item.dates));
+        this.calendar.forEach(item => dates.add(item.dates[0]));
         this.price_list_1.forEach(item => dates.add(item.dates));
-
         // Create a new object for each unique date
         dates.forEach(date => {
           const customData = {
@@ -1297,7 +1295,7 @@ export default {
             dateStatus: []
           };
           // Merge data from matching calendar items
-          const matchingCalendarItems = this.calendar.filter(item => item.dates === date);
+          const matchingCalendarItems = this.calendar.filter(item => item.dates[0] === date);
           matchingCalendarItems.forEach(item => {
             customData.status.push(...item.status);
             customData.dateStatus.push(...item.dateStatus);
@@ -1325,7 +1323,6 @@ export default {
           });
         });
       }
-      console.log(JSON.stringify(attributes));
       return attributes;
     }
   }
