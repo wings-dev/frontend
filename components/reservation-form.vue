@@ -5,16 +5,23 @@
       <span class="tarihsec">TARİH SEÇ</span>
       <div class="Reservation-form-in">
         <div class="Reservation-form-item w-100">
-          <HotelDatePicker
-            :disabled="true"
-            @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-            format="DD-MM-YYYY" :positionRight="true" :disabledDates="disableReservation" ref="datePicker"
-            :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
-          >
+          <div class="dates d-flex">
+            <div class="date-title w-50">
+              Giriş Tarihi
+            </div>
+            <div class="date-title w-50">
+              Çıkış Tarihi
+            </div>
+          </div>
+
+          <HotelDatePicker :disabled="true" @check-in-changed="checkInChanged($event)"
+            @check-out-changed="checkOutChanged($event)" format="DD dddd" :positionRight="true"
+            :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
+            :displayClearButton=false>
             <div slot="content">
-              <div class="d-flex align-items-center justify-content-end mt-1">
-                <button @click.prevent="clearDatesRez()" class="me-1">Temizle</button>
-                <button @click.prevent="hidePickerRez()">Kapat</button>
+              <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
+                <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
+                <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
               </div>
             </div>
           </HotelDatePicker>
@@ -22,74 +29,119 @@
 
         <div class="Reservation-form-item Reservation-form-item-person">
           <label for="">
+            <span class="Reservation-form-item-title">Kişi Sayısı</span>
             <div class="Reservation-form-item-icon">
-              <i class="icon-calendar"></i>
+              <i class="icon-user"></i>
             </div>
             <div class="Reservation-form-item-input">
-              <span>Kişi Sayısı</span>
               <button class=" dropdown-toggle" type="button" id="dropdownPerson" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                <p><span class="adult-people">{{adult}}</span> Yetişkin,
-                  <span class="child-people">{{child}}</span> Çocuk
+                aria-expanded="false">
+                <p><span class="adult-people">{{ adult }}</span> Yetişkin,
+                  <span class="child-people">{{ child }}</span> Çocuk,
+                  <span class="child-people">{{ baby }}</span> Bebek
                 </p>
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <div class="select-item d-flex align-items-center justify-content-between lh-sm mb-3 pb-1">
-                  <div class="d-flex flex-column">
-                    <strong class="fw-medium fs-6">Yetişkinler</strong>
-                    <span class="text-theme-secondary text-opacity-75">13 yaş ve üzeri</span>
-                  </div>
-                  <div class="d-flex align-items-center text-center">
-                    <button type="button"
-                            @click="adultDecrease"
-                            class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                           role="presentation" focusable="false"
-                           style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                        <path d="m2 16h28"></path>
-                      </svg>
-                    </button>
-                    <input v-model="adult" type="text" name="yetiskinler" class="select-input text-center fs-5 px-2"
-                           data-min="1" data-max="10" data-text="Yetişkin, " readonly>
-                    <button type="button" @click="adultIncrease"
-                            class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                           role="presentation" focusable="false"
-                           style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                        <path d="m2 16h28m-14-14v28"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="select-item d-flex align-items-center justify-content-between lh-sm">
-                  <div class="d-flex flex-column">
-                    <strong class="fw-medium fs-6">Çocuklar</strong>
-                    <span class="text-theme-secondary text-opacity-75">2-12 yaş</span>
-                  </div>
-                  <div class="d-flex align-items-center text-center">
-                    <button type="button" @click="children_Decrease"
-                            class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                           role="presentation" focusable="false"
-                           style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                        <path d="m2 16h28"></path>
-                      </svg>
-                    </button>
-                    <input v-model="child" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
-                           data-min="0" data-max="10" data-text="Çocuk" readonly>
-                    <button type="button" @click="children_Increase"
-                            class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                           role="presentation" focusable="false"
-                           style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                        <path d="m2 16h28m-14-14v28"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+              <client-only>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <div class="select-item d-flex align-items-center justify-content-between ">
+                    <div class="d-flex flex-column">
+                      <strong class="">Yetişkinler</strong>
+                      <span class="">13 yaş ve üzeri</span>
+                    </div>
+                    <div class="d-flex align-items-center text-center">
+                      <button type="button" @click="adultDecrease"
+                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
 
+                      </button>
+                      <input v-model="adult" type="text" name="yetiskinler" class="select-input text-center fs-5 px-2"
+                        data-min="1" data-max="10" data-text="Yetişkin, " readonly>
+                      <button type="button" @click="adultIncrease"
+                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                            stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
 
-              </ul>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="select-item d-flex align-items-center justify-content-between ">
+                    <div class="d-flex flex-column">
+                      <strong class="fw-medium fs-6">Çocuklar</strong>
+                      <span class="text-theme-secondary text-opacity-75">2-12 yaş</span>
+                    </div>
+                    <div class="d-flex align-items-center text-center">
+                      <button type="button" @click="children_Decrease"
+                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
+
+                      </button>
+                      <input v-model="child" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
+                        data-min="0" data-max="10" data-text="Çocuk" readonly>
+                      <button type="button" @click="children_Increase"
+                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                            stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
+
+                      </button>
+                    </div>
+                  </div>
+                  <div class="select-item d-flex align-items-center justify-content-between ">
+                    <div class="d-flex flex-column">
+                      <strong class="fw-medium fs-6">Bebek</strong>
+                      <span class="text-theme-secondary text-opacity-75">0-2 yaş</span>
+                    </div>
+                    <div class="d-flex align-items-center text-center">
+                      <button type="button" @click="baby_Decrease"
+                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
+
+                      </button>
+                      <input v-model="baby" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
+                        data-min="0" data-max="10" data-text="Çocuk" readonly>
+                      <button type="button" @click="baby_Increase"
+                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                            stroke="#1C274C" stroke-linecap="round" />
+                          <path
+                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                            stroke="#1C274C" stroke-linecap="round" />
+                        </svg>
+
+                      </button>
+                    </div>
+                  </div>
+
+                </ul>
+              </client-only>
             </div>
 
           </label>
@@ -99,11 +151,11 @@
         <div class="Reservation-form-info-item">
           <div class="Reservation-form-info-item-in">
             <div class="Reservation-form-info-item-left">
-              <h5>Şimdi Ödenecek Tutar</h5>
+              <h5>Ön Ödeme Tutarı</h5>
               <p>5500 TL %20 Ödeme Kalan Tutar Tesise Girişte Ödenecektir 22.000 TL</p>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>5.500 TL</b>
+              <b>{{availabilityData.advance_payment}} TL</b>
             </div>
           </div>
 
@@ -115,57 +167,53 @@
               <p><span class="day">5</span> gece için konaklama ve temizlik giderleri dahil toplam fiyat</p>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>27.500 TL</b>
+              <b>{{availabilityData.total_payment}} TL</b>
             </div>
           </div>
           <div class="accordion Reservation-form-info-item-more" id="accordionExample">
             <div class="accordion-item">
               <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
-                      data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                      aria-controls="collapseTwo">
+                data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Detayları Gör
                 <i class="icon-down-arrow"></i>
               </button>
 
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                   data-bs-parent="#accordionExample">
+                data-bs-parent="#accordionExample">
                 <h6>Rezervasyon Detayları</h6>
 
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
-                    <p>5 Gece Konaklama Tutarı</p>
+                    <p>{{availabilityData.day}} Gece Konaklama Tutarı</p>
                   </div>
-                  <b>27.000₺</b>
+                  <b>{{availabilityData.total_price}}{{availabilityData.night_price_currency_symbol}}</b>
                 </div>
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Temizlik Ücreti</p>
                     <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                       title="Tooltip on right"></i>
+                      title="Tooltip on right"></i>
                   </div>
-                  <b>500₺</b>
-                </div>
-                <div class="Reservation-form-info-item-more-item">
-                  <div class="Reservation-form-info-item-more-item-left">
-                    <p>Toplam Tutar</p>
-                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                       title="Tooltip on right"></i>
-                  </div>
-                  <b>27.500₺</b>
+                  <b>{{availabilityData.cleaning_fee}}{{availabilityData.night_price_currency_symbol}}</b>
                 </div>
 
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Girişte Ödenecek</p>
                   </div>
-                  <b>22.000₺</b>
+                  <b>{{availabilityData.remaining_payment}}{{availabilityData.night_price_currency_symbol}}</b>
                 </div>
+
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
-                    <p>Şimdi Ödenecek</p>
+                    <p>Toplam Tutar</p>
+                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                      title="Tooltip on right"></i>
                   </div>
-                  <b>5.500₺</b>
+                  <b>{{availabilityData.total_price}}{{availabilityData.night_price_currency_symbol}}</b>
                 </div>
+
+
 
               </div>
             </div>
@@ -174,7 +222,8 @@
         </div>
       </div>
     </div>
-    <button v-if="!availabilityChecked" :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="availabilityCheck()">
+    <button v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading" class="Reservation-form-submit"
+      @click.prevent="availabilityCheck()">
       Müsaitlik Sorgula
     </button>
     <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
@@ -186,7 +235,7 @@
 <script>
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
-import {mapMutations} from "vuex";
+import { mapMutations } from "vuex";
 export default {
   name: "ReservationForm",
   props: ['propertyCode', 'disableReservation'],
@@ -204,7 +253,7 @@ export default {
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
-        'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt','Paz'],
+        'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt', 'Paz'],
         'check-in': 'Giriş Tarihi',
         'check-out': 'Çıkış Tarihi',
         'month-names': ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
@@ -218,7 +267,29 @@ export default {
         week: "hafta",
         weeks: "haftalar",
       },
-      firstDayOfWeek:1,
+      firstDayOfWeek: 1,
+      availabilityLoading: false,
+      availabilityData: {
+        "status": null,
+        "total_price": 0,
+        "day": 0,
+        "night_price_currency_symbol": "₺",
+        "cleaning_fee": 0,
+        "min_cleaning_day": 0,
+        "min_day": 0,
+        "night_price": [
+          {
+            "price": 0,
+            "price_date": null
+          }
+        ],
+        "damage_deposit": 0,
+        "price": 0,
+        "total_payment": 0,
+        "advance_payment": 0,
+        "remaining_payment": 0
+      }
+
     }
   },
   computed: {
@@ -226,12 +297,32 @@ export default {
       return this.checkIn && this.checkOut
     }
   },
+  watch: {
+    checkIn(newValue) {
+      this.changeHotelInput(0, newValue);
+    },
+    checkOut(newValue) {
+      this.changeHotelInput(-1, newValue);
+    },
+  },
   methods: {
     ...mapMutations(['setReservationModalData']),
-    availabilityCheck() {
+    async availabilityCheck() {
+      this.availabilityLoading = true;
+
+      const data = {
+        propertyCode: this.propertyCode,
+        startDate: this.formatDateDMY(this.checkIn),
+        endDate: this.formatDateDMY(this.checkOut),
+      }
+
+      const response = await this.$axios.post(`/api/website/check_availability?api_token=${process.env.WEBSITE_TOKEN}`, data)
+      this.availabilityData = response.data.data;
+
+      this.availabilityLoading = false;
+
       this.availabilityChecked = true;
       document.querySelector('.Reservation-form').classList.add("show")
-      document.querySelector('.tarihsec').classList.add("tarihsec-active")
     },
     preReservation() {
       this.setReservationModalData({
@@ -263,9 +354,25 @@ export default {
     },
     checkInChanged(value) {
       this.checkIn = this.formatDate(value);
+      document.querySelector('.tarihsec').classList.add("tarihsec-active")
     },
     checkOutChanged(value) {
       this.checkOut = this.formatDate(value);
+    },
+    changeHotelInput(tabIndex, value) {
+      const currentDate = new Date(value);
+      const formattedDate = currentDate.toLocaleDateString('tr-TR', {
+        day: 'numeric',
+        month: 'long',
+      }).toUpperCase();
+
+      const formattedDay = currentDate.toLocaleDateString('tr-TR', {
+        weekday: 'long',
+      }).toUpperCase();
+
+      const datepickerInput = $('[data-qa="datepickerInput"][tabindex="' + tabIndex + '"]');
+
+      datepickerInput.html(`<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`);
     },
     formatDate(value) {
       if (value) {
@@ -274,6 +381,15 @@ export default {
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const day = date.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
+      }
+    },
+    formatDateDMY(value) {
+      if (value) {
+        const date = new Date(value);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${month}/${day}/${year}`;
       }
     },
     adultIncrease() {
@@ -295,12 +411,22 @@ export default {
       if (this.child > 0) {
         this.child -= 1;
       }
+    },
+    baby_Increase() {
+      if (this.baby < 10) {
+        this.baby += 1;
+      }
+    },
+    baby_Decrease() {
+      if (this.baby > 0) {
+        this.baby -= 1;
+      }
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 html,
 body {
   scroll-padding-top: 160px;
@@ -461,4 +587,59 @@ body {
 
 .day-label {
   margin-top: 5px;
-}</style>
+}
+
+.datepicker__dummy-wrapper {
+  border: none;
+  background: none;
+  flex-wrap: nowrap;
+}
+
+.datepicker__input {
+  font-size: 13px;
+  font-weight: 500;
+  color: #24252e;
+  width: 50%;
+  height: auto;
+  white-space: nowrap;
+}
+
+.datepicker__input:before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: 100% 100%;
+  background-image: url(/img/date-new.svg);
+  margin-right: 9px;
+}
+
+.datepicker__input--first {
+  padding-left: 0;
+}
+
+.datepicker__input--first:after {
+  content: "";
+  width: 18px;
+  height: 10px;
+  background-image: url(/img/date-right.svg);
+  background-size: 100% 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.datepicker__input .formatted-date {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+  color: #24252e;
+
+}
+
+.datepicker__input .formatted-date span {
+  font-size: 9px;
+  font-weight: 500;
+  color: #c1c1c1;
+}
+</style>

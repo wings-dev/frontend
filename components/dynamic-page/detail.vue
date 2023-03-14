@@ -54,7 +54,8 @@
               </div>
               <div class="View-menu-right">
                 <button type="button" @click="toggleFavorite"
-                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 " :class="isFavorite ? 'active' : ''">
+                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
+                  :class="isFavorite ? 'active' : ''">
                   <span class="action-btn-icon">
                     <i class="icon-heart"></i>
                   </span>
@@ -317,20 +318,13 @@
                 Aşağıda belirtilen fiyatlar tesisin 1 gecelik konaklama ücretidir. Dönemlere göre konaklama süresine
                 göre ekstra temizlik ücreti eklenebilmektedir.
               </p>
-              <!-- <client-only>
-                <v-calendar v-if="attributes.length"  class="custom-calendar" :attributes="attributes" :columns="2"
-                  :disabled-dates="disabledDates" disable-page-swipe :step="1">
+              <client-only>
+                <v-calendar class="custom-calendar" :attributes="attributes" :columns="2" :disabled-dates="disabledDates"
+                  disable-page-swipe :step="1">
                   <template v-slot:day-content="{ day, attributes }">
                     <div v-for="(attr, index) in attributes" :key="index"
                       class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
-                      :class="{
-                        kapali: attr.customData.status.includes(1),
-                        giris: attr.customData.dateStatus.includes(0),
-                        doubleday: attr.customData.dateStatus.includes(0) && attr.customData.status.includes(2) && attr.customData.status.includes(1),
-                        doubledaykapali: attr.customData.dateStatus.includes(0) && attr.customData.dateStatus.includes(2),
-                        cikis: attr.customData.dateStatus.includes(2),
-                        opsiyon: attr.customData.status.includes(2)
-                      }">
+                      :class="attr?.customData?.className">
                       <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
                       <div class="flex-grow overflow-y-auto overflow-x-auto">
                         <p class="calendar-price" style="" :class="attr.customData.class">
@@ -341,7 +335,7 @@
                   </template>
                 </v-calendar>
 
-              </client-only> -->
+              </client-only>
               <div class="View-availibility-legand">
                 <div class="View-availibility-legand-item">
                   <span class="close-day"></span>
@@ -442,7 +436,7 @@
                     </div>
                   </div>
                 </div>
-               
+
               </div>
             </div>
             <div class="View-pools">
@@ -1275,8 +1269,10 @@ export default {
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
       }
     }
-    
-    console.log('villa', this.villa)
+
+    // console.log('villa', this.villa)
+    // console.log('calendar', this.calendar)
+    // console.log('price_list_1', this.price_list_1)
 
 
   },
@@ -1285,42 +1281,53 @@ export default {
       return this.$store.state.favorite.favorites.includes(this.villa.code)
     },
     attributes() {
+      const dates = new Set();
+      const attributes = [];
+      // Add all unique dates from calendar and price_list_1
       if (this.calendar.length && this.price_list_1.length) {
-        const dates = new Set();
-        // Add all unique dates from calendar and price_list_1
-        this.calendar.forEach(item => dates.add(item.dates));
+        this.calendar.forEach(item => dates.add(item.dates[0]));
         this.price_list_1.forEach(item => dates.add(item.dates));
-        const attributes = [];
         // Create a new object for each unique date
         dates.forEach(date => {
           const customData = {
             price: null,
             status: [],
-            dateStatus: [],
+            dateStatus: []
           };
           // Merge data from matching calendar items
-          const matchingCalendarItems = this.calendar.filter(item => item.dates === date);
+          const matchingCalendarItems = this.calendar.filter(item => item.dates[0] === date);
           matchingCalendarItems.forEach(item => {
             customData.status.push(...item.status);
-            customData.dateStatus.push(...item.datestatus);
+            customData.dateStatus.push(...item.dateStatus);
           });
           // Add price data from matching price_list_1 item
           const matchingPriceItem = this.price_list_1.find(item => item.dates === date);
           if (matchingPriceItem) {
             customData.price = matchingPriceItem.price;
           }
+
+          customData.className = {
+            kapali: customData.status.includes(1),
+            giris: customData.dateStatus.includes(0),
+            doubleday: customData.dateStatus.includes(0) && customData.status.includes(2) && customData.status.includes(1),
+            doubledaykapali: customData.dateStatus.includes(0) && customData.dateStatus.includes(2),
+            cikis: customData.dateStatus.includes(2),
+            opsiyon: customData.status.includes(2),
+            "cikis-kapali": customData.status.includes(2) && customData.dateStatus.includes(2),
+            "cikis-opsiyon": customData.status.includes(1) && customData.dateStatus.includes(2),
+          }
+
           attributes.push({
             customData,
             dates: new Date(date),
           });
         });
-        console.log('attributes', attributes)
-        return attributes;
-      } else {
-        return attributes = [];
       }
+      console.log(attributes)
+      return attributes;
     }
   }
+
 }
 </script>
 
@@ -1428,6 +1435,37 @@ body {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.opsiyon.cikis-kapali {
+  background-color: transparent;
+}
+
+.opsiyon.cikis-kapali:before {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(318deg, #F2F5FB 49%, transparent 50%), linear-gradient(138deg, #FFF8E7 49%, transparent 50%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.opsiyon.cikis-kapali:after{
+  display: none;
+}
+
+.opsiyon.cikis-opsiyon:before {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(315deg, #f3f3ff 49%, transparent 50%);
   position: absolute;
   left: 0;
   top: 0;

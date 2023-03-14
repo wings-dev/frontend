@@ -1,11 +1,11 @@
 <template>
-  <a :href="villa.url" class="F_villa-item">
+  <NuxtLink :to="villa.url" class="F_villa-item">
     <div class="F_villa-item-img">
       <div class="swiper villa-list-slider">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
             <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" sizes="sm:100vw md:50vw lg:400px"/>
-            
+
           </div>
         </div>
         <div class="swiper-button-prev"></div>
@@ -24,7 +24,7 @@
       <div class="F_villa-item-head">
         <div class="F_villa-item-head-name">
           <span>Tesis Kodu</span>
-          
+
           <a :href="villa.url">{{ prefix + villa.code }}</a>
           <div class="F_villa-item-head-name-star">
             <i class="icon-star active"></i>
@@ -66,6 +66,15 @@
           <i class="icon-shower-new"></i>
           <span>{{ villa.bathrooms }} Banyo</span>
         </div>
+        <div>
+          <button type="button" @click="toggleFavorite"
+                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 " :class="isFavorite ? 'active' : ''">
+                  <span class="action-btn-icon">
+                    <i class="icon-heart"></i>
+                  </span>
+            <span class="action-btn-text">{{ isFavorite ? 'Favorilerden Sil' : 'Favorilere Ekle' }}</span>
+          </button>
+        </div>
       </div>
       <div class="F_villa-item-bottom">
         <div class="F_villa-item-features">
@@ -79,8 +88,8 @@
         <a :href="villa.url" class="F_villa-item-show">Villayı İncele</a>
       </div>
     </div>
-  </a>
-  
+  </NuxtLink>
+
 </template>
 
 <script>
@@ -107,11 +116,17 @@ export default {
       prefix: process.env.PREFIX
     }
   },
+  computed: {
+    isFavorite() {
+      return this.$store.state.favorite.favorites.includes(this.villa.code)
+    }
+  },
   methods: {
     amenitesList(villa) {
       return (Object.values(villa.amenites || {}).flatMap(amenite => amenite.list) || []).filter(i => !!i);
     },
-    toggleFavorite() {
+    toggleFavorite(event) {
+      event.stopPropagation();
       if (this.isFavorite) {
         this.$store.dispatch('favorite/removeFavorite', this.villa.code)
       } else {

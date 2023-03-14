@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5">
+    <!-- <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
@@ -31,9 +31,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <div class="container mt-2 d-">
+    <div class="container mt-2 d-none">
       <button type="button" @click="this.showLoginModal">GİRİŞ YAP MODAL</button>
       <button type="button" @click="this.showRegisterModal">KAYIT MODAL</button>
 
@@ -287,7 +287,7 @@
 
     <filter-villa-component :selectedFilters="selectedFilters"></filter-villa-component>
 
-    <section class="highlight-section bg-theme-light-2 pt-5 pb-4">
+    <!-- <section class="highlight-section bg-theme-light-2 pt-5 pb-4">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
@@ -318,9 +318,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <section class="List">
+    <!-- <section class="List">
       <div class="container">
         <div class="List-sss">
           <h3>En çok sorulan sorular </h3>
@@ -370,7 +370,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 
@@ -416,22 +416,6 @@ export default {
         }
       }, 50)
     },
-    SliderReadMore() {
-      let currentHeight = box.innerHeight;
-
-      // get height with auto applied
-      let autoHeight = box.css('height', 'auto').innerHeight;
-
-      // reset height and revert to original if current and auto are equal
-      let newHeight = (currentHeight | 0) === (autoHeight | 0) ? minimumHeight : autoHeight;
-
-      box.css('height', currentHeight).animate({
-        height: (newHeight)
-      })
-
-      document.querySelector('.highlight-section-desc-more-button').classList.toggleClass('show')
-    }
-
   },
 
   watch: {
@@ -457,14 +441,7 @@ export default {
   },
   mounted() {
 
-    let box = document.querySelector('.highlight-section-desc');
-    let minimumHeight = 60; // max height in pixels
-    let initialHeight = box.innerHeight;
-    // reduce the text if it's longer than 200px
-    if (initialHeight > minimumHeight) {
-      box.css('height', minimumHeight);
-      document.querySelector('.read-more-button').classList.add('show')
-    }
+    
   }
 }
 </script>
