@@ -150,8 +150,7 @@
           <div class="View-left">
             <div class="View-desc genelbakis view-menu-content-item" id="desc-content">
               <h2 class="View-title">Tesise Genel Bakış</h2>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                data-bs-target="#closeVillaModal">Kapalı Villa</button>
+              <b-button v-b-modal.closeVillaModal>Reservation modal</b-button>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
                 tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve müthiş
                 manzarası ile sizleri mest edecek olan Mabel, dubleks bir dairedir. Giriş katında, harika deniz
@@ -187,8 +186,8 @@
                   <p>Barbekü / Mangal Alanı</p>
                   <p>Barbekü / Mangal Alanı</p>
                 </div>
-                <button type="button" class="View-desc-amenites-more" data-bs-toggle="modal"
-                  data-bs-target="#amenitesModal">Tüm Olanaklar</button>
+                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar</b-button>
+
               </div>
             </div>
 
@@ -967,78 +966,52 @@
         </div>
       </div>
     </section>
-    <div class="modal fade Amenites modal-z" id="amenitesModal" tabindex="-1" aria-labelledby="amenitesModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-              class="icon-login-close"></i></button>
-          <h3 class="Amenites-title">Tesisin tüm olanakları</h3>
-          <div class="Amenites-in">
-            <div class="Amenites-item">
-              <span class="Amenites-item-title">Bahçe Alanı</span>
-              <div class="Amenites-item-in">
-                <p>Jakuzi</p>
-                <p>Jakuzi</p>
-                <p>Bilardo Masası</p>
-                <p>Barbekü / Mangal Alanı</p>
-                <p>Barbekü / Mangal Alanı</p>
-              </div>
-            </div>
-            <div class="Amenites-item">
-              <span class="Amenites-item-title">Bahçe Alanı</span>
-              <div class="Amenites-item-in">
-                <p>Jakuzi</p>
-                <p>Jakuzi</p>
-                <p>Bilardo Masası</p>
-                <p>Barbekü / Mangal Alanı</p>
-                <p>Barbekü / Mangal Alanı</p>
-              </div>
-            </div>
-            <div class="Amenites-item">
-              <span class="Amenites-item-title">Bahçe Alanı</span>
-              <div class="Amenites-item-in">
-                <p>Jakuzi</p>
-                <p>Jakuzi</p>
-                <p>Bilardo Masası</p>
-                <p>Barbekü / Mangal Alanı</p>
-                <p>Barbekü / Mangal Alanı</p>
-              </div>
-            </div>
 
-          </div>
-        </div>
-      </div>
-    </div>
+    <b-modal id="amenitesModal" class="Login" size="xl" :hide-header="true" hide-footer>
+      <div class="Amenites">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          @click="$bvModal.hide('amenitesModal')"><i class="icon-login-close"></i></button>
 
-    <div class="modal fade Login Satis-modal modal-z" id="closeVillaModal" tabindex="-1"
-      aria-labelledby="reservationModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-              class="icon-login-close"></i></button>
-          <div class="Login-in">
-            <div class="Login-left" style="background-image:url('/img/satisa-kapali.jpg')">
-              <div class="Satis-modal-text">
-                <h3>Diğer binlerce villamıza göz atmaya devam edebilirsiniz.</h3>
-                <a href="">DİĞER VİLLALAR</a>
-              </div>
-            </div>
-            <div class="Login-right">
-              <div class="Login-right-in">
-                <h2>SATIŞA KAPALI!</h2>
-                <div class="Satis-modal-right-text">
-                  <h4>ARADIĞINIZ VİLLA</h4>
-                  <h3>ŞU ANDA <b>SATIŞTA</b> DEĞİLDİR.</h3>
-                  <a href="">ANASAYFA</a>
-                </div>
-              </div>
+        <h3 class="Amenites-title">Tesisin tüm olanakları</h3>
+        <div class="Amenites-in">
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
             </div>
           </div>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
+          </div>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
+    </b-modal>
 
+    <client-only>
+      <close-villa-modal></close-villa-modal>
+    </client-only>
   </div>
 </template>
 
@@ -1048,6 +1021,7 @@ import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
+import CloseVillaModal from '../modals/close-villa-modal.vue';
 export default {
   name: 'DynamicDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
@@ -1055,6 +1029,7 @@ export default {
   components: {
     Swiper,
     HotelDatePicker,
+    CloseVillaModal
   },
   data() {
     return {
@@ -1456,7 +1431,8 @@ body {
   top: 0;
   z-index: -1;
 }
-.opsiyon.cikis-kapali:after{
+
+.opsiyon.cikis-kapali:after {
   display: none;
 }
 
@@ -1521,5 +1497,39 @@ body {
 
 .day-label {
   margin-top: 5px;
+}
+
+:deep() .modal-backdrop {
+  opacity: 0.3;
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+
+  .modal-lg,
+  .modal-xl {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 576px) {
+
+  .modal-lg,
+  .modal-xl {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1140px;
+  }
 }
 </style>

@@ -1,9 +1,8 @@
 <template>
   <!-- Kayıt Modal -->
-  <div class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+  <b-modal id="signupModal" class="Login" size="xl" :hide-header="true" hide-footer>
+    <div class="Login">
+      <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('signupModal')"><i
           class="icon-login-close"></i></button>
         <div class="Login-in">
           <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
@@ -43,8 +42,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </b-modal>
 </template>
 
 <script>

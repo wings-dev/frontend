@@ -1,10 +1,9 @@
 <template>
   <!-- Sizi Arayalım Modal -->
-  <div class="modal fade Login" id="callModal" tabindex="-1" aria-labelledby="callModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-            class="icon-login-close"></i></button>
+  <b-modal id="callModal" class="Login" size="xl" :hide-header="true" hide-footer>
+    <div class="Login">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="$bvModal.hide('callModal')"><i
+          class="icon-login-close"></i></button>
         <div class="Login-in">
           <div class="Login-left" style="background-image:url(/img/sizi-arayalim-bg.jpg)"></div>
           <div class="Login-right">
@@ -59,8 +58,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+  </b-modal>
 </template>
 
 <script>

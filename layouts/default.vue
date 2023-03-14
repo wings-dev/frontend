@@ -1,8 +1,18 @@
 <template>
   <div>
-    <b-button v-b-modal.loginModal>Launch demo modal</b-button>
 
+    <b-button v-b-modal.loginModal>Login modal</b-button>
+    <b-button v-b-modal.loginCodeModal>Login Code modal</b-button>
+    <b-button v-b-modal.favModal>Fav modal</b-button>
+    <b-button v-b-modal.callModal>Call modal</b-button>
+    <b-button v-b-modal.signupModal>Signup modal</b-button>
+    <b-button v-b-modal.reservationCodeModal>Reservation Code modal</b-button>
+    <b-button v-b-modal.reservationModal>Reservation modal</b-button>
 
+<client-only>
+  <login-modal></login-modal>
+</client-only>
+    
     <common-header></common-header>
 
     <main class="main">
@@ -59,9 +69,7 @@
       <live-villa-search></live-villa-search>
     </client-only>
 
-    <client-only>
-      <login-modal></login-modal>
-    </client-only>
+  
 
     <client-only>
       <login-code-modal></login-code-modal>
@@ -142,10 +150,6 @@ export default {
         e.stopPropagation();
       }
     });
-
-
-
-
   },
 }
 </script>

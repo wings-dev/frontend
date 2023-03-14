@@ -3193,8 +3193,8 @@ body.overflow-hidden {
     text-align: center;
     padding: 21% 0;
     img {
-      width: clamp(100px,7.3vw,140px);
-      height: clamp(100px,7.3vw,140px);
+      width: clamp(100px, 7.3vw, 140px);
+      height: clamp(100px, 7.3vw, 140px);
       margin-bottom: 30px;
     }
     h3 {
@@ -3924,5 +3924,34 @@ body.overflow-hidden {
         }
       }
     }
+  }
+}
+
+
+.modal-body {
+  padding: 0;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1140px;
   }
 }
