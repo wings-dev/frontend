@@ -278,12 +278,20 @@ export default {
       return this.checkIn && this.checkOut
     }
   },
+  watch: {
+    checkIn(newValue) {
+      this.changeHotelInput(0, newValue);
+    },
+    checkOut(newValue) {
+      this.changeHotelInput(-1, newValue);
+    },
+  },
   methods: {
     ...mapMutations(['setReservationModalData']),
     availabilityCheck() {
       this.availabilityChecked = true;
       document.querySelector('.Reservation-form').classList.add("show")
-      
+
     },
     preReservation() {
       this.setReservationModalData({
@@ -319,6 +327,21 @@ export default {
     },
     checkOutChanged(value) {
       this.checkOut = this.formatDate(value);
+    },
+    changeHotelInput(tabIndex, value) {
+      const currentDate = new Date(value);
+      const formattedDate = currentDate.toLocaleDateString('tr-TR', {
+        day: 'numeric',
+        month: 'long',
+      }).toUpperCase();
+
+      const formattedDay = currentDate.toLocaleDateString('tr-TR', {
+        weekday: 'long',
+      }).toUpperCase();
+
+      const datepickerInput = $('[data-qa="datepickerInput"][tabindex="' + tabIndex + '"]');
+
+      datepickerInput.html(`<div>${formattedDate}</div><div>${formattedDay}</div>`);
     },
     formatDate(value) {
       if (value) {
