@@ -324,14 +324,7 @@
                   <template v-slot:day-content="{ day, attributes }">
                     <div v-for="(attr, index) in attributes" :key="index"
                       class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
-                      :class="{
-                        kapali: attr.customData.status.includes(1),
-                        giris: attr.customData.dateStatus.includes(0),
-                        doubleday: attr.customData.dateStatus.includes(0) && attr.customData.status.includes(2) && attr.customData.status.includes(1),
-                        doubledaykapali: attr.customData.dateStatus.includes(0) && attr.customData.dateStatus.includes(2),
-                        cikis: attr.customData.dateStatus.includes(2),
-                        opsiyon: attr.customData.status.includes(2)
-                      }">
+                      :class="attr?.customData?.className">
                       <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
                       <div class="flex-grow overflow-y-auto overflow-x-auto">
                         <p class="calendar-price" style="" :class="attr.customData.class">
@@ -1301,7 +1294,7 @@ export default {
           const customData = {
             price: null,
             status: [],
-            dateStatus: [],
+            dateStatus: []
           };
           // Merge data from matching calendar items
           const matchingCalendarItems = this.calendar.filter(item => item.dates === date);
@@ -1314,12 +1307,24 @@ export default {
           if (matchingPriceItem) {
             customData.price = matchingPriceItem.price;
           }
+
+          customData.className = {
+            kapali: customData.status.includes(1),
+            giris: customData.dateStatus.includes(0),
+            doubleday: customData.dateStatus.includes(0) && customData.status.includes(2) && customData.status.includes(1),
+            doubledaykapali: customData.dateStatus.includes(0) && customData.dateStatus.includes(2),
+            cikis: customData.dateStatus.includes(2),
+            opsiyon: customData.status.includes(2),
+            "cikis-kapali": customData.status.includes(2) && customData.dateStatus.includes(2),
+          }
+
           attributes.push({
             customData,
             dates: new Date(date),
           });
         });
       }
+      console.log(JSON.stringify(attributes));
       return attributes;
     }
   }
