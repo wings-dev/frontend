@@ -63,7 +63,9 @@ export default {
         amenites: amenites,
         adult: query.adult || 0,
         children: query.children || 0,
-        baby: query.baby || 0
+        baby: query.baby || 0,
+        checkIn: query.checkIn || null,
+        checkOut: query.checkOut || null,
       };
     }
   },

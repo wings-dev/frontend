@@ -254,6 +254,8 @@ export default {
       villas: [],
       min_price: null,
       max_price: null,
+      checkIn: null,
+      checkOut: null,
       destinations: [],
       amenites: {
         groups: {
@@ -285,6 +287,9 @@ export default {
 
     this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
+
+    this.checkIn = this.selectedFilters['checkIn'] ?? null;
+    this.checkOut = this.selectedFilters['checkOut'] ?? null;
 
     this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
@@ -380,7 +385,9 @@ export default {
           ...this.selectedFacilities,
         ].map(({ code }) => code),
         min_price: this.min_price,
-        max_price: this.max_price
+        max_price: this.max_price,
+        checkIn: this.checkIn,
+        checkOut: this.checkOut,
       };
 
       this.$axios
