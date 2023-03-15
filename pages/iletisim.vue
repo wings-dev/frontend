@@ -14,16 +14,23 @@
 
         <section class="Contact-offices">
             <div class="Contact-offices-map">
-                <client-only>
+                <!-- <client-only>
                     <div id="map-wrap">
 
-                        <l-map :zoom=13 :center="center" :maxZoom=16>
+                        <l-map :zoom=13 :center="center" :maxZoom=16 ref="mymap">
                             <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
                             <l-marker :lat-lng="center">
                                 <l-icon iconUrl="img/map-center.svg" :iconSize=iconSize></l-icon>
                             </l-marker>
                         </l-map>
                     </div>
+                </client-only> -->
+                <client-only>
+                    <yandex-map  :zoom="zoom" :coords="activeCoords" :controls="controls"
+                        :behaviors="behaviors" :detailed-controls="detailedControls"
+                        @map-was-initialized="mapWasInitializedHandler" ref="mymap">
+                        <ymap-marker marker-id="123" :coords="activeCoords" :icon="markerIcon" />
+                    </yandex-map>
                 </client-only>
             </div>
             <div class="Contact-offices-tab">
@@ -224,7 +231,7 @@ export default {
                 { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
             ],
             link: [
-                { rel: 'stylesheet', href: `/css/iletisim.min.css` }
+                { rel: 'stylesheet', href: `/css/iletisim.min.css` },
             ]
         }
     },
@@ -239,22 +246,65 @@ export default {
                 [36.61751702707028, 29.143651464471198], [36.61814341192442, 29.143354164069745]
             ],
             iconSize: [140, 140],
+            coords: [[36.618867138910204, 29.145069037654377]],
+            zoom: 10,
+            controls: ["zoomControl"],
+            behaviors: ["drag"],
+            detailedControls: {
+                zoomControl: {
+                    position: {
+                        right: 10,
+                        top: 100
+                    }
+                }
+            },
+            picked: 0,
+            markerIcon: {
+                layout: "default#imageWithContent",
+                imageHref: "img/map-center.svg",
+                imageSize: [100, 100],
+                imageOffset: [-50, 0],
+            },
+            ymaps:null
         }
     },
     methods: {
         changeMap(e) {
             if (e == 'merkez') {
-                this.center = [36.618867138910204, 29.145069037654377]
+                // this.coords = [36.618867138910204, 29.145069037654377]
+                this.ymaps.setCenter([36.618867138910204, 29.145069037654377])
+                // this.$refs.mymap.setCenter(this.coords)
             }
             if (e == 'londra') {
-                this.center = [34.618867138910204, 32.145069037654377]
+                // this.coords = [34.618867138910204, 32.145069037654377]
+                // this.$refs.mymap.setCenter(this.coords)
+                // console.log(this.$refs.mymap)
+                this.ymaps.setCenter([34.618867138910204, 32.145069037654377])
             }
             if (e == 'fethiye') {
-                this.center = [32.618867138910204, 32.145069037654377]
+                // this.coords = [32.618867138910204, 32.145069037654377]
+                this.ymaps.setCenter([32.618867138910204, 32.145069037654377])
             }
-        }
+        },
+        mapWasInitializedHandler(map) {
+      console.log(map);
+      this.ymaps = map
+    }
+    },
+    computed: {
+    activeCoords() {
+      return this.coords[this.picked];
+    },
+  },
+    mounted() {
+
+        // this.$refs.mymap.mapObject.invalidateSize()
     }
 }
 </script>
-  
+  <style>
+  .ymap-container{
+    height: 100%;
+  }
+</style>
   

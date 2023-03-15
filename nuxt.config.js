@@ -54,6 +54,7 @@ export default {
     { src: "~plugins/vcalendar.js", ssr: false },
     "~/plugins/redisHelper.js",
     { src: "~/plugins/jquery.js", mode: "client" },
+    { src: '~/plugins/ymaps.js',  mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
