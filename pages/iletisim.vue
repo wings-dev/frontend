@@ -13,7 +13,7 @@
         </section>
 
         <section class="Contact-offices">
-            <div class="Contact-offices-map">
+            <div class="Contact-offices-map" style="filter:grayscale(1)">
                 <!-- <client-only>
                     <div id="map-wrap">
 
@@ -26,9 +26,8 @@
                     </div>
                 </client-only> -->
                 <client-only>
-                    <yandex-map  :zoom="zoom" :coords="activeCoords" :controls="controls"
-                        :behaviors="behaviors" :detailed-controls="detailedControls"
-                        @map-was-initialized="mapWasInitializedHandler" ref="mymap">
+                    <yandex-map :zoom="zoom" :coords="activeCoords" :controls="controls" :behaviors="behaviors"
+                        :detailed-controls="detailedControls" @map-was-initialized="mapWasInitializedHandler" ref="mymap">
                         <ymap-marker marker-id="123" :coords="activeCoords" :icon="markerIcon" />
                     </yandex-map>
                 </client-only>
@@ -237,17 +236,8 @@ export default {
     },
     data() {
         return {
-            center: [36.618867138910204, 29.145069037654377],
-            circle: {
-                center: [36.618867138910204, 29.145069037654377],
-                radius: 100
-            },
-            markers: [
-                [36.61751702707028, 29.143651464471198], [36.61814341192442, 29.143354164069745]
-            ],
-            iconSize: [140, 140],
             coords: [[36.618867138910204, 29.145069037654377]],
-            zoom: 10,
+            zoom: 9,
             controls: ["zoomControl"],
             behaviors: ["drag"],
             detailedControls: {
@@ -260,51 +250,58 @@ export default {
             },
             picked: 0,
             markerIcon: {
-                layout: "default#imageWithContent",
-                imageHref: "img/map-center.svg",
-                imageSize: [100, 100],
-                imageOffset: [-50, 0],
+                type: "Point",
+                content: 'Merkez Ofis',
+                contentOffset: [35, 15],
+                contentLayout: '<div style="background: red; width: 50px; color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
             },
-            ymaps:null
+            ymaps: null
         }
     },
     methods: {
         changeMap(e) {
             if (e == 'merkez') {
-                // this.coords = [36.618867138910204, 29.145069037654377]
-                this.ymaps.setCenter([36.618867138910204, 29.145069037654377])
-                // this.$refs.mymap.setCenter(this.coords)
+                this.ymaps.setCenter([36.6232369395677, 29.14690812467539])
+                
             }
             if (e == 'londra') {
-                // this.coords = [34.618867138910204, 32.145069037654377]
-                // this.$refs.mymap.setCenter(this.coords)
-                // console.log(this.$refs.mymap)
                 this.ymaps.setCenter([34.618867138910204, 32.145069037654377])
             }
             if (e == 'fethiye') {
-                // this.coords = [32.618867138910204, 32.145069037654377]
-                this.ymaps.setCenter([32.618867138910204, 32.145069037654377])
+                this.ymaps.setCenter([36.2656123842673, 29.40653015476229])
+                this.ymaps.geoObjects.add(new ymaps.GeoObject({
+                    geometry: {
+                        type: "Point",
+                        coordinates: [36.2656123842673, 29.40653015476229]
+                    },
+                    properties: {
+                        iconContent: 'Kalkan Ofis',
+                    }
+                }, {
+                    preset: 'islands#blackStretchyIcon',
+                    draggable: false,
+                }))
             }
         },
         mapWasInitializedHandler(map) {
-      console.log(map);
-      this.ymaps = map
-    }
+            console.log(map);
+            this.ymaps = map
+        }
     },
     computed: {
-    activeCoords() {
-      return this.coords[this.picked];
+        activeCoords() {
+            return this.coords[this.picked];
+        },
     },
-  },
     mounted() {
 
         // this.$refs.mymap.mapObject.invalidateSize()
     }
 }
 </script>
-  <style>
-  .ymap-container{
+<style>
+.ymap-container {
     height: 100%;
-  }
+}
 </style>
   

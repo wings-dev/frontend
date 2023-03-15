@@ -9,7 +9,7 @@
 <script>
 import DynamicVillaFilterPage from "@/components/dynamic-page/villa-filter.vue";
 import DynamicDetailPage from "@/components/dynamic-page/detail.vue";
-import Hakkimizda from "@/components/dynamic-page/hakkimizda.vue";
+import Hakkimizda from "@/components/static-page/hakkimizda.vue";
 export default {
   name: 'DynamicPage',
   components: {DynamicDetailPage, DynamicVillaFilterPage,Hakkimizda},
@@ -68,7 +68,8 @@ export default {
           {rel: 'stylesheet', href: `/css/hakkimizda.min.css`}
         ]
         // filtre redis datası
-        componentData = await $getRedisKey(`web:${{site_id}}:pages:${path}`);
+        componentData = await $getRedisKey(`web:2:pages:hakkimizda`);
+        console.log(site_id,path)
         // componentData = redisData.data;
       }
       return {type, headData, componentData, calendar, price_list_1}

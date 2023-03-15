@@ -1,13 +1,11 @@
 <template>
     <main class="main">
         <section class="Banner Banner_md Banner-back Banner-kurumsal"
-            style="background-image: url(https://villakalkan.com.tr/uploads/website/2/about/87241655810072.jpg);">
+            :style="`background-image: url(${data.page_content.default.page_banner});`">
             <div class="container">
                 <div class=" Banner_search-text   pos-ab-xy-center ">
                     <p class="animated fadeInDown  flex-column">
-                        <span>Sektörde tecrübeli ve dinamik ekibimizle, aileniz ve sevdiklerinizle konforlu bir tatil
-                            geçirebilmeniz
-                            için yanınızdayız... </span>
+                        <span>{{ data.meta[0].content }}</span>
                     </p>
                 </div>
             </div>
@@ -17,45 +15,12 @@
             <div class="container">
                 <div class="Content-in">
                     <h3>Hakkımızda</h3>
-                    <p>2015 yılında Villa Kalkan(villakalkan.com.tr) markası ile faaliyetlerimize başladığımız firmamız 2018
-                        yılı
-                        itibariyle Wings Seyahat Turizm Sanayi ve Ticaret Limited Şirketi çatısı altında Villa/Apart
-                        konaklamasından
-                        otel rezervasyonları,günübirlik tur ve aktivite organizasyonlarına kadar 10’un üzerinde internet
-                        sitelerimiz, Kaş/Kalkan ve Fethiyede bulunan ofislerimiz ve bünyemizdeki yüzlerce konaklama
-                        tesisleriyle
-                        hizmet vermektedir.</p>
-                    <p class="text-bold">Firmamız&nbsp;11095 numaralı TURSAB A grubu seyahat acentası belgesine sahip olup
-                        Kumluca
-                        Sanayi ve Ticaret Odası ile Fethiye Ticaret ve Sanayi Odasına kayıtlıdır.</p>
-                    <p>"Dürüstlük, güven ve kalite"&nbsp;anlayışımızla&nbsp;mutlak müşteri memnuniyeti&nbsp;kazanmayı ilke
-                        edindik
-                        ve bu duruşumuzu dinamizm ile birleştirerek sektöre yeni bir soluk getirmek için yola çıktık.</p>
-                    <p>İşlerimizin tümünde ihtiyaçların doğru analizini yaparak en uygun portföyle siz değerli
-                        müşterilerimize
-                        hizmet vermekten ve birlikte çalışmaktan gurur duyarız.
-                    </p>
-                    <p>İster sürekli yaşamak için, ister tatil amaçlı, isterseniz emekliliğinizi geçirebileceğiniz, denizin,
-                        güneşin ve doğanın tadını çıkararak kendinizi mutlu, huzurlu ve güvende hissedeceğiniz mekanlar
-                        sunabilmek
-                        ve yüz yüze tanışabilmek amacıyla sizleri de ofislerimize bekliyoruz.<br>Bize gösterdiğiniz ilgiye
-                        teşekkür
-                        ederiz.</p>
+                    <div v-html="data.page_content.article.data"></div>
                     <div class="Content-features">
-                        <div class="Content-features-item">
-                            <h4>24+ Bölge </h4>
-                            <p>ile müşterlerimize Türkiye’nin
-                                en güzel bölgelerinde tatil imkanı sunuyoruz.</p>
-                        </div>
-                        <div class="Content-features-item">
-                            <h4>50.000+ Misafir</h4>
-                            <p>Mutluluğumuzu; Müştelerimizin memnuniyetinden alarak, her geçen gün büyüyen bir aile
-                                oluyoruz.</p>
-                        </div>
-                        <div class="Content-features-item">
-                            <h4>1.500+ Tesis </h4>
-                            <p>ile her geçen gün portföyümüzü büyütüyor ve
-                                müşterlerimize zengin bir liste sunuyoruz.</p>
+                        <div class="Content-features-item" v-for="(item, index) in data.page_content.corporate_features"
+                            :key="index">
+                            <h4>{{ item.features_title }}</h4>
+                            <p v-html="item.features_desc"></p>
                         </div>
                     </div>
                 </div>
@@ -67,35 +32,31 @@
                     <div class="Info-left">
                         <h3 class="new-title">Banka Bilgilerimiz</h3>
                         <div class="Info-left-in">
-                            <nuxt-img src="/img/garanti-bankasi-logo.png" />
-                            <div class="Info-left-item">
-                                <span>Alıcı Ünvan</span>
-                                <p>Wings Seyahat Turizm Sanayi ve Ticaret Ltd.Şti.</p>
-                            </div>
-                            <div class="Info-left-item">
-                                <span>TL(₺) IBAN</span>
-                                <p id="myInput"><input type="text" value="TR65 0006 2001 3680 0006 2986 81">
-                                    <button type="button" id="copy" class="button-copy"><i class="icon-copy"></i></button>
-                                </p>
-                            </div>
-                            <hr>
-                            <nuxt-img src="/img/garanti-bankasi-logo.png" />
-                            <div class="Info-left-item">
-                                <span>Alıcı Ünvan</span>
-                                <p>Wings Seyahat Turizm Sanayi ve Ticaret Ltd.Şti.</p>
-                            </div>
-                            <div class="Info-left-item">
-                                <span>EUR(€) IBAN</span>
-                                <p id="myInput"><input type="text" value="TR67 0006 2001 3680 0009 0970 95">
-                                    <button type="button" id="copy" class="button-copy"><i class="icon-copy"></i></button>
-                                </p>
-                            </div>
-                            <div class="Info-left-item">
-                                <span>SWIFT KODU</span>
-                                <p id="myInput"><input type="text" value="TGBATRISXXX">
-                                    <button type="button" id="copy" class="button-copy"><i class="icon-copy"></i></button>
-                                </p>
-                            </div>
+                            <template v-for="item in data.page_content.corporate_banks">
+                                <div>
+                                    <nuxt-img :src="item.corporate_banks_logo" />
+                                    <div class="Info-left-item">
+                                        <span>Alıcı Ünvan</span>
+                                        <p>{{ item.corporate_banks_title }}</p>
+                                    </div>
+                                    <div class="Info-left-item">
+                                        <span>{{ item.corporate_banks_iban_currency }}</span>
+                                        <p id="myInput"><input type="text" :value="item.corporate_banks_iban">
+                                            <button type="button" id="copy" class="button-copy"><i
+                                                    class="icon-copy"></i></button>
+                                        </p>
+                                    </div>
+                                    <div class="Info-left-item" v-if="item.corporate_banks_swift">
+                                        <span>SWIFT KODU</span>
+                                        <p id="myInput"><input type="text" :value="item.corporate_banks_swift">
+                                            <button type="button" id="copy" class="button-copy"><i
+                                                    class="icon-copy"></i></button>
+                                        </p>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </template>
+
                         </div>
                         <div class="Info-left-alert">
                             <i class="icon-alert"></i>
@@ -105,22 +66,22 @@
                     <div class="Info-right">
                         <h3 class="new-title">Resmi belgelerimiz</h3>
                         <div class="Info-right-in">
-                            <div class="Info-right-item">
-                                <a href="https://villakalkan.com.tr/images/belgeler/marka-tescil-1.jpeg"
-                                    data-fancybox="group_1" class="w-100">
+                            <div class="Info-right-item" v-for="(item, index) in data.page_content.corporate_documents"
+                                :key="index">
+                                <a :href="item.corporate_document_file" :data-fancybox="'group_' + index" class="w-100">
                                     <div class="Info-right-item-text">
-                                        <h5>Marka Tescil Belgesi</h5>
+                                        <h5>{{ item.corporate_document_name }}</h5>
                                     </div>
                                     <div class="Info-right-item-link">
                                         <p><i class="icon-info-pdf"></i>Belgeyi Görüntüle</p>
                                     </div>
                                 </a>
-                                <a href="https://villakalkan.com.tr/images/belgeler/marka-tescil-2.png"
+                                <!-- <a href="https://villakalkan.com.tr/images/belgeler/marka-tescil-2.png"
                                     data-fancybox="group_1" style="display:none;"></a>
                                 <a href="https://villakalkan.com.tr/images/belgeler/marka-tescil-3.png"
-                                    data-fancybox="group_1" style="display:none;"></a>
+                                    data-fancybox="group_1" style="display:none;"></a> -->
                             </div>
-                            <div class="Info-right-item">
+                            <!-- <div class="Info-right-item">
                                 <a href="https://villakalkan.com.tr/images/belgeler/tursab.jpeg" data-fancybox="group_1"
                                     class="w-100">
                                     <div class="Info-right-item-text">
@@ -152,7 +113,7 @@
                                         <p><i class="icon-info-pdf"></i>Belgeyi Görüntüle</p>
                                     </div>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -162,49 +123,27 @@
             <div class="container">
                 <div class="Basin-in">
                     <div class="Basin-head">
-                        <h3 class="new-title">Diğer Markalarımız</h3>
-                        <h2>Mutluluğumuzu; Müştelerimizin memnuniyetinden alarak, her geçen gün büyüyen bir aile oluyoruz.
+                        <h3 class="new-title">{{ data.page_content.corporate_brands.corporate_brands_title }}</h3>
+                        <h2>{{ data.page_content.corporate_brands.corporate_brands_desc }}
                         </h2>
                         <p>Wings Seyahat Turizm Sanayi ve Ticaret Ltd.Şti.</p>
                     </div>
                     <div class="Basin-content">
-                        <div class="Basin-content-item">
-                            <a href="https://www.balayivillasi.com.tr/"><img
-                                    src="	https://villakalkan.com.tr/images/balayi-villasi-logo.svg"
-                                    alt="Diğer Markalarımız - Balayı Villası"></a>
+                        <div class="Basin-content-item" v-for="(item,index) in data.page_content.corporate_brands.corporate_brands_info" :key="index">
+                            <a target="_blank" :href="item.corporate_brand_link">
+                                <img :src="item.corporate_brand_logo"
+                                    alt="Diğer Markalarımız - Balayı Villası">
+                            </a>
                         </div>
-                        <div class="Basin-content-item">
-                            <a href="https://www.lycianescapes.com/"><img
-                                    src="https://villakalkan.com.tr/images/lyc-logo.png"
-                                    alt="Diğer Markalarımız - Lycian Escapes"></a>
-                        </div>
-                        <div class="Basin-content-item">
-                            <a href="https://villapusulasi.com/"><img
-                                    src="https://villakalkan.com.tr/images/villa-pusulasi-logo-renkli.png"
-                                    alt="Diğer Markalarımız - Villa Pusulası"></a>
-                        </div>
-                        <div class="Basin-content-item">
-                            <a href="https://villadukkani.com/"><img
-                                    src="	https://villakalkan.com.tr/images/villadukkani-logo.png"
-                                    alt="Diğer Markalarımız - Villa Dükkanı"></a>
-                        </div>
-                        <div class="Basin-content-item">
-                            <a href="https://kalkanaktivite.com/"><img
-                                    src="https://villakalkan.com.tr/images/kalkan-aktivite-logo.svg"
-                                    alt="Diğer Markalarımız - Kalkan Aktivite"></a>
-                        </div>
-                        <div class="Basin-content-item">
-                            <a href="https://otelbnb.com/"><img src="https://villakalkan.com.tr/images/otelbnb-logo.png"
-                                    alt="Diğer Markalarımız - Otel Bnb"></a>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </section>
-        <section class="Ofis">
+        <section class="Ofis" v-for="(item,index) in data.page_content.corporate_offices" :key="index">
             <div class="container">
                 <div class="Ofis-in">
-                    <h3 class="new-title">Kalkan Ofis</h3>
+                    <h3 class="new-title">{{ item.corporate_office_name }}</h3>
                     <div class="Ofis-content">
                         <div class="Ofis-content-item">
                             <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis">
@@ -243,13 +182,13 @@
                     </div>
                     <div class="Ofis-bottom">
                         <div class="Contact-support Contact-support-pink">
-                            <a href="te:+902422520032">
-                                <p><span>Yardım &amp; Destek</span>+90 242 252 00 32</p>
+                            <a :href="'tel:'+item.corporate_office_phone">
+                                <p><span>Yardım &amp; Destek</span>{{ item.corporate_office_phone }}</p>
                             </a>
                         </div>
                         <div class="Ofis-bottom-text">
-                            <p>MERKEZ: Kalkan Mah. Cumhuriyet Cd. No:48/2 Kaş/Antalya</p>
-                            <a href="mailto:info@villakalkan.com.tr">info@villakalkan.com.tr</a>
+                            <p>{{ item.corporate_office_address }}</p>
+                            <a :href="'mailto:'+item.corporate_office_mail">{{ item.corporate_office_mail }}</a>
                         </div>
                         <a target="_blank"
                             href="https://www.google.com/maps/dir/36.6180363,29.1450962/Kalkan,+Villa+Kalkan,+Cumhuriyet+Cd.+No:48%2F2,+07960+Ka%C5%9F%2FAntalya/@36.6180363,29.1450962,17z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x14c02d2a84da91fd:0x81ede568b29dcff4!2m2!1d29.4065087!2d36.2654048"
@@ -260,7 +199,7 @@
                 </div>
             </div>
         </section>
-        <section class="Ofis Ofis-fethiye">
+        <!-- <section class="Ofis Ofis-fethiye">
             <div class="container">
                 <div class="Ofis-in">
                     <h3 class="new-title">Fethiye Ofis</h3>
@@ -320,7 +259,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
     </main>
 </template>
@@ -329,7 +268,7 @@
 export default {
     name: 'Hakkimizda',
     props: ['data'],
-    mounted(){
+    mounted() {
         console.log(this.data)
     }
 }

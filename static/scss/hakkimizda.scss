@@ -826,6 +826,12 @@ body {
     border-bottom: none;
   }
 
+  &:last-child{
+    margin-top: 0;
+    border-bottom: none;
+    .Ofis-in:before{display: none;}
+  }
+
   .Ofis-fethiye .Ofis-in:before {
     display: none;
   }
