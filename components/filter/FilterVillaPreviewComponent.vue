@@ -46,13 +46,21 @@
             </p>
           </div>
         </div>
-        <div class="F_villa-item-head-price F_villa-item-head-price-promotion">
+        <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-if="villa.total.total == 0">
           <div class="F_villa-item-head-price-in">
             <b>{{ villa.prices.min_price.price }}₺</b>
             <p>‘den başlayan fiyatlar</p>
           </div>
 
           <span>GECELİK</span>
+        </div>
+        <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
+          <div class="F_villa-item-head-price-in">
+            <b>{{ villa.total.total }}₺</b>
+            <p>{{ villa.total.day }} gece fiyatı</p>
+          </div>
+
+          <span>TOPLAM</span>
         </div>
       </div>
       <div class="F_villa-item-info">
@@ -71,6 +79,10 @@
         <div>
         </div>
       </div>
+      <!-- <b>Min price:{{ villa.prices.min_price.price }}₺</b>
+      <b>Max price:{{ villa.prices.max_price.price }}₺</b>
+      <b>Total price:{{ villa.total.total }}₺</b>
+      <b>Day:{{ villa.total.day }}</b> -->
       <div class="F_villa-item-bottom">
         <div class="F_villa-item-features">
           <h6>Öne çıkan özellikleri</h6>
