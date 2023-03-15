@@ -69,7 +69,9 @@
                             <button type="submit">GÜNCELLE</button>
                         </form>
                         <div class="User-invoice">
+                            <div class="User-right-head">
                             <h2>Fatura Bilgileriniz</h2>
+                        </div>
                             <div class="User-invoice-item">
                                 <div class="User-invoice-item-type">
                                     <span>Fatura Tipi:</span>

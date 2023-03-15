@@ -1,23 +1,25 @@
 <template>
-  <NuxtLink :to="villa.url" class="F_villa-item">
+  <div class="F_villa-item">
     <div class="F_villa-item-img">
       <div class="swiper villa-list-slider">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
+            <NuxtLink :to="villa.url">
             <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" sizes="sm:100vw md:50vw lg:400px"/>
-
+          </NuxtLink>
           </div>
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
       <div class="villa-item-fav position-absolute top-0 end-0 pt-1 mt-1 pe-1">
-        <a href="javascript:void(0);" class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
-          onclick="">
-          <i class="icon-heart"></i>
-          <!-- <i class="icon-heart-full"></i> -->
-
-        </a>
+     
+        <button type="button" @click="toggleFavorite"
+                  class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0 " :class="isFavorite ? 'active' : ''">
+                  <span class="action-btn-icon">
+                    <i  :class="isFavorite ? 'icon-heart-full' : 'icon-heart'"></i>
+                  </span>
+          </button>
       </div>
     </div>
     <div class="F_villa-item-right">
@@ -44,13 +46,21 @@
             </p>
           </div>
         </div>
-        <div class="F_villa-item-head-price F_villa-item-head-price-promotion">
+        <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-if="villa.total.total == 0">
           <div class="F_villa-item-head-price-in">
             <b>{{ villa.prices.min_price.price }}₺</b>
             <p>‘den başlayan fiyatlar</p>
           </div>
 
           <span>GECELİK</span>
+        </div>
+        <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
+          <div class="F_villa-item-head-price-in">
+            <b>{{ villa.total.total }}₺</b>
+            <p>{{ villa.total.day }} gece fiyatı</p>
+          </div>
+
+          <span>TOPLAM</span>
         </div>
       </div>
       <div class="F_villa-item-info">
@@ -67,15 +77,12 @@
           <span>{{ villa.bathrooms }} Banyo</span>
         </div>
         <div>
-          <button type="button" @click="toggleFavorite"
-                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 " :class="isFavorite ? 'active' : ''">
-                  <span class="action-btn-icon">
-                    <i class="icon-heart"></i>
-                  </span>
-            <span class="action-btn-text">{{ isFavorite ? 'Favorilerden Sil' : 'Favorilere Ekle' }}</span>
-          </button>
         </div>
       </div>
+      <!-- <b>Min price:{{ villa.prices.min_price.price }}₺</b>
+      <b>Max price:{{ villa.prices.max_price.price }}₺</b>
+      <b>Total price:{{ villa.total.total }}₺</b>
+      <b>Day:{{ villa.total.day }}</b> -->
       <div class="F_villa-item-bottom">
         <div class="F_villa-item-features">
           <h6>Öne çıkan özellikleri</h6>
@@ -85,10 +92,10 @@
           </div>
 
         </div>
-        <a :href="villa.url" class="F_villa-item-show">Villayı İncele</a>
+        <NuxtLink :to="villa.url" class="F_villa-item-show">Villayı İncele</NuxtLink>
       </div>
     </div>
-  </NuxtLink>
+  </div>
 
 </template>
 

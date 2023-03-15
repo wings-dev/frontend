@@ -589,13 +589,13 @@ body {
   margin-top: 5px;
 }
 
-.datepicker__dummy-wrapper {
+:deep() .datepicker__dummy-wrapper {
   border: none;
   background: none;
   flex-wrap: nowrap;
 }
 
-.datepicker__input {
+:deep() .datepicker__input {
   font-size: 13px;
   font-weight: 500;
   color: #24252e;
@@ -604,7 +604,7 @@ body {
   white-space: nowrap;
 }
 
-.datepicker__input:before {
+:deep() .datepicker__input:before {
   content: "";
   display: inline-block;
   width: 24px;
@@ -614,11 +614,11 @@ body {
   margin-right: 9px;
 }
 
-.datepicker__input--first {
+:deep().datepicker__input--first {
   padding-left: 0;
 }
 
-.datepicker__input--first:after {
+:deep().datepicker__input--first:after {
   content: "";
   width: 18px;
   height: 10px;
@@ -628,7 +628,7 @@ body {
   margin-right: auto;
 }
 
-.datepicker__input .formatted-date {
+:deep().datepicker__input .formatted-date {
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -637,9 +637,11 @@ body {
 
 }
 
-.datepicker__input .formatted-date span {
+:deep().datepicker__input .formatted-date span {
   font-size: 9px;
   font-weight: 500;
   color: #c1c1c1;
 }
+
+
 </style>

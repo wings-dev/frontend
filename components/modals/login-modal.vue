@@ -34,7 +34,7 @@
                   <div class="Login-form-item">
                     <div class="input-group">
                       <span class="input-group-text">+90</span>
-                      <input v-model="phone" type="text" class="form-control" id="inputTR"
+                      <input v-model="phone" type="text" class="singlephone" id="inputTR"
                         placeholder="Telefon Numaranız">
                     </div>
                   </div>
@@ -204,3 +204,9 @@ export default {
   }
 }
 </script>
+<style>
+ .input-group-text {
+  border: none;
+  background-color: transparent;
+}
+</style>

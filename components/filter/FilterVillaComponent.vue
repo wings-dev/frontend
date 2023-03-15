@@ -230,7 +230,7 @@
               </li>
             </ul>
           </nav>
-
+{{ orderValue }}
         </div>
       </div>
     </div>
@@ -254,6 +254,8 @@ export default {
       villas: [],
       min_price: null,
       max_price: null,
+      checkIn: null,
+      checkOut: null,
       destinations: [],
       amenites: {
         groups: {
@@ -285,6 +287,9 @@ export default {
 
     this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
+
+    this.checkIn = this.selectedFilters['checkIn'] ?? null;
+    this.checkOut = this.selectedFilters['checkOut'] ?? null;
 
     this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
@@ -371,7 +376,6 @@ export default {
     },
     filter(pageNumber = 1) {
 
-      console.log('TSET')
       const data = {
         destination: this.selectedDestinations.map(({ code }) => code),
         amenites: [
@@ -380,9 +384,13 @@ export default {
           ...this.selectedFacilities,
         ].map(({ code }) => code),
         min_price: this.min_price,
-        max_price: this.max_price
+        max_price: this.max_price,
+        startDate: this.checkIn,
+        endDate: this.checkOut,
       };
 
+      console.log(data)
+      
       this.$axios
         .post(`/api/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`, data)
         .then(({ data: responseData }) => {
@@ -391,6 +399,8 @@ export default {
           this.per_page = responseData.per_page;
           this.total_items = responseData.total;
           this.current_page = responseData.current_page;
+
+          
         })
         .catch(console.error)
         .finally(() => {

@@ -15,13 +15,13 @@
           <i class="icon-down-arrow"></i>
         </button>
         <client-only>
-        <ul class="dropdown-menu filtered" aria-labelledby="dropdownMenuButton1">
-          <filter-item-checkbox-component :hideTitle="true" filterInputPlaceholder="Bölge Arayın"
-            :checkboxes="destinations" :hideTitleBorder="true"
-            @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
+          <ul class="dropdown-menu filtered" aria-labelledby="dropdownMenuButton1">
+            <filter-item-checkbox-component :hideTitle="true" filterInputPlaceholder="Bölge Arayın"
+              :checkboxes="destinations" :hideTitleBorder="true"
+              @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
 
-        </ul>
-      </client-only>
+          </ul>
+        </client-only>
       </div>
       <div class="Search-item date">
         <div
@@ -33,18 +33,18 @@
           <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs">
             <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-              format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)" :i18n="calendarLanguage" ref="datePicker">
+              format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)" :i18n="calendarLanguage" ref="datePicker" :displayClearButton=false>
 
               <div slot="content">
-                <div class="d-flex align-items-center justify-content-end mt-1">
-                <button @click.prevent="clearDates()" class="me-1">Temizle</button>
-                <button @click.prevent="hidePicker()">Kapat</button>
-              </div>
+                <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
+                  <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
+                  <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
+                </div>
               </div>
 
             </HotelDatePicker>
 
-              <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
+            <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
           </div>
         </div>
@@ -64,42 +64,42 @@
 
         </button>
         <client-only>
-        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton2">
-          <div class="Search-item-person">
-            <div class="Search-item-person-item ">
-              <p>Yetişkin</p>
-              <div class="Search-item-person-item-in ">
-                <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="adultDecrease"></i>
-                </button>
-                <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
-                <button type="button" class="plus-person"><i class="icon-plus" @click="adultIncrease"></i></button>
+          <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton2">
+            <div class="Search-item-person">
+              <div class="Search-item-person-item ">
+                <p>Yetişkin</p>
+                <div class="Search-item-person-item-in ">
+                  <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="adultDecrease"></i>
+                  </button>
+                  <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
+                  <button type="button" class="plus-person"><i class="icon-plus" @click="adultIncrease"></i></button>
+                </div>
               </div>
-            </div>
-            <div class="Search-item-person-item">
-              <p>Çocuk <br><span>6-17 arası</span></p>
-              <div class="Search-item-person-item-in ">
-                <button type="button" class="minus-person" onclick=""><i class="icon-minus "
-                    @click="children_Decrease"></i></button>
-                <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
-                <button type="button" class="plus-person"><i class="icon-plus " @click="children_Increase"></i>
-                </button>
+              <div class="Search-item-person-item">
+                <p>Çocuk <br><span>6-17 arası</span></p>
+                <div class="Search-item-person-item-in ">
+                  <button type="button" class="minus-person" onclick=""><i class="icon-minus "
+                      @click="children_Decrease"></i></button>
+                  <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
+                  <button type="button" class="plus-person"><i class="icon-plus " @click="children_Increase"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="Search-item-person-item ">
-              <p>Bebek<br><span>0-5 arası</span></p>
-              <div class="Search-item-person-item-in ">
+              <div class="Search-item-person-item ">
+                <p>Bebek<br><span>0-5 arası</span></p>
+                <div class="Search-item-person-item-in ">
 
-                <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="baby_Decrease"></i>
-                </button>
-                <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
-                <button type="button" class="plus-person"><i class="icon-plus " @click="baby_Increase"></i>
-                </button>
+                  <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="baby_Decrease"></i>
+                  </button>
+                  <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
+                  <button type="button" class="plus-person"><i class="icon-plus " @click="baby_Increase"></i>
+                  </button>
 
+                </div>
               </div>
             </div>
-          </div>
-        </ul>
-      </client-only>
+          </ul>
+        </client-only>
       </div>
       <div class="Search-item Search-item-more">
         <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -109,15 +109,15 @@
           <i class="icon-down-arrow"></i>
         </button>
         <client-only>
-        <ul class="dropdown-menu filtered " aria-labelledby="dropdownMenuButton3">
-          <div class="dropdown-menu-in filtered-in">
-            <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
-              @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
-            <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts"
-              @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
-          </div>
-        </ul>
-      </client-only>
+          <ul class="dropdown-menu filtered " aria-labelledby="dropdownMenuButton3">
+            <div class="dropdown-menu-in filtered-in">
+              <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
+                @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
+              <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts"
+                @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
+            </div>
+          </ul>
+        </client-only>
       </div>
     </div>
     <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()"><i
@@ -133,7 +133,7 @@
 // import HotelDatePicker from "vue-hotel-datepicker";
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "SearchVillaComponent",
@@ -163,7 +163,7 @@ export default {
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
-        'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt','Paz'],
+        'day-names': ['Pzt', 'Sal', 'Çar', 'Per', 'Cuma', 'Cmt', 'Paz'],
         'check-in': 'Giriş Tarihi',
         'check-out': 'Çıkış Tarihi',
         'month-names': ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
@@ -290,12 +290,12 @@ export default {
 
       window.location.href = `${window.location.origin}/kiralik-villa?${urlSearchParams}`;
     },
-    clearDates() {
-        this.$refs.datePicker.clearSelection();
+    clearDatesRez() {
+      this.$refs.datePicker.clearSelection();
     },
-    hidePicker() {
-        this.$refs.datePicker.hideDatepicker();
-    }
+    hidePickerRez() {
+      this.$refs.datePicker.hideDatepicker();
+    },
   }
 }
 </script>
@@ -329,14 +329,16 @@ export default {
   background-color: var(--bs-theme-second) !important;
 }
 
-:deep() .datepicker__wrapper{
+:deep() .datepicker__wrapper {
   width: 100%;
 }
-:deep() .datepicker__dummy-wrapper{
+
+:deep() .datepicker__dummy-wrapper {
   border: none;
-  background:none;
+  background: none;
 }
-:deep() .datepicker__input--first{
+
+:deep() .datepicker__input--first {
   padding-left: 0;
 }
 </style>
