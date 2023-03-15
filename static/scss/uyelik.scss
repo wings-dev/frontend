@@ -81,6 +81,7 @@
     padding-bottom: 10%;
 
     &-head {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -142,6 +143,21 @@
       margin-bottom: 32px;
       &.three {
         width: calc(33.3% - 16px);
+        label {
+          padding: 0;
+        }
+      }
+      .vue-tel-input {
+        height: 100%;
+      }
+      .v-select-toggle {
+        background-color: transparent !important;
+        border: none !important;
+        padding: 20px !important;
+        max-width: 100% !important;
+        font-size: 16px!important;
+        font-weight: normal!important;
+        color: #a3a3a3!important;
       }
       label {
         width: 100%;
@@ -277,7 +293,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+h2{
+  width: 100%;
+}
     &-item {
       width: calc(50% - 10px);
       border: solid 1px #d9d9d9;
