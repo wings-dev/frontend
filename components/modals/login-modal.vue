@@ -72,13 +72,14 @@ export default {
       loginType: 'phone',
       phone: '',
       email: '',
-      codes: ['', '', '', ''],
     }
   },
+  mounted() {
+    this.loginType = 'phone'
+    this.phone = ''
+    this.email = ''
+  },
   computed: {
-    password() {
-      return this.codes.join('');
-    },
     enabledLoginButton() {
       if (this.loginType === 'phone' && this.phone.length === 10) {
         return true;
@@ -108,10 +109,9 @@ export default {
   },
   methods: {
     ...mapMutations(['setLoginCodeModalData']),
-    ...mapActions(['hideLoginModal', 'showLoginCodeModal', 'showRegisterModal']),
     openRegister() {
-      this.hideLoginModal();
-      this.showRegisterModal();
+      this.$bvModal.hide('loginModal')
+      this.$bvModal.show('signupModal')
     },
     async sendcode() {
       try {
@@ -124,83 +124,24 @@ export default {
         } else if (this.loginType === 'email') {
           data.email = this.email;
         }
-        const response = await this.$axios.post('/api/sendcode', data);
-        this.hideLoginModal()
+
+        const response = await this.$axios.post('/api/sendcode', this.data);
+        // TODO numaranın doğruluğu cevaptan kontrol edilecek ?
+
+        // show Login Code Modal
         this.setLoginCodeModalData({
-          loginType: 'phone',
+          loginType: this.loginType,
           phone: this.phone,
           email: this.email,
+          data: data
         })
-        this.showLoginCodeModal()
+        this.$bvModal.hide('loginModal')
+        this.$bvModal.show('loginCodeModal')
+
       } catch (error) {
         console.error(error);
       }
-    },
-    async entercode() {
-      try {
-        const data = {
-          source_id: process.env.SOURCE_ID,
-          password: this.password
-        };
-        if (this.loginType === 'phone') {
-          data.prephone = '90';
-          data.phone = this.phone;
-        } else if (this.loginType === 'email') {
-          data.email = this.email;
-        }
-        const response = await this.$auth.loginWith('laravelJWT', { data: data })
-
-        // decode JWT token to get user email
-        const tokenPayload = jwt_decode(response.data.access_token)
-
-        // manually set user in auth store
-        this.$auth.setUser(tokenPayload)
-
-        location.reload()
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    onInput(event, index) {
-      // Keep only first character entered in the input
-      this.codes[index] = event.target.value[0] || '';
-      // Move focus to next input
-      if (index < 3 && this.codes[index].length) {
-        this.$refs.codeInputs[index + 1].focus();
-      }
-    },
-    onKeyDown(event, index) {
-      if (event.key === 'Backspace' && !this.codes[index].length) {
-        // Move focus to previous input
-        if (index > 0) {
-          this.$refs.codeInputs[index - 1].focus();
-        }
-      }
-    },
-    onKeyUp(event, index) {
-      // Prevent default behavior for key events
-      if (event.key === 'Backspace' || event.key === 'Delete') {
-        event.preventDefault();
-      }
-    },
-    onPaste(event) {
-      // Prevent the normal paste event
-      event.preventDefault();
-
-      // Get the clipboard data as text
-      const clipboardData = event.clipboardData.getData('text/plain');
-
-      // Split the clipboard text into individual characters
-      const characters = clipboardData.slice(0, 4).split('');
-
-      // Paste the characters into the input fields in order
-      for (let i = 0; i < characters.length; i++) {
-        if (i < this.codes.length) {
-          this.codes[i] = characters[i];
-          this.$refs.codeInputs[i].value = characters[i];
-        }
-      }
-    },
+    }
   }
 }
 </script>

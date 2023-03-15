@@ -136,10 +136,9 @@
                             data-bs-target="#favModal">
                             <i class="icon-heart-full"></i>
                         </button> -->
-                        <button v-if="!$auth.loggedIn" type="button" class="Login-button" data-bs-toggle="modal"
-                            data-bs-target="#loginModal">
+                        <b-button v-b-modal.loginModal v-if="!$auth.loggedIn" type="button" class="Login-button">
                             <i class="icon-user"></i><span class="">ÜYE GİRİŞİ YAP </span>
-                        </button>
+                        </b-button>
                         <!--
                         <button v-else type="button"
                             class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none">

@@ -3,6 +3,7 @@ export default () => ({
     loginType: 'phone',
     phone: null,
     email: null,
+    data: null,
   },
   reservationModalData: {
     propertyCode: null,

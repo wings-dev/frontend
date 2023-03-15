@@ -20,9 +20,10 @@
                   @paste="onPaste" required />
               </fieldset>
 
-              <code-count-down :countdown-time="30"></code-count-down>
+              <code-count-down :key="key" :countdown-time="30" @started="started" @timeout="timeout"></code-count-down>
 
-              <button type="submit" class="Login-form-button mt-1">GÖNDER</button>
+              <button v-if="countdownTimeout" @click="resend" type="button" class="Login-form-button mt-1">TEKRAR KOD GÖNDER</button>
+              <button v-else type="submit" class="Login-form-button mt-1">GÖNDER</button>
               <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
             </form>
           </div>
@@ -40,6 +41,8 @@ export default {
   name: "LoginCodeModal",
   data() {
     return {
+      key: 0,
+      countdownTimeout: false,
       codes: ['', '', '', ''],
     }
   },
@@ -48,12 +51,19 @@ export default {
       loginType: state => state.loginCodeModalData.loginType,
       phone: state => state.loginCodeModalData.phone,
       email: state => state.loginCodeModalData.email,
+      data: state => state.loginCodeModalData.data,
     }),
     password() {
       return this.codes.join('');
     }
   },
   methods: {
+    started() {
+      this.countdownTimeout = false
+    },
+    timeout() {
+      this.countdownTimeout = true
+    },
     async entercode() {
       try {
         const data = {
@@ -76,8 +86,14 @@ export default {
 
         location.reload()
       } catch (error) {
+        // TODO girilen kod yanlış tekrar gir yapılacak
         console.error(error)
       }
+    },
+    async resend() {
+      const response = await this.$axios.post('/api/sendcode', this.data);
+      this.codes = ['', '', '', ''];
+      this.key = this.key + 1; // contdown yeniliyor.
     },
     onInput(event, index) {
       // Keep only first character entered in the input
