@@ -220,4 +220,5 @@ color: var(--bs-theme-first);
 :deep() .cookieControl__ControlButton{
   display: none!important;
 }
+
 </style>
