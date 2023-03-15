@@ -95,7 +95,6 @@ export default {
   },
   methods: {
     ...mapMutations(['setLoginCodeModalData']),
-    ...mapActions(['showLoginCodeModal', 'hideRegisterModal']),
     onInput(phone, phoneObject) {
       setTimeout(() => {
         this.phoneObject = phoneObject;
@@ -115,7 +114,8 @@ export default {
     async register() {
       try {
         const response = await this.$axios.post('/api/register', this.form);
-        if (response.data.status === true) {
+        //if (response.data.status === true) {
+        if (response.data.hasOwnProperty('access_token')) {
 
           const data = {
             source_id: process.env.SITE
@@ -128,15 +128,14 @@ export default {
           }
           const response = await this.$axios.post('/api/sendcode', data);
 
-          this.hideRegisterModal();
-
           this.setLoginCodeModalData({
             loginType: this.form.prephone === '90' ? 'phone': 'email',
             phone: this.phone,
             email: this.email,
+            data: data
           })
-
-          this.showLoginCodeModal()
+          this.$bvModal.hide('signupModal')
+          this.$bvModal.show('loginCodeModal')
 
         } else {
           alert(response.data.message)
