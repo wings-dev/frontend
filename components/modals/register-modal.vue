@@ -1,9 +1,8 @@
 <template>
   <!-- Kayıt Modal -->
-  <div class="modal fade Login" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+  <b-modal id="signupModal" class="Login" size="xl" :hide-header="true" hide-footer>
+    <div class="Login">
+      <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('signupModal')"><i
           class="icon-login-close"></i></button>
         <div class="Login-in">
           <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
@@ -43,8 +42,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </b-modal>
 </template>
 
 <script>
@@ -97,7 +95,6 @@ export default {
   },
   methods: {
     ...mapMutations(['setLoginCodeModalData']),
-    ...mapActions(['showLoginCodeModal', 'hideRegisterModal']),
     onInput(phone, phoneObject) {
       setTimeout(() => {
         this.phoneObject = phoneObject;
@@ -117,7 +114,8 @@ export default {
     async register() {
       try {
         const response = await this.$axios.post('/api/register', this.form);
-        if (response.data.status === true) {
+        //if (response.data.status === true) {
+        if (response.data.hasOwnProperty('access_token')) {
 
           const data = {
             source_id: process.env.SITE
@@ -130,15 +128,14 @@ export default {
           }
           const response = await this.$axios.post('/api/sendcode', data);
 
-          this.hideRegisterModal();
-
           this.setLoginCodeModalData({
             loginType: this.form.prephone === '90' ? 'phone': 'email',
             phone: this.phone,
             email: this.email,
+            data: data
           })
-
-          this.showLoginCodeModal()
+          this.$bvModal.hide('signupModal')
+          this.$bvModal.show('loginCodeModal')
 
         } else {
           alert(response.data.message)

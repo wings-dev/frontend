@@ -339,8 +339,7 @@ export default {
         name: null,
         email: null,
       });
-
-      $('#reservationModal').modal('show')
+      this.$bvModal.show('reservationModal')
     },
     reservationButton(event) {
 

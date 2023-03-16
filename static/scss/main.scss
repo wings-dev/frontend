@@ -2919,7 +2919,7 @@ body.overflow-hidden {
           padding-right: 10px;
           align-items: center;
         }
-        
+
       }
 
       &-tr {
@@ -3955,12 +3955,41 @@ body.overflow-hidden {
   }
 }
 
+
+.modal-body {
+  padding: 0;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1140px;
+  }
+}
+
 .input-group-text {
   border: none;
   background-color: transparent;
 }
 .calendar-buttons {
-      
+
   button {
     background-color: transparent;
     display: flex;

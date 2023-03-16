@@ -1,60 +1,48 @@
 <template>
   <!-- Giriş Modal -->
-  <div class="modal fade Login" id="loginCodeModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+  <b-modal id="loginCodeModal" class="Login" size="xl" :hide-header="true" hide-footer>
+    <div class="Login">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="$bvModal.hide('loginCodeModal')"><i
           class="icon-login-close"></i></button>
 
-        <!-- Kod doğrulama içeriği -->
-        <div class="Login-in">
-          <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
-          <div class="Login-right">
-            <div class="Login-right-in">
-              <h2><b>DOĞRULAMA </b> KODU</h2>
-              <span>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
-              <form action="" class="Login-form"@submit.prevent="entercode" >
-                <fieldset name='number-code' data-number-code-form>
-                  <input
-                    v-for="(code, index) in codes"
-                    :key="index"
-                    ref="codeInputs"
-                    class="number-code"
-                    type="number"
-                    :name="'number-code-'+index"
-                    :data-number-code-input="index"
-                    min="0"
-                    max="9"
-                    v-model="codes[index]"
-                    @input="onInput($event, index)"
-                    @keydown="onKeyDown($event, index)"
-                    @keyup="onKeyUp($event, index)"
-                    @paste="onPaste"
-                    required
-                  />
-                </fieldset>
+      <!-- Kod doğrulama içeriği -->
+      <div class="Login-in">
+        <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
+        <div class="Login-right">
+          <div class="Login-right-in">
+            <h2><b>DOĞRULAMA </b> KODU</h2>
+            <span>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
+            <form action="" class="Login-form" @submit.prevent="entercode">
+              <fieldset name='number-code' data-number-code-form>
+                <input v-for="(code, index) in codes" :key="index" ref="codeInputs" class="number-code" type="number"
+                  :name="'number-code-' + index" :data-number-code-input="index" min="0" max="9" v-model="codes[index]"
+                  @input="onInput($event, index)" @keydown="onKeyDown($event, index)" @keyup="onKeyUp($event, index)"
+                  @paste="onPaste" required />
+              </fieldset>
 
-                <code-count-down :countdown-time="30"></code-count-down>
+              <code-count-down :key="key" :countdown-time="30" @started="started" @timeout="timeout"></code-count-down>
 
-                <button type="submit" class="Login-form-button mt-1">GÖNDER</button>
-                <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
-              </form>
-            </div>
+              <button v-if="countdownTimeout" @click="resend" type="button" class="Login-form-button mt-1">TEKRAR KOD GÖNDER</button>
+              <button v-else type="submit" class="Login-form-button mt-1">GÖNDER</button>
+              <p class="Login-form-signup">Hesabın yok mu? <a href="">Hemen Üye Ol!</a></p>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </b-modal>
 </template>
 
 <script>
 import jwt_decode from 'jwt-decode'
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "LoginCodeModal",
   data() {
     return {
+      key: 0,
+      countdownTimeout: false,
       codes: ['', '', '', ''],
     }
   },
@@ -63,12 +51,19 @@ export default {
       loginType: state => state.loginCodeModalData.loginType,
       phone: state => state.loginCodeModalData.phone,
       email: state => state.loginCodeModalData.email,
+      data: state => state.loginCodeModalData.data,
     }),
     password() {
       return this.codes.join('');
     }
   },
   methods: {
+    started() {
+      this.countdownTimeout = false
+    },
+    timeout() {
+      this.countdownTimeout = true
+    },
     async entercode() {
       try {
         const data = {
@@ -81,7 +76,7 @@ export default {
         } else if (this.loginType === 'email') {
           data.email = this.email;
         }
-        const response = await this.$auth.loginWith('laravelJWT', {data: data})
+        const response = await this.$auth.loginWith('laravelJWT', { data: data })
 
         // decode JWT token to get user email
         const tokenPayload = jwt_decode(response.data.access_token)
@@ -91,8 +86,14 @@ export default {
 
         location.reload()
       } catch (error) {
+        // TODO girilen kod yanlış tekrar gir yapılacak
         console.error(error)
       }
+    },
+    async resend() {
+      const response = await this.$axios.post('/api/sendcode', this.data);
+      this.codes = ['', '', '', ''];
+      this.key = this.key + 1; // contdown yeniliyor.
     },
     onInput(event, index) {
       // Keep only first character entered in the input
