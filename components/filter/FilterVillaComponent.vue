@@ -91,7 +91,7 @@
           <div class="F_villa ">
 
             <filter-villa-preview-component v-for="(villa, index) in villas" :key="index"
-              :villa="villa"></filter-villa-preview-component>
+              :villa="villa" :checkindate="checkIn" ></filter-villa-preview-component>
 
             <div
               class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
@@ -230,7 +230,7 @@
               </li>
             </ul>
           </nav>
-{{ orderValue }}
+
         </div>
       </div>
     </div>

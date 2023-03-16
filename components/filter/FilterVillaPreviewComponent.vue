@@ -1,5 +1,5 @@
 <template>
-  <div class="F_villa-item">
+  <div class="F_villa-item" >
     <div class="F_villa-item-img">
       <div class="swiper villa-list-slider">
         <div class="swiper-wrapper">
@@ -46,15 +46,7 @@
             </p>
           </div>
         </div>
-        <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-if="villa.total.total == 0">
-          <div class="F_villa-item-head-price-in">
-            <b>{{ villa.prices.min_price.price }}₺</b>
-            <p>‘den başlayan fiyatlar</p>
-          </div>
-
-          <span>GECELİK</span>
-        </div>
-        <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
+        <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-if="checkindate">
           <div class="F_villa-item-head-price-in">
             <b>{{ villa.total.total }}₺</b>
             <p>{{ villa.total.day }} gece fiyatı</p>
@@ -62,6 +54,16 @@
 
           <span>TOPLAM</span>
         </div>
+         <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
+          
+
+          <div class="F_villa-item-head-price-in">
+            <b>{{ villa.prices.min_price.price }}₺</b>
+            <p>‘den başlayan fiyatlar</p>
+          </div>
+
+          <span>GECELİK</span>
+        </div> 
       </div>
       <div class="F_villa-item-info">
         <div class="F_villa-item-info-item">
@@ -105,7 +107,7 @@ import 'swiper/swiper-bundle.min.css'
 
 export default {
   name: "FilterVillaPreviewComponent",
-  props: ['villa'],
+  props: ['villa','checkindate'],
   components: {
     Swiper
   },
