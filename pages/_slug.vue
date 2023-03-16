@@ -68,7 +68,8 @@ export default {
           {rel: 'stylesheet', href: `/css/hakkimizda.min.css`}
         ]
         // filtre redis datası
-        componentData = await $getRedisKey(`web:2:pages:hakkimizda`);
+        componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
+        // componentData = await $getRedisKey(`web:2:pages:hakkimizda`);
         console.log(site_id,path)
         // componentData = redisData.data;
       }
