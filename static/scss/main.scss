@@ -2919,12 +2919,27 @@ body.overflow-hidden {
           padding-right: 10px;
           align-items: center;
         }
-
       }
 
       &-tr {
         padding: 0;
         border: none;
+        .vue-tel-input {
+          width: 100%;
+          border: solid 1px #dadada;
+          height: 62px;
+          strong{
+            font-size: 11px;
+          }
+          &:focus-within {
+            box-shadow: none;
+            border-color: #dadada;
+          }
+          .vti__dropdown-list{
+            width: 280%;
+          }
+        }
+
       }
 
       &-check {
@@ -2983,6 +2998,13 @@ body.overflow-hidden {
       &-select {
         padding: 0;
         border: none;
+        .v-select {
+          &-toggle {
+            height: 62px;
+            border-color: #dadada!important;
+            background-color: transparent!important;
+          }
+        }
       }
     }
     &-button {
@@ -3955,7 +3977,6 @@ body.overflow-hidden {
   }
 }
 
-
 .modal-body {
   padding: 0;
 }
@@ -3989,7 +4010,6 @@ body.overflow-hidden {
   background-color: transparent;
 }
 .calendar-buttons {
-
   button {
     background-color: transparent;
     display: flex;
@@ -3997,7 +4017,7 @@ body.overflow-hidden {
     font-size: 12px;
     font-weight: 500;
     color: var(--bs-theme-first);
-    &:last-child{
+    &:last-child {
       color: var(--bs-theme-second);
     }
     i {
