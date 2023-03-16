@@ -98,7 +98,6 @@ export default {
   },
   methods: {
     ...mapMutations(['setReservationModalData']),
-    ...mapActions(['showReservationCodeModal', 'hidePreReservationModal']),
     onInput(phone, phoneObject) {
       setTimeout(() => {
         this.phoneObject = phoneObject;
@@ -134,11 +133,9 @@ export default {
       if (reservationID) {
         console.log(reservationID);
         this.setReservationModalData(Object.assign({}, data, { reservationID }));
-        this.hidePreReservationModal();
-        this.showReservationCodeModal();
+        this.$bvModal.hide('reservationModal')
+        this.$bvModal.show('reservationCodeModal')
       }
-
-
     }
   }
 }

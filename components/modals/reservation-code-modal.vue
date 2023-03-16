@@ -19,13 +19,15 @@
                   @input="onInput($event, index)" @keydown="onKeyDown($event, index)" @keyup="onKeyUp($event, index)"
                   @paste="onPaste" required />
               </fieldset>
-              <p class="Login-code-info" data-time="50"><b>00:30</b> Tekrar talep etmek için beklemeniz gereken
-                süre
-                <a href="">Yeni Doğrulama Kodu Gönder</a>
-              </p>
-              <button type="submit" class="Login-form-button mt-1">GÖNDER</button>
+
+              <code-count-down :key="key" :countdown-time="30" @started="started" @timeout="timeout"></code-count-down>
+
+              <button v-if="countdownTimeout" @click="resend" type="button" class="Login-form-button mt-1">TEKRAR KOD GÖNDER</button>
+              <button v-else type="submit" class="Login-form-button mt-1">GÖNDER</button>
               <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye
                   Ol!</a></p>
+
+              <p class="Login-form-signup"><a href="javascript:void(0)" @click="goBack">Bilgilerimi Düzenle</a></p>
             </form>
           </div>
         </div>
@@ -36,12 +38,14 @@
 
 <script>
 import jwt_decode from 'jwt-decode'
-import { mapActions, mapState } from "vuex";
+import {mapActions, mapMutations, mapState} from "vuex";
 
 export default {
   name: "ReservationCodeModal",
   data() {
     return {
+      key: 0,
+      countdownTimeout: false,
       codes: ['', '', '', ''],
     }
   },
@@ -52,13 +56,43 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['hideReservationCodeModal', 'hideReservationCodeModal', 'showRegisterModal']),
+    ...mapMutations(['setReservationModalData']),
+    started() {
+      this.countdownTimeout = false
+    },
+    timeout() {
+      this.countdownTimeout = true
+    },
     openRegister() {
-      this.hideReservationCodeModal();
-      this.showRegisterModal();
+      this.$bvModal.hide('reservationCodeModal')
+      this.$bvModal.show('signupModal')
+    },
+    goBack() {
+      this.$bvModal.hide('reservationCodeModal')
+      this.$bvModal.show('reservationModal')
+    },
+    async resend() {
+      let reservationID;
+      try {
+        const response = await this.$axios.post(`/api/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, this.reservationModalData);
+        reservationID = response.data.reservationID;
+      } catch (error) {
+        if (error.response) {
+          reservationID = error.response.data.reservationID;
+        } else {
+          console.error(error);
+        }
+      }
+
+      if (reservationID) {
+        let data = JSON.parse(JSON.stringify(this.reservationModalData))
+        data.reservationID = reservationID;
+        this.setReservationModalData(data);
+      }
+      this.codes = ['', '', '', ''];
+      this.key = this.key + 1; // contdown yeniliyor.
     },
     async entercode() {
-
       const data = {
         reservationID: this.reservationModalData.reservationID,
         verifyCode: this.password
@@ -69,7 +103,7 @@ export default {
       } catch (error) {
         if (error.response) {
           if (error.response.data.status) {
-            this.hideReservationCodeModal();
+            this.$bvModal.hide('reservationCodeModal')
             setTimeout(() => {
               alert(error.response.data.message);
             }, 100)
