@@ -113,7 +113,8 @@ export default {
   ],
   toast: {
     position: "top-right",
-    duration:2000
+    duration:2000,
+    iconPack: 'custom-class'
   },
 
   cookies: {
