@@ -62,6 +62,7 @@
                     <span class="lh-sm text-theme-first text-sm">{{ villa.detail.bathrooms }} Banyo</span>
                   </div>
                 </div>
+                <div><a href="javascript:void(0);" @click="removeFavorite(villa.detail.code)">Favorilerden Sil</a></div>
                 <div class="lh-sm ls-05 mt-1" v-if="villa.price !== null">
                   <span class="text-secondary list-item-info">Gecelik <strong
                       class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan
@@ -117,6 +118,12 @@ export default {
         console.log(villaData)
       }
     }
+  },
+  methods: {
+    removeFavorite(code) {
+      this.$store.dispatch('favorite/removeFavorite', code)
+      this.villas = this.villas.filter(villa => villa.detail.code !== code)
+    },
   }
 }
 </script>
