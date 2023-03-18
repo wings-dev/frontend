@@ -1272,8 +1272,8 @@ export default {
           // Merge data from matching calendar items
           const matchingCalendarItems = this.calendar.filter(item => item.dates[0] === date);
           matchingCalendarItems.forEach(item => {
-            customData.status.push(...item.status);
-            customData.dateStatus.push(...item.dateStatus);
+            customData.status = customData.status.concat(item.status);
+            customData.dateStatus = customData.dateStatus.concat(item.dateStatus);
           });
           // Add price data from matching price_list_1 item
           const matchingPriceItem = this.price_list_1.find(item => item.dates === date);
@@ -1281,24 +1281,37 @@ export default {
             customData.price = matchingPriceItem.price;
           }
 
-          customData.className = {
-            kapali: customData.status.includes(1),
-            giris: customData.dateStatus.includes(0),
-            doubleday: customData.dateStatus.includes(0) && customData.status.includes(2) && customData.status.includes(1),
-            doubledaykapali: customData.dateStatus.includes(0) && customData.dateStatus.includes(2),
-            cikis: customData.dateStatus.includes(2),
-            opsiyon: customData.status.includes(2),
-            "cikis-kapali": customData.status.includes(2) && customData.dateStatus.includes(2),
-            "cikis-opsiyon": customData.status.includes(1) && customData.dateStatus.includes(2),
+          function setClassName(data) {
+            const { status, dateStatus } = data;
+
+            return {
+              kapali: status.includes(1),
+              opsiyon: status.includes(2),
+              giris: dateStatus.includes(0),
+              cikis: dateStatus.includes(2),
+              "cikis-kapali": status.includes(2) && dateStatus.includes(2),
+              "cikis-opsiyon": status.includes(1) && dateStatus.includes(2),
+            }
           }
 
-          attributes.push({
-            customData,
-            dates: new Date(date),
-          });
+          // Aynı dates değerine sahip bir nesne var mı kontrol edilir
+          const existingObjIndex = attributes.findIndex(obj => obj.dates.getTime() === new Date(date).getTime());
+          if (existingObjIndex !== -1) { // varsa
+            // o gün için verileri güncelle
+            attributes[existingObjIndex].customData.status = [...new Set([...attributes[existingObjIndex].customData.status, ...customData.status])]; // status dizilerini birleştirir ve tekrar edenleri çıkarır
+            attributes[existingObjIndex].customData.dateStatus = [...new Set([...attributes[existingObjIndex].customData.dateStatus, ...customData.dateStatus])]; // dateStatus dizilerini birleştirir ve tekrar edenleri çıkarır
+            attributes[existingObjIndex].customData.className = setClassName(attributes[existingObjIndex].customData)
+          } else {
+            // aynı tarih yoksa attributes değişkenine yeni tarihli objeyi ekle
+            customData.className = setClassName(customData)
+            attributes.push({
+              customData,
+              dates: new Date(date),
+            });
+          }
         });
       }
-      console.log(attributes)
+      console.log(JSON.stringify(attributes))
       return attributes;
     }
   }
@@ -1351,15 +1364,44 @@ body {
   margin-bottom: 15px !important;
 }
 
+/* OPSIYON START  */
+.opsiyon {
+  background-color: #FFF8E7;
+  position: relative;
+}
+
+.opsiyon:after {
+  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
+}
+
+.opsiyon.cikis {
+  background-color: transparent;
+}
+
+.opsiyon.cikis:before {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+/* OPSIYON END */
+
+
+/* KAPALI START  */
+
 .kapali {
   background-color: #F2F5FB;
   position: relative;
 }
 
-
-.opsiyon {
-  background-color: #FFF8E7;
-  position: relative;
+.kapali:after {
+  background-image: linear-gradient(135deg, #f3f3ff 49%, transparent 50%);
 }
 
 .kapali.giris {
@@ -1379,10 +1421,6 @@ body {
   z-index: -1;
 }
 
-/* .kapali.opsiyon.giris:before {
-  background-image: linear-gradient(315deg, #FFF8E7 49%, transparent 50%);
-} */
-
 .kapali.cikis {
   background-color: transparent;
   z-index: 1;
@@ -1400,27 +1438,13 @@ body {
   z-index: -1;
 }
 
-.opsiyon.cikis {
+/* OPSIYON END  */
+
+.cikis-kapali {
   background-color: transparent;
 }
 
-.opsiyon.cikis:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.opsiyon.cikis-kapali {
-  background-color: transparent;
-}
-
-.opsiyon.cikis-kapali:before {
+.cikis-kapali:before {
   content: "";
   display: inline-block;
   width: 100%;
@@ -1432,11 +1456,11 @@ body {
   z-index: -1;
 }
 
-.opsiyon.cikis-kapali:after {
+.cikis-kapali:after {
   display: none;
 }
 
-.opsiyon.cikis-opsiyon:before {
+.cikis-opsiyon:before {
   content: "";
   display: inline-block;
   width: 100%;
@@ -1460,17 +1484,6 @@ body {
   z-index: -1;
 }
 
-.opsiyon:after {
-  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
-}
-
-.kapali:after {
-  background-image: linear-gradient(135deg, #f3f3ff 49%, transparent 50%);
-}
-
-/* .kapali.opsiyon.cikis:before {
-  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
-} */
 
 .calendar-price {
   font-weight: 400;
