@@ -1272,8 +1272,10 @@ export default {
         const prevDayData = findByDate(attributes, prevDayString)?.customData;
         const nextDayData = findByDate(attributes, nextDayString)?.customData;
 
+        // bu gün hem giriş hem çıkışsa
         if (dateStatus.includes(0) && dateStatus.includes(2)) {
-          return prevDayData?.status.includes(1) && nextDayData?.status.includes(2)
+          // bir önceki günün tipine bak
+          return prevDayData?.status.includes(1)
             ? { "kapali-cikis-to-opsiyon-giris": status.includes(2) }
             : { "opsiyon-cikis-to-kapali-giris": status.includes(2) };
         }
