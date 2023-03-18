@@ -55,7 +55,7 @@
 
               <div class="Filter-right-head-buttons-item">
                 <client-only>
-                  <VSelect v-model="orderValue" :options="orderValues" :labelTitle="orderPlaceholder" />
+                  <VSelect :options="orderValues" :labelTitle="orderPlaceholder" @input="orderChanged" />
                 </client-only>
               </div>
             </div>
@@ -387,10 +387,11 @@ export default {
         max_price: this.max_price,
         startDate: this.checkIn,
         endDate: this.checkOut,
+        order: this.orderValue?.value
       };
 
       console.log(data)
-      
+
       this.$axios
         .post(`/api/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`, data)
         .then(({ data: responseData }) => {
@@ -400,7 +401,7 @@ export default {
           this.total_items = responseData.total;
           this.current_page = responseData.current_page;
 
-          
+
         })
         .catch(console.error)
         .finally(() => {
@@ -423,6 +424,13 @@ export default {
         }
       }
       return null;
+    },
+    orderChanged(order) {
+      console.log(order);
+      this.orderValue = order;
+      setTimeout(() => {
+        this.filter();
+      },50)
     },
     unselect(item) {
       item.selected = false;
