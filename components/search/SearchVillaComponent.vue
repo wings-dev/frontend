@@ -189,6 +189,22 @@ export default {
   },
   beforeMount() {
     this.parseQueryString();
+    if (this.$route.path !== '/kiralik-villa') {
+      let lastSearch = localStorage.getItem('lastSearch');
+      if (lastSearch) {
+        lastSearch = JSON.parse(lastSearch);
+        console.log('lastSearch', lastSearch);
+
+        this.checkIn = lastSearch.checkIn;
+        this.checkOut = lastSearch.checkOut;
+        this.datePickerProps.startingDateValue = lastSearch.checkIn ? new Date(this.checkIn) : null;
+        this.datePickerProps.endingDateValue = lastSearch.checkOut ? new Date(this.checkOut) : null;
+
+        this.adult = parseInt(lastSearch.adult || 1);
+        this.children = parseInt(lastSearch.children || 0);
+        this.baby = parseInt(lastSearch.baby || 0);
+      }
+    }
   },
   mounted() {
   },

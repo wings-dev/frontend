@@ -34,7 +34,7 @@
             <div class="tab-content" id="search-tabContent">
               <div class="tab-pane show active" id="villa" role="tabpanel" aria-labelledby="villa-tab">
 
-                <search-villa-component></search-villa-component>
+                <search-villa-component :key="$route.path"></search-villa-component>
 
               </div>
             </div>
