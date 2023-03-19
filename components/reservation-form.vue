@@ -303,6 +303,7 @@ export default {
     },
     checkOut(newValue) {
       this.changeHotelInput(-1, newValue);
+      this.availabilityCheck();
     },
   },
   methods: {
