@@ -320,7 +320,9 @@ export default {
       return Array.from({ length: this.totalPages }, (_, i) => i + 1);
     },
     selectedDestinations() {
-      return this.getSelectedObjects(this.destinations);
+      let a =this.getSelectedObjects(this.destinations);
+      console.log(a);
+      return a;
     },
     selectedFacilityTypes() {
       return this.getSelectedObjects(this.amenites.facilityTypes);
@@ -386,7 +388,7 @@ export default {
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
       const data = {
-        destination: this.getSelectedObjects(this.destinations).map(destination => destination.code),
+        destination: this.selectedDestinations.map(({ code }) => code),
         amenites: [
           ...this.selectedFacilityConcepts,
           ...this.selectedFacilityTypes,
