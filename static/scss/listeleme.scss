@@ -181,7 +181,6 @@
 }
 
 .List {
-  background-color: #f2f5fb;
   padding: 30px 0;
   h3 {
     font-size: 27px;
@@ -216,35 +215,53 @@
 
   &-sss {
     .accordion {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      // display: flex;
+      // flex-wrap: wrap;
+      // justify-content: space-between;
+      column-count: 2;
       &-item {
         border-radius: 10.4px;
-        width: 48%;
+        width: 100%;
         border: none;
-        margin-bottom: 4px;
-        background-color: #f2f5fb;
+        margin-bottom: 8px;
+        break-inside: avoid-column;
+        // background-color: #f2f5fb;
       }
       &-header {
       }
       .accordion-button:not(.collapsed) {
         box-shadow: none;
+        
+      
       }
       &-button {
-        background-color: #fff5ed;
+        background-color: #f2f5fb;
         font-size: 14px;
         font-weight: 500;
         color: var(--bs-theme-first-dark);
+        border: solid 2px #f2f5fb;
+        border-bottom: none;
+        &:after{
+          width: 1rem;
+          height: 1rem;
+          background-size: 1rem;
+        }
         &:focus {
           box-shadow: none;
         }
         &[aria-expanded="true"] {
-          // background-color: #f2f5fb;
+          background-color: transparent;
+          &+.accordion-collapse{
+            border: solid 2px #f2f5fb;
+            border-top: none;
+            border-bottom-left-radius:5px ;
+            border-bottom-right-radius:5px ;
+          }
         }
       }
       &-body {
-        background-color: #f2f5fb;
+        // background-color: #f2f5fb;
+        padding-top: 0;
         p {
           font-size: 13px;
           font-weight: 500;
@@ -253,6 +270,7 @@
           color: #7f8090;
         }
       }
+    
     }
   }
 }

@@ -1,37 +1,18 @@
 <template>
   <div>
-    <!-- <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5">
+    <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
             <h1 class="highlight-section-title">Fethiye Kiralık Villa</h1>
-            <p class="highlight-section-desc">
-              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.</p>
-            <div class="highlight-section-desc-more-button read-more-button">+ TÜMÜNÜ OKU</div>
-            <div class="highlight-section-desc-more-button">- DARALT</div>
+            <p class="highlight-section-desc" :class="{ active: isExpanded }" v-html="content">
+            </p>
+
+            <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded }"  @click="isExpanded = !isExpanded" ><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' : 'DAHA AZ OKU' }}</div>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <div class="container mt-2 d-none">
       <button type="button" @click="this.showLoginModal">GİRİŞ YAP MODAL</button>
@@ -287,90 +268,76 @@
 
     <filter-villa-component :selectedFilters="selectedFilters"></filter-villa-component>
 
-    <!-- <section class="highlight-section bg-theme-light-2 pt-5 pb-4">
+    <section class="highlight-section bg-theme-light-2 pt-5 pb-4">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
             <h1 class="highlight-section-title">Fethiye Kiralık Villa</h1>
-            <p class="highlight-section-desc">
-              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-              Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-              masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-              mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-              kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-              Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.</p>
-            <div class="highlight-section-desc-more-button read-more-button">+ TÜMÜNÜ OKU</div>
-            <div class="highlight-section-desc-more-button">- DARALT</div>
+            <p class="highlight-section-desc" :class="{ active: isExpanded2 }" v-html="content">
+            </p>
+              <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded2 }"  @click="isExpanded2 = !isExpanded2" ><i class="readmore"></i> {{ !isExpanded2 ? 'TAMAMINI OKU' : 'DAHA AZ OKU' }}</div>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
-    <!-- <section class="List">
+    <section class="List">
       <div class="container">
         <div class="List-sss">
           <h3>En çok sorulan sorular </h3>
-          <div class="accordion" id="accordionExample">
+          <div class="accordion" id="Faq">
             <div class="accordion-item">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                aria-expanded="true" aria-controls="collapseOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
+                aria-expanded="false" aria-controls="faq1">
                 Nasıl rezervasyon yapabilirim ?
               </button>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample">
+              <div id="faq1" class="accordion-collapse collapse " data-bs-parent="#Faq">
                 <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                    yemeklerinizi pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası
-                    hazırlayabilirsiniz.</p>
+                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Ücrete neler dahil ?
-              </button>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                    yemeklerinizi pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası
-                    hazırlayabilirsiniz.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+                aria-expanded="false" aria-controls="faq2">
                 Kaç Kişi Konaklayabiliyoruz ?
               </button>
-              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                data-bs-parent="#accordionExample">
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#Faq">
                 <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                    yemeklerinizi pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası
-                    hazırlayabilirsiniz.</p>
+                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
+                aria-expanded="false" aria-controls="faq3">
+                Yemek servisi hizmetiniz var mı ?
+              </button>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#Faq">
+                <div class="accordion-body">
+                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4"
+                aria-expanded="false" aria-controls="faq4">
+                Yemek servisi hizmetiniz var mı ?
+              </button>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#Faq">
+                <div class="accordion-body">
+                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
   </div>
 </template>
 
@@ -398,13 +365,36 @@ export default {
       ],
       callSubject: null,
       callPlaceholder: "Konu Seçiniz",
-      disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28']
+      disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
+      isExpanded: false,
+      isExpanded2: false,
+      content: `Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
+                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
+                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
+                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
+                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
+                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
+                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
+                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
+                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
+                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
+                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
+                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
+                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
+                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
+                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
+                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
+                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
+                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
+                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
+                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.`
     }
   },
   components: {
     RegisterModal,
     LoginModal,
     VSelect,
+
   },
   methods: {
     ...mapActions(['showLoginModal', 'hideLoginModal', 'showRegisterModal', 'hideRegisterModal']),
@@ -416,6 +406,7 @@ export default {
         }
       }, 50)
     },
+
   },
 
   watch: {
@@ -438,11 +429,13 @@ export default {
         validCharactersOnly: true,
       };
     },
+
   },
   mounted() {
 
-    
-  }
+
+  },
+
 }
 </script>
 <style>
@@ -474,5 +467,34 @@ export default {
 
 .v-select-toggle {
   align-items: center;
+}
+
+.block-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px 20px;
+  background-color: skyblue;
+  border-radius: 8px;
+}
+.block-content__preview {
+  /* default line-height is 24px */
+  max-height: calc(24px * 4);
+  overflow: hidden;
+  color: white;
+}
+.block-content__paragraph {
+  color: white;
+  overflow: hidden;
+  transition: all 250ms ease-out;
+}
+.block-content__paragraph.block-content__paragraph--is-expanded {
+  overflow: initial;
+}
+.block-content__button {
+  color: white;
+  text-decoration: underline;
+  align-self: flex-end;
 }
 </style>

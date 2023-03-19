@@ -39,6 +39,7 @@ export default {
       src: "@fancyapps/ui/dist/fancybox.css",
       lang: "css",
     },
+    "vue-tour/dist/vue-tour.css"
   ],
   googleFonts: {
     families: {
@@ -55,7 +56,8 @@ export default {
     "~/plugins/redisHelper.js",
     { src: "~/plugins/jquery.js", mode: "client" },
     { src: '~/plugins/bootstrap.js', mode: 'client' },
-    { src: '~/plugins/ymaps.js',  mode: 'client' }
+    { src: '~/plugins/ymaps.js',  mode: 'client' },
+    { src: "~/plugins/vue-tour.js", ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

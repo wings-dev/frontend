@@ -3,16 +3,7 @@
         <section class="User">
             <div class="container">
                 <div class="User-in">
-                    <div class="User-left">
-                        <a href="" class="active">Üyelik Bilgileriniz</a>
-                        <a href="">Seyahatlerim</a>
-                        <a href="">Bana Özel</a>
-                        <a href="">Favorilerim <span>14</span></a>
-                        <a href="">Kuponlarım</a>
-                        <a href="">Yardım ve Destek</a>
-                        <a href="" class="exit">Çıkış Yap</a>
-
-                    </div>
+                    <user-sidebar></user-sidebar>
                     <div class="User-right">
                         <div class="User-right-head">
                             <h2>Rezervasyonlarım</h2>
@@ -1041,6 +1032,7 @@
 </template>
   
 <script>
+import UserSidebar from "@/components/user/sidebar.vue";
 export default {
     name: 'UserReservation',
     data() {
@@ -1049,6 +1041,7 @@ export default {
         }
     },
     components: {
+        UserSidebar
     },
     methods: {
 
