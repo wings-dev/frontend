@@ -20,8 +20,6 @@
               <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
             </div>
 
-            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations"
-              :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
               :groups="amenites.groups.facilityTypes"
@@ -303,8 +301,6 @@ export default {
     this.children = this.selectedFilters['children'] ?? null;
     this.baby = this.selectedFilters['baby'] ?? null;
 
-    console.log(this.selectedFilters);
-
     this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
     this.applySelectedFilters('amenites', 'facilityTypes');
@@ -359,23 +355,19 @@ export default {
   },
   methods: {
     applySelectedFilters(property, nestedProperty) {
-      try {
-        let filters = [];
-        if (nestedProperty)
-          filters = this.selectedFilters[property]?.[nestedProperty] || [];
-        else
-          filters = this.selectedFilters[property] || [];
-        let checkboxes = [];
-        if (nestedProperty)
-          checkboxes = this[property][nestedProperty];
-        else
-          checkboxes = this[property];
-        for (let i = 0; i < filters.length; i++) {
-          const checkbox = this.findNestedObject(checkboxes, filters[i].code);
-          checkbox.selected = true;
-        }
-      } catch (e) {
-        console.log('hata', e)
+      let filters = [];
+      if (nestedProperty)
+        filters = this.selectedFilters[property]?.[nestedProperty] || [];
+      else
+        filters = this.selectedFilters[property] || [];
+      let checkboxes = [];
+      if (nestedProperty)
+        checkboxes = this[property][nestedProperty];
+      else
+        checkboxes = this[property];
+      for (let i = 0; i < filters.length; i++) {
+        const checkbox = this.findNestedObject(checkboxes, filters[i].code);
+        checkbox.selected = true;
       }
     },
     updateFilter(key, value, sendRequest = true) {
