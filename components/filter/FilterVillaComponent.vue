@@ -64,11 +64,6 @@
           <div class="Filter-right-selected">
             <div class="Filter-right-selected-in">
 
-              <a v-for="destination in selectedDestinations" class="Filter-right-selected-item">
-                Bölge:{{ destination.text }}
-                <i class="icon-search-close" @click="unselect(destination)"></i>
-              </a>
-
               <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
                 Bölge:{{ facilityType.text }}
                 <i class="icon-search-close" @click="unselect(facilityType)"></i>
@@ -84,6 +79,7 @@
                 <i class="icon-search-close" @click="unselect(facility)"></i>
               </a>
 
+              <button type="button" id="Fetures_clear" v-if="filterCount > 0" @click="clearFilter()">Temizle</button>
             </div>
           </div>
 
@@ -331,6 +327,15 @@ export default {
     },
     selectedFacilities() {
       return this.getSelectedObjects(this.amenites.facilities);
+    },
+    filterCount() {
+      return 0;
+      /*return [
+        ...this.selectedDestinations,
+        ...this.selectedFacilityConcepts,
+        ...this.selectedFacilityTypes,
+        ...this.selectedFacilities
+      ].length;*/
     },
     displayedPageNumbers() {
       const currentIndex = this.pageNumbers.indexOf(this.current_page);
