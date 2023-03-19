@@ -332,6 +332,7 @@ export default {
       return this.getSelectedObjects(this.amenites.facilities);
     },
     filterCount() {
+      return 0;
       return [
         ...this.selectedDestinations,
         ...this.selectedFacilityConcepts,
