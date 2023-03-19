@@ -81,7 +81,7 @@
                 <i class="icon-search-close" @click="unselect(facility)"></i>
               </a>
 
-              <button type="button" id="Fetures_clear" v-if="filterCount > 0" @click="clearFilter()">Temizle</button>
+              {{filterCount}}
             </div>
           </div>
 
