@@ -84,6 +84,7 @@
                 <i class="icon-search-close" @click="unselect(facility)"></i>
               </a>
 
+              <button type="button" id="Fetures_clear" @click="clearFilter()">Temizle</button>
             </div>
           </div>
 
