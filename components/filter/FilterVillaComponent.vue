@@ -335,6 +335,7 @@ export default {
     },
     filterCount() {
       return [
+        ...this.selectedDestinations,
         ...this.selectedFacilityConcepts,
         ...this.selectedFacilityTypes,
         ...this.selectedFacilities
@@ -387,7 +388,6 @@ export default {
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
       const data = {
-        destination: this.selectedDestinations.map(({ code }) => code),
         amenites: [
           ...this.selectedFacilityConcepts,
           ...this.selectedFacilityTypes,
