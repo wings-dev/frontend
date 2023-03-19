@@ -359,19 +359,23 @@ export default {
   },
   methods: {
     applySelectedFilters(property, nestedProperty) {
-      let filters = [];
-      if (nestedProperty)
-        filters = this.selectedFilters[property]?.[nestedProperty] || [];
-      else
-        filters = this.selectedFilters[property] || [];
-      let checkboxes = [];
-      if (nestedProperty)
-        checkboxes = this[property][nestedProperty];
-      else
-        checkboxes = this[property];
-      for (let i = 0; i < filters.length; i++) {
-        const checkbox = this.findNestedObject(checkboxes, filters[i].code);
-        checkbox.selected = true;
+      try {
+        let filters = [];
+        if (nestedProperty)
+          filters = this.selectedFilters[property]?.[nestedProperty] || [];
+        else
+          filters = this.selectedFilters[property] || [];
+        let checkboxes = [];
+        if (nestedProperty)
+          checkboxes = this[property][nestedProperty];
+        else
+          checkboxes = this[property];
+        for (let i = 0; i < filters.length; i++) {
+          const checkbox = this.findNestedObject(checkboxes, filters[i].code);
+          checkbox.selected = true;
+        }
+      } catch (e) {
+        console.log('hata', e)
       }
     },
     updateFilter(key, value, sendRequest = true) {
