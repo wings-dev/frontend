@@ -64,7 +64,10 @@
           <div class="Filter-right-selected">
             <div class="Filter-right-selected-in">
 
-
+              <a v-for="destination in selectedDestinations" class="Filter-right-selected-item">
+                Bölge:{{ destination.text }}
+                <i class="icon-search-close" @click="unselect(destination)"></i>
+              </a>
 
               <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
                 Bölge:{{ facilityType.text }}
@@ -332,7 +335,6 @@ export default {
     },
     filterCount() {
       return [
-        ...this.selectedDestinations,
         ...this.selectedFacilityConcepts,
         ...this.selectedFacilityTypes,
         ...this.selectedFacilities
