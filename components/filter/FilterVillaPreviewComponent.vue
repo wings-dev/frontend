@@ -132,7 +132,23 @@ export default {
   },
   methods: {
     goDetail() {
-      this.$router.push(this.villa.url)
+      const query = this.$route.query;
+      let data = null;
+      if (query.checkIn && query.checkOut) {
+        data = {i:this.encodeTimestamp(query.checkIn), o:this.encodeTimestamp(query.checkOut), v: localStorage.getItem('visitorId')};
+      }
+
+      this.$router.push({
+        path: this.villa.url,
+        query: data,
+      });
+    },
+    encodeTimestamp(dateString) {
+      // Tarih stringini (ISO formatında) Date nesnesine dönüştür
+      const date = new Date(dateString);
+
+      // Date nesnesini zaman damgasına (timestamp) dönüştür
+      return date.getTime();
     },
     amenitesList(villa) {
       return (Object.values(villa.amenites || {}).flatMap(amenite => amenite.list) || []).filter(i => !!i);

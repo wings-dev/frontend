@@ -14,7 +14,7 @@
             </div>
           </div>
 
-          <HotelDatePicker :disabled="true" @check-in-changed="checkInChanged($event)"
+          <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
             @check-out-changed="checkOutChanged($event)" format="DD dddd" :positionRight="true"
             :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
             :displayClearButton=false>
@@ -235,7 +235,8 @@
 <script>
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
-import { mapMutations } from "vuex";
+import {mapMutations} from "vuex";
+
 export default {
   name: "ReservationForm",
   props: ['propertyCode', 'disableReservation'],
@@ -244,6 +245,7 @@ export default {
   },
   data() {
     return {
+      datePickerProps: {},
       checkIn: null,
       checkOut: null,
       adult: 1,
@@ -292,6 +294,19 @@ export default {
 
     }
   },
+  beforeMount() {
+    const query = this.$route.query;
+    if (query.i && query.o) {
+      this.checkIn = this.decodeTimestamp(query.i);
+      this.checkOut = this.decodeTimestamp(query.o);
+      const visitorId = query.v;
+      if (visitorId === localStorage.getItem('visitorId')) {
+        this.availabilityCheck();
+      }
+      this.datePickerProps.startingDateValue = this.checkIn ? new Date(this.checkIn) : null;
+      this.datePickerProps.endingDateValue = this.checkOut ? new Date(this.checkOut) : null;
+    }
+  },
   computed: {
     dateSelected() {
       return this.checkIn && this.checkOut
@@ -303,11 +318,22 @@ export default {
     },
     checkOut(newValue) {
       this.changeHotelInput(-1, newValue);
-      this.availabilityCheck();
     },
   },
   methods: {
     ...mapMutations(['setReservationModalData']),
+    encodeTimestamp(dateString) {
+      const date = new Date(dateString);
+      return date.getTime();
+    },
+    decodeTimestamp(timestamp) {
+      timestamp = parseInt(timestamp)
+      const date = new Date(timestamp);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    },
     async availabilityCheck() {
       this.availabilityLoading = true;
 
@@ -358,6 +384,7 @@ export default {
     },
     checkOutChanged(value) {
       this.checkOut = this.formatDate(value);
+      this.availabilityCheck();
     },
     changeHotelInput(tabIndex, value) {
       const currentDate = new Date(value);
