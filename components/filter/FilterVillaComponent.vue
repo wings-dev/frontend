@@ -63,6 +63,8 @@
 
           <div class="Filter-right-selected">
             <div class="Filter-right-selected-in">
+              {{filterCount}}
+              <button type="button" id="Fetures_clear" @click="clearFilter()">Temizle</button>
 
               <a v-for="destination in selectedDestinations" class="Filter-right-selected-item">
                 Bölge:{{ destination.text }}
@@ -84,7 +86,6 @@
                 <i class="icon-search-close" @click="unselect(facility)"></i>
               </a>
 
-              <button type="button" id="Fetures_clear" @click="clearFilter()">Temizle</button>
             </div>
           </div>
 
