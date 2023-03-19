@@ -64,10 +64,7 @@
           <div class="Filter-right-selected">
             <div class="Filter-right-selected-in">
 
-              <a v-for="destination in selectedDestinations()" class="Filter-right-selected-item">
-                Bölge:{{ destination.text }}
-                <i class="icon-search-close" @click="unselect(destination)"></i>
-              </a>
+              {{selectedDestinations}}
 
               <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
                 Bölge:{{ facilityType.text }}
@@ -320,6 +317,9 @@ export default {
     pageNumbers() {
       return Array.from({ length: this.totalPages }, (_, i) => i + 1);
     },
+    selectedDestinations() {
+      return this.getSelectedObjects(this.destinations);
+    },
     selectedFacilityTypes() {
       return this.getSelectedObjects(this.amenites.facilityTypes);
     },
@@ -328,6 +328,14 @@ export default {
     },
     selectedFacilities() {
       return this.getSelectedObjects(this.amenites.facilities);
+    },
+    filterCount() {
+      return [
+        ...this.selectedDestinations,
+        ...this.selectedFacilityConcepts,
+        ...this.selectedFacilityTypes,
+        ...this.selectedFacilities
+      ].length;
     },
     displayedPageNumbers() {
       const currentIndex = this.pageNumbers.indexOf(this.current_page);
@@ -346,17 +354,6 @@ export default {
     }
   },
   methods: {
-    selectedDestinations() {
-      return this.getSelectedObjects(this.destinations);
-    },
-    filterCount() {
-      return [
-        ...this.selectedDestinations(),
-        ...this.selectedFacilityConcepts,
-        ...this.selectedFacilityTypes,
-        ...this.selectedFacilities
-      ].length;
-    },
     applySelectedFilters(property, nestedProperty) {
       let filters = [];
       if (nestedProperty)
@@ -387,7 +384,7 @@ export default {
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
       const data = {
-        destination: this.selectedDestinations().map(({ code }) => code),
+        destination: this.selectedDestinations.map(({ code }) => code),
         amenites: [
           ...this.selectedFacilityConcepts,
           ...this.selectedFacilityTypes,
