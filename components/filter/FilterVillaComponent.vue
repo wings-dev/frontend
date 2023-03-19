@@ -303,7 +303,9 @@ export default {
     this.children = this.selectedFilters['children'] ?? null;
     this.baby = this.selectedFilters['baby'] ?? null;
 
-    // this.applySelectedFilters('destinations', null);
+    console.log(this.selectedFilters);
+
+    this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
