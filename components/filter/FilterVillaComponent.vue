@@ -267,6 +267,9 @@ export default {
         facilityConcepts: [],
         facilities: [],
       },
+      adult: null,
+      children: null,
+      baby: null,
       orderValues: [
         { value: 1, text: "Fiyata Göre Artan" },
         { value: 2, text: "Fiyata Göre Azalan" },
@@ -288,18 +291,22 @@ export default {
     this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
+    // console.log(JSON.stringify({
+    //   destinations: this.destinations,
+    //   amenites: this.amenites,
+    // }))
+  },
+  beforeMount() {
     this.checkIn = this.selectedFilters['checkIn'] ?? null;
     this.checkOut = this.selectedFilters['checkOut'] ?? null;
+    this.adult = this.selectedFilters['adult'] ?? null;
+    this.children = this.selectedFilters['children'] ?? null;
+    this.baby = this.selectedFilters['baby'] ?? null;
 
     this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
-
-    // console.log(JSON.stringify({
-    //   destinations: this.destinations,
-    //   amenites: this.amenites,
-    // }))
   },
   mounted() {
     this.filter();
@@ -376,6 +383,8 @@ export default {
     },
     filter(pageNumber = 1) {
 
+      let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
+
       const data = {
         destination: this.selectedDestinations.map(({ code }) => code),
         amenites: [
@@ -387,6 +396,8 @@ export default {
         max_price: this.max_price,
         startDate: this.checkIn,
         endDate: this.checkOut,
+        adult: adult,
+        baby: this.baby ? parseInt(this.baby) : null,
         order: this.orderValue?.value
       };
 

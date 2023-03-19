@@ -32,7 +32,7 @@
         <div class="Search-item-date">
           <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs">
-            <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
+            <HotelDatePicker v-bind="datePickerProps" @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)" :i18n="calendarLanguage" ref="datePicker" :displayClearButton=false>
 
               <div slot="content">
@@ -133,13 +133,14 @@
 // import HotelDatePicker from "vue-hotel-datepicker";
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
-import { mapState } from "vuex";
+import {mapMutations, mapState} from "vuex";
 
 export default {
   name: "SearchVillaComponent",
   data() {
     return {
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
+      datePickerProps: {},
       checkIn: null,
       checkOut: null,
       adult: 1,
@@ -185,12 +186,13 @@ export default {
   created() {
     this.destinations = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.destinations));
     this.amenites = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.amenites));
-    // console.log()
+  },
+  beforeMount() {
+    this.parseQueryString();
   },
   mounted() {
   },
   computed: {
-    ...mapState(['searchData']),
     selectedDestinations() {
       return this.getSelectedObjects(this.destinations);
     },
@@ -212,6 +214,18 @@ export default {
     }
   },
   methods: {
+    parseQueryString() {
+      const query = this.$route.query;
+
+      this.checkIn = query.checkIn;
+      this.checkOut = query.checkOut;
+      this.datePickerProps.startingDateValue = query.checkIn ? new Date(this.checkIn) : null;
+      this.datePickerProps.endingDateValue = query.checkOut ? new Date(this.checkOut) : null;
+
+      this.adult = parseInt(query.adult || 1);
+      this.children = parseInt(query.children || 0);
+      this.baby = parseInt(query.baby || 0);
+    },
     showMobileFilter() {
       document.querySelector('.Filter-left').classList.add("show")
       document.querySelector('body').classList.add("over")
@@ -283,12 +297,21 @@ export default {
         facilityConcepts: this.selectedFacilityConcepts.map(item => item.code),
       };
 
+      localStorage.setItem('lastSearch', JSON.stringify(queryParams));
+
       const urlSearchParams = Object.entries(queryParams)
         .filter(([key, value]) => value !== undefined && value !== null && value !== '')
         .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
         .join('&');
 
       window.location.href = `${window.location.origin}/kiralik-villa?${urlSearchParams}`;
+
+      /*
+      this.$router.push({
+        path: '/kiralik-villa',
+        query: queryParams,
+      });
+       */
     },
     clearDatesRez() {
       this.$refs.datePicker.clearSelection();
