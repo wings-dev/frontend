@@ -64,7 +64,7 @@
           <div class="Filter-right-selected">
             <div class="Filter-right-selected-in">
 
-              <button type="button" id="Fetures_clear" v-if="filterCount > 0" @click="clearFilter()">Temizle</button>
+              <button type="button" id="Fetures_clear" v-show="filterCount > 0" @click="clearFilter()">Temizle</button>
 
               <a v-for="destination in selectedDestinations" class="Filter-right-selected-item">
                 Bölge:{{ destination.text }}
