@@ -37,6 +37,7 @@
     "unzipper": "^0.10.11",
     "v-calendar": "^2.4.1",
     "vue": "^2.7.10",
+    "vue-expandable-text-line": "^2.0.12",
     "vue-functional-calendar": "^2.9.97",
     "vue-hotel-datepicker2": "^1.2.8",
     "vue-server-renderer": "^2.7.10",
@@ -44,6 +45,7 @@
     "vue-tel-input": "^5.12.0",
     "vue-template-compiler": "^2.7.10",
     "vue-the-mask": "^0.11.1",
+    "vue-tour": "^2.0.0",
     "vue-yandex-maps": "^0.11.13",
     "vue2-slot-calendar": "^2.2.5"
   },

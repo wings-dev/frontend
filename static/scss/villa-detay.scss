@@ -221,8 +221,11 @@ body {
       grid-area: 2 / 4 / 3 / 5;
     }
     .view-item {
+      img{
+        transition: all 400ms;
+      }
       .hover-box {
-        opacity: 0;
+        opacity: 1;
         visibility: visible;
         transition: all 0.25s ease;
       }
@@ -232,6 +235,16 @@ body {
             opacity: 1;
             visibility: visible;
           }
+        }
+      }
+      &:hover{
+        img{
+          transform: scale(1.03);
+        }
+      }
+      &.last:hover{
+        img{
+          transform: scale(1);
         }
       }
     }

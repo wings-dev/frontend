@@ -90,10 +90,7 @@
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
               <nuxt-img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                 width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
-              <div
-                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
-              </div>
+
             </a>
           </div>
           <div class="area-2 d-md-block d-none">
@@ -101,10 +98,7 @@
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
               <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
-              <div
-                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
-              </div>
+
             </a>
           </div>
           <div class="area-3 d-md-block d-none">
@@ -112,10 +106,7 @@
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
               <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
-              <div
-                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
-              </div>
+
             </a>
           </div>
           <div class="area-4 d-none d-lg-block">
@@ -123,22 +114,23 @@
               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
               <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
-              <div
-                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
-              </div>
+
             </a>
           </div>
           <div class="area-5 d-none d-lg-block">
-            <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+            <div class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl last">
               <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
               <div
-                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
+                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
+                <span @click.prevent="showGallery()">Tüm Fotoğraflar ( 32 ) </span>
+                <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
+                <a href="https://www.youtube.com/watch?v=5SMaakuGyH0" data-fancybox>
+                  <i class="icon-play-button"></i> Video İzle
+                </a>
+                <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -318,8 +310,8 @@
                 göre ekstra temizlik ücreti eklenebilmektedir.
               </p>
               <client-only>
-                <v-calendar class="custom-calendar" :attributes="attributes" :columns="2" :disabled-dates="disabledDates"
-                  disable-page-swipe :step="1">
+                <v-calendar class="custom-calendar mt-4" :attributes="attributes" :columns="2"
+                  :disabled-dates="disabledDates" disable-page-swipe :step="1">
                   <template v-slot:day-content="{ day, attributes }">
                     <div v-for="(attr, index) in attributes" :key="index"
                       class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
@@ -798,7 +790,7 @@
           </div>
           <div class="View-right Reservation">
 
-            <reservation-form :property-code="villa.code" :disable-reservation="disableReservation"></reservation-form>
+            <reservation-form :property-code="villa.code" :disable-reservation="disableDate"></reservation-form>
 
             <div class="View-right-opportunity">
               <h4>Kısa Süreli Fırsatlar</h4>
@@ -1096,7 +1088,8 @@ export default {
         document.querySelector('.main').classList.remove("main-z")
         this.galleryIsOpen = false
       }
-    }
+    },
+
   },
   watch: {
     galleryIsOpen() {
@@ -1244,11 +1237,7 @@ export default {
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
       }
     }
-
-    // console.log('villa', this.villa)
-    // console.log('calendar', this.calendar)
-    // console.log('price_list_1', this.price_list_1)
-
+console.log(this.villa)
 
   },
   computed: {
@@ -1275,18 +1264,18 @@ export default {
         // bu gün hem giriş hem çıkışsa
         if (dateStatus.includes(0) && dateStatus.includes(2)) {
           // bir önceki günün tipine bak
-          return prevDayData?.status.includes(1)
+          return prevDayData?.status.includes(2)
             ? { "kapali-cikis-to-opsiyon-giris": status.includes(2) }
             : { "opsiyon-cikis-to-kapali-giris": status.includes(2) };
         }
 
         return {
-          "kapali": status.includes(1),
-          "kapali-giris": status.includes(1) && dateStatus.includes(0),
-          "kapali-cikis": status.includes(1) && dateStatus.includes(2),
-          "opsiyon": status.includes(2),
-          "opsiyon-giris": status.includes(2) && dateStatus.includes(0),
-          "opsiyon-cikis": status.includes(2) && dateStatus.includes(2),
+          "kapali": status.includes(2),
+          "kapali-giris": status.includes(2) && dateStatus.includes(0),
+          "kapali-cikis": status.includes(2) && dateStatus.includes(2),
+          "opsiyon": status.includes(1),
+          "opsiyon-giris": status.includes(1) && dateStatus.includes(0),
+          "opsiyon-cikis": status.includes(1) && dateStatus.includes(2),
         };
       }
 
@@ -1325,7 +1314,17 @@ export default {
       }
 
       return attributes;
+    },
+    disableDate() {
+      const disableDate = [];
+      this.calendar.forEach(item => {
+        if (item.status[0] == 2) {
+          disableDate.push(item.dates[0])
+        }
+      });
+      return disableDate;
     }
+
   }
 
 }

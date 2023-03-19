@@ -19,10 +19,9 @@
                     class="main-image bg-light lazy cover rounded-xl w-100" />
                 </a>
                 <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
-                  <a href="javascript:void(0);"
+                  <a href="javascript:void(0);" @click="removeFavorite(villa.detail.code)"
                     class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
                     onclick="$(this).toggleClass('active')">
-                    <i class="icon-heart"></i>
                     <i class="icon-heart-full"></i>
                   </a>
                 </div>
@@ -62,7 +61,6 @@
                     <span class="lh-sm text-theme-first text-sm">{{ villa.detail.bathrooms }} Banyo</span>
                   </div>
                 </div>
-                <div><a href="javascript:void(0);" @click="removeFavorite(villa.detail.code)">Favorilerden Sil</a></div>
                 <div class="lh-sm ls-05 mt-1" v-if="villa.price !== null">
                   <span class="text-secondary list-item-info">Gecelik <strong
                       class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan

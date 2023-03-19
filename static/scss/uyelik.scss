@@ -57,7 +57,7 @@
       color: var(--bs-theme-first);
       transition: all 300ms;
       &:hover,
-      &.active {
+      &.active,&.nuxt-link-active {
         color: var(--bs-theme-second);
       }
       span {
