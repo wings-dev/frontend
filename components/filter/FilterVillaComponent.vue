@@ -428,6 +428,7 @@ export default {
         }, []);
       } catch (e) {
         console.log('hata', e);
+        return [];
       }
 
     },
