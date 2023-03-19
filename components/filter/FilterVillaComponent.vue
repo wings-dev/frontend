@@ -20,6 +20,8 @@
               <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
             </div>
 
+            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations"
+              :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
               :groups="amenites.groups.facilityTypes"
@@ -62,10 +64,6 @@
           <div class="Filter-right-selected">
             <div class="Filter-right-selected-in">
 
-              <a v-for="destination in selectedDestinations" class="Filter-right-selected-item">
-                Bölge:{{ destination.text }}
-                <i class="icon-search-close" @click="unselect(destination)"></i>
-              </a>
 
               <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
                 Bölge:{{ facilityType.text }}
