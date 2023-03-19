@@ -320,7 +320,6 @@ export default {
       return Array.from({ length: this.totalPages }, (_, i) => i + 1);
     },
     selectedDestinations() {
-      return [];
       return this.getSelectedObjects(this.destinations);
     },
     selectedFacilityTypes() {
@@ -421,11 +420,16 @@ export default {
         });
     },
     getSelectedObjects(checkboxes) {
-      return checkboxes.reduce((selected, checkbox) => {
-        if (checkbox.selected) selected.push(checkbox);
-        if (checkbox.children) selected.push(...this.getSelectedObjects(checkbox.children));
-        return selected;
-      }, []);
+      try {
+        return checkboxes.reduce((selected, checkbox) => {
+          if (checkbox.selected) selected.push(checkbox);
+          if (checkbox.children) selected.push(...this.getSelectedObjects(checkbox.children));
+          return selected;
+        }, []);
+      } catch (e) {
+        console.log('hata', e);
+      }
+
     },
     findNestedObject(checkboxes, code) {
       for (let i = 0; i < checkboxes.length; i++) {
