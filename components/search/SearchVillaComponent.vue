@@ -188,7 +188,7 @@ export default {
     this.amenites = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.amenites));
   },
   beforeMount() {
-    this.parseQueryString();
+    /*this.parseQueryString();
     if (this.$route.path !== '/kiralik-villa') {
       let lastSearch = localStorage.getItem('lastSearch');
       if (lastSearch) {
@@ -204,7 +204,7 @@ export default {
         this.children = parseInt(lastSearch.children || 0);
         this.baby = parseInt(lastSearch.baby || 0);
       }
-    }
+    }*/
   },
   mounted() {
   },
