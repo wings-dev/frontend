@@ -426,7 +426,7 @@ export default {
       return checkboxes.reduce((selected, checkbox) => {
         if (checkbox.selected) selected.push(checkbox);
         if (checkbox.children) selected.push(...this.getSelectedObjects(checkbox.children));
-        return selected;
+        return JSON.parse(JSON.stringify(selected));
       }, []);
     },
     findNestedObject(checkboxes, code) {
