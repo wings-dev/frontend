@@ -332,7 +332,6 @@ export default {
       return this.getSelectedObjects(this.amenites.facilities);
     },
     filterCount() {
-      return 0;
       return [
         ...this.selectedDestinations,
         ...this.selectedFacilityConcepts,
@@ -387,7 +386,7 @@ export default {
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
       const data = {
-        destination: this.selectedDestinations.map(({ code }) => code),
+        destination: this.getSelectedObjects(this.destinations).map(destination => destination.code),
         amenites: [
           ...this.selectedFacilityConcepts,
           ...this.selectedFacilityTypes,
@@ -421,17 +420,11 @@ export default {
         });
     },
     getSelectedObjects(checkboxes) {
-      try {
-        return checkboxes.reduce((selected, checkbox) => {
-          if (checkbox.selected) selected.push(checkbox);
-          if (checkbox.children) selected.push(...this.getSelectedObjects(checkbox.children));
-          return selected;
-        }, []);
-      } catch (e) {
-        console.log('hata', e);
-        return [];
-      }
-
+      return checkboxes.reduce((selected, checkbox) => {
+        if (checkbox.selected) selected.push(checkbox);
+        if (checkbox.children) selected.push(...this.getSelectedObjects(checkbox.children));
+        return selected;
+      }, []);
     },
     findNestedObject(checkboxes, code) {
       for (let i = 0; i < checkboxes.length; i++) {
