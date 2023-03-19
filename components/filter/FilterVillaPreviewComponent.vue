@@ -4,16 +4,16 @@
       <div class="swiper villa-list-slider">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
-            <NuxtLink :to="villa.url">
+            <a href="javascript:void(0)" @click="goDetail">
             <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" sizes="sm:100vw md:50vw lg:400px"/>
-          </NuxtLink>
+          </a>
           </div>
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
       <div class="villa-item-fav position-absolute top-0 end-0 pt-1 mt-1 pe-1">
-     
+
         <button type="button" @click="toggleFavorite"
                   class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0 " :class="isFavorite ? 'active' : ''">
                   <span class="action-btn-icon">
@@ -27,7 +27,7 @@
         <div class="F_villa-item-head-name">
           <span>Tesis Kodu</span>
 
-          <a :href="villa.url">{{ prefix + villa.code }}</a>
+          <a href="javascript:void(0)" @click="goDetail">{{ prefix + villa.code }}</a>
           <div class="F_villa-item-head-name-star">
             <i class="icon-star active"></i>
             <i class="icon-star active"></i>
@@ -48,22 +48,22 @@
         </div>
         <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-if="checkindate">
           <div class="F_villa-item-head-price-in">
-            <b>{{ villa.total.total }}₺</b>
+            <b>{{ villa.total.total | numberFormat }}₺</b>
             <p>{{ villa.total.day }} gece fiyatı</p>
           </div>
 
           <span>TOPLAM</span>
         </div>
          <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
-          
+
 
           <div class="F_villa-item-head-price-in">
-            <b>{{ villa.prices.min_price.price }}₺</b>
+            <b>{{ villa.prices.min_price.price | numberFormat }}₺</b>
             <p>‘den başlayan fiyatlar</p>
           </div>
 
           <span>GECELİK</span>
-        </div> 
+        </div>
       </div>
       <div class="F_villa-item-info">
         <div class="F_villa-item-info-item">
@@ -94,7 +94,7 @@
           </div>
 
         </div>
-        <NuxtLink :to="villa.url" class="F_villa-item-show">Villayı İncele</NuxtLink>
+        <a href="javascript:void(0)" @click="goDetail" class="F_villa-item-show">Villayı İncele</a>
       </div>
     </div>
   </div>
@@ -131,6 +131,9 @@ export default {
     }
   },
   methods: {
+    goDetail() {
+      this.$router.push(this.villa.url)
+    },
     amenitesList(villa) {
       return (Object.values(villa.amenites || {}).flatMap(amenite => amenite.list) || []).filter(i => !!i);
     },

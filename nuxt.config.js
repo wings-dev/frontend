@@ -55,7 +55,8 @@ export default {
     "~/plugins/redisHelper.js",
     { src: "~/plugins/jquery.js", mode: "client" },
     { src: '~/plugins/bootstrap.js', mode: 'client' },
-    { src: '~/plugins/ymaps.js',  mode: 'client' }
+    { src: '~/plugins/ymaps.js',  mode: 'client' },
+    { src: '~/plugins/filters.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
