@@ -114,7 +114,7 @@ export default {
       citySearchText: '',
       citiesDefault: [
         {id: "23494", title: 'Antalya', type: 1},
-        {id: "10830", title: 'İstanbul', type: 1},
+        {id: "23472", title: 'İstanbul', type: 1},
       ],
       selectedCity: '',
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
