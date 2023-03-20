@@ -36,11 +36,7 @@
                 <h2>TEST</h2>
               </div>
               <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <client-only>
-                  
-                  <v-select :options="cities" label="item_data" v-model="selected" :labelTitle="orderPlaceholder">
-                  </v-select>
-                </client-only>
+                <search-hotel-component :key="$route.path"></search-hotel-component>
               </div>
             </div>
           </form>
@@ -119,9 +115,6 @@ export default {
   data() {
     return {
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
-      cities: ['Ramada Plaza by Wyndham Antalya', 'Litera Fethiye Relax', 'Koc Sun', 'Seastar Aparthotel'],
-      orderPlaceholder: "Şehir, İlçe veya Otel adı yazın",
-      selected:'',
     }
   },
   components: {

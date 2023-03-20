@@ -39,7 +39,8 @@ export default {
       src: "@fancyapps/ui/dist/fancybox.css",
       lang: "css",
     },
-    "vue-tour/dist/vue-tour.css"
+    "vue-tour/dist/vue-tour.css",
+    'vue-select/dist/vue-select.css'
   ],
   googleFonts: {
     families: {
@@ -58,7 +59,8 @@ export default {
     { src: '~/plugins/bootstrap.js', mode: 'client' },
     { src: '~/plugins/ymaps.js',  mode: 'client' },
     { src: "~/plugins/vue-tour.js", ssr: false },
-    { src: '~/plugins/filters.js' }
+    { src: '~/plugins/filters.js' },
+    { src: '~/plugins/vue-select.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
