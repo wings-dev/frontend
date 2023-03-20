@@ -23,14 +23,8 @@
           <span>Otel Adı</span>
 
           <a href="javascript:void(0)" @click="goDetail">{{ hotel.name }}</a>
-          <div class="F_villa-item-head-name-star">
-            <i class="icon-star active"></i>
-            <i class="icon-star active"></i>
-            <i class="icon-star active"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <p>4.9</p>
-          </div>
+          <div>{{ hotel.offers[0].price.amount }} {{ hotel.offers[0].price.currency }}</div>
+
         </div>
 
         </div>

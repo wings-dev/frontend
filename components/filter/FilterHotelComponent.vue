@@ -253,6 +253,7 @@ export default {
       per_page: 10,
       total_items: 0,
       hotels: [],
+      requestId: null,
       villas: [],
       min_price: null,
       max_price: null,
@@ -282,6 +283,7 @@ export default {
       orderPlaceholder: "Sırala:",
       loading: true,
       novillas: false,
+
     }
   },
   components: {
@@ -401,6 +403,7 @@ export default {
         .post(`/data/hotels`, data)
         .then(response => {
           this.hotels = response.data.body.hotels;
+          this.requestId = response.data.header.requestId;
           console.log('this.hotels', this.hotels);
 
         })
