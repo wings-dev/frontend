@@ -40,6 +40,7 @@
     "vue-expandable-text-line": "^2.0.12",
     "vue-functional-calendar": "^2.9.97",
     "vue-hotel-datepicker2": "^1.2.8",
+    "vue-select": "^3.20.2",
     "vue-server-renderer": "^2.7.10",
     "vue-slider-component": "^3.2.24",
     "vue-tel-input": "^5.12.0",

@@ -1,8 +1,8 @@
 <template>
   <div>
-<client-only>
-  <login-modal></login-modal>
-</client-only>
+    <client-only>
+      <login-modal></login-modal>
+    </client-only>
 
     <common-header></common-header>
 
@@ -12,30 +12,35 @@
           <form action="" class="search-engine">
             <nav>
               <div class="nav nav-tabs border-0 lh-sm" id="search-tab" role="tablist">
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 active" id="villa-tab"
-                  data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa"
-                  aria-selected="false">
-                  <span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt İçi Villalar</span>
-                </button>
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 " disabled id="otel-tab"
-                  data-bs-toggle="tab" data-bs-target="#otel" type="button" role="tab" aria-controls="otel"
-                  aria-selected="true">
-                  <span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt Dışı Villalar</span>
-                  <span class="comingsoon">ÇOK YAKINDA</span>
-                </button>
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 d-none" disabled id="otel-tab"
-                  data-bs-toggle="tab" data-bs-target="#otel" type="button" role="tab" aria-controls="otel"
-                  aria-selected="true">
-                  <span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Otel Rezervasyon</span>
-                  <span class="comingsoon">ÇOK YAKINDA</span>
-                </button>
+                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 active" id="nav-home-tab"
+                  data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                  aria-selected="true"><span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt İçi
+                    Villalar</span></button>
+
+                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0" id="nav-profile-tab"
+                  data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                  aria-selected="false"><span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt Dışı
+                    Villalar</span></button>
+                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 " id="nav-contact-tab"
+                  data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                  aria-selected="false"><span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Otel
+                    Rezervasyon</span><!-- <span class="comingsoon">ÇOK YAKINDA</span> --></button>
+
               </div>
             </nav>
             <div class="tab-content" id="search-tabContent">
-              <div class="tab-pane show active" id="villa" role="tabpanel" aria-labelledby="villa-tab">
-
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <search-villa-component :key="$route.path"></search-villa-component>
-
+              </div>
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <h2>TEST</h2>
+              </div>
+              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <client-only>
+                  
+                  <v-select :options="cities" label="item_data" v-model="selected" :labelTitle="orderPlaceholder">
+                  </v-select>
+                </client-only>
               </div>
             </div>
           </form>
@@ -99,6 +104,7 @@ import CallModal from "@/components/modals/call-modal.vue";
 import FavModal from "@/components/modals/fav-modal.vue";
 import ReservationModal from "@/components/modals/reservation-modal.vue";
 import ReservationCodeModal from "@/components/modals/reservation-code-modal.vue";
+import VSelect from "@alfsnd/vue-bootstrap-select";
 export default {
   name: "default",
   middleware: ['jwt'],
@@ -112,13 +118,16 @@ export default {
   },
   data() {
     return {
-      disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28']
+      disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
+      cities: ['Ramada Plaza by Wyndham Antalya', 'Litera Fethiye Relax', 'Koc Sun', 'Seastar Aparthotel'],
+      orderPlaceholder: "Şehir, İlçe veya Otel adı yazın",
+      selected:'',
     }
   },
   components: {
     ReservationCodeModal,
     ReservationModal,
-    HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal
+    HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, VSelect
   },
   methods: {
     async logout() {
@@ -221,8 +230,7 @@ export default {
   }
 }
 
-:deep() .cookieControl__ControlButton{
-  display: none!important;
+:deep() .cookieControl__ControlButton {
+  display: none !important;
 }
-
 </style>

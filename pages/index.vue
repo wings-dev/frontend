@@ -435,7 +435,7 @@
                 </div>
             </div>
         </section>
-        <div>
+        <!-- <div>
             <div id="">A DOM element on your page. The first step will pop on this element because its ID is 'v-step-0'.
             </div>
             <div class="v-step-1">A DOM element on your page. The second step will pop on this element because its ID is
@@ -444,7 +444,7 @@
                 ID is 'v-step-2'.</div>
 
             <v-tour name="myTour" :steps="steps"></v-tour>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -499,7 +499,7 @@ export default {
         console.log(process.env.NODE_ENV);
         console.log(this.$config.message);
 
-        this.$tours["myTour"].start();
+        // this.$tours["myTour"].start();
 
         Swiper.use([Navigation, Pagination])
 
