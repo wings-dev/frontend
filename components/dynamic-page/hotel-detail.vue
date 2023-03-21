@@ -7,7 +7,10 @@
             <div class="view-top d-flex">
 
               <div class="view-top-title">
-                <h1><span>Otel</span>{{ hotel.name }}</h1>
+                <h1>{{ hotel.name }}</h1>
+              </div>
+
+              <div class="view-top-title">
               </div>
 
             </div>
@@ -27,10 +30,13 @@ import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import CloseVillaModal from '../modals/close-villa-modal.vue';
 
 export default {
-  name: 'DynamicDetailPage',
-  props: ['hotel'],
+  name: 'DynamicHotelDetailPage',
+  props: ['hotel', 'requestId'],
   data() {
     return {}
+  },
+  mounted() {
+    // todo offerslar alınacak
   }
 }
 </script>

@@ -69,7 +69,17 @@ export default {
   target: "server",
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [["@nuxtjs/dotenv", { systemvars: true }], "@nuxt/image"],
+  buildModules: [["@nuxtjs/dotenv", { systemvars: true }], "@nuxt/image", '@nuxtclub/slugify'],
+  slugify: {
+    globals: {
+      replacement: '-',  // replace spaces with replacement character, defaults to `-`
+      remove: undefined, // remove characters that match regex, defaults to `undefined`
+      lower: false,      // convert to lower case, defaults to `false`
+      strict: false,     // strip special characters except replacement, defaults to `false`
+      locale: 'en',       // language code of the locale to use
+      trim: true         // trim leading and trailing replacement chars, defaults to `true`
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
