@@ -1,7 +1,5 @@
 export default ({ $axios, $config }, inject) => {
   const getRedisKey = async (key) => {
-    console.log('redis key aliniyor => ', key);
-
     // Başlangıç zamanı
     const startTime = new Date().getTime();
 
