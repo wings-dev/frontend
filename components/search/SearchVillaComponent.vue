@@ -237,7 +237,6 @@ export default {
       let lastSearch = localStorage.getItem('lastSearch');
       if (lastSearch) {
         lastSearch = JSON.parse(lastSearch);
-        console.log('lastSearch', lastSearch);
 
         this.checkIn = lastSearch.checkIn;
         this.checkOut = lastSearch.checkOut;

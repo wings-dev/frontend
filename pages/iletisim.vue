@@ -217,7 +217,7 @@
         </div>
     </main>
 </template>
-  
+
 <script>
 export default {
     name: 'iletisim',
@@ -259,7 +259,7 @@ export default {
         changeMap(e) {
             if (e == 'merkez') {
                 this.ymaps.setCenter([36.6232369395677, 29.14690812467539])
-                
+
             }
             if (e == 'londra') {
                 this.ymaps.setCenter([34.618867138910204, 32.145069037654377])
@@ -281,7 +281,6 @@ export default {
             }
         },
         mapWasInitializedHandler(map) {
-            console.log(map);
             this.ymaps = map
         }
     },
@@ -301,4 +300,3 @@ export default {
     height: 100%;
 }
 </style>
-  

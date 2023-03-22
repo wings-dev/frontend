@@ -263,15 +263,13 @@
 
     </main>
 </template>
-  
+
 <script>
 export default {
     name: 'Hakkimizda',
     props: ['data'],
     mounted() {
-        console.log(this.data)
     }
 }
 </script>
 <style scoped></style>
-  

@@ -6,7 +6,6 @@ export default ({ $axios, $config }, inject) => {
     const startTime = new Date().getTime();
 
     try {
-      console.log(process.server ?`http://localhost:3000/data` : '/data');
       const response = await $axios.post(process.server ?`http://localhost:3000/data` : '/data', { key });
 
       // Bitiş zamanı
@@ -14,7 +13,6 @@ export default ({ $axios, $config }, inject) => {
 
       // İşlem süresi hesaplama
       const duration = endTime - startTime;
-      console.log(`İşlem ${duration} milisaniye sürdü.`);
 
       return response.data;
     } catch (error) {

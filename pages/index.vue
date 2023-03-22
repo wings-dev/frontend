@@ -489,15 +489,7 @@ export default {
             ]
         }
     },
-    // async asyncData({ $getRedisKey }) {
-    //     console.log(await $getRedisKey("web:4:pages:deneme"));
-    // },
     mounted() {
-        console.log(process.env.NODE_ENV);
-        console.log(this.$config.message);
-
-        // this.$tours["myTour"].start();
-
         Swiper.use([Navigation, Pagination])
 
         const swiper = new Swiper('.list-slide-first', {

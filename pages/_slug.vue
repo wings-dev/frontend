@@ -37,7 +37,6 @@ export default {
     let calendar = [];
     let price_list_1 = [];
     if (redisData) {
-      console.log(redisData);
       const type = redisData.type;
       const headData = {
         title: redisData.title,

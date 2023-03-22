@@ -179,11 +179,6 @@ export default {
 
     this.destinations = JSON.parse(JSON.stringify(searchData.destinations)).filter(destination => destination.type === 1);
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
-
-    // console.log(JSON.stringify({
-    //   destinations: this.destinations,
-    //   amenites: this.amenites,
-    // }))
   },
   beforeMount() {
     this.checkIn = this.selectedFilters['checkIn'] ?? null;
@@ -251,10 +246,8 @@ export default {
         checkboxes = this[property][nestedProperty];
       else
         checkboxes = this[property];
-      console.log(filters)
       for (let i = 0; i < filters.length; i++) {
         const checkbox = this.findNestedObject(checkboxes, filters[i].code);
-        console.log(checkbox);
         checkbox.selected = true;
       }
     },
@@ -270,7 +263,6 @@ export default {
     filter(pageNumber = 1) {
 
       if (this.selectedDestinations.length === 0) {
-        console.log('test');
         this.hotels = [];
         return
       }
@@ -291,9 +283,6 @@ export default {
         .then(response => {
           this.hotels = response.data.body?.hotels ?? [];
           this.requestId = response.data.header.requestId;
-          console.log(this.requestId);
-          console.log('this.hotels', this.hotels);
-
         })
         .catch(console.error)
         .finally(() => {
@@ -318,7 +307,6 @@ export default {
       return null;
     },
     orderChanged(order) {
-      console.log(order);
       this.orderValue = order;
       setTimeout(() => {
         this.filter();

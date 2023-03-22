@@ -131,7 +131,6 @@ export default {
       }
 
       if (reservationID) {
-        console.log(reservationID);
         this.setReservationModalData(Object.assign({}, data, { reservationID }));
         this.$bvModal.hide('reservationModal')
         this.$bvModal.show('reservationCodeModal')

@@ -1203,8 +1203,6 @@ export default {
       });
 
 
-      // console.log('scrollY', scrollY, document.querySelector('#more-villas').offsetTop)
-      // console.log(document.querySelector('#more-villas').offsetTop)
       if (scrollY >= document.querySelector('#more-villas').offsetTop - 500) {
         document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
       } else {
@@ -1238,7 +1236,6 @@ export default {
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
       }
     }
-    console.log(this.villa)
 
   },
   computed: {
@@ -1263,8 +1260,6 @@ export default {
         const prevDayData = findByDate(attributes, prevDayString)?.customData;
         const nextDayData = findByDate(attributes, nextDayString)?.customData;
 
-        console.log('0-2-true-1-1','date', date, 'dateStatus',dateStatus,'Status',status, 'deget', dateStatus.includes(0), dateStatus.includes(2), status.length == 1, status.includes(2),  prevDayData?.status.includes(2))
-
         // bu gün hem giriş hem çıkışsa
         if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(2) && prevDayData?.status.includes(2)) {
           // bir önceki günün tipine bak
@@ -1281,7 +1276,7 @@ export default {
           return prevDayData?.status.includes(2)
             ? { "kapali-cikis-to-opsiyon-giris" : true}
             : { "opsiyon-cikis-to-kapali-giris" : true };
-        }  
+        }
 
 
         return {

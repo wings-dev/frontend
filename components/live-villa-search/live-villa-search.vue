@@ -34,13 +34,13 @@
                 <a :href="villa.url" class="Search-villas-item" v-for="villa in villas">
                   <div class="Search-villas-item-img">
                     <nuxt-img :src="villa.preview_image[0].preview_url" />
-                    
+
                     <div class="Search-villas-item-hover">
                       <i class="icon-search"></i>
                     </div>
                   </div>
                   <div class="Search-villas-item-in">
-                    
+
                     <div class="Search-villas-item-text">
                       <p><span>Tesis Kodu</span>{{ villa.code }}</p>
                       <div class="Search-villas-item-rating">
@@ -95,7 +95,6 @@ export default {
           { cancelToken: this.cancelToken.token }
         )
         this.villas = response.data
-        console.log(response.data)
       } catch (error) {
         console.error(error)
       }

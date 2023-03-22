@@ -331,11 +331,6 @@ export default {
 
     this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
-
-    // console.log(JSON.stringify({
-    //   destinations: this.destinations,
-    //   amenites: this.amenites,
-    // }))
   },
   beforeMount() {
     this.checkIn = this.selectedFilters['checkIn'] ?? null;
@@ -445,13 +440,10 @@ export default {
         order: this.orderValue?.value
       };
 
-      console.log(data)
-
       this.$axios
         .post(`/api/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`, data)
         .then(({ data: responseData }) => {
           this.villas = responseData.data;
-          console.log('this.villas', this.villas);
           this.per_page = responseData.per_page;
           this.total_items = responseData.total;
           this.current_page = responseData.current_page;
@@ -481,7 +473,6 @@ export default {
       return null;
     },
     orderChanged(order) {
-      console.log(order);
       this.orderValue = order;
       setTimeout(() => {
         this.filter();

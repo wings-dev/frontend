@@ -1222,7 +1222,7 @@
 export default {
   name: 'DetailPage',
   layout: 'no-search',
- 
+
   head() {
     let site_id = process.env.SITE
     return {
@@ -1231,7 +1231,7 @@ export default {
         { hid: 'description', name: 'description', content: 'anasayfa' },
         { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
       ],
-      
+
     }
   },
   data() {
@@ -1298,7 +1298,6 @@ export default {
       }
     },
     reservationButton(event) {
-      console.log(event.target)
       document.querySelector('.Reservation-form').classList.add("show")
       event.target.textContent = "Ön Rezervasyon Talebi Gönder";
     }
