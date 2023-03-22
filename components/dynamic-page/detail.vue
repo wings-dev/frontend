@@ -142,7 +142,6 @@
           <div class="View-left">
             <div class="View-desc genelbakis view-menu-content-item" id="desc-content">
               <h2 class="View-title">Tesise Genel Bakış</h2>
-              <b-button v-b-modal.closeVillaModal>Reservation modal</b-button>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
                 tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve müthiş
                 manzarası ile sizleri mest edecek olan Mabel, dubleks bir dairedir. Giriş katında, harika deniz
