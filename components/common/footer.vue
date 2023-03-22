@@ -90,7 +90,7 @@
                             <div class="menu-title fs-6 fw-medium text-theme-primary lh-lg ls-05 mb-3 pb-1">OtelBnb</div>
                             <ul class="footer-menu ls-05 text-black text-opacity-50 fw-medium">
                                 <li>
-                                    <nuxt-link to="/uyelik" class="d-block py-1 mb-2">
+                                    <nuxt-link to="/user/uyelik" class="d-block py-1 mb-2">
                                     Üyelik
                                 </nuxt-link></li>
                                 <li><a href="#!" class="d-block py-1 mb-2">İptal Şartları</a></li>
@@ -200,7 +200,7 @@
         </footer>
     </div>
 </template>
-  
+
 <script>
 
 export default {
@@ -217,4 +217,3 @@ export default {
     }
 }
 </script>
-  

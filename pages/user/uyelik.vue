@@ -11,14 +11,14 @@
 
         <user-information></user-information>
         <!-- <user-reservation></user-reservation> -->
-        
+
     </main>
 </template>
-  
+
 <script>
 import UserInformation from "@/components/user/information.vue";
 import VSelect from "@alfsnd/vue-bootstrap-select";
-import UserReservation from '../components/user/user-reservation.vue';
+import UserReservation from '../../components/user/user-reservation.vue';
 export default {
     name: "uyelik",
     layout: 'no-search',
@@ -108,5 +108,4 @@ export default {
     }
 }
 </script>
-  
-  
+

@@ -11,7 +11,10 @@
         <div class="Login-right">
           <div class="Login-right-in">
             <h2><b>DOĞRULAMA </b> KODU</h2>
-            <span>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
+            <span v-if="message">
+              {{message}}
+            </span>
+            <span v-else>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
             <form action="" class="Login-form" @submit.prevent="entercode">
               <fieldset name='number-code' data-number-code-form>
                 <input v-for="(code, index) in codes" :key="index" ref="codeInputs" class="number-code" type="number"
@@ -52,6 +55,7 @@ export default {
       phone: state => state.loginCodeModalData.phone,
       email: state => state.loginCodeModalData.email,
       data: state => state.loginCodeModalData.data,
+      message: state => state.loginCodeModalData.message,
     }),
     password() {
       return this.codes.join('');

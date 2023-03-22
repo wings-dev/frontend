@@ -153,12 +153,12 @@
                                 <p><span>İyi Akşamlar</span>{{ $auth.user.name }}</p>
                             </button>
                             <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="/uyelik"><i
-                                            class="icon-right-arrows-new"></i>BİLGİLERİNİZ</a></li>
+                                <li><NuxtLink class="dropdown-item" to="/user/uyelik"><i
+                                            class="icon-right-arrows-new"></i>BİLGİLERİNİZ</NuxtLink></li>
                                 <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>FAVORİLERİM</a>
                                 </li>
-                                <li><a class="dropdown-item" href="/rezervasyonlar"><i
-                                            class="icon-right-arrows-new"></i>REZERVASYONLARIM</a></li>
+                                <li><NuxtLink class="dropdown-item" to="/user/rezervasyonlar"><i
+                                            class="icon-right-arrows-new"></i>REZERVASYONLARIM</NuxtLink></li>
                                 <li><a class="dropdown-item" href="#" @click.prevent="logout()"><i
                                             class="icon-right-arrows-new"></i>ÇIKIŞ YAP</a></li>
                             </ul>
@@ -265,7 +265,7 @@ export default {
         //         event.stopPropagation();
         //     }
         // }
-       
+
     },
     created() {
         const menuData = { "topmenu": [{ "href": "sss", "text": "S.S.S", "target": "_self" }, { "href": "hakkimizda", "text": "Hakk\u0131m\u0131zda", "target": "_self" }, { "href": "blog", "text": "Blog", "target": "_self" }, { "href": "iletisim", "text": "\u0130leti\u015fim", "target": "_self" }], "mainmenu": [{ "href": "kiralik-villa", "text": "Kiral\u0131k Villalar", "target": "_self" }, { "href": "", "text": "Villa Se\u00e7enekleri", "target": "_self", "children": [{ "href": "", "text": "Antalya Kiral\u0131k Villa", "target": "_self", "children": [{ "href": "fethiye-kiralik-villa", "text": "Fethiye Kiral\u0131k Villa", "target": "_self" }, { "href": "dalaman-kiralik-villa", "text": "Dalaman Kiral\u0131k Villa", "target": "_self" }, { "href": "bodrum-kiralik-villa", "text": "Bodrum Kiral\u0131k Villa", "target": "_self" }] }, { "href": "", "text": "Mu\u011fla Kiral\u0131k Villa", "target": "_self", "children": [{ "href": "fethiye-kiralik-villa", "text": "Fethiye Kiral\u0131k Villa", "target": "_self" }, { "href": "dalaman-kiralik-villa", "text": "Dalaman Kiral\u0131k Villa", "target": "_self" }, { "href": "bodrum-kiralik-villa", "text": "Bodrum Kiral\u0131k Villa", "target": "_self" }] }] }, { "href": "", "text": "Pop\u00fcler B\u00f6lgeler", "target": "_self", "children": [{ "href": "ozel-bolge", "text": "\u00d6zel B\u00f6lgeler", "target": "_self", "children": [{ "href": "cocuk-havuzlu", "text": "\u00c7ocuk Havuzlu", "target": "_self" }, { "href": "deniz-manzarali", "text": "Deniz Manzaral\u0131", "target": "_self" }, { "href": "ozel-havuzlu", "text": "\u00d6zel Havuzlu", "target": "_self" }, { "href": "jakuzili-villalar", "text": "Jakuzili Villalar", "target": "_self" }, { "href": "luks-villalar", "text": "L\u00fcks Villalar", "target": "_self" }, { "href": "balayi-villalari", "text": "Balay\u0131 Villalar\u0131", "target": "_self" }] }, { "href": "", "text": "Pop\u00fcler Villa Se\u00e7enekleri", "target": "_self", "children": [{ "href": "fethiye-kiralik-villa", "text": "Fethiye Kiral\u0131k Villa", "target": "_self" }, { "href": "dalaman-kiralik-villa", "text": "Dalaman Kiral\u0131k Villa", "target": "_self" }, { "href": "bodrum-kiralik-villa", "text": "Bodrum Kiral\u0131k Villa", "target": "_self" }, { "href": "marmaris-kiralik-villa", "text": "Marmaris Kiral\u0131k Villa", "target": "_self" }] }] }, { "href": "iletisim", "text": "\u0130leti\u015fim", "target": "_self" }], "foootermenu": [{ "href": "", "text": "Villa Kalkan", "target": "_self" }, { "href": "gizlilik-politikasi", "text": "Gizlilik Politikas\u0131", "target": "_self" }, { "href": "kvkk-aydinlatma-metni", "text": "KVKK", "target": "_self" }, { "href": "rezervasyon-kosullari", "text": "Rezervasyon Ko\u015fullar\u0131", "target": "_self" }] }

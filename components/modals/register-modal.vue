@@ -112,25 +112,26 @@ export default {
       }, 50)
     },
     async register() {
+
+      const data = {
+        source_id: this.form.source_id
+      };
+      if (this.form.prephone === '90') {
+        data.prephone = '90';
+        data.phone = this.form.phone;
+      } else if (this.loginType === 'email') {
+        data.email = this.form.email;
+      }
+
       try {
         const response = await this.$axios.post('/api/register', this.form);
         //if (response.data.status === true) {
         if (response.data.hasOwnProperty('access_token')) {
-
-          const data = {
-            source_id: process.env.SITE
-          };
-          if (this.form.prephone === '90') {
-            data.prephone = '90';
-            data.phone = this.form.phone;
-          } else if (this.loginType === 'email') {
-            data.email = this.form.email;
-          }
           const response = await this.$axios.post('/api/sendcode', data);
 
           this.setLoginCodeModalData({
             loginType: this.form.prephone === '90' ? 'phone': 'email',
-            phone: this.phone,
+            phone: this.form.phone,
             email: this.email,
             data: data
           })
@@ -141,7 +142,16 @@ export default {
           alert(response.data.message)
         }
       } catch (error) {
-        console.error(error);
+
+        this.setLoginCodeModalData({
+          loginType: this.form.prephone === '90' ? 'phone': 'email',
+          phone: this.form.phone,
+          email: this.email,
+          data: data,
+          message: 'Zaten kayıtlısınız, telefonunuza gelen kodu giriniz'
+        })
+        this.$bvModal.hide('signupModal')
+        this.$bvModal.show('loginCodeModal')
       }
     }
   }

@@ -4,6 +4,7 @@ export default () => ({
     phone: null,
     email: null,
     data: null,
+    message: null,
   },
   reservationModalData: {
     propertyCode: null,
