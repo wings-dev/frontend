@@ -319,7 +319,7 @@
                       <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
                       <div class="flex-grow overflow-y-auto overflow-x-auto">
                         <p class="calendar-price" style="" :class="attr.customData.class">
-                          {{ !attr.customData.status.includes(1) ? attr.customData.price : '' }}
+                          {{ !attr.customData.status.includes(2) ? attr.customData.price : '' }}
                         </p>
                       </div>
                     </div>
@@ -1237,7 +1237,7 @@ export default {
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
       }
     }
-console.log(this.villa)
+    console.log(this.villa)
 
   },
   computed: {
@@ -1250,7 +1250,8 @@ console.log(this.villa)
       const { calendar, price_list_1 } = this;
 
       const setClassName = (customData, date) => {
-        const { status, dateStatus } = customData;
+        let { status, dateStatus } = customData;
+        status = [...new Set(status)]
         const dateObj = new Date(date);
         const getAdjacentDay = (dayOffset) => new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate() + dayOffset).toISOString().substring(0, 10);
 
@@ -1261,13 +1262,26 @@ console.log(this.villa)
         const prevDayData = findByDate(attributes, prevDayString)?.customData;
         const nextDayData = findByDate(attributes, nextDayString)?.customData;
 
+        console.log('0-2-true-1-1','date', date, 'dateStatus',dateStatus,'Status',status, 'deget', dateStatus.includes(0), dateStatus.includes(2), status.length == 1, status.includes(2),  prevDayData?.status.includes(2))
+
         // bu gün hem giriş hem çıkışsa
+        if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(2) && prevDayData?.status.includes(2)) {
+          // bir önceki günün tipine bak
+          //Kapalı-to-kapalı
+          return { "kapali": true }
+        }
+        if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(1) && prevDayData?.status.includes(1)) {
+          // bir önceki günün tipine bak
+          //opsiyon-to-opsiyon
+          return { "opsiyon": true }
+        }
         if (dateStatus.includes(0) && dateStatus.includes(2)) {
           // bir önceki günün tipine bak
           return prevDayData?.status.includes(2)
-            ? { "kapali-cikis-to-opsiyon-giris": status.includes(2) }
-            : { "opsiyon-cikis-to-kapali-giris": status.includes(2) };
-        }
+            ? { "kapali-cikis-to-opsiyon-giris" : true}
+            : { "opsiyon-cikis-to-kapali-giris" : true };
+        }  
+
 
         return {
           "kapali": status.includes(2),
