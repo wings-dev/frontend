@@ -16,15 +16,15 @@ export default {
       lang: "en",
     },
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" },
+      {charset: "utf-8"},
+      {name: "viewport", content: "width=device-width, initial-scale=1"},
+      {hid: "description", name: "description", content: ""},
+      {name: "format-detection", content: "telephone=no"},
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "stylesheet", href: "/css/custom-bootstrap.min.css" },
-      { rel: "stylesheet", href: "/css/main.min.css" },
+      {rel: "icon", type: "image/x-icon", href: "/favicon.ico"},
+      {rel: "stylesheet", href: "/css/custom-bootstrap.min.css"},
+      {rel: "stylesheet", href: "/css/main.min.css"},
     ],
     script: [
       {
@@ -53,15 +53,15 @@ export default {
     // "~/plugins/vue-awesome-swiper.js",
     "~/plugins/fancyapps-ui.js",
     "~/plugins/vue-tel-input",
-    { src: "~plugins/vcalendar.js", ssr: false },
+    {src: "~plugins/vcalendar.js", ssr: false},
     "~/plugins/redisHelper.js",
-    { src: "~/plugins/jquery.js", mode: "client" },
-    { src: '~/plugins/bootstrap.js', mode: 'client' },
-    { src: '~/plugins/ymaps.js',  mode: 'client' },
-    { src: "~/plugins/vue-tour.js", ssr: false },
-    { src: '~/plugins/filters.js' },
-    { src: '~/plugins/vue-select.js', ssr: false },
-    { src: '~/plugins/dataService.js'}
+    {src: "~/plugins/jquery.js", mode: "client"},
+    {src: '~/plugins/bootstrap.js', mode: 'client'},
+    {src: '~/plugins/ymaps.js', mode: 'client'},
+    {src: "~/plugins/vue-tour.js", ssr: false},
+    {src: '~/plugins/filters.js'},
+    {src: '~/plugins/vue-select.js', ssr: false},
+    {src: '~/plugins/dataService.js'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -70,7 +70,7 @@ export default {
   target: "server",
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [["@nuxtjs/dotenv", { systemvars: true }], "@nuxt/image", '@nuxtclub/slugify'],
+  buildModules: [["@nuxtjs/dotenv", {systemvars: true}], "@nuxt/image", '@nuxtclub/slugify'],
   slugify: {
     globals: {
       replacement: '-',  // replace spaces with replacement character, defaults to `-`
@@ -130,13 +130,11 @@ export default {
   ],
   toast: {
     position: "top-right",
-    duration:2000,
+    duration: 2000,
     iconPack: 'custom-class'
   },
 
-  image: {
-
-  },
+  image: {},
 
   cookies: {
     necessary: [
@@ -169,9 +167,11 @@ export default {
         cookies: ["_ga", "_gat_gtag_UA_138616567_1", "_gid"],
         accepted: () => {
           window.dataLayer = window.dataLayer || [];
+
           function gtag() {
             dataLayer.push(arguments);
           }
+
           gtag("js", new Date());
           gtag("config", "UA-138616567-1");
         },
@@ -180,6 +180,12 @@ export default {
   },
 
   auth: {
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/',
+      home: '/'
+    },
     strategies: {
       laravelJWT: {
         provider: "laravel/jwt",
@@ -199,8 +205,7 @@ export default {
         },
         refreshToken: {
           maxAge: 20160 * 60,
-        },
-        redirect: false,
+        }
       },
     },
   },

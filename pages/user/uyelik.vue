@@ -22,6 +22,7 @@ import UserReservation from '../../components/user/user-reservation.vue';
 export default {
     name: "uyelik",
     layout: 'no-search',
+    middleware: ['auth'],
     head() {
         return {
             title: 'Üyelik Bilgileri',
