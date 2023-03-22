@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dynamic-hotel-detail-page :hotel="hotel" :requestId="requestId"></dynamic-hotel-detail-page>
+    <dynamic-hotel-detail-page :hotelDetails="hotelDetails" :hotelPriceDetails="hotelPriceDetails"></dynamic-hotel-detail-page>
   </div>
 </template>
 
@@ -17,14 +17,15 @@ export default {
     return {
       type: null,
       headData: {},
-      hotel: {},
-      requestId: null,
+      hotelDetails: null,
+      hotelPriceDetails: null,
     }
   },
-  async asyncData({route, $axios}) {
+  async asyncData({route, $axios, $dataService}) {
     const path = route.params.slug;
     const split = path.split('-');
     const hotel_id = split[split.length - 1];
+
 
     /*const date = new Date();
     const year = date.getFullYear();
@@ -42,12 +43,16 @@ export default {
     let response = await $axios.post((process.server ? 'http://localhost:3000' : '') + `/data/hotels`, data)
     const hotel = response.data;*/
 
-    const response = await $axios.post((process.server ? 'http://localhost:3000' : '') + '/data/hotel/' + hotel_id, {});
-    const hotel = response.data.body.hotel;
-    const requestId = response.data.header.requestId;
+    let response = await $dataService.getHotelDetail(hotel_id);
+    const hotelDetails = response.data;
 
-    console.log(response.data);
-    return {hotel, requestId}
+    response = await $dataService.getHotelPrice(hotel_id, {
+      adult: 2,
+      checkIn: '2023-04-01',
+    })
+    const hotelPriceDetails = response.data;
+
+    return {hotelDetails, hotelPriceDetails}
   },
 }
 </script>

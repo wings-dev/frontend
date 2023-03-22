@@ -2,7 +2,7 @@
   <div class="generally-infos bg-white rounded-xxl d-flex flex-column flex-xl-row w-100 pt-1 ms-lg-n1 mb-4 mb-sm-5 pe-xl-0 pe-lg-4">
     <div class="item-image position-relative flex-shrink-0 pe-xl-2 mb-xl-0 mb-3">
       <a href="javascript:void(0)" @click="goDetail" class="d-block flex-shrink-0">
-        <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="../cdn/uploads/hotel-image2.jpg" width="316" height="209" alt="hotel image" class="main-image bg-light lazy cover rounded-xl loaded" style="background-image: url('https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg');">
+        <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg" width="316" height="209" alt="hotel image" class="main-image bg-light lazy cover rounded-xl loaded" style="background-image: url('https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg');">
       </a>
     </div>
     <div class="list-content flex-fill d-flex flex-column align-items-start ps-2 ps-md-3 ps-xl-4 pe-2 pe-md-3 pe-xl-4 pt-1 pb-2">
@@ -11,12 +11,12 @@
           <div class="d-flex align-items-center flex-wrap mb-2 pb-1">
             <span class="list-title fs-5 lh-sm fw-medium ls-05 d-block me-2">{{ hotel.name }}</span>
             <div class="d-flex align-items-center fw-medium text-theme-secondary">
-              <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="../cdn/img/icons/011-star-icon.svg" width="13" height="13" alt="star" class="lazy contain flex-shrink-0 loaded" style="background-image: url(&quot;../cdn/img/icons/011-star-icon.svg&quot;);">&nbsp;
+              <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/011-star-icon.svg" width="13" height="13" alt="star" class="lazy contain flex-shrink-0 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/011-star-icon.svg&quot;);">&nbsp;
               <span>4,9</span>
             </div>
           </div>
           <div class="d-flex align-items-center flex-wrap text-theme-secondary">
-            <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="../cdn/img/icons/003-pin.svg" width="15" height="18" alt="pin" class="lazy contain flex-shrink-0 me-2 loaded" style="background-image: url(&quot;../cdn/img/icons/003-pin.svg&quot;);">
+            <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/003-pin.svg" width="15" height="18" alt="pin" class="lazy contain flex-shrink-0 me-2 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/003-pin.svg&quot;);">
             <span class="lh-sm">Lara / Antalya</span>
             <a href="#!" class="show-map text-theme-second ms-2"><u>Haritada Görüntüle</u></a>
           </div>
@@ -28,17 +28,17 @@
         </div>
       </div>
       <div class="info fs-6 bg-theme-light d-inline-flex align-items-center rounded-sm text-theme-secondary py-2 ps-2 ps-sm-3 pe-2 pe-sm-4 mb-3">
-        <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="../cdn/img/icons/015-bed-second.svg" width="18" height="18" alt="group" class="lazy contain flex-shrink-0 me-2 loaded" style="background-image: url(&quot;../cdn/img/icons/015-bed-second.svg&quot;);">
+        <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/015-bed-second.svg" width="18" height="18" alt="group" class="lazy contain flex-shrink-0 me-2 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/015-bed-second.svg&quot;);">
         <small class="lh-sm ls-05">En fazla 3 yetişkin veya 2 yetişkin + 2 çocuk</small>
       </div>
       <div class="d-flex align-items-center flex-wrap justify-content-between w-100 mt-auto">
         <div class="d-flex flex-wrap fs-8 fw-medium ls-05 text-theme-primary my-2">
           <div class="d-flex align-items-center me-3 pe-sm-1">
-            <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="../cdn/img/icons/019-virus.svg" width="20" height="20" alt="healt" class="lazy contain flex-shrink-0 me-1 loaded" style="background-image: url(&quot;../cdn/img/icons/019-virus.svg&quot;);">
+            <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/019-virus.svg" width="20" height="20" alt="healt" class="lazy contain flex-shrink-0 me-1 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/019-virus.svg&quot;);">
             <span>Sağlık Sertifikalı</span>
           </div>
           <div class="d-flex align-items-center">
-            <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="../cdn/img/icons/020-fence.svg" width="20" height="20" alt="healt" class="lazy contain flex-shrink-0 me-1 loaded" style="background-image: url(&quot;../cdn/img/icons/020-fence.svg&quot;);">
+            <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/020-fence.svg" width="20" height="20" alt="healt" class="lazy contain flex-shrink-0 me-1 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/020-fence.svg&quot;);">
             <span>Özel Bölgesi var</span>
           </div>
         </div>
@@ -73,7 +73,7 @@ import slugify from "slugify";
 
 export default {
   name: "FilterHotelPreviewComponent",
-  props: ['hotel','checkindate'],
+  props: ['hotel', 'requestId'],
   components: {
     Swiper
   },
@@ -106,7 +106,9 @@ export default {
         data = {i:this.encodeTimestamp(query.checkIn), o:this.encodeTimestamp(query.checkOut), v: localStorage.getItem('visitorId')};
       }*/
 
-      let data = {}
+      let data = JSON.parse(JSON.stringify(this.$route.query));
+      data.requestId = this.requestId;
+      delete data['destinations']
       this.$router.push({
         path: 'otel/' + slugify(this.hotel.name.toLowerCase()) + '-' + this.hotel.id,
         query: data,

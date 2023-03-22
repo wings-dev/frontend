@@ -60,7 +60,8 @@ export default {
     { src: '~/plugins/ymaps.js',  mode: 'client' },
     { src: "~/plugins/vue-tour.js", ssr: false },
     { src: '~/plugins/filters.js' },
-    { src: '~/plugins/vue-select.js', ssr: false }
+    { src: '~/plugins/vue-select.js', ssr: false },
+    { src: '~/plugins/dataService.js'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

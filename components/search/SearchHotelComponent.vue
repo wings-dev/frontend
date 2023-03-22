@@ -6,7 +6,8 @@
           <v-select
             class="w-100"
             :options="filteredCities"
-            label="title"
+            id="code"
+            label="text"
             v-model="selectedCity"
             placeholder="Şehir, İlçe veya Otel adı yazın"
             @search="onCitySearch"
@@ -113,8 +114,8 @@ export default {
     return {
       citySearchText: '',
       citiesDefault: [
-        {id: "23494", title: 'Antalya', type: 1},
-        {id: "23472", title: 'İstanbul', type: 1},
+        {code: "23494", text: 'Antalya', type: 1},
+        {code: "23472", text: 'İstanbul', type: 1},
       ],
       selectedCity: '',
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
@@ -146,12 +147,12 @@ export default {
   },
   computed: {
     ...mapState({
-      hotels: state => state.hotels.list
+      hotels: state => state.hotels.searchData.destinations
     }),
     filteredCities() {
       if (this.citySearchText) {
         const searchText = this.citySearchText.toLocaleLowerCase()
-        return this.hotels.filter(hotel => hotel.title.toLocaleLowerCase().includes(searchText))
+        return this.hotels.filter(hotel => hotel.text.toLocaleLowerCase().includes(searchText))
       } else {
         return this.citiesDefault
       }
@@ -171,7 +172,7 @@ export default {
     search() {
       if (this.selectedCity.type === 1) {
         const queryParams = {
-          id: this.selectedCity.id,
+          destinations: this.selectedCity.code,
           checkIn: this.checkIn,
           checkOut: this.checkOut,
           adult: this.adult,

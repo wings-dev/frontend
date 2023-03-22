@@ -23,22 +23,9 @@
             <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations"
               :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
-              :groups="amenites.groups.facilityTypes"
-              @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
-
-            <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts"
-              :groups="amenites.groups.facilityConcepts"
-              @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
-
             <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
               :groups="amenites.groups.facilities"
               @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component>
-            <!-- <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
-              :checkboxes="amenites.facilities" :hideTitleBorder="true"
-              @updated="updateFilter('amenites.facilities', $event)"
-              :isFacilities="true"
-              ></filter-item-checkbox-component> -->
 
             <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
               @max_price="updateFilter('max_price', $event)"></filter-price-between-component>
@@ -49,7 +36,7 @@
           <div class="Filter-right-head">
             <div class="Filter-right-head-info">
               <i class="icon-list"></i>
-              <p>{{ total_items }} villa listeleniyor</p>
+              <p>{{ total_items }} otel listeleniyor</p>
             </div>
             <div class="Filter-right-head-buttons">
 
@@ -71,16 +58,6 @@
                 <i class="icon-search-close" @click="unselect(destination)"></i>
               </a>
 
-              <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
-                Bölge:{{ facilityType.text }}
-                <i class="icon-search-close" @click="unselect(facilityType)"></i>
-              </a>
-
-              <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">
-                Konsept:{{ facilityConcept.text }}
-                <i class="icon-search-close" @click="unselect(facilityConcept)"></i>
-              </a>
-
               <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
                 Olanak:{{ facility.text }}
                 <i class="icon-search-close" @click="unselect(facility)"></i>
@@ -92,7 +69,7 @@
           <div class="F_villa ">
 
             <filter-hotel-preview-component v-for="(hotel, index) in hotels" :key="index"
-              :hotel="hotel" :checkindate="checkIn" ></filter-hotel-preview-component>
+              :hotel="hotel" :checkindate="checkIn" :requestId="requestId"></filter-hotel-preview-component>
 
             <div
               class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
@@ -121,7 +98,7 @@
               </svg>
             </div>
 
-            <div class="No-villas" v-if="loading == false && villas.length <= 0">
+            <div class="No-villas" v-if="loading === false && hotels.length <= 0">
               <img src="img/no-villas.svg" alt="">
               <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
               <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
@@ -134,103 +111,13 @@
 
             <div class="No-villas" v-if="loading">
               <img src="img/villa-loading.svg" alt="">
-              <h2>Villalar hazırlanıyor.</h2>
+              <h2>Oteller hazırlanıyor.</h2>
               <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
             </div>
 
 
 
           </div>
-
-          <nav aria-label="..." class="my-3">
-            <ul class="pagination d-flex flex-wrap justify-content-center align-items-center">
-              <!-- Go to First Page -->
-              <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page > 1">
-                <a href="javascript:void(0)" @click.prevent="goToPage(1)"
-                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
-                  <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="VillaListeleme" transform="translate(-860.000000, -2875.000000)" fill="#AFAFB6"
-                        fill-rule="nonzero">
-                        <g id="Group-27" transform="translate(837.000000, 2861.000000)">
-                          <g id="right-arrow-(3)-copy"
-                            transform="translate(26.954957, 19.166042) scale(-1, 1) translate(-26.954957, -19.166042) translate(23.919953, 14.000000)">
-                            <path
-                              d="M5.9052,4.762884 L1.307292,0.16506 C1.200948,0.058632 1.058988,0 0.90762,0 C0.756252,0 0.614292,0.058632 0.507948,0.16506 L0.169344,0.50358 C-0.050988,0.724164 -0.050988,1.082676 0.169344,1.302924 L4.03032,5.1639 L0.16506,9.02916 C0.058716,9.135588 0,9.277464 0,9.428748 C0,9.5802 0.058716,9.722076 0.16506,9.828588 L0.503664,10.167024 C0.610092,10.273452 0.751968,10.332084 0.903336,10.332084 C1.054704,10.332084 1.196664,10.273452 1.303008,10.167024 L5.9052,5.565 C6.011796,5.458236 6.070344,5.315688 6.07000944,5.164152 C6.070344,5.012028 6.011796,4.869564 5.9052,4.762884 Z"
-                              id="Path"></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
-                </a>
-              </li>
-
-              <!-- Page numbers -->
-              <li class="page-item me-2 me-sm-3 mb-1" v-if="showLeftDots">
-                <a href="javascript:void(0)"
-                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
-                  <span aria-hidden="true">&hellip;</span>
-                </a>
-              </li>
-              <li class="page-item me-2 me-sm-3 mb-1" v-for="(pageNumber, index) in displayedPageNumbers" :key="index">
-                <a href="javascript:void(0)"
-                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
-                  :class="{ 'active': pageNumber === current_page }" @click.prevent="goToPage(pageNumber)">
-                  {{ pageNumber }}
-                </a>
-              </li>
-              <li class="page-item me-2 me-sm-3 mb-1" v-if="showRightDots">
-                <a href="javascript:void(0)"
-                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
-                  <span aria-hidden="true">&hellip;</span>
-                </a>
-              </li>
-
-              <!-- 3 dots -->
-              <!--              <li class="page-item me-2 me-sm-3 mb-1">
-                              <svg width="23px" height="5px" viewBox="0 0 23 5" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                   xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                  <g id="VillaListeleme" transform="translate(-1109.000000, -2877.000000)" fill="#AFAFB6">
-                                    <g id="Group-27" transform="translate(837.000000, 2861.000000)">
-                                      <g id="Group-16" transform="translate(272.000000, 16.000000)">
-                                        <circle id="Oval" cx="2.5" cy="2.5" r="2.5"></circle>
-                                        <circle id="Oval-Copy" cx="11.5" cy="2.5" r="2.5"></circle>
-                                        <circle id="Oval-Copy-2" cx="20.5" cy="2.5" r="2.5"></circle>
-                                      </g>
-                                    </g>
-                                  </g>
-                                </g>
-                              </svg>
-                            </li>-->
-
-              <!-- Go to Last Page -->
-              <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page < totalPages">
-                <a href="javascript:void(0)" @click.prevent="goToPage(totalPages)"
-                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
-                  <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="VillaListeleme" transform="translate(-1374.000000, -2875.000000)" fill="#AFAFB6"
-                        fill-rule="nonzero">
-                        <g id="Group-27" transform="translate(837.000000, 2861.000000)">
-                          <g id="Group-19" transform="translate(514.000000, 0.000000)">
-                            <g id="right-arrow-(3)" transform="translate(23.010038, 14.000000)">
-                              <path
-                                d="M5.9052,4.762884 L1.307292,0.16506 C1.200948,0.058632 1.058988,0 0.90762,0 C0.756252,0 0.614292,0.058632 0.507948,0.16506 L0.169344,0.50358 C-0.050988,0.724164 -0.050988,1.082676 0.169344,1.302924 L4.03032,5.1639 L0.16506,9.02916 C0.058716,9.135588 0,9.277464 0,9.428748 C0,9.5802 0.058716,9.722076 0.16506,9.828588 L0.503664,10.167024 C0.610092,10.273452 0.751968,10.332084 0.903336,10.332084 C1.054704,10.332084 1.196664,10.273452 1.303008,10.167024 L5.9052,5.565 C6.011796,5.458236 6.070344,5.315688 6.07000944,5.164152 C6.070344,5.012028 6.011796,4.869564 5.9052,4.762884 Z"
-                                id="Path"></path>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </nav>
 
         </div>
       </div>
@@ -254,7 +141,6 @@ export default {
       total_items: 0,
       hotels: [],
       requestId: null,
-      villas: [],
       min_price: null,
       max_price: null,
       checkIn: null,
@@ -282,7 +168,6 @@ export default {
       orderValue: null,
       orderPlaceholder: "Sırala:",
       loading: true,
-      novillas: false,
 
     }
   },
@@ -290,9 +175,9 @@ export default {
     VSelect
   },
   created() {
-    const searchData = this.$store.state['settings'].searchData;
+    const searchData = this.$store.state.hotels.searchData;
 
-    this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
+    this.destinations = JSON.parse(JSON.stringify(searchData.destinations)).filter(destination => destination.type === 1);
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
     // console.log(JSON.stringify({
@@ -314,7 +199,9 @@ export default {
     this.applySelectedFilters('amenites', 'facilities');
   },
   mounted() {
-    this.filter();
+    setTimeout(() => {
+      this.filter();
+    },50)
   },
 
   computed: {
@@ -327,20 +214,12 @@ export default {
     selectedDestinations() {
       return this.getSelectedObjects(this.destinations);
     },
-    selectedFacilityTypes() {
-      return this.getSelectedObjects(this.amenites.facilityTypes);
-    },
-    selectedFacilityConcepts() {
-      return this.getSelectedObjects(this.amenites.facilityConcepts);
-    },
     selectedFacilities() {
       return this.getSelectedObjects(this.amenites.facilities);
     },
     filterCount() {
       return [
         ...this.selectedDestinations,
-        ...this.selectedFacilityConcepts,
-        ...this.selectedFacilityTypes,
         ...this.selectedFacilities
       ].length;
     },
@@ -372,8 +251,10 @@ export default {
         checkboxes = this[property][nestedProperty];
       else
         checkboxes = this[property];
+      console.log(filters)
       for (let i = 0; i < filters.length; i++) {
         const checkbox = this.findNestedObject(checkboxes, filters[i].code);
+        console.log(checkbox);
         checkbox.selected = true;
       }
     },
@@ -388,10 +269,16 @@ export default {
     },
     filter(pageNumber = 1) {
 
+      if (this.selectedDestinations.length === 0) {
+        console.log('test');
+        this.hotels = [];
+        return
+      }
+
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
       const data = {
-        id: this.$route.query.id,
+        id: this.selectedDestinations.map(destination => destination.code),
         checkIn: this.checkIn,
         checkOut: this.checkOut,
         adult: adult,
@@ -402,8 +289,9 @@ export default {
       this.$axios
         .post(`/data/hotels`, data)
         .then(response => {
-          this.hotels = response.data.body.hotels;
+          this.hotels = response.data.body?.hotels ?? [];
           this.requestId = response.data.header.requestId;
+          console.log(this.requestId);
           console.log('this.hotels', this.hotels);
 
         })
