@@ -20,7 +20,7 @@
             <div class="container h-100">
                 <div class="Header-inner-in">
                     <NuxtLink to="/" class="Header-logo">
-                        <img :src="'/img/site' + site_id + '/logo.svg'" alt="Logo">
+                        <nuxt-img :src="'/img/site' + site_id + '/logo.svg'" />
                     </NuxtLink>
 
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
