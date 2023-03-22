@@ -182,7 +182,7 @@
 
           </div>
 
-          <nav aria-label="..." class="my-3">
+          <nav aria-label="..." class="my-3" v-if="!loading">
             <ul class="pagination d-flex flex-wrap justify-content-center align-items-center">
               <!-- Go to First Page -->
               <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page > 1">
@@ -424,6 +424,8 @@ export default {
       this.filter(pageNumber);
     },
     filter(pageNumber = 1) {
+      this.villas = [];
+      this.loading = true;
 
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
