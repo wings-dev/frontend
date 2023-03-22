@@ -91,35 +91,75 @@
 
           <div class="F_villa ">
 
-            <filter-villa-preview-component v-for="(villa, index) in villas" :key="index"
-              :villa="villa" :checkindate="checkIn" ></filter-villa-preview-component>
+            <template v-if="villas.length > 2 ">
 
-            <div
-              class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-              <img src="/uploads/holiday-banner.jpg" alt=""
-                class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(0,2)" :key="index"
+                                              :villa="villa" :checkindate="checkIn" ></filter-villa-preview-component>
+              <div
+                class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
+                <img src="/uploads/holiday-banner.jpg" alt=""
+                     class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
 
-              <div class="d-flex flex-column position-relative ls-05 pt-3">
-                <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
-                <span class="fs-6 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
-                <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
-              </div>
-              <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
-                    <g id="Group" transform="translate(626.000000, 202.000000)">
-                      <path
-                        d="M14,13.3334991 C14,14.2539193 13.2166932,15 12.25,15 C11.2836548,15 10.5,14.2539193 10.5,13.3334991 C10.5,12.4130788 11.2836548,11.6666667 12.25,11.6666667 C13.2166932,11.6666667 14,12.4130788 14,13.3334991"
-                        id="Fill-13"></path>
-                      <path
-                        d="M6.12867316,9.20434506 C4.17402549,9.20434506 2.58538231,7.69131915 2.58538231,5.8369566 C2.58538231,3.97534751 4.17402549,2.46257148 6.12867316,2.46257148 C8.07544978,2.46257148 9.66435532,3.97534751 9.66435532,5.8369566 C9.66435532,7.69131915 8.07544978,9.20434506 6.12867316,9.20434506 M6.12867316,0 C2.74122939,0 0,2.61050069 0,5.8369566 C0,9.0559161 2.74122939,11.6666667 6.12867316,11.6666667 C9.50850825,11.6666667 12.25,9.0559161 12.25,5.8369566 C12.25,2.61050069 9.50850825,0 6.12867316,0"
-                        id="Fill-15"></path>
+                <div class="d-flex flex-column position-relative ls-05 pt-3">
+                  <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
+                  <span class="fs-6 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
+                  <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
+                </div>
+                <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
+                      <g id="Group" transform="translate(626.000000, 202.000000)">
+                        <path
+                          d="M14,13.3334991 C14,14.2539193 13.2166932,15 12.25,15 C11.2836548,15 10.5,14.2539193 10.5,13.3334991 C10.5,12.4130788 11.2836548,11.6666667 12.25,11.6666667 C13.2166932,11.6666667 14,12.4130788 14,13.3334991"
+                          id="Fill-13"></path>
+                        <path
+                          d="M6.12867316,9.20434506 C4.17402549,9.20434506 2.58538231,7.69131915 2.58538231,5.8369566 C2.58538231,3.97534751 4.17402549,2.46257148 6.12867316,2.46257148 C8.07544978,2.46257148 9.66435532,3.97534751 9.66435532,5.8369566 C9.66435532,7.69131915 8.07544978,9.20434506 6.12867316,9.20434506 M6.12867316,0 C2.74122939,0 0,2.61050069 0,5.8369566 C0,9.0559161 2.74122939,11.6666667 6.12867316,11.6666667 C9.50850825,11.6666667 12.25,9.0559161 12.25,5.8369566 C12.25,2.61050069 9.50850825,0 6.12867316,0"
+                          id="Fill-15"></path>
+                      </g>
                     </g>
                   </g>
-                </g>
-              </svg>
-            </div>
+                </svg>
+              </div>
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index"
+                                              :villa="villa" :checkindate="checkIn" ></filter-villa-preview-component>
+
+            </template>
+
+            <template v-if="villas.length > 0 && villas.length <= 2 ">
+              <filter-villa-preview-component v-for="(villa, index) in villas" :key="index"
+                                              :villa="villa" :checkindate="checkIn" ></filter-villa-preview-component>
+              <div
+                class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
+                <img src="/uploads/holiday-banner.jpg" alt=""
+                     class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
+
+                <div class="d-flex flex-column position-relative ls-05 pt-3">
+                  <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
+                  <span class="fs-6 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
+                  <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
+                </div>
+                <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
+                      <g id="Group" transform="translate(626.000000, 202.000000)">
+                        <path
+                          d="M14,13.3334991 C14,14.2539193 13.2166932,15 12.25,15 C11.2836548,15 10.5,14.2539193 10.5,13.3334991 C10.5,12.4130788 11.2836548,11.6666667 12.25,11.6666667 C13.2166932,11.6666667 14,12.4130788 14,13.3334991"
+                          id="Fill-13"></path>
+                        <path
+                          d="M6.12867316,9.20434506 C4.17402549,9.20434506 2.58538231,7.69131915 2.58538231,5.8369566 C2.58538231,3.97534751 4.17402549,2.46257148 6.12867316,2.46257148 C8.07544978,2.46257148 9.66435532,3.97534751 9.66435532,5.8369566 C9.66435532,7.69131915 8.07544978,9.20434506 6.12867316,9.20434506 M6.12867316,0 C2.74122939,0 0,2.61050069 0,5.8369566 C0,9.0559161 2.74122939,11.6666667 6.12867316,11.6666667 C9.50850825,11.6666667 12.25,9.0559161 12.25,5.8369566 C12.25,2.61050069 9.50850825,0 6.12867316,0"
+                          id="Fill-15"></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </template>
+
+
+
+
 
             <div class="No-villas" v-if="loading == false && villas.length <= 0">
               <img src="img/no-villas.svg" alt="">
