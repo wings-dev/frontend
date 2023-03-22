@@ -50,8 +50,8 @@ export default {
         const data = await $getRedisKey([`data:villas:${path}:detail`, `data:villas:${path}:calendar`, `data:villas:${path}:prices`])
         // villa redis datası
         componentData = data[`data:villas:${path}:detail`];
-        calendar = data[`data:villas:${path}:calendar`];
-        price_list_1 = data[`data:villas:${path}:prices`].price_list_1;
+        calendar = data[`data:villas:${path}:calendar`] ? data[`data:villas:${path}:calendar`] : [];
+        price_list_1 = data[`data:villas:${path}:prices`] ? data[`data:villas:${path}:prices`].price_list_1 : [];
       }
       // type 7 => filtre sayfası
       if (redisData.type === 7) {

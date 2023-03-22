@@ -1095,39 +1095,37 @@ export default {
         };
       }
 
-      if (calendar.length && price_list_1.length) {
-        [...calendar, ...price_list_1].forEach(item => dates.add(item.dates[0]));
+      [...calendar, ...price_list_1].forEach(item => dates.add(item.dates[0]));
 
-        dates.forEach(date => {
-          const customData = {
-            price: null,
-            status: [],
-            dateStatus: [],
-          };
+      dates.forEach(date => {
+        const customData = {
+          price: null,
+          status: [],
+          dateStatus: [],
+        };
 
-          const matchingCalendarItems = calendar.filter(item => item.dates[0] === date);
-          matchingCalendarItems.forEach(item => {
-            customData.status = customData.status.concat(item.status);
-            customData.dateStatus = customData.dateStatus.concat(item.dateStatus);
-          });
-
-          const matchingPriceItem = price_list_1.find(item => item.dates === date);
-          if (matchingPriceItem) {
-            customData.price = matchingPriceItem.price;
-          }
-
-          const existingObjIndex = attributes.findIndex(obj => obj.dates.getTime() === new Date(date).getTime());
-          if (existingObjIndex !== -1) {
-            const existingObj = attributes[existingObjIndex];
-            existingObj.customData.status = [...new Set([...existingObj.customData.status, ...customData.status])];
-            existingObj.customData.dateStatus = [...new Set([...existingObj.customData.dateStatus, ...customData.dateStatus])];
-            existingObj.customData.className = setClassName(existingObj.customData, date);
-          } else {
-            customData.className = setClassName(customData, date);
-            attributes.push({ customData, dates: new Date(date) });
-          }
+        const matchingCalendarItems = calendar.filter(item => item.dates[0] === date);
+        matchingCalendarItems.forEach(item => {
+          customData.status = customData.status.concat(item.status);
+          customData.dateStatus = customData.dateStatus.concat(item.dateStatus);
         });
-      }
+
+        const matchingPriceItem = price_list_1.find(item => item.dates === date);
+        if (matchingPriceItem) {
+          customData.price = matchingPriceItem.price;
+        }
+
+        const existingObjIndex = attributes.findIndex(obj => obj.dates.getTime() === new Date(date).getTime());
+        if (existingObjIndex !== -1) {
+          const existingObj = attributes[existingObjIndex];
+          existingObj.customData.status = [...new Set([...existingObj.customData.status, ...customData.status])];
+          existingObj.customData.dateStatus = [...new Set([...existingObj.customData.dateStatus, ...customData.dateStatus])];
+          existingObj.customData.className = setClassName(existingObj.customData, date);
+        } else {
+          customData.className = setClassName(customData, date);
+          attributes.push({ customData, dates: new Date(date) });
+        }
+      });
 
       price_list_1.forEach(item => {
         const exists = attributes.find(obj => obj.dates.getTime() === new Date(item.dates).getTime());
@@ -1337,6 +1335,11 @@ export default {
       }
     }
 
+    if (this.attributes.length === 0) {
+      setTimeout(() => {
+        this.$bvModal.show('closeVillaModal')
+      }, 50)
+    }
   },
   computed: {
     isFavorite() {
