@@ -85,6 +85,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    '@nuxt/image',
     "@nuxtjs/axios",
     "@nuxtjs/auth-next",
     "@nuxtjs/google-fonts",
@@ -131,6 +132,10 @@ export default {
     position: "top-right",
     duration:2000,
     iconPack: 'custom-class'
+  },
+
+  image: {
+
   },
 
   cookies: {
