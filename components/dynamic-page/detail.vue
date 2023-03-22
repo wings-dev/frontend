@@ -1025,6 +1025,7 @@ export default {
   },
   data() {
     return {
+      attributes: [],
       galleryIsOpen: false,
       modalIsOpen: false,
       villa_prefix: process.env.PREFIX,
@@ -1047,6 +1048,103 @@ export default {
     }
   },
   methods: {
+    setAttributes() {
+      const dates = new Set();
+      const attributes = [];
+      const { calendar, price_list_1 } = this;
+
+      const setClassName = (customData, date) => {
+        let { status, dateStatus } = customData;
+        status = [...new Set(status)]
+        const dateObj = new Date(date);
+        const getAdjacentDay = (dayOffset) => new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate() + dayOffset).toISOString().substring(0, 10);
+
+        const prevDayString = getAdjacentDay(-1);
+        const nextDayString = getAdjacentDay(1);
+        const findByDate = (attr, dateString) => attr.find(attribute => new Date(attribute.dates).getTime() === new Date(dateString).getTime());
+
+        const prevDayData = findByDate(attributes, prevDayString)?.customData;
+        const nextDayData = findByDate(attributes, nextDayString)?.customData;
+
+        // bu gün hem giriş hem çıkışsa
+        if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(2) && prevDayData?.status.includes(2)) {
+          // bir önceki günün tipine bak
+          //Kapalı-to-kapalı
+          return { "kapali": true }
+        }
+        if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(1) && prevDayData?.status.includes(1)) {
+          // bir önceki günün tipine bak
+          //opsiyon-to-opsiyon
+          return { "opsiyon": true }
+        }
+        if (dateStatus.includes(0) && dateStatus.includes(2)) {
+          // bir önceki günün tipine bak
+          return prevDayData?.status.includes(2)
+            ? { "kapali-cikis-to-opsiyon-giris" : true}
+            : { "opsiyon-cikis-to-kapali-giris" : true };
+        }
+
+
+        return {
+          "kapali": status.includes(2),
+          "kapali-giris": status.includes(2) && dateStatus.includes(0),
+          "kapali-cikis": status.includes(2) && dateStatus.includes(2),
+          "opsiyon": status.includes(1),
+          "opsiyon-giris": status.includes(1) && dateStatus.includes(0),
+          "opsiyon-cikis": status.includes(1) && dateStatus.includes(2),
+        };
+      }
+
+      if (calendar.length && price_list_1.length) {
+        [...calendar, ...price_list_1].forEach(item => dates.add(item.dates[0]));
+
+        dates.forEach(date => {
+          const customData = {
+            price: null,
+            status: [],
+            dateStatus: [],
+          };
+
+          const matchingCalendarItems = calendar.filter(item => item.dates[0] === date);
+          matchingCalendarItems.forEach(item => {
+            customData.status = customData.status.concat(item.status);
+            customData.dateStatus = customData.dateStatus.concat(item.dateStatus);
+          });
+
+          const matchingPriceItem = price_list_1.find(item => item.dates === date);
+          if (matchingPriceItem) {
+            customData.price = matchingPriceItem.price;
+          }
+
+          const existingObjIndex = attributes.findIndex(obj => obj.dates.getTime() === new Date(date).getTime());
+          if (existingObjIndex !== -1) {
+            const existingObj = attributes[existingObjIndex];
+            existingObj.customData.status = [...new Set([...existingObj.customData.status, ...customData.status])];
+            existingObj.customData.dateStatus = [...new Set([...existingObj.customData.dateStatus, ...customData.dateStatus])];
+            existingObj.customData.className = setClassName(existingObj.customData, date);
+          } else {
+            customData.className = setClassName(customData, date);
+            attributes.push({ customData, dates: new Date(date) });
+          }
+        });
+      }
+
+      price_list_1.forEach(item => {
+        const exists = attributes.find(obj => obj.dates.getTime() === new Date(item.dates).getTime());
+        if (!exists) {
+          const customData = {
+            price: item.price,
+            status: [],
+            dateStatus: [],
+            className: {}
+          };
+
+          attributes.push({ customData, dates: new Date(item.dates) });
+        }
+      });
+
+      this.attributes = attributes;
+    },
     toggleFavorite() {
       if (this.isFavorite) {
         this.$store.dispatch('favorite/removeFavorite', this.villa.code)
@@ -1095,6 +1193,9 @@ export default {
     galleryIsOpen() {
       window.addEventListener("keyup", this.onEscapeKeyUp);
     }
+  },
+  beforeMount() {
+    this.setAttributes();
   },
   mounted() {
     Swiper.use([Navigation, Pagination])
@@ -1208,7 +1309,6 @@ export default {
       } else {
 
       }
-
     };
 
     function scrollFunction() {
@@ -1241,89 +1341,6 @@ export default {
   computed: {
     isFavorite() {
       return this.$store.state.favorite.favorites.includes(this.villa.code)
-    },
-    attributes() {
-      const dates = new Set();
-      const attributes = [];
-      const { calendar, price_list_1 } = this;
-
-      const setClassName = (customData, date) => {
-        let { status, dateStatus } = customData;
-        status = [...new Set(status)]
-        const dateObj = new Date(date);
-        const getAdjacentDay = (dayOffset) => new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate() + dayOffset).toISOString().substring(0, 10);
-
-        const prevDayString = getAdjacentDay(-1);
-        const nextDayString = getAdjacentDay(1);
-        const findByDate = (attr, dateString) => attr.find(attribute => new Date(attribute.dates).getTime() === new Date(dateString).getTime());
-
-        const prevDayData = findByDate(attributes, prevDayString)?.customData;
-        const nextDayData = findByDate(attributes, nextDayString)?.customData;
-
-        // bu gün hem giriş hem çıkışsa
-        if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(2) && prevDayData?.status.includes(2)) {
-          // bir önceki günün tipine bak
-          //Kapalı-to-kapalı
-          return { "kapali": true }
-        }
-        if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(1) && prevDayData?.status.includes(1)) {
-          // bir önceki günün tipine bak
-          //opsiyon-to-opsiyon
-          return { "opsiyon": true }
-        }
-        if (dateStatus.includes(0) && dateStatus.includes(2)) {
-          // bir önceki günün tipine bak
-          return prevDayData?.status.includes(2)
-            ? { "kapali-cikis-to-opsiyon-giris" : true}
-            : { "opsiyon-cikis-to-kapali-giris" : true };
-        }
-
-
-        return {
-          "kapali": status.includes(2),
-          "kapali-giris": status.includes(2) && dateStatus.includes(0),
-          "kapali-cikis": status.includes(2) && dateStatus.includes(2),
-          "opsiyon": status.includes(1),
-          "opsiyon-giris": status.includes(1) && dateStatus.includes(0),
-          "opsiyon-cikis": status.includes(1) && dateStatus.includes(2),
-        };
-      }
-
-      if (calendar.length && price_list_1.length) {
-        [...calendar, ...price_list_1].forEach(item => dates.add(item.dates[0]));
-
-        dates.forEach(date => {
-          const customData = {
-            price: null,
-            status: [],
-            dateStatus: [],
-          };
-
-          const matchingCalendarItems = calendar.filter(item => item.dates[0] === date);
-          matchingCalendarItems.forEach(item => {
-            customData.status = customData.status.concat(item.status);
-            customData.dateStatus = customData.dateStatus.concat(item.dateStatus);
-          });
-
-          const matchingPriceItem = price_list_1.find(item => item.dates === date);
-          if (matchingPriceItem) {
-            customData.price = matchingPriceItem.price;
-          }
-
-          const existingObjIndex = attributes.findIndex(obj => obj.dates.getTime() === new Date(date).getTime());
-          if (existingObjIndex !== -1) {
-            const existingObj = attributes[existingObjIndex];
-            existingObj.customData.status = [...new Set([...existingObj.customData.status, ...customData.status])];
-            existingObj.customData.dateStatus = [...new Set([...existingObj.customData.dateStatus, ...customData.dateStatus])];
-            existingObj.customData.className = setClassName(existingObj.customData, date);
-          } else {
-            customData.className = setClassName(customData, date);
-            attributes.push({ customData, dates: new Date(date) });
-          }
-        });
-      }
-
-      return attributes;
     },
     disableDate() {
       const disableDate = [];
