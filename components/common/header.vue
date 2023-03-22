@@ -129,7 +129,7 @@
                             @click="openSearch($event)">
                             <i class="icon-search"></i>
                         </button>
-                        <Nuxt-link to="/favs" class="Fav-button">
+                        <Nuxt-link :to="!$auth.loggedIn ? '/favorilerim' : '/user/favorilerim'" class="Fav-button">
                             <i class="icon-heart-full"></i>
                         </Nuxt-link>
                         <!-- <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
@@ -149,8 +149,8 @@
                         <div class="dropdown" v-else>
                             <button class="Login-button-user dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="icon-good-night"></i>
-                                <p><span>İyi Akşamlar</span>{{ $auth.user.name }}</p>
+                                <i :class="greetingIcon"></i>
+                                <p><span>{{greeting}}</span>{{ $auth.user.name }}</p>
                             </button>
                             <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><NuxtLink class="dropdown-item" to="/user/uyelik"><i
@@ -192,7 +192,24 @@ export default {
         }
     },
     computed: {
+      greeting() {
+        const saat = new Date().getHours();
 
+        if (saat >= 6 && saat < 18) {
+          return 'İyi Günler!';
+        } else {
+          return 'İyi Akşamlar!';
+        }
+      },
+      greetingIcon() {
+        const saat = new Date().getHours();
+
+        if (saat >= 6 && saat < 18) {
+          return 'icon-good-night';
+        } else {
+          return 'icon-good-night';
+        }
+      }
     },
     methods: {
         async logout() {

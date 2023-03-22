@@ -18,7 +18,7 @@
                 <button type="submit" class="Login-form-button mt-2">GİRİŞ YAP</button>
                 <button type="submit" class="Login-form-button Login-form-button-white mt-2">KAYIT OL</button>
               </div>
-              <Nuxt-link to="/favs" class="Login-fav-pass">
+              <Nuxt-link to="/favorilerim" class="Login-fav-pass">
                 Üye olmadan devam et <i class="icon-right-arrows-new"></i>
               </Nuxt-link>
             </div>
