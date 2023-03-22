@@ -277,19 +277,6 @@ body {
   position: relative;
   z-index: 10;
 
-  &:after {
-    content: "";
-    display: inline-block;
-    width: 240px;
-    height: 410px;
-    background-size: 100% 100%;
-    background-image: url(../../img/heart-shape-blur-sm.png);
-    transition: all 500ms;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-
   &-in {
     h3 {
       font-size: 30px;

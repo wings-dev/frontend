@@ -152,12 +152,16 @@ export default {
         { hid: 'description', name: 'description', content: 'hakkımızda' },
         { hid: 'keywords', name: 'keywords', content: 'hakkımızda1, hakkımızda2, hakkımızd3' }
       ],
-      link: [
-        { rel: 'stylesheet', href: `/css/hakkimizda.min.css` }
-      ]
+     
     }
   },
 }
 </script>
 <style scoped>
+body {
+  background-image: url("/img/tools/page-effect.svg");
+  background-repeat: no-repeat;
+  background-size: 874px 874px;
+  background-position: calc(100% + 318px) -223px;
+}
 </style>

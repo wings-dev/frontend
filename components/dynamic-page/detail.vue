@@ -1178,6 +1178,7 @@ export default {
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
     document.querySelector('.Header').classList.add('villa-detay')
+    document.querySelector('body').classList.add('villa-detay')
 
     const sections = document.querySelectorAll(".view-menu-content-item");
     const navLi = document.querySelectorAll(".View-menu-item");
@@ -1344,11 +1345,7 @@ export default {
 }
 </script>
 
-<style>
-html,
-body {
-  scroll-padding-top: 160px;
-}
+<style scoped>
 
 .vc-container {
   --gray-500: #A6AFC2 !important;
@@ -1388,7 +1385,9 @@ body {
 .vc-weekday {
   margin-bottom: 15px !important;
 }
-
+:deep() .vc-weeks{
+  margin-top: 30px;
+}
 .opsiyon {
   background-image: linear-gradient(to bottom, #FFF8E7, #FFF8E7);
 }

@@ -17,9 +17,6 @@ export default {
                 { hid: 'description', name: 'description', content: 'anasayfa' },
                 { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
             ],
-            link: [
-                { rel: 'stylesheet', href: `/css/blog.min.css` }
-            ]
         }
     }
 }

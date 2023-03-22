@@ -21,7 +21,7 @@
                   data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
                   aria-selected="false"><span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt Dışı
                     Villalar</span></button>
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 " id="nav-contact-tab"
+                <button class="nav-link active text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 " id="nav-contact-tab"
                   data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
                   aria-selected="false"><span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Otel
                     Rezervasyon</span><!-- <span class="comingsoon">ÇOK YAKINDA</span> --></button>

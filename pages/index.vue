@@ -411,7 +411,7 @@
                                 villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir villa tatilini
                                 sunuyoruz.
                             </p>
-                            <strong class="fs-7 fw-medium text-theme-primary ls-05 d-block mb-2">Tatil villası
+                            <strong class="fs-7 fw-medium text-theme-primary ls-05 d-block mb-2 mt-4">Tatil villası
                                 kirala</strong>
                             <p>
                                 Birçok insan tatile gittiği zaman rahatlamak ve keyifli şekilde zamanlarını geçirmek
@@ -465,9 +465,6 @@ export default {
                 { hid: 'description', name: 'description', content: 'anasayfa' },
                 { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
             ],
-            link: [
-                { rel: 'stylesheet', href: `/css/anasayfa.min.css` }
-            ]
         }
     },
     data() {

@@ -3,15 +3,8 @@
     <div class="Search-left">
       <div class="Search-item date">
         <client-only>
-          <v-select
-            class="w-100"
-            :options="filteredCities"
-            id="code"
-            label="text"
-            v-model="selectedCity"
-            placeholder="Şehir, İlçe veya Otel adı yazın"
-            @search="onCitySearch"
-          ></v-select>
+          <v-select class="w-100" :options="filteredCities" id="code" label="text" v-model="selectedCity"
+            placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
         </client-only>
       </div>
       <div class="Search-item date">
@@ -23,8 +16,9 @@
         <div class="Search-item-date">
           <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs">
-            <HotelDatePicker v-bind="datePickerProps" @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-                             format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)" :i18n="calendarLanguage" ref="datePicker" :displayClearButton=false>
+            <HotelDatePicker v-bind="datePickerProps" @check-in-changed="checkInChanged($event)"
+              @check-out-changed="checkOutChanged($event)" format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)"
+              :i18n="calendarLanguage" ref="datePicker" :displayClearButton=false>
 
               <div slot="content">
                 <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
@@ -42,7 +36,7 @@
       </div>
       <div class="Search-item Search-item-people">
         <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
-                data-bs-toggle="dropdown" aria-expanded="false">
+          data-bs-toggle="dropdown" aria-expanded="false">
           <div
             class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
             <i class="icon-group-user"></i>
@@ -60,19 +54,48 @@
               <div class="Search-item-person-item ">
                 <p>Yetişkin</p>
                 <div class="Search-item-person-item-in ">
-                  <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="adultDecrease"></i>
+                  <button type="button" class="minus-person" @click="adultDecrease">
+                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
                   </button>
                   <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
-                  <button type="button" class="plus-person"><i class="icon-plus" @click="adultIncrease"></i></button>
+                  <button type="button" class="plus-person" @click="adultIncrease">
+                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                        stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
+                  </button>
                 </div>
               </div>
               <div class="Search-item-person-item">
                 <p>Çocuk <br><span>6-17 arası</span></p>
                 <div class="Search-item-person-item-in ">
-                  <button type="button" class="minus-person" onclick=""><i class="icon-minus "
-                                                                           @click="children_Decrease"></i></button>
+                  <button type="button" class="minus-person" @click="children_Decrease">
+                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
+                  </button>
                   <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
-                  <button type="button" class="plus-person"><i class="icon-plus " @click="children_Increase"></i>
+                  <button type="button" class="plus-person" @click="children_Increase">
+                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                        stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -80,10 +103,24 @@
                 <p>Bebek<br><span>0-5 arası</span></p>
                 <div class="Search-item-person-item-in ">
 
-                  <button type="button" class="minus-person" onclick=""><i class="icon-minus " @click="baby_Decrease"></i>
+                  <button type="button" class="minus-person" @click="baby_Decrease">
+                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
                   </button>
                   <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
-                  <button type="button" class="plus-person"><i class="icon-plus " @click="baby_Increase"></i>
+                  <button type="button" class="plus-person" @click="baby_Increase">
+                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                        stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
                   </button>
 
                 </div>
@@ -94,15 +131,15 @@
       </div>
     </div>
     <button type="button" class="Search-button" id="searchVilla" @click="search"><img
-      src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
-      class="contain flex-shrink-0 my-1"></button>
+        src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
+        class="contain flex-shrink-0 my-1"></button>
   </div>
 </template>
 
 <script>
 
 
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 import HotelDatePicker from "vue-hotel-datepicker2";
 
 export default {
@@ -114,8 +151,8 @@ export default {
     return {
       citySearchText: '',
       citiesDefault: [
-        {code: "23494", text: 'Antalya', type: 1},
-        {code: "23472", text: 'İstanbul', type: 1},
+        { code: "23494", text: 'Antalya', type: 1 },
+        { code: "23472", text: 'İstanbul', type: 1 },
       ],
       selectedCity: '',
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
@@ -289,6 +326,7 @@ export default {
 :deep() .datepicker__input--first {
   padding-left: 0;
 }
+
 :deep() .datepicker__month-day--first-day-selected,
 :deep() .datepicker__month-day--last-day-selected {
   background: var(--bs-theme-first-dark);
