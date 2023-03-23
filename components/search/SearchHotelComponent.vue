@@ -3,7 +3,7 @@
     <div class="Search-left">
       <div class="Search-item date">
         <client-only>
-          <v-select class="w-100" :options="filteredCities" id="code" v-model="selectedCity"
+          <v-select class="w-100" :options="filteredCities" id="code" v-model="selectedCity" :clearable="false"
             placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
         </client-only>
       </div>
