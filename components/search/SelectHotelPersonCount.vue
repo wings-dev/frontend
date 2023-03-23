@@ -65,9 +65,9 @@
             </div>
 
             <div class="w-100 mt-1">
-              <div v-for="child in childAges" class="w-100 d-flex justify-content-between p-2 mb-1" style="background: #f2eeee">
+              <div v-for="(child, index) in childAges" class="w-100 d-flex justify-content-between p-2 mb-1" style="background: #f2eeee">
                 <div>
-                  <div style="font-size: 12px">1. Çocuk</div>
+                  <div style="font-size: 12px">{{index + 1}}. Çocuk</div>
                   <div style="font-size: 10px">24.03.2001 sonrası doğumlu</div>
                 </div>
                 <div class="w-100" style="max-width: 50px">

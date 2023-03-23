@@ -98,7 +98,7 @@ export default {
       this.datePickerProps.startingDateValue = new Date(localData.checkIn)
       this.datePickerProps.endingDateValue = new Date(localData.checkOut)
       this.checkIn = localData.checkIn;
-      this.checkOut = localData.checkIn;
+      this.checkOut = localData.checkOut;
       this.adult = localData.adult;
       this.childAges = localData.childAges ? localData.childAges.map((age => {return {age}})) : [];
       this.searchResult.push(localData.selectedCity);

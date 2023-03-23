@@ -260,13 +260,11 @@ export default {
       this.filter(pageNumber);
     },
     filter(pageNumber = 1) {
-      let adult = this.adult ? parseInt(this.adult) + (this.childAges ? parseInt(this.childAges) : 0) : null;
-
       const data = {
         id: this.selectedFilters.destinations,
         checkIn: this.checkIn,
         checkOut: this.checkOut,
-        adult: adult,
+        adult: this.adult,
         childAges: this.childAges,
         order: this.orderValue?.value
       };
