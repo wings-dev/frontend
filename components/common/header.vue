@@ -25,23 +25,28 @@
 
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
                         <template v-for="(item, index) in mainMenu">
-                            <div class="Header-menu-item" v-if="!item.children">
+                            <div class="Header-menu-item" v-if="!item.children" :key="index">
                                 <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}</NuxtLink>
                             </div>
-                            <div class="Header-menu-item " :class="{ active: subMenuActive }" v-else :id="index">
+
+                            <div class="Header-menu-item " v-else :id="index">
                                 <!--  -->
                                 <button type="button" class="Header-menu-item-link menu-children"
                                     @click="subMenuOpen($event)" :id="index">{{
-                                        item.text }}<i class="icon-right-arrows-new"></i></button>
+                                        item.text }}
+                                    <i class="icon-right-arrows-new"></i>
+                                </button>
 
-                                <div class="Header-menu-item-in" :class="{ active: subMenuActive }">
+                                <div class="Header-menu-item-in">
                                     <template v-for="(subitem, index) in item.children">
 
-                                        <button type="button" class="mobile-back-button"><i class="icon-right-arrows-new"
-                                                @click="closeSubMenu($event)"></i>{{ subitem.text }}</button>
+                                        <button type="button" class="mobile-back-button">
+                                            <i class="icon-right-arrows-new" @click="closeSubMenu($event)"></i>{{
+                                                subitem.text }}
+                                        </button>
 
                                         <div class="Header-menu-sub-item " :class="{ 'single': index === 2 }"
-                                            v-if="subitem.href !== 'ozel-bolge'">
+                                            v-if="subitem.href !== 'ozel-bolge'" :key="index">
                                             <h5>{{ subitem.text }}{{ subitem.href }}</h5>
                                             <div class="Header-menu-sub-item-list">
                                                 <NuxtLink :to="'/' + subitemchildren.href" class="Header-top-menu-item"
@@ -150,15 +155,19 @@
                             <button class="Login-button-user dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i :class="greetingIcon"></i>
-                                <p><span>{{greeting}}</span>{{ $auth.user.name }}</p>
+                                <p><span>{{ greeting }}</span>{{ $auth.user.name }}</p>
                             </button>
                             <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><NuxtLink class="dropdown-item" to="/user/uyelik"><i
-                                            class="icon-right-arrows-new"></i>BİLGİLERİNİZ</NuxtLink></li>
+                                <li>
+                                    <NuxtLink class="dropdown-item" to="/user/uyelik"><i
+                                            class="icon-right-arrows-new"></i>BİLGİLERİNİZ</NuxtLink>
+                                </li>
                                 <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>FAVORİLERİM</a>
                                 </li>
-                                <li><NuxtLink class="dropdown-item" to="/user/rezervasyonlar"><i
-                                            class="icon-right-arrows-new"></i>REZERVASYONLARIM</NuxtLink></li>
+                                <li>
+                                    <NuxtLink class="dropdown-item" to="/user/rezervasyonlar"><i
+                                            class="icon-right-arrows-new"></i>REZERVASYONLARIM</NuxtLink>
+                                </li>
                                 <li><a class="dropdown-item" href="#" @click.prevent="logout()"><i
                                             class="icon-right-arrows-new"></i>ÇIKIŞ YAP</a></li>
                             </ul>
@@ -192,24 +201,37 @@ export default {
         }
     },
     computed: {
-      greeting() {
-        const saat = new Date().getHours();
+        greeting() {
+            const saat = new Date().getHours();
 
-        if (saat >= 6 && saat < 18) {
-          return 'İyi Günler!';
-        } else {
-          return 'İyi Akşamlar!';
-        }
-      },
-      greetingIcon() {
-        const saat = new Date().getHours();
+            if (saat >= 6 && saat < 18) {
+                return 'İyi Günler!';
+            } else {
+                return 'İyi Akşamlar!';
+            }
+        },
+        greetingIcon() {
+            const saat = new Date().getHours();
 
-        if (saat >= 6 && saat < 18) {
-          return 'icon-good-night';
-        } else {
-          return 'icon-good-night';
+            if (saat >= 6 && saat < 18) {
+                return 'icon-good-night';
+            } else {
+                return 'icon-good-night';
+            }
         }
-      }
+    },
+    watch: {
+        '$route': {
+            handler: 'onRouteChange',
+            immediate: true
+        },
+        mobileMenuActive(){
+            if(this.mobileMenuActive == true){
+            document.querySelector('body').classList.add("over")
+        }else{
+            document.querySelector('body').classList.remove("over")
+        }
+        }
     },
     methods: {
         async logout() {
@@ -224,11 +246,10 @@ export default {
         },
         mobileMenuOpen() {
             this.mobileMenuActive = !this.mobileMenuActive;
-            document.querySelector('body').classList.toggle("over")
         },
         subMenuOpen(e) {
 
-            document.querySelectorAll('.Header-menu-item').forEach(element => {
+            document.querySelectorAll('.Header-menu-item:not(.active)').forEach(element => {
                 if (element.classList.contains('active') && element.id !== e.target.id) {
                     element.classList.remove('active')
                     element.querySelector('.Header-menu-item-in').classList.remove('active')
@@ -237,7 +258,9 @@ export default {
                     e.target.parentNode.classList.toggle('active')
                     e.target.nextElementSibling.classList.toggle('active')
                 }
+
             });
+            this.subMenuActive = !this.subMenuActive
 
         },
 
@@ -249,6 +272,14 @@ export default {
                 this.subMenuVillasActive = false
             }
         },
+
+        onRouteChange(to, from) {
+            this.mobileMenuActive = false;
+            console.log(this.mobileMenuActive)
+    
+
+        }
+
     },
     mounted() {
 
@@ -262,6 +293,20 @@ export default {
             }
 
         };
+
+        setTimeout(() => {
+            document.addEventListener('click', function (event) {
+
+                var menu = document.querySelector('.Header-menu-item-in.active');
+                var menuToggle = document.querySelector('.Header-menu-item.active');
+                if (menu && menuToggle && !menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    menu.classList.remove('active')
+                    menuToggle.classList.remove('active')
+                }
+            });
+        }, 50)
+
+
 
     },
     created() {
