@@ -339,7 +339,7 @@ import CloseVillaModal from '../modals/close-villa-modal.vue';
 
 export default {
   name: 'DynamicHotelDetailPage',
-  props: ['hotelDetails', 'hotelPriceDetails'],
+  props: ['hotelDetails', 'hotelPriceDetails', 'selectedFilters'],
   data() {
     return {}
   },
