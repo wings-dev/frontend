@@ -3,7 +3,7 @@
     <div class="Search-left">
       <div class="Search-item date">
         <client-only>
-          <v-select class="w-100" :options="filteredCities" id="code" label="text" v-model="selectedCity"
+          <v-select class="w-100" :options="filteredCities" id="code" v-model="selectedCity"
             placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
         </client-only>
       </div>
@@ -149,11 +149,9 @@ export default {
   },
   data() {
     return {
+      searchResult: [],
       citySearchText: '',
-      citiesDefault: [
-        { code: "23494", text: 'Antalya', type: 1 },
-        { code: "23472", text: 'İstanbul', type: 1 },
-      ],
+      citiesDefault: [],
       selectedCity: '',
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
       datePickerProps: {},
@@ -180,6 +178,8 @@ export default {
         week: "hafta",
         weeks: "haftalar",
       },
+      timeoutCheck: null,
+      cancelToken: null,
     }
   },
   computed: {
@@ -188,8 +188,7 @@ export default {
     }),
     filteredCities() {
       if (this.citySearchText) {
-        const searchText = this.citySearchText.toLocaleLowerCase()
-        return this.hotels.filter(hotel => hotel.text.toLocaleLowerCase().includes(searchText))
+        return this.searchResult
       } else {
         return this.citiesDefault
       }
@@ -227,8 +226,43 @@ export default {
         window.location.href = `${window.location.origin}/otel?${urlSearchParams}`;
       }
     },
-    onCitySearch(searchText) {
-      this.citySearchText = searchText
+    async onCitySearch(searchText) {
+      this.citySearchText = searchText;
+
+      if (!searchText || searchText.length < 3) return;
+
+      clearTimeout(this.timeoutCheck);
+
+      this.timeoutCheck = setTimeout(async () => {
+        if (this.cancelToken) {
+          this.cancelToken.cancel();
+        }
+        this.cancelToken = this.$axios.CancelToken.source();
+
+        try {
+          const response = await this.$axios.post(
+            '/data/hotels/auto-complete',
+            { query: searchText },
+            { cancelToken: this.cancelToken.token }
+          );
+
+          // tpye a göre öncelik sırası, ülke şehir hotel
+          const sortOrder = { 8: 1, 1: 2, 2: 3 };
+
+          const items = response.data.body?.items?.filter(item => [1, 2, 8].includes(item.type))
+            .sort((a, b) => sortOrder[a.type] - sortOrder[b.type])
+            .map(item => {
+              item.label = item.type === 1 ? `${item.city.name}, ${item.country.name}` :
+                item.type === 2 ? `${item.hotel.name}, ${item.city.name}, ${item.country.name}` :
+                  item.type === 8 ? item.country.name : item.label;
+              return item;
+            }) || [];
+
+          this.searchResult = items.slice(0,50);
+        } catch (error) {
+          console.error(error);
+        }
+      }, 500);
     },
     checkInChanged(value) {
       this.checkIn = this.formatDate(value);
