@@ -313,7 +313,7 @@
                   :disabled-dates="disabledDates" disable-page-swipe :step="1">
                   <template v-slot:day-content="{ day, attributes }">
                     <div v-for="(attr, index) in attributes" :key="index"
-                      class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 "
+                      class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 calendar-cell"
                       :class="attr?.customData?.className">
                       <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
                       <div class="flex-grow overflow-y-auto overflow-x-auto">
@@ -1382,23 +1382,11 @@ export default {
   z-index: -1;
 }
 
-.vc-header {
-  padding: 10px 18px !important;
-  background-color: #F2F5FB;
-}
-
-.vc-day {
+:deep() .vc-day {
   min-width: 48px !important;
   min-height: 48px !important;
 }
 
-.vc-pane-layout {
-  gap: 20px;
-}
-
-.vc-weekday {
-  margin-bottom: 15px !important;
-}
 :deep() .vc-weeks{
   margin-top: 30px;
 }
@@ -1503,13 +1491,6 @@ export default {
 #mapContainer {
   width: 300px;
   height: 300px;
-}
-
-.vc-day {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
 }
 
 .day-label {

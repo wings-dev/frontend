@@ -62,9 +62,7 @@
           </div>
 
           <div class="Filter-right-selected">
-            <div class="Filter-right-selected-in">
-
-              <button type="button" id="Fetures_clear" v-show="filterCount > 0" @click="clearFilter()">Temizle</button>
+            <div class="Filter-right-selected-in" :class="{ active: isExpandedMore }" id="selectedItems">
 
               <a v-for="destination in selectedDestinations" class="Filter-right-selected-item">
                 Bölge:{{ destination.text }}
@@ -85,20 +83,22 @@
                 Olanak:{{ facility.text }}
                 <i class="icon-search-close" @click="unselect(facility)"></i>
               </a>
-
             </div>
+            <button type="button" id="Fetures_clear" v-show="filterCount > 0" @click="clearFilter()">Temizle</button>
+            <button type="button" class="morebutton" @click="isExpandedMore = !isExpandedMore" ref="moreButton">{{ !isExpandedMore ? 'TÜMÜNÜ GÖR'
+              : 'DAHA AZ GÖR' }}</button>
           </div>
 
           <div class="F_villa ">
 
-            <template v-if="villas.length > 2 ">
+            <template v-if="villas.length > 2">
 
-              <filter-villa-preview-component v-for="(villa, index) in villas.slice(0,2)" :key="index"
-                                              :villa="villa" :checkindate="checkIn" ></filter-villa-preview-component>
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(0, 2)" :key="index" :villa="villa"
+                :checkindate="checkIn"></filter-villa-preview-component>
               <div
                 class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
                 <img src="/uploads/holiday-banner.jpg" alt=""
-                     class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
+                  class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
 
                 <div class="d-flex flex-column position-relative ls-05 pt-3">
                   <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
@@ -106,7 +106,7 @@
                   <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
                 </div>
                 <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
-                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
                       <g id="Group" transform="translate(626.000000, 202.000000)">
@@ -121,18 +121,18 @@
                   </g>
                 </svg>
               </div>
-              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index"
-                                              :villa="villa" :checkindate="checkIn" ></filter-villa-preview-component>
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index" :villa="villa"
+                :checkindate="checkIn"></filter-villa-preview-component>
 
             </template>
 
-            <template v-if="villas.length > 0 && villas.length <= 2 ">
-              <filter-villa-preview-component v-for="(villa, index) in villas" :key="index"
-                                              :villa="villa" :checkindate="checkIn" ></filter-villa-preview-component>
+            <template v-if="villas.length > 0 && villas.length <= 2">
+              <filter-villa-preview-component v-for="(villa, index) in villas" :key="index" :villa="villa"
+                :checkindate="checkIn"></filter-villa-preview-component>
               <div
                 class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
                 <img src="/uploads/holiday-banner.jpg" alt=""
-                     class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
+                  class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
 
                 <div class="d-flex flex-column position-relative ls-05 pt-3">
                   <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
@@ -140,7 +140,7 @@
                   <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
                 </div>
                 <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
-                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
                       <g id="Group" transform="translate(626.000000, 202.000000)">
@@ -297,6 +297,7 @@ export default {
       max_price: null,
       checkIn: null,
       checkOut: null,
+      isExpandedMore: false,
       destinations: [],
       amenites: {
         groups: {
@@ -347,6 +348,7 @@ export default {
   },
   mounted() {
     this.filter();
+
   },
 
   computed: {
@@ -412,6 +414,10 @@ export default {
     updateFilter(key, value, sendRequest = true) {
       this[key] = value;
       sendRequest && this.filter();
+      setTimeout(() => {
+        this.selectedFilterItemHeight()
+      }, 50)
+   
     },
     goToPage(pageNumber) {
       if (pageNumber === this.current_page) return;
@@ -476,7 +482,7 @@ export default {
       this.orderValue = order;
       setTimeout(() => {
         this.filter();
-      },50)
+      }, 50)
     },
     unselect(item) {
       item.selected = false;
@@ -485,6 +491,7 @@ export default {
     updateSelection(checkbox, value) {
       checkbox.selected = value;
       checkbox.children && checkbox.children.forEach(child => this.updateSelection(child, value));
+
     },
     clearFilter() {
       [
@@ -498,6 +505,16 @@ export default {
     closeMobileFilter() {
       document.querySelector('.Filter-left').classList.remove("show")
       document.querySelector('body').classList.remove("over")
+    },
+    selectedFilterItemHeight() {
+      var div = document.getElementById("selectedItems");
+      var divHeight = div.offsetHeight;
+      var contentHeight = div.scrollHeight;
+      if (contentHeight > divHeight) {
+        this.$refs.moreButton.classList.remove('morebutton')
+      } else {
+        this.$refs.moreButton.classList.add('morebutton')
+      }
     }
   }
 }
@@ -515,4 +532,5 @@ export default {
   border-radius: 6px;
   color: #fff !important;
   background-color: var(--bs-theme-first) !important;
-}</style>
+}
+</style>

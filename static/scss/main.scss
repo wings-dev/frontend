@@ -2869,7 +2869,22 @@ body.overflow-hidden {
       &-in {
         display: flex;
         align-items: center;
+        max-height: 78px;
+        overflow: hidden;
         flex-wrap: wrap;
+        &.active{
+          max-height: unset;
+        }
+      }
+      &-list{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        overflow: hidden;
+      }
+
+      .morebutton{
+        display: none;
       }
 
       &-item {
@@ -4874,7 +4889,6 @@ body.overflow-hidden {
         background-color: rgba(255, 255, 255, 0.5);
         border-radius: 50%;
         background-repeat: no-repeat;
-        background-position: center;
       }
 
       .swiper-button-prev {
