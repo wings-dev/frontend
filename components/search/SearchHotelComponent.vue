@@ -34,101 +34,7 @@
           </div>
         </div>
       </div>
-      <div class="Search-item Search-item-people">
-        <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          <div
-            class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
-            <i class="icon-group-user"></i>
-          </div>
-          <div class="Search-item-people-in">
-            <span class="Search-item-name">Kişi Sayısı </span>
-            <span class="dropdown-toggle-title">{{ selectedPersonText }}</span>
-            <i class="icon-down-arrow"></i>
-          </div>
-
-        </button>
-        <client-only>
-          <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton2">
-            <div class="Search-item-person">
-              <div class="Search-item-person-item ">
-                <p>Yetişkin</p>
-                <div class="Search-item-person-item-in ">
-                  <button type="button" class="minus-person" @click="adultDecrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
-                  </button>
-                  <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
-                  <button type="button" class="plus-person" @click="adultIncrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <div class="Search-item-person-item">
-                <p>Çocuk <br><span>6-17 arası</span></p>
-                <div class="Search-item-person-item-in ">
-                  <button type="button" class="minus-person" @click="children_Decrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
-                  </button>
-                  <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
-                  <button type="button" class="plus-person" @click="children_Increase">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <div class="Search-item-person-item ">
-                <p>Bebek<br><span>0-5 arası</span></p>
-                <div class="Search-item-person-item-in ">
-
-                  <button type="button" class="minus-person" @click="baby_Decrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
-                  </button>
-                  <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
-                  <button type="button" class="plus-person" @click="baby_Increase">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
-                  </button>
-
-                </div>
-              </div>
-            </div>
-          </ul>
-        </client-only>
-      </div>
+      <select-hotel-person-count :adult="adult" :childAges="childAges" @change="adult = $event.adult; childAges = $event.childAges"></select-hotel-person-count>
     </div>
     <button type="button" class="Search-button" id="searchVilla" @click="search"><img
         src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
@@ -141,10 +47,12 @@
 
 import { mapState } from "vuex";
 import HotelDatePicker from "vue-hotel-datepicker2";
+import SelectHotelPersonCount from "@/components/search/SelectHotelPersonCount.vue";
 
 export default {
   name: "SearchHotelComponent",
   components: {
+    SelectHotelPersonCount,
     HotelDatePicker,
   },
   data() {
@@ -154,13 +62,13 @@ export default {
       citiesDefault: [],
       selectedCity: '',
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
-      datePickerProps: {},
+      datePickerProps: {
+      },
       checkIn: null,
       checkOut: null,
       adult: 1,
-      children: 0,
+      childAges: [],
       weekfirstday: process.env.WEEKDAY,
-      baby: 0,
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
@@ -182,6 +90,26 @@ export default {
       cancelToken: null,
     }
   },
+  beforeMount() {
+    let localData = localStorage.getItem('lastHotelSearch');
+    if (localData) {
+      localData = JSON.parse(localData);
+
+      this.datePickerProps.startingDateValue = new Date(localData.checkIn)
+      this.datePickerProps.endingDateValue = new Date(localData.checkOut)
+      this.checkIn = localData.checkIn;
+      this.checkOut = localData.checkIn;
+      this.adult = localData.adult;
+      this.childAges = localData.childAges ? localData.childAges.map((age => {return {age}})) : [];
+      this.searchResult.push(localData.selectedCity);
+      this.selectedCity = localData.selectedCity ? localData.selectedCity : '';
+    } else {
+      this.datePickerProps.startingDateValue = new Date()
+      this.datePickerProps.endingDateValue = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+      this.checkIn = this.formatDate(this.datePickerProps.startingDateValue);
+      this.checkOut = this.formatDate(this.datePickerProps.endingDateValue);
+    }
+  },
   computed: {
     ...mapState({
       hotels: state => state.hotels.searchData.destinations
@@ -193,30 +121,23 @@ export default {
         return this.citiesDefault
       }
     },
-    selectedPersonText() {
-      let text = `${this.adult} Yetişkin `;
-      if (this.children > 0) {
-        text += `${this.children} Çocuk `;
-      }
-      if (this.baby > 0) {
-        text += `${this.baby} Bebek `;
-      }
-      return text;
-    }
+
   },
   methods: {
     search() {
+      // şehir
       if (this.selectedCity.type === 1) {
         const queryParams = {
-          destinations: this.selectedCity.code,
+          destinations: this.selectedCity.city.id,
           checkIn: this.checkIn,
           checkOut: this.checkOut,
           adult: this.adult,
-          children: this.children,
-          baby: this.baby,
+          childAges: this.childAges.length ? this.childAges.filter(child => child.age !== '').map(child => child.age) : [],
         };
 
-        localStorage.setItem('lastHotelSearch', JSON.stringify(queryParams));
+        const localData = {...queryParams};
+        localData['selectedCity'] = this.selectedCity;
+        localStorage.setItem('lastHotelSearch', JSON.stringify(localData));
 
         const urlSearchParams = Object.entries(queryParams)
           .filter(([key, value]) => value !== undefined && value !== null && value !== '')
@@ -247,9 +168,9 @@ export default {
           );
 
           // tpye a göre öncelik sırası, ülke şehir hotel
-          const sortOrder = { 8: 1, 1: 2, 2: 3 };
+          const sortOrder = { 1: 1, 2: 2 };
 
-          const items = response.data.body?.items?.filter(item => [1, 2, 8].includes(item.type))
+          const items = response.data.body?.items?.filter(item => [1, 2].includes(item.type))
             .sort((a, b) => sortOrder[a.type] - sortOrder[b.type])
             .map(item => {
               item.label = item.type === 1 ? `${item.city.name}, ${item.country.name}` :
@@ -277,36 +198,6 @@ export default {
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const day = date.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
-      }
-    },
-    adultIncrease() {
-      if (this.adult < 20) {
-        this.adult += 1;
-      }
-    },
-    adultDecrease() {
-      if (this.adult > 1) {
-        this.adult -= 1;
-      }
-    },
-    children_Increase() {
-      if (this.children < 10) {
-        this.children += 1;
-      }
-    },
-    children_Decrease() {
-      if (this.children > 0) {
-        this.children -= 1;
-      }
-    },
-    baby_Increase() {
-      if (this.baby < 5) {
-        this.baby += 1;
-      }
-    },
-    baby_Decrease() {
-      if (this.baby > 0) {
-        this.baby -= 1;
       }
     },
     clearDatesRez() {

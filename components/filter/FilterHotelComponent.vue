@@ -157,7 +157,7 @@ export default {
         facilities: [],
       },
       adult: null,
-      children: null,
+      childAges: [],
       baby: null,
       orderValues: [
         { value: 1, text: "Fiyata Göre Artan" },
@@ -184,11 +184,10 @@ export default {
     this.checkIn = this.selectedFilters['checkIn'] ?? null;
     this.checkOut = this.selectedFilters['checkOut'] ?? null;
     this.adult = this.selectedFilters['adult'] ?? null;
-    this.children = this.selectedFilters['children'] ?? null;
+    this.childAges = this.selectedFilters['childAges'] ?? null;
     this.baby = this.selectedFilters['baby'] ?? null;
 
 
-    this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
@@ -261,20 +260,14 @@ export default {
       this.filter(pageNumber);
     },
     filter(pageNumber = 1) {
-
-      if (this.selectedDestinations.length === 0) {
-        this.hotels = [];
-        return
-      }
-
-      let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
+      let adult = this.adult ? parseInt(this.adult) + (this.childAges ? parseInt(this.childAges) : 0) : null;
 
       const data = {
-        id: this.selectedDestinations.map(destination => destination.code),
+        id: this.selectedFilters.destinations,
         checkIn: this.checkIn,
         checkOut: this.checkOut,
         adult: adult,
-        baby: this.baby ? parseInt(this.baby) : null,
+        childAges: this.childAges,
         order: this.orderValue?.value
       };
 
