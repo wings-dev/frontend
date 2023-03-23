@@ -31,8 +31,8 @@ export default {
     const selectedFilters = {
       adult: query.adult || 1,
       childAges: query.childAges || [],
-      checkIn: query.checkIn || null,
-      checkOut: query.checkOut || null,
+      checkIn: query.checkIn || new Date(),
+      checkOut: query.checkOut || new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
     }
 
     let response = await $dataService.getHotelDetail(hotel_id);
