@@ -4,7 +4,7 @@
       <a href="javascript:void(0)" @click="goDetail" class="d-block flex-shrink-0">
         <img
           src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif"
-          :data-src="'https://media.dev.paximum.com/hotelimages/102627/' + hotel.id + '.jpg'"
+          :data-src="previewImageUrl"
           width="316"
           height="209"
           alt="hotel image"
@@ -102,12 +102,21 @@ export default {
   computed: {
     isFavorite() {
       return this.$store.state.favorite.favorites.includes(this.hotel.name)
+    },
+    previewImageUrl() {
+      if (this.hotel.custom.preview_image && this.hotel.custom.preview_image.length > 0) {
+        return this.hotel.custom.preview_image[0].preview_url
+      } else if (this.hotel.thumbnailFull) {
+        return this.hotel.thumbnailFull;
+      } else {
+        return 'https://media.dev.paximum.com/hotelimages/102627/' + this.hotel.id + '.jpg';
+      }
     }
   },
   methods: {
     slugify,
     backgroundImageStyle() {
-      const imageUrl = this.hotel.thumbnailFull;
+      const imageUrl = this.previewImageUrl;
       return `background-image: url('${imageUrl}');`;
     },
     goDetail() {

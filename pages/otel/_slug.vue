@@ -19,6 +19,7 @@ export default {
       headData: {},
       hotelDetails: null,
       hotelPriceDetails: null,
+      selectedFilters: {}
     }
   },
   async asyncData({route, $axios, $dataService}) {
@@ -40,6 +41,13 @@ export default {
 
     response = await $dataService.getHotelPrice(hotel_id, selectedFilters)
     const hotelPriceDetails = response.data;
+    if (hotelPriceDetails.body?.hotels[0]?.offers.length > 0) {
+      const offerIds = hotelPriceDetails.body?.hotels[0]?.offers.map(offer => offer.offerId)
+      console.log(offerIds)
+      let response = await $dataService.getOfferDetails({offerIds});
+      const offerDetails = response.data;
+      console.log(JSON.stringify(offerDetails))
+    }
 
     return {hotelDetails, hotelPriceDetails, selectedFilters}
   },
