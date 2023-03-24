@@ -7,41 +7,7 @@
     <common-header></common-header>
 
     <main class="main">
-      <section class="search-engine-section position-relative pt-3">
-        <div class="container pt-1">
-          <form action="" class="search-engine">
-            <nav>
-              <div class="nav nav-tabs border-0 lh-sm" id="search-tab" role="tablist">
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0" id="nav-home-tab"
-                  data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                  aria-selected="true"><span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt İçi
-                    Villalar</span></button>
-
-                <button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0" id="nav-profile-tab"
-                  data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                  aria-selected="false"><span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt Dışı
-                    Villalar</span></button>
-                <button class="nav-link active text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 " id="nav-contact-tab"
-                  data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
-                  aria-selected="false"><span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Otel
-                    Rezervasyon</span><!-- <span class="comingsoon">ÇOK YAKINDA</span> --></button>
-
-              </div>
-            </nav>
-            <div class="tab-content" id="search-tabContent">
-              <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <search-villa-component :key="$route.path"></search-villa-component>
-              </div>
-              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <h2>TEST</h2>
-              </div>
-              <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <search-hotel-component :key="$route.path"></search-hotel-component>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
+      <search-bar></search-bar>
 
       <Nuxt />
       <div class="header-call">
@@ -100,6 +66,7 @@ import CallModal from "@/components/modals/call-modal.vue";
 import FavModal from "@/components/modals/fav-modal.vue";
 import ReservationModal from "@/components/modals/reservation-modal.vue";
 import ReservationCodeModal from "@/components/modals/reservation-code-modal.vue";
+import SearchBar from "@/components/search/SearchBar.vue";
 import VSelect from "@alfsnd/vue-bootstrap-select";
 export default {
   name: "default",
@@ -120,7 +87,7 @@ export default {
   components: {
     ReservationCodeModal,
     ReservationModal,
-    HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, VSelect
+    HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, VSelect,SearchBar
   },
   methods: {
     async logout() {

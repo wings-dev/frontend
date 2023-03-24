@@ -21,7 +21,6 @@ export default {
     name: 'Text',
     props: ['data'],
     mounted() {
-        console.log(this.data)
     }
 }
 </script>
