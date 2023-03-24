@@ -9,7 +9,7 @@
           height="209"
           alt="hotel image"
           class="main-image bg-light lazy cover rounded-xl loaded"
-          :style="backgroundImageStyle(hotel.id)"
+          :style="backgroundImageStyle()"
         />
       </a>
     </div>
@@ -106,8 +106,8 @@ export default {
   },
   methods: {
     slugify,
-    backgroundImageStyle(hotelId) {
-      const imageUrl = `https://media.dev.paximum.com/hotelimages/${hotelId}/1.jpg`;
+    backgroundImageStyle() {
+      const imageUrl = this.hotel.thumbnailFull;
       return `background-image: url('${imageUrl}');`;
     },
     goDetail() {
