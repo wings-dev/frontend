@@ -24,74 +24,8 @@
             <div class="container">
                 <div class="Blog-in detail">
 
-                    <div class="Blog-sidebar ">
-                        <div class="Blog-sidebar-title">
-                            <i class="icon-header-phone"></i>
-                            <h3>BLOG</h3>
-                        </div>
-                        <div class="Blog-sidebar-in">
-                            <div class="Blog-sidebar-item">
-                                <button class="Blog-sidebar-item-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse1" aria-expanded="false">Fethiye <i
-                                        class="icon-down-arrow"></i></button>
-                                <div class="collapse" id="collapse1">
-                                    <div class="card card-body">
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkan Hakkında</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yer Alan Plajlar</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yapılacaklar</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Blog-sidebar-item">
-                                <button class="Blog-sidebar-item-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse2" aria-expanded="false">Kalkan <i
-                                        class="icon-down-arrow"></i></button>
-                                <div class="collapse" id="collapse2">
-                                    <div class="card card-body">
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkan Hakkında</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yer Alan Plajlar</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yapılacaklar</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Blog-sidebar-item">
-                                <button class="Blog-sidebar-item-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse3" aria-expanded="false">Marmaris Bölgesi <i
-                                        class="icon-down-arrow"></i></button>
-                                <div class="collapse" id="collapse3">
-                                    <div class="card card-body">
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkan Hakkında</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yer Alan Plajlar</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yapılacaklar</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Blog-sidebar-item">
-                                <button class="Blog-sidebar-item-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse4" aria-expanded="false">Bodrum Bölgesi <i
-                                        class="icon-down-arrow"></i></button>
-                                <div class="collapse" id="collapse4">
-                                    <div class="card card-body">
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkan Hakkında</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yer Alan Plajlar</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yapılacaklar</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Blog-sidebar-item">
-                                <button class="Blog-sidebar-item-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse5" aria-expanded="false">Dalyan Bölgesi <i
-                                        class="icon-down-arrow"></i></button>
-                                <div class="collapse" id="collapse5">
-                                    <div class="card card-body">
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkan Hakkında</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yer Alan Plajlar</a>
-                                        <a href="" class="Blog-sidebar-item-link">- Kalkanda Yapılacaklar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <blog-sidebar></blog-sidebar>
+                    
                     <div class="Blog-content ">
                         <div class="Blog-detail">
                             <div class="Blog-detail-info">
@@ -152,7 +86,7 @@
                     <div class="Blog-more-slider">
                         <div class="swiper blog-slider-more">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="item in 4">
+                                <div class="swiper-slide" v-for="(item,index) in 4" :key="index">
                                     <a class="Blog-item">
                                         <div class="Blog-item-img">
                                             <img src="/img/blog.png" alt="">
@@ -190,10 +124,11 @@
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
+import BlogSidebar from "@/components/blog/blog-sidebar.vue";
 export default {
     name: 'DynamicBlogDetail',
     components: {
-        Swiper
+        Swiper,BlogSidebar
     },
     mounted() {
         Swiper.use([Navigation, Pagination])

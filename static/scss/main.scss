@@ -3465,6 +3465,15 @@ body.overflow-hidden {
       margin-right: 14px;
     }
   }
+  &-list{
+    background-color: #F2F5FB;
+    h1{
+      color: var(--bs-theme-first);
+      &:before{
+        display: none;
+      }
+    }
+  }
 }
 
 .Text {
@@ -3486,6 +3495,31 @@ body.overflow-hidden {
     letter-spacing: 0.63px;
     color: #3c3c3c;
     margin-bottom: 20px;
+  }
+  &-list{
+    display: flex;
+    flex-direction: column;
+    padding-top: clamp(25px,2.6vw,50px);
+    padding-bottom: 10%;
+    &-item{
+      padding: 20px;
+      border-radius: 2.6px;
+      border: solid 1.3px #fff;
+      background-color: #f2f5fb;
+      font-size: 15.8px;
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--bs-theme-first);
+      transition: all 400ms;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &:hover{
+        background-color: var(--bs-theme-first);
+        color: #fff;
+      }
+    }
   }
 }
 

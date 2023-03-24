@@ -2,18 +2,18 @@
   <div>
     <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1" v-if="type === 2"></dynamic-detail-page>
     <dynamic-villa-filter-page :selectedFilters="componentData" v-if="type === 7"></dynamic-villa-filter-page>
-    <hakkimizda :data="componentData" v-if="type === 10"></hakkimizda>
+    <dynamic-text-page :data="componentData" v-if="type === 1 || type === 16"></dynamic-text-page>
   </div>
 </template>
 
 <script>
 import DynamicVillaFilterPage from "@/components/dynamic-page/villa-filter.vue";
 import DynamicDetailPage from "@/components/dynamic-page/detail.vue";
-import Hakkimizda from "@/components/static-page/hakkimizda.vue";
+import DynamicTextPage from "@/components/dynamic-page/text.vue";
 
 export default {
   name: 'DynamicPage',
-  components: {DynamicDetailPage, DynamicVillaFilterPage,Hakkimizda},
+  components: {DynamicDetailPage, DynamicVillaFilterPage,DynamicTextPage},
   layout: "no-search",
   head() {
     return this.headData
@@ -57,6 +57,12 @@ export default {
       if (redisData.type === 7) {
         // filtre redis datası
         componentData = redisData.data;
+      }
+
+      if (redisData.type === 1 || redisData.type === 16) {
+        // filtre redis datası
+        componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
+        componentData.page_content.article.data = componentData.page_content.article.data.replace(/&nbsp;/g,' ').trim();
       }
 
       return {type, headData, componentData, calendar, price_list_1}
