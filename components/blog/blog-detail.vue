@@ -191,7 +191,7 @@
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 export default {
-    name: 'BlogDetail',
+    name: 'DynamicBlogDetail',
     components: {
         Swiper
     },

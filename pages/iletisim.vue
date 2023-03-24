@@ -13,7 +13,7 @@
         </section>
 
         <section class="Contact-offices">
-            <div class="Contact-offices-map" style="filter:grayscale(1)">
+            <div class="Contact-offices-map" style="filter:grayscale(1);">
                 <!-- <client-only>
                     <div id="map-wrap">
 
@@ -34,24 +34,19 @@
             </div>
             <div class="Contact-offices-tab">
                 <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                            aria-selected="true" @click="changeMap('merkez')"><span>MERKEZ OFİS</span></button>
+
+                    <li class="nav-item" role="presentation" v-for="(item, index) in pageData.page_content.contact_list"
+                        :key="index">
+                        <button class="nav-link" :class="index == 0 ? 'active' : ''" :id="'pills-office-tab' + index"
+                            data-bs-toggle="pill" :data-bs-target="'#pills-office' + index" type="button" role="tab"
+                            aria-selected="false" @click="changeMap(item.ofis_name)"><span>{{ item.ofis_name }}</span></button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                            aria-selected="false" @click="changeMap('londra')"><span>LONDRA OFİS</span></button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                            aria-selected="false" @click="changeMap('fethiye')"> <span>FETHİYE OFİS</span></button>
-                    </li>
+
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="tab-pane fade " :class="index == 0 ? 'show active' : ''" :id="'pills-office' + index" role="tabpanel"
+                        :aria-labelledby="'pills-office-tab' + index"
+                        v-for="(item, index) in pageData.page_content.contact_list" :key="index">
                         <div class="Contact-offices-tab-img">
                             <img src="/img/office.jpg" alt="">
                         </div>
@@ -60,20 +55,20 @@
                             <div class="Contact-offices-tab-text">
                                 <div class="Contact-offices-tab-text-item">
                                     <h6>ADRES</h6>
-                                    <p>Kalkan Mah. Cumhuriyet Cd. No:48/2
-                                        <a href="">info@villakalkan.com.tr</a>
+                                    <p>{{ item.ofis_address }}
+                                        <a :href="'mailto:' + item.ofis_mail">{{ item.ofis_mail }}</a>
                                     </p>
                                 </div>
                                 <div class="Contact-offices-tab-text-item">
                                     <h6>TELEFON</h6>
-                                    <a class="phone" href="">+90 242 252 00 32</a>
+                                    <a :href="'mailto:' + item.ofis_phone" class="phone">{{ item.ofis_phone }}</a>
                                 </div>
                             </div>
                             <div class="Contact-offices-tab-text">
                                 <div class="Contact-offices-tab-text-item">
                                     <h6>ÇALIŞMA SAATLERİMİZ</h6>
-                                    <p class="hours"><span>Hafta içi:</span>09:00 - 23:00</p>
-                                    <p class="hours"><span>Hafta sonu:</span>09:00 - 23:00</p>
+                                    <p class="hours"><span>Hafta içi: </span>{{ item.ofis_workinghours_midweek }}</p>
+                                    <p class="hours"><span>Hafta sonu: </span>{{ item.ofis_workinghours_weekend }}</p>
                                 </div>
                                 <div class="Contact-offices-tab-text-item">
                                     <h6>SOSYAL MEDYA’DA</h6>
@@ -84,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <!-- <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <div class="Contact-offices-tab-img">
                             <img src="/img/office.jpg" alt="">
                         </div>
@@ -149,7 +144,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -252,27 +247,61 @@ export default {
                 contentOffset: [35, 15],
                 contentLayout: '<div style="background: red; width: 50px; color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
             },
-            ymaps: null
+            ymaps: null,
+            pageData: null,
+            officeCoordinates: [],
         }
+    },
+    async asyncData({ $getRedisKey }) {
+        const site_id = process.env.SITE;
+        let pageData = {};
+        pageData = await $getRedisKey(`web:${site_id}:pages:iletisim`);
+        const pageContent = pageData.page_content;
+        const contactList = pageContent.contact_list;
+        const officeCoordinates = []
+
+        contactList.forEach(office => {
+            const coordinates = {
+                x: office.ofis_map_coordinate_x,
+                y: office.ofis_map_coordinate_y
+            };
+            officeCoordinates.push(coordinates);
+        });
+
+
+        
+        return { pageData,officeCoordinates }
     },
     methods: {
         changeMap(e) {
-            if (e == 'merkez') {
-                this.ymaps.setCenter([36.6232369395677, 29.14690812467539])
-
+            if (e == 'Merkez') {
+                this.ymaps.setCenter([this.officeCoordinates[0].x, this.officeCoordinates[0].y])
             }
-            if (e == 'londra') {
-                this.ymaps.setCenter([34.618867138910204, 32.145069037654377])
-            }
-            if (e == 'fethiye') {
-                this.ymaps.setCenter([36.2656123842673, 29.40653015476229])
+           
+            if (e == 'Fethiye') {
+                this.ymaps.setCenter([this.officeCoordinates[1].x, this.officeCoordinates[1].y])
                 this.ymaps.geoObjects.add(new ymaps.GeoObject({
                     geometry: {
                         type: "Point",
-                        coordinates: [36.2656123842673, 29.40653015476229]
+                        coordinates: [this.officeCoordinates[1].x, this.officeCoordinates[1].y]
                     },
                     properties: {
                         iconContent: 'Kalkan Ofis',
+                    }
+                }, {
+                    preset: 'islands#blackStretchyIcon',
+                    draggable: false,
+                }))
+            }
+            if (e == 'Londra') {
+                this.ymaps.setCenter([this.officeCoordinates[2].x, this.officeCoordinates[2].y])
+                this.ymaps.geoObjects.add(new ymaps.GeoObject({
+                    geometry: {
+                        type: "Point",
+                        coordinates: [this.officeCoordinates[2].x, this.officeCoordinates[2].y]
+                    },
+                    properties: {
+                        iconContent: 'Londra Ofis',
                     }
                 }, {
                     preset: 'islands#blackStretchyIcon',
@@ -286,7 +315,7 @@ export default {
     },
     computed: {
         activeCoords() {
-            return this.coords[this.picked];
+            return [[this.officeCoordinates[0].x, this.officeCoordinates[0].y]][this.picked];
         },
     },
     mounted() {

@@ -276,9 +276,6 @@ export default {
                 { hid: 'description', name: 'description', content: 'hakkımızda' },
                 { hid: 'keywords', name: 'keywords', content: 'hakkımızda1, hakkımızda2, hakkımızd3' }
             ],
-            link: [
-                { rel: 'stylesheet', href: `/css/hakkimizda.min.css` }
-            ]
         }
     },
     async asyncData({ $getRedisKey }) {

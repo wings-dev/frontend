@@ -31,13 +31,13 @@
 
                             <div class="Header-menu-item " v-else :id="index">
                                 <!--  -->
-                                <button type="button" class="Header-menu-item-link menu-children"
-                                    @click="subMenuOpen($event)" :id="index">{{
+                                <button type="button" class="Header-menu-item-link menu-children menu-item"
+                                    :data-dropdown="'dropdown' + index" :id="index">{{
                                         item.text }}
                                     <i class="icon-right-arrows-new"></i>
                                 </button>
 
-                                <div class="Header-menu-item-in">
+                                <div class="Header-menu-item-in menu-item-dropdown" :id="'dropdown' + index">
                                     <template v-for="(subitem, index) in item.children">
 
                                         <button type="button" class="mobile-back-button">
@@ -194,6 +194,7 @@ export default {
         return {
             mobileMenuActive: false,
             subMenuActive: false,
+            searchActive: false,
             site_id: process.env.SITE,
             topMenu: [],
             mainMenu: [],
@@ -225,12 +226,18 @@ export default {
             handler: 'onRouteChange',
             immediate: true
         },
-        mobileMenuActive(){
-            if(this.mobileMenuActive == true){
-            document.querySelector('body').classList.add("over")
-        }else{
-            document.querySelector('body').classList.remove("over")
-        }
+        mobileMenuActive() {
+            if (this.mobileMenuActive == true) {
+                document.querySelector('body').classList.add("over")
+            } else {
+                document.querySelector('body').classList.remove("over")
+            }
+        },
+        searchActive() {
+            document.querySelector('.Search-villas').classList.toggle('Search_villas_active')
+            document.querySelector('body').classList.toggle("over")
+            document.querySelector('#searchButton i').classList.toggle('icon-search')
+            document.querySelector('#searchButton i').classList.toggle('icon-login-close')
         }
     },
     methods: {
@@ -239,30 +246,29 @@ export default {
             location.reload();
         },
         openSearch(e) {
-            document.querySelector('.Search-villas').classList.toggle('Search_villas_active')
-            document.querySelector('body').classList.toggle("over")
-            document.querySelector('#searchButton i').classList.toggle('icon-search')
-            document.querySelector('#searchButton i').classList.toggle('icon-login-close')
+            this.subMenuActive = false
+            this.searchActive = !this.searchActive
         },
         mobileMenuOpen() {
             this.mobileMenuActive = !this.mobileMenuActive;
         },
-        subMenuOpen(e) {
+        // subMenuOpen(e) {
 
-            document.querySelectorAll('.Header-menu-item:not(.active)').forEach(element => {
-                if (element.classList.contains('active') && element.id !== e.target.id) {
-                    element.classList.remove('active')
-                    element.querySelector('.Header-menu-item-in').classList.remove('active')
-                }
-                if (element.id == e.target.id) {
-                    e.target.parentNode.classList.toggle('active')
-                    e.target.nextElementSibling.classList.toggle('active')
-                }
+        //     document.querySelectorAll('.Header-menu-item:not(.active)').forEach(element => {
+        //         if (element.classList.contains('active') && element.id !== e.target.id) {
+        //             element.classList.remove('active')
+        //             element.querySelector('.Header-menu-item-in').classList.remove('active')
+        //         }
+        //         if (element.id == e.target.id) {
+        //             e.target.parentNode.classList.toggle('active')
+        //             e.target.nextElementSibling.classList.toggle('active')
+        //         }
 
-            });
-            this.subMenuActive = !this.subMenuActive
+        //     });
+        //     this.subMenuActive = !this.subMenuActive
+        //     this.searchActive = false
 
-        },
+        // },
 
         closeSubMenu(e) {
             if (this.subMenuActive == true) {
@@ -276,7 +282,7 @@ export default {
         onRouteChange(to, from) {
             this.mobileMenuActive = false;
             console.log(this.mobileMenuActive)
-    
+
 
         }
 
@@ -294,17 +300,62 @@ export default {
 
         };
 
-        setTimeout(() => {
-            document.addEventListener('click', function (event) {
+        const menuItems = document.querySelectorAll(".menu-item");
+        const dropdowns = document.querySelectorAll(".menu-item-dropdown");
 
-                var menu = document.querySelector('.Header-menu-item-in.active');
-                var menuToggle = document.querySelector('.Header-menu-item.active');
-                if (menu && menuToggle && !menu.contains(event.target) && !menuToggle.contains(event.target)) {
-                    menu.classList.remove('active')
-                    menuToggle.classList.remove('active')
+        function closeAllDropdowns(exceptDropdownId) {
+            dropdowns.forEach((dropdown) => {
+                if (dropdown.id !== exceptDropdownId) {
+                    dropdown.classList.remove("active");
+                }
+                
+                dropdown.parentNode.classList.remove("active");
+            });
+        }
+        menuItems.forEach((menuItem) => {
+            menuItem.addEventListener("click", function (event) {
+                event.stopPropagation();
+                const dropdownId = this.getAttribute("data-dropdown");
+                if (dropdownId) {
+                    const dropdown = document.getElementById(dropdownId);
+                    if (dropdown.classList.contains("active")) {
+
+                    } else {
+                        closeAllDropdowns(dropdownId);
+                        dropdown.classList.add("active");
+                        this.parentNode.classList.add("active");
+                    }
+                } else {
+                    closeAllDropdowns();
                 }
             });
-        }, 50)
+        });
+        dropdowns.forEach((dropdown) => {
+            dropdown.addEventListener("click", function (event) {
+                event.stopPropagation();
+            });
+        });
+        document.body.addEventListener("click", function (event) {
+
+            if (event.target.closest(".menu-item-dropdown") === null) {
+                closeAllDropdowns();
+            }
+        });
+
+
+
+        // setTimeout(() => {
+        //     document.addEventListener('click', function (event) {
+
+        //         var menu = document.querySelector('.Header-menu-item-in.active');
+        //         var menuToggle = document.querySelector('.Header-menu-item.active');
+        //         var menuToggleLink = menuToggle.querySelector('.Header-menu-item.active .Header-menu-item-link');
+        //         if (menu && menuToggleLink && !menu.contains(event.target) && !menuToggleLink.contains(event.target)) {
+        //             menu.classList.remove('active')
+        //             menuToggle.classList.remove('active')
+        //         }
+        //     });
+        // }, 50)
 
 
 
