@@ -121,7 +121,7 @@
                   </g>
                 </svg>
               </div>
-              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index" :villa="villa"
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index + 3" :villa="villa"
                 :checkindate="checkIn"></filter-villa-preview-component>
 
             </template>
@@ -417,7 +417,7 @@ export default {
       setTimeout(() => {
         this.selectedFilterItemHeight()
       }, 50)
-   
+
     },
     goToPage(pageNumber) {
       if (pageNumber === this.current_page) return;

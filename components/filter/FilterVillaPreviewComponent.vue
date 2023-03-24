@@ -89,7 +89,7 @@
         <div class="F_villa-item-features">
           <h6>Öne çıkan özellikleri</h6>
           <div class="F_villa-item-features-in">
-            <p class="F_villa-item-features-item" v-for="(amenite, index) in amenitesList(villa)" :key="index">{{ amenite }}</p>
+            <p class="F_villa-item-features-item" v-for="(amenite, index2) in amenitesList(villa)" :key="index2">{{ amenite }}</p>
             <!-- <p class="F_villa-item-features-item F_villa-item-features-more"><a :href="villa.url" class="">Tümünü Gör</a> -->
           </div>
 

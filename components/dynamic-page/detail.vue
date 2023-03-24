@@ -409,13 +409,13 @@
                             <div class="img-box w-100">
 
                               <img :src="img.preview_url" width="312" height="213" alt="room image"
-                                class="lazy cover rounded-xl w-100" v-for="(img, index) in bolum.gorsel" :key="index"
+                                class="lazy cover rounded-xl w-100" v-for="(img, index2) in bolum.gorsel" :key="index2"
                                 v-if="index <= 0">
                             </div>
                             <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                               <span class="room-item-title">{{ bolum.name }}</span>
                               <p class="room-item-text">
-                                <span style="margin-right: 5px;" v-for="(ozellik, index) in bolum.donanim" :key="index">{{
+                                <span style="margin-right: 5px;" v-for="(ozellik, index3) in bolum.donanim" :key="index3">{{
                                   ozellik }}</span>
                               </p>
                             </div>

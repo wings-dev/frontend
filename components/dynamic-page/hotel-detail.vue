@@ -2,6 +2,7 @@
   <div>
     <section class="view-detail-section bg-theme-light-2 pt-4 pb-5">
       <div class="container pb-4">
+
         <div class="view-top d-flex align-items-lg-center flex-column flex-lg-row mb-4">
           <div class="d-flex flex-column flex-fill me-auto mb-lg-0 mb-2">
             <div class="fs-2 lh-sm ls-05 d-flex align-items-center mb-1">
@@ -61,50 +62,65 @@
             </button>
           </div>
         </div>
-        <div class="view-gallery" style="display: none">
-          <div class="area-1">
-            <a data-fancybox="gallery" href="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg" width="585" height="387" alt="view-image" class="lazy cover rounded-xl w-100 h-100">
-              <div class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
-              </div>
+        <div class="view-gallery">
+          <div class="area-1" v-if="previewImages.length > 0">
+            <a :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon"
+               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <!-- <img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive"
+                 alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
+              <nuxt-img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive"
+                        width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
+
             </a>
           </div>
-          <div class="area-2 d-md-block d-none">
-            <a data-fancybox="gallery" href="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image3.jpg" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image3.jpg" width="585" height="387" alt="view-image" class="lazy cover rounded-xl w-100 h-100">
-              <div class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
-              </div>
+          <div class="area-2 d-md-block d-none" v-if="previewImages.length > 1">
+            <a :href="previewImages[1].preview_url" data-fancybox="gallery" data-caption="Salon"
+               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <nuxt-img :src="previewImages[1].preview_url" :srcset="previewImages[1].responsive"
+                        width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+
             </a>
           </div>
-          <div class="area-3 d-md-block d-none">
-            <a data-fancybox="gallery" href="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg" width="585" height="387" alt="view-image" class="lazy cover rounded-xl w-100 h-100">
-              <div class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
-              </div>
+          <div class="area-3 d-md-block d-none" v-if="previewImages.length > 2">
+            <a :href="previewImages[2].preview_url" data-fancybox="gallery" data-caption="Salon"
+               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <nuxt-img :src="previewImages[2].preview_url" :srcset="previewImages[2].responsive"
+                        width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+
             </a>
           </div>
-          <div class="area-4 d-none d-lg-block">
-            <a data-fancybox="gallery" href="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image1.jpg" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image1.jpg" width="585" height="387" alt="view-image" class="lazy cover rounded-xl w-100 h-100">
-              <div class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
-              </div>
+          <div class="area-4 d-none d-lg-block" v-if="previewImages.length > 3">
+            <a :href="previewImages[3].preview_url" data-fancybox="gallery" data-caption="Salon"
+               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <nuxt-img :src="previewImages[3].preview_url" :srcset="previewImages[3].responsive"
+                        width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+
             </a>
           </div>
-          <div class="area-5 d-none d-lg-block">
-            <a data-fancybox="gallery" href="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image3.jpg" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <img src="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image3.jpg" width="585" height="387" alt="view-image" class="lazy cover rounded-xl w-100 h-100">
-              <div class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05">
-                <span>Tüm Fotoğraflar ( 32 ) </span>
+          <div class="area-5 d-none d-lg-block" v-if="previewImages.length > 4">
+            <div class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl last">
+              <nuxt-img :src="previewImages[4].preview_url" :srcset="previewImages[4].responsive"
+                        width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+              <div
+                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
+                <span :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon">Tüm Fotoğraflar ( {{previewImages.length}} ) </span>
+                <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
+                <a href="https://www.youtube.com/watch?v=5SMaakuGyH0" data-fancybox>
+                  <i class="icon-play-button"></i> Video İzle
+                </a>
+                <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
               </div>
-            </a>
+            </div>
           </div>
+
+          <div class="d-none">
+            <a v-for="previewImage in previewImages.slice(5)" :href="previewImage.preview_url" data-fancybox="gallery" data-caption="Salon"></a>
+          </div>
+
         </div>
       </div>
     </section>
+
     <section class="search-engine-section">
       <div class="container">
         <form action="" class="search-engine">
@@ -260,6 +276,7 @@
       <div class="container">
         <div v-for="offer in hotelPriceDetails.body?.hotels[0]?.offers" class="room border border-light rounded-xxl p-2 mb-3">
           <div class="row">
+            {{offer}}
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
                 <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/uploads/room-image1.jpg" width="281" height="186" alt="room image" class="lazy cover flex-shrink-0 rounded-xl loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/uploads/room-image1.jpg&quot;);">
@@ -341,10 +358,37 @@ export default {
   name: 'DynamicHotelDetailPage',
   props: ['hotelDetails', 'hotelPriceDetails', 'selectedFilters'],
   data() {
-    return {}
+    console.log(this.hotelDetails);
+    return {
+      hotel: this.hotelDetails
+    }
   },
   mounted() {
     // todo offerslar alınacak
+  },
+  computed: {
+    previewImages() {
+      if (this.hotel.body.custom?.hasOwnProperty('images') && this.hotel.body.custom.images.length > 0) {
+        return this.hotel.body.custom.images
+      } else if (this.hotel.body.hotel.seasons[0].hasOwnProperty('mediaFiles')) {
+        return this.hotel.body.hotel.seasons[0].mediaFiles.map(media => {
+          return  {
+            "preview_url": media.urlFull,
+            "orginal_url": media.urlFull,
+            "responsive_url": media.urlFull
+          }
+        })
+      }
+      return []
+    }
+  },
+  methods: {
+    showGallery() {
+      document.querySelector('.Gallery').classList.add("show")
+      document.querySelector('body').classList.add("over")
+      document.querySelector('.main').classList.add("main-z")
+      this.galleryIsOpen = true
+    },
   }
 }
 </script>
