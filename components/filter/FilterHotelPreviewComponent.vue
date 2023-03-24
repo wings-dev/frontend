@@ -2,7 +2,15 @@
   <div class="generally-infos bg-white rounded-xxl d-flex flex-column flex-xl-row w-100 pt-1 ms-lg-n1 mb-4 mb-sm-5 pe-xl-0 pe-lg-4">
     <div class="item-image position-relative flex-shrink-0 pe-xl-2 mb-xl-0 mb-3">
       <a href="javascript:void(0)" @click="goDetail" class="d-block flex-shrink-0">
-        <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg" width="316" height="209" alt="hotel image" class="main-image bg-light lazy cover rounded-xl loaded" style="background-image: url('https://boceksoft.com/works/otelbnb/cdn/uploads/hotel-image2.jpg');">
+        <img
+          src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif"
+          :data-src="'https://media.dev.paximum.com/hotelimages/102627/' + hotel.id + '.jpg'"
+          width="316"
+          height="209"
+          alt="hotel image"
+          class="main-image bg-light lazy cover rounded-xl loaded"
+          :style="backgroundImageStyle()"
+        />
       </a>
     </div>
     <div class="list-content flex-fill d-flex flex-column align-items-start ps-2 ps-md-3 ps-xl-4 pe-2 pe-md-3 pe-xl-4 pt-1 pb-2">
@@ -98,6 +106,10 @@ export default {
   },
   methods: {
     slugify,
+    backgroundImageStyle() {
+      const imageUrl = this.hotel.thumbnailFull;
+      return `background-image: url('${imageUrl}');`;
+    },
     goDetail() {
 
       /*const query = this.$route.query;

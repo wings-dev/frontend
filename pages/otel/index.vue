@@ -40,17 +40,10 @@ export default {
     parseQueryString() {
       const query = this.$route.query;
 
-      const destinations = query.destinations
-        ? (Array.isArray(query.destinations)
-          ? query.destinations.map(value => ({code: value, selected: true}))
-          : [{code: query.destinations, selected: true}])
-        : [];
-
       this.selectedFilters = {
-        destinations: destinations,
+        destinations: query.destinations,
         adult: query.adult || 0,
-        children: query.children || 0,
-        baby: query.baby || 0,
+        childAges: query.childAges || [],
         checkIn: query.checkIn || null,
         checkOut: query.checkOut || null,
       };

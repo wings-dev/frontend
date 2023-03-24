@@ -237,20 +237,10 @@ export default {
     },
   },
 
-  /*
-  ** Server Middleware
-
-  serverMiddleware: {
-    // '/data': '~/redis'
-  },*/
-
-  // 301 yapılacak linkler için alan
   router: {
     trailingSlash: false,
-    extendRoutes(routes, resolve) {
-      require("./301").apply(routes, resolve);
-    },
-  },
+    middleware: ['301']
+  }
 
   /*server: {
     port: 3000, // default: 3000
