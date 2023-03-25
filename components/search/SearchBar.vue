@@ -12,9 +12,9 @@
                         <nuxt-link to="yurtdisi-kiralik-villa" class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0" :class="{ 'active': $route.path == '/yurtdisi-kiralik-villa' }"><span
                                 class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt Dışı
                                 Villalar</span></nuxt-link>
-                        <nuxt-link to="otel" class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 " :class="{ 'active': $route.path == '/otel' }"><span
-                                class="d-inline-block fw-medium px-2 px-sm-3 py-1">Otel
-                                Rezervasyon</span><!-- <span class="comingsoon">ÇOK YAKINDA</span> --></nuxt-link>
+                        <nuxt-link to="otel" class="nav-link-otel" :class="{ 'active': $route.path == '/otel' }">
+                            <i class="icon-otel-new"></i>
+                            <span class="d-inline-block fw-medium px-2 px-sm-3 py-1">Otel</span><!-- <span class="comingsoon">ÇOK YAKINDA</span> --></nuxt-link>
 
                     </div>
                 </nav>
@@ -23,7 +23,7 @@
                         <search-villa-component :key="$route.path"></search-villa-component>
                     </div>
                     <div class="tab-pane fade" :class="{ 'show active': $route.path == '/yurtdisi-kiralik-villa' }" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <h2>TEST</h2>
+                        <search-hotel-component :key="$route.path"></search-hotel-component>
                     </div>
                     <div class="tab-pane fade " :class="{ 'show active': $route.path == '/otel' }" id="nav-contact"
                         role="tabpanel" aria-labelledby="nav-contact-tab">

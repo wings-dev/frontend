@@ -1,53 +1,44 @@
 <template>
   <div>
-    <dynamic-hotel-filter-page :selectedFilters="selectedFilters"></dynamic-hotel-filter-page>
+    <blog-home></blog-home>
   </div>
 </template>
 
 <script>
-import DynamicHotelFilterPage from "@/components/dynamic-page/hotel-filter.vue";
-
+import BlogHome from "@/components/blog/blog-home.vue";
 
 export default {
-  name: 'ListPage',
+  name: 'BlogIndexPage',
+  layout: 'no-search',
   head() {
     let site_id = process.env.SITE
     return {
-      title: 'Listele',
+      title: 'Blog',
       meta: [
-        {hid: 'description', name: 'description', content: 'listele'},
-        {hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3'}
+        { hid: 'description', name: 'description', content: 'listele' },
+        { hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3' }
       ],
-      link: [
-        {rel: 'stylesheet', href: `/css/listeleme.min.css`}
-      ]
     }
   },
   data() {
-    return {
-      selectedFilters: {}
-    }
+
+  },
+  async asyncData({ $getRedisKey }) {
+    const site_id = process.env.SITE;
+    let pageData = {};
+    pageData = await $getRedisKey(`web:${site_id}:pages:blog`);
+    console.log(pageData)
+    return { pageData }
   },
   components: {
-    DynamicHotelFilterPage
+    BlogHome
   },
-  beforeMount() {
-    this.parseQueryString();
-  },
+
   mounted() {
   },
+  
   methods: {
-    parseQueryString() {
-      const query = this.$route.query;
 
-      this.selectedFilters = {
-        destinations: query.destinations,
-        adult: query.adult || 0,
-        childAges: query.childAges || [],
-        checkIn: query.checkIn || null,
-        checkOut: query.checkOut || null,
-      };
-    }
   },
 }
 </script>

@@ -2,14 +2,11 @@
   <div class="Search  ">
     <div class="Search-left">
       <div class="Search-item Search-item-region dropdown">
+        <span class="Search-item-name">Bölge</span>
         <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
           aria-expanded="false">
-          <div
-            class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
-            <i class="icon-pin"></i>
-          </div>
+          <i class="icon-new-location Search-item-icon"></i>
           <div class="Search-item-region-in">
-            <span class="Search-item-name">Bölge</span>
             <span class="dropdown-toggle-title">{{ selectedDestinations.length }} destinations</span>
           </div>
           <i class="icon-down-arrow"></i>
@@ -24,26 +21,30 @@
         </client-only>
       </div>
       <div class="Search-item date">
-        <div
-          class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
-          <i class="icon-calendar"></i>
-        </div>
+        <div class="dates d-flex">
+            <div class="date-title w-50 Search-item-name">
+              Giriş Tarihi
+            </div>
+            <div class="date-title w-50 Search-item-name">
+              Çıkış Tarihi
+            </div>
+          </div>
 
         <div class="Search-item-date">
           <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs">
-            <HotelDatePicker v-bind="datePickerProps" @check-in-changed="checkInChanged($event)"
-              @check-out-changed="checkOutChanged($event)" format="DD-MM-YYYY" :firstDayOfWeek="Number(weekfirstday)"
-              :i18n="calendarLanguage" ref="datePicker" :displayClearButton=false>
 
-              <div slot="content">
-                <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
-                  <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
-                  <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
-                </div>
+            <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
+            @check-out-changed="checkOutChanged($event)" format="DD dddd"
+            ref="datePicker" :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
+            :displayClearButton=false>
+            <div slot="content">
+              <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
+                <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
+                <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
               </div>
-
-            </HotelDatePicker>
+            </div>
+          </HotelDatePicker>
 
             <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
@@ -51,14 +52,12 @@
         </div>
       </div>
       <div class="Search-item Search-item-people">
+        <span class="Search-item-name">Kişi Sayısı </span>
         <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
           data-bs-toggle="dropdown" aria-expanded="false">
-          <div
-            class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
-            <i class="icon-group-user"></i>
-          </div>
+          <i class="icon-user Search-item-icon"></i>
           <div class="Search-item-people-in">
-            <span class="Search-item-name">Kişi Sayısı </span>
+            
             <span class="dropdown-toggle-title">{{ selectedPersonText }}</span>
             <i class="icon-down-arrow"></i>
           </div>
@@ -148,7 +147,7 @@
       <div class="Search-item Search-item-more">
         <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
           aria-expanded="false">
-          <i class="icon-filter"></i>
+          <i class="icon-new-filter Search-item-icon"></i>
           <span class="dropdown-toggle-title">Gelişmiş Arama</span>
           <i class="icon-down-arrow"></i>
         </button>
@@ -167,9 +166,9 @@
     <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()"><i
         class="icon-filter"></i>
       <span class="dropdown-toggle-title">Gelişmiş Arama</span></button>
-    <button type="button" class="Search-button" id="searchVilla" @click="search"><img
-        src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
-        class="contain flex-shrink-0 my-1"></button>
+    <button type="button" class="Search-button" id="searchVilla" @click="search">
+      <i class="icon-search"></i>
+    </button>
   </div>
 </template>
 
@@ -205,6 +204,7 @@ export default {
       ],
       orderValue: null,
       orderPlaceholder: "Sırala:",
+      firstDayOfWeek: 1,
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
@@ -250,6 +250,19 @@ export default {
     }
   },
   mounted() {
+  },
+  watch: {
+    checkIn(newValue) {
+      if(newValue !== undefined){
+      this.changeHotelInput(0, newValue);
+    }
+      console.log(newValue)
+    },
+    checkOut(newValue) {
+      if(newValue !== undefined){
+      this.changeHotelInput(-1, newValue);
+    }
+    },
   },
   computed: {
     selectedDestinations() {
@@ -378,6 +391,30 @@ export default {
     hidePickerRez() {
       this.$refs.datePicker.hideDatepicker();
     },
+    formatDateDMY(value) {
+      if (value) {
+        const date = new Date(value);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${month}/${day}/${year}`;
+      }
+    },
+    changeHotelInput(tabIndex, value) {
+      const currentDate = new Date(value);
+      const formattedDate = currentDate.toLocaleDateString('tr-TR', {
+        day: 'numeric',
+        month: 'long',
+      }).toUpperCase();
+
+      const formattedDay = currentDate.toLocaleDateString('tr-TR', {
+        weekday: 'long',
+      }).toUpperCase();
+
+      const datepickerInput = $('[data-qa="datepickerInput"][tabindex="' + tabIndex + '"]');
+
+      datepickerInput.html(`<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`);
+    },
   }
 }
 </script>
@@ -410,18 +447,58 @@ export default {
 :deep() .v-dropdown-item.selected {
   background-color: var(--bs-theme-second) !important;
 }
-
-:deep() .datepicker__wrapper {
-  width: 100%;
-}
-
 :deep() .datepicker__dummy-wrapper {
   border: none;
   background: none;
+  flex-wrap: nowrap;
 }
 
-:deep() .datepicker__input--first {
+:deep() .datepicker__input {
+  font-size: 13px;
+  font-weight: 500;
+  color: #24252e;
+  width: 50%;
+  height: auto;
+  white-space: nowrap;
+}
+
+:deep() .datepicker__input:before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-size: 100% 100%;
+  background-image: url(/img/date-new.svg);
+  margin-right: 10px;
+}
+
+:deep().datepicker__input--first {
   padding-left: 0;
+}
+
+:deep().datepicker__input--first:after {
+  content: "";
+  width: 18px;
+  height: 10px;
+  background-image: url(/img/date-right.svg);
+  background-size: 100% 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:deep().datepicker__input .formatted-date {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+  color: #24252e;
+
+}
+
+:deep().datepicker__input .formatted-date span {
+  font-size: 9px;
+  font-weight: 500;
+  color: #c1c1c1;
 }
 
 :deep() .datepicker__month-day--first-day-selected,
@@ -457,4 +534,10 @@ export default {
   border: 1px solid var(--bs-theme-first-dark);
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDcgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF80MDJfMTU5NCkiPgo8cGF0aCBkPSJNNS45MTQ5NyA0Ljc2Mjg4TDEuMzE3MDYgMC4xNjUwNkMxLjIxMDcxIDAuMDU4NjMyIDEuMDY4NzUgMCAwLjkxNzM4NiAwQzAuNzY2MDE4IDAgMC42MjQwNTggMC4wNTg2MzIgMC41MTc3MTQgMC4xNjUwNkwwLjE3OTExIDAuNTAzNThDLTAuMDQxMjIyNCAwLjcyNDE2NCAtMC4wNDEyMjI0IDEuMDgyNjggMC4xNzkxMSAxLjMwMjkyTDQuMDQwMDkgNS4xNjM5TDAuMTc0ODI2IDkuMDI5MTZDMC4wNjg0ODE2IDkuMTM1NTkgMC4wMDk3NjU2MiA5LjI3NzQ2IDAuMDA5NzY1NjIgOS40Mjg3NUMwLjAwOTc2NTYyIDkuNTgwMiAwLjA2ODQ4MTYgOS43MjIwOCAwLjE3NDgyNiA5LjgyODU5TDAuNTEzNDMgMTAuMTY3QzAuNjE5ODU4IDEwLjI3MzUgMC43NjE3MzQgMTAuMzMyMSAwLjkxMzEwMiAxMC4zMzIxQzEuMDY0NDcgMTAuMzMyMSAxLjIwNjQzIDEwLjI3MzUgMS4zMTI3NyAxMC4xNjdMNS45MTQ5NyA1LjU2NUM2LjAyMTU2IDUuNDU4MjQgNi4wODAxMSA1LjMxNTY5IDYuMDc5NzcgNS4xNjQxNUM2LjA4MDExIDUuMDEyMDMgNi4wMjE1NiA0Ljg2OTU2IDUuOTE0OTcgNC43NjI4OFoiIGZpbGw9IiMxMTI4NTUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF80MDJfMTU5NCI+CjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjExIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=) no-repeat 57%/10px;
 }
+.datepicker__wrapper{
+  width: 100%;
+}
+
+
+
 </style>

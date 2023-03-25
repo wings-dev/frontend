@@ -1,6 +1,6 @@
 export default () => ({
   loginCodeModalData: {
-    loginType: 'phone',
+    loginType: "phone",
     phone: null,
     email: null,
     data: null,
@@ -21,5 +21,40 @@ export default () => ({
     baby: null,
     reservationID: null,
   },
-  visitorId: null
-})
+  visitorId: null,
+  blogMenu: [
+    {
+      slug: "fethiye",
+      title: "Fethiye",
+      children: [
+        {
+          slug: "fethiye-hakkinda",
+          title: "Fethiye Hakkında Bilmeniz Gerekenler",
+        },
+        {
+          slug: "oludeniz",
+          title: "Ölüdeniz",
+        },
+      ],
+    },
+    {
+      slug: "kalkan",
+      title: "Kalkan",
+      children: [],
+    },
+    {
+      slug: "antalya",
+      title: "Antalya",
+      children: [
+        {
+          slug: "fethiye-hakkinda",
+          title: "Fethiye Hakkında Bilmeniz Gerekenler",
+        },
+        {
+          slug: "oludeniz",
+          title: "Ölüdeniz",
+        },
+      ],
+    }
+  ],
+});
