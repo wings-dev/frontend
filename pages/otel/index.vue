@@ -28,7 +28,7 @@
                               <div class="list-image position-relative">
                                   <a href="#!" class="d-block flex-shrink-0 " id="">
                                       <img src="/uploads/villa-image1.jpg" data-src="." width="280" height="186"
-                                          alt="hotel image" class="main-image bg-light lazy cover rounded-xl w-100">
+                                           alt="hotel image" class="main-image bg-light lazy cover rounded-xl w-100">
                                   </a>
                                   <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
                                       <a href="javascript:void(0);"
@@ -159,7 +159,7 @@
               <div
                   class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4">
                   <img src="/uploads/holiday-banner.jpg" data-src="" alt=""
-                      class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
+                       class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
                   <div class="d-flex flex-column position-relative ls-05 pt-3">
                       <span class="fs-5 fw-medium lh-1">+1259 Seçenek ile</span>
                       <span class="fs-5 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
@@ -201,7 +201,7 @@
                               <div class="list-image position-relative">
                                   <a href="#!" class="d-block flex-shrink-0">
                                       <img src="/uploads/villa-image1.jpg" data-src="" width="280" height="186"
-                                          alt="hotel image" class="main-image bg-light lazy cover rounded-xl w-100">
+                                           alt="hotel image" class="main-image bg-light lazy cover rounded-xl w-100">
                                   </a>
                                   <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
                                       <a href="javascript:void(0);"
@@ -271,7 +271,7 @@
                   <a href="#!"
                       class="cat-item no-hover area1 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
                       <img src="/uploads/category-image1.jpg" data-src="" width="380" height="235" alt="category image"
-                          class="cat-image lazy cover w-100 h-100">
+                           class="cat-image lazy cover w-100 h-100">
                       <div
                           class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                           <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -288,7 +288,7 @@
                   <a href="#!"
                       class="cat-item no-hover area2 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
                       <img src="/uploads/category-image2.jpg" data-src="" width="380" height="235" alt="category image"
-                          class="cat-image lazy cover w-100 h-100">
+                           class="cat-image lazy cover w-100 h-100">
                       <div
                           class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                           <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -305,7 +305,7 @@
                   <a href="#!"
                       class="cat-item no-hover area3 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
                       <img src="/uploads/category-image3.jpg" data-src="" width="380" height="235" alt="category image"
-                          class="cat-image lazy cover w-100 h-100">
+                           class="cat-image lazy cover w-100 h-100">
                       <div
                           class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                           <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -322,7 +322,7 @@
                   <a href="#!"
                       class="cat-item no-hover area4 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
                       <img src="/uploads/category-image4.jpg" data-src="" width="380" height="235" alt="category image"
-                          class="cat-image lazy cover w-100 h-100">
+                           class="cat-image lazy cover w-100 h-100">
                       <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1">
                           <small>Yeni Listenenler</small>
                       </div>
@@ -342,7 +342,7 @@
                   <a href="#!"
                       class="cat-item no-hover area5 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
                       <img src="/uploads/category-image5.jpg" data-src="" width="380" height="235" alt="category image"
-                          class="cat-image lazy cover w-100 h-100">
+                           class="cat-image lazy cover w-100 h-100">
                       <div
                           class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                           <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -359,7 +359,7 @@
                   <a href="#!"
                       class="cat-item no-hover area6 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
                       <img src="/uploads/category-image7.jpg" data-src="" width="380" height="235" alt="category image"
-                          class="cat-image lazy cover w-100 h-100">
+                           class="cat-image lazy cover w-100 h-100">
                       <div
                           class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                           <div class="d-flex flex-column py-md-2 ps-md-2">
