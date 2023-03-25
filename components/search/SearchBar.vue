@@ -23,7 +23,7 @@
                         <search-villa-component :key="$route.path"></search-villa-component>
                     </div>
                     <div class="tab-pane fade" :class="{ 'show active': $route.path == '/yurtdisi-kiralik-villa' }" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <search-hotel-component :key="$route.path"></search-hotel-component>
+                        <search-villa-component :key="$route.path"></search-villa-component>
                     </div>
                     <div class="tab-pane fade " :class="{ 'show active': $route.path == '/otel' }" id="nav-contact"
                         role="tabpanel" aria-labelledby="nav-contact-tab">

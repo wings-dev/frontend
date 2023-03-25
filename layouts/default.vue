@@ -11,7 +11,7 @@
 
       <Nuxt />
       <div class="header-call">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#callModal" class="header-call-phone"><i
+        <button type="button" v-b-modal.callModal class="header-call-phone"><i
             class="icon-header-phone"></i>
           <p><b>SİZİ</b>ARAYALIM</p>
         </button>
@@ -26,8 +26,6 @@
     <client-only>
       <live-villa-search></live-villa-search>
     </client-only>
-
-
 
     <client-only>
       <login-code-modal></login-code-modal>
