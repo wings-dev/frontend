@@ -6,17 +6,22 @@
           <div class="container">
             <div class="view-top d-flex">
 
-              <div class="view-top-title">
+              <div class="view-top-title d-flex">
                 <h1>The European Hotel</h1>
+                <div class="fs-7 d-inline-flex align-items-center fw-medium text-theme-secondary ms-3">
+                  <img src="/img/icons/011-star-icon.svg" width="13" height="13" alt="star"
+                    class="lazy contain flex-shrink-0">&nbsp;
+                  <span>4,9</span>
+                </div>
               </div>
 
-            
+
               <div class="view-top-right">
                 <div class="d-flex align-items-center text-theme-secondary">
                   <i class="icon-pin"></i>
                   <p class="view-top-right-location"><span class="lh-sm">Lara / Antalya</span></p>
                 </div>
-              
+
               </div>
             </div>
           </div>
@@ -24,11 +29,28 @@
         <div class="View-menu" id="detailMenu">
           <div class="container">
             <div class="View-menu-in">
- 
+              <div class="View-menu-left">
+                <div class="d-flex flex-wrap align-items-center fs-8 fw-medium ls-05 text-theme-primary">
+                  <div class="alert alert-primary fs-8 lh-1 fw-medium ls-05 d-inline-block p-2 mb-0 me-2">
+                    <span class="view-item d-block px-1">Erken Rezervasyonda %35 indirim</span>
+                  </div>
+                  <div class="d-flex align-items-center my-2 my-sm-1 me-3 pe-1">
+                    <img src="/img/icons/019-virus.svg" width="20" height="20" alt="healt"
+                      class="lazy contain flex-shrink-0 me-1 loaded"
+                      style="background-image: url(/img/icons/019-virus.svg);">
+                    <span>Sağlık Sertifikalı</span>
+                  </div>
+                  <div class="d-flex align-items-center my-2 my-sm-1">
+                    <img src="/img/icons/020-fence.svg" width="20" height="20" alt="healt"
+                      class="lazy contain flex-shrink-0 me-1 loaded"
+                      style="background-image: url(/img/icons/020-fence.svg);">
+                    <span>Özel Bölgesi var</span>
+                  </div>
+                </div>
+              </div>
               <div class="View-menu-right">
-                <button type="button" 
-                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
-                  >
+                <button type="button"
+                  class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 ">
                   <span class="action-btn-icon">
                     <i class="icon-heart"></i>
                   </span>
@@ -57,41 +79,32 @@
       <div class="container pb-1">
         <div class="view-gallery">
           <div class="area-1">
-            <a href="#"
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img src="/uploads/hotel-image2.jpg" 
-                width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
+            <a href="#" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <nuxt-img src="/uploads/hotel-image2.jpg" width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
 
             </a>
           </div>
           <div class="area-2 d-md-block d-none">
-            <a href="#" 
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img src="/uploads/hotel-image3.jpg" 
-                width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+            <a href="#" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <nuxt-img src="/uploads/hotel-image3.jpg" width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
             </a>
           </div>
           <div class="area-3 d-md-block d-none">
-            <a href="#" 
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img src="/uploads/hotel-image4.jpg" 
-                width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+            <a href="#" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <nuxt-img src="/uploads/hotel-image4.jpg" width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
             </a>
           </div>
           <div class="area-4 d-none d-lg-block">
-            <a href="#" 
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img src="/uploads/hotel-image5.jpg" 
-                width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+            <a href="#" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              <nuxt-img src="/uploads/hotel-image5.jpg" width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
             </a>
           </div>
           <div class="area-5 d-none d-lg-block">
             <div class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl last">
-              <nuxt-img src="/uploads/hotel-image5.jpg" 
-                width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+              <nuxt-img src="/uploads/hotel-image5.jpg" width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
               <div
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
                 <span>Tüm Fotoğraflar ( 32 ) </span>
@@ -113,54 +126,37 @@
           <div class="row">
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
-                <img src="/img/spacer.gif" data-src="/uploads/room-image1.jpg" width="281" height="186"
-                  alt="room image" class="lazy cover flex-shrink-0 rounded-xl">
+                <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                  class="lazy cover flex-shrink-0 rounded-xl">
               </div>
-              <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
+              <div
+                class="flex-fill d-flex flex-column align-items-start justify-content-between ps-2 ps-sm-3 ps-xl-4 pt-3">
                 <div class="d-flex align-items-center w-100 mb-2">
-                  <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Standart Oda</span>
-                  <a href="javascript:void(0);"
-                    class="bg-transparent text-theme-secondary fs-6 ls-05 d-flex align-items-center p-0">
-                    <img src="/img/icons/024-calendar-second.svg" width="18" height="20" alt="calendar"
-                      class="lazy contain flex-shrink-0 me-1">
-                    <small><u>Müsaitlik Takvimi</u></small>
-                  </a>
-                </div>
-                <div
-                  class="info fs-6 bg-theme-light d-flex align-items-center rounded-sm text-theme-secondary py-2 px-3 w-100 mb-3">
-                  <img src="/img/spacer.gif" data-src="/img/icons/015-bed-second.svg" width="18" height="18"
-                    alt="group" class="lazy contain flex-shrink-0 me-2">
-                  <small class="lh-sm ls-05">En fazla 3 yetişkin veya 2 yetişkin + 2 çocuk</small>
+                  <span class="fs-5 lh-sm ls-05 d-inline-block me-auto room-title">Standart Tek Büyük veya İki Ayrı
+                    Yataklı Oda, Şehir Manzaralı, 2 Tek Kişilik Yatak - 24 m2</span>
                 </div>
                 <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-                  <small
-                    class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                    <span class="text-theme-secondary me-1">Oda Genişliği</span>
-                    <span class="">53 m<sup><small>2</small></sup></span>
-                  </small>
+
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Minibar</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Balkon</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Duşakabin</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                 </div>
                 <div class="d-flex align-items-center mb-sm-0 mb-1">
-                  <a href="#!" class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3">
-                    <u><small>Odanın Tüm Özellikleri</small></u>
-                  </a>
+                  <b-button v-b-modal.amenitesModal class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3" ><u><small>Odanın Tüm
+                        Özellikleri</small></u></b-button>
+
                   <a href="#!" class="fs-6 lh-sm ls-05">
                     <u><small>Tüm Fiyatlar</small></u>
                   </a>
@@ -199,25 +195,15 @@
           <div class="row">
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
-                <img src="/img/spacer.gif" data-src="/uploads/room-image1.jpg" width="281" height="186"
-                  alt="room image" class="lazy cover flex-shrink-0 rounded-xl">
+                <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                  class="lazy cover flex-shrink-0 rounded-xl">
               </div>
               <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
                 <div class="d-flex align-items-center w-100 mb-2">
                   <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Aile Odası</span>
-                  <a href="javascript:void(0);"
-                    class="bg-transparent text-theme-secondary fs-6 ls-05 d-flex align-items-center p-0">
-                    <img src="/img/icons/024-calendar-second.svg" width="18" height="20" alt="calendar"
-                      class="lazy contain flex-shrink-0 me-1">
-                    <small><u>Müsaitlik Takvimi</u></small>
-                  </a>
+
                 </div>
-                <div
-                  class="info fs-6 bg-theme-light d-flex align-items-center rounded-sm text-theme-secondary py-2 px-3 w-100 mb-3">
-                  <img src="/img/spacer.gif" data-src="/img/icons/015-bed-second.svg" width="18" height="18"
-                    alt="group" class="lazy contain flex-shrink-0 me-2">
-                  <small class="lh-sm ls-05">En fazla 3 yetişkin veya 2 yetişkin + 2 çocuk</small>
-                </div>
+
                 <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
@@ -227,20 +213,17 @@
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Minibar</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Balkon</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Duşakabin</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                 </div>
                 <div class="d-flex align-items-center mb-sm-0 mb-1">
@@ -308,50 +291,13 @@
                       <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
                       <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">8.350 TL</strong>
                     </div>
-                    <button
-                      class="btn btn-theme-warning btn-ripple text-white fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                      <small class="d-block py-1">Tarih Değiştir</small>
+                    <button type="button"
+                      class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
+                      <small class="d-block py-1">Rezervasyon</small>
                     </button>
                   </div>
                 </div>
-                <div
-                  class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                  <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                    <span class="d-block text-theme-first lh-1 ls-05 mb-2">Ultra Herşey Dahil</span>
-                    <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
-                        class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
-                  </div>
-                  <div
-                    class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                    <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                      <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                      <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">8.350 TL</strong>
-                    </div>
-                    <button
-                      class="btn btn-theme-warning btn-ripple text-white fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                      <small class="d-block py-1">Tarih Değiştir</small>
-                    </button>
-                  </div>
-                </div>
-                <div
-                  class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                  <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                    <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
-                    <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
-                        class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
-                  </div>
-                  <div
-                    class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                    <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                      <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                      <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">8.350 TL</strong>
-                    </div>
-                    <button
-                      class="btn btn-theme-warning btn-ripple text-white fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                      <small class="d-block py-1">Tarih Değiştir</small>
-                    </button>
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>
@@ -360,25 +306,15 @@
           <div class="row">
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
-                <img src="/img/spacer.gif" data-src="/uploads/room-image1.jpg" width="281" height="186"
-                  alt="room image" class="lazy cover flex-shrink-0 rounded-xl">
+                <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                  class="lazy cover flex-shrink-0 rounded-xl">
               </div>
               <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
                 <div class="d-flex align-items-center w-100 mb-2">
                   <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Kral Dairesi</span>
-                  <a href="javascript:void(0);"
-                    class="bg-transparent text-theme-secondary fs-6 ls-05 d-flex align-items-center p-0">
-                    <img src="/img/icons/024-calendar-second.svg" width="18" height="20" alt="calendar"
-                      class="lazy contain flex-shrink-0 me-1">
-                    <small><u>Müsaitlik Takvimi</u></small>
-                  </a>
+
                 </div>
-                <div
-                  class="info fs-6 bg-theme-light d-flex align-items-center rounded-sm text-theme-secondary py-2 px-3 w-100 mb-3">
-                  <img src="/img/spacer.gif" data-src="/img/icons/015-bed-second.svg" width="18" height="18"
-                    alt="group" class="lazy contain flex-shrink-0 me-2">
-                  <small class="lh-sm ls-05">En fazla 3 yetişkin veya 2 yetişkin + 2 çocuk</small>
-                </div>
+
                 <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
@@ -388,20 +324,17 @@
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Minibar</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Balkon</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Duşakabin</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                 </div>
                 <div class="d-flex align-items-center mb-sm-0 mb-1">
@@ -443,25 +376,15 @@
           <div class="row">
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
-                <img src="/img/spacer.gif" data-src="/uploads/room-image1.jpg" width="281" height="186"
-                  alt="room image" class="lazy cover flex-shrink-0 rounded-xl">
+                <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                  class="lazy cover flex-shrink-0 rounded-xl">
               </div>
               <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
                 <div class="d-flex align-items-center w-100 mb-2">
                   <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Standart Oda</span>
-                  <a href="javascript:void(0);"
-                    class="bg-transparent text-theme-secondary fs-6 ls-05 d-flex align-items-center p-0">
-                    <img src="/img/icons/024-calendar-second.svg" width="18" height="20" alt="calendar"
-                      class="lazy contain flex-shrink-0 me-1">
-                    <small><u>Müsaitlik Takvimi</u></small>
-                  </a>
+
                 </div>
-                <div
-                  class="info fs-6 bg-theme-light d-flex align-items-center rounded-sm text-theme-secondary py-2 px-3 w-100 mb-3">
-                  <img src="/img/spacer.gif" data-src="/img/icons/015-bed-second.svg" width="18" height="18"
-                    alt="group" class="lazy contain flex-shrink-0 me-2">
-                  <small class="lh-sm ls-05">En fazla 3 yetişkin veya 2 yetişkin + 2 çocuk</small>
-                </div>
+
                 <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
@@ -471,20 +394,17 @@
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Minibar</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Balkon</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Duşakabin</span>
-                    <img src="/img/spacer.gif" data-src="/img/icons/025-tick-second.svg" width="18"
-                      height="18" alt="" class="lazy contain">
+                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
                   </small>
                 </div>
                 <div class="d-flex align-items-center mb-sm-0 mb-1">
@@ -524,6 +444,24 @@
         </div>
       </div>
     </section>
+    <section class="general-informations-section mt-5 mb-5 pb-sm-2">
+      <div class="container">
+        <div class="fs-5 ls-05 lh-sm mb-4"><span class="opacity-75">The European Hotel</span> <strong
+            class="fw-semibold">Genel Bilgiler</strong></div>
+        <div class="text-theme-secondary lh-sm ls-05 pe-lg-5 me-lg-4">
+          <p>2010 yılında yapılan Ramada Plaza Antalya Muratpaşa bölgesinde bulunmaktadır. 38000 m2 alanda kurulmuş olan
+            Ramada Plaza Antalya otel ultra herşey dahil konseptiyle misafirlerimize hizmet vermektedir</p>
+          <p>Ramada Plaza Antalya denize sıfır konumuyla dikkat çekmektedir. Otelin kendine ait iskelesi vardır. Tesis 2
+            adet ala carte restaurant ile misafirlere özel hizmet sunmaktadır. Açık ve kapalı yüzme havuzları ile eğlenme
+            ve dinlenme imkanı bulabilirsiniz.</p>
+          <p>Bilardo oynayarak keyifli vakit geçirebilirsiniz. Tesis içerisinde yer alan masaj hizmetlerinden faydalanarak
+            rahatlayabilir ve kendinizi yenilenmiş hissedebilirsiniz. Tesis içerisinde bulunan doktor, fotoğrafçı,
+            güzellik salonu, kuaför, market, araç kiralama hizmetlerinden yararlanabilirsiniz</p>
+          <p>Keyifli vakit geçirmeniz için tesiste bar bulunmaktadır. Otel Antalya Havaalanı'na 15 km,Antalya Havaalanı'na
+            15 km, Kaleiçi'ye 500 m, Merkezde'ye 100 m uzaklıktadır</p>
+        </div>
+      </div>
+    </section>
     <section class="payment-options-section">
       <div class="container">
         <div class="payment-options border border-light rounded-xxl overflow-hidden mt-5 mb-4">
@@ -549,6 +487,140 @@
             </ul>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="hotel-properties-section mb-5">
+      <div class="container">
+        <div class="section-caption mb-3">
+          <span class="fs-5 ls-05 lh-sm">Otel Özellikleri</span>
+        </div>
+        <div class="hp-highlights mb-4 pb-2">
+          <div class="row g-2">
+            <div class="col-6 flex-fill col-md-4">
+              <div
+                class="h-item ls-05 border border-3 border-theme-light d-flex align-items-center h-100 rounded-sm py-3 py-lg-4 px-3 px-md-4">
+                <span class="d-inline-block ps-md-2 ps-lg-3 py-1 me-auto">Tesis Kapasitesi</span>
+                <strong class="fs-5 fw-normal text-theme-second pe-md-2 py-1">307</strong>
+              </div>
+            </div>
+            <div class="col-6 flex-fill col-md-4">
+              <div
+                class="h-item ls-05 border border-3 border-theme-light d-flex align-items-center h-100 rounded-sm py-3 py-lg-4 px-3 px-md-4">
+                <span class="d-inline-block ps-md-2 ps-lg-3 py-1 me-auto">Tesis Yapım Yılı</span>
+                <strong class="fs-5 fw-normal text-theme-second pe-md-2 py-1">2003</strong>
+              </div>
+            </div>
+            <div class="col-6 flex-fill col-md-4">
+              <div
+                class="h-item ls-05 border border-3 border-theme-light d-flex align-items-center h-100 rounded-sm py-3 py-lg-4 px-3 px-md-4">
+                <span class="d-inline-block ps-md-2 ps-lg-3 py-1 me-auto">Tesis Yenileme</span>
+                <strong class="fs-5 fw-normal text-theme-second pe-md-2 py-1">2021</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="properties lh-sm ls-05 d-flex flex-wrap text-theme-secondary">
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Market</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Su Kaydırağı (4 Adet)</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Fotoğrafçı</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Kapalı Havuz</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">A La Carte Restaurant</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Otopark</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Tiyatro</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Güzellik Salonu</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Kapalı Restaurant</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Açık Havuz (2 Adet)</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Resepsiyon'da Kasa</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Wireless Internet</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Havaalanı Servis</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Konferans</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Açık Restaurant</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Asansör</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Haşema</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Bedensel Engelli Odası</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Kuaför</span>
+          </li>
+          <li class="d-flex pe-2 mb-3 pb-1">
+            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2">
+            <span class="d-block ps-md-1">Doktor</span>
+          </li>
+        </ul>
       </div>
     </section>
     <section class="accomodation-types-section mb-5 pb-sm-4">
@@ -758,397 +830,62 @@
         </div>
       </div>
     </section>
-    <section class="general-informations-section mb-5 pb-sm-2">
-      <div class="container">
-        <div class="fs-5 ls-05 lh-sm mb-4"><span class="opacity-75">The European Hotel</span> <strong
-            class="fw-semibold">Genel Bilgiler</strong></div>
-        <div class="text-theme-secondary lh-sm ls-05 pe-lg-5 me-lg-4">
-          <p>2010 yılında yapılan Ramada Plaza Antalya Muratpaşa bölgesinde bulunmaktadır. 38000 m2 alanda kurulmuş olan
-            Ramada Plaza Antalya otel ultra herşey dahil konseptiyle misafirlerimize hizmet vermektedir</p>
-          <p>Ramada Plaza Antalya denize sıfır konumuyla dikkat çekmektedir. Otelin kendine ait iskelesi vardır. Tesis 2
-            adet ala carte restaurant ile misafirlere özel hizmet sunmaktadır. Açık ve kapalı yüzme havuzları ile eğlenme
-            ve dinlenme imkanı bulabilirsiniz.</p>
-          <p>Bilardo oynayarak keyifli vakit geçirebilirsiniz. Tesis içerisinde yer alan masaj hizmetlerinden faydalanarak
-            rahatlayabilir ve kendinizi yenilenmiş hissedebilirsiniz. Tesis içerisinde bulunan doktor, fotoğrafçı,
-            güzellik salonu, kuaför, market, araç kiralama hizmetlerinden yararlanabilirsiniz</p>
-          <p>Keyifli vakit geçirmeniz için tesiste bar bulunmaktadır. Otel Antalya Havaalanı'na 15 km,Antalya Havaalanı'na
-            15 km, Kaleiçi'ye 500 m, Merkezde'ye 100 m uzaklıktadır</p>
-        </div>
-      </div>
-    </section>
-    <section class="distances-section mb-5 pb-sm-3">
-      <div class="container">
-        <div class="section-caption mb-3">
-          <span class="fs-5 ls-05">Konum Bilgileri</span>
-        </div>
-        <div class="distances">
-          <div class="row g-2">
-            <div class="col-6 col-md-4">
-              <div
-                class="distance-item bg-theme-light rounded-sm h-100 d-flex pt-3 pt-lg-4 pb-3 px-3 px-lg-4 flex-sm-row flex-column">
-                <div class="d-flex flex-column ps-lg-3 pe-2 pt-lg-2 me-auto">
-                  <strong class="fw-medium lh-sm ls-05 d-block">Hava Alanı</strong>
-                  <span class="text-theme-secondary ls-05">Antalya Hava Alanı</span>
-                </div>
-                <strong class="fw-medium text-theme-second fs-6 ls-05 pt-lg-1 pe-lg-2">100KM</strong>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div
-                class="distance-item bg-theme-light rounded-sm h-100 d-flex pt-3 pt-lg-4 pb-3 px-3 px-lg-4 flex-sm-row flex-column">
-                <div class="d-flex flex-column ps-lg-3 pe-2 pt-lg-2 me-auto">
-                  <strong class="fw-medium lh-sm ls-05 d-block">Kurulu Alan</strong>
-                  <span class="text-theme-secondary ls-05">Antalya Hava Alanı</span>
-                </div>
-                <strong class="fw-medium text-theme-second fs-6 ls-05 pt-lg-1 pe-lg-2">9500 m2</strong>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div
-                class="distance-item bg-theme-light rounded-sm h-100 d-flex pt-3 pt-lg-4 pb-3 px-3 px-lg-4 flex-sm-row flex-column">
-                <div class="d-flex flex-column ps-lg-3 pe-2 pt-lg-2 me-auto">
-                  <strong class="fw-medium lh-sm ls-05 d-block">İskele</strong>
-                </div>
-                <strong class="fw-medium text-theme-second fs-6 ls-05 pt-lg-1 pe-lg-2">Yok</strong>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div
-                class="distance-item bg-theme-light rounded-sm h-100 d-flex pt-3 pt-lg-4 pb-3 px-3 px-lg-4 flex-sm-row flex-column">
-                <div class="d-flex flex-column ps-lg-3 pe-2 pt-lg-2 me-auto">
-                  <strong class="fw-medium lh-sm ls-05 d-block">Şehir Merkezi</strong>
-                  <span class="text-theme-secondary ls-05">Antalya</span>
-                </div>
-                <strong class="fw-medium text-theme-second fs-6 ls-05 pt-lg-1 pe-lg-2">100KM</strong>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div
-                class="distance-item bg-theme-light rounded-sm h-100 d-flex pt-3 pt-lg-4 pb-3 px-3 px-lg-4 flex-sm-row flex-column">
-                <div class="d-flex flex-column ps-lg-3 pe-2 pt-lg-2 me-auto">
-                  <strong class="fw-medium lh-sm ls-05 d-block">Plaj</strong>
-                </div>
-                <strong class="fw-medium text-theme-second fs-6 ls-05 pt-lg-1 pe-lg-2">Halk Plajı</strong>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div
-                class="distance-item bg-theme-light rounded-sm h-100 d-flex pt-3 pt-lg-4 pb-3 px-3 px-lg-4 flex-sm-row flex-column">
-                <div class="d-flex flex-column ps-lg-3 pe-2 pt-lg-2 me-auto">
-                  <strong class="fw-medium lh-sm ls-05 d-block">Şehir Merkezi</strong>
-                  <span class="text-theme-secondary ls-05">Antalya</span>
-                </div>
-                <strong class="fw-medium text-theme-second fs-6 ls-05 pt-lg-1 pe-lg-2">100KM</strong>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div
-                class="distance-item bg-theme-light rounded-sm h-100 d-flex pt-3 pt-lg-4 pb-3 px-3 px-lg-4 flex-sm-row flex-column">
-                <div class="d-flex flex-column ps-lg-3 pe-2 pt-lg-2 me-auto">
-                  <strong class="fw-medium lh-sm ls-05 d-block">Denize Uzaklığı</strong>
-                </div>
-                <strong class="fw-medium text-theme-second fs-6 ls-05 pt-lg-1 pe-lg-2">Denize Sıfır</strong>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div
-                class="distance-item bg-theme-light rounded-sm h-100 d-flex pt-3 pt-lg-4 pb-3 px-3 px-lg-4 flex-sm-row flex-column null">
-                <div class="d-flex flex-column ps-lg-3 pe-2 pt-lg-2 me-auto">
-                  <strong class="fw-medium lh-sm ls-05 d-block">Sahil Uzunluğu</strong>
-                </div>
-                <strong class="fw-medium text-theme-second fs-6 ls-05 pt-lg-1 pe-lg-2">Bilinmiyor</strong>
-              </div>
+
+    <b-modal id="amenitesModal" class="Login" size="xl" :hide-header="true" hide-footer @shown="showSwiper">
+      <div class="Amenites">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          @click="$bvModal.hide('amenitesModal')"><i class="icon-login-close"></i></button>
+
+        <h3 class="Amenites-title">Tesisin tüm olanakları</h3>
+        <div class="swiper swiper-otel">
+          <div class="swiper-wrapper" style="overflow: hidden;">
+            <div class="swiper-slide" v-for="(item, index) in 10" :key="index" style="overflow: hidden;">
+              <img src="/uploads/room-image1.jpg" class="w-100" alt="">
             </div>
           </div>
+          <!-- If pagination is needed -->
+
+          <!-- If navigation buttons are needed -->
+          <div class="swiper-button-prev list-navigation-prev"></div>
+          <div class="swiper-button-next list-navigation-next"></div>
         </div>
-      </div>
-    </section>
-    <section class="hotel-properties-section mb-5">
-      <div class="container">
-        <div class="section-caption mb-3">
-          <span class="fs-5 ls-05 lh-sm">Otel Özellikleri</span>
-        </div>
-        <div class="hp-highlights mb-4 pb-2">
-          <div class="row g-2">
-            <div class="col-6 flex-fill col-md-4">
-              <div
-                class="h-item ls-05 border border-3 border-theme-light d-flex align-items-center h-100 rounded-sm py-3 py-lg-4 px-3 px-md-4">
-                <span class="d-inline-block ps-md-2 ps-lg-3 py-1 me-auto">Tesis Kapasitesi</span>
-                <strong class="fs-5 fw-normal text-theme-second pe-md-2 py-1">307</strong>
-              </div>
-            </div>
-            <div class="col-6 flex-fill col-md-4">
-              <div
-                class="h-item ls-05 border border-3 border-theme-light d-flex align-items-center h-100 rounded-sm py-3 py-lg-4 px-3 px-md-4">
-                <span class="d-inline-block ps-md-2 ps-lg-3 py-1 me-auto">Tesis Yapım Yılı</span>
-                <strong class="fs-5 fw-normal text-theme-second pe-md-2 py-1">2003</strong>
-              </div>
-            </div>
-            <div class="col-6 flex-fill col-md-4">
-              <div
-                class="h-item ls-05 border border-3 border-theme-light d-flex align-items-center h-100 rounded-sm py-3 py-lg-4 px-3 px-md-4">
-                <span class="d-inline-block ps-md-2 ps-lg-3 py-1 me-auto">Tesis Yenileme</span>
-                <strong class="fs-5 fw-normal text-theme-second pe-md-2 py-1">2021</strong>
-              </div>
+        <div class="Amenites-in">
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
             </div>
           </div>
-        </div>
-        <ul class="properties lh-sm ls-05 d-flex flex-wrap text-theme-secondary">
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Market</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Su Kaydırağı (4 Adet)</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Fotoğrafçı</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Kapalı Havuz</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">A La Carte Restaurant</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Otopark</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Tiyatro</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Güzellik Salonu</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Kapalı Restaurant</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Açık Havuz (2 Adet)</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Resepsiyon'da Kasa</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Wireless Internet</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-            <span class="d-block ps-md-1">Havaalanı Servis</span>
-          </li>
-          <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
-          <span class="d-block ps-md-1">Konferans</span>
-        </li>
-        <li class="d-flex pe-2 mb-3 pb-1">
-          <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-            class="lazy contain flex-shrink-0 me-2">
-          <span class="d-block ps-md-1">Açık Restaurant</span>
-        </li>
-        <li class="d-flex pe-2 mb-3 pb-1">
-          <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-            class="lazy contain flex-shrink-0 me-2">
-          <span class="d-block ps-md-1">Asansör</span>
-        </li>
-        <li class="d-flex pe-2 mb-3 pb-1">
-          <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-            class="lazy contain flex-shrink-0 me-2">
-          <span class="d-block ps-md-1">Haşema</span>
-        </li>
-        <li class="d-flex pe-2 mb-3 pb-1">
-          <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-            class="lazy contain flex-shrink-0 me-2">
-          <span class="d-block ps-md-1">Bedensel Engelli Odası</span>
-        </li>
-        <li class="d-flex pe-2 mb-3 pb-1">
-          <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-            class="lazy contain flex-shrink-0 me-2">
-          <span class="d-block ps-md-1">Kuaför</span>
-        </li>
-        <li class="d-flex pe-2 mb-3 pb-1">
-          <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-            class="lazy contain flex-shrink-0 me-2">
-          <span class="d-block ps-md-1">Doktor</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <section class="activities-section mb-5">
-    <div class="container">
-      <ul class="nav fs-5 mb-3" id="activities-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link bg-transparent text-theme-secondary opacity-50 ls-05 ps-0 pe-2 py-2 me-3 me-sm-5 active"
-            id="unpaid-tab" data-bs-toggle="pill" data-bs-target="#unpaid" type="button" role="tab"
-            aria-controls="unpaid" aria-selected="true">Ücretsiz Aktiviteler</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link bg-transparent text-theme-secondary opacity-50 ls-05 ps-0 pe-2 py-2 me-3 me-sm-5"
-            id="paid-tab" data-bs-toggle="pill" data-bs-target="#paid" type="button" role="tab" aria-controls="paid"
-            aria-selected="false">Ücretli Aktiviteler</button>
-        </li>
-      </ul>
-      <div class="tab-content" id="activities-tabContent">
-        <div class="tab-pane fade show active" id="unpaid" role="tabpanel" aria-labelledby="unpaid-tab">
-          <ul class="properties lh-sm ls-05 d-flex flex-wrap text-theme-secondary">
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Animasyon</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Jakuzi</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Disco</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">TV Salonu</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Su Kaydırağı</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Basketbol</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Masa Tenisi</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Fitness</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Voleybol</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Tenis</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Beach Voley</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Sauna</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Hamam</span>
-            </li>
-            <li class="d-flex pe-2 mb-3 pb-1">
-              <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-                class="lazy contain flex-shrink-0 me-2">
-              <span class="d-block ps-sm-1">Dart</span>
-            </li>
-          </ul>
-        </div>
-        <div class="tab-pane fade" id="paid" role="tabpanel" aria-labelledby="paid-tab">...</div>
-      </div>
-    </div>
-  </section>
-  <section class="for-kids-section mb-5 pb-sm-5">
-    <div class="container pb-4">
-      <div class="section-caption mb-3">
-        <span class="fs-5 ls-05 lh-sm">Çocuklar İçin</span>
-      </div>
-      <div class="row g-2">
-        <div class="col-6 col-md-4">
-          <div
-            class="h-item ls-05 border border-3 border-theme-light d-flex align-items-sm-center flex-sm-row flex-column h-100 rounded-sm py-3 py-sm-4 px-3 px-sm-4">
-            <span class="d-inline-block ps-lg-3 py-lg-1 me-auto">Çocuk Kulubü</span>
-            <strong class="fs-5 fw-normal text-theme-second pe-lg-2 py-sm-1">Ücretsiz</strong>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
           </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div
-            class="h-item ls-05 border border-3 border-theme-light d-flex align-items-sm-center flex-sm-row flex-column h-100 rounded-sm py-3 py-sm-4 px-3 px-sm-4">
-            <span class="d-inline-block ps-lg-3 py-lg-1 me-auto">Çocuk Parkı</span>
-            <strong class="fs-5 fw-normal text-theme-second pe-lg-2 py-sm-1">Ücretsiz</strong>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
           </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div
-            class="h-item ls-05 border border-3 border-theme-light d-flex align-items-sm-center flex-sm-row flex-column h-100 rounded-sm py-3 py-sm-4 px-3 px-sm-4">
-            <span class="d-inline-block ps-lg-3 py-lg-1 me-auto">Çocuk Havuzu</span>
-            <strong class="fs-5 fw-normal text-theme-second pe-lg-2 py-sm-1">Ücretsiz</strong>
-          </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div
-            class="h-item ls-05 border border-3 border-theme-light d-flex align-items-sm-center flex-sm-row flex-column h-100 rounded-sm py-3 py-sm-4 px-3 px-sm-4">
-            <span class="d-inline-block ps-lg-3 py-lg-1 me-auto">Bebek Bakımı</span>
-            <strong class="fs-5 fw-normal text-warning pe-lg-2 py-sm-1">Ücretli</strong>
-          </div>
+
         </div>
       </div>
-    </div>
-  </section>
-  <section class="note-section mb-5 pb-sm-5">
-    <div class="container pb-5">
-      <div class="alert alert-warning p-xl">
-        <span class="fs-5 ls-05 d-block mb-2 mb-sm-4 pb-sm-0 pb-1">Diğer Notlar</span>
-        <div class="fs-7 ls-05 text-theme-secondary mb-0">
-          <p>
-            Türk Kahvesi, Sıkma Portakal Suyu ve tüm meyve suları, Yabancı Alkollü İçecekler, Disco´da alınan içecekler,
-            Kuru temizleme, kuaför, doktor ve odada kasa ücretlidir. <br>
-            Havuza haşema ile giriş yapılmaktadır. <br>
-            Tüm Restaurantda bebek mama sandalyesi, istek üzerine ücretsiz olarak verilmektedir. <br>
-            Miniclub (4 -12 yaş arası çocuklar için) 10:00-12:30 ve 14:30-17:30 arasında hizmet vermektedir <br>
-            Minidisco aktivitesi 20:45’deAnfi tiatroda verilmektedir (4-12 yaş) <br>
-            04-12 yaş arası çocuklar için 19:30’da çizgifilm izleme aktivitesi bulunmaktadır (miniclub’te) <br>
-            Miniclub’te konuşulan diller: Türkçe, İngilizce, Almanca, Rusça <br>
-            Tesis gerekli doluluğu sağlayamadığı takdirde konsept veya konsept dahilinde değişiklik uygulayabilir. <br>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-</main></template>
+    </b-modal>
+  </main>
+</template>
 
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
@@ -1156,7 +893,7 @@ import 'swiper/swiper-bundle.min.css'
 
 export default {
   name: 'OtelIndexPage',
-  layout:'no-search',
+  layout: 'no-search',
   components: {
     Swiper
   },
@@ -1168,10 +905,30 @@ export default {
   },
   mounted() {
 
+  },
+  method: {
+    showSwiper() {
+      Swiper.use([Navigation, Pagination])
+console.log('TSET')
+      const swiper = new Swiper('.swiper-otel', {
+        slidesPerView: 1,
+        spaceBetween: 18,
+        direction: 'horizontal',
+        loop: true,
+        modules: [Navigation, Pagination],
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+
+      })
+    }
   }
 
 }
 </script>
-<style scoped>.list-item .list-image {
+<style scoped>
+.list-item .list-image {
   width: 100%;
-}</style>
+}
+</style>
