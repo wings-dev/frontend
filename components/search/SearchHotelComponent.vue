@@ -144,7 +144,7 @@ export default {
           .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
           .join('&');
 
-        window.location.href = `${window.location.origin}/otel?${urlSearchParams}`;
+        window.location.href = `${window.location.origin}/oteller?${urlSearchParams}`;
       }
     },
     async onCitySearch(searchText) {
