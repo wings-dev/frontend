@@ -2,18 +2,18 @@
   <div>
     <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1" v-if="type === 2"></dynamic-detail-page>
     <dynamic-villa-filter-page :selectedFilters="componentData" v-if="type === 7"></dynamic-villa-filter-page>
-    <dynamic-text-page :data="componentData" v-if="type === 1 || type === 16"></dynamic-text-page>
+    <text-template-component :data="componentData" v-if="type === 1 || type === 16"></text-template-component>
   </div>
 </template>
 
 <script>
 import DynamicVillaFilterPage from "@/components/dynamic-page/villa-filter.vue";
 import DynamicDetailPage from "@/components/dynamic-page/detail.vue";
-import DynamicTextPage from "@/components/dynamic-page/text.vue";
+import TextTemplateComponent from "@/components/dynamic-page/TextTemplateComponent.vue";
 
 export default {
   name: 'DynamicPage',
-  components: {DynamicDetailPage, DynamicVillaFilterPage,DynamicTextPage},
+  components: {TextTemplateComponent, DynamicDetailPage, DynamicVillaFilterPage},
   layout: "no-search",
   head() {
     return this.headData

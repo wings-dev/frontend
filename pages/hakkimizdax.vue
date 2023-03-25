@@ -295,7 +295,7 @@
 
 <script>
 export default {
-  name: 'DetailPage',
+  name: 'HakkimizdaxPage',
   layout: 'no-search',
   head() {
     let site_id = process.env.SITE

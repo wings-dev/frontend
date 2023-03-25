@@ -8,7 +8,7 @@
                 <h1 class="pt-2 mb-1">Ooooops..!</h1>
                 <p class="col-lg-10  lh-sm">
                     <span>Bir şeyler ters gitti!</span>
-                    Aradığınız sayfayı bulamadık. 
+                    Aradığınız sayfayı bulamadık.
                 </p>
             </div>
             <a href="/" class="mb-3">
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'DetailPage',
+  name: '404Page',
   layout: 'no-search'
 }
 </script>

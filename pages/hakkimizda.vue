@@ -263,10 +263,10 @@
         </section> -->
     </main>
 </template>
-  
+
 <script>
 export default {
-    name: 'DetailPage',
+    name: 'HakkimizdaPage',
     layout: 'no-search',
     head() {
         let site_id = process.env.SITE
@@ -287,4 +287,3 @@ export default {
 }
 </script>
 <style scoped></style>
-  

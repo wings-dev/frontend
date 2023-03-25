@@ -142,7 +142,7 @@
 
 <script>
 export default {
-  name: 'DetailPage',
+  name: 'Kurumsal2Page',
   layout: 'no-search',
   head() {
     let site_id = process.env.SITE
@@ -152,7 +152,7 @@ export default {
         { hid: 'description', name: 'description', content: 'hakkımızda' },
         { hid: 'keywords', name: 'keywords', content: 'hakkımızda1, hakkımızda2, hakkımızd3' }
       ],
-     
+
     }
   },
 }

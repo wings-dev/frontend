@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'DetailPage',
+  name: 'KvkkPage',
   layout: 'no-search',
   head() {
     return {
@@ -39,7 +39,7 @@ export default {
     const site_id = process.env.SITE;
     let pageData = {};
     // store.state.routes.routes.filter(route => route.type == 16)
-    
+
     const pageURLs = Object.keys(store.state.routes.routes).filter(key => store.state.routes.routes[key].type === 16).map(key => {
       const data = JSON.parse(JSON.stringify(store.state.routes.routes[key]))
       data.url = key;
@@ -47,7 +47,7 @@ export default {
 
     })
     console.log(pageURLs)
-  
+
     pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
     return { pageData,pageURLs }
   }
