@@ -139,7 +139,7 @@
 
       <section class="rooms-section pt-3 mt-1">
         <div class="container">
-
+          {{hotelPriceDetails}}
           <template v-for="offer in hotelPriceDetails.body?.hotels[0]?.offers">
             <div v-for="room in offer.rooms" class="room border border-light rounded-xxl pt-2 px-2 pb-1 p-lg-2 mb-3">
               <div class="row">
@@ -1260,15 +1260,23 @@ import CloseVillaModal from '../modals/close-villa-modal.vue';
 
 export default {
   name: 'DynamicHotelDetailPage',
-  props: ['hotelDetails', 'hotelPriceDetails', 'selectedFilters'],
+  props: ['hotelDetails', 'selectedFilters'],
   data() {
-    console.log(this.hotelDetails);
     return {
-      hotel: this.hotelDetails
+      hotel: this.hotelDetails,
+      hotelPriceDetails: {}
     }
   },
-  mounted() {
-    // todo offerslar alınacak
+  async mounted() {
+    const response = await this.$dataService.getHotelPrice(this.hotel.id, this.selectedFilters)
+    this.hotelPriceDetails = response.data;
+    if (this.hotelPriceDetails.body?.hotels[0]?.offers.length > 0) {
+      const offerIds = this.hotelPriceDetails.body?.hotels[0]?.offers.map(offer => offer.offerId)
+      // console.log(offerIds)
+      let response = await this.$dataService.getOfferDetails({offerIds});
+      const offerDetails = response.data;
+      // console.log(JSON.stringify(offerDetails))
+    }
   },
   computed: {
     previewImages() {
@@ -1287,6 +1295,21 @@ export default {
     }
   },
   methods: {
+    showSwiper() {
+      Swiper.use([Navigation, Pagination])
+      const swiper = new Swiper('.swiper-otel', {
+        slidesPerView: 1,
+        spaceBetween: 18,
+        direction: 'horizontal',
+        loop: true,
+        modules: [Navigation, Pagination],
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+
+      })
+    },
     showGallery() {
       document.querySelector('.Gallery').classList.add("show")
       document.querySelector('body').classList.add("over")

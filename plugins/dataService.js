@@ -1,4 +1,4 @@
-export default ({$axios, $config}, inject) => {
+export default ({app, $axios, $config}, inject) => {
   const serverAddr = (process.server ? 'http://localhost:3000' : '') + '/data/';
 
   const dataService = {
@@ -17,5 +17,6 @@ export default ({$axios, $config}, inject) => {
 
   }
 
+  app.dataService = dataService
   inject('dataService', dataService)
 }
