@@ -98,35 +98,91 @@
                                         </div> -->
 
                                     </template>
-                                    <!-- <div class="Header-menu-sub-item">
-                                    <h5>Muğla Kiralık Villa</h5>
-                                    <div class="Header-menu-sub-item-list">
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                    </div>
-                                </div>
-                                <div class="Header-menu-sub-item single">
-                                    <h5>Diğer Bölgeler</h5>
-                                    <div class="Header-menu-sub-item-list">
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                        <a href="">Dalaman Kiralık Villa</a>
-                                        <a href="">Fethiye Kiralık Villa</a>
-                                        <a href="">Bodrum Kiralık Villa</a>
-                                    </div>
-                                </div> -->
+
                                 </div>
 
                             </div>
                         </template>
+
+                        <div class="Header-menu-item otel">
+                            <!--  -->
+                            <button type="button" class="Header-menu-item-link menu-children menu-item"
+                                data-dropdown="dropdown4" id="4">Otel
+                                <i class="icon-right-arrows-new"></i>
+                            </button>
+
+                            <div class="Header-menu-item-in menu-item-dropdown" id="dropdown4">
+                                <button type="button" class="mobile-back-button"><i class="icon-right-arrows-new"
+                                        @click="closeSubMenu($event)"></i>Otel</button>
+                                <div class="Header-menu-item-otel">
+                                    <div class="Header-menu-item-otel-left">
+                                        <div class="Header-menu-item-otel-left-item">
+                                            <h5>YURT İÇİ OTELLER</h5>
+                                            <div class="Header-menu-sub-item-list">
+                                                <a href="">Antalya Otelleri</a>
+                                                <a href="">Bodrum Otelleri</a>
+                                                <a href="">Marmaris Otelleri</a>
+                                                <a href="">Kuşadası Otelleri</a>
+                                                <a href="">Çeşme Otelleri</a>
+                                                <a href="">Sapanca Otelleri</a>
+                                                <a href="">Bolu Otelleri</a>
+                                                <a href="">Bursa Otelleri</a>
+                                                <a href="">Balıkesir Otelleri</a>
+                                                <a href="">Afyon Otelleri</a>
+                                                <a href="">Kapadokya Otelleri</a>
+                                                <a href="">Eskişehir Otelleri</a>
+                                                <a href="">Yalova Otelleri</a>
+                                                <a href="">Afyon Otelleri</a>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="Header-menu-item-otel-left-item">
+                                            <h5>YURT İÇİ OTELLER</h5>
+                                            <div class="Header-menu-sub-item-list">
+                                                <a href="">Antalya Otelleri</a>
+                                                <a href="">Bodrum Otelleri</a>
+                                                <a href="">Marmaris Otelleri</a>
+                                                <a href="">Kuşadası Otelleri</a>
+                                                <a href="">Çeşme Otelleri</a>
+                                                <a href="">Sapanca Otelleri</a>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="Header-menu-item-otel-left-item">
+                                            <h5>YURT İÇİ OTELLER</h5>
+                                            <div class="Header-menu-sub-item-list">
+                                                <a href="">Antalya Otelleri</a>
+                                                <a href="">Bodrum Otelleri</a>
+                                                <a href="">Marmaris Otelleri</a>
+                                                <a href="">Kuşadası Otelleri</a>
+                                                <a href="">Çeşme Otelleri</a>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="Header-menu-item-otel-left-item">
+                                            <h5>YURT İÇİ OTELLER</h5>
+                                            <div class="Header-menu-sub-item-list">
+                                                <a href="">Antalya Otelleri</a>
+                                                <a href="">Bodrum Otelleri</a>
+                                                <a href="">Marmaris Otelleri</a>
+                                                <a href="">Kuşadası Otelleri</a>
+                                                <a href="">Çeşme Otelleri</a>
+                                                <a href="">Sapanca Otelleri</a>
+                                                <a href="">Bolu Otelleri</a>
+                                                <a href="">Bursa Otelleri</a>
+                                                <a href="">Balıkesir Otelleri</a>
+                                                <a href="">Afyon Otelleri</a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="Header-menu-item-otel-right">
+                                        <img src="/img/otel-menu.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
                     </div>
                     <div class="Header-buttons">
@@ -308,7 +364,7 @@ export default {
                 if (dropdown.id !== exceptDropdownId) {
                     dropdown.classList.remove("active");
                 }
-                
+
                 dropdown.parentNode.classList.remove("active");
             });
         }
