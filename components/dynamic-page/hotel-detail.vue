@@ -20,7 +20,7 @@
                 <div class="view-top-right">
                   <div class="d-flex align-items-center text-theme-secondary">
                     <i class="icon-pin"></i>
-                    <p class="view-top-right-location"><span class="lh-sm">Lara / Antalya</span></p>
+                    <p class="view-top-right-location"><span class="lh-sm">{{hotelDetails.body.hotel.country.name}} / {{hotelDetails.body.hotel.city.name}}</span></p>
                   </div>
 
                 </div>
@@ -79,36 +79,47 @@
         </div>
         <div class="container pb-1">
           <div class="view-gallery">
-            <div class="area-1">
-              <a href="#" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <nuxt-img src="/uploads/hotel-image2.jpg" width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
+            <div class="area-1" v-if="previewImages.length > 0">
+              <a :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon"
+                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+                <!-- <img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive"
+                   alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
+                <nuxt-img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive"
+                          width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
 
               </a>
             </div>
-            <div class="area-2 d-md-block d-none">
-              <a href="#" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <nuxt-img src="/uploads/hotel-image3.jpg" width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+            <div class="area-2 d-md-block d-none" v-if="previewImages.length > 1">
+              <a :href="previewImages[1].preview_url" data-fancybox="gallery" data-caption="Salon"
+                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+                <nuxt-img :src="previewImages[1].preview_url" :srcset="previewImages[1].responsive"
+                          width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
-            <div class="area-3 d-md-block d-none">
-              <a href="#" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <nuxt-img src="/uploads/hotel-image4.jpg" width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+            <div class="area-3 d-md-block d-none" v-if="previewImages.length > 2">
+              <a :href="previewImages[2].preview_url" data-fancybox="gallery" data-caption="Salon"
+                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+                <nuxt-img :src="previewImages[2].preview_url" :srcset="previewImages[2].responsive"
+                          width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
-            <div class="area-4 d-none d-lg-block">
-              <a href="#" class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <nuxt-img src="/uploads/hotel-image5.jpg" width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+            <div class="area-4 d-none d-lg-block" v-if="previewImages.length > 3">
+              <a :href="previewImages[3].preview_url" data-fancybox="gallery" data-caption="Salon"
+                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+                <nuxt-img :src="previewImages[3].preview_url" :srcset="previewImages[3].responsive"
+                          width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
-            <div class="area-5 d-none d-lg-block">
+            <div class="area-5 d-none d-lg-block" v-if="previewImages.length > 4">
               <div class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl last">
-                <nuxt-img src="/uploads/hotel-image5.jpg" width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="previewImages[4].preview_url" :srcset="previewImages[4].responsive"
+                          width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
-                  <span>Tüm Fotoğraflar ( 32 ) </span>
+                  <span :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon">Tüm Fotoğraflar ( {{previewImages.length}} ) </span>
                   <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
                   <a href="https://www.youtube.com/watch?v=5SMaakuGyH0" data-fancybox>
                     <i class="icon-play-button"></i> Video İzle
@@ -117,334 +128,460 @@
                 </div>
               </div>
             </div>
+
+            <div class="d-none">
+              <a v-for="previewImage in previewImages.slice(5)" :href="previewImage.preview_url" data-fancybox="gallery" data-caption="Salon"></a>
+            </div>
+
           </div>
         </div>
       </section>
 
       <section class="rooms-section pt-3 mt-1">
         <div class="container">
-          <div class="room border border-light rounded-xxl p-2 mb-3">
-            <div class="row">
-              <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                <div class="img-box position-relative flex-shrink-0">
-                  <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
-                       class="lazy cover flex-shrink-0 rounded-xl">
+
+          <template v-for="offer in hotelPriceDetails.body?.hotels[0]?.offers">
+            <div v-for="room in offer.rooms" class="room border border-light rounded-xxl pt-2 px-2 pb-1 p-lg-2 mb-3">
+              <div class="row">
+                {{offer}}
+                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
+                  <div class="img-box position-relative flex-shrink-0">
+                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                         class="lazy cover flex-shrink-0 rounded-xl">
+                  </div>
+                  <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
+                    <div class="d-flex align-items-center w-100 mb-2">
+                      <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">{{room.roomName}}</span>
+
+                    </div>
+
+                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Oda Genişliği</span>
+                        <span class="">53 m<sup><small>2</small></sup></span>
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Minibar</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Balkon</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Duşakabin</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                    </div>
+                    <div class="d-flex align-items-center mb-sm-0 mb-1">
+                      <a href="#!" class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3">
+                        <u><small>Odanın Tüm Özellikleri</small></u>
+                      </a>
+                      <a href="#!" class="fs-6 lh-sm ls-05">
+                        <u><small>Tüm Fiyatlar</small></u>
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div
-                  class="flex-fill d-flex flex-column align-items-start justify-content-between ps-2 ps-sm-3 ps-xl-4 pt-3">
-                  <div class="d-flex align-items-center w-100 mb-2">
+                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
+                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
+                    <div
+                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
+                        <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
+                        <div class="room-info d-flex fs-6 fw-medium ls-05 mb-1 mt-1">
+                          <svg class="flex-shrink-0 me-1 mt-1" width="17px" height="17px" viewBox="0 0 17 17" version="1.1"
+                               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="OtelDetay" transform="translate(-1088.000000, -1170.000000)" fill="#5DC1B2"
+                                 fill-rule="nonzero">
+                                <g id="alert" transform="translate(1088.000000, 1170.000000)">
+                                  <path
+                                    d="M8.21333333,0 C3.67723459,0 0,3.67723459 0,8.21333333 C0,12.7494321 3.67723459,16.4266667 8.21333333,16.4266667 C12.7494321,16.4266667 16.4266667,12.7494321 16.4266667,8.21333333 C16.4213179,3.67945196 12.7472147,0.00534874716 8.21333333,0 Z M8.21333333,14.9333333 C4.50197981,14.9333333 1.49333333,11.9246869 1.49333333,8.21333333 C1.49333333,4.50197981 4.50197981,1.49333333 8.21333333,1.49333333 C11.9246869,1.49333333 14.9333333,4.50197981 14.9333333,8.21333333 C14.9288078,11.9228107 11.9228107,14.9288078 8.21333333,14.9333333 L8.21333333,14.9333333 Z"
+                                    id="Shape"></path>
+                                  <path
+                                    d="M8.21333333,3.73333333 C7.80096072,3.73333333 7.46666667,4.06762739 7.46666667,4.48 L7.46666667,9.70666667 C7.46666667,10.1190393 7.80096072,10.4533333 8.21333333,10.4533333 C8.62570595,10.4533333 8.96,10.1190393 8.96,9.70666667 L8.96,4.48 C8.96,4.06762739 8.62570595,3.73333333 8.21333333,3.73333333 Z"
+                                    id="Path"></path>
+                                  <circle id="Oval" cx="8.21333333" cy="11.9466667" r="1"></circle>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                          <small class="d-block my-auto">Varınca Para - %25 Ön Ödemeli</small>
+                        </div>
+                        <div class="room-info d-flex fs-6 fw-medium ls-05 mb-1 mt-1">
+                          <svg class="flex-shrink-0 me-1 mt-1" width="17px" height="17px" viewBox="0 0 17 17" version="1.1"
+                               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="OtelDetay" transform="translate(-1088.000000, -1170.000000)" fill="#B3B6C5"
+                                 fill-rule="nonzero">
+                                <g id="alert" transform="translate(1088.000000, 1170.000000)">
+                                  <path
+                                    d="M8.21333333,0 C3.67723459,0 0,3.67723459 0,8.21333333 C0,12.7494321 3.67723459,16.4266667 8.21333333,16.4266667 C12.7494321,16.4266667 16.4266667,12.7494321 16.4266667,8.21333333 C16.4213179,3.67945196 12.7472147,0.00534874716 8.21333333,0 Z M8.21333333,14.9333333 C4.50197981,14.9333333 1.49333333,11.9246869 1.49333333,8.21333333 C1.49333333,4.50197981 4.50197981,1.49333333 8.21333333,1.49333333 C11.9246869,1.49333333 14.9333333,4.50197981 14.9333333,8.21333333 C14.9288078,11.9228107 11.9228107,14.9288078 8.21333333,14.9333333 L8.21333333,14.9333333 Z"
+                                    id="Shape"></path>
+                                  <path
+                                    d="M8.21333333,3.73333333 C7.80096072,3.73333333 7.46666667,4.06762739 7.46666667,4.48 L7.46666667,9.70666667 C7.46666667,10.1190393 7.80096072,10.4533333 8.21333333,10.4533333 C8.62570595,10.4533333 8.96,10.1190393 8.96,9.70666667 L8.96,4.48 C8.96,4.06762739 8.62570595,3.73333333 8.21333333,3.73333333 Z"
+                                    id="Path"></path>
+                                  <circle id="Oval" cx="8.21333333" cy="11.9466667" r="1"></circle>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                          <small class="d-block my-auto">Ücretsiz İptal</small>
+                        </div>
+                        <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
+                                                                                         class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
+                      </div>
+                      <div
+                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
+                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
+                          <span class="text-secondary ls-05 d-block lh-1"><small>{{offer.night}} GECE</small></span>
+                          <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">{{offer.price.amount}} {{offer.price.currency}}</strong>
+                        </div>
+                        <button type="button"
+                                class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
+                          <small class="d-block py-1">Rezervasyon</small>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+
+
+          <template v-if="false">
+            <div class="room border border-light rounded-xxl p-2 mb-3">
+              <div class="row">
+                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
+                  <div class="img-box position-relative flex-shrink-0">
+                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                         class="lazy cover flex-shrink-0 rounded-xl">
+                  </div>
+                  <div
+                    class="flex-fill d-flex flex-column align-items-start justify-content-between ps-2 ps-sm-3 ps-xl-4 pt-3">
+                    <div class="d-flex align-items-center w-100 mb-2">
                   <span class="fs-5 lh-sm ls-05 d-inline-block me-auto room-title">Standart Tek Büyük veya İki Ayrı
                     Yataklı Oda, Şehir Manzaralı, 2 Tek Kişilik Yatak - 24 m2</span>
-                  </div>
-                  <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
+                    </div>
+                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
 
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Minibar</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Balkon</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Duşakabin</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                  </div>
-                  <div class="d-flex align-items-center mb-sm-0 mb-1">
-                    <b-button v-b-modal.amenitesModal class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3" ><u><small>Odanın Tüm
-                      Özellikleri</small></u></b-button>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Minibar</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Balkon</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Duşakabin</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                    </div>
+                    <div class="d-flex align-items-center mb-sm-0 mb-1">
+                      <b-button v-b-modal.amenitesModal class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3" ><u><small>Odanın Tüm
+                        Özellikleri</small></u></b-button>
 
-                    <a href="#!" class="fs-6 lh-sm ls-05">
-                      <u><small>Tüm Fiyatlar</small></u>
-                    </a>
+                      <a href="#!" class="fs-6 lh-sm ls-05">
+                        <u><small>Tüm Fiyatlar</small></u>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                  <div
-                    class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                    <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                      <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
-                      <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
-                                                                                       class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
-                    </div>
+                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
+                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
                     <div
-                      class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                      <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                        <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                        <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">5.200 TL</strong>
+                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
+                        <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
+                        <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
+                                                                                         class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
                       </div>
-                      <button type="button"
-                              class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                        <small class="d-block py-1">Rezervasyon</small>
-                      </button>
+                      <div
+                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
+                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
+                          <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
+                          <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">5.200 TL</strong>
+                        </div>
+                        <button type="button"
+                                class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
+                          <small class="d-block py-1">Rezervasyon</small>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="note note-warning ls-05 fw-medium text-center my-3 py-1"><img src="/img/icons/026-alert.svg"
-                                                                                    width="17" height="17" alt="alert" class="lazy contain flex-shrink-0 me-1" />11 Eylül - 21 Eylül Tarihleri
-            arasında Aile Odası bulunmamaktadır. Müsait tarihleri görmek için <a href="#!"><u>Tıklayın</u></a></div>
-          <div class="room border border-light rounded-xxl pt-2 px-2 pb-1 p-lg-2 mb-3">
-            <div class="row">
-              <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                <div class="img-box position-relative flex-shrink-0">
-                  <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
-                       class="lazy cover flex-shrink-0 rounded-xl">
-                </div>
-                <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
-                  <div class="d-flex align-items-center w-100 mb-2">
-                    <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Aile Odası</span>
+            <div class="note note-warning ls-05 fw-medium text-center my-3 py-1"><img src="/img/icons/026-alert.svg"
+                                                                                      width="17" height="17" alt="alert" class="lazy contain flex-shrink-0 me-1" />11 Eylül - 21 Eylül Tarihleri
+              arasında Aile Odası bulunmamaktadır. Müsait tarihleri görmek için <a href="#!"><u>Tıklayın</u></a></div>
+            <div class="room border border-light rounded-xxl pt-2 px-2 pb-1 p-lg-2 mb-3">
+              <div class="row">
+                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
+                  <div class="img-box position-relative flex-shrink-0">
+                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                         class="lazy cover flex-shrink-0 rounded-xl">
+                  </div>
+                  <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
+                    <div class="d-flex align-items-center w-100 mb-2">
+                      <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Aile Odası</span>
 
-                  </div>
+                    </div>
 
-                  <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Oda Genişliği</span>
-                      <span class="">53 m<sup><small>2</small></sup></span>
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Minibar</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Balkon</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Duşakabin</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                  </div>
-                  <div class="d-flex align-items-center mb-sm-0 mb-1">
-                    <a href="#!" class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3">
-                      <u><small>Odanın Tüm Özellikleri</small></u>
-                    </a>
-                    <a href="#!" class="fs-6 lh-sm ls-05">
-                      <u><small>Tüm Fiyatlar</small></u>
-                    </a>
+                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Oda Genişliği</span>
+                        <span class="">53 m<sup><small>2</small></sup></span>
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Minibar</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Balkon</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Duşakabin</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                    </div>
+                    <div class="d-flex align-items-center mb-sm-0 mb-1">
+                      <a href="#!" class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3">
+                        <u><small>Odanın Tüm Özellikleri</small></u>
+                      </a>
+                      <a href="#!" class="fs-6 lh-sm ls-05">
+                        <u><small>Tüm Fiyatlar</small></u>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                  <div
-                    class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                    <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                      <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
-                      <div class="room-info d-flex fs-6 fw-medium ls-05 mb-1 mt-1">
-                        <svg class="flex-shrink-0 me-1 mt-1" width="17px" height="17px" viewBox="0 0 17 17" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="OtelDetay" transform="translate(-1088.000000, -1170.000000)" fill="#5DC1B2"
-                               fill-rule="nonzero">
-                              <g id="alert" transform="translate(1088.000000, 1170.000000)">
-                                <path
-                                  d="M8.21333333,0 C3.67723459,0 0,3.67723459 0,8.21333333 C0,12.7494321 3.67723459,16.4266667 8.21333333,16.4266667 C12.7494321,16.4266667 16.4266667,12.7494321 16.4266667,8.21333333 C16.4213179,3.67945196 12.7472147,0.00534874716 8.21333333,0 Z M8.21333333,14.9333333 C4.50197981,14.9333333 1.49333333,11.9246869 1.49333333,8.21333333 C1.49333333,4.50197981 4.50197981,1.49333333 8.21333333,1.49333333 C11.9246869,1.49333333 14.9333333,4.50197981 14.9333333,8.21333333 C14.9288078,11.9228107 11.9228107,14.9288078 8.21333333,14.9333333 L8.21333333,14.9333333 Z"
-                                  id="Shape"></path>
-                                <path
-                                  d="M8.21333333,3.73333333 C7.80096072,3.73333333 7.46666667,4.06762739 7.46666667,4.48 L7.46666667,9.70666667 C7.46666667,10.1190393 7.80096072,10.4533333 8.21333333,10.4533333 C8.62570595,10.4533333 8.96,10.1190393 8.96,9.70666667 L8.96,4.48 C8.96,4.06762739 8.62570595,3.73333333 8.21333333,3.73333333 Z"
-                                  id="Path"></path>
-                                <circle id="Oval" cx="8.21333333" cy="11.9466667" r="1"></circle>
+                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
+                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
+                    <div
+                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
+                        <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
+                        <div class="room-info d-flex fs-6 fw-medium ls-05 mb-1 mt-1">
+                          <svg class="flex-shrink-0 me-1 mt-1" width="17px" height="17px" viewBox="0 0 17 17" version="1.1"
+                               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="OtelDetay" transform="translate(-1088.000000, -1170.000000)" fill="#5DC1B2"
+                                 fill-rule="nonzero">
+                                <g id="alert" transform="translate(1088.000000, 1170.000000)">
+                                  <path
+                                    d="M8.21333333,0 C3.67723459,0 0,3.67723459 0,8.21333333 C0,12.7494321 3.67723459,16.4266667 8.21333333,16.4266667 C12.7494321,16.4266667 16.4266667,12.7494321 16.4266667,8.21333333 C16.4213179,3.67945196 12.7472147,0.00534874716 8.21333333,0 Z M8.21333333,14.9333333 C4.50197981,14.9333333 1.49333333,11.9246869 1.49333333,8.21333333 C1.49333333,4.50197981 4.50197981,1.49333333 8.21333333,1.49333333 C11.9246869,1.49333333 14.9333333,4.50197981 14.9333333,8.21333333 C14.9288078,11.9228107 11.9228107,14.9288078 8.21333333,14.9333333 L8.21333333,14.9333333 Z"
+                                    id="Shape"></path>
+                                  <path
+                                    d="M8.21333333,3.73333333 C7.80096072,3.73333333 7.46666667,4.06762739 7.46666667,4.48 L7.46666667,9.70666667 C7.46666667,10.1190393 7.80096072,10.4533333 8.21333333,10.4533333 C8.62570595,10.4533333 8.96,10.1190393 8.96,9.70666667 L8.96,4.48 C8.96,4.06762739 8.62570595,3.73333333 8.21333333,3.73333333 Z"
+                                    id="Path"></path>
+                                  <circle id="Oval" cx="8.21333333" cy="11.9466667" r="1"></circle>
+                                </g>
                               </g>
                             </g>
-                          </g>
-                        </svg>
-                        <small class="d-block my-auto">Varınca Para - %25 Ön Ödemeli</small>
-                      </div>
-                      <div class="room-info d-flex fs-6 fw-medium ls-05 mb-1 mt-1">
-                        <svg class="flex-shrink-0 me-1 mt-1" width="17px" height="17px" viewBox="0 0 17 17" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="OtelDetay" transform="translate(-1088.000000, -1170.000000)" fill="#B3B6C5"
-                               fill-rule="nonzero">
-                              <g id="alert" transform="translate(1088.000000, 1170.000000)">
-                                <path
-                                  d="M8.21333333,0 C3.67723459,0 0,3.67723459 0,8.21333333 C0,12.7494321 3.67723459,16.4266667 8.21333333,16.4266667 C12.7494321,16.4266667 16.4266667,12.7494321 16.4266667,8.21333333 C16.4213179,3.67945196 12.7472147,0.00534874716 8.21333333,0 Z M8.21333333,14.9333333 C4.50197981,14.9333333 1.49333333,11.9246869 1.49333333,8.21333333 C1.49333333,4.50197981 4.50197981,1.49333333 8.21333333,1.49333333 C11.9246869,1.49333333 14.9333333,4.50197981 14.9333333,8.21333333 C14.9288078,11.9228107 11.9228107,14.9288078 8.21333333,14.9333333 L8.21333333,14.9333333 Z"
-                                  id="Shape"></path>
-                                <path
-                                  d="M8.21333333,3.73333333 C7.80096072,3.73333333 7.46666667,4.06762739 7.46666667,4.48 L7.46666667,9.70666667 C7.46666667,10.1190393 7.80096072,10.4533333 8.21333333,10.4533333 C8.62570595,10.4533333 8.96,10.1190393 8.96,9.70666667 L8.96,4.48 C8.96,4.06762739 8.62570595,3.73333333 8.21333333,3.73333333 Z"
-                                  id="Path"></path>
-                                <circle id="Oval" cx="8.21333333" cy="11.9466667" r="1"></circle>
+                          </svg>
+                          <small class="d-block my-auto">Varınca Para - %25 Ön Ödemeli</small>
+                        </div>
+                        <div class="room-info d-flex fs-6 fw-medium ls-05 mb-1 mt-1">
+                          <svg class="flex-shrink-0 me-1 mt-1" width="17px" height="17px" viewBox="0 0 17 17" version="1.1"
+                               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="OtelDetay" transform="translate(-1088.000000, -1170.000000)" fill="#B3B6C5"
+                                 fill-rule="nonzero">
+                                <g id="alert" transform="translate(1088.000000, 1170.000000)">
+                                  <path
+                                    d="M8.21333333,0 C3.67723459,0 0,3.67723459 0,8.21333333 C0,12.7494321 3.67723459,16.4266667 8.21333333,16.4266667 C12.7494321,16.4266667 16.4266667,12.7494321 16.4266667,8.21333333 C16.4213179,3.67945196 12.7472147,0.00534874716 8.21333333,0 Z M8.21333333,14.9333333 C4.50197981,14.9333333 1.49333333,11.9246869 1.49333333,8.21333333 C1.49333333,4.50197981 4.50197981,1.49333333 8.21333333,1.49333333 C11.9246869,1.49333333 14.9333333,4.50197981 14.9333333,8.21333333 C14.9288078,11.9228107 11.9228107,14.9288078 8.21333333,14.9333333 L8.21333333,14.9333333 Z"
+                                    id="Shape"></path>
+                                  <path
+                                    d="M8.21333333,3.73333333 C7.80096072,3.73333333 7.46666667,4.06762739 7.46666667,4.48 L7.46666667,9.70666667 C7.46666667,10.1190393 7.80096072,10.4533333 8.21333333,10.4533333 C8.62570595,10.4533333 8.96,10.1190393 8.96,9.70666667 L8.96,4.48 C8.96,4.06762739 8.62570595,3.73333333 8.21333333,3.73333333 Z"
+                                    id="Path"></path>
+                                  <circle id="Oval" cx="8.21333333" cy="11.9466667" r="1"></circle>
+                                </g>
                               </g>
                             </g>
-                          </g>
-                        </svg>
-                        <small class="d-block my-auto">Ücretsiz İptal</small>
+                          </svg>
+                          <small class="d-block my-auto">Ücretsiz İptal</small>
+                        </div>
+                        <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
+                                                                                         class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
                       </div>
-                      <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
-                                                                                       class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
-                    </div>
-                    <div
-                      class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                      <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                        <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                        <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">8.350 TL</strong>
+                      <div
+                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
+                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
+                          <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
+                          <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">8.350 TL</strong>
+                        </div>
+                        <button type="button"
+                                class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
+                          <small class="d-block py-1">Rezervasyon</small>
+                        </button>
                       </div>
-                      <button type="button"
-                              class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                        <small class="d-block py-1">Rezervasyon</small>
-                      </button>
                     </div>
-                  </div>
 
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="room border border-light rounded-xxl p-2 mb-3">
-            <div class="row">
-              <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                <div class="img-box position-relative flex-shrink-0">
-                  <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
-                       class="lazy cover flex-shrink-0 rounded-xl">
-                </div>
-                <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
-                  <div class="d-flex align-items-center w-100 mb-2">
-                    <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Kral Dairesi</span>
-
-                  </div>
-
-                  <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Oda Genişliği</span>
-                      <span class="">53 m<sup><small>2</small></sup></span>
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Minibar</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Balkon</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Duşakabin</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                  </div>
-                  <div class="d-flex align-items-center mb-sm-0 mb-1">
-                    <a href="#!" class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3">
-                      <u><small>Odanın Tüm Özellikleri</small></u>
-                    </a>
-                    <a href="#!" class="fs-6 lh-sm ls-05">
-                      <u><small>Tüm Fiyatlar</small></u>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                  <div
-                    class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                    <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                      <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
-                      <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
-                                                                                       class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
-                    </div>
-                    <div
-                      class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                      <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                        <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                        <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">5.200 TL</strong>
-                      </div>
-                      <button type="button"
-                              class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                        <small class="d-block py-1">Rezervasyon</small>
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="room border border-light rounded-xxl p-2 mb-3">
-            <div class="row">
-              <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                <div class="img-box position-relative flex-shrink-0">
-                  <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
-                       class="lazy cover flex-shrink-0 rounded-xl">
-                </div>
-                <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
-                  <div class="d-flex align-items-center w-100 mb-2">
-                    <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Standart Oda</span>
+            <div class="room border border-light rounded-xxl p-2 mb-3">
+              <div class="row">
+                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
+                  <div class="img-box position-relative flex-shrink-0">
+                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                         class="lazy cover flex-shrink-0 rounded-xl">
+                  </div>
+                  <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
+                    <div class="d-flex align-items-center w-100 mb-2">
+                      <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Kral Dairesi</span>
 
-                  </div>
-
-                  <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Oda Genişliği</span>
-                      <span class="">53 m<sup><small>2</small></sup></span>
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Minibar</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Balkon</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                    <small
-                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                      <span class="text-theme-secondary me-1">Duşakabin</span>
-                      <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
-                    </small>
-                  </div>
-                  <div class="d-flex align-items-center mb-sm-0 mb-1">
-                    <a href="#!" class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3">
-                      <u><small>Odanın Tüm Özellikleri</small></u>
-                    </a>
-                    <a href="#!" class="fs-6 lh-sm ls-05">
-                      <u><small>Tüm Fiyatlar</small></u>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                  <div
-                    class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                    <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                      <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
-                      <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
-                                                                                       class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
                     </div>
+
+                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Oda Genişliği</span>
+                        <span class="">53 m<sup><small>2</small></sup></span>
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Minibar</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Balkon</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Duşakabin</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                    </div>
+                    <div class="d-flex align-items-center mb-sm-0 mb-1">
+                      <a href="#!" class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3">
+                        <u><small>Odanın Tüm Özellikleri</small></u>
+                      </a>
+                      <a href="#!" class="fs-6 lh-sm ls-05">
+                        <u><small>Tüm Fiyatlar</small></u>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
+                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
                     <div
-                      class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                      <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                        <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                        <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">5.200 TL</strong>
+                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
+                        <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
+                        <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
+                                                                                         class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
                       </div>
-                      <button type="button"
-                              class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                        <small class="d-block py-1">Rezervasyon</small>
-                      </button>
+                      <div
+                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
+                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
+                          <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
+                          <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">5.200 TL</strong>
+                        </div>
+                        <button type="button"
+                                class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
+                          <small class="d-block py-1">Rezervasyon</small>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <div class="room border border-light rounded-xxl p-2 mb-3">
+              <div class="row">
+                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
+                  <div class="img-box position-relative flex-shrink-0">
+                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                         class="lazy cover flex-shrink-0 rounded-xl">
+                  </div>
+                  <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
+                    <div class="d-flex align-items-center w-100 mb-2">
+                      <span class="fs-5 lh-sm ls-05 d-inline-block me-auto">Standart Oda</span>
+
+                    </div>
+
+                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Oda Genişliği</span>
+                        <span class="">53 m<sup><small>2</small></sup></span>
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Minibar</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Balkon</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                      <small
+                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                        <span class="text-theme-secondary me-1">Duşakabin</span>
+                        <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                      </small>
+                    </div>
+                    <div class="d-flex align-items-center mb-sm-0 mb-1">
+                      <a href="#!" class="fs-6 lh-sm ls-05 me-4 pe-2 pe-sm-3">
+                        <u><small>Odanın Tüm Özellikleri</small></u>
+                      </a>
+                      <a href="#!" class="fs-6 lh-sm ls-05">
+                        <u><small>Tüm Fiyatlar</small></u>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
+                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
+                    <div
+                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
+                        <span class="d-block text-theme-first lh-1 ls-05 mb-2">Oda Kahvaltı</span>
+                        <small class="text-theme-secondary ls-05">663 TL'den başlayan <a href="#!"
+                                                                                         class="text-theme-second"><u>Taksit Seçenekleri</u></a></small>
+                      </div>
+                      <div
+                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
+                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
+                          <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
+                          <strong class="fs-5 fw-semibold d-block mb-xl-3 pb-xl-1 lh-sm">5.200 TL</strong>
+                        </div>
+                        <button type="button"
+                                class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
+                          <small class="d-block py-1">Rezervasyon</small>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+
         </div>
       </section>
+
       <section class="general-informations-section mt-5 mb-5 pb-sm-2">
         <div class="container">
           <div class="fs-5 ls-05 lh-sm mb-4"><span class="opacity-75">The European Hotel</span> <strong
@@ -887,126 +1024,6 @@
       </b-modal>
     </main>
 
-    <section style="display: none" class="view-detail-section bg-theme-light-2 pt-4 pb-5">
-      <div class="container pb-4">
-
-        <div class="view-top d-flex align-items-lg-center flex-column flex-lg-row mb-4">
-          <div class="d-flex flex-column flex-fill me-auto mb-lg-0 mb-2">
-            <div class="fs-2 lh-sm ls-05 d-flex align-items-center mb-1">
-              {{hotelDetails.body.hotel.name}}
-              <div class="fs-7 d-inline-flex align-items-center fw-medium text-theme-secondary ms-3">
-                <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/011-star-icon.svg" width="13" height="13" alt="star" class="lazy contain flex-shrink-0 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/011-star-icon.svg&quot;);">&nbsp;
-                <span>4,9</span>
-              </div>
-            </div>
-            <div class="d-flex align-items-center flex-wrap text-theme-secondary mb-2 pb-1">
-              <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/003-pin.svg" width="15" height="18" alt="pin" class="lazy contain flex-shrink-0 me-2 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/003-pin.svg&quot;);">
-              <span class="lh-sm">Lara / Antalya</span>
-              <a href="#!" class="show-map text-theme-second ms-2"><u>Haritada Görüntüle</u></a>
-            </div>
-            <div class="d-flex flex-wrap align-items-center fs-8 fw-medium ls-05 text-theme-primary">
-              <div class="alert alert-primary fs-8 lh-1 fw-medium ls-05 d-inline-block p-2 mb-0 me-2">
-                <span class="view-item d-block px-1">Erken Rezervasyonda %35 indirim</span>
-              </div>
-              <div class="d-flex align-items-center my-2 my-sm-1 me-3 pe-1">
-                <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/019-virus.svg" width="20" height="20" alt="healt" class="lazy contain flex-shrink-0 me-1 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/019-virus.svg&quot;);">
-                <span>Sağlık Sertifikalı</span>
-              </div>
-              <div class="d-flex align-items-center my-2 my-sm-1">
-                <img src="https://boceksoft.com/works/otelbnb/cdn/img/spacer.gif" data-src="https://boceksoft.com/works/otelbnb/cdn/img/icons/020-fence.svg" width="20" height="20" alt="healt" class="lazy contain flex-shrink-0 me-1 loaded" style="background-image: url(&quot;https://boceksoft.com/works/otelbnb/cdn/img/icons/020-fence.svg&quot;);">
-                <span>Özel Bölgesi var</span>
-              </div>
-            </div>
-          </div>
-          <div class="view-actions d-flex align-items-center flex-wrap">
-            <button type="button" class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4" title="Favoriye Ekle">
-                            <span class="icon-box bg-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-2">
-                                <svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="OtelDetay" transform="translate(-1218.000000, -219.000000)" fill="#7F8090" fill-rule="nonzero">
-                                            <g id="heart-(3)-copy" transform="translate(1218.000000, 219.028679)">
-                                                <path d="M14.031424,1.33484087 C13.241024,0.48527287 12.133472,0.00188086998 10.973088,0 C9.811776,0.00143286998 8.703072,0.48456887 7.911456,1.33429687 L7.641664,1.61938487 L7.371872,1.33429687 C5.801088,-0.35629513 3.157184,-0.45338313 1.466624,1.11740087 C1.391712,1.18703287 1.31936,1.25935287 1.249728,1.33429687 C-0.416576,3.13160887 -0.416576,5.90927287 1.249728,7.70658487 L7.245184,14.0291769 C7.452608,14.2481529 7.798272,14.2575289 8.017248,14.0501049 C8.024416,14.0433209 8.031392,14.0363449 8.038176,14.0291769 L14.031456,7.70658487 C15.697632,5.90946487 15.697632,3.13196087 14.031424,1.33484087 Z M13.241184,6.95455287 L13.24064,6.95455287 L7.641664,12.8598969 L2.042176,6.95455287 C0.769216,5.58124087 0.769216,3.45909687 2.042176,2.08578487 C3.198176,0.83285687 5.15104,0.75429687 6.403968,1.91029687 C6.4648,1.96642487 6.523328,2.02495287 6.579456,2.08578487 L7.245184,2.78812087 C7.464576,3.00610487 7.818784,3.00610487 8.038176,2.78812087 L8.703904,2.08632887 C9.859904,0.83340087 11.812768,0.75484087 13.065696,1.91084087 C13.126528,1.96696887 13.185056,2.02549687 13.241184,2.08632887 C14.525216,3.46181687 14.534624,5.58783287 13.241184,6.95455287 Z" id="Shape"></path>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </span>
-              <span class="d-inline-block ps-sm-1">Favorilere Ekle</span>
-            </button>
-            <button type="button" class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
-                            <span class="icon-box bg-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-2">
-                                <svg width="15px" height="16px" viewBox="0 0 15 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="OtelDetay" transform="translate(-1387.000000, -217.000000)" fill="#7F8090" fill-rule="nonzero">
-                                            <g id="share-(1)" transform="translate(1387.000000, 217.000000)">
-                                                <path d="M11.7,9.96 C10.81077,9.96 10.02717,10.39743 9.53499,11.06265 L5.2797,8.88372 C5.35035,8.64291 5.4,8.39334 5.4,8.13 C5.4,7.77282 5.32677,7.43325 5.20026,7.12092 L9.65361,4.44108 C10.14921,5.02272 10.87767,5.4 11.7,5.4 C13.18887,5.4 14.4,4.18887 14.4,2.7 C14.4,1.21113 13.18887,0 11.7,0 C10.21113,0 9,1.21113 9,2.7 C9,3.04311 9.07065,3.36858 9.18786,3.67074 L4.72125,6.35844 C4.22607,5.79408 3.50811,5.43 2.7,5.43 C1.21113,5.43 0,6.64113 0,8.13 C0,9.61887 1.21113,10.83 2.7,10.83 C3.6039,10.83 4.40073,10.37973 4.89105,9.69582 L9.13233,11.86767 C9.05421,12.11985 9,12.3825 9,12.66 C9,14.14887 10.21113,15.36 11.7,15.36 C13.18887,15.36 14.4,14.14887 14.4,12.66 C14.4,11.17113 13.18887,9.96 11.7,9.96 Z" id="Path"></path>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </span>
-              <span class="d-inline-block ps-sm-1">Arkadaşın ile Paylaş</span>
-            </button>
-          </div>
-        </div>
-        <div class="view-gallery">
-          <div class="area-1" v-if="previewImages.length > 0">
-            <a :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <!-- <img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive"
-                 alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-              <nuxt-img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive"
-                        width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
-
-            </a>
-          </div>
-          <div class="area-2 d-md-block d-none" v-if="previewImages.length > 1">
-            <a :href="previewImages[1].preview_url" data-fancybox="gallery" data-caption="Salon"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img :src="previewImages[1].preview_url" :srcset="previewImages[1].responsive"
-                        width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
-
-            </a>
-          </div>
-          <div class="area-3 d-md-block d-none" v-if="previewImages.length > 2">
-            <a :href="previewImages[2].preview_url" data-fancybox="gallery" data-caption="Salon"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img :src="previewImages[2].preview_url" :srcset="previewImages[2].responsive"
-                        width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
-
-            </a>
-          </div>
-          <div class="area-4 d-none d-lg-block" v-if="previewImages.length > 3">
-            <a :href="previewImages[3].preview_url" data-fancybox="gallery" data-caption="Salon"
-               class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-              <nuxt-img :src="previewImages[3].preview_url" :srcset="previewImages[3].responsive"
-                        width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
-
-            </a>
-          </div>
-          <div class="area-5 d-none d-lg-block" v-if="previewImages.length > 4">
-            <div class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl last">
-              <nuxt-img :src="previewImages[4].preview_url" :srcset="previewImages[4].responsive"
-                        width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
-              <div
-                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
-                <span :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon">Tüm Fotoğraflar ( {{previewImages.length}} ) </span>
-                <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
-                <a href="https://www.youtube.com/watch?v=5SMaakuGyH0" data-fancybox>
-                  <i class="icon-play-button"></i> Video İzle
-                </a>
-                <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
-              </div>
-            </div>
-          </div>
-
-          <div class="d-none">
-            <a v-for="previewImage in previewImages.slice(5)" :href="previewImage.preview_url" data-fancybox="gallery" data-caption="Salon"></a>
-          </div>
-
-        </div>
-      </div>
-    </section>
 
     <section style="display: none" class="search-engine-section">
       <div class="container">
