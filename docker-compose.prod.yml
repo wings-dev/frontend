@@ -7,7 +7,7 @@ networks:
 
 services:
   wing-site:
-    image: wingsdeveloper/wings-site:latest
+    image: wingsdeveloper/wings-site:2-latest
     ports:
       - "3000:3000"
     networks:

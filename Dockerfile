@@ -7,6 +7,7 @@ COPY ./.env.prod ./.env
 
 RUN npm install
 
+RUN npm run generate
 RUN npm run build
 
 EXPOSE 3000
