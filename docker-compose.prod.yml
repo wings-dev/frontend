@@ -1,0 +1,14 @@
+version: '3'
+
+networks:
+  wings-network:
+    driver: overlay
+    external: true
+
+services:
+  wing-site:
+    image: wingsdeveloper/wings-site:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - wings-network
