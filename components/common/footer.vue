@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="newsletter-section position-relative">
+        <!-- <section class="newsletter-section position-relative">
             <div class="container-wide">
                 <div class="newsletter bg-theme-first-dark rounded-xl position-relative overflow-hidden py-4 py-sm-5">
                     <img src="/img/spacer.gif" data-src="/uploads/newsletter-bg.png" alt="newsletter background"
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <footer class="Footer">
             <div class="Footer-in">
@@ -136,6 +136,24 @@
                             <a href="" class="Footer-tursab-item tursab"><img src="/img/tursab.png" alt=""></a>
                             <a href="" class="Footer-tursab-item etbis"><img src="/img/etbis.png" alt=""></a>
                         </div>
+                        <div class="Footer-right-bottom-credit mobilex">
+                            <div class="Footer-right-bottom-credit-text">
+                                <i class="icon-creditcard-single"></i>
+                                <h6>Tüm kartlara Taksit imkanı</h6>
+                                <p>Villakalkan.com.tr’de</p>
+                            </div>
+                            <img src="/img/banks-grey.png" alt="">
+                        </div>
+
+                        <div class="Footer-right-bottom-social mobilex">
+                            <a href="" class="Footer-right-bottom-social-item"><i class="icon-facebook"></i></a>
+                            <a href="" class="Footer-right-bottom-social-item"><i class="icon-instagram"></i></a>
+                            <a href="" class="Footer-right-bottom-social-item"><i class="icon-twitter"></i></a>
+                        </div>
+                        <div class="Footer-right-bottom-address mobilex">
+                            <p>Kalkan Mah. Cumhuriyet Cd. No:48/2 Antalya/ Kaş </p>
+                            <p><a href="">info@villakalkan.com.tr</a></p>
+                        </div>
                     </div>
                     <div class="Footer-right-copyright">
                         <div class="Footer-right-copyright-left">
@@ -151,6 +169,52 @@
                 </div>
             </div>
         </footer>
+        <div class="Footer-mobile mobilex">
+            <div class="container">
+                <div class="Footer-mobile-in">
+                    <div class="Footer-web mobile">
+                        <a href="" class="Footer-web-item wings"><img src="/img/logo-wings-grey.svg" alt=""></a>
+                        <a href="" class="Footer-web-item"><img src="/img/logo-villakalkan-grey.svg" alt=""></a>
+                        <a href="" class="Footer-web-item"><img src="/img/logo-otelbnb-grey.svg" alt=""></a>
+                        <a href="" class="Footer-web-item"><img src="/img/logo-balayitatil-grey.svg" alt=""></a>
+                        <a href="" class="Footer-web-item"><img src="/img/logo-balayivillasi-grey.svg" alt=""></a>
+                    </div>
+                    <div class="Footer-mobile-text">
+                        <div class="Footer-mobile-text-link">
+                            <nuxt-link to="/">Rezervasyon Koşulları</nuxt-link>
+                            <nuxt-link to="/">KVKK Aydınlat Metni</nuxt-link>
+                        </div>
+                        <div class="Footer-mobile-text-copyright">
+                            <p>© 2022 Villa Kalkan, bir <a href="">Wings Group</a> şirketidir. Tüm hakları saklıdır.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="Navigation">
+            <a class="Navigation-item">
+                <i class="icon-house"></i>
+                <span>Anasayfa</span>
+            </a>
+            <a class="Navigation-item">
+                <i class="icon-house"></i>
+                <span>Otel</span>
+            </a>
+            <a class="Navigation-item middle">
+                <div class="Navigation-item-wp">
+                    <i class="icon-header-assistant"></i>
+                </div>
+                <span>Whatsapp</span>
+            </a>
+            <a class="Navigation-item">
+                <i class="icon-house"></i>
+                <span>Favoriler</span>
+            </a>
+            <a class="Navigation-item">
+                <i class="icon-house"></i>
+                <span>Telefon</span>
+            </a>
+        </section>
 
     </div>
 </template>

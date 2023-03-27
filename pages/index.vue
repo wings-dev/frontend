@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <section class="Banner Banner_lg Banner-back" style="background-image: url(/img/banner.jpg);">
+    <div class="Home">
+        <search-bar></search-bar>
+        <section class="Banner Banner_lg Banner-back mb-4" style="background-image: url(/img/newbanner.jpg);">
+            <img src="/img/banner-mobile.png" class="w-100 mobile" alt="">
             <div class="container">
                 <div class=" Banner_search-text   pos-ab-xy-center ">
                     <h1 class="animated fadeInDown ">KİRALIK VİLLA</h1>
@@ -13,18 +15,23 @@
                 </div>
             </div>
         </section>
-        <section class="popular-section bg-white overflow-hidden pb-sm-5">
+        <section class="popular-section bg-white overflow-hidden pb-sm-5 mt-5">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
-                    <h4 class="primary-title fw-medium ls-05 lh-1">Popüler Villalara Gözatın</h4>
-                    <a href="" class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto">
+                    <i class="icon-flame"></i>
+                    <h4 class="primary-title fw-medium ls-05 lh-1">
+                        Popüler Villaları
+                        <span>keşfedin</span>
+                    </h4>
+                    <a href=""
+                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
                         <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
                     </a>
                 </div>
                 <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                        
+
                             <div class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
@@ -64,9 +71,10 @@
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
                                             <p><b>1.500TL - 2.500TL</b><span>/Gecelik</span></p>
-                                            <p>Fiyat  Aralığında</p>
+                                            <p>Fiyat Aralığında</p>
                                         </div>
-                                        <nuxt-link to="/" class="Card-content-bottom-link"><i class="icon-right-arrows-new"></i></nuxt-link>
+                                        <nuxt-link to="/" class="Card-content-bottom-link"><i
+                                                class="icon-right-arrows-new"></i></nuxt-link>
                                     </div>
                                 </div>
                             </div>
@@ -78,64 +86,74 @@
                     <div class="swiper-button-prev list-navigation-prev"></div>
                     <div class="swiper-button-next list-navigation-next"></div>
                 </div>
-                
+
             </div>
         </section>
 
-        <section class="holiday-banner-section mb-3 pb-4">
+        <section class="H_info">
             <div class="container">
-                <div
-                    class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4">
-                    <img src="/uploads/holiday-banner.jpg" data-src="" alt=""
-                        class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
-                    <div class="d-flex flex-column position-relative ls-05 pt-3">
-                        <span class="fs-5 fw-medium lh-1">+1259 Seçenek ile</span>
-                        <span class="fs-5 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
-                        <strong class="big-title fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
+                <div class="H_info-in">
+                    <div class="H_info-item">
+                        <div class="H_info-item-icon">
+                            <img src="/img/tursabnew.png" alt="">
+                        </div>
+                        <div class="H_info-item-icon-text">
+                            <p>Wings Seyehat Tur. San.ve Tic.Ltd.Şti. 11095’nolu <span>Türsab Acentesidir.</span></p>
+                            <a href="">Belge Görüntüle</a>
+                        </div>
                     </div>
-                    <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
-                                <g id="Group" transform="translate(626.000000, 202.000000)">
-                                    <path
-                                        d="M14,13.3334991 C14,14.2539193 13.2166932,15 12.25,15 C11.2836548,15 10.5,14.2539193 10.5,13.3334991 C10.5,12.4130788 11.2836548,11.6666667 12.25,11.6666667 C13.2166932,11.6666667 14,12.4130788 14,13.3334991"
-                                        id="Fill-13"></path>
-                                    <path
-                                        d="M6.12867316,9.20434506 C4.17402549,9.20434506 2.58538231,7.69131915 2.58538231,5.8369566 C2.58538231,3.97534751 4.17402549,2.46257148 6.12867316,2.46257148 C8.07544978,2.46257148 9.66435532,3.97534751 9.66435532,5.8369566 C9.66435532,7.69131915 8.07544978,9.20434506 6.12867316,9.20434506 M6.12867316,0 C2.74122939,0 0,2.61050069 0,5.8369566 C0,9.0559161 2.74122939,11.6666667 6.12867316,11.6666667 C9.50850825,11.6666667 12.25,9.0559161 12.25,5.8369566 C12.25,2.61050069 9.50850825,0 6.12867316,0"
-                                        id="Fill-15"></path>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
+                    <div class="H_info-item">
+                        <div class="H_info-item-icon">
+                            <i class="icon-secure-payment"></i>
+                        </div>
+                        <div class="H_info-item-icon-text">
+                            <p>%20’sini rezervasyon anında<span>Kalan tutarı girişte öde.</span></p>
+                            <a href="">Şartları Görüntüle</a>
+                        </div>
+                    </div>
+                    <div class="H_info-item">
+                        <div class="H_info-item-icon">
+                            <i class="icon-vkv"></i>
+                        </div>
+                        <div class="H_info-item-icon-text">
+                            <p>%20’sini rezervasyon anında<span>Kalan tutarı girişte öde.</span></p>
+                            <div class="H_info-item-links">
+                                <a href="">Hakkımızda</a>
+                                <a href=""><i class="icon-play"></i>Video İzle</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class=" bg-theme-first overflow-hidden mb-5 pb-sm-5 py-4">
+
+        <section class="popular-dark  bg-theme-first overflow-hidden mb-5 pb-sm-5 py-4">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
+                    <i class="icon-popular-calendar"></i>
                     <h4 class="primary-title fw-medium ls-05 lh-1 text-white">
-                        <i class="icon-flame"></i>
-                        Popüler Villalara Gözatın
+                        Kısa Süreli <span>Konaklama Fırsatları</span>
                     </h4>
-                    <a href="" class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto">
+                    <a href=""
+                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
                         <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
                     </a>
                 </div>
                 <div class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item,index) in 10" :key="index">
-                            <div class="Card">
+                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+                            <nuxt-link to="/" class="Card Card-icons">
                                 <div class="Card-in">
                                     <div class="Card-img">
                                         <nuxt-link to="/">
-                                            <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
+                                            <nuxt-img src="/img/card.png" width="371" height="225"></nuxt-img>
                                         </nuxt-link>
                                         <button class="Card-fav" type="button">
                                             <i class="icon-heart"></i>
                                         </button>
-                                        <div class="Card-date">
-                                            <p>29 Aralık <i class="icon-right-arrows-new"></i>4 Ocak</p>
+                                        <div class="Card-img-info">
+                                            <p><span>%30</span>ŞİMDİ</p>
+                                            <small>Kalanı girişte öde</small>
                                         </div>
                                     </div>
                                     <div class="Card-content">
@@ -165,18 +183,20 @@
                                         </div>
                                     </div>
                                     <div class="Card-content-bottom">
-                                        <div class="Card-content-bottom-price single">
-                                            <p><b>2.500TL</b><span>TL</span></p>
-                                            <p>Fırsatı kaçırma!</p>
-                                        </div>
                                         <div class="Card-content-bottom-day">
-                                            <span>3</span>
-                                            <p>Gece <br>Konaklama</p>
+                                            <p><span>3</span>Gece</p>
                                         </div>
-                                        <nuxt-link to="/" class="Card-content-bottom-link"><i class="icon-right-arrows-new"></i></nuxt-link>
+                                        <div class="Card-content-bottom-date">
+                                            <p><span>12 TEM</span><i class="icon-arrow-right-2"></i><span>18 TEM</span></p>
+                                            <small>Fırsatı kaçırma!</small>
+                                        </div>
+                                        <div class="Card-content-bottom-price single">
+                                            <p class="orange">TOPLAM FİYAT</p>
+                                            <p><b>2.500</b><span>TL</span></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </nuxt-link>
                         </div>
                     </div>
                     <div class="swiper-button-prev list-navigation-prev"></div>
@@ -188,7 +208,10 @@
         <section class="categories-section mb-5 pb-sm-4 pb-lg-5">
             <div class="container pb-lg-5">
                 <div class="section-caption d-flex align-items-center mb-3 mb-sm-5 pb-sm-1">
-                    <h4 class="primary-title fw-medium ls-05 lh-1">Villa Kategorilerine Gözat</h4>
+                    <i class="icon-categories"></i>
+                    <h4 class="primary-title ls-05 lh-1">Villa Kategorilerine
+                        <span>Gözat</span>
+                    </h4>
                 </div>
                 <div class="categories">
                     <a href="#!"
@@ -297,64 +320,48 @@
                         </div>
                     </a>
                     <div
-                        class="area7 bg-theme-light-2 border border-light rounded-sm overflow-hidden d-flex align-items-center justify-content-center py-5">
-                        <a href="#!" class="btn btn-white bg-white btn-ripple fs-7 fw-medium lh-1 rounded-sm py-3 px-4">
-                            <span class="d-inline-block px-3 py-1">TÜMÜNÜ GÖR</span>
-                        </a>
+                        class="area7 border border-light rounded-sm overflow-hidden d-flex align-items-center justify-content-center categories-more">
+                        <nuxt-link to="/">
+                            <span>Daha fazla görüntüle</span>
+                            <i class="icon-right-arrows-new"></i>
+                        </nuxt-link>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="page-description-section mb-5 pb-4 pb-sm-5">
+        <section class="Home-text">
             <div class="container">
-                <div class="page-description row">
-                    <div
-                        class="col-12 col-md-2 col-lg-3 pe-xl-4 text-lg-start text-center mb-lg-0 mb-3 pt-lg-0 pt-2 d-flex">
-                        <i class="info-logo"></i>
-                    </div>
-                    <div class="col-12 col-md-10 col-lg-9 ps-xl-0">
-                        <span class="fs-3 ls-05 text-theme-primary d-block mb-3 pb-1 text-md-start text-center">Villakalkan
-                            ile yazlar sıcak ve eğlenceli</span>
-                        <div class="description text-secondary fs-8 ls-1 lh-sm">
-                            <strong class="fs-7 fw-medium text-theme-primary ls-05 d-block mb-2">Ucuz tatil
-                                otelleri</strong>
-                            <p>
-                                Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak
-                                gelen
-                                yerlere gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi
-                                bilemiyorsanız, kiralık villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine
-                                getirecektir. Her ne kadar şimdilerde karşınıza bu konuda size hizmet verdiğini
-                                söyleyecek
-                                pek çok isim olsa da alanında yeterli deneyime sahip bir firma ile iletişime geçmeniz,
-                                sizin
-                                isteklerinizin eksiksiz olarak yerine getirilmesi anlamında son derece önemli olacaktır.
-                                Villa Kalkan olarak bizler ise tam da bu aşamada devreye giriyor ve sizlere en iyisini
-                                sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden farklı lokasyonlarda yer
-                                alan
-                                villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir villa tatilini
-                                sunuyoruz.
-                            </p>
-                            <strong class="fs-7 fw-medium text-theme-primary ls-05 d-block mb-2 mt-4">Tatil villası
-                                kirala</strong>
-                            <p>
-                                Birçok insan tatile gittiği zaman rahatlamak ve keyifli şekilde zamanlarını geçirmek
-                                ister.
-                                Fakat otellerde bu isteklerini yerine getirmeleri ne yazık ki pek de mümkün
-                                olmamaktadır.
-                                Siz de bunu biliyor ve bir havuzlu villa kiralayarak kendiniz ve sevdikleriniz için en
-                                iyi
-                                tatili bulmayı istiyorsanız, villakalkan.com.tr olarak biz sizlere istediklerinizi en
-                                etkili
-                                şekilde sunuyoruz. Sitemiz üzerinden sizlere sunulmakta olan villaların tamamı,
-                                öncesinde
-                                yapılmakta olan dikkatli araştırmaların sonrasında sitemize eklenmektedir. Villaların
-                                kalitesini ve sahip oldukları özellikleri net bir şekilde incelememiz sonrasında eğer ki
-                                bize güvenen kişilere istediklerini sunabileceklerini görebilirsek, bu villalar
-                                sistemimizde
-                                kendine yer bulmaktadır.
-                            </p>
-                        </div>
-                    </div>
+                <div class="Home-text-in">
+                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
+                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
+                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
+                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
+                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
+                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
+                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
+                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
+                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
+                        villa tatilini sunuyoruz.</p>
+                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
+                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
+                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
+                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
+                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
+                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
+                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
+                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
+                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
+                        villa tatilini sunuyoruz.</p>
+                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
+                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
+                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
+                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
+                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
+                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
+                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
+                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
+                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
+                        villa tatilini sunuyoruz.</p>
                 </div>
             </div>
         </section>
@@ -368,6 +375,83 @@
 
             <v-tour name="myTour" :steps="steps"></v-tour>
         </div> -->
+        <section class="Opportunity-slider popular-dark">
+            <div class="container ">
+                <div class="section-caption d-flex align-items-center mb-3 pb-1">
+                    <i class="icon-opportunity-calendar"></i>
+                    <h4 class="">Sana Özel <span>Fırsatlar</span></h4>
+                    <a href="" class="section-caption-btn ms-auto">
+                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
+                    </a>
+                </div>
+                <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+
+                            <nuxt-link to="/" class="Card Card-h">
+                                <div class="Card-in">
+                                    <div class="Card-img">
+                                        <nuxt-link to="/">
+                                            <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
+                                        </nuxt-link>
+
+                                    </div>
+                                    <div class="Card-h-in">
+                                        <div class="Card-content">
+                                            <div class="Card-content-head">
+                                                <div class="Card-content-head-code">
+                                                    <b>VKV3456</b>
+                                                    <span>Tesis Kodu</span>
+                                                </div>
+                                                <div class="Card-content-head-location">
+                                                    <i class="icon-pin"></i>
+                                                    <p>Fethiye <span>Turkey / Muğla</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="Card-content-info">
+                                                <div class="Card-content-info-item">
+                                                    <i class="icon-user"></i>
+                                                    <span>4 Kişilik</span>
+                                                </div>
+                                                <div class="Card-content-info-item">
+                                                    <i class="icon-bed"></i>
+                                                    <span>2 Yatak Odası</span>
+                                                </div>
+                                                <div class="Card-content-info-item">
+                                                    <i class="icon-shower"></i>
+                                                    <span>2 Banyo</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Card-content-bottom">
+                                            <div class="Card-content-bottom-day">
+                                                <p><span>3</span>Gece</p>
+                                            </div>
+                                            <div class="Card-content-bottom-date">
+                                                <p><span>12 TEM</span><i class="icon-arrow-right-2"></i><span>18 TEM</span>
+                                                </p>
+                                                <small>Fırsatı kaçırma!</small>
+                                            </div>
+                                            <div class="Card-content-bottom-price single">
+                                                <p class="orange">TOPLAM FİYAT</p>
+                                                <p><b>2.500</b><span>TL</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nuxt-link>
+                        </div>
+                    </div>
+                    <!-- If pagination is needed -->
+
+                    <!-- If navigation buttons are needed -->
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev list-navigation-prev"></div>
+                    <div class="swiper-button-next list-navigation-next"></div>
+                </div>
+
+            </div>
+        </section>
     </div>
 </template>
 
@@ -377,6 +461,7 @@ import 'swiper/swiper-bundle.min.css'
 
 export default {
     name: 'IndexPage',
+    layout: 'no-search',
     components: {
         Swiper
     },
@@ -460,7 +545,37 @@ export default {
                     spaceBetween: 18,
                 },
                 1199: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
+                    spaceBetween: 18,
+                },
+            },
+        })
+        const swiper3 = new Swiper('.list-slide-opportunity', {
+            slidesPerView: 1,
+            spaceBetween: 18,
+            direction: 'horizontal',
+            loop: true,
+            modules: [Navigation, Pagination],
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 18,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 18,
+
+                },
+                1199: {
+                    slidesPerView: 2,
                     spaceBetween: 18,
                 },
             },
@@ -472,5 +587,4 @@ export default {
 <style scoped>
 .list-item .list-image {
     width: 100%;
-}
-</style>
+}</style>

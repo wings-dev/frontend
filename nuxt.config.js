@@ -92,6 +92,7 @@ export default {
     "@nuxtjs/auth-next",
     "@nuxtjs/google-fonts",
     "nuxt-leaflet",
+    'bootstrap-vue/nuxt',
     [
       "nuxt-cookie-control",
       {
@@ -130,6 +131,10 @@ export default {
     ],
     "@nuxtjs/toast",
   ],
+  bootstrapVue: {
+    bootstrapCSS: false, // Or `css: false`
+    bootstrapVueCSS: false // Or `bvCSS: false`
+  },
   toast: {
     position: "top-right",
     duration: 2000,
@@ -240,11 +245,11 @@ export default {
   router: {
     trailingSlash: false,
     middleware: ['301']
-  }
+  },
 
-  /*server: {
+  server: {
     port: 3000, // default: 3000
     host: '0.0.0.0', // default: localhost,
     timing: false
-  }*/
+  }
 };
