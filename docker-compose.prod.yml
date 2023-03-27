@@ -10,5 +10,11 @@ services:
     image: wingsdeveloper/wings-site:2-latest
     ports:
       - "3000:3000"
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=local
+      - PROXY_API=http://wings-express:4000/
+      - PROXY_DATA=http://wings-express:4000/
+      - PROXY_VISITOR=http://wings-express:4000/
     networks:
       - wings-network
