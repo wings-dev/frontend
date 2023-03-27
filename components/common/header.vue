@@ -188,7 +188,10 @@
                     <div class="Header-buttons">
                         <button type="button" class="search-button" aria-label="Favorileri aç" id="searchButton"
                             @click="openSearch($event)">
-                            <i class="icon-search"></i>
+                            <i class="icon-search2"></i>
+                        </button>
+                        <button type="button" class="search-button" aria-label="Favorileri aç" id="searchButton">
+                            <i class="icon-bell"></i>
                         </button>
                         <Nuxt-link :to="!$auth.loggedIn ? '/favorilerim' : '/user/favorilerim'" class="Fav-button">
                             <i class="icon-heart-full"></i>
@@ -320,9 +323,6 @@ export default {
 
         onRouteChange(to, from) {
             this.mobileMenuActive = false;
-            console.log(this.mobileMenuActive)
-
-
         }
 
     },

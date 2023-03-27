@@ -10,6 +10,7 @@ import DynamicHotelFilterPage from "@/components/dynamic-page/hotel-filter.vue";
 
 export default {
   name: 'ListPage',
+  layout:'no-search',
   head() {
     let site_id = process.env.SITE
     return {
@@ -18,9 +19,6 @@ export default {
         {hid: 'description', name: 'description', content: 'listele'},
         {hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3'}
       ],
-      link: [
-        {rel: 'stylesheet', href: `/css/listeleme.min.css`}
-      ]
     }
   },
   data() {

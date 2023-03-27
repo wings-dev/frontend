@@ -163,11 +163,13 @@
         </client-only>
       </div>
     </div>
-    <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()"><i
-        class="icon-filter"></i>
-      <span class="dropdown-toggle-title">Gelişmiş Arama</span></button>
+    <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()">
+      <i class="icon-new-filter"></i>
+      <span class="dropdown-toggle-title">Gelişmiş Arama</span>
+      <i class="icon-down-arrow"></i>
+    </button>
     <button type="button" class="Search-button" id="searchVilla" @click="search">
-      <i class="icon-search"></i>
+      <i class="icon-search"></i><span>Arama yap</span>
     </button>
   </div>
 </template>
@@ -538,6 +540,23 @@ export default {
   width: 100%;
 }
 
+@media (max-width:800px) {
+  :deep().datepicker__input--first:after{
+    background-size: 18px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 14px;
+    background-color: #eff1f5;
+    border-radius: 4px;
+  }
+  :deep() .datepicker__input--first:before{
+    display: none;
+  }
+  :deep() .datepicker__input:before{
+    position: absolute;
+    right: 0;
+  }
+}
 
 
 </style>
