@@ -10,10 +10,10 @@ RUN npm install
 ARG SITE
 ENV SITE=${SITE}
 
-RUN node update.js
+RUN SITE=${SITE} node update.js
 
-RUN npm run generate SITE=${SITE}
-RUN npm run build SITE=${SITE}
+RUN SITE=${SITE} npm run generate
+RUN SITE=${SITE} npm run build
 
 EXPOSE 3000
 
