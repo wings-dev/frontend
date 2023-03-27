@@ -7,10 +7,13 @@ COPY ./.env.prod ./.env
 
 RUN npm install
 
+ARG SITE
+ENV SITE=${SITE}
+
 RUN node update.js
 
-RUN npm run generate
-RUN npm run build
+RUN npm run generate SITE=${SITE}
+RUN npm run build SITE=${SITE}
 
 EXPOSE 3000
 
