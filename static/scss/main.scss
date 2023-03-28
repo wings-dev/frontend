@@ -3110,6 +3110,7 @@ body.overflow-hidden {
       }
     }
   }
+
 }
 @media (max-width: 991px) {
   .Home {
@@ -3741,7 +3742,7 @@ body.overflow-hidden {
     }
 
     &.border-bottom {
-      border-bottom: 1px solid #eeeff4;
+      border-bottom: 1px solid #dee2e6!important;
     }
   }
 
@@ -4179,10 +4180,19 @@ body.overflow-hidden {
     }
   }
   .Filters{
+    &-region{
+      .Filters-head{
+        border-bottom: 1px solid #dee2e6!important;
+      }
+    }
     &-head{
       padding: 0;
       h5{
         padding: 12px 16px;
+        cursor: pointer;
+      }
+      i{
+        display: none;
       }
     }
     &-in{
@@ -4204,11 +4214,24 @@ body.overflow-hidden {
         align-items: center;
         justify-content: space-between;
         background-color: #f2f5fb;
-        padding: 8px 16px;
+        padding: 16px;
         margin-bottom: 15px;
+        .Filters-head{
+          border-bottom: none!important;
+          h5{
+            padding: 0;
+            font-size: 18px;
+            cursor:text;
+          }
+        }
         button{
           background-color: transparent;
           font-size: 28px;
+          display: flex;
+          i.icon-left-arrow{
+            font-size: 16px;
+          }
+
         }
       }
       &-m-button{
@@ -4257,6 +4280,11 @@ body.overflow-hidden {
     font-weight: 500;
     color: var(--bs-theme-second);
     background-color: transparent;
+    text-decoration: underline;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100px;
   }
 }
 

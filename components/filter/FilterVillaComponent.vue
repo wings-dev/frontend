@@ -53,7 +53,7 @@
             <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
               @max_price="updateFilter('max_price', $event)" groupName="priceRange" ></filter-price-between-component>
 
-              <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Temizle</button>
+              <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü Temizle</button>
 
               <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>  
           </div>
