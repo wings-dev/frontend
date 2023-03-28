@@ -308,24 +308,11 @@
                 Aşağıda belirtilen fiyatlar tesisin 1 gecelik konaklama ücretidir. Dönemlere göre konaklama süresine
                 göre ekstra temizlik ücreti eklenebilmektedir.
               </p>
-              <client-only>
-                <v-calendar class="custom-calendar mt-4" :attributes="attributes" :columns="2"
-                  :disabled-dates="disabledDates" disable-page-swipe :step="1">
-                  <template v-slot:day-content="{ day, attributes }">
-                    <div v-for="(attr, index) in attributes" :key="index"
-                      class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 calendar-cell"
-                      :class="attr?.customData?.className">
-                      <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
-                      <div class="flex-grow overflow-y-auto overflow-x-auto">
-                        <p class="calendar-price" style="" :class="attr.customData.class">
-                          {{ !attr.customData.status.includes(2) ? attr.customData.price : '' }}
-                        </p>
-                      </div>
-                    </div>
-                  </template>
-                </v-calendar>
 
+              <client-only>
+                <availibility-calendar :slug="$route.params.slug"></availibility-calendar>
               </client-only>
+
               <div class="View-availibility-legand">
                 <div class="View-availibility-legand-item">
                   <span class="close-day"></span>
