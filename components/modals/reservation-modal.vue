@@ -116,22 +116,43 @@ export default {
     },
     async register() {
       const data = Object.assign({}, this.reservationModalData, this.form);
-      this.setReservationModalData(data);
-
       let reservationID;
-      try {
-        const response = await this.$axios.post(`/api/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, data);
-        reservationID = response.data.reservationID;
-      } catch (error) {
-        if (error.response) {
-          reservationID = error.response.data.reservationID;
-        } else {
-          console.error(error);
+      const apiUrl = `/api/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`;
+
+      if (this.reservationModalData.reservationID) {
+        const requestData = {
+          prephone: data.prephone,
+          phone: data.phone,
+          name: data.name,
+          email: data.email,
+          reservationID: this.reservationModalData.reservationID,
+        };
+
+        try {
+          const response = await this.$axios.put(apiUrl, requestData);
+          reservationID = response.data.reservationID;
+        } catch (error) {
+          if (error.response) {
+            reservationID = error.response.data.reservationID;
+          } else {
+            console.error(error);
+          }
+        }
+      } else {
+        try {
+          const response = await this.$axios.post(apiUrl, data);
+          reservationID = response.data.reservationID;
+        } catch (error) {
+          if (error.response) {
+            reservationID = error.response.data.reservationID;
+          } else {
+            console.error(error);
+          }
         }
       }
 
       if (reservationID) {
-        this.setReservationModalData(Object.assign({}, data, { reservationID }));
+        this.setReservationModalData({ ...data, reservationID });
         this.$bvModal.hide('reservationModal')
         this.$bvModal.show('reservationCodeModal')
       }

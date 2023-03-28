@@ -19,7 +19,7 @@ export default () => ({
     adult: null,
     child: null,
     baby: null,
-    reservationID: null,
+    reservationID: null, // TODO yeni rezervasyon sayfasına girildiğinde sıfırlanmalı. Sadettin ile senaryolar konusulacak
   },
   visitorId: null,
   blogMenu: [

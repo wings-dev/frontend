@@ -5,7 +5,7 @@ export default {
   setLoginCodeModalData(state, data) {
     state.loginCodeModalData = data
   },
-  setReservationModalData(state, data) {
-    state.reservationModalData = data
+  setReservationModalData(state, newData) {
+    state.reservationModalData = { ...state.reservationModalData, ...newData };
   }
 }
