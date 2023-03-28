@@ -1,25 +1,26 @@
 <template>
-  <div class="F_villa-item" >
+  <a @click.stop="goDetail" class="F_villa-item">
     <div class="F_villa-item-img">
       <div class="swiper villa-list-slider">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
             <a href="javascript:void(0)" @click="goDetail">
-            <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" sizes="sm:100vw md:50vw lg:400px"/>
-          </a>
+              <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" sizes="sm:100vw md:50vw lg:400px" />
+            </a>
           </div>
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev" @clik.stop></div>
+        <div class="swiper-button-next" @clik.stop></div>
       </div>
       <div class="villa-item-fav position-absolute top-0 end-0 pt-1 mt-1 pe-1">
 
         <button type="button" @click="toggleFavorite"
-                  class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0 " :class="isFavorite ? 'active' : ''">
-                  <span class="action-btn-icon">
-                    <i  :class="isFavorite ? 'icon-heart-full' : 'icon-heart'"></i>
-                  </span>
-          </button>
+          class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0 "
+          :class="isFavorite ? 'active' : ''">
+          <span class="action-btn-icon">
+            <i :class="isFavorite ? 'icon-heart-full' : 'icon-heart'"></i>
+          </span>
+        </button>
       </div>
     </div>
     <div class="F_villa-item-right">
@@ -54,7 +55,7 @@
 
           <span>TOPLAM</span>
         </div>
-         <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
+        <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
 
 
           <div class="F_villa-item-head-price-in">
@@ -89,16 +90,17 @@
         <div class="F_villa-item-features">
           <h6>Öne çıkan özellikleri</h6>
           <div class="F_villa-item-features-in">
-            <p class="F_villa-item-features-item" v-for="(amenite, index2) in amenitesList(villa)" :key="index2">{{ amenite }}</p>
+            <p class="F_villa-item-features-item" v-for="(amenite, index2) in amenitesList(villa)" :key="index2">{{
+              amenite }}</p>
             <!-- <p class="F_villa-item-features-item F_villa-item-features-more"><a :href="villa.url" class="">Tümünü Gör</a> -->
           </div>
 
         </div>
-        <a href="javascript:void(0)" @click="goDetail" class="F_villa-item-show">Villayı İncele</a>
+        <a href="javascript:void(0)" @clik.stop class="F_villa-item-show"><i class="icon-calendar"></i>Müsaitlik
+          Takvimi</a>
       </div>
     </div>
-  </div>
-
+  </a>
 </template>
 
 <script>
@@ -107,7 +109,7 @@ import 'swiper/swiper-bundle.min.css'
 
 export default {
   name: "FilterVillaPreviewComponent",
-  props: ['villa','checkindate'],
+  props: ['villa', 'checkindate'],
   components: {
     Swiper
   },
@@ -135,7 +137,7 @@ export default {
       const query = this.$route.query;
       let data = null;
       if (query.checkIn && query.checkOut) {
-        data = {i:this.encodeTimestamp(query.checkIn), o:this.encodeTimestamp(query.checkOut), v: localStorage.getItem('visitorId')};
+        data = { i: this.encodeTimestamp(query.checkIn), o: this.encodeTimestamp(query.checkOut), v: localStorage.getItem('visitorId') };
       }
 
       this.$router.push({
@@ -173,7 +175,15 @@ export default {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
-
+      // on: {
+      //   init: function () {
+      //     console.log('swiper init');
+      //   },
+      //   click: function (swiper, e) {
+      //     console.log('swiper click',e);
+      //     e.stopPropagation();
+      //   },
+      // }
     })
   }
 }

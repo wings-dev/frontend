@@ -3,55 +3,31 @@
     <main class="main">
       <section class="view-detail-section otel mb-5">
         <div class="view-detail-section-menus">
-          <div class="detail-top bg-theme-first-dark" id="detailTop">
+          <div class="detail-top " id="detailTop">
             <div class="container">
               <div class="view-top d-flex">
 
                 <div class="view-top-title d-flex">
-                  <h1>{{ hotelDetails.body.hotel.name }}</h1>
-                  <div class="fs-7 d-inline-flex align-items-center fw-medium text-theme-secondary ms-3">
-                    <img src="/img/icons/011-star-icon.svg" width="13" height="13" alt="star"
-                      class="lazy contain flex-shrink-0">&nbsp;
-                    <span>{{ hotelDetails.body.hotel.stars }}</span>
+                  <div class="view-top-title-in">
+                    <h1>{{ hotelDetails.body.hotel.name }}</h1>
+                    <div class="view-top-subtitle">
+                      <div class="d-flex align-items-center text-theme-secondary">
+                        <i class="icon-pin"></i>
+                        <p class="view-top-right-location"><span class="lh-sm">{{ hotelDetails.body.hotel.country.name }}
+                            /
+                            {{ hotelDetails.body.hotel.city.name }}</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Otel-card-review">
+                    <span>9/10</span>
+                    <p>Mükemmel <u>124 yorum</u></p>
                   </div>
                 </div>
 
 
                 <div class="view-top-right">
-                  <div class="d-flex align-items-center text-theme-secondary">
-                    <i class="icon-pin"></i>
-                    <p class="view-top-right-location"><span class="lh-sm">{{ hotelDetails.body.hotel.country.name }} /
-                        {{ hotelDetails.body.hotel.city.name }}</span></p>
-                        <a href="">Haritada Görüntüle</a>
-                  </div>
 
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="View-menu" id="detailMenu">
-            <div class="container">
-              <div class="View-menu-in">
-                <div class="View-menu-left">
-                  <div class="d-flex flex-wrap align-items-center fs-8 fw-medium ls-05 text-theme-primary">
-                    <div class="alert alert-primary fs-8 lh-1 fw-medium ls-05 d-inline-block p-2 mb-0 me-2">
-                      <span class="view-item d-block px-1">Erken Rezervasyonda %35 indirim</span>
-                    </div>
-                    <div class="d-flex align-items-center my-2 my-sm-1 me-3 pe-1">
-                      <img src="/img/icons/019-virus.svg" width="20" height="20" alt="healt"
-                        class="lazy contain flex-shrink-0 me-1 loaded"
-                        style="background-image: url(/img/icons/019-virus.svg);">
-                      <span>Sağlık Sertifikalı</span>
-                    </div>
-                    <div class="d-flex align-items-center my-2 my-sm-1">
-                      <img src="/img/icons/020-fence.svg" width="20" height="20" alt="healt"
-                        class="lazy contain flex-shrink-0 me-1 loaded"
-                        style="background-image: url(/img/icons/020-fence.svg);">
-                      <span>Özel Bölgesi var</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="View-menu-right">
                   <button type="button"
                     class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 ">
                     <span class="action-btn-icon">
@@ -74,6 +50,35 @@
                     </span>
                     <span class="action-btn-text">Yukarı Çık</span>
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="View-menu" id="detailMenu">
+            <div class="container">
+              <div class="View-menu-in">
+                <div class="View-menu-left">
+                  <div class="d-flex flex-wrap align-items-center fs-8 fw-medium ls-05 text-theme-primary">
+                    <div class="Otel-card-content-info-item erkenrezervasyon">
+                      <span>%35</span>
+                      <p>Erken Rezervasyon İndirimi</p>
+                    </div>
+                    <div class="d-flex align-items-center my-2 my-sm-1 me-3 pe-1">
+                      <img src="/img/icons/019-virus.svg" width="20" height="20" alt="healt"
+                        class="lazy contain flex-shrink-0 me-1 loaded"
+                        style="background-image: url(/img/icons/019-virus.svg);">
+                      <span>Sağlık Sertifikalı</span>
+                    </div>
+                    <div class="d-flex align-items-center my-2 my-sm-1">
+                      <img src="/img/icons/020-fence.svg" width="20" height="20" alt="healt"
+                        class="lazy contain flex-shrink-0 me-1 loaded"
+                        style="background-image: url(/img/icons/020-fence.svg);">
+                      <span>Özel Bölgesi var</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="View-menu-right">
+                  <a href="" class="map-view">Haritada Görüntüle</a>
                 </div>
               </div>
             </div>
@@ -142,17 +147,16 @@
           </div>
         </div>
         <div class="container search-otel">
-          <search-villa-component :key="$route.path"></search-villa-component>
+          <search-hotel-detail-component :key="$route.path"></search-hotel-detail-component>
         </div>
       </section>
-     
+
       <section class="rooms-section pt-3 mt-1">
         <div class="container">
           {{ hotelPriceDetails }}
           <template v-for="offer in hotelPriceDetails.body?.hotels[0]?.offers">
             <div v-for="room in offer.rooms" class="room border border-light rounded-xxl pt-2 px-2 pb-1 p-lg-2 mb-3">
               <div class="row">
-                {{ offer }}
                 <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
                   <div class="img-box position-relative flex-shrink-0">
                     <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
@@ -271,7 +275,7 @@
               <div class="row">
                 <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
                   <div class="img-box position-relative flex-shrink-0">
-                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                    <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
                       class="lazy cover flex-shrink-0 ">
                   </div>
                   <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
@@ -302,23 +306,28 @@
                 </div>
                 <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
                   <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                    <div
-                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                        <span class="option-all">HER ŞEY DAHİL</span>
-                        <p class="option-info"><i class="icon-information"></i>23 Mart 2023 ‘ e kadar ücretsiz iptal.</p>
+                    <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div
+                        class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                        <div class="option-all">
+                          <span class="option-all-item">Oda Kahvaltı</span>
+                        </div>
+                        <div class="option-warning">
+                          <p>İptal Edilemez</p>
+                        </div>
                       </div>
                       <div
                         class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                          <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                          <strong class="option-price">6.800 TL</strong>
-                          <span class="option-night"><small>(Gecelik 980 TL)</small></span>
+                        <div class="Otel-card-price">
+                          <span>2 GECE</span>
+                          <s>16.500TL</s>
+                          <b>12.420 <small>TL</small></b>
+                          <p>Gecelik <span>1.400TL</span></p>
                         </div>
-                        <button type="button"
-                          class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                          <small class="d-block py-1">Odayı Seç</small>
-                        </button>
+                        <div class="Otel-card-link">
+                          <button>Oda Seç</button>
+                        </div>
+                        <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
                       </div>
                     </div>
                   </div>
@@ -331,7 +340,7 @@
               <div class="row">
                 <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
                   <div class="img-box position-relative flex-shrink-0">
-                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                    <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
                       class="lazy cover flex-shrink-0 ">
                   </div>
                   <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
@@ -362,23 +371,28 @@
                 </div>
                 <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
                   <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                    <div
-                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                        <span class="option-all">HER ŞEY DAHİL</span>
-                        <p class="option-info"><i class="icon-information"></i>23 Mart 2023 ‘ e kadar ücretsiz iptal.</p>
+                    <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div
+                        class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                        <div class="option-all">
+                          <span class="option-all-item">Oda Kahvaltı</span>
+                        </div>
+                        <div class="option-warning">
+                          <p>İptal Edilemez</p>
+                        </div>
                       </div>
                       <div
                         class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                          <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                          <strong class="option-price">6.800 TL</strong>
-                          <span class="option-night"><small>(Gecelik 980 TL)</small></span>
+                        <div class="Otel-card-price">
+                          <span>2 GECE</span>
+                          <s>16.500TL</s>
+                          <b>12.420 <small>TL</small></b>
+                          <p>Gecelik <span>1.400TL</span></p>
                         </div>
-                        <button type="button"
-                          class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                          <small class="d-block py-1">Odayı Seç</small>
-                        </button>
+                        <div class="Otel-card-link">
+                          <button>Oda Seç</button>
+                        </div>
+                        <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
                       </div>
                     </div>
                   </div>
@@ -389,7 +403,7 @@
               <div class="row">
                 <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
                   <div class="img-box position-relative flex-shrink-0">
-                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                    <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
                       class="lazy cover flex-shrink-0 ">
                   </div>
                   <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
@@ -420,23 +434,28 @@
                 </div>
                 <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
                   <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                    <div
-                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                        <span class="option-all">HER ŞEY DAHİL</span>
-                        <p class="option-info"><i class="icon-information"></i>23 Mart 2023 ‘ e kadar ücretsiz iptal.</p>
+                    <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div
+                        class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                        <div class="option-all">
+                          <span class="option-all-item">Oda Kahvaltı</span>
+                        </div>
+                        <div class="option-warning">
+                          <p>İptal Edilemez</p>
+                        </div>
                       </div>
                       <div
                         class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                          <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                          <strong class="option-price">6.800 TL</strong>
-                          <span class="option-night"><small>(Gecelik 980 TL)</small></span>
+                        <div class="Otel-card-price">
+                          <span>2 GECE</span>
+                          <s>16.500TL</s>
+                          <b>12.420 <small>TL</small></b>
+                          <p>Gecelik <span>1.400TL</span></p>
                         </div>
-                        <button type="button"
-                          class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                          <small class="d-block py-1">Odayı Seç</small>
-                        </button>
+                        <div class="Otel-card-link">
+                          <button>Oda Seç</button>
+                        </div>
+                        <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
                       </div>
                     </div>
                   </div>
@@ -447,7 +466,7 @@
               <div class="row">
                 <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
                   <div class="img-box position-relative flex-shrink-0">
-                    <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                    <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
                       class="lazy cover flex-shrink-0 ">
                   </div>
                   <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
@@ -478,23 +497,28 @@
                 </div>
                 <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
                   <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                    <div
-                      class="option d-flex flex-column flex-xl-row rounded-xl bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                      <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4">
-                        <span class="option-all">HER ŞEY DAHİL</span>
-                        <p class="option-info"><i class="icon-information"></i>23 Mart 2023 ‘ e kadar ücretsiz iptal.</p>
+                    <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div
+                        class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                        <div class="option-all">
+                          <span class="option-all-item">Oda Kahvaltı</span>
+                        </div>
+                        <div class="option-warning">
+                          <p>İptal Edilemez</p>
+                        </div>
                       </div>
                       <div
                         class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                        <div class="d-flex flex-column align-items-xl-center me-xl-0 me-auto">
-                          <span class="text-secondary ls-05 d-block lh-1"><small>7 GECE</small></span>
-                          <strong class="option-price">6.800 TL</strong>
-                          <span class="option-night"><small>(Gecelik 980 TL)</small></span>
+                        <div class="Otel-card-price">
+                          <span>2 GECE</span>
+                          <s>16.500TL</s>
+                          <b>12.420 <small>TL</small></b>
+                          <p>Gecelik <span>1.400TL</span></p>
                         </div>
-                        <button type="button"
-                          class="btn btn-theme-first btn-ripple fw-medium ls-05 lh-sm rounded-pill px-3 px-xl-4 py-2">
-                          <small class="d-block py-1">Odayı Seç</small>
-                        </button>
+                        <div class="Otel-card-link">
+                          <button>Oda Seç</button>
+                        </div>
+                        <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
                       </div>
                     </div>
                   </div>
@@ -570,7 +594,7 @@
               <div class="View-reviews-head">
                 <div class="general-informations-section-title mb-0"><span>The European Hotel</span> Değerlendirmesi</div>
                 <div class="View-reviews-head-stars">
-                  
+
                   <i class="icon-star active"></i>
                   <i class="icon-star active"></i>
                   <i class="icon-star active"></i>
@@ -602,7 +626,7 @@
                     </p>
                     <p class="mt-4 mb-4">YORUM KAYNAĞI : GOOGLE</p>
                   </div>
-                  
+
                 </div>
               </div>
               <div class="View-reviews-item">
@@ -629,10 +653,10 @@
                     </p>
                     <p class="mt-4 mb-4">YORUM KAYNAĞI : GOOGLE</p>
                   </div>
-                  
+
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -1065,4 +1089,5 @@ export default {
   font-size: 30px;
   color: #F5F5F5;
   padding: 10px 35px;
-}</style>
+}
+</style>

@@ -1,10 +1,14 @@
 <template>
   <div class="Filters">
-    <div class="Filters-head border-bottom">
+    <div class="Filters-head border-bottom" @click="checkboxOpen(groupName)">
       <i class="icon-wallet"></i>
       <h5>FİYAT ARALIĞI</h5>
     </div>
-    <div class="Filters-in">
+    <div class="Filters-in" :ref="groupName">
+      <div class="Filters-in-mobile">
+        <div class="Filters-head" ><h5>FİYAT ARALIĞI</h5></div>
+        <button type="button" @click="checkboxClose(groupName)"><i class="icon-left-arrow"></i></button>
+      </div>
       <div class="Filters-range">
         <div class="Filters-range-inputs">
           <label for="">
@@ -22,6 +26,7 @@
           <vue-slider v-model="value" @change="onChange" :lazy="true" :tooltip-formatter="formatter" :min="500" :max="5000" />
         </div>
       </div>
+      <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM</button>  
     </div>
   </div>
 </template>
@@ -41,6 +46,9 @@ export default {
       formatter: '₺{value}',
     }
   },
+  props: {
+    groupName: {type: String},
+  },
   components: {
     VueSlider,
   },
@@ -53,6 +61,18 @@ export default {
     emitPrices() {
       this.$emit('min_price', parseInt(this.min_price, 10));
       this.$emit('max_price', parseInt(this.max_price, 10));
+    },
+    isMobile() {
+      return window.innerWidth <= 991;
+    },
+    checkboxOpen(groupName){
+      const targetDiv = this.$refs[groupName];
+      targetDiv.classList.add('show')
+      console.log(targetDiv)
+    },
+    checkboxClose(groupName){
+      const targetDivClose = this.$refs[groupName];
+      targetDivClose.classList.remove('show')
     }
   }
 

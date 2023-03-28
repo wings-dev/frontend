@@ -1,11 +1,15 @@
 <template>
   <div class="Filters Filters-region ">
-    <div v-if="!hideTitle" class="Filters-head" v-bind:class="{ 'border-bottom' : !hideTitleBorder}"><i class="icon-location-1"></i><h5>{{title}}</h5></div>
-    <div class="Filters-search" v-if="filterInputPlaceholder.length">
+    <div v-if="!hideTitle" class="Filters-head" v-bind:class="{ 'border-bottom' : !hideTitleBorder}" @click="checkboxOpen(groupName)"><i class="icon-location-1"></i><h5>{{title}}</h5></div>
+    
+    <div class="Filters-in" :ref="groupName">
+      <div class="Filters-in-mobile">
+        <div class="Filters-head" ><h5>{{title}}</h5></div>
+        <button type="button" @click="checkboxClose(groupName)"><i class="icon-left-arrow"></i></button>
+      </div>
+      <div class="Filters-search" v-if="filterInputPlaceholder.length">
       <label><i class="icon-search-new"></i><input type="search" :placeholder="filterInputPlaceholder" v-model="filterText" @keyup="applyFilter()"></label>
     </div>
-    <div class="Filters-in">
-
       <ul class="Filters-first" v-if="groups.length === 0">
         <li class="Filters-item Filters-item-notfound" v-bind:style="filterText.length && !filteredCheckboxes.length ? 'display:block' : 'display:none'">
           <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
@@ -70,6 +74,7 @@
         </li>
         </template>
       </ul>
+      <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM</button>  
     </div>
   </div>
 </template>
@@ -84,6 +89,7 @@ export default {
     hideTitleBorder: {type: Boolean, default: false},
     hideTitle: {type: Boolean, default: false},
     groups: {type: Array, default: () => []},
+    groupName: {type: String},
   },
   data() {
     return {
@@ -202,6 +208,18 @@ export default {
      */
     applyFilter() {
       this.filteredCheckboxes = this.filterCheckboxes(this.filterText);
+    },
+    isMobile() {
+      return window.innerWidth <= 991;
+    },
+    checkboxOpen(groupName){
+      const targetDiv = this.$refs[groupName];
+      targetDiv.classList.add('show')
+      console.log(targetDiv)
+    },
+    checkboxClose(groupName){
+      const targetDivClose = this.$refs[groupName];
+      targetDivClose.classList.remove('show')
     }
   },
   mounted(){

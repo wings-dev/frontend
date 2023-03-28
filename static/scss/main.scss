@@ -1369,6 +1369,7 @@ h6 {
   &-h {
     padding: 0;
     border: none;
+    transition: all 300ms;
     .Card {
       &-in {
         display: flex;
@@ -1397,11 +1398,13 @@ h6 {
       width: 60%;
       padding: 10px;
     }
+    &:hover{
+      transform: translateY(-5px);
+    }
   }
   &-icons {
     .Card-content {
       &-info {
-        justify-content: flex-start;
         &-item {
           margin-right: 30px;
           &:last-child {
@@ -1429,7 +1432,370 @@ h6 {
     }
   }
 }
+.O_Card{
 
+  &-in{
+    border-radius: 10px;
+    border: solid 1.3px #f2f5fb;
+  }
+  &-img{
+    position: relative;
+    img{
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    &-text{
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      padding: 0px 8px;
+      border-radius: 4px;
+      background-color: #5dc1b2;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 2.18;
+      color: #fff;
+    }
+  }
+  &-content{
+    padding: 12px 20px;
+    &-in{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+     }
+    &-head{
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f2f5fb;
+      b{
+        font-size: 19px;
+        font-weight: 500;
+        line-height: 1.26;
+        color: var(--bs-theme-first);
+        transition: all 300ms;
+      }
+      small{
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.85;
+        color: #8a92a8;
+      }
+    }
+    &-price{
+      padding-top: 13px;
+     
+      p{
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1;
+        color: #8a92a8;
+        display: flex;
+        align-items: flex-start;
+        b{
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 1.5;
+          color: var(--bs-theme-first);
+        }
+        span{
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1.85;
+          color: var(--bs-theme-second);
+          transform: translateY(-2px);
+          u{
+            color: var(--bs-theme-first);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    &-link{
+      width: 38px;
+        height: 38px;
+        background-color: #cad4dd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        transition: all 400ms;
+        margin-left: auto;
+        i {
+          font-size: 17px;
+          color: #fff;
+        }
+        &:hover {
+          background-color: var(--bs-theme-second);
+        }
+    }
+  }
+  &:hover{
+    .O_Card-content{
+      &-head{
+        b{
+          color: var(--bs-theme-second);
+        }
+      }
+      &-link{
+        background-color: var(--bs-theme-second);
+      }
+    }
+  }
+}
+.otel-pills{
+  .nav-link{
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.36;
+    color: #8a92a8;
+    text-align: left;
+    span{
+      display: block;
+      font-weight: normal;
+    }
+    &.active{
+      background-color: transparent;
+      color: var(--bs-theme-second);
+    }
+  }
+}
+.Otel-card{
+  display: flex;
+  border-radius: 6.8px;
+  box-shadow: 0 3.4px 37.7px 0 rgba(0, 0, 0, 0.05);
+  border: solid 0.9px #eaecf3;
+  background-color: rgba(242, 244, 248, 0.4);
+  margin-bottom: 24px;
+  cursor: pointer;
+  &-left{
+    width: 82%;
+    display: flex;
+    border-right: 1px solid #eaecf3;
+  }
+  &-right{
+    width: 18%;
+    padding: 14px;
+    padding-top: 23px;
+    display: flex;
+    flex-direction: column;
+  }
+  &-img{
+    width: 51%;
+    position: relative;
+    img{
+      width: 100%;
+      border-bottom-left-radius: 6.8px;
+      border-top-left-radius: 6.8px;
+    }
+  }
+  &-content{
+    width: 49%;
+    padding: 23px;
+    &-head{
+      margin-bottom: 20px;
+      b{
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 1.14;
+        color: var(--bs-theme-first);
+      }
+      small{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+        color: #8a92a8;
+        display: block;
+      }
+    }
+    &-features{
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 17px;
+      p{
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 1;
+        color: #7e8f9a;
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+        margin-bottom: 9px;
+        width: max-content;
+        &:before{
+          content: "";
+          display: inline-block;
+          width: 16px;height: 16px;
+          background-size: 100% 100%;
+          background-image: url(../img/approval.svg);
+          margin-right: 6px;
+        }
+      }
+    }
+    &-info{
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      .erkenrezervasyon{
+        padding: 6px;
+        border-radius: 4px;
+        border: solid 1px #c9e5d4;
+        background-color: #dff6e8;
+        display: flex;
+        align-items: center;
+        margin-right: 7px;
+        height: 45px;
+        span{
+          font-size: 15px;
+          font-weight: 500;
+          line-height: 1;
+          color: #fff;
+          padding: 10px;
+          border-radius: 3px;
+          background-color: #00ae8f;
+          margin-right: 6px;
+        }
+        p{
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 1;
+          color: #00ae8f;
+          max-width: 120px;
+        }
+      }
+      .ucretsiziptal{
+        height: 45px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+        color: #f5841f;
+        padding: 10px;
+        border-radius: 4px;
+        border: solid 1px #f5841f;
+        background-color: #faeadd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    &-warning{
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1;
+      color: #e11818;
+      padding: 4px;
+      border-radius: 2px;
+      border: solid 1px #f6d2d2;
+      background-color: #fff1f1;
+      width: max-content;
+    }
+  }
+  &-review{
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    span{
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #00bb29;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 2.18;
+      color: #fff;
+      margin-right: 6px;
+    }
+    p{
+      font-size: 11px;
+      font-weight: 500;
+      color: #7e8f9a;
+      u{
+        display: block;
+      }
+    }
+  }
+  &-price{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    
+    span{
+      padding: 4px 8px;
+      border-radius: 2px;
+      background-color: #f5841f;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    s{
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+      color: #8a92a8;
+    }
+    b{
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1;
+      color:var(--bs-theme-first);
+      small{
+        font-size: 13px;
+      }
+    }
+    p{
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
+      color: #8a92a8;
+      span{
+        font-size: 12px;
+        color: var(--bs-theme-second);
+        padding: 0;
+        background-color: transparent;
+      }
+
+    }
+  }
+  &-link{
+    button{
+      padding:12px 42px;
+      border-radius: 3.4px;
+      background-color: #7e8f9a;
+      font-size: 10.3px;
+      font-weight: bold;
+      color: #fff;
+      transition: all 300ms;
+      &:hover{
+        background-color: var(--bs-theme-second);
+      }
+    }
+    
+  }
+
+  &:hover{
+    .Otel-card{
+      &-content{
+        &-head{
+          b{
+            color: var(--bs-theme-second);
+          }
+        }
+      }
+      &-link{
+        button{
+          background-color: var(--bs-theme-second);
+        }
+      }
+    }
+  }
+ 
+}
 .list-slide {
   overflow: unset;
   position: relative;
@@ -1591,6 +1957,13 @@ h6 {
     background-size: 100% 100%;
     margin-right: 10px;
     background-image: url(../img/icon-categories.svg);
+  }
+  i.icon-otel-discover {
+    width: 40px;
+    height: 40px;
+    background-size: 100% 100%;
+    background-image: url(../img/otel-discover.svg);
+    margin-right: 10px;
   }
   h4 {
     display: flex;
@@ -2724,6 +3097,19 @@ body.overflow-hidden {
       display: block;
     }
   }
+  &-hotel{
+    max-width: 1000px;
+    margin: 0 auto;
+    border-top-left-radius: 8px;
+    .Search-item{
+      &.date{
+        width: 55%;
+      }
+      &-people{
+        width: 35%;
+      }
+    }
+  }
 }
 @media (max-width: 991px) {
   .Home {
@@ -3037,6 +3423,12 @@ body.overflow-hidden {
   &-left {
     width: 275px;
 
+    &-selected{
+      display: none;
+      align-items: center;
+      overflow-x: scroll;
+    }
+
     &-head {
       display: none;
       align-items: center;
@@ -3065,8 +3457,9 @@ body.overflow-hidden {
         }
 
         &.Search-filter-close {
+          margin-left: auto;
           font-size: 28px;
-          color: #e04f5f;
+          color: var(--bs-theme-first);
         }
       }
     }
@@ -3077,6 +3470,7 @@ body.overflow-hidden {
       border: none;
       margin-bottom: 0;
     }
+
   }
 
   &-right {
@@ -3120,6 +3514,20 @@ body.overflow-hidden {
             transform: translateY(-50%);
             display: inline-block;
             z-index: 2;
+          }
+          &.mobile-filter-button{
+            display: none;
+            border-radius: 3.6px;
+            background-color: #eff1f5;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--bs-theme-first);
+            padding: 12px 16px;
+            height: 45px;
+            i{
+              font-size: 18px;
+              margin-right: 10px;
+            }
           }
         }
 
@@ -3400,6 +3808,12 @@ body.overflow-hidden {
     &::-webkit-scrollbar-thumb:hover {
       background: var(--bs-theme-second);
     }
+    &-mobile{
+      display: none;
+    }
+    &-m-button{
+      display: none;
+    }
   }
 
   &-item {
@@ -3662,19 +4076,17 @@ body.overflow-hidden {
 
     &-left {
       width: 100%;
-      height: calc(100% - 100px);
+      height: calc(100vh - 80px);
       background-color: #fff;
       position: fixed;
       left: 0;
       bottom: -10%;
       opacity: 0;
       visibility: hidden;
-      z-index: 999;
+      z-index: 9999;
       border-radius: 0;
       padding: 0;
       margin-bottom: 0;
-      border-top-left-radius: 70px !important;
-      border-top-right-radius: 70px !important;
       transition: all 300ms;
       &.show {
         bottom: 0;
@@ -3682,13 +4094,18 @@ body.overflow-hidden {
         visibility: visible;
       }
 
-      &-head {
+      &-selected{
         display: flex;
       }
 
+      &-head {
+        display: flex;
+        background-color: #f2f5fb;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
       &-in {
-        overflow-y: scroll;
-        max-height: calc(100% - 200px);
       }
 
       .Filters {
@@ -3720,7 +4137,126 @@ body.overflow-hidden {
     &-right {
       width: 100%;
       margin-top: 20px;
+      &-head{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        &-buttons{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 26px;
+          &-item{
+            width: calc(50% - 4px);
+            &.mobile-filter-button{
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+      }
     }
+    &-second{
+     margin: 0;
+     padding-left: 0;
+     label{
+      border-bottom:1px solid #eff0f5 ;
+      padding: 16px;
+    }
+    }
+    &-third{
+      border-bottom:1px solid #eff0f5 ;
+      label{
+        padding-left: 66px!important;
+      }
+    }
+    &-selected{
+      display: none;
+    }
+    &-selected-item{
+      white-space: nowrap;
+    }
+  }
+  .Filters{
+    &-head{
+      padding: 0;
+      h5{
+        padding: 12px 16px;
+      }
+    }
+    &-in{
+      display: none;
+      max-height: unset;
+      position: absolute;
+      background-color: #fff;
+      width: 100%;
+      height: calc(100vh - 80px);
+      top: 0;
+      left: 0;
+      margin-top: 0;
+      z-index: 1;
+      &.show{
+        display: block;
+      }
+      &-mobile{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f2f5fb;
+        padding: 8px 16px;
+        margin-bottom: 15px;
+        button{
+          background-color: transparent;
+          font-size: 28px;
+        }
+      }
+      &-m-button{
+        background-color: var(--bs-theme-first);
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1;
+        color: #fff;
+        padding: 22px 0;
+        position: fixed;
+        bottom: 0;
+      }
+    }
+    &-item{
+      padding-left: 0;
+      ul{
+        margin: 0;padding: 0;
+        li{
+          margin-bottom: 0;
+        }
+        label{
+          margin-bottom: 0;
+          padding-left: 36px;
+        }
+      }
+      label{
+        border-bottom:1px solid #eff0f5 ;
+        padding: 12px 16px;
+        margin-bottom: 0;
+      }
+    }
+    &-first{
+      overflow-y: scroll;
+      height: calc(100vh - 261px);
+    }
+    &-range{
+      padding: 0 16px;
+    }
+  }
+  .Search-clear-mobile{
+    font-size: 12.1px;
+    font-weight: 500;
+    color: var(--bs-theme-second);
+    background-color: transparent;
   }
 }
 
@@ -4857,7 +5393,7 @@ body.overflow-hidden {
 
           &.Search-filter-close {
             font-size: 28px;
-            color: #e04f5f;
+            color:var(--bs-theme-first);
           }
         }
       }
@@ -5328,6 +5864,7 @@ body.overflow-hidden {
     position: relative;
     display: flex;
     margin-bottom: 16px;
+    cursor: pointer;
 
     &-img {
       position: relative;
@@ -5637,12 +6174,18 @@ body.overflow-hidden {
       height: 36px;
       padding: 17px 21px;
       border-radius: 4px;
-      background-color: var(--bs-theme-second);
-      border: 1px solid var(--bs-theme-second);
+      background-color: #7E8F9A;;
+      border: 1px solid #7E8F9A;;
       font-size: 11px;
       font-weight: bold;
       color: #fff;
       transition: all 300ms;
+      white-space: nowrap;
+      i{
+        font-size: 18px;
+        margin-right: 5px;
+        flex-shrink: 0;
+      }
 
       &:hover {
         background-color: #fff;
@@ -6571,8 +7114,6 @@ body.overflow-hidden {
   }
 }
 
-.Banner-kurumsal {
-}
 .Banner_md {
   height: 570px;
 }
@@ -7679,6 +8220,88 @@ body.overflow-hidden {
     padding-bottom: 30px;
     &:before {
       height: 100%;
+    }
+    .detail-top{
+      background-color: #fff;
+    }
+    .view-top{
+      
+      &-title{
+        align-items: flex-start;
+        &-in{
+          display: flex;
+          flex-direction: column;
+        }
+        h1{
+          font-size: 24px;
+          font-weight: 600;
+          color: var(--bs-theme-first);
+        }
+      }
+      .Otel-card-review{
+        margin-left: 24px;
+        margin-bottom: 0;
+        span{
+          padding: 4px 12px;line-height: 2.2;
+        }
+      }
+    }
+    .View-menu{
+      &-left{
+        .Otel-card-content-info-item{
+          
+          &.erkenrezervasyon{
+            padding: 6px;
+            border-radius: 4px;
+            border: solid 1px #c9e5d4;
+            background-color: #dff6e8;
+            display: flex;
+            align-items: center;
+            height: 45px;
+            margin-right: 20px;
+            span{
+              font-size: 15px;
+              font-weight: 500;
+              line-height: 1;
+              color: #fff;
+              padding: 10px;
+              border-radius: 3px;
+              background-color: #00ae8f;
+              margin-right: 6px;
+            }
+            p{
+              font-size: 12px;
+              font-weight: 500;
+              line-height: 1;
+              color: #00ae8f;
+              max-width: 130px;
+            }
+          }
+          &.ucretsiziptal{
+            height: 45px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+            color: #f5841f;
+            padding: 10px;
+            border-radius: 4px;
+            border: solid 1px #f5841f;
+            background-color: #faeadd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+      &-right{
+        .map-view{
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 2;
+          color: #f5841f;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
@@ -12412,15 +13035,41 @@ body.overflow-hidden {
     }
   }
   .option {
+    border-radius: 4px;
+    .beforeborder{
+      position: relative;
+    &:before{
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 1px;
+      background-color: #e8edf5;
+      position: absolute;
+      left: 0;
+      bottom: 60px;
+    }
+    }
     &-all {
-      font-size: 13px;
+      margin-top: auto;
+     &-item{
+      font-size: 12px;
       font-weight: 500;
-      color: #112855;
-      border-radius: 100px;
-      border: solid 1px #102754;
-      padding: 7px 13px;
+      line-height: 1;
+      color: #7e8f9a;
       width: max-content;
       margin-bottom: 13px;
+      position: relative;
+      display: flex;
+      width: max-content;
+      &:before{
+        content: "";
+        display: inline-block;
+        width: 14px;height: 14px;
+        background-size: 100% 100%;
+        background-image: url(../img/approval.svg);
+        margin-right: 6px;
+      }
+     }
     }
     &-info {
       font-size: 13px;
@@ -12447,6 +13096,24 @@ body.overflow-hidden {
       color: #979797;
       line-height: 1;
       margin-bottom: 10px;
+    }
+    &-warning{
+      margin-top: auto;
+      p{
+        font-size: 13px;
+        font-weight: 500;
+        color: #e11818;
+        text-align: center;
+        text-decoration: underline;
+      }
+    }
+    .Otel-card-price{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 20px;
+      padding-bottom: 10px;
     }
   }
   &-note {
@@ -12530,20 +13197,20 @@ body.overflow-hidden {
     }
   }
   &-item {
-    width: 20%;
+    width: 25%;
     position: relative;
     display: flex;
     align-items: center;
     font-size: 16px;
     font-weight: normal;
-    line-height: 1.46;
+    line-height: 2.1;
     color: #7f8090;
     &:before {
       content: "";
       display: inline-block;
-      width: 13px;
-      height: 9px;
-      background-image: url(../img/text-tick-grey.svg);
+      width: 14px;
+      height: 14px;
+      background-image: url(../img/approval.svg);
       background-size: cover;
       margin-right: 4px;
       filter: grayscale(1);
