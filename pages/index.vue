@@ -89,6 +89,154 @@
 
             </div>
         </section>
+        <section class="popular-section-otel bg-white overflow-hidden pb-sm-5 mt-5">
+            <div class="container ">
+                <div class="section-caption d-flex align-items-center mb-3 pb-1">
+                    <i class="icon-otel-discover"></i>
+                    <h4 class="primary-title fw-medium ls-05 lh-1">
+                        Otelleri
+                        <span>keşfedin</span>
+                    </h4>
+                    <a href=""
+                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
+                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
+                    </a>
+                </div>
+                <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="otel-tab" data-bs-toggle="pill" data-bs-target="#otel"
+                            type="button" role="tab" aria-selected="true">Kaş <span>Otelleri</span></button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="otel-tab2" data-bs-toggle="pill" data-bs-target="#otel2" type="button"
+                            role="tab" aria-selected="false">Fethiye <span>Otelleri</span></button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="otel-tab3" data-bs-toggle="pill" data-bs-target="#otel3" type="button"
+                            role="tab" aria-selected="false">Muğla <span>Otelleri</span></button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="otel-tabContent">
+                    <div class="tab-pane fade show active" id="otel" role="tabpanel" aria-labelledby="otel-tab">
+                        <div class="swiper list-slide-otel">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+                                    <nuxt-link to="" class="O_Card">
+                                        <div class="O_Card-in">
+                                            <div class="O_Card-img">
+                                                <img src="/img/otel-list.png" alt="">
+                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
+                                                    <span>9,5/10</span>
+                                                </div>
+                                            </div>
+                                            <div class="O_Card-content">
+                                                <div class="O_Card-content-head">
+                                                    <b>Pera Palace Hotel</b>
+                                                    <small>Ankara,Türkiye</small>
+                                                </div>
+                                                <div class="O_Card-content-in">
+                                                    <div class="O_Card-content-price">
+                                                        <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
+                                                        <p>Başlayan Fiyatlar</p>
+                                                    </div>
+                                                    <nuxt-link to="/" class="O_Card-content-link">
+                                                        <i class="icon-right-arrows-new"></i>
+                                                    </nuxt-link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nuxt-link>
+                                </div>
+                            </div>
+                            <!-- If pagination is needed -->
+
+                            <!-- If navigation buttons are needed -->
+                            <!-- <div class="swiper-pagination"></div> -->
+                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
+                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="otel2" role="tabpanel" aria-labelledby="otel-tab2">
+                        <div class="swiper list-slide-otel">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+                                    <nuxt-link to="" class="O_Card">
+                                        <div class="O_Card-in">
+                                            <div class="O_Card-img">
+                                                <img src="/img/otel-list.png" alt="">
+                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
+                                                    <span>9,5/10</span>
+                                                </div>
+                                            </div>
+                                            <div class="O_Card-content">
+                                                <div class="O_Card-content-head">
+                                                    <b>Pera Palace Hotel</b>
+                                                    <small>Ankara,Türkiye</small>
+                                                </div>
+                                                <div class="O_Card-content-in">
+                                                    <div class="O_Card-content-price">
+                                                        <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
+                                                        <p>Başlayan Fiyatlar</p>
+                                                    </div>
+                                                    <nuxt-link to="/" class="O_Card-content-link">
+                                                        <i class="icon-right-arrows-new"></i>
+                                                    </nuxt-link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nuxt-link>
+                                </div>
+                            </div>
+                            <!-- If pagination is needed -->
+
+                            <!-- If navigation buttons are needed -->
+                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
+                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="otel3" role="tabpanel" aria-labelledby="otel-tab3">
+                        <div class="swiper list-slide-otel">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+                                    <nuxt-link to="" class="O_Card">
+                                        <div class="O_Card-in">
+                                            <div class="O_Card-img">
+                                                <img src="/img/otel-list.png" alt="">
+                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
+                                                    <span>9,5/10</span>
+                                                </div>
+                                            </div>
+                                            <div class="O_Card-content">
+                                                <div class="O_Card-content-head">
+                                                    <b>Pera Palace Hotel</b>
+                                                    <small>Ankara,Türkiye</small>
+                                                </div>
+                                                <div class="O_Card-content-in">
+                                                    <div class="O_Card-content-price">
+                                                        <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
+                                                        <p>Başlayan Fiyatlar</p>
+                                                    </div>
+                                                    <nuxt-link to="/" class="O_Card-content-link">
+                                                        <i class="icon-right-arrows-new"></i>
+                                                    </nuxt-link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nuxt-link>
+                                </div>
+                            </div>
+                            <!-- If pagination is needed -->
+
+                            <!-- If navigation buttons are needed -->
+                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
+                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
 
         <section class="H_info">
             <div class="container">
@@ -146,7 +294,7 @@
                                 <div class="Card-in">
                                     <div class="Card-img">
                                         <nuxt-link to="/">
-                                            <nuxt-img src="/img/card.png" width="371" height="225"></nuxt-img>
+                                            <nuxt-img src="/img/villa3.png" width="371" height="225"></nuxt-img>
                                         </nuxt-link>
                                         <button class="Card-fav" type="button">
                                             <i class="icon-heart"></i>
@@ -445,7 +593,7 @@
                     <!-- If pagination is needed -->
 
                     <!-- If navigation buttons are needed -->
-                    <div class="swiper-pagination"></div>
+                    <!-- <div class="swiper-pagination"></div> -->
                     <div class="swiper-button-prev list-navigation-prev"></div>
                     <div class="swiper-button-next list-navigation-next"></div>
                 </div>
@@ -580,6 +728,37 @@ export default {
                 },
             },
         })
+        const swiper4 = new Swiper('.list-slide-otel', {
+            slidesPerView: 1.1,
+            spaceBetween: 18,
+            direction: 'horizontal',
+            loop: true,
+            observer: true,
+            observeParents: true,
+            modules: [Navigation, Pagination],
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 18,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 18,
+                },
+                1199: {
+                    slidesPerView: 4,
+                    spaceBetween: 18,
+                },
+            },
+        })
     }
 
 }
@@ -587,4 +766,5 @@ export default {
 <style scoped>
 .list-item .list-image {
     width: 100%;
-}</style>
+}
+</style>

@@ -1,13 +1,11 @@
 <template>
   <div class="Search-item Search-item-people">
+    <span class="Search-item-name">Kişi Sayısı </span>
     <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
             data-bs-toggle="dropdown" aria-expanded="false">
-      <div
-        class="icon-box bg-theme-light rounded-sm flex-shrink-0 d-flex align-items-center justify-content-center me-3 ">
-        <i class="icon-group-user"></i>
-      </div>
+            
       <div class="Search-item-people-in">
-        <span class="Search-item-name">Kişi Sayısı </span>
+        <i class="icon-user Search-item-icon"></i>
         <span class="dropdown-toggle-title">{{ selectedPersonText }}</span>
         <i class="icon-down-arrow"></i>
       </div>

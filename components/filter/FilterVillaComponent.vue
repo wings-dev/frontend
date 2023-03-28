@@ -1,19 +1,29 @@
 <template>
-  <section class="Filter">
+  <section class="Filter"> 
     <div class="container">
       <div class="Filter-in">
-        <div class="Filter-left Filters">
+        <div class="Filter-left Filters" :class="{ show: isMobileFilterOpen }">
           <div class="Filter-left-head">
             <h4>Gelişmiş Arama</h4>
-            <button type="button" class="Search-clear" onclick="filterClear()">Temizle</button>
-            <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter"><i
-                class="icon-search-close"></i></button>
+            <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter()"><i
+                class="icon-login-close"></i></button>
           </div>
-          <div class="Filters-search mobile">
-            <label for="">
-              <i class="icon-search-new"></i>
-              <input type="search" placeholder="Özellik arayın" onkeyup="destinationsFilter(this)">
-            </label>
+          <div class="Filter-left-selected">
+            
+              <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
+                Bölge:{{ facilityType.text }}
+                <i class="icon-search-close" @click="unselect(facilityType)"></i>
+              </a>
+
+              <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">
+                Konsept:{{ facilityConcept.text }}
+                <i class="icon-search-close" @click="unselect(facilityConcept)"></i>
+              </a>
+
+              <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
+                Olanak:{{ facility.text }}
+                <i class="icon-search-close" @click="unselect(facility)"></i>
+              </a>
           </div>
           <div class="Filter-left-in">
             <div class="Filters-item Filters-item-notfound">
@@ -21,19 +31,19 @@
             </div>
 
             <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations"
-              :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
+              :hideTitleBorder="true" @updated="updateFilter('destinations', $event)" groupName="destinationCheckbox"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
               :groups="amenites.groups.facilityTypes"
-              @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
+              @updated="updateFilter('amenites.facilityTypes', $event)" groupName="typeCheckbox"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts"
               :groups="amenites.groups.facilityConcepts"
-              @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
+              @updated="updateFilter('amenites.facilityConcepts', $event)" groupName="categoryCheckbox"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
               :groups="amenites.groups.facilities"
-              @updated="updateFilter('amenites.facilities', $event)"></filter-item-checkbox-component>
+              @updated="updateFilter('amenites.facilities', $event)" groupName="facilitiesCheckbox"></filter-item-checkbox-component>
             <!-- <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
               :checkboxes="amenites.facilities" :hideTitleBorder="true"
               @updated="updateFilter('amenites.facilities', $event)"
@@ -41,23 +51,31 @@
               ></filter-item-checkbox-component> -->
 
             <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
-              @max_price="updateFilter('max_price', $event)"></filter-price-between-component>
+              @max_price="updateFilter('max_price', $event)" groupName="priceRange" ></filter-price-between-component>
+
+              <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Temizle</button>
+
+              <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>  
           </div>
 
         </div>
         <div class="Filter-right">
+          
+          
+
           <div class="Filter-right-head">
             <div class="Filter-right-head-info">
               <i class="icon-list"></i>
               <p>{{ total_items }} villa listeleniyor</p>
             </div>
             <div class="Filter-right-head-buttons">
-
+              
               <div class="Filter-right-head-buttons-item">
                 <client-only>
                   <VSelect :options="orderValues" :labelTitle="orderPlaceholder" @input="orderChanged" />
                 </client-only>
               </div>
+              <button type="button" @click="openMobileFilter()" class="Filter-right-head-buttons-item mobile-filter-button"><i class="icon-new-filter"></i>FİLTRELE <span>(4)</span></button>
             </div>
           </div>
 
@@ -322,6 +340,7 @@ export default {
       orderPlaceholder: "Sırala:",
       loading: true,
       novillas: false,
+      isMobileFilterOpen:false
     }
   },
   components: {
@@ -515,6 +534,28 @@ export default {
       } else {
         this.$refs.moreButton.classList.add('morebutton')
       }
+    },
+    isMobile() {
+      return window.innerWidth <= 991;
+    },
+    openMobileFilter(){
+      if(this.isMobile()){
+        this.isMobileFilterOpen = true
+      }
+    },
+    closeMobileFilter(){
+      if(this.isMobile()){
+        this.isMobileFilterOpen = false
+      }
+    },
+    checkboxOpen(groupName){
+      const targetDiv = this.$refs[groupName];
+      targetDiv.classList.add('show')
+      console.log(targetDiv)
+    },
+    checkboxClose(groupName){
+      const targetDivClose = this.$refs[groupName];
+      targetDivClose.classList.remove('show')
     }
   }
 }
@@ -530,7 +571,7 @@ export default {
   height: 45px;
   cursor: pointer;
   border-radius: 6px;
-  color: #fff !important;
-  background-color: var(--bs-theme-first) !important;
+  color: var(--bs-theme-first) !important;
+  background-color: #eff1f5 !important;
 }
 </style>

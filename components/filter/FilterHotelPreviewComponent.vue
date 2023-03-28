@@ -1,5 +1,56 @@
 <template>
-  <div class="generally-infos bg-white rounded-xxl d-flex flex-column flex-xl-row w-100 pt-1 ms-lg-n1 mb-4 mb-sm-5 pe-xl-0 pe-lg-4">
+  <a @click="goDetail" class="Otel-card">
+    <div class="Otel-card-left">
+      <div class="Otel-card-img">
+        <img
+          src="https://d1t2mawg5vwzes.cloudfront.net/hotel/102627/377277/conversions/crop_9999_666_Villa-Mimi-Tuscany-Olivers-Travels2-preview.jpg"
+          width="361" height="255" alt="hotel image" class="" />
+        <button class="Card-fav" type="button" @click="toggleFavorite">
+          <i class="icon-heart"></i>
+        </button>
+      </div>
+      <div class="Otel-card-content">
+        <div class="Otel-card-content-head">
+          <b>{{ hotel.name }}</b>
+          <small>Ankara, Türkiye</small>
+        </div>
+        <div class="Otel-card-content-features">
+          <p>Wi-Fi</p>
+          <p>Oda Kahvaltı</p>
+          <p>Kapalı Havuz</p>
+          <p>Kuaför</p>
+          <p>Kuaför</p>
+        </div>
+        <div class="Otel-card-content-info">
+          <div class="Otel-card-content-info-item erkenrezervasyon">
+            <span>%35</span>
+            <p>Erken Rezervasyon İndirimi</p>
+          </div>
+          <div class="Otel-card-content-info-item ucretsiziptal">
+            <p>Ücretsiz İptal</p>
+          </div>
+        </div>
+        <p class="Otel-card-content-warning">Bu fiyattan son oda!</p>
+      </div>
+    </div>
+    <div class="Otel-card-right">
+      <div class="Otel-card-review">
+        <span>9/10</span>
+        <p>Mükemmel <u>124 yorum</u></p>
+      </div>
+      <div class="Otel-card-price">
+        <span>2 GECE</span>
+        <s>16.500TL</s>
+        <b>12.420 <small>TL</small></b>
+        <p>Gecelik <span>1.400TL</span></p>
+      </div>
+      <div class="Otel-card-link">
+        <button>Oda Seç</button>
+      </div>
+    </div>
+  </a>
+  
+  <!-- <div class="generally-infos bg-white rounded-xxl d-flex flex-column flex-xl-row w-100 pt-1 ms-lg-n1 mb-4 mb-sm-5 pe-xl-0 pe-lg-4">
     <div class="item-image position-relative flex-shrink-0 pe-xl-2 mb-xl-0 mb-3">
       <a href="javascript:void(0)" @click="goDetail" class="d-block flex-shrink-0">
         <img
@@ -71,7 +122,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
