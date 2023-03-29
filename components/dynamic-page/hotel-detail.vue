@@ -20,7 +20,7 @@
                     </div>
                   </div>
                   <div class="Otel-card-review">
-                    <span>9/10</span>
+                    <span>{{ hotelDetails.body.hotel.stars }}/5</span>
                     <p>Mükemmel <u>124 yorum</u></p>
                   </div>
                 </div>
@@ -78,7 +78,7 @@
                   </div>
                 </div>
                 <div class="View-menu-right">
-                  <a href="" class="map-view">Haritada Görüntüle</a>
+                  <a target="_blank" :href="`https://www.google.com/maps/@${ hotelDetails.body.hotel.geolocation.latitude },${ hotelDetails.body.hotel.geolocation.longitude },16z`" class="map-view">Haritada Görüntüle</a>
                 </div>
               </div>
             </div>
@@ -543,24 +543,10 @@
 
       <section class="general-informations-section mt-5 mb-5 pb-sm-2">
         <div class="container">
-          <div class="general-informations-section-title"><span>The European Hotel</span> Genel Bilgiler</div>
+          <div class="general-informations-section-title"><span>{{ hotelDetails.body.hotel.name }}</span> Genel Bilgiler</div>
           <div class="general-informations-section-in">
-            <div class="general-informations-section-text">
-              <p>2010 yılında yapılan Ramada Plaza Antalya Muratpaşa bölgesinde bulunmaktadır. 38000 m2 alanda kurulmuş
-                olan
-                Ramada Plaza Antalya otel ultra herşey dahil konseptiyle misafirlerimize hizmet vermektedir</p>
-              <p>Ramada Plaza Antalya denize sıfır konumuyla dikkat çekmektedir. Otelin kendine ait iskelesi vardır. Tesis
-                2
-                adet ala carte restaurant ile misafirlere özel hizmet sunmaktadır. Açık ve kapalı yüzme havuzları ile
-                eğlenme
-                ve dinlenme imkanı bulabilirsiniz.</p>
-              <p>Bilardo oynayarak keyifli vakit geçirebilirsiniz. Tesis içerisinde yer alan masaj hizmetlerinden
-                faydalanarak
-                rahatlayabilir ve kendinizi yenilenmiş hissedebilirsiniz. Tesis içerisinde bulunan doktor, fotoğrafçı,
-                güzellik salonu, kuaför, market, araç kiralama hizmetlerinden yararlanabilirsiniz</p>
-              <p>Keyifli vakit geçirmeniz için tesiste bar bulunmaktadır. Otel Antalya Havaalanı'na 15 km,Antalya
-                Havaalanı'na
-                15 km, Kaleiçi'ye 500 m, Merkezde'ye 100 m uzaklıktadır</p>
+            <div class="general-informations-section-text" v-html="hotelDetails.body.hotel.description.text">
+              
             </div>
             <div class="general-informations-section-map">
               <nuxt-img src="/img/map-bg.png"></nuxt-img>
@@ -573,25 +559,8 @@
       <div class="otel-features">
         <div class="container">
           <div class="otel-features-in">
-            <h4>The European Hotel <span>Özellikler</span></h4>
-            <p class="otel-features-item">Açık Otopark</p>
-            <p class="otel-features-item">Kuru Temizleme Servisi</p>
-            <p class="otel-features-item">Bar</p>
-            <p class="otel-features-item">Kablosuz İnternet (wi-fi)</p>
-            <p class="otel-features-item">Oda Servisi</p>
-            <p class="otel-features-item">Restoran(lar)</p>
-            <p class="otel-features-item">Açık Otopark</p>
-            <p class="otel-features-item">Kuru Temizleme Servisi</p>
-            <p class="otel-features-item">Bar</p>
-            <p class="otel-features-item">Kablosuz İnternet (wi-fi)</p>
-            <p class="otel-features-item">Oda Servisi</p>
-            <p class="otel-features-item">Restoran(lar)</p>
-            <p class="otel-features-item">Açık Otopark</p>
-            <p class="otel-features-item">Kuru Temizleme Servisi</p>
-            <p class="otel-features-item">Bar</p>
-            <p class="otel-features-item">Kablosuz İnternet (wi-fi)</p>
-            <p class="otel-features-item">Oda Servisi</p>
-            <p class="otel-features-item">Restoran(lar)</p>
+            <h4>{{ hotelDetails.body.hotel.name }} <span>Özellikler</span></h4>
+            <p class="otel-features-item" v-for="featuresitem in hotelDetails.body.hotel.seasons[0].facilityCategories[0].facilities" :key="featuresitem.id">{{ featuresitem.name }} <span v-if="featuresitem.isPriced" style="font-weight:500;text-decoration:underline;margin-left: 5px;">(Ücretli)</span></p>
           </div>
         </div>
       </div>
@@ -914,7 +883,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.hotel)
+    console.log(this.hotelDetails)
   }
 }
 </script>

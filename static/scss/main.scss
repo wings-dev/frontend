@@ -13364,16 +13364,28 @@ body.overflow-hidden {
   }
   &-text {
     width: 65%;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: justify;
+      color: #7f8090;
+      br{
+        margin: 10px 0;
+      }
     p {
       font-size: 14px;
       font-weight: 500;
       text-align: justify;
       color: #7f8090;
       margin-bottom: 10px;
+      margin-top: 10px;
+      br{
+        margin: 10px 0;
+      }
     }
   }
   &-map {
     width: calc(35% - 40px);
+    height: max-content;
     position: relative;
     button {
       background-color: var(--bs-theme-first);
