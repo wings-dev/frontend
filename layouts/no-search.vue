@@ -5,7 +5,7 @@
     <main class="main">
       <Nuxt />
 
-      <div class="header-call">
+      <!-- <div class="header-call">
         <button type="button" data-bs-toggle="modal" data-bs-target="#callModal" class="header-call-phone"><i
             class="icon-header-phone"></i>
           <p><b>SİZİ</b>ARAYALIM</p>
@@ -13,7 +13,7 @@
         <a href="" class="header-call-assistant"><i class="icon-header-assistant"></i>
           <p><b>TATİL</b>ASİSTANI</p>
         </a>
-      </div>
+      </div> -->
 
     </main>
 

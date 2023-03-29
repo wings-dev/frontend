@@ -310,7 +310,8 @@
               </p>
 
               <client-only>
-                <availibility-calendar :slug="$route.params.slug"></availibility-calendar>
+                <availibility-calendar :slug="$route.params.slug" :calendarColumns="2" :rows="1"
+                  :calendarStep="1"></availibility-calendar>
               </client-only>
 
               <div class="View-availibility-legand">
@@ -402,8 +403,9 @@
                             <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                               <span class="room-item-title">{{ bolum.name }}</span>
                               <p class="room-item-text">
-                                <span style="margin-right: 5px;" v-for="(ozellik, index3) in bolum.donanim" :key="index3">{{
-                                  ozellik }}</span>
+                                <span style="margin-right: 5px;" v-for="(ozellik, index3) in bolum.donanim"
+                                  :key="index3">{{
+                                    ozellik }}</span>
                               </p>
                             </div>
                           </div>
@@ -666,27 +668,29 @@
                     </div>
                   </div>
                 </div>
-                <div class="View-info-rules">
-                  <h5>Tesis Kuralları</h5>
-                  <div class="View-info-rules-item">
-                    <img src="/img/no-pets.svg" alt="">
-                    <p>Evcil Hayvan Giremez</p>
+                <div class="View-info-bg">
+                  <div class="View-info-rules">
+                    <h5>Tesis Kuralları</h5>
+                    <div class="View-info-rules-item">
+                      <img src="/img/no-pets.svg" alt="">
+                      <p>Evcil Hayvan Giremez</p>
+                    </div>
+                    <div class="View-info-rules-item">
+                      <img src="/img/no-smoking.svg" alt="">
+                      <p>Sigara İçilemez</p>
+                    </div>
+                    <div class="View-info-rules-item">
+                      <img src="/img/no-party.svg" alt="">
+                      <p>Parti Yapılamaz</p>
+                    </div>
                   </div>
-                  <div class="View-info-rules-item">
-                    <img src="/img/no-smoking.svg" alt="">
-                    <p>Sigara İçilemez</p>
+                  <div class="View-info-policy">
+                    <h5>İptal Politikası</h5>
+                    <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                      pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.Yemek servisi
+                      hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi pişirebilir,kendi
+                      ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
                   </div>
-                  <div class="View-info-rules-item">
-                    <img src="/img/no-party.svg" alt="">
-                    <p>Parti Yapılamaz</p>
-                  </div>
-                </div>
-                <div class="View-info-policy">
-                  <h5>İptal Politikası</h5>
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.Yemek servisi
-                    hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi pişirebilir,kendi
-                    ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
                 </div>
                 <div class="View-info-fee">
                   <div class="View-info-fee-left">
@@ -1066,8 +1070,8 @@ export default {
         if (dateStatus.includes(0) && dateStatus.includes(2)) {
           // bir önceki günün tipine bak
           return prevDayData?.status.includes(2)
-            ? { "kapali-cikis-to-opsiyon-giris" : true}
-            : { "opsiyon-cikis-to-kapali-giris" : true };
+            ? { "kapali-cikis-to-opsiyon-giris": true }
+            : { "opsiyon-cikis-to-kapali-giris": true };
         }
 
 
@@ -1347,7 +1351,6 @@ export default {
 </script>
 
 <style scoped>
-
 .vc-container {
   --gray-500: #A6AFC2 !important;
   --gray-900: var(--bs-theme-first-dark) !important;
@@ -1374,9 +1377,10 @@ export default {
   min-height: 48px !important;
 }
 
-:deep() .vc-weeks{
+:deep() .vc-weeks {
   margin-top: 30px;
 }
+
 .opsiyon {
   background-image: linear-gradient(to bottom, #FFF8E7, #FFF8E7);
 }

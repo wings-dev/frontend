@@ -127,7 +127,29 @@ export default {
     },
   },
   methods: {
-   
+    search() {
+      // şehir
+      if (this.selectedCity.type === 1) {
+        const queryParams = {
+          destinations: this.selectedCity.city.id,
+          checkIn: this.checkIn,
+          checkOut: this.checkOut,
+          adult: this.adult,
+          childAges: this.childAges.length ? this.childAges.filter(child => child.age !== '').map(child => child.age) : [],
+        };
+
+        const localData = { ...queryParams };
+        localData['selectedCity'] = this.selectedCity;
+        localStorage.setItem('lastHotelSearch', JSON.stringify(localData));
+
+        const urlSearchParams = Object.entries(queryParams)
+          .filter(([key, value]) => value !== undefined && value !== null && value !== '')
+          .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
+          .join('&');
+
+        window.location.href = `${window.location.origin}/oteller?${urlSearchParams}`;
+      }
+    },
     checkInChanged(value) {
       this.checkIn = this.formatDate(value);
     },

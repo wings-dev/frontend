@@ -1,9 +1,15 @@
 <template>
   <div>
-    <template v-if="loading">Takvim Yükleniyor...</template>
+    <template v-if="loading">
+      <div class="No-villas" v-if="loading">
+              <img src="img/villa-loading.svg" alt="">
+              <h2>Takvim Yükleniyor...</h2>
+              <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
+            </div>
+    </template>
     <template v-else>
-      <v-calendar class="custom-calendar mt-4" :attributes="calendarAttributes" :columns="2"
-                  :disabled-dates="disabledDates" disable-page-swipe :step="1">
+      <v-calendar class="custom-calendar mt-4" :attributes="calendarAttributes" :columns="calendarColumns" :rows="calendarRows"
+                  :disabled-dates="disabledDates" disable-page-swipe :step="calendarStep">
         <template v-slot:day-content="{ day, attributes }">
           <div v-for="(attr, index) in attributes" :key="index"
                class="d-flex flex-column align-items-center justify-content-start h-100 z-10 overflow-hidden w-100 calendar-cell"
@@ -31,8 +37,16 @@ export default {
   },
   props: {
     slug: {
-      type: String,
       required: true
+    },
+    calendarColumns:{
+      type:Number
+    },
+    calendarRows:{
+      type:Number
+    },
+    calendarStep:{
+      type:Number
     },
   },
   data() {

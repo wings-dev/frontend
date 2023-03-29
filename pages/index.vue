@@ -50,7 +50,7 @@
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>Fethiye <span>Turkey / Muğla</span></p>
+                                                <p>FETHİYE <span>Turkey / Muğla</span></p>
                                             </div>
                                         </div>
                                         <div class="Card-content-info">
@@ -312,7 +312,7 @@
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>Fethiye <span>Turkey / Muğla</span></p>
+                                                <p>FETHİYE <span>Turkey / Muğla</span></p>
                                             </div>
                                         </div>
                                         <div class="Card-content-info">
@@ -353,7 +353,7 @@
 
             </div>
         </section>
-        <section class="categories-section mb-5 pb-sm-4 pb-lg-5">
+        <section class="categories-section  pb-sm-4 pb-lg-5">
             <div class="container pb-lg-5">
                 <div class="section-caption d-flex align-items-center mb-3 mb-sm-5 pb-sm-1">
                     <i class="icon-categories"></i>
@@ -363,7 +363,7 @@
                 </div>
                 <div class="categories">
                     <a href="#!"
-                        class="cat-item no-hover area1 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
+                        class="cat-item no-hover area1 overflow-hidden position-relative">
                         <img src="/uploads/category-image1.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -380,7 +380,7 @@
                         </div>
                     </a>
                     <a href="#!"
-                        class="cat-item no-hover area2 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
+                        class="cat-item no-hover area2 overflow-hidden position-relative">
                         <img src="/uploads/category-image2.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -397,7 +397,7 @@
                         </div>
                     </a>
                     <a href="#!"
-                        class="cat-item no-hover area3 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
+                        class="cat-item no-hover area3 overflow-hidden position-relative">
                         <img src="/uploads/category-image3.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -414,7 +414,7 @@
                         </div>
                     </a>
                     <a href="#!"
-                        class="cat-item no-hover area4 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
+                        class="cat-item no-hover area4 overflow-hidden position-relative">
                         <img src="/uploads/category-image4.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1">
@@ -434,7 +434,7 @@
                         </div>
                     </a>
                     <a href="#!"
-                        class="cat-item no-hover area5 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
+                        class="cat-item no-hover area5 overflow-hidden position-relative">
                         <img src="/uploads/category-image5.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -451,7 +451,7 @@
                         </div>
                     </a>
                     <a href="#!"
-                        class="cat-item no-hover area6 bg-theme-light-2 rounded-sm overflow-hidden position-relative">
+                        class="cat-item no-hover area6 overflow-hidden position-relative">
                         <img src="/uploads/category-image7.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -468,7 +468,7 @@
                         </div>
                     </a>
                     <div
-                        class="area7 border border-light rounded-sm overflow-hidden d-flex align-items-center justify-content-center categories-more">
+                        class="area7 border border-light  d-flex align-items-center justify-content-center categories-more">
                         <nuxt-link to="/">
                             <span>Daha fazla görüntüle</span>
                             <i class="icon-right-arrows-new"></i>
@@ -553,7 +553,7 @@
                                                 </div>
                                                 <div class="Card-content-head-location">
                                                     <i class="icon-pin"></i>
-                                                    <p>Fethiye <span>Turkey / Muğla</span></p>
+                                                    <p>FETHİYE <span>Turkey / Muğla</span></p>
                                                 </div>
                                             </div>
                                             <div class="Card-content-info">
@@ -650,7 +650,7 @@ export default {
 
         const swiper = new Swiper('.list-slide-first', {
             slidesPerView: 1.1,
-            spaceBetween: 18,
+            spaceBetween: 10,
             direction: 'horizontal',
             loop: true,
             modules: [Navigation, Pagination],
@@ -661,21 +661,18 @@ export default {
             breakpoints: {
                 576: {
                     slidesPerView: 2,
-                    spaceBetween: 18,
                 },
                 768: {
                     slidesPerView: 3,
-                    spaceBetween: 18,
                 },
                 1199: {
                     slidesPerView: 4,
-                    spaceBetween: 18,
                 },
             },
         })
         const swiper2 = new Swiper('.list-slide-firsat', {
             slidesPerView: 1.1,
-            spaceBetween: 18,
+            spaceBetween: 10,
             direction: 'horizontal',
             loop: true,
             modules: [Navigation, Pagination],
@@ -686,21 +683,18 @@ export default {
             breakpoints: {
                 576: {
                     slidesPerView: 2,
-                    spaceBetween: 18,
                 },
                 768: {
                     slidesPerView: 3,
-                    spaceBetween: 18,
                 },
                 1199: {
                     slidesPerView: 3,
-                    spaceBetween: 18,
                 },
             },
         })
         const swiper3 = new Swiper('.list-slide-opportunity', {
             slidesPerView: 1,
-            spaceBetween: 18,
+            spaceBetween: 16,
             direction: 'horizontal',
             loop: true,
             modules: [Navigation, Pagination],
@@ -715,22 +709,18 @@ export default {
             breakpoints: {
                 576: {
                     slidesPerView: 2,
-                    spaceBetween: 18,
                 },
                 768: {
                     slidesPerView: 2,
-                    spaceBetween: 18,
-
                 },
                 1199: {
                     slidesPerView: 2,
-                    spaceBetween: 18,
                 },
             },
         })
         const swiper4 = new Swiper('.list-slide-otel', {
             slidesPerView: 1.1,
-            spaceBetween: 18,
+            spaceBetween: 10,
             direction: 'horizontal',
             loop: true,
             observer: true,
@@ -747,15 +737,12 @@ export default {
             breakpoints: {
                 576: {
                     slidesPerView: 2,
-                    spaceBetween: 18,
                 },
                 768: {
                     slidesPerView: 3,
-                    spaceBetween: 18,
                 },
                 1199: {
                     slidesPerView: 4,
-                    spaceBetween: 18,
                 },
             },
         })

@@ -66,7 +66,7 @@
             </div>
           </div>
 
-          <div class="F_villa ">
+          <div class="F_villa F_villa-otel ">
 
             <filter-hotel-preview-component v-for="(hotel, index) in hotels" :key="index"
               :hotel="hotel" :checkindate="checkIn" :requestId="requestId"></filter-hotel-preview-component>

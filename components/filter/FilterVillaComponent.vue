@@ -562,16 +562,5 @@ export default {
 </script>
 
 <style scoped>
-.Filter-right-head-buttons-item .v-select {
-  width: 240px;
-  border: none;
-}
 
-:deep() .Filter-right-head-buttons-item .v-select-toggle {
-  height: 45px;
-  cursor: pointer;
-  border-radius: 6px;
-  color: var(--bs-theme-first) !important;
-  background-color: #eff1f5 !important;
-}
 </style>

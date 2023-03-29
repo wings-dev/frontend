@@ -26,7 +26,6 @@
             </div>
           </HotelDatePicker>
         </div>
-
         <div class="Reservation-form-item Reservation-form-item-person">
           <label for="">
             <span class="Reservation-form-item-title">Kişi Sayısı</span>
@@ -148,11 +147,11 @@
         </div>
       </div>
       <div class="Reservation-form-info">
+
         <div class="Reservation-form-info-item">
           <div class="Reservation-form-info-item-in">
             <div class="Reservation-form-info-item-left">
               <h5>Ön Ödeme Tutarı</h5>
-              <p>5500 TL %20 Ödeme Kalan Tutar Tesise Girişte Ödenecektir 22.000 TL</p>
             </div>
             <div class="Reservation-form-info-item-right">
               <b>{{availabilityData.advance_payment}} TL</b>
@@ -164,13 +163,13 @@
           <div class="Reservation-form-info-item-in">
             <div class="Reservation-form-info-item-left">
               <h5>Toplam Tutar</h5>
-              <p><span class="day">5</span> gece için konaklama ve temizlik giderleri dahil toplam fiyat</p>
             </div>
             <div class="Reservation-form-info-item-right">
               <b>{{availabilityData.total_payment}} TL</b>
             </div>
           </div>
-          <div class="accordion Reservation-form-info-item-more" id="accordionExample">
+        </div>
+        <div class="accordion Reservation-form-info-item-more" id="accordionExample">
             <div class="accordion-item">
               <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
                 data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -180,8 +179,6 @@
 
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample">
-                <h6>Rezervasyon Detayları</h6>
-
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>{{availabilityData.day}} Gece Konaklama Tutarı</p>
@@ -218,8 +215,6 @@
               </div>
             </div>
           </div>
-
-        </div>
       </div>
     </div>
     <button v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading" class="Reservation-form-submit"

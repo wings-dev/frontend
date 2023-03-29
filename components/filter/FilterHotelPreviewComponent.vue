@@ -3,7 +3,7 @@
     <div class="Otel-card-left">
       <div class="Otel-card-img">
         <img
-          src="https://d1t2mawg5vwzes.cloudfront.net/hotel/102627/377277/conversions/crop_9999_666_Villa-Mimi-Tuscany-Olivers-Travels2-preview.jpg"
+        :src="previewImageUrl"
           width="361" height="255" alt="hotel image" class="" />
         <button class="Card-fav" type="button" @click="toggleFavorite">
           <i class="icon-heart"></i>
@@ -41,7 +41,7 @@
       <div class="Otel-card-price">
         <span>2 GECE</span>
         <s>16.500TL</s>
-        <b>12.420 <small>TL</small></b>
+        <b>{{ hotel.offers[0].price.amount }}<small>{{ hotel.offers[0].price.currency }}</small></b>
         <p>Gecelik <span>1.400TL</span></p>
       </div>
       <div class="Otel-card-link">

@@ -1,6 +1,6 @@
 <template>
   <div class="Filters Filters-region ">
-    <div v-if="!hideTitle" class="Filters-head" v-bind:class="{ 'border-bottom' : !hideTitleBorder}" @click="checkboxOpen(groupName)"><i class="icon-location-1"></i><h5>{{title}}</h5></div>
+    <div v-if="!hideTitle" class="Filters-head" v-bind:class="{ 'border-bottom' : !hideTitleBorder}" @click="checkboxOpen(groupName)"><i class="icon-location-1"></i><h5>{{title}} <span v-if="selectedLength">({{ selectedLength }})</span></h5></div>
     
     <div class="Filters-in" :ref="groupName">
       <div class="Filters-in-mobile">
@@ -74,8 +74,9 @@
         </li>
         </template>
       </ul>
-      <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM</button>  
+      <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM <span v-if="selectedLength">({{ selectedLength }})</span></button>  
     </div>
+    
   </div>
 </template>
 
@@ -94,7 +95,8 @@ export default {
   data() {
     return {
       filterText: "",
-      filteredCheckboxes: []
+      filteredCheckboxes: [],
+      selectedLength:null
     };
   },
   computed: {
@@ -131,6 +133,7 @@ export default {
           this.updateSelection(child, value);
         });
       }
+      
     },
     /**
      * selected true olan nodeların codelarını verir
@@ -145,6 +148,8 @@ export default {
         if (checkbox.children) {
           selectedCodes.push(...this.getSelectedCodes(checkbox.children));
         }
+        this.selectedLength = selectedCodes.length
+        console.log(typeof this.selectedLength)
         return selectedCodes;
       }, []);
     },

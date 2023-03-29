@@ -153,7 +153,7 @@
 
       <section class="rooms-section pt-3 mt-1">
         <div class="container">
-
+          {{hotelPriceDetails.body?.hotels[0]?.offers}}
           <template v-if="roomsLoading">
             Odalar yükleniyor...
           </template>
@@ -878,6 +878,9 @@ export default {
       let response = await this.$dataService.getOfferDetails({ offerIds });
       this.offerDetails = response.data.body.offerDetails;
     }
+
+    
+    console.log(response)
     this.roomsLoading = false;
   },
   computed: {
@@ -911,7 +914,7 @@ export default {
     },
   },
   mounted() {
-
+    console.log(this.hotel)
   }
 }
 </script>
