@@ -42,7 +42,8 @@
           <div class="F_villa-item-head-location">
             <i class="icon-name-location"></i>
             <div class="F_villa-item-head-location-text">
-              <p>{{ villa.city[0].toUpperCase() + villa.city.substring(1) }}
+              <!-- <p>{{ villa.city[0].toUpperCase() + villa.city.substring(1) }}</p> -->
+              <p>{{ villa.city.toUpperCase() }}
                 <span>{{ villa.country[0].toUpperCase() + villa.country.substring(1) }} /
                   {{ villa.city[0].toUpperCase() + villa.city.substring(1) }} </span>
               </p>
@@ -50,21 +51,23 @@
           </div>
           <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-if="checkindate">
             <div class="F_villa-item-head-price-in">
-              <b>{{ villa.total.total | numberFormat }}₺</b>
+              <span>TOPLAM</span>
+              <b>{{ villa.total.total | numberFormat }}<span>TL</span></b>
               <p>{{ villa.total.day }} gece fiyatı</p>
             </div>
 
-            <span>TOPLAM</span>
+            
           </div>
           <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
 
 
             <div class="F_villa-item-head-price-in">
-              <b>{{ villa.prices.min_price.price | numberFormat }}₺</b>
+              <span>GECELİK</span>
+              <b>{{ villa.prices.min_price.price | numberFormat }}<span>TL</span></b>
               <p>‘den başlayan fiyatlar</p>
             </div>
 
-            <span>GECELİK</span>
+            
           </div>
         </div>
         <div class="F_villa-item-info">

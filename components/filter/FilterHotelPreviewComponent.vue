@@ -2,24 +2,24 @@
   <a @click="goDetail" class="Otel-card">
     <div class="Otel-card-left">
       <div class="Otel-card-img">
-        <img
-        :src="previewImageUrl"
-          width="361" height="255" alt="hotel image" class="" />
+        <img :src="previewImageUrl" width="361" height="255" alt="hotel image" class="" />
         <button class="Card-fav" type="button" @click="toggleFavorite">
           <i class="icon-heart"></i>
         </button>
       </div>
       <div class="Otel-card-content">
         <div class="Otel-card-content-head">
-          <b>{{ hotel.name }}</b>
-          <small>Ankara, Türkiye</small>
+          <div class="Otel-card-content-head-in">
+            <b>{{ hotel.name }}</b>
+            <small>{{ hotel.city.name }}, {{ hotel.country.name }}</small>
+          </div>
+          <div class="Otel-card-review mobile">
+            <span>{{hotel.stars}}/5</span>
+            <p>Mükemmel <u>124 yorum</u></p>
+          </div>
         </div>
         <div class="Otel-card-content-features">
-          <p>Wi-Fi</p>
-          <p>Oda Kahvaltı</p>
-          <p>Kapalı Havuz</p>
-          <p>Kuaför</p>
-          <p>Kuaför</p>
+          <p v-for="(item,index) in hotel.facilities" :key="index" v-if="index <= 4">{{item.name}}</p>
         </div>
         <div class="Otel-card-content-info">
           <div class="Otel-card-content-info-item erkenrezervasyon">
@@ -30,26 +30,29 @@
             <p>Ücretsiz İptal</p>
           </div>
         </div>
-        <p class="Otel-card-content-warning">Bu fiyattan son oda!</p>
+        <p class="Otel-card-content-warning desktop">Bu fiyattan son oda!</p>
       </div>
     </div>
     <div class="Otel-card-right">
-      <div class="Otel-card-review">
-        <span>9/10</span>
+      <div class="Otel-card-review desktop">
+        <span>{{hotel.stars}}/5</span>
         <p>Mükemmel <u>124 yorum</u></p>
       </div>
       <div class="Otel-card-price">
-        <span>2 GECE</span>
-        <s>16.500TL</s>
-        <b>{{ hotel.offers[0].price.amount }}<small>{{ hotel.offers[0].price.currency }}</small></b>
-        <p>Gecelik <span>1.400TL</span></p>
+        <span>{{ hotel.offers[0].night }} GECE</span>
+        <div class="Otel-card-price-in">
+          <s>16.500TL</s>
+          <b>{{ hotel.offers[0].price.amount }}<small>{{ hotel.offers[0].price.currency }}</small></b>
+          <p>Gecelik <span>1.400TL</span></p>
+          <p class="Otel-card-content-warning mobile">Bu fiyattan son oda!</p>
+        </div>
       </div>
       <div class="Otel-card-link">
-        <button>Oda Seç</button>
+        <button><span class="desktop">Oda Seç</span><i class="icon-right-arrows-new mobile"></i></button>
       </div>
     </div>
   </a>
-  
+
   <!-- <div class="generally-infos bg-white rounded-xxl d-flex flex-column flex-xl-row w-100 pt-1 ms-lg-n1 mb-4 mb-sm-5 pe-xl-0 pe-lg-4">
     <div class="item-image position-relative flex-shrink-0 pe-xl-2 mb-xl-0 mb-3">
       <a href="javascript:void(0)" @click="goDetail" class="d-block flex-shrink-0">
@@ -218,6 +221,7 @@ export default {
       },
 
     })
+    console.log(this.hotel)
   }
 }
 </script>

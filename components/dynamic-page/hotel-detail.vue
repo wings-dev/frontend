@@ -1017,22 +1017,6 @@ export default {
   }
 }
 
-.btn-close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  background-color: var(--bs-theme-third) !important;
-  width: auto !important;
-  height: auto !important;
-  margin: 0 !important;
-  z-index: 2;
-
-  i {
-    font-size: 42px !important;
-    color: #fff !important;
-  }
-}
-
 .slide-numbers {
   background-color: var(--bs-theme-third) !important;
   position: absolute;
