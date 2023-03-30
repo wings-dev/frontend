@@ -198,8 +198,9 @@
                       </div>
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
+                          <span>GECELİK</span>
                           <b>-</b>
-                          <small>başlayan gecelik fiyatlarla</small>
+                          <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
@@ -216,8 +217,9 @@
                       </div>
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
+                          <span>GECELİK</span>
                           <b>-</b>
-                          <small>başlayan gecelik fiyatlarla</small>
+                          <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
@@ -234,8 +236,9 @@
                       </div>
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
+                          <span>GECELİK</span>
                           <b>-</b>
-                          <small>başlayan gecelik fiyatlarla</small>
+                          <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
                           <p>EN AZ KONAKLAMA</p>
@@ -252,11 +255,12 @@
                       </div>
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
+                          <span>GECELİK</span>
                           <b>3500₺</b>
-                          <small>başlayan gecelik fiyatlarla</small>
+                          <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
-                          <p>EN AZ KONAKLAMA</p>
+                          <p>En az konaklama</p>
                           <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                               title="Tooltip on right"></i></b>
                         </div>
@@ -270,11 +274,12 @@
                       </div>
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
+                          <span>GECELİK</span>
                           <b>3500₺</b>
-                          <small>başlayan gecelik fiyatlarla</small>
+                          <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
-                          <p>EN AZ KONAKLAMA</p>
+                          <p>En az konaklama</p>
                           <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                               title="Tooltip on right"></i></b>
                         </div>
@@ -288,11 +293,12 @@
                       </div>
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
+                          <span>GECELİK</span>
                           <b>3500₺</b>
-                          <small>başlayan gecelik fiyatlarla</small>
+                          <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
-                          <p>EN AZ KONAKLAMA</p>
+                          <p>En az konaklama</p>
                           <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                               title="Tooltip on right"></i></b>
                         </div>
@@ -316,45 +322,61 @@
 
               <div class="View-availibility-legand">
                 <div class="View-availibility-legand-item">
-                  <span class="close-day"></span>
+                  <span class="close-day"><i class="icon-time-1"></i></span>
                   <p>Dolu</p>
                 </div>
                 <div class="View-availibility-legand-item">
-                  <span></span>
+                  <span>/</span>
                   <p>Onay Bekleniyor</p>
                 </div>
               </div>
             </div>
             <div class="View-beds">
-              <h2 class="View-title">Yatak ve Kişi Kapasitesi</h2>
               <div class="View-beds-in">
-                <div class="View-beds-item double">
-                  <i class="icon-bed"></i>
-                  <p class="View-beds-item-name">Çift Kişilik Yatak</p>
-                  <div class="View-beds-item-total">
-                    <p>1</p>
-                    <span>adet</span>
+                <div class="View-beds-item first">
+                  <p class="View-beds-item-name"><b>Yatak ve</b> Kişi Kapasitesi</p>
+                  <div class="View-beds-item-in">
+                    <p><i class="icon-user-double"></i>4 Kişi Konaklayabilir</p>
+                    <p><i class="icon-user-double"></i>2 Yatak Odası</p>
                   </div>
                 </div>
                 <div class="View-beds-item single">
-                  <i class="icon-bed"></i>
-                  <p class="View-beds-item-name">Tek Kişilik Yatak</p>
-                  <div class="View-beds-item-total">
-                    <p>1</p>
-                    <span>adet</span>
+
+                  <p class="View-beds-item-name"><b>Tek Kişilik</b> Yatak</p>
+                  <div class="View-beds-item-in">
+                    <div class="View-beds-item-total">
+                      <p>1</p>
+                      <span>adet</span>
+                    </div>
+                    <span class="x-span">x</span>
+                    <i class="icon-bed"></i>
                   </div>
                 </div>
+                <div class="View-beds-item double">
+                  <p class="View-beds-item-name"><b>Çift Kişilik</b> Yatak</p>
+                  <div class="View-beds-item-in">
+                    <div class="View-beds-item-total">
+                      <p>1</p>
+                      <span>adet</span>
+                    </div>
+                    <span class="x-span">x</span>
+                    <i class="icon-bed-new"></i>
+                  </div>
+                </div>
+
                 <div class="View-beds-item capacity">
-                  <i class="icon-user"></i>
-                  <p class="View-beds-item-name">Kapasite</p>
-                  <div class="View-beds-item-total">
-                    <p>4</p>
-                    <span>kişilik</span>
+                  <p class="View-beds-item-name"><b>Banyo</b> Sayısı</p>
+                  <div class="View-beds-item-in">
+                    <div class="View-beds-item-total">
+                      <p>4</p>
+                      <span>kişilik</span>
+                    </div>
+                    <span class="x-span">x</span>
+                    <i class="icon-shower"></i>
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="View-rooms rooms-section position-relative d-none">
               <div class="rooms-caption d-flex flex-column flex-sm-row align-items-sm-center flex-wrap mb-3 mb-sm-4 pb-1">
                 <h4 class="View-title me-4 pe-2">
@@ -450,59 +472,178 @@
             </div>
             <div class="View-location location view-menu-content-item" id="location-content">
               <div class="View-location-head mb-3">
-                <h4 class="View-title">
-                  Konum
-                </h4>
-                <p class="View-text">Yakınında Neler Var </p>
+                <div class="Viwe-location-head-in">
+                  <h4 class="View-title">
+                    Konum
+                  </h4>
+                  <p class="View-text">Yakınında Neler Var </p>
+                </div>
+                <a href="">
+                  <i class="icon-map"></i>
+                  <p><span>Tesis Konumunu</span>Haritada Gör</p>
+                </a>
 
               </div>
-
-
 
               <div class="View-location-in">
-                <div class="View-location-left d-none">
-                  <div class="View-location-item" v-for="(place, index) in villa.places" :key="index">
-                    <p>{{ index.substr(6) }} -) {{ place.place_type }}</p>
-                    <span>7 Km</span>
-                  </div>
-                  <!-- <div class="View-location-item">
-                                      <p>2 -) Süper Market</p>
-                                      <span>1 Km</span>
-                                    </div>
-                                    <div class="View-location-item">
-                                      <p>3 -) Restaurant</p>
-                                      <span>17 Km</span>
-                                    </div>
-                                    <div class="View-location-item">
-                                      <p>4 -) Müze Kayaköy</p>
-                                      <span>5 Km</span>
-                                    </div>
-                                    <div class="View-location-item">
-                                      <p>4 -) Müze Kayaköy</p>
-                                      <span>3 Km</span>
-                                    </div> -->
-                </div>
-                <div class="View-location-right w-100">
-                  <div id="map-wrap" style="height: 400px;">
-                    <client-only>
-                      <l-map :zoom=13 :center="center" :maxZoom=16>
-                        <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
-                        <l-marker :lat-lng="center">
-                          <l-icon iconUrl="img/map-center.svg" :iconSize=iconSize></l-icon>
-                        </l-marker>
-                        <!-- <l-marker v-for="(marker, index) in markers" :key="index" :lat-lng="marker">
-                        <l-popup>
-                          <div >
-                            Tooltip {{index}}
-                          </div>
-                        </l-popup>
-                    </l-marker> -->
+                <div class="first-tab">
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-beach-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-beach" type="button" role="tab" aria-controls="pills-home"
+                        aria-selected="true">
+                        <p><i class="icon-beach"></i>Tesise Yakın Plaj</p> <span>12</span>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-architecture-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-architecture" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false">
+                        <p><i class="icon-architecture"></i>Gezilecek yerler</p> <span>12</span>
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-beach" role="tabpanel"
+                      aria-labelledby="pills-beach-tab">
+                      <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığa kuş bakışı
+                        olarak hesaplanmıştır.</p>
+                      <div class="first-tab-item">
+                        <div class="first-tab-item-img">
+                          <img src="/img/kaputas.png" alt="" width="157" height="95">
+                        </div>
+                        <div class="first-tab-item-content">
+                          <b>Kaputaş Plajı</b>
+                          <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using</p>
+                        </div>
+                        <div class="first-tab-item-length">
+                          <b>7</b>
+                          <p>km</p>
+                          <small>Uzaklıkta</small>
+                          <span>#1</span>
+                        </div>
+                      </div>
+                      <div class="first-tab-item">
+                        <div class="first-tab-item-img">
+                          <img src="/img/kaputas.png" alt="" width="157" height="95">
+                        </div>
+                        <div class="first-tab-item-content">
+                          <b>Ölüdeniz</b>
+                          <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using</p>
+                        </div>
+                        <div class="first-tab-item-length">
+                          <b>7</b>
+                          <p>km</p>
+                          <small>Uzaklıkta</small>
+                          <span>#2</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-architecture" role="tabpanel"
+                      aria-labelledby="pills-architecture-tab">
+                      <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığa kuş bakışı
+                        olarak hesaplanmıştır.</p>
+                      <div class="first-tab-item">
+                        <div class="first-tab-item-img">
+                          <img src="/img/kaputas.png" alt="" width="157" height="95">
+                        </div>
+                        <div class="first-tab-item-content">
+                          <b>Kaputaş Plajı</b>
+                          <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using</p>
+                        </div>
+                        <div class="first-tab-item-length">
+                          <b>7</b>
+                          <p>km</p>
+                          <small>Uzaklıkta</small>
+                          <span>#1</span>
+                        </div>
+                      </div>
+                      <div class="first-tab-item">
+                        <div class="first-tab-item-img">
+                          <img src="/img/kaputas.png" alt="" width="157" height="95">
+                        </div>
+                        <div class="first-tab-item-content">
+                          <b>Ölüdeniz</b>
+                          <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using</p>
+                        </div>
+                        <div class="first-tab-item-length">
+                          <b>7</b>
+                          <p>km</p>
+                          <small>Uzaklıkta</small>
+                          <span>#2</span>
+                        </div>
+                      </div>
+                    </div>
 
-                      </l-map>
-                    </client-only>
+                  </div>
+                </div>
+                <div class="second-tab">
+                  <ul class="nav nav-pills " id="location-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-health-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-health" type="button" role="tab" aria-controls="pills-home"
+                        aria-selected="true">
+                        <p><i class="icon-health"></i>Sağlık</p>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-restoran-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-restoran" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false">
+                        <p><i class="icon-restoran"></i>Restoran</p>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-market-tab" data-bs-toggle="pill" data-bs-target="#pills-market"
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                        <p><i class="icon-market"></i>Market</p>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-map-tab" data-bs-toggle="pill" data-bs-target="#pills-map"
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                        <p><i class="icon-map"></i>Ulaşım</p>
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-health" role="tabpanel"
+                      aria-labelledby="pills-health-tab">
+                      <div class="second-tab-in">
+                        <div class="second-tab-item">
+                          <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                          <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                        </div>
+                        <div class="second-tab-item">
+                          <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                          <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                        </div>
+                        <div class="second-tab-item">
+                          <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                          <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                        </div>
+                        <div class="second-tab-item">
+                          <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                          <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-restoran" role="tabpanel" aria-labelledby="pills-restoran-tab">
+                    </div>
+                    <div class="tab-pane fade" id="pills-market" role="tabpanel" aria-labelledby="pills-market-tab">
+                    </div>
+                    <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                    </div>
+
                   </div>
                 </div>
               </div>
+
+
             </div>
             <div class="View-reviews comments view-menu-content-item" id="reviews-content">
               <div class="View-reviews-head">
@@ -672,15 +813,15 @@
                   <div class="View-info-rules">
                     <h5>Tesis Kuralları</h5>
                     <div class="View-info-rules-item">
-                      <img src="/img/no-pets.svg" alt="">
+                      <i class="icon-no-dog"></i>
                       <p>Evcil Hayvan Giremez</p>
                     </div>
                     <div class="View-info-rules-item">
-                      <img src="/img/no-smoking.svg" alt="">
+                      <i class="icon-no-smoking"></i>
                       <p>Sigara İçilemez</p>
                     </div>
                     <div class="View-info-rules-item">
-                      <img src="/img/no-party.svg" alt="">
+                      <i class="icon-no-music"></i>
                       <p>Parti Yapılamaz</p>
                     </div>
                   </div>
@@ -713,13 +854,17 @@
                   </div>
 
                 </div>
-                <div class="View-info-warning">
-                  <i class="icon-warning"></i>
-                  <div class="View-info-warning-text">
-                    <h6>Dikkat Edilmesi Gereken Hususlar</h6>
-                    <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
-                      pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                  </div>
+
+
+              </div>
+            </div>
+            <div class="View-info-warning">
+              <div class="View-info-warning-in">
+                <i class="icon-warning"></i>
+                <div class="View-info-warning-text">
+                  <h6>Dikkat Edilmesi Gereken Hususlar</h6>
+                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
                 </div>
               </div>
             </div>
@@ -782,7 +927,7 @@
 
             <reservation-form :property-code="villa.code" :disable-reservation="disableDate"></reservation-form>
 
-            <div class="View-right-opportunity">
+            <!-- <div class="View-right-opportunity">
               <h4>Kısa Süreli Fırsatlar</h4>
 
               <div class="swiper swiper-opportunity swiper-overflow">
@@ -825,87 +970,90 @@
                 </div>
                 <div class="swiper-pagination"></div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>
       </div>
     </div>
 
-    <section class="popular-section bg-white overflow-hidden pb-sm-5 mt-4" id="more-villas">
-      <div class="container ">
-        <div class="section-caption d-flex align-items-center mb-3 pb-1">
-          <h4 class="primary-title fw-medium ls-05 lh-1">Bu bölgedeki Yakın Tesisler</h4>
-        </div>
-        <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="item in 10">
-              <div class="list-item rounded-xxl">
-                <div class="list-image position-relative">
-                  <a href="#!" class="d-block flex-shrink-0">
-                    <img src="/uploads/villa-image1.jpg" data-src="." width="280" height="186" alt="hotel image"
-                      class="main-image bg-light lazy cover rounded-xl w-100">
-                  </a>
-                  <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
-                    <a href="javascript:void(0);"
-                      class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
-                      onclick="$(this).toggleClass('active')">
-                      <i class="icon-heart"></i>
-                      <i class="icon-heart-full"></i>
-
+    <section class="Opportunity-slider popular-dark">
+            <div class="container ">
+                <div class="section-caption d-flex align-items-center mb-3 pb-1">
+                    <i class="icon-opportunity-calendar"></i>
+                    <h4 class="">Sana Özel <span>Fırsatlar</span></h4>
+                    <a href="" class="section-caption-btn ms-auto">
+                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
                     </a>
-                  </div>
                 </div>
-                <div class="list-content ps-3 pe-3 pt-2 pb-3">
-                  <div class="d-flex justify-content-between  mb-2 pb-1">
-                    <div class="d-flex align-items-end">
-                      <div class="d-flex flex-column item-name">
-                        <small>Tesis Kodu</small>
-                        <span class="list-title fs-6 lh-sm fw-medium ls-05 d-block me-2">VKV1020</span>
-                      </div>
-                      <div class="d-flex align-items-center fw-medium text-theme-secondary">
-                        <i class="icon-star"></i>
-                        <span>4,9</span>
-                      </div>
+                <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+
+                            <nuxt-link to="/" class="Card Card-h">
+                                <div class="Card-in">
+                                    <div class="Card-img">
+                                        <nuxt-link to="/">
+                                            <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
+                                        </nuxt-link>
+
+                                    </div>
+                                    <div class="Card-h-in">
+                                        <div class="Card-content">
+                                            <div class="Card-content-head">
+                                                <div class="Card-content-head-code">
+                                                    <b>VKV3456</b>
+                                                    <span>Tesis Kodu</span>
+                                                </div>
+                                                <div class="Card-content-head-location">
+                                                    <i class="icon-pin"></i>
+                                                    <p>FETHİYE <span>Turkey / Muğla</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="Card-content-info">
+                                                <div class="Card-content-info-item">
+                                                    <i class="icon-user"></i>
+                                                    <span>4 Kişilik</span>
+                                                </div>
+                                                <div class="Card-content-info-item">
+                                                    <i class="icon-bed"></i>
+                                                    <span>2 Yatak Odası</span>
+                                                </div>
+                                                <div class="Card-content-info-item">
+                                                    <i class="icon-shower"></i>
+                                                    <span>2 Banyo</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Card-content-bottom">
+                                            <div class="Card-content-bottom-day">
+                                                <p><span>3</span>Gece</p>
+                                            </div>
+                                            <div class="Card-content-bottom-date">
+                                                <p><span>12 TEM</span><i class="icon-arrow-right-2"></i><span>18 TEM</span>
+                                                </p>
+                                                <small>Fırsatı kaçırma!</small>
+                                            </div>
+                                            <div class="Card-content-bottom-price single">
+                                                <p class="orange">TOPLAM FİYAT</p>
+                                                <p><b>2.500</b><span>TL</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nuxt-link>
+                        </div>
                     </div>
-                    <div class="item-location d-flex align-items-center text-theme-secondary">
-                      <i class="icon-pin"></i>
-                      <span class="lh-sm d-flex flex-column"><b class="text-theme-first">KALKAN</b>Türkiye /
-                        Antalya</span>
-                    </div>
-                  </div>
-                  <div class="item-infos row gx-2 pe-1 pb-2 d-flex">
-                    <div class="info  d-flex align-items-center rounded-sm">
-                      <i class="icon-user"></i>
-                      <span class="lh-sm text-theme-first text-sm">4 Kişilik</span>
-                    </div>
-                    <div class="info  d-flex align-items-center rounded-sm">
-                      <i class="icon-shower"></i>
-                      <span class="lh-sm text-theme-first text-sm">2 Yatak Odası</span>
-                    </div>
-                    <div class="info  d-flex align-items-center rounded-sm">
-                      <i class="icon-bed"></i>
-                      <span class="lh-sm text-theme-first text-sm">2 Banyo</span>
-                    </div>
-                  </div>
-                  <div class="lh-sm ls-05 mt-1">
-                    <span class="text-secondary list-item-info">Gecelik <strong
-                        class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan
-                      fiyatlarla</span>
-                  </div>
+                    <!-- If pagination is needed -->
+
+                    <!-- If navigation buttons are needed -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                    <div class="swiper-button-prev list-navigation-prev"></div>
+                    <div class="swiper-button-next list-navigation-next"></div>
                 </div>
-              </div>
+
             </div>
-          </div>
-          <!-- If pagination is needed -->
-
-          <!-- If navigation buttons are needed -->
-          <div class="swiper-button-prev list-navigation-prev"></div>
-          <div class="swiper-button-next list-navigation-next"></div>
-        </div>
-
-      </div>
-    </section>
+        </section>
 
     <section class="Gallery" @keydown.esc="closeGallery">
       <div class="container">
@@ -951,11 +1099,78 @@
 
     <b-modal id="amenitesModal" class="Login" size="xl" :hide-header="true" hide-footer>
       <div class="Amenites">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-          @click="$bvModal.hide('amenitesModal')"><i class="icon-login-close"></i></button>
-
-        <h3 class="Amenites-title">Tesisin tüm olanakları</h3>
+        <div class="Amenites-head">
+          <h3 class="Amenites-title">Tesisin <b>tüm olanakları</b></h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            @click="$bvModal.hide('amenitesModal')">Kapat<i class="icon-search-close"></i></button>
+        </div>
         <div class="Amenites-in">
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
+          </div>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
+          </div>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
+          </div>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
+          </div>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
+          </div>
+          <div class="Amenites-item">
+            <span class="Amenites-item-title">Bahçe Alanı</span>
+            <div class="Amenites-item-in">
+              <p>Jakuzi</p>
+              <p>Jakuzi</p>
+              <p>Bilardo Masası</p>
+              <p>Barbekü / Mangal Alanı</p>
+              <p>Barbekü / Mangal Alanı</p>
+            </div>
+          </div>
           <div class="Amenites-item">
             <span class="Amenites-item-title">Bahçe Alanı</span>
             <div class="Amenites-item-in">
@@ -1258,6 +1473,33 @@ export default {
       },
     })
 
+    const swiper3 = new Swiper('.list-slide-opportunity', {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            direction: 'horizontal',
+            loop: true,
+            modules: [Navigation, Pagination],
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1199: {
+                    slidesPerView: 2,
+                },
+            },
+        })
+
     this.$el.addEventListener('click', function (e) {
       if (e.target.closest('.dropdown-menu')) {
         e.stopPropagation();
@@ -1351,130 +1593,6 @@ export default {
 </script>
 
 <style scoped>
-.vc-container {
-  --gray-500: #A6AFC2 !important;
-  --gray-900: var(--bs-theme-first-dark) !important;
-  border: none !important;
-  position: relative;
-  z-index: 1;
-  width: 100% !important;
-}
-
-.vc-container:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 48px;
-  background-color: #F2F5FB;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-:deep() .vc-day {
-  min-width: 48px !important;
-  min-height: 48px !important;
-}
-
-:deep() .vc-weeks {
-  margin-top: 30px;
-}
-
-.opsiyon {
-  background-image: linear-gradient(to bottom, #FFF8E7, #FFF8E7);
-}
-
-.opsiyon-giris {
-  background-image: linear-gradient(to top left, #FFF8E7 0%, #FFF8E7 50%, transparent 50%, transparent 100%);
-}
-
-.opsiyon-cikis {
-  background-image: linear-gradient(to bottom right, #FFF8E7 0%, #FFF8E7 50%, transparent 50%, transparent 100%);
-}
-
-
-.kapali {
-  background-image: linear-gradient(to bottom, #F2F5FB, #F2F5FB);
-}
-
-.kapali-giris {
-  background-image: linear-gradient(to top left, #F2F5FB 0%, #F2F5FB 50%, transparent 50%, transparent 100%);
-}
-
-.kapali-cikis {
-  background-image: linear-gradient(to bottom right, #F2F5FB 0%, #F2F5FB 50%, transparent 50%, transparent 100%);
-}
-
-.kapali-cikis-to-opsiyon-giris {
-  background-image: linear-gradient(to top left, #FFF8E7 0%, #FFF8E7 50%, transparent 50%, transparent 100%), linear-gradient(to bottom right, #F2F5FB 0%, #F2F5FB 50%, transparent 50%, transparent 100%);
-}
-
-.opsiyon-cikis-to-kapali-giris {
-  background-image: linear-gradient(to bottom right, #FFF8E7 0%, #FFF8E7 50%, transparent 50%, transparent 100%), linear-gradient(to top left, #F2F5FB 0%, #F2F5FB 50%, transparent 50%, transparent 100%);
-}
-
-
-/* OPSIYON END */
-
-
-/* KAPALI START  */
-
-
-/* OPSIYON END  */
-
-.cikis-kapali {
-  background-color: transparent;
-}
-
-.cikis-kapali:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(318deg, #F2F5FB 49%, transparent 50%), linear-gradient(138deg, #FFF8E7 49%, transparent 50%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.cikis-kapali:after {
-  display: none;
-}
-
-.cikis-opsiyon:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(315deg, #f3f3ff 49%, transparent 50%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.doubleday:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-
-.calendar-price {
-  font-weight: 400;
-  font-size: 11px;
-  color: #989FB5;
-  margin-bottom: 0;
-}
-
 .swiper-overflow {
   overflow: hidden;
 }
@@ -1482,10 +1600,6 @@ export default {
 #mapContainer {
   width: 300px;
   height: 300px;
-}
-
-.day-label {
-  margin-top: 5px;
 }
 
 :deep() .modal-backdrop {

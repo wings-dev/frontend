@@ -34,9 +34,8 @@
       <select-hotel-person-count :adult="adult" :childAges="childAges"
         @change="adult = $event.adult; childAges = $event.childAges"></select-hotel-person-count>
     </div>
-    <button type="button" class="Search-button" id="searchVilla" @click="search"><img
-        src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
-        class="contain flex-shrink-0 my-1"></button>
+    <button type="button" class="Search-button" id="searchVilla" @click="search">
+      <img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search" class="contain flex-shrink-0 my-1 desktop"><span class="mobile">Otel Ara</span></button>
   </div>
 </template>
 
@@ -307,5 +306,22 @@ export default {
 }
 .datepicker__wrapper{
   width: 100%;
+}
+@media (max-width:800px) {
+  :deep().datepicker__input--first:after{
+    background-size: 18px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 14px;
+    background-color: #eff1f5;
+    border-radius: 4px;
+  }
+  :deep() .datepicker__input--first:before{
+    display: none;
+  }
+  :deep() .datepicker__input:before{
+    position: absolute;
+    right: 0;
+  }
 }
 </style>

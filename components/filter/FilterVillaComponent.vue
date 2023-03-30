@@ -5,8 +5,9 @@
         <div class="Filter-left Filters" :class="{ show: isMobileFilterOpen }">
           <div class="Filter-left-head">
             <h4>Gelişmiş Arama</h4>
-            <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter()"><i
-                class="icon-login-close"></i></button>
+            <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter()">
+              <i class="icon-login-close"></i>
+            </button>
           </div>
           <div class="Filter-left-selected">
             
@@ -520,10 +521,6 @@ export default {
         ...this.amenites.facilities,
       ].forEach(checkbox => this.updateSelection(checkbox, false));
       this.filter();
-    },
-    closeMobileFilter() {
-      document.querySelector('.Filter-left').classList.remove("show")
-      document.querySelector('body').classList.remove("over")
     },
     selectedFilterItemHeight() {
       var div = document.getElementById("selectedItems");
