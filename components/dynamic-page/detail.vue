@@ -1919,6 +1919,7 @@ export default {
     };
 
     function scrollFunction() {
+      
       if (document.body.scrollTop > 151 || document.documentElement.scrollTop > 151) {
         document.getElementById("detailTop").classList.add('custom-fixed')
         document.getElementById("detailMenu").classList.add('custom-fixed', 'custom-fixed-menu')
@@ -1937,6 +1938,7 @@ export default {
       if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
         document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
         document.querySelector(".View-right-opportunity").classList.add('opacity-0')
+        
       } else {
         document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')

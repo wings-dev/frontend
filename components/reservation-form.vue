@@ -261,7 +261,6 @@
         <button type="button" v-if="availabilityChecked" @click="reservationDetailToggle">{{ reservationDetail ?
           'DETAYLARI KAPAT' : 'DETAYLARI GÖSTER' }} </button>
       </div>
-      {{ mobileReservation }}
       <!-- mobile -->
       <template v-if="isMobile">
         <!-- form kapalıysa -->
@@ -290,7 +289,7 @@
       <template v-else>
         <button v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading"
           class="Reservation-form-submit" @click.prevent="availabilityCheck()">
-          Uygunluk Durumunu Kontrol Edin dekstop
+          Uygunluk Durumunu Kontrol Edin
         </button>
         <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
           Ön Rezervasyon Talebi Gönder

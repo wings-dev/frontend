@@ -19,7 +19,7 @@
                     </div>
                 </nav>
                 <div class="tab-content" id="search-tabContent">
-                    <div class="tab-pane fade"  :class="{ 'show active': $route.path == '/' }" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="tab-pane fade"  :class="{ 'show active': $route.path == '/kiralik-villa' || $route.path == '/' }" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <search-villa-component :key="$route.path"></search-villa-component>
                     </div>
                     <div class="tab-pane fade" :class="{ 'show active': $route.path == '/yurtdisi-kiralik-villa' }" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
