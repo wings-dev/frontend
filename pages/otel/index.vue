@@ -256,7 +256,7 @@
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i class="icon-right-arrow"></i></nuxt-link>
+                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
                         <div class="Areas-otel-item">
@@ -290,7 +290,7 @@
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i class="icon-right-arrow"></i></nuxt-link>
+                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
                     </div>
@@ -306,63 +306,54 @@
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                                 <div class="swiper-slide">
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga2.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                                 <div class="swiper-slide">
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga3.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                                 <div class="swiper-slide">
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                                 <div class="swiper-slide">
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga2.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                                 <div class="swiper-slide">
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga3.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                                 <div class="swiper-slide">
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                                 <div class="swiper-slide">
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga2.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                                 <div class="swiper-slide">
                                     <nuxt-link to="/" class="Areas-slider-item">
                                         <nuxt-img src="/img/otel/doga3.jpg" width="192" height="121"></nuxt-img>
                                         <span>Doğa Otelleri</span>
-                                        <i class="icon-search-new"></i>
                                     </nuxt-link>
                                 </div>
                             </div>
@@ -413,7 +404,7 @@
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i class="icon-right-arrow"></i></nuxt-link>
+                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
                         <div class="Areas-otel-item">
@@ -447,7 +438,7 @@
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i class="icon-right-arrow"></i></nuxt-link>
+                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
                     </div>

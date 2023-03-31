@@ -22,29 +22,28 @@
       </div>
       <div class="Search-item date">
         <div class="dates d-flex">
-            <div class="date-title w-50 Search-item-name">
-              Giriş Tarihi
-            </div>
-            <div class="date-title w-50 Search-item-name">
-              Çıkış Tarihi
-            </div>
+          <div class="date-title w-50 Search-item-name">
+            Giriş Tarihi
           </div>
+          <div class="date-title w-50 Search-item-name">
+            Çıkış Tarihi
+          </div>
+        </div>
 
         <div class="Search-item-date">
           <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs">
 
             <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
-            @check-out-changed="checkOutChanged($event)" format="DD dddd"
-            ref="datePicker" :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
-            :displayClearButton=false>
-            <div slot="content">
-              <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
-                <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
-                <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
+              @check-out-changed="checkOutChanged($event)" format="DD dddd" ref="datePicker" :i18n="calendarLanguage"
+              :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
+              <div slot="content">
+                <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
+                  <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
+                  <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
+                </div>
               </div>
-            </div>
-          </HotelDatePicker>
+            </HotelDatePicker>
 
             <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
@@ -57,7 +56,7 @@
           data-bs-toggle="dropdown" aria-expanded="false">
           <i class="icon-user Search-item-icon"></i>
           <div class="Search-item-people-in">
-            
+
             <span class="dropdown-toggle-title">{{ selectedPersonText }}</span>
             <i class="icon-down-arrow"></i>
           </div>
@@ -80,13 +79,13 @@
                   <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
                   <button type="button" class="plus-person" @click="adultIncrease">
                     <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                            stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
+                      <path
+                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                        stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -104,13 +103,13 @@
                   <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
                   <button type="button" class="plus-person" @click="children_Increase">
                     <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                            stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
+                      <path
+                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                        stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -129,13 +128,13 @@
                   <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
                   <button type="button" class="plus-person" @click="baby_Increase">
                     <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                            stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
+                      <path
+                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
+                        stroke="#1C274C" stroke-linecap="round" />
+                      <path
+                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
+                        stroke="#1C274C" stroke-linecap="round" />
+                    </svg>
                   </button>
 
                 </div>
@@ -145,22 +144,11 @@
         </client-only>
       </div>
       <div class="Search-item Search-item-more">
-        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <button class="dropdown-toggle" type="button" @click="moreSearchToggle">
           <i class="icon-new-filter Search-item-icon"></i>
           <span class="dropdown-toggle-title">Gelişmiş Arama</span>
           <i class="icon-down-arrow"></i>
         </button>
-        <client-only>
-          <ul class="dropdown-menu filtered " aria-labelledby="dropdownMenuButton3">
-            <div class="dropdown-menu-in filtered-in">
-              <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
-                @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
-              <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts"
-                @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
-            </div>
-          </ul>
-        </client-only>
       </div>
     </div>
     <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()">
@@ -171,6 +159,54 @@
     <button type="button" class="Search-button" id="searchVilla" @click="search">
       <i class="icon-search"></i><span>Arama yap</span>
     </button>
+    <div class="Search-more" :class="{'active':moreSearch}">
+      <div class="Search-more-item facility-type">
+        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <span class="dropdown-toggle-title">Tesis Tipi</span>
+          <i class="icon-sort"></i>
+        </button>
+        <client-only>
+          <ul class="dropdown-menu filtered " aria-labelledby="dropdownMenuButton4">
+            <div class="dropdown-menu-in filtered-in">
+              <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
+                @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
+            </div>
+          </ul>
+        </client-only>
+      </div>
+      <div class="Search-more-item facility-category">
+        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <span class="dropdown-toggle-title">Tesis Kategorileri</span>
+          <i class="icon-sort"></i>
+        </button>
+        <client-only>
+          <ul class="dropdown-menu  " aria-labelledby="dropdownMenuButton4">
+            <div class="dropdown-menu-in ">
+              <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts"
+                @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
+            </div>
+          </ul>
+        </client-only>
+      </div>
+      <div class="Search-more-item facility-amenites">
+        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <span class="dropdown-toggle-title">Tesis Özellikleri</span>
+          <i class="icon-sort"></i>
+        </button>
+        <client-only>
+          <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton4">
+            <div class="dropdown-menu-in ">
+              <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
+              :groups="amenites.groups.facilities"
+              @updated="updateFilter('amenites.facilities', $event)" groupName="facilitiesCheckbox"></filter-item-checkbox-component>
+            </div>
+          </ul>
+        </client-only>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -224,6 +260,7 @@ export default {
         week: "hafta",
         weeks: "haftalar",
       },
+      moreSearch:false,
     }
   },
   components: {
@@ -255,15 +292,15 @@ export default {
   },
   watch: {
     checkIn(newValue) {
-      if(newValue !== undefined){
-      this.changeHotelInput(0, newValue);
-    }
+      if (newValue !== undefined) {
+        this.changeHotelInput(0, newValue);
+      }
       console.log(newValue)
     },
     checkOut(newValue) {
-      if(newValue !== undefined){
-      this.changeHotelInput(-1, newValue);
-    }
+      if (newValue !== undefined) {
+        this.changeHotelInput(-1, newValue);
+      }
     },
   },
   computed: {
@@ -417,6 +454,9 @@ export default {
 
       datepickerInput.html(`<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`);
     },
+    moreSearchToggle(){
+      this.moreSearch = !this.moreSearch 
+    }
   }
 }
 </script>
@@ -449,6 +489,7 @@ export default {
 :deep() .v-dropdown-item.selected {
   background-color: var(--bs-theme-second) !important;
 }
+
 :deep() .datepicker__dummy-wrapper {
   border: none;
   background: none;
@@ -536,12 +577,13 @@ export default {
   border: 1px solid var(--bs-theme-first-dark);
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDcgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF80MDJfMTU5NCkiPgo8cGF0aCBkPSJNNS45MTQ5NyA0Ljc2Mjg4TDEuMzE3MDYgMC4xNjUwNkMxLjIxMDcxIDAuMDU4NjMyIDEuMDY4NzUgMCAwLjkxNzM4NiAwQzAuNzY2MDE4IDAgMC42MjQwNTggMC4wNTg2MzIgMC41MTc3MTQgMC4xNjUwNkwwLjE3OTExIDAuNTAzNThDLTAuMDQxMjIyNCAwLjcyNDE2NCAtMC4wNDEyMjI0IDEuMDgyNjggMC4xNzkxMSAxLjMwMjkyTDQuMDQwMDkgNS4xNjM5TDAuMTc0ODI2IDkuMDI5MTZDMC4wNjg0ODE2IDkuMTM1NTkgMC4wMDk3NjU2MiA5LjI3NzQ2IDAuMDA5NzY1NjIgOS40Mjg3NUMwLjAwOTc2NTYyIDkuNTgwMiAwLjA2ODQ4MTYgOS43MjIwOCAwLjE3NDgyNiA5LjgyODU5TDAuNTEzNDMgMTAuMTY3QzAuNjE5ODU4IDEwLjI3MzUgMC43NjE3MzQgMTAuMzMyMSAwLjkxMzEwMiAxMC4zMzIxQzEuMDY0NDcgMTAuMzMyMSAxLjIwNjQzIDEwLjI3MzUgMS4zMTI3NyAxMC4xNjdMNS45MTQ5NyA1LjU2NUM2LjAyMTU2IDUuNDU4MjQgNi4wODAxMSA1LjMxNTY5IDYuMDc5NzcgNS4xNjQxNUM2LjA4MDExIDUuMDEyMDMgNi4wMjE1NiA0Ljg2OTU2IDUuOTE0OTcgNC43NjI4OFoiIGZpbGw9IiMxMTI4NTUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF80MDJfMTU5NCI+CjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjExIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=) no-repeat 57%/10px;
 }
-.datepicker__wrapper{
+
+.datepicker__wrapper {
   width: 100%;
 }
 
 @media (max-width:800px) {
-  :deep().datepicker__input--first:after{
+  :deep().datepicker__input--first:after {
     background-size: 18px 10px;
     background-repeat: no-repeat;
     background-position: center;
@@ -549,14 +591,14 @@ export default {
     background-color: #eff1f5;
     border-radius: 4px;
   }
-  :deep() .datepicker__input--first:before{
+
+  :deep() .datepicker__input--first:before {
     display: none;
   }
-  :deep() .datepicker__input:before{
+
+  :deep() .datepicker__input:before {
     position: absolute;
     right: 0;
   }
 }
-
-
 </style>

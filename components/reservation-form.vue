@@ -1,6 +1,9 @@
 <template>
   <form action="" class="Reservation-form" id="reservationForm">
-    <div class="Reservation-form-top">
+
+    <div class="Reservation-form-top" :class="{ 'mobile-active': mobileReservation }">
+      <button type="button" class="mobile-menus-back" @click="mobileReservationClose"><i
+          class="icon-left-arrow"></i></button>
       <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
       <span class="tarihsec">TARİH SEÇ</span>
       <div class="Reservation-form-in">
@@ -18,6 +21,7 @@
             @check-out-changed="checkOutChanged($event)" format="DD dddd" :positionRight="true"
             :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
             :displayClearButton=false>
+
             <div slot="content">
               <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
                 <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
@@ -154,7 +158,7 @@
               <h5>Ön Ödeme Tutarı</h5>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>{{availabilityData.advance_payment}} TL</b>
+              <b>{{ availabilityData.advance_payment }} TL</b>
             </div>
           </div>
 
@@ -165,72 +169,140 @@
               <h5>Toplam Tutar</h5>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>{{availabilityData.total_payment}} TL</b>
+              <b>{{ availabilityData.total_payment }} TL</b>
             </div>
           </div>
         </div>
         <div class="accordion Reservation-form-info-item-more" id="accordionExample">
-            <div class="accordion-item">
-              <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
-                data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Detayları Gör
-                <i class="icon-down-arrow"></i>
-              </button>
+          <div class="accordion-item">
+            <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Detayları Gör
+              <i class="icon-down-arrow"></i>
+            </button>
 
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample">
-                <div class="Reservation-form-info-item-more-item">
-                  <div class="Reservation-form-info-item-more-item-left">
-                    <p>{{availabilityData.day}} Gece Konaklama Tutarı</p>
-                  </div>
-                  <b>{{availabilityData.total_price}}{{availabilityData.night_price_currency_symbol}}</b>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample">
+              <div class="Reservation-form-info-item-more-item">
+                <div class="Reservation-form-info-item-more-item-left">
+                  <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
                 </div>
-                <div class="Reservation-form-info-item-more-item">
-                  <div class="Reservation-form-info-item-more-item-left">
-                    <p>Temizlik Ücreti</p>
-                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                      title="Tooltip on right"></i>
-                  </div>
-                  <b>{{availabilityData.cleaning_fee}}{{availabilityData.night_price_currency_symbol}}</b>
-                </div>
-
-                <div class="Reservation-form-info-item-more-item">
-                  <div class="Reservation-form-info-item-more-item-left">
-                    <p>Girişte Ödenecek</p>
-                  </div>
-                  <b>{{availabilityData.remaining_payment}}{{availabilityData.night_price_currency_symbol}}</b>
-                </div>
-
-                <div class="Reservation-form-info-item-more-item">
-                  <div class="Reservation-form-info-item-more-item-left">
-                    <p>Toplam Tutar</p>
-                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                      title="Tooltip on right"></i>
-                  </div>
-                  <b>{{availabilityData.total_price}}{{availabilityData.night_price_currency_symbol}}</b>
-                </div>
-
-
-
+                <b>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</b>
               </div>
+              <div class="Reservation-form-info-item-more-item">
+                <div class="Reservation-form-info-item-more-item-left">
+                  <p>Temizlik Ücreti</p>
+                  <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                    title="Tooltip on right"></i>
+                </div>
+                <b>{{ availabilityData.cleaning_fee }}{{ availabilityData.night_price_currency_symbol }}</b>
+              </div>
+
+              <div class="Reservation-form-info-item-more-item">
+                <div class="Reservation-form-info-item-more-item-left">
+                  <p>Girişte Ödenecek</p>
+                </div>
+                <b>{{ availabilityData.remaining_payment }}{{ availabilityData.night_price_currency_symbol }}</b>
+              </div>
+
+              <div class="Reservation-form-info-item-more-item">
+                <div class="Reservation-form-info-item-more-item-left">
+                  <p>Toplam Tutar</p>
+                  <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                    title="Tooltip on right"></i>
+                </div>
+                <b>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</b>
+              </div>
+
+
+
             </div>
           </div>
+        </div>
       </div>
     </div>
-    <button v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading" class="Reservation-form-submit"
-      @click.prevent="availabilityCheck()">
-      Müsaitlik Sorgula
-    </button>
-    <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
-      Ön Rezervasyon Talebi Gönder
-    </button>
+    <div class="Reservation-form-detail" :class="{ 'mobile-active': reservationDetail }">
+      <button type="button" class="mobile-menus-back" @click="reservationDetailClose"><i
+          class="icon-left-arrow"></i></button>
+      <h4 class="Reservation-form-title">Hesap Özeti</h4>
+      <div class="Reservation-form-detail-top">
+        <div class="Reservation-form-detail-top-item">
+          <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
+          <b>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</b>
+        </div>
+        <div class="Reservation-form-detail-top-item">
+          <p>Temizlik Ücreti <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+              title="Tooltip on right"></i></p>
+          <b>{{ availabilityData.cleaning_fee }}{{ availabilityData.night_price_currency_symbol }}</b>
+        </div>
+      </div>
+      <p class="Reservation-form-detail-total">
+        Toplam Ödeme <span>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</span>
+      </p>
+      <div class="Reservation-form-detail-bottom">
+        <div class="Reservation-form-detail-bottom-item">
+          <p>Ön Ödeme <span>{{ availabilityData.advance_payment }}{{ availabilityData.night_price_currency_symbol
+          }}</span></p>
+          <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
+        </div>
+        <div class="Reservation-form-detail-bottom-item">
+          <p>Tesise Girişte <span>{{ availabilityData.remaining_payment }}{{ availabilityData.night_price_currency_symbol
+          }}</span></p>
+          <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
+        </div>
+      </div>
+    </div>
+    <div class="Reservation-form-bottom">
+      <div class="Reservation-form-bottom-left">
+        <b>14.120TL</b>
+        <span v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">GECE</span>
+        <span v-else>{{ formattedCheckIn }} - {{ formattedCheckOut }}</span>
+        <small v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">Başlayan fiyatlar</small>
+        <button type="button" v-if="availabilityChecked" @click="reservationDetailToggle">{{ reservationDetail ?
+          'DETAYLARI KAPAT' : 'DETAYLARI GÖSTER' }} </button>
+      </div>
+      <!-- mobile -->
+      <template v-if="isMobile">
+        <!-- form kapalıysa -->
+        <template v-if="!mobileReservation">
+
+          <button v-if="!availabilityChecked" class="Reservation-form-submit" @click.prevent="reservatinAction()">
+            Uygunluk Durumunu Kontrol Edin
+          </button>
+          <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
+            Ön Rezervasyon Talebi Gönder
+          </button>
+
+        </template>
+        <!-- form acıksa -->
+        <template v-else>
+          <button class="Reservation-form-submit" :disabled="!dateSelected || availabilityLoading"
+            @click.prevent="mobileReservationClose()">
+            Kaydet
+          </button>
+        </template>
+      </template>
+
+
+
+      <!-- desktop -->
+      <template v-else>
+        <button v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading"
+          class="Reservation-form-submit" @click.prevent="availabilityCheck()">
+          Uygunluk Durumunu Kontrol Edin
+        </button>
+        <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
+          Ön Rezervasyon Talebi Gönder
+        </button>
+      </template>
+    </div>
   </form>
 </template>
 
 <script>
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
-import {mapMutations} from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   name: "ReservationForm",
@@ -285,8 +357,12 @@ export default {
         "total_payment": 0,
         "advance_payment": 0,
         "remaining_payment": 0
-      }
-
+      },
+      formattedCheckIn: null,
+      formattedCheckOut: null,
+      mobileReservation: false,
+      reservationDetail: false,
+      isMobile: false,
     }
   },
   beforeMount() {
@@ -388,9 +464,20 @@ export default {
         month: 'long',
       }).toUpperCase();
 
+      const formattedDateS = currentDate.toLocaleDateString('tr-TR', {
+        day: 'numeric',
+        month: 'short',
+      }).toUpperCase();
+
       const formattedDay = currentDate.toLocaleDateString('tr-TR', {
         weekday: 'long',
       }).toUpperCase();
+
+      if (tabIndex == 0) {
+        this.formattedCheckIn = formattedDateS
+      } else {
+        this.formattedCheckOut = formattedDateS
+      }
 
       const datepickerInput = $('[data-qa="datepickerInput"][tabindex="' + tabIndex + '"]');
 
@@ -443,8 +530,38 @@ export default {
       if (this.baby > 0) {
         this.baby -= 1;
       }
+    },
+    handleResize() {
+      if (window.innerWidth <= 768) {
+        this.isMobile = true
+      } else {
+        this.isMobile = false
+      }
+    },
+    mobileReservationOpen() {
+      this.mobileReservation = true
+    },
+    mobileReservationClose() {
+      this.mobileReservation = false
+    },
+    reservationDetailToggle() {
+      this.reservationDetail = !this.reservationDetail 
+    },
+    reservationDetailClose(){
+      this.reservationDetail = false
+    },
+    reservatinAction() {
+      this.mobileReservation = true
     }
-  }
+  },
+  mounted() {
+    window.addEventListener("load", this.handleResize);
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeDestroy() {
+    // window.removeEventListener("resize", this.handleResize);
+    // window.removeEventListener("load", this.handleResize);
+  },
 }
 </script>
 
@@ -697,6 +814,4 @@ body {
 :deep() .datepicker__month-button {
   border: 1px solid var(--bs-theme-first-dark);
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDcgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF80MDJfMTU5NCkiPgo8cGF0aCBkPSJNNS45MTQ5NyA0Ljc2Mjg4TDEuMzE3MDYgMC4xNjUwNkMxLjIxMDcxIDAuMDU4NjMyIDEuMDY4NzUgMCAwLjkxNzM4NiAwQzAuNzY2MDE4IDAgMC42MjQwNTggMC4wNTg2MzIgMC41MTc3MTQgMC4xNjUwNkwwLjE3OTExIDAuNTAzNThDLTAuMDQxMjIyNCAwLjcyNDE2NCAtMC4wNDEyMjI0IDEuMDgyNjggMC4xNzkxMSAxLjMwMjkyTDQuMDQwMDkgNS4xNjM5TDAuMTc0ODI2IDkuMDI5MTZDMC4wNjg0ODE2IDkuMTM1NTkgMC4wMDk3NjU2MiA5LjI3NzQ2IDAuMDA5NzY1NjIgOS40Mjg3NUMwLjAwOTc2NTYyIDkuNTgwMiAwLjA2ODQ4MTYgOS43MjIwOCAwLjE3NDgyNiA5LjgyODU5TDAuNTEzNDMgMTAuMTY3QzAuNjE5ODU4IDEwLjI3MzUgMC43NjE3MzQgMTAuMzMyMSAwLjkxMzEwMiAxMC4zMzIxQzEuMDY0NDcgMTAuMzMyMSAxLjIwNjQzIDEwLjI3MzUgMS4zMTI3NyAxMC4xNjdMNS45MTQ5NyA1LjU2NUM2LjAyMTU2IDUuNDU4MjQgNi4wODAxMSA1LjMxNTY5IDYuMDc5NzcgNS4xNjQxNUM2LjA4MDExIDUuMDEyMDMgNi4wMjE1NiA0Ljg2OTU2IDUuOTE0OTcgNC43NjI4OFoiIGZpbGw9IiMxMTI4NTUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF80MDJfMTU5NCI+CjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjExIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=) no-repeat 57%/10px;
-}
-
-</style>
+}</style>
