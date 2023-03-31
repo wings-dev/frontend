@@ -81,11 +81,11 @@
           </div>
         </div>
       </div>
-      <div class="container pb-1">
+      <div class="container pb-1 gallery-container">
         <div class="view-gallery">
           <div class="area-1">
             <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
               <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
               <nuxt-img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
@@ -95,7 +95,7 @@
           </div>
           <div class="area-2 d-md-block d-none">
             <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              class="view-item d-block w-100 h-100 ">
               <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
@@ -103,7 +103,7 @@
           </div>
           <div class="area-3 d-md-block d-none">
             <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              class="view-item d-block w-100 h-100 ">
               <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
@@ -111,14 +111,14 @@
           </div>
           <div class="area-4 d-none d-lg-block">
             <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
+              class="view-item d-block w-100 h-100 ">
               <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
             </a>
           </div>
           <div class="area-5 d-none d-lg-block">
-            <div class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl last">
+            <div class="view-item d-block w-100 h-100  last">
               <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
               <div
