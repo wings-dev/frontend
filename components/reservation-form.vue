@@ -559,8 +559,8 @@ export default {
     window.addEventListener("resize", this.handleResize);
   },
   beforeDestroy() {
-    window.removeEventListener("resize", this.handleResize);
-    window.removeEventListener("load", this.handleResize);
+    // window.removeEventListener("resize", this.handleResize);
+    // window.removeEventListener("load", this.handleResize);
   },
 }
 </script>

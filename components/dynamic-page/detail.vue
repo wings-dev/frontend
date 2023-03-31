@@ -1943,6 +1943,7 @@ export default {
         document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
       }
+      console.log('s')
     }
 
     if (this.attributes.length === 0) {
