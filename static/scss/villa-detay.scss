@@ -5,7 +5,6 @@ body {
   --page-light: #f0f5f6;
 }
 .main {
-  padding-bottom: 50px;
   position: relative;
 }
 .main-z {
@@ -17,4 +16,7 @@ body {
 .popular-section {
   transform: translateY(0);
   margin-bottom: 0;
+}
+.Navigation{
+  display: none;
 }

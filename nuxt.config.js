@@ -58,7 +58,6 @@ export default {
     {src: "~plugins/vcalendar.js", ssr: false},
     "~/plugins/redisHelper.js",
     {src: "~/plugins/jquery.js", mode: "client"},
-    {src: '~/plugins/bootstrap.js', mode: 'client'},
     {src: '~/plugins/ymaps.js', mode: 'client'},
     {src: "~/plugins/vue-tour.js", ssr: false},
     {src: '~/plugins/filters.js'},

@@ -94,24 +94,21 @@
             </a>
           </div>
           <div class="area-2 d-md-block d-none">
-            <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 ">
+            <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
               <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
             </a>
           </div>
           <div class="area-3 d-md-block d-none">
-            <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 ">
+            <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
               <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
             </a>
           </div>
           <div class="area-4 d-none d-lg-block">
-            <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 ">
+            <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
               <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
                 width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
@@ -132,6 +129,21 @@
               </div>
             </div>
           </div>
+          <div class="View-gallery-mobile-buttons">
+            <button type="button" @click="toggleFavorite"
+              class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
+              :class="isFavorite ? 'active' : ''">
+              <span class="action-btn-icon">
+                <i class="icon-heart"></i>
+              </span>
+            </button>
+            <button type="button"
+              class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
+              <span class="action-btn-icon">
+                <i class="icon-share"></i>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -141,7 +153,11 @@
         <div class="View-in">
           <div class="View-left">
             <div class="View-desc genelbakis view-menu-content-item" id="desc-content">
-              <h2 class="View-title">Tesise Genel Bakış</h2>
+              <h2 class="View-title"><b>Tesise</b> Genel Bakış</h2>
+              <div class="View-desc-category">
+                <nuxt-link to="/">Deniz Manzaralı</nuxt-link>
+                <nuxt-link to="/">Muhafazakar Villa</nuxt-link>
+              </div>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
                 tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve müthiş
                 manzarası ile sizleri mest edecek olan Mabel, dubleks bir dairedir. Giriş katında, harika deniz
@@ -160,16 +176,8 @@
                 yiyebileceğiniz masa sandalye ve taş barbekü bulunmaktadır.Yüzme havuzunda bulunan özel jet dalga motoru
                 ile
                 yorulana kadar yüzmenize imkan vermektedir.</p>
-              <div class="View-desc-category">
-                <h6>Tesisin Bulunduğu Kategoriler</h6>
-                <div class="View-desc-category-in">
-                  <span>Balayı Villaları</span>
-                  <span>Deniz Manzaralı</span>
-                  <span>Havuz Alanı Korunaklı</span>
-                </div>
-              </div>
               <div class="View-desc-amenites">
-                <h4>Tesisin Öne Çıkan Olanakları</h4>
+                <h4 class="View-title"><b>Tesis</b> Olanakları</h4>
                 <div class="View-desc-amenites-in">
                   <p>Jakuzi</p>
                   <p>Jakuzi</p>
@@ -177,13 +185,55 @@
                   <p>Barbekü / Mangal Alanı</p>
                   <p>Barbekü / Mangal Alanı</p>
                 </div>
-                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar</b-button>
+                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar (14)</b-button>
 
               </div>
             </div>
-
+            <div class="View-desc-mobile">
+              <div class="View-desc-mobile-top">
+                <div class="View-desc-mobile-top-location">
+                  <i class="icon-pin"></i>
+                  <p>FETHİYE<span>Turkey / Muğla</span></p>
+                </div>
+                <div class="View-desc-mobile-top-price">
+                  <span>GECELİK</span>
+                  <p>7500 <span>₺</span></p>
+                  <small>'den başlayan fiyatlar'</small>
+                </div>
+              </div>
+              <div class="View-desc-mobile-bottom">
+                <div class="View-desc-mobile-bottom-head">
+                  <h1><span>Tesis Kodu</span> VKV1020</h1>
+                  <a href=""><i class="icon-play-button"></i>Tesisin Videosu</a>
+                </div>
+                <div class="View-desc-mobile-bottom-content">
+                  <div class="View-desc-mobile-bottom-content-in" :class="{ 'active': moreMobileContent }">
+                    <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel
+                      bir tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve
+                      müthiş manzarası ile sizleri mest edecek olan Mabel, dubleks bir dairedir. Giriş katında, harika
+                      deniz manzarasını izlemekten arta kalan zamanlarınızı değerlendirebileceğiniz amerikan bilardo
+                      masası ile air hockey,masa-futbolu ve dart bulunan oyun odası,sauna ve açık mutfak bulunmaktadır.
+                      Terasında yer alan perde sistemi ile havuz alanı korunaklı hale getirilebilmektedir.</p>
+                    <p>Suitimizin üst katında deniz manzaralı ve ferah bir salon ve açık mutfak bulunmaktadır. Salondan
+                      giriş yapılan ana yatak odasında 1.20 x 1.85 ebatında deniz manzaralı jakuzi, tv, king size çift
+                      kişilik yatak ve banyo bulunmaktadır.</p>
+                    <p>Kesintisiz bir deniz manzarası olan terasta özel yüzme havuzu,şezlonglar,açık alanda keyifle yemek
+                      yiyebileceğiniz masa sandalye ve taş barbekü bulunmaktadır.Yüzme havuzunda bulunan özel jet dalga
+                      motoru ile yorulana kadar yüzmenize imkan vermektedir.</p>
+                  </div>
+                  <button type="button" class="View-desc-mobile-bottom-content-more" @click="moreMobileContentOpen">{{
+                    moreMobileContent ? 'Daha Az Göster' : 'Daha Fazla Göster' }} </button>
+                </div>
+              </div>
+              <div class="View-desc-mobile-amenites">
+                <nuxt-link to="/">Havuzu görünmeyen(Muhafazakar)</nuxt-link>
+                <nuxt-link to="/">Kalabalık ailelere uygun</nuxt-link>
+                <button type="button" @click="mobileAmenitesOpen">Tüm Olanarakları <i
+                    class="icon-right-arrow"></i></button>
+              </div>
+            </div>
             <div class="View-months">
-              <h2 class="View-title">Aylara Göre Genel Bakış</h2>
+              <h4 class="View-title"><b>Aylara</b> Göre Genel Bakış</h4>
               <p class="View-text">
                 Fiyatlar belirtilen ay için belirlenmiş en düşük gecelik ücrettir. Ay içerisinde farklı fiyatlandırmalar
                 mümkündür.
@@ -309,7 +359,7 @@
               </div>
             </div>
             <div class="View-availibility musaitlik view-menu-content-item" id="availibility-content">
-              <h2 class="View-title">Musaitlik ve Fiyat Bilgisi</h2>
+              <h4 class="View-title"><b>Musaitlik ve</b> Fiyat Bilgisi</h4>
               <p class="View-text">
                 Aşağıda belirtilen fiyatlar tesisin 1 gecelik konaklama ücretidir. Dönemlere göre konaklama süresine
                 göre ekstra temizlik ücreti eklenebilmektedir.
@@ -323,21 +373,47 @@
               <div class="View-availibility-legand">
                 <div class="View-availibility-legand-item">
                   <span class="close-day"><i class="icon-time-1"></i></span>
-                  <p>Dolu</p>
+                  <p>Onay Bekleniyor</p>
                 </div>
                 <div class="View-availibility-legand-item">
                   <span>/</span>
-                  <p>Onay Bekleniyor</p>
+                  <p>Dolu</p>
                 </div>
               </div>
             </div>
+            <div class="View-right-opportunity View-right-opportunity-mobile">
+              <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
+              <nuxt-link to="/" class="View-right-opportunity-item">
+                <div class="View-right-opportunity-item-day">
+                  <b>3</b>
+                  <span>GECE</span>
+                </div>
+                <div class="View-right-opportunity-item-price">
+                  <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                  <span>12.120TL</span>
+                </div>
+              </nuxt-link>
+              <nuxt-link to="/" class="View-right-opportunity-item">
+                <div class="View-right-opportunity-item-day">
+                  <b>3</b>
+                  <span>GECE</span>
+                </div>
+                <div class="View-right-opportunity-item-price">
+                  <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                  <span>12.120TL</span>
+                </div>
+              </nuxt-link>
+              <button type="button" @click="mobileOpportunityOpen">Diğer tarihleri görüntüle(4) <i
+                  class="icon-right-arrow"></i></button>
+            </div>
             <div class="View-beds">
+              <h4 class="View-title">Kişi Bilgisi ve Yatak Düzeni</h4>
               <div class="View-beds-in">
                 <div class="View-beds-item first">
                   <p class="View-beds-item-name"><b>Yatak ve</b> Kişi Kapasitesi</p>
                   <div class="View-beds-item-in">
-                    <p><i class="icon-user-double"></i>4 Kişi Konaklayabilir</p>
-                    <p><i class="icon-user-double"></i>2 Yatak Odası</p>
+                    <p><i class="icon-user-double"></i><b>4</b> Kişi Konaklayabilir</p>
+                    <p><i class="icon-user-double"></i><b>2</b> Yatak Odası</p>
                   </div>
                 </div>
                 <div class="View-beds-item single">
@@ -363,9 +439,19 @@
                     <i class="icon-bed-new"></i>
                   </div>
                 </div>
-
                 <div class="View-beds-item capacity">
                   <p class="View-beds-item-name"><b>Banyo</b> Sayısı</p>
+                  <div class="View-beds-item-in">
+                    <div class="View-beds-item-total">
+                      <p>4</p>
+                      <span>kişilik</span>
+                    </div>
+                    <span class="x-span">x</span>
+                    <i class="icon-shower"></i>
+                  </div>
+                </div>
+                <div class="View-beds-item capacity">
+                  <p class="View-beds-item-name"><b>Jakuzi</b> Sayısı</p>
                   <div class="View-beds-item-in">
                     <div class="View-beds-item-total">
                       <p>4</p>
@@ -442,9 +528,8 @@
             </div>
             <div class="View-pools">
               <div class="View-pools-head  mb-3">
-                <h4 class="View-title">
-                  Havuz Bilgisi
-                </h4>
+                <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
+
                 <div class="View-pools-head-right">
                   <span>En</span>
                   <span>Boy</span>
@@ -462,9 +547,9 @@
                   <span class="">{{ poolitem.name }}</span>
                 </div>
                 <div class="pool-item-right">
-                  <span>{{ poolitem['havuz-en'] }}m</span>
-                  <span>{{ poolitem['havuz-boy'] }}m</span>
-                  <span>{{ poolitem['havuz-derinlik'] }}m</span>
+                  <p><span>En</span>{{ poolitem['havuz-en'] }}m</p>
+                  <p><span>Boy</span>{{ poolitem['havuz-boy'] }}m</p>
+                  <p><span>Derinlik</span>{{ poolitem['havuz-derinlik'] }}m</p>
                 </div>
 
               </div>
@@ -474,7 +559,7 @@
               <div class="View-location-head mb-3">
                 <div class="Viwe-location-head-in">
                   <h4 class="View-title">
-                    Konum
+                    <b>Konum</b>
                   </h4>
                   <p class="View-text">Yakınında Neler Var </p>
                 </div>
@@ -594,13 +679,13 @@
                       <button class="nav-link" id="pills-restoran-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-restoran" type="button" role="tab" aria-controls="pills-profile"
                         aria-selected="false">
-                        <p><i class="icon-restoran"></i>Restoran</p>
+                        <p><i class="icon-restoran-1"></i>Restoran</p>
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" id="pills-market-tab" data-bs-toggle="pill" data-bs-target="#pills-market"
                         type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
-                        <p><i class="icon-market"></i>Market</p>
+                        <p><i class="icon-market-1"></i>Market</p>
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -641,13 +726,72 @@
 
                   </div>
                 </div>
+                <div class="View-location-collapse">
+                  <h5>Diğer Mesafeler</h5>
+                  <div class="accordion" id="Location">
+                    <div class="accordion-item">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseHealth" aria-expanded="false" aria-controls="collapseHealth">
+                        <p><i class="icon-health"></i>Sağlık</p><i class="icon-down-arrow"></i>
+                      </button>
+                      <div id="collapseHealth" class="accordion-collapse collapse " data-bs-parent="#Location">
+                        <div class="accordion-body">
+                          <div class="second-tab-item">
+                            <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                            <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                          </div>
+                          <div class="second-tab-item">
+                            <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                            <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                          </div>
+                          <button type="button" class="more" @click="mobileLocationOpen">Daha Fazla Göster</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseRestoran" aria-expanded="false" aria-controls="collapseRestoran">
+                        <p><i class="icon-restoran"></i>Restoran</p><i class="icon-down-arrow"></i>
+                      </button>
+                      <div id="collapseRestoran" class="accordion-collapse collapse" data-bs-parent="#Location">
+                        <div class="accordion-body">
+                          <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                            pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket">
+                        <p><i class="icon-market"></i>Market</p><i class="icon-down-arrow"></i>
+                      </button>
+                      <div id="collapseMarket" class="accordion-collapse collapse" data-bs-parent="#Location">
+                        <div class="accordion-body">
+                          <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                            pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+                        <p><i class="icon-map"></i>Ulaşım</p><i class="icon-down-arrow"></i>
+                      </button>
+                      <div id="collapseMap" class="accordion-collapse collapse" data-bs-parent="#Location">
+                        <div class="accordion-body">
+                          <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                            pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
-
-
             </div>
             <div class="View-reviews comments view-menu-content-item" id="reviews-content">
               <div class="View-reviews-head">
-                <h4 class="View-title">Tesis Değerlendirmesi</h4>
+                <h4 class="View-title"><b>Tesis</b> Değerlendirmesi</h4>
                 <div class="View-reviews-head-stars">
                   <span>4.4</span>
                   <i class="icon-star active"></i>
@@ -656,80 +800,48 @@
                   <i class="icon-star"></i>
                 </div>
               </div>
-              <div class="View-reviews-item">
-                <div class="View-reviews-item-top">
-                  <div class="View-reviews-item-top-left">
-                    <h6>Fatih ********</h6>
-                    <div class="View-reviews-item-top-stars">
-                      <i class="icon-star active"></i>
-                      <i class="icon-star active"></i>
-                      <i class="icon-star active"></i>
-                      <i class="icon-star"></i>
-                      <span>4.4</span>
+              <div class="View-reviews-in">
+                <div class="View-reviews-item">
+                  <div class="View-reviews-item-top">
+                    <div class="View-reviews-item-top-left">
+                      <h6>Fatih ********</h6>
+                      <div class="View-reviews-item-top-stars">
+                        <i class="icon-star active"></i>
+                        <i class="icon-star active"></i>
+                        <i class="icon-star active"></i>
+                        <i class="icon-star"></i>
+                        <span>4.4</span>
+                      </div>
+                    </div>
+                    <div class="View-reviews-item-top-right">
+                      <p><span>KONAKLAMA TARİHİ :</span>25.02.2019</p>
+                      <p><span>REZERVASYON NO :</span>VKV24124****</p>
                     </div>
                   </div>
-                  <div class="View-reviews-item-top-right">
-                    <p><span>KONAKLAMA TARİHİ :</span>25.02.2019</p>
-                    <p><span>REZERVASYON NO :</span>VKV24124****</p>
-                  </div>
-                </div>
-                <div class="View-reviews-item-bottom">
-                  <div class="View-reviews-item-bottom-left">
-                    <p>
-                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable
-                    </p>
-                  </div>
-                  <div class="View-reviews-item-bottom-right">
-                    <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                      <img src="/img/reviews.png" alt="">
-                    </a>
-                    <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                      <img src="/img/reviews.png" alt="">
-                    </a>
-                    <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item more"
-                      data-fancybox="reviews">Daha fazla görüntüle (12)</a>
-                    <div class="d-none">
-                      <a href="/img/reviews.png" data-fancybox="reviews"></a>
-                      <a href="/img/reviews.png" data-fancybox="reviews"></a>
-                      <a href="/img/reviews.png" data-fancybox="reviews"></a>
-                      <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                  <div class="View-reviews-item-bottom">
+                    <div class="View-reviews-item-bottom-left">
+                      <p>
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                        alteration in some form, by injected humour, or randomised words which don't look even slightly
+                        believable
+                      </p>
                     </div>
-                  </div>
-                  <div class="View-reviews-item-villa">
-                    <i class="icon-calendar"></i>
-                    <div class="View-reviews-item-villa-text">
-                      <span>TESİS YETKİLİSİNİN CEVABI</span>
-                      <p>bizi tercih ettiğiniz için teşekkür ederiz.</p>
+                    <div class="View-reviews-item-bottom-right">
+                      <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
+                        <img src="/img/reviews.png" alt="">
+                      </a>
+                      <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
+                        <img src="/img/reviews.png" alt="">
+                      </a>
+                      <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item more"
+                        data-fancybox="reviews">Daha fazla görüntüle (12)</a>
+                      <div class="d-none">
+                        <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                        <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                        <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                        <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="View-reviews-item no-img">
-                <div class="View-reviews-item-top">
-                  <div class="View-reviews-item-top-left">
-                    <h6>Fatih ********</h6>
-                    <div class="View-reviews-item-top-stars">
-                      <i class="icon-star active"></i>
-                      <i class="icon-star active"></i>
-                      <i class="icon-star active"></i>
-                      <i class="icon-star"></i>
-                      <span>4.4</span>
-                    </div>
-                  </div>
-                  <div class="View-reviews-item-top-right">
-                    <p><span>KONAKLAMA TARİHİ :</span>25.02.2019</p>
-                    <p><span>REZERVASYON NO :</span>VKV24124****</p>
-                  </div>
-                </div>
-                <div class="View-reviews-item-bottom">
-                  <div class="View-reviews-item-bottom-left">
-                    <p>
-                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable
-                    </p>
                     <div class="View-reviews-item-villa">
                       <i class="icon-calendar"></i>
                       <div class="View-reviews-item-villa-text">
@@ -738,13 +850,66 @@
                       </div>
                     </div>
                   </div>
+                  <div class="View-reviews-item-mobile">
+                    <div class="View-reviews-item-mobile-left">
+                      <p>Konaklama Tarihi <span>25.02.2019 </span></p>
+                      <p>Rezervasyon No. <span>VKV24124**** </span></p>
+                    </div>
+                    <div class="View-reviews-item-mobile-right">
+                      <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
+                        <img src="/img/reviews.png" alt="">
+                        <span>+6</span>
+                      </a>
+                      <div class="d-none">
+                        <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                        <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                        <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                        <a href="/img/reviews.png" data-fancybox="reviews"></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="View-reviews-item no-img">
+                  <div class="View-reviews-item-top">
+                    <div class="View-reviews-item-top-left">
+                      <h6>Fatih ********</h6>
+                      <div class="View-reviews-item-top-stars">
+                        <i class="icon-star active"></i>
+                        <i class="icon-star active"></i>
+                        <i class="icon-star active"></i>
+                        <i class="icon-star"></i>
+                        <span>4.4</span>
+                      </div>
+                    </div>
+                    <div class="View-reviews-item-top-right">
+                      <p><span>KONAKLAMA TARİHİ :</span>25.02.2019</p>
+                      <p><span>REZERVASYON NO :</span>VKV24124****</p>
+                    </div>
+                  </div>
+                  <div class="View-reviews-item-bottom">
+                    <div class="View-reviews-item-bottom-left">
+                      <p>
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                        alteration in some form, by injected humour, or randomised words which don't look even slightly
+                        believable
+                      </p>
+                      <div class="View-reviews-item-villa">
+                        <i class="icon-calendar"></i>
+                        <div class="View-reviews-item-villa-text">
+                          <span>TESİS YETKİLİSİNİN CEVABI</span>
+                          <p>bizi tercih ettiğiniz için teşekkür ederiz.</p>
+                        </div>
+                      </div>
+                    </div>
 
+                  </div>
                 </div>
               </div>
             </div>
             <div class="View-info rules view-menu-content-item" id="rules-content">
               <div class="View-info-in">
-                <h4 class="View-title">Bilmeniz Gerekenler</h4>
+                <h4 class="View-title"><b>Bilmeniz</b> Gerekenler</h4>
+
                 <div class="View-info-hours">
                   <div class="View-info-hours-item">
                     <div class="View-info-hours-item-left">
@@ -773,6 +938,10 @@
                               !== null ? villa.checkin_end.substr(0, 5) : ' ' }} Arası</span>
                           </div>
                         </div>
+                      </div>
+                      <div class="View-info-hours-status-mobile">
+                        <span>{{ villa.checkin !== null ? villa.checkin.substr(0, 5) : ' ' }} - {{ villa.checkin_end
+                          !== null ? villa.checkin_end.substr(0, 5) : ' ' }} Arası</span>
                       </div>
                     </div>
                   </div>
@@ -805,6 +974,10 @@
                               !== null ? villa.checkout_end.substr(0, 5) : ' ' }} Arası</span>
                           </div>
                         </div>
+                      </div>
+                      <div class="View-info-hours-status-mobile">
+                        <span>{{ villa.checkin !== null ? villa.checkin.substr(0, 5) : ' ' }} - {{ villa.checkin_end
+                          !== null ? villa.checkin_end.substr(0, 5) : ' ' }} Arası</span>
                       </div>
                     </div>
                   </div>
@@ -869,7 +1042,7 @@
               </div>
             </div>
             <div class="View-faq sss view-menu-content-item" id="sss-content">
-              <h4 class="View-title">Sıkça Sorulan Sorular</h4>
+              <h4 class="View-title"><b>Sıkça</b> Sorulan Sorular</h4>
               <div class="accordion" id="Faq">
                 <div class="accordion-item">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -922,110 +1095,329 @@
               </div>
             </div>
 
+            <div class="View-mobile-modal" :class="{ 'show': mobileAmenites }">
+              <button type="button" class="mobile-menus-back" @click="mobileAmenitesClose"><i
+                  class="icon-left-arrow"></i></button>
+              <div class="Amenites">
+                <div class="Amenites-head">
+                  <div class="Amenites-head-in">
+                    <h3 class="Amenites-title">Tesis <b>olanakları</b></h3>
+                    <div class="Amenites-head-link">
+                      <p>Tesis kategorisi</p>
+                      <nuxt-link to="/">Doğa manzaralı</nuxt-link>
+                      <nuxt-link to="/">Muhafazar villa</nuxt-link>
+                    </div>
+                  </div>
+                </div>
+                <div class="Amenites-in">
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+                  <div class="Amenites-item">
+                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <div class="Amenites-item-in">
+                      <p>Jakuzi</p>
+                      <p>Jakuzi</p>
+                      <p>Bilardo Masası</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                      <p>Barbekü / Mangal Alanı</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="View-mobile-modal" :class="{ 'show': mobileOpportunity }">
+              <button type="button" class="mobile-menus-back" @click="mobileOpportunityClose"><i
+                  class="icon-left-arrow"></i></button>
+              <div class="View-right-opportunity View-right-opportunity-modal">
+                <div class="View-right-opportunity-head">
+                  <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara</h4>
+
+                </div>
+                <nuxt-link to="/" class="View-right-opportunity-item">
+                  <div class="View-right-opportunity-item-day">
+                    <b>3</b>
+                    <span>GECE</span>
+                  </div>
+                  <div class="View-right-opportunity-item-price">
+                    <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                    <span>12.120TL</span>
+                  </div>
+                </nuxt-link>
+                <nuxt-link to="/" class="View-right-opportunity-item">
+                  <div class="View-right-opportunity-item-day">
+                    <b>3</b>
+                    <span>GECE</span>
+                  </div>
+                  <div class="View-right-opportunity-item-price">
+                    <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                    <span>12.120TL</span>
+                  </div>
+                </nuxt-link>
+                <nuxt-link to="/" class="View-right-opportunity-item">
+                  <div class="View-right-opportunity-item-day">
+                    <b>3</b>
+                    <span>GECE</span>
+                  </div>
+                  <div class="View-right-opportunity-item-price">
+                    <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                    <span>12.120TL</span>
+                  </div>
+                </nuxt-link>
+                <nuxt-link to="/" class="View-right-opportunity-item">
+                  <div class="View-right-opportunity-item-day">
+                    <b>3</b>
+                    <span>GECE</span>
+                  </div>
+                  <div class="View-right-opportunity-item-price">
+                    <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                    <span>12.120TL</span>
+                  </div>
+                </nuxt-link>
+                <nuxt-link to="/" class="View-right-opportunity-item">
+                  <div class="View-right-opportunity-item-day">
+                    <b>3</b>
+                    <span>GECE</span>
+                  </div>
+                  <div class="View-right-opportunity-item-price">
+                    <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                    <span>12.120TL</span>
+                  </div>
+                </nuxt-link>
+                <nuxt-link to="/" class="View-right-opportunity-item">
+                  <div class="View-right-opportunity-item-day">
+                    <b>3</b>
+                    <span>GECE</span>
+                  </div>
+                  <div class="View-right-opportunity-item-price">
+                    <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                    <span>12.120TL</span>
+                  </div>
+                </nuxt-link>
+                <nuxt-link to="/" class="View-right-opportunity-item">
+                  <div class="View-right-opportunity-item-day">
+                    <b>3</b>
+                    <span>GECE</span>
+                  </div>
+                  <div class="View-right-opportunity-item-price">
+                    <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                    <span>12.120TL</span>
+                  </div>
+                </nuxt-link>
+                <nuxt-link to="/" class="View-right-opportunity-item">
+                  <div class="View-right-opportunity-item-day">
+                    <b>3</b>
+                    <span>GECE</span>
+                  </div>
+                  <div class="View-right-opportunity-item-price">
+                    <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                    <span>12.120TL</span>
+                  </div>
+                </nuxt-link>
+
+              </div>
+            </div>
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocation }">
+              <button type="button" class="mobile-menus-back" @click="mobileLocationClose"><i
+                  class="icon-left-arrow"></i></button>
+                  <div class="View-location">
+              <div class="second-tab-item w-100">
+                <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+              </div>
+              <div class="second-tab-item w-100">
+                <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+              </div>
+              <div class="second-tab-item w-100">
+                <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+              </div>
+              <div class="second-tab-item w-100">
+                <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+              </div>
+            </div>
+            </div>
+
           </div>
           <div class="View-right Reservation">
 
             <reservation-form :property-code="villa.code" :disable-reservation="disableDate"></reservation-form>
 
-            <!-- <div class="View-right-opportunity">
-              <h4>Kısa Süreli Fırsatlar</h4>
-
-              <div class="swiper swiper-opportunity swiper-overflow">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
-                    <div class="View-right-opportunity-item">
-                      <div class="View-right-opportunity-item-night">
-                        <span>4</span>
-                        <p>GECE</p>
-                      </div>
-                      <p class="View-right-opportunity-item-date">29 ARALIK - 1 OCAK</p>
-                      <div class="View-right-opportunity-item-price">
-                        <b>9.220₺</b>
-                        <small>fiyatlara her şey dahildir.</small>
-                      </div>
-                    </div>
-                    <div class="View-right-opportunity-item">
-                      <div class="View-right-opportunity-item-night">
-                        <span>4</span>
-                        <p>GECE</p>
-                      </div>
-                      <p class="View-right-opportunity-item-date">29 ARALIK - 1 OCAK</p>
-                      <div class="View-right-opportunity-item-price">
-                        <b>9.220₺</b>
-                        <small>fiyatlara her şey dahildir.</small>
-                      </div>
-                    </div>
-                    <div class="View-right-opportunity-item">
-                      <div class="View-right-opportunity-item-night">
-                        <span>4</span>
-                        <p>GECE</p>
-                      </div>
-                      <p class="View-right-opportunity-item-date">29 ARALIK - 1 OCAK</p>
-                      <div class="View-right-opportunity-item-price">
-                        <b>9.220₺</b>
-                        <small>fiyatlara her şey dahildir.</small>
-                      </div>
-                    </div>
-                  </div>
+            <div class="View-right-opportunity">
+              <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
+              <nuxt-link to="/" class="View-right-opportunity-item">
+                <div class="View-right-opportunity-item-day">
+                  <b>3</b>
+                  <span>GECE</span>
                 </div>
-                <div class="swiper-pagination"></div>
-              </div>
-            </div> -->
+                <div class="View-right-opportunity-item-price">
+                  <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                  <span>12.120TL</span>
+                </div>
+              </nuxt-link>
+              <nuxt-link to="/" class="View-right-opportunity-item">
+                <div class="View-right-opportunity-item-day">
+                  <b>3</b>
+                  <span>GECE</span>
+                </div>
+                <div class="View-right-opportunity-item-price">
+                  <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+                  <span>12.120TL</span>
+                </div>
+              </nuxt-link>
+
+              <b-button type="button" v-b-modal.opportunityModal>Diğer tarihleri <span>görüntüle(4)</span></b-button>
+            </div>
 
           </div>
         </div>
       </div>
     </div>
 
-    <section class="Opportunity-slider popular-dark">
-            <div class="container ">
-                <div class="section-caption d-flex align-items-center mb-3 pb-1">
-                    <i class="icon-opportunity-calendar"></i>
-                    <h4 class="">Sana Özel <span>Fırsatlar</span></h4>
-                    <a href="" class="section-caption-btn ms-auto">
-                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </a>
-                </div>
-                <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+    <section class="Opportunity-slider popular-dark" id="more-villas">
+      <div class="container ">
+        <div class="section-caption d-flex align-items-center mb-3 pb-1">
+          <i class="icon-opportunity-calendar"></i>
+          <h4 class="">Haftanın<span> Villaları</span></h4>
+          <a href="" class="section-caption-btn ms-auto">
+            <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
+          </a>
+        </div>
+        <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
 
-                            <nuxt-link to="/" class="Card Card-h">
-                                <div class="Card-in">
-                                    <div class="Card-img">
-                                        <nuxt-link to="/">
-                                            <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
-                                        </nuxt-link>
+              <nuxt-link to="/" class="Card Card-h">
+                <div class="Card-in">
+                  <div class="Card-img">
+                    <nuxt-link to="/">
+                      <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
+                    </nuxt-link>
 
-                                    </div>
-                                    <div class="Card-h-in">
-                                        <div class="Card-content">
-                                            <div class="Card-content-head">
-                                                <div class="Card-content-head-code">
-                                                    <b>VKV3456</b>
-                                                    <span>Tesis Kodu</span>
-                                                </div>
-                                                <div class="Card-content-head-location">
-                                                    <i class="icon-pin"></i>
-                                                    <p>FETHİYE <span>Turkey / Muğla</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="Card-content-info">
-                                                <div class="Card-content-info-item">
-                                                    <i class="icon-user"></i>
-                                                    <span>4 Kişilik</span>
-                                                </div>
-                                                <div class="Card-content-info-item">
-                                                    <i class="icon-bed"></i>
-                                                    <span>2 Yatak Odası</span>
-                                                </div>
-                                                <div class="Card-content-info-item">
-                                                    <i class="icon-shower"></i>
-                                                    <span>2 Banyo</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="Card-content-bottom">
+                  </div>
+                  <div class="Card-h-in">
+                    <div class="Card-content">
+                      <div class="Card-content-head">
+                        <div class="Card-content-head-code">
+                          <b>VKV3456</b>
+                          <span>Tesis Kodu</span>
+                        </div>
+                        <div class="Card-content-head-location">
+                          <i class="icon-pin"></i>
+                          <p>FETHİYE <span>Turkey / Muğla</span></p>
+                        </div>
+                      </div>
+                      <div class="Card-content-info">
+                        <div class="Card-content-info-item">
+                          <i class="icon-user"></i>
+                          <span>4 Kişilik</span>
+                        </div>
+                        <div class="Card-content-info-item">
+                          <i class="icon-bed"></i>
+                          <span>2 Yatak Odası</span>
+                        </div>
+                        <div class="Card-content-info-item">
+                          <i class="icon-shower"></i>
+                          <span>2 Banyo</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="Card-content-bottom opportunity">
+                      <div class="Card-content-bottom-price">
+                        <p><b>2.500</b><span>TL</span></p>
+                        <p>Fırsatı kaçırma!</p>
+                      </div>
+                      <nuxt-link to="/" class="Card-content-bottom-link">
+                        <i class="icon-right-arrows-new"></i>
+                      </nuxt-link>
+                    </div>
+                    <!-- <div class="Card-content-bottom">
                                             <div class="Card-content-bottom-day">
                                                 <p><span>3</span>Gece</p>
                                             </div>
@@ -1038,22 +1430,24 @@
                                                 <p class="orange">TOPLAM FİYAT</p>
                                                 <p><b>2.500</b><span>TL</span></p>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nuxt-link>
-                        </div>
-                    </div>
-                    <!-- If pagination is needed -->
-
-                    <!-- If navigation buttons are needed -->
-                    <!-- <div class="swiper-pagination"></div> -->
-                    <div class="swiper-button-prev list-navigation-prev"></div>
-                    <div class="swiper-button-next list-navigation-next"></div>
+                                        </div> -->
+                  </div>
                 </div>
-
+              </nuxt-link>
             </div>
-        </section>
+          </div>
+
+
+          <!-- If pagination is needed -->
+
+          <!-- If navigation buttons are needed -->
+          <!-- <div class="swiper-pagination"></div> -->
+          <div class="swiper-button-prev list-navigation-prev"></div>
+          <div class="swiper-button-next list-navigation-next"></div>
+        </div>
+
+      </div>
+    </section>
 
     <section class="Gallery" @keydown.esc="closeGallery">
       <div class="container">
@@ -1097,112 +1491,96 @@
       </div>
     </section>
 
-    <b-modal id="amenitesModal" class="Login" size="xl" :hide-header="true" hide-footer>
-      <div class="Amenites">
-        <div class="Amenites-head">
-          <h3 class="Amenites-title">Tesisin <b>tüm olanakları</b></h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            @click="$bvModal.hide('amenitesModal')">Kapat<i class="icon-search-close"></i></button>
-        </div>
-        <div class="Amenites-in">
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
-          <div class="Amenites-item">
-            <span class="Amenites-item-title">Bahçe Alanı</span>
-            <div class="Amenites-item-in">
-              <p>Jakuzi</p>
-              <p>Jakuzi</p>
-              <p>Bilardo Masası</p>
-              <p>Barbekü / Mangal Alanı</p>
-              <p>Barbekü / Mangal Alanı</p>
-            </div>
-          </div>
+    <amenites-modal></amenites-modal>
 
+    <b-modal id="opportunityModal" class="Login" :hide-header="true" hide-footer>
+      <div class="View-right-opportunity">
+        <div class="View-right-opportunity-head">
+          <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            @click="$bvModal.hide('opportunityModal')"><i class="icon-search-close"></i></button>
         </div>
+        <nuxt-link to="/" class="View-right-opportunity-item">
+          <div class="View-right-opportunity-item-day">
+            <b>3</b>
+            <span>GECE</span>
+          </div>
+          <div class="View-right-opportunity-item-price">
+            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+            <span>12.120TL</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/" class="View-right-opportunity-item">
+          <div class="View-right-opportunity-item-day">
+            <b>3</b>
+            <span>GECE</span>
+          </div>
+          <div class="View-right-opportunity-item-price">
+            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+            <span>12.120TL</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/" class="View-right-opportunity-item">
+          <div class="View-right-opportunity-item-day">
+            <b>3</b>
+            <span>GECE</span>
+          </div>
+          <div class="View-right-opportunity-item-price">
+            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+            <span>12.120TL</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/" class="View-right-opportunity-item">
+          <div class="View-right-opportunity-item-day">
+            <b>3</b>
+            <span>GECE</span>
+          </div>
+          <div class="View-right-opportunity-item-price">
+            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+            <span>12.120TL</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/" class="View-right-opportunity-item">
+          <div class="View-right-opportunity-item-day">
+            <b>3</b>
+            <span>GECE</span>
+          </div>
+          <div class="View-right-opportunity-item-price">
+            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+            <span>12.120TL</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/" class="View-right-opportunity-item">
+          <div class="View-right-opportunity-item-day">
+            <b>3</b>
+            <span>GECE</span>
+          </div>
+          <div class="View-right-opportunity-item-price">
+            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+            <span>12.120TL</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/" class="View-right-opportunity-item">
+          <div class="View-right-opportunity-item-day">
+            <b>3</b>
+            <span>GECE</span>
+          </div>
+          <div class="View-right-opportunity-item-price">
+            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+            <span>12.120TL</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link to="/" class="View-right-opportunity-item">
+          <div class="View-right-opportunity-item-day">
+            <b>3</b>
+            <span>GECE</span>
+          </div>
+          <div class="View-right-opportunity-item-price">
+            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
+            <span>12.120TL</span>
+          </div>
+        </nuxt-link>
+
       </div>
     </b-modal>
 
@@ -1219,6 +1597,7 @@ import 'swiper/swiper-bundle.min.css'
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import CloseVillaModal from '../modals/close-villa-modal.vue';
+import AmenitesModal from '../modals/amenites-modal.vue';
 export default {
   name: 'DynamicDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
@@ -1226,7 +1605,7 @@ export default {
   components: {
     Swiper,
     HotelDatePicker,
-    CloseVillaModal
+    CloseVillaModal, AmenitesModal
   },
   data() {
     return {
@@ -1249,7 +1628,10 @@ export default {
         [36.61751702707028, 29.143651464471198], [36.61814341192442, 29.143354164069745]
       ],
       iconSize: [140, 140],
-
+      moreMobileContent: false,
+      mobileAmenites: false,
+      mobileOpportunity: false,
+      mobileLocation: false,
     }
   },
   methods: {
@@ -1390,6 +1772,28 @@ export default {
         this.galleryIsOpen = false
       }
     },
+    moreMobileContentOpen() {
+      this.moreMobileContent = !this.moreMobileContent
+    },
+    mobileAmenitesOpen() {
+      this.mobileAmenites = true
+    },
+    mobileAmenitesClose() {
+      this.mobileAmenites = false
+    },
+    mobileOpportunityOpen() {
+      this.mobileOpportunity = true
+    },
+    mobileOpportunityClose() {
+      this.mobileOpportunity = false
+    },
+    mobileLocationOpen() {
+      this.mobileLocation = true
+    },
+    mobileLocationClose() {
+      this.mobileLocation = false
+    }
+
 
   },
   watch: {
@@ -1408,8 +1812,8 @@ export default {
       spaceBetween: 18,
       breakpoints: {
         200: {
-          slidesPerView: 2.2,
-          spaceBetween: 18,
+          slidesPerView: 3,
+          spaceBetween: 8,
         },
         768: {
           slidesPerView: 3,
@@ -1473,33 +1877,6 @@ export default {
       },
     })
 
-    const swiper3 = new Swiper('.list-slide-opportunity', {
-            slidesPerView: 1,
-            spaceBetween: 16,
-            direction: 'horizontal',
-            loop: true,
-            modules: [Navigation, Pagination],
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-            },
-            breakpoints: {
-                576: {
-                    slidesPerView: 2,
-                },
-                768: {
-                    slidesPerView: 2,
-                },
-                1199: {
-                    slidesPerView: 2,
-                },
-            },
-        })
-
     this.$el.addEventListener('click', function (e) {
       if (e.target.closest('.dropdown-menu')) {
         e.stopPropagation();
@@ -1534,7 +1911,7 @@ export default {
       });
 
 
-      if (scrollY >= document.querySelector('#more-villas').offsetTop - 500) {
+      if (scrollY >= document.querySelector('#more-villas').offsetTop - 400) {
         document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
       } else {
 
@@ -1560,7 +1937,6 @@ export default {
       if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
         document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
         document.querySelector(".View-right-opportunity").classList.add('opacity-0')
-
       } else {
         document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
         document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
