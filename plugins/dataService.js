@@ -13,6 +13,10 @@ export default ({app, $axios, $config}, inject) => {
 
     getOfferDetails: async (data) => {
       return await $axios.post(serverAddr + 'hotel/getOfferDetails', data)
+    },
+
+    getRooms: async (data) => {
+      return await $axios.post(serverAddr + 'hotel/getRooms', data)
     }
 
   }
