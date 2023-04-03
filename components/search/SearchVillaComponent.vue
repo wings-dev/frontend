@@ -226,7 +226,7 @@ export default {
       checkOut: null,
       adult: 1,
       children: 0,
-      weekfirstday: process.env.WEEKDAY,
+      firstDayOfWeek: Number(process.env.CALENDAR_FIRST_DAY),
       baby: 0,
       destinations: [],
       amenites: {
@@ -295,7 +295,6 @@ export default {
       if (newValue !== undefined) {
         this.changeHotelInput(0, newValue);
       }
-      console.log(newValue)
     },
     checkOut(newValue) {
       if (newValue !== undefined) {

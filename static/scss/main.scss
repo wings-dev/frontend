@@ -180,6 +180,18 @@ body.overflow-hidden {
 
 @import "common/header";
 
+body{
+  &.villa-detay{
+    .Header{
+      z-index: 1;
+      &-inner-fixed{
+        position: static;
+      }
+    }
+    
+  }
+}
+
 .Banner_lg {
   height: 586px;
 }
@@ -4109,6 +4121,9 @@ body.overflow-hidden {
       }
       span {
         display: block;
+        &.vti__selection{
+          display: flex;
+        }
       }
     }
     &-form {
@@ -4139,6 +4154,14 @@ body.overflow-hidden {
 .modal-content {
   border-radius: 16px;
   border: none;
+  .View-right-opportunity{
+    border-radius: 16px;
+    border: none;
+  }
+}
+.btn-check:focus+.btn-secondary, .btn-secondary:focus{
+  background-color: transparent;
+  color: inherit;
 }
 
 .Notfound {
@@ -6450,230 +6473,7 @@ body.overflow-hidden {
   background-color: var(--page-light) !important;
 }
 
-.view-detail-section {
-  .action-btn {
-    &-icon {
-      width: 34px;
-      height: 34px;
-      border: solid 1px #183266;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 400ms;
-      i {
-        font-size: 13px;
-        color: #183266;
-      }
-    }
-    &-text {
-      font-size: 11px;
-      font-weight: 500;
-      color: #183266;
-      margin-left: 10px;
-    }
-    &:hover,
-    &.active {
-      .action-btn-icon {
-        background-color: #183266;
-        i {
-          color: #fff;
-        }
-      }
-    }
-  }
 
-  .up-button {
-    .action-btn-icon i {
-      font-size: 9px;
-      transform: translate(-3px, -1px);
-    }
-
-    .action-btn {
-      &-text {
-        font-weight: bold;
-      }
-      &-icon {
-        background-color: var(--bs-theme-second);
-        border-color: var(--bs-theme-second);
-        i {
-          color: #fff;
-        }
-      }
-    }
-    &:hover {
-      .action-btn-icon {
-        background-color: var(--bs-theme-first);
-        border-color: var(--bs-theme-first);
-        i {
-          color: #fff;
-        }
-      }
-    }
-  }
-
-  .view-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 187px 187px;
-    grid-gap: 13px;
-    .area-1 {
-      grid-area: 1 / 1 / 3 / 3;
-    }
-    .area-2 {
-      grid-area: 1 / 3 / 2 / 4;
-    }
-    .area-3 {
-      grid-area: 1 / 4 / 2 / 5;
-    }
-    .area-4 {
-      grid-area: 2 / 3 / 3 / 4;
-    }
-    .area-5 {
-      grid-area: 2 / 4 / 3 / 5;
-    }
-    .view-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      img {
-        transition: all 400ms;
-        width: 100%;
-      }
-      .hover-box {
-        opacity: 1;
-        visibility: visible;
-        transition: all 0.25s ease;
-      }
-      @media only screen and (min-width: 992px) {
-        &:hover {
-          .hover-box {
-            opacity: 1;
-            visibility: visible;
-          }
-        }
-      }
-      @media (max-width: 768px) {
-        img {
-          max-height: 226px;
-        }
-      }
-      &:hover {
-        img {
-          transform: scale(1.03);
-        }
-      }
-      &.last:hover {
-        img {
-          transform: scale(1);
-        }
-      }
-    }
-  }
-  position: relative;
-  z-index: 11;
-  &:before {
-    content: "";
-    display: inline-block;
-    width: 100%;
-    height: 200px;
-    background-color: #f2f5fb;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-  }
-  &-menus {
-    height: 140px;
-  }
-  &.otel {
-    padding-bottom: 30px;
-    &:before {
-      height: 100%;
-    }
-    .detail-top {
-      background-color: #fff;
-    }
-    .view-top {
-      &-title {
-        align-items: flex-start;
-        &-in {
-          display: flex;
-          flex-direction: column;
-        }
-        h1 {
-          font-size: 24px;
-          font-weight: 600;
-          color: var(--bs-theme-first);
-        }
-      }
-      .Otel-card-review {
-        margin-left: 24px;
-        margin-bottom: 0;
-        span {
-          padding: 4px 12px;
-          line-height: 2.2;
-        }
-      }
-    }
-    .View-menu {
-      &-left {
-        .Otel-card-content-info-item {
-          &.erkenrezervasyon {
-            padding: 6px;
-            border-radius: 4px;
-            border: solid 1px #c9e5d4;
-            background-color: #dff6e8;
-            display: flex;
-            align-items: center;
-            height: 45px;
-            margin-right: 20px;
-            span {
-              font-size: 15px;
-              font-weight: 500;
-              line-height: 1;
-              color: #fff;
-              padding: 10px;
-              border-radius: 3px;
-              background-color: #00ae8f;
-              margin-right: 6px;
-            }
-            p {
-              font-size: 12px;
-              font-weight: 500;
-              line-height: 1;
-              color: #00ae8f;
-              max-width: 130px;
-            }
-          }
-          &.ucretsiziptal {
-            height: 45px;
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 1;
-            color: #f5841f;
-            padding: 10px;
-            border-radius: 4px;
-            border: solid 1px #f5841f;
-            background-color: #faeadd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        }
-      }
-      &-right {
-        .map-view {
-          font-size: 13px;
-          font-weight: 500;
-          line-height: 2;
-          color: #f5841f;
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-}
 
 .search-otel {
   transform: translateY(70px);
@@ -6750,9 +6550,6 @@ body.overflow-hidden {
   }
 }
 
-.mobile-menus-back {
-  display: none;
-}
 
 .popover {
   z-index: 9;
@@ -9057,6 +8854,9 @@ body.overflow-hidden {
         font-size: clamp(18px, 1.25vw, 24px);
         font-weight: normal;
         color: var(--bs-theme-second);
+        &.text-dark-blue{
+          color: var(--bs-theme-first);
+        }
       }
       .swiper-pagination {
         position: static;

@@ -283,8 +283,6 @@
         </template>
       </template>
 
-
-
       <!-- desktop -->
       <template v-else>
         <button v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading"
@@ -336,7 +334,7 @@ export default {
         week: "hafta",
         weeks: "haftalar",
       },
-      firstDayOfWeek: 1,
+      firstDayOfWeek: Number(process.env.CALENDAR_FIRST_DAY),
       availabilityLoading: false,
       availabilityData: {
         "status": null,

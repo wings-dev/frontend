@@ -78,7 +78,7 @@ export default {
       checkOut: null,
       adult: 1,
       childAges: [],
-      weekfirstday: process.env.WEEKDAY,
+      firstDayOfWeek: Number(process.env.CALENDAR_FIRST_DAY),
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
@@ -138,7 +138,6 @@ export default {
       if (newValue !== undefined) {
         this.changeHotelInput(0, newValue);
       }
-      console.log(newValue)
     },
     checkOut(newValue) {
       if (newValue !== undefined) {
