@@ -3,7 +3,7 @@
         <div class="container ">
             <div class="section-caption d-flex align-items-center mb-3 pb-1">
                 <i class="icon-opportunity-calendar"></i>
-                <h4 class="">{{ sectionTitle }}</h4>
+                <h4 class="">Haftanın <span>Villaları</span></h4>
                 <a href="" class="section-caption-btn ms-auto">
                     <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
                 </a>
