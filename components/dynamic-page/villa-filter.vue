@@ -1,6 +1,209 @@
 <template>
   <div>
-    <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5">
+
+    <section class="Opportunity" style="background-image: url(/img/opportunity-back.svg);" v-if="opportunity">
+      <div class="container">
+        <div class="Opportunity-in">
+          <div class="Opportunity-left">
+            <div class="Opportunity-left-head">
+              <i class="icon-opportunity"></i>
+              <h3>Aylara göre Fırsatlar</h3>
+            </div>
+            
+            <p>Bu aya özel toplam <span>179 fırsat villası</span> var. Fırsatı kaçırma, huzurlu bi tatili yakala!</p>
+          </div>
+          <div class="Opportunity-right">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-haziran-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-haziran" type="button" role="tab" aria-controls="pills-haziran"
+                  aria-selected="true">Haziran</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-temmuz-tab" data-bs-toggle="pill" data-bs-target="#pills-temmuz"
+                  type="button" role="tab" aria-controls="pills-temmuz" aria-selected="false">Temmuz</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-agustos-tab" data-bs-toggle="pill" data-bs-target="#pills-agustos"
+                  type="button" role="tab" aria-controls="pills-agustos" aria-selected="false">Ağustos</button>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-haziran" role="tabpanel"
+                aria-labelledby="pills-haziran-tab">
+                <div class="Opportunity-list">
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>2</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      25 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item passive">
+                    <div class="Opportunity-list-item-content">
+                      <b>3</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <div class="Opportunity-list-item-count">
+                      <p>Tükendi</p>
+                    </div>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>4</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      2 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>5</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      5 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-temmuz" role="tabpanel" aria-labelledby="pills-temmuz-tab">
+                <div class="Opportunity-list">
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>2</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      25 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item passive">
+                    <div class="Opportunity-list-item-content">
+                      <b>3</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <div class="Opportunity-list-item-count">
+                      <p>Tükendi</p>
+                    </div>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>4</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      2 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>5</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      5 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-agustos" role="tabpanel" aria-labelledby="pills-agustos-tab">
+                <div class="Opportunity-list">
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>2</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      25 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item passive">
+                    <div class="Opportunity-list-item-content">
+                      <b>3</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <div class="Opportunity-list-item-count">
+                      <p>Tükendi</p>
+                    </div>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>4</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      2 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                  <nuxt-link to="/" class="Opportunity-list-item">
+                    <div class="Opportunity-list-item-content">
+                      <b>5</b>
+                      <div class="Opportunity-list-item-content-in">
+                        <span>GECE</span>
+                        <p>Fırsatları</p>
+                        <small>Temmuz</small>
+                      </div>
+                    </div>
+                    <p class="Opportunity-list-item-count">
+                      5 Fırsat <span>incele</span>
+                    </p>
+                  </nuxt-link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5" v-if="highlights">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
@@ -8,7 +211,9 @@
             <p class="highlight-section-desc" :class="{ active: isExpanded }" v-html="content">
             </p>
 
-            <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded }"  @click="isExpanded = !isExpanded" ><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' : 'DAHA AZ OKU' }}</div>
+            <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded }"
+              @click="isExpanded = !isExpanded"><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' : 'DAHA AZ OKU'
+              }}</div>
           </div>
         </div>
       </div>
@@ -268,20 +473,21 @@
 
     <filter-villa-component :selectedFilters="selectedFilters"></filter-villa-component>
 
-    <section class="highlight-section bg-theme-light-2 pt-5 pb-4">
+    <section class="highlight-section bg-theme-light-2 pt-5 pb-4" v-if="highlights">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
             <h1 class="highlight-section-title">Fethiye Kiralık Villa</h1>
             <p class="highlight-section-desc" :class="{ active: isExpanded2 }" v-html="content">
             </p>
-              <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded2 }"  @click="isExpanded2 = !isExpanded2" ><i class="readmore"></i> {{ !isExpanded2 ? 'TAMAMINI OKU' : 'DAHA AZ OKU' }}</div>
+            <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded2 }"
+              @click="isExpanded2 = !isExpanded2"><i class="readmore"></i> {{ !isExpanded2 ? 'TAMAMINI OKU' : 'DAHA AZ OKU' }}</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="List">
+    <section class="List" v-if="highlights">
       <div class="container">
         <div class="List-sss">
           <h3>En çok sorulan sorular </h3>
@@ -352,6 +558,8 @@ export default {
   name: 'DynamicVillaFilterPage',
   props: {
     selectedFilters: { type: Object, default: {} },
+    highlights: { type: Boolean, default: false },
+    opportunity: { type: Boolean, default: false }
   },
   data() {
     return {
@@ -478,20 +686,24 @@ export default {
   background-color: skyblue;
   border-radius: 8px;
 }
+
 .block-content__preview {
   /* default line-height is 24px */
   max-height: calc(24px * 4);
   overflow: hidden;
   color: white;
 }
+
 .block-content__paragraph {
   color: white;
   overflow: hidden;
   transition: all 250ms ease-out;
 }
+
 .block-content__paragraph.block-content__paragraph--is-expanded {
   overflow: initial;
 }
+
 .block-content__button {
   color: white;
   text-decoration: underline;

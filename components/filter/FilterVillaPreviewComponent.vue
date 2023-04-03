@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="F_villa-item">
+    <div class="F_villa-item opportunity" >
       <div class="F_villa-item-img">
         <div class="swiper villa-list-slider">
           <div class="swiper-wrapper">
@@ -22,6 +22,10 @@
               <i :class="isFavorite ? 'icon-heart-full' : 'icon-heart'"></i>
             </span>
           </button>
+        </div>
+        <div class="F_villa-item-opportunity">
+          <b>3</b>
+          <span>GECE</span>
         </div>
       </div>
       <a class="F_villa-item-right"  @click="goDetail">

@@ -5,12 +5,55 @@
       <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('reservationModal')"><i
           class="icon-login-close"></i></button>
       <div class="Login-in">
-        <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
+        <div class="Login-left">
+          <div class="Login-card">
+            <div class="Login-card-img">
+              <img src="/img/villa-grey.jpg" alt="">
+              <div class="Login-card-img-text">
+                <div class="Login-card-img-text-head">
+                  <span>Villa kodu</span>
+                  <b>VKV5261</b>
+                </div>
+                <div class="Login-card-img-text-in">
+                  <span>2 yetişkin</span>
+                  <span>1 Banyo</span>
+                  <span>1 Yatak Odası</span>
+                </div>
+              </div>
+              <div class="Login-card-img-link">
+                <nuxt-link to="/"><i class="icon-arrow-right-up"></i></nuxt-link>
+              </div>
+            </div>
+            <div class="Login-card-content">
+              <p class="Login-card-content-total">
+                Toplam Ödeme <span>14.210₺</span>
+              </p>
+              <div class="Login-card-content-bottom">
+                <div class="Login-card-content-bottom-item">
+                  <p>Ön Ödeme <span>5400₺</span></p>
+                  <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
+                </div>
+                <div class="Login-card-content-bottom-item">
+                  <p>Tesise Girişte <span>1500₺</span></p>
+                  <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
+                </div>
+              </div>
+            </div>
+            <div class="Login-card-discount">
+              <label for="">
+                <input type="text" placeholder="İndirim kodunuz mu var?">
+                <button type="button">Uygula</button>
+              </label>
+            </div>
+          </div>
+        </div>
         <div class="Login-right">
           <div class="Login-right-in">
-            <h2><b>REZERVASYON </b> YAP</h2>
+            <h3>Şuan rezervasyon talebi oluşturuyorsunuz.</h3>
+            <h2>Bilgilerinizi giriniz</h2>
+            <p>Ön rezervasyon talebi alabilmemiz için lütfen rezervasyon sahibi bilgilerini giriniz.</p>
             <form action="" class="Login-form" @submit.prevent="register">
-              {{ reservationModalData }}
+              <!-- {{ reservationModalData }} -->
               <label for="" class="Login-form-item mb-2">
                 <input type="text" placeholder="İsim Soyisim" v-model="form.name" required>
               </label>

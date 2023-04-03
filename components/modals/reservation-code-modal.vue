@@ -7,11 +7,58 @@
 
       <!-- Kod doğrulama içeriği -->
       <div class="Login-in">
-        <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
+        <div class="Login-left">
+          <div class="Login-card">
+            <div class="Login-card-img">
+              <img src="/img/villa-grey.jpg" alt="">
+              <div class="Login-card-img-text">
+                <div class="Login-card-img-text-head">
+                  <span>Villa kodu</span>
+                  <b>VKV5261</b>
+                </div>
+                <div class="Login-card-img-text-in">
+                  <span>2 yetişkin</span>
+                  <span>1 Banyo</span>
+                  <span>1 Yatak Odası</span>
+                </div>
+              </div>
+              <div class="Login-card-img-link">
+                <nuxt-link to="/"><i class="icon-arrow-right-up"></i></nuxt-link>
+              </div>
+            </div>
+            <div class="Login-card-discount-code">
+              <p>İndirim(IND52668)</p>
+              <span>-1.400₺</span>
+            </div>
+            <div class="Login-card-content">
+              <p class="Login-card-content-total">
+                Toplam Ödeme <span>14.210₺</span>
+              </p>
+              <div class="Login-card-content-bottom">
+                <div class="Login-card-content-bottom-item">
+                  <p>Ön Ödeme <span>5400₺</span></p>
+                  <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
+                </div>
+                <div class="Login-card-content-bottom-item">
+                  <p>Tesise Girişte <span>1500₺</span></p>
+                  <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
+                </div>
+              </div>
+            </div>
+            <div class="Login-card-discount complete">
+              <label for="">
+                <input type="text" placeholder="İndirim kodunuz mu var?" value="IND52564">
+                <i class="icon-check-big"></i>
+                <button type="button">Uygulandı</button>
+              </label>
+            </div>
+          </div>
+        </div>
         <div class="Login-right">
           <div class="Login-right-in">
-            <h2><b>REZERVASYON DOĞRULAMA </b> KODU</h2>
+            <h2>DOĞRULAMA KODU</h2>
             <span>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
+            <p class="Login-form-signup"><a href="javascript:void(0)" @click="goBack">Bu numara size ait değil mi?</a></p>
             <form action="" class="Login-form" @submit.prevent="entercode">
               <fieldset name='number-code' data-number-code-form>
                 <input v-for="(code, index) in codes" :key="index" ref="codeInputs" class="number-code" type="number"
@@ -22,12 +69,13 @@
 
               <code-count-down :key="key" :countdown-time="30" @started="started" @timeout="timeout"></code-count-down>
 
-              <button v-if="countdownTimeout" @click="resend" type="button" class="Login-form-button mt-1">TEKRAR KOD GÖNDER</button>
+              <p  v-if="countdownTimeout"  class="Login-form-signup"><a href="javascript:void(0)" @click="resend">Yeni Doğrulama Kodu Gönder </a></p>
+              <!-- <button type="button" class="Login-form-button mt-1">Yeni Doğrulama Kodu Gönder </button> -->
               <button v-else type="submit" class="Login-form-button mt-1">GÖNDER</button>
-              <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye
-                  Ol!</a></p>
+              <!-- <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye
+                  Ol!</a></p> -->
 
-              <p class="Login-form-signup"><a href="javascript:void(0)" @click="goBack">Bilgilerimi Düzenle</a></p>
+              
             </form>
           </div>
         </div>
@@ -38,7 +86,7 @@
 
 <script>
 import jwt_decode from 'jwt-decode'
-import {mapActions, mapMutations, mapState} from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 
 export default {
   name: "ReservationCodeModal",
@@ -104,8 +152,9 @@ export default {
         if (error.response) {
           if (error.response.data.status) {
             this.$bvModal.hide('reservationCodeModal')
+            
             setTimeout(() => {
-              alert(error.response.data.message);
+              this.$bvModal.show('reservationSuccessModal')
             }, 100)
           }
         } else {

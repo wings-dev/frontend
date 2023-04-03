@@ -339,7 +339,6 @@ export default {
     },
     showMobileFilter() {
       document.querySelector('.Filter-left').classList.add("show")
-      document.querySelector('body').classList.add("over")
     },
     updateFilter(key, value) {
       this[key] = value;

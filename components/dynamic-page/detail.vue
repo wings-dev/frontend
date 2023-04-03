@@ -61,13 +61,23 @@
                   </span>
                   <span class="action-btn-text">{{ isFavorite ? 'Favorilerden Sil' : 'Favorilere Ekle' }}</span>
                 </button>
+                
+                <div class="dropdown Share">
                 <button type="button"
-                  class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
+                class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                  id="dropdownMenuShare" data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="action-btn-icon">
                     <i class="icon-share"></i>
                   </span>
                   <span class="action-btn-text">Arkadaşın ile Paylaş</span>
                 </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare">
+                  <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
+                </ul>
+              </div>
                 <button type="button"
                   class="up-button d-none fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
                   @click.prevent="scrollTop">
@@ -130,17 +140,27 @@
             </div>
           </div>
           <div class="View-gallery-mobile-buttons">
-            <button type="button" @click="toggleFavorite"
+            
+            <div class="dropdown Share">
+                <button type="button"
+                class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                  id="dropdownMenuShare2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="action-btn-icon">
+                    <i class="icon-share"></i>
+                  </span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare2">
+                  <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
+                </ul>
+              </div>
+              <button type="button" @click="toggleFavorite"
               class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
               :class="isFavorite ? 'active' : ''">
               <span class="action-btn-icon">
                 <i class="icon-heart"></i>
-              </span>
-            </button>
-            <button type="button"
-              class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
-              <span class="action-btn-icon">
-                <i class="icon-share"></i>
               </span>
             </button>
           </div>
@@ -186,6 +206,7 @@
                   <p>Barbekü / Mangal Alanı</p>
                 </div>
                 <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar (14)</b-button>
+                <b-button v-b-modal.reservationSuccessModal class="View-desc-amenites-more">başarılı</b-button>
 
               </div>
             </div>
@@ -366,7 +387,7 @@
               </p>
 
               <client-only>
-                <availibility-calendar :slug="$route.params.slug" :calendarColumns="2" :rows="1"
+                <availibility-calendar :slug="$route.params.slug" :calendarColumns="calendarColumn" :rows="calendarRow"
                   :calendarStep="1"></availibility-calendar>
               </client-only>
 
@@ -662,6 +683,7 @@
                           <span>#2</span>
                         </div>
                       </div>
+
                     </div>
 
                   </div>
@@ -1005,6 +1027,15 @@
                       hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi pişirebilir,kendi
                       ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
                   </div>
+                  <div class="View-info-policy-mobile">
+                    <h5>İptal Politikası</h5>
+                    <div class="View-info-policy-mobile-in">
+                      <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi...
+                      </p>
+                      <button type="button" class="more" @click="mobilePolicyOpen"><i
+                          class="icon-right-arrow"></i></button>
+                    </div>
+                  </div>
                 </div>
                 <div class="View-info-fee">
                   <div class="View-info-fee-left">
@@ -1304,24 +1335,35 @@
             <div class="View-mobile-modal" :class="{ 'show': mobileLocation }">
               <button type="button" class="mobile-menus-back" @click="mobileLocationClose"><i
                   class="icon-left-arrow"></i></button>
-                  <div class="View-location">
-              <div class="second-tab-item w-100">
-                <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
-                <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
-              </div>
-              <div class="second-tab-item w-100">
-                <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
-                <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
-              </div>
-              <div class="second-tab-item w-100">
-                <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
-                <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
-              </div>
-              <div class="second-tab-item w-100">
-                <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
-                <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+              <div class="View-location">
+                <div class="second-tab-item w-100">
+                  <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                  <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                </div>
+                <div class="second-tab-item w-100">
+                  <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                  <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                </div>
+                <div class="second-tab-item w-100">
+                  <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                  <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                </div>
+                <div class="second-tab-item w-100">
+                  <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
+                  <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                </div>
               </div>
             </div>
+            <div class="View-mobile-modal" :class="{ 'show': mobilePolicy }">
+              <button type="button" class="mobile-menus-back" @click="mobilePolicyClose"><i
+                  class="icon-left-arrow"></i></button>
+              <div class="View-info-policy-modal">
+                <h5>İptal Politikası</h5>
+                <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
+                  pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.Yemek servisi hizmetimiz
+                  bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi pişirebilir,kendi ellerinizle güzel
+                  bir kahvaltı sofrası hazırlayabilirsiniz.</p>
+              </div>
             </div>
 
           </div>
@@ -1360,94 +1402,9 @@
       </div>
     </div>
 
-    <section class="Opportunity-slider popular-dark" id="more-villas">
-      <div class="container ">
-        <div class="section-caption d-flex align-items-center mb-3 pb-1">
-          <i class="icon-opportunity-calendar"></i>
-          <h4 class="">Haftanın<span> Villaları</span></h4>
-          <a href="" class="section-caption-btn ms-auto">
-            <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-          </a>
-        </div>
-        <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
 
-              <nuxt-link to="/" class="Card Card-h">
-                <div class="Card-in">
-                  <div class="Card-img">
-                    <nuxt-link to="/">
-                      <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
-                    </nuxt-link>
-
-                  </div>
-                  <div class="Card-h-in">
-                    <div class="Card-content">
-                      <div class="Card-content-head">
-                        <div class="Card-content-head-code">
-                          <b>VKV3456</b>
-                          <span>Tesis Kodu</span>
-                        </div>
-                        <div class="Card-content-head-location">
-                          <i class="icon-pin"></i>
-                          <p>FETHİYE <span>Turkey / Muğla</span></p>
-                        </div>
-                      </div>
-                      <div class="Card-content-info">
-                        <div class="Card-content-info-item">
-                          <i class="icon-user"></i>
-                          <span>4 Kişilik</span>
-                        </div>
-                        <div class="Card-content-info-item">
-                          <i class="icon-bed"></i>
-                          <span>2 Yatak Odası</span>
-                        </div>
-                        <div class="Card-content-info-item">
-                          <i class="icon-shower"></i>
-                          <span>2 Banyo</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="Card-content-bottom opportunity">
-                      <div class="Card-content-bottom-price">
-                        <p><b>2.500</b><span>TL</span></p>
-                        <p>Fırsatı kaçırma!</p>
-                      </div>
-                      <nuxt-link to="/" class="Card-content-bottom-link">
-                        <i class="icon-right-arrows-new"></i>
-                      </nuxt-link>
-                    </div>
-                    <!-- <div class="Card-content-bottom">
-                                            <div class="Card-content-bottom-day">
-                                                <p><span>3</span>Gece</p>
-                                            </div>
-                                            <div class="Card-content-bottom-date">
-                                                <p><span>12 TEM</span><i class="icon-arrow-right-2"></i><span>18 TEM</span>
-                                                </p>
-                                                <small>Fırsatı kaçırma!</small>
-                                            </div>
-                                            <div class="Card-content-bottom-price single">
-                                                <p class="orange">TOPLAM FİYAT</p>
-                                                <p><b>2.500</b><span>TL</span></p>
-                                            </div>
-                                        </div> -->
-                  </div>
-                </div>
-              </nuxt-link>
-            </div>
-          </div>
-
-
-          <!-- If pagination is needed -->
-
-          <!-- If navigation buttons are needed -->
-          <!-- <div class="swiper-pagination"></div> -->
-          <div class="swiper-button-prev list-navigation-prev"></div>
-          <div class="swiper-button-next list-navigation-next"></div>
-        </div>
-
-      </div>
-    </section>
+    
+    <more-villas></more-villas>
 
     <section class="Gallery" @keydown.esc="closeGallery">
       <div class="container">
@@ -1491,7 +1448,7 @@
       </div>
     </section>
 
-    <amenites-modal></amenites-modal>
+    <amenites-modal sectionTitle="Haftanın Villaları"></amenites-modal>
 
     <b-modal id="opportunityModal" class="Login" :hide-header="true" hide-footer>
       <div class="View-right-opportunity">
@@ -1598,6 +1555,7 @@ import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import CloseVillaModal from '../modals/close-villa-modal.vue';
 import AmenitesModal from '../modals/amenites-modal.vue';
+import MoreVillas from '../MoreVillas.vue';
 export default {
   name: 'DynamicDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
@@ -1605,7 +1563,8 @@ export default {
   components: {
     Swiper,
     HotelDatePicker,
-    CloseVillaModal, AmenitesModal
+    CloseVillaModal, AmenitesModal,
+    MoreVillas
   },
   data() {
     return {
@@ -1628,10 +1587,14 @@ export default {
         [36.61751702707028, 29.143651464471198], [36.61814341192442, 29.143354164069745]
       ],
       iconSize: [140, 140],
+      calendarColumn: 2,
+      calendarRow: 1,
       moreMobileContent: false,
       mobileAmenites: false,
       mobileOpportunity: false,
       mobileLocation: false,
+      mobilePolicy: false,
+      isMobile: false,
     }
   },
   methods: {
@@ -1792,13 +1755,34 @@ export default {
     },
     mobileLocationClose() {
       this.mobileLocation = false
-    }
+    },
+    mobilePolicyOpen() {
+      this.mobilePolicy = true
+    },
+    mobilePolicyClose() {
+      this.mobilePolicy = false
+    },
+    handleResize() {
+      if (window.innerWidth <= 768) {
+        this.isMobile = true
+      } else {
+        this.isMobile = false
+      }
+    },
 
 
   },
   watch: {
     galleryIsOpen() {
       window.addEventListener("keyup", this.onEscapeKeyUp);
+    },
+    isMobile() {
+      if (this.isMobile == true) {
+        this.calendarColumn = 1
+        console.log(this.isMobile, this.calendarColumns)
+      } else {
+        this.calendarColumn = 2
+      }
     }
   },
   beforeMount() {
@@ -1843,17 +1827,10 @@ export default {
         }
       },
     })
-    const swiperOpportunity = new Swiper('.swiper-opportunity', {
-      slidesPerView: 1,
-      spaceBetween: 18,
-      pagination: {
-        el: ".swiper-pagination",
-      },
-    })
 
-    const swiperMore = new Swiper('.list-slide-first', {
-      slidesPerView: 1.1,
-      spaceBetween: 18,
+    const swiper3 = new Swiper('.list-slide-opportunity', {
+      slidesPerView: 1,
+      spaceBetween: 16,
       direction: 'horizontal',
       loop: true,
       modules: [Navigation, Pagination],
@@ -1861,18 +1838,19 @@ export default {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+      },
       breakpoints: {
         576: {
           slidesPerView: 2,
-          spaceBetween: 18,
         },
         768: {
-          slidesPerView: 3,
-          spaceBetween: 18,
+          slidesPerView: 2,
         },
         1199: {
-          slidesPerView: 4,
-          spaceBetween: 18,
+          slidesPerView: 2,
         },
       },
     })
@@ -1919,31 +1897,35 @@ export default {
     };
 
     function scrollFunction() {
-      
-      if (document.body.scrollTop > 151 || document.documentElement.scrollTop > 151) {
-        document.getElementById("detailTop").classList.add('custom-fixed')
-        document.getElementById("detailMenu").classList.add('custom-fixed', 'custom-fixed-menu')
-        document.querySelector(".View").classList.add('View-top')
-        document.querySelector("body").classList.add('body-fixed')
-        document.querySelector('.share-btn').classList.add('d-none')
-        document.querySelector('.up-button').classList.remove('d-none')
-      } else {
-        document.getElementById("detailTop").classList.remove('custom-fixed')
-        document.getElementById("detailMenu").classList.remove('custom-fixed', 'custom-fixed-menu')
-        document.querySelector(".View").classList.remove('View-top')
-        document.querySelector("body").classList.remove('body-fixed')
-        document.querySelector('.share-btn').classList.remove('d-none')
-        document.querySelector('.up-button').classList.add('d-none')
+      try {
+        if (document.body.scrollTop > 151 || document.documentElement.scrollTop > 151) {
+          document.getElementById("detailTop").classList.add('custom-fixed')
+          document.getElementById("detailMenu").classList.add('custom-fixed', 'custom-fixed-menu')
+          document.querySelector(".View").classList.add('View-top')
+          document.querySelector("body").classList.add('body-fixed')
+          document.querySelector('.share-btn').classList.add('d-none')
+          document.querySelector('.up-button').classList.remove('d-none')
+        } else {
+          document.getElementById("detailTop").classList.remove('custom-fixed')
+          document.getElementById("detailMenu").classList.remove('custom-fixed', 'custom-fixed-menu')
+          document.querySelector(".View").classList.remove('View-top')
+          document.querySelector("body").classList.remove('body-fixed')
+          document.querySelector('.share-btn').classList.remove('d-none')
+          document.querySelector('.up-button').classList.add('d-none')
+        }
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+          document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
+          document.querySelector(".View-right-opportunity").classList.add('opacity-0')
+
+        } else {
+          document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
+          document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
+        }
+
+      } catch (error) {
+        console.error('scrollFunction hatası:', error);
       }
-      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-        document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
-        document.querySelector(".View-right-opportunity").classList.add('opacity-0')
-        
-      } else {
-        document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
-        document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
-      }
-      console.log('s')
+
     }
 
     if (this.attributes.length === 0) {
@@ -1951,6 +1933,8 @@ export default {
         this.$bvModal.show('closeVillaModal')
       }, 50)
     }
+    window.addEventListener("load", this.handleResize);
+    window.addEventListener("resize", this.handleResize);
   },
   computed: {
     isFavorite() {
@@ -2013,5 +1997,4 @@ export default {
   .modal-xl {
     max-width: 1140px;
   }
-}
-</style>
+}</style>

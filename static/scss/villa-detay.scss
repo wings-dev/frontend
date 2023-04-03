@@ -20,3 +20,9 @@ body {
 .Navigation{
   display: none;
 }
+
+.Header.villa-detay{
+  .Header-inner-fixed{
+    position: static;
+  }
+}

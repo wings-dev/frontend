@@ -4,10 +4,10 @@
       <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('loginModal')"><i
           class="icon-login-close"></i></button>
       <div class="Login-in">
-        <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
+        <div class="Login-left" style="background-image:url('/img/modal/login-modal-bg.jpg')"></div>
         <div class="Login-right">
           <div class="Login-right-in">
-            <h2><b>MÜŞTERİ </b> GİRİŞİ</h2>
+            <h2>MÜŞTERİ GİRİŞİ</h2>
             <p>Lütfen bir giriş yöntemi seçiniz.</p>
             <span>Yurtdışında yaşayan müşterilerimizin <u>e-posta</u> ile giriş yapması gerekmektedir.</span>
             <form action="" class="Login-form" @submit.prevent="sendcode">

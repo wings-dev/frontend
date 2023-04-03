@@ -1,12 +1,16 @@
 <template>
   <div class="Search Search-otel ">
     <div class="Search-left">
-      <div class="Search-item date">
+      <div class="Search-item Search-item-region-otel">
         <span class="Search-item-name">Şehir, İlçe veya Otel adı yazın</span>
-        <client-only>
-          <v-select class="w-100" :options="filteredCities" id="code" v-model="selectedCity" :clearable="false"
-            placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
-        </client-only>
+        <div class="Search-item-region-otel-in">
+          <i class="icon-new-location Search-item-icon"></i>
+          <client-only>
+            <v-select class="w-100" :options="filteredCities" id="code" v-model="selectedCity" :clearable="false"
+              placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
+          </client-only>
+        </div>
+
       </div>
       <div class="Search-item date">
         <div class="dates d-flex">
@@ -364,8 +368,9 @@ export default {
 .datepicker__wrapper {
   width: 100%;
 }
+
 @media (max-width:800px) {
-  :deep().datepicker__input--first:after{
+  :deep().datepicker__input--first:after {
     background-size: 18px 10px;
     background-repeat: no-repeat;
     background-position: center;
@@ -373,12 +378,13 @@ export default {
     background-color: #eff1f5;
     border-radius: 4px;
   }
-  :deep() .datepicker__input--first:before{
+
+  :deep() .datepicker__input--first:before {
     display: none;
   }
-  :deep() .datepicker__input:before{
+
+  :deep() .datepicker__input:before {
     position: absolute;
     right: 0;
   }
-}
-</style>
+}</style>

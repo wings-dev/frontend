@@ -3,7 +3,7 @@
         <search-bar></search-bar>
         <section class="blog-section">
             <div class="container">
-                <div class="blog position-relative">
+                <div class="blog ">
                     <div class="blog-list-item bg-light area1">
                         <div class="swiper blog-carousel w-100 h-100 position-relative">
                             <div class="swiper-wrapper d-flex">

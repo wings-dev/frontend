@@ -1,6 +1,6 @@
 <template>
     <header class="Header">
-        <div class="Header-top">
+        <!-- <div class="Header-top">
             <div class="container">
                 <div class="Header-top-in">
                     <a href="" class="Header-top-contact">
@@ -14,8 +14,22 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+        <div class="Header-opportunity">
+            <div class="container">
+                <div class="Header-opportunity-in">
+                    <h3>Erken rezervasyon tarihlerini kaçırma!</h3>
+                    <div class="Header-opportunity-count">
+                        <client-only>
+                            <flip-countdown deadline="2023-04-15 00:00:00" :labels="labels"></flip-countdown>
+                        </client-only>
+                    </div>
+                    <div class="Header-opportunity-button">
+                        <nuxt-link to="/">HEMEN KEŞFET</nuxt-link>
+                    </div>
+                </div>
+            </div>
         </div>
-
         <div class="Header-inner">
             <div class="container h-100">
                 <div class="Header-inner-in">
@@ -133,7 +147,7 @@
                                                 <a href="">Eskişehir Otelleri</a>
                                                 <a href="">Yalova Otelleri</a>
                                                 <a href="">Afyon Otelleri</a>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="Header-menu-item-otel-left-item">
@@ -145,7 +159,7 @@
                                                 <a href="">Kuşadası Otelleri</a>
                                                 <a href="">Çeşme Otelleri</a>
                                                 <a href="">Sapanca Otelleri</a>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="Header-menu-item-otel-left-item">
@@ -156,7 +170,7 @@
                                                 <a href="">Marmaris Otelleri</a>
                                                 <a href="">Kuşadası Otelleri</a>
                                                 <a href="">Çeşme Otelleri</a>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="Header-menu-item-otel-left-item">
@@ -172,7 +186,7 @@
                                                 <a href="">Bursa Otelleri</a>
                                                 <a href="">Balıkesir Otelleri</a>
                                                 <a href="">Afyon Otelleri</a>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -190,9 +204,23 @@
                             @click="openSearch($event)">
                             <i class="icon-search2"></i>
                         </button>
-                        <button type="button" class="search-button" aria-label="Favorileri aç" id="searchButton">
-                            <i class="icon-bell"></i>
-                        </button>
+                        <div class="dropdown Notification">
+                            <button type="button" class="search-button" aria-label="Bildirimler" id=""
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="icon-bell"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <h5>BİLDİRİM MERKEZİ</h5>
+                                <li><a class="dropdown-item active" href="#">%50’ye varan erken rezervasyon indirimleri için
+                                        son
+                                        gün 3 nisan!</a></li>
+                                <li><a class="dropdown-item" href="#">Kıbrıs600 Kuponu ile 600TL indirim kodunu
+                                        tanımlayın!</a></li>
+                                <li><a class="dropdown-item" href="#">Şeker tadında bayram fırsatlarını yakala</a></li>
+                                <li><a class="dropdown-item" href="#">Şeker tadında bayram fırsatlarını yakala</a></li>
+                            </ul>
+                        </div>
+
                         <Nuxt-link :to="!$auth.loggedIn ? '/favorilerim' : '/user/favorilerim'" class="Fav-button">
                             <i class="icon-heart-full"></i>
                         </Nuxt-link>
@@ -246,7 +274,7 @@
 </template>
 
 <script>
-
+import FlipCountdown from 'vue2-flip-countdown'
 export default {
     name: "Header",
     data() {
@@ -258,8 +286,15 @@ export default {
             topMenu: [],
             mainMenu: [],
             footerMenu: [],
+            labels: {
+                days: 'Gün',
+                hours: 'Saat',
+                minutes: 'Dakika',
+                seconds: 'Saniye'
+            }
         }
     },
+    components: { FlipCountdown },
     computed: {
         greeting() {
             const saat = new Date().getHours();
@@ -287,14 +322,11 @@ export default {
         },
         mobileMenuActive() {
             if (this.mobileMenuActive == true) {
-                document.querySelector('body').classList.add("over")
             } else {
-                document.querySelector('body').classList.remove("over")
             }
         },
         searchActive() {
             document.querySelector('.Search-villas').classList.toggle('Search_villas_active')
-            document.querySelector('body').classList.toggle("over")
             document.querySelector('#searchButton i').classList.toggle('icon-search')
             document.querySelector('#searchButton i').classList.toggle('icon-login-close')
         }
@@ -311,7 +343,7 @@ export default {
         mobileMenuOpen() {
             this.mobileMenuActive = !this.mobileMenuActive;
         },
-        
+
         closeSubMenu(e) {
             if (this.subMenuActive == true) {
                 this.subMenuActive = false
@@ -358,7 +390,7 @@ export default {
                 if (dropdownId) {
                     const dropdown = document.getElementById(dropdownId);
                     if (dropdown.classList.contains("active")) {
-
+                        closeAllDropdowns();
                     } else {
                         closeAllDropdowns(dropdownId);
                         dropdown.classList.add("active");

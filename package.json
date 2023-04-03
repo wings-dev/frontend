@@ -48,6 +48,7 @@
     "vue-the-mask": "^0.11.1",
     "vue-tour": "^2.0.0",
     "vue-yandex-maps": "^0.11.13",
+    "vue2-flip-countdown": "^0.12.1",
     "vue2-slot-calendar": "^2.2.5"
   },
   "devDependencies": {

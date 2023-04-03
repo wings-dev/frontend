@@ -55,13 +55,22 @@
                 </span>
                 <span class="action-btn-text">Favorilere Ekle</span>
               </button>
-              <button type="button"
-                class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
-                <span class="action-btn-icon">
-                  <i class="icon-share"></i>
-                </span>
-                <span class="action-btn-text">Arkadaşın ile Paylaş</span>
-              </button>
+              <div class="dropdown">
+                <button type="button"
+                  class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                  id="dropdownMenuShare" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="action-btn-icon">
+                    <i class="icon-share"></i>
+                  </span>
+                  <span class="action-btn-text">Arkadaşın ile Paylaş</span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
+
             </div>
           </div>
         </div>
@@ -320,8 +329,7 @@
               </div>
             </div>
             <div class="View-rooms rooms-section position-relative">
-              <div
-                class="rooms-caption d-flex flex-column flex-sm-row align-items-sm-center flex-wrap mb-3 mb-sm-4 pb-1">
+              <div class="rooms-caption d-flex flex-column flex-sm-row align-items-sm-center flex-wrap mb-3 mb-sm-4 pb-1">
                 <h4 class="View-title me-4 pe-2">
                   Kat Planı
                 </h4>

@@ -89,7 +89,20 @@
 
             </div>
         </section>
-        <section class="popular-section-otel bg-white overflow-hidden pb-sm-5 mt-5">
+        <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
+            <div class="container">
+                <div class="Home-banner-in">
+                    <div class="Home-banner-text">
+                        <h4>20+ ülke ve</h4>
+                        <h4>148+ destinasyonda</h4>
+                        <h2>VillaKalkan <span>sizinle!</span></h2>
+                        <p>Yunanistan, İspanya, Hırvatistan, Thailand, İtalya, Portekiz, Maldivler
+                        ve daha fazla ülkede <b>villa kalkan hep sizinle hep yanınızda!</b></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="popular-section-otel bg-white overflow-hidden pb-sm-5 pt-5">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-otel-discover"></i>
@@ -471,7 +484,7 @@
                         class="area7 border border-light  d-flex align-items-center justify-content-center categories-more">
                         <nuxt-link to="/">
                             <span>Daha fazla görüntüle</span>
-                            <i class="icon-right-arrows-new"></i>
+                            <i class="icon-arrow-right-up"></i>
                         </nuxt-link>
                     </div>
                 </div>
@@ -513,6 +526,49 @@
                 </div>
             </div>
         </section>
+        <section class="Abroad-villas ">
+        <div class="container ">
+            <div class="section-caption d-flex align-items-center mb-3 pb-1">
+                <i class="icon-abroad-villa"></i>
+                <h4 class=""><b>Yurt Dışı</b>Kiralık Villa</h4>
+            </div>
+            <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+                        <nuxt-link to="/" class="Abroad-villas-item">
+                            <div class="Abroad-villas-item-img">
+                                <img src="/img/country/italy.jpg" alt="">
+                            </div>
+                            <div class="Abroad-villas-item-content">
+                                <div class="Abroad-villas-item-content-left">
+                                    <b>İtalya</b>
+                                    <p>423 seçenek içeriyor</p>
+                                </div>
+                                <div class="Abroad-villas-item-content-right">
+                                    <div class="Abroad-villas-item-content-flag">
+                                        <img src="/img/flag/flag-italy.svg" alt="">
+                                    </div>
+                                    <div class="Abroad-villas-item-content-smile">
+                                        <img src="/img/laughing-smile.svg" alt="">
+                                        <span>VİZE YOK!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </nuxt-link>
+                    </div>
+                </div>
+
+
+                <!-- If pagination is needed -->
+
+                <!-- If navigation buttons are needed -->
+                <!-- <div class="swiper-pagination"></div> -->
+                <div class="swiper-button-prev list-navigation-prev"></div>
+                <div class="swiper-button-next list-navigation-next"></div>
+            </div>
+
+        </div>
+    </section>
         <!-- <div>
             <div id="">A DOM element on your page. The first step will pop on this element because its ID is 'v-step-0'.
             </div>
@@ -523,90 +579,13 @@
 
             <v-tour name="myTour" :steps="steps"></v-tour>
         </div> -->
-        <section class="Opportunity-slider popular-dark">
-            <div class="container ">
-                <div class="section-caption d-flex align-items-center mb-3 pb-1">
-                    <i class="icon-opportunity-calendar"></i>
-                    <h4 class="">Sana Özel <span>Fırsatlar</span></h4>
-                    <a href="" class="section-caption-btn ms-auto">
-                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </a>
-                </div>
-                <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-
-                            <nuxt-link to="/" class="Card Card-h">
-                                <div class="Card-in">
-                                    <div class="Card-img">
-                                        <nuxt-link to="/">
-                                            <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
-                                        </nuxt-link>
-
-                                    </div>
-                                    <div class="Card-h-in">
-                                        <div class="Card-content">
-                                            <div class="Card-content-head">
-                                                <div class="Card-content-head-code">
-                                                    <b>VKV3456</b>
-                                                    <span>Tesis Kodu</span>
-                                                </div>
-                                                <div class="Card-content-head-location">
-                                                    <i class="icon-pin"></i>
-                                                    <p>FETHİYE <span>Turkey / Muğla</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="Card-content-info">
-                                                <div class="Card-content-info-item">
-                                                    <i class="icon-user"></i>
-                                                    <span>4 Kişilik</span>
-                                                </div>
-                                                <div class="Card-content-info-item">
-                                                    <i class="icon-bed"></i>
-                                                    <span>2 Yatak Odası</span>
-                                                </div>
-                                                <div class="Card-content-info-item">
-                                                    <i class="icon-shower"></i>
-                                                    <span>2 Banyo</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="Card-content-bottom">
-                                            <div class="Card-content-bottom-day">
-                                                <p><span>3</span>Gece</p>
-                                            </div>
-                                            <div class="Card-content-bottom-date">
-                                                <p><span>12 TEM</span><i class="icon-arrow-right-2"></i><span>18 TEM</span>
-                                                </p>
-                                                <small>Fırsatı kaçırma!</small>
-                                            </div>
-                                            <div class="Card-content-bottom-price single">
-                                                <p class="orange">TOPLAM FİYAT</p>
-                                                <p><b>2.500</b><span>TL</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nuxt-link>
-                        </div>
-                    </div>
-                    <!-- If pagination is needed -->
-
-                    <!-- If navigation buttons are needed -->
-                    <!-- <div class="swiper-pagination"></div> -->
-                    <div class="swiper-button-prev list-navigation-prev"></div>
-                    <div class="swiper-button-next list-navigation-next"></div>
-                </div>
-
-            </div>
-        </section>
     </div>
 </template>
 
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
-
+// import MoreVillas from '../MoreVillas.vue';
 export default {
     name: 'IndexPage',
     layout: 'no-search',
@@ -622,6 +601,8 @@ export default {
                 { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
             ],
         }
+    },
+    components: {
     },
     data() {
         return {
@@ -692,7 +673,7 @@ export default {
                 },
             },
         })
-        const swiper3 = new Swiper('.list-slide-opportunity', {
+        const swiper3 = new Swiper('.list-slide-abroad', {
             slidesPerView: 1,
             spaceBetween: 16,
             direction: 'horizontal',
@@ -714,7 +695,7 @@ export default {
                     slidesPerView: 2,
                 },
                 1199: {
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                 },
             },
         })

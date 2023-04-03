@@ -173,6 +173,36 @@
             </div>
           </div>
         </div>
+        <div class="Reservation-form-detail" :class="{ 'mobile-active': mobileReservation }">
+
+          <div class="Reservation-form-detail-top">
+            <div class="Reservation-form-detail-top-item">
+              <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
+              <b>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</b>
+            </div>
+            <div class="Reservation-form-detail-top-item">
+              <p>Temizlik Ücreti <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                  title="Tooltip on right"></i></p>
+              <b>{{ availabilityData.cleaning_fee }}{{ availabilityData.night_price_currency_symbol }}</b>
+            </div>
+          </div>
+          <p class="Reservation-form-detail-total">
+            Toplam Ödeme <span>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</span>
+          </p>
+          <div class="Reservation-form-detail-bottom">
+            <div class="Reservation-form-detail-bottom-item">
+              <p>Ön Ödeme <span>{{ availabilityData.advance_payment }}{{ availabilityData.night_price_currency_symbol
+              }}</span></p>
+              <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
+            </div>
+            <div class="Reservation-form-detail-bottom-item">
+              <p>Tesise Girişte <span>{{ availabilityData.remaining_payment }}{{
+                availabilityData.night_price_currency_symbol
+              }}</span></p>
+              <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
+            </div>
+          </div>
+        </div>
         <div class="accordion Reservation-form-info-item-more" id="accordionExample">
           <div class="accordion-item">
             <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
@@ -221,44 +251,14 @@
         </div>
       </div>
     </div>
-    <div class="Reservation-form-detail" :class="{ 'mobile-active': reservationDetail }">
-      <button type="button" class="mobile-menus-back" @click="reservationDetailClose"><i
-          class="icon-left-arrow"></i></button>
-      <h4 class="Reservation-form-title">Hesap Özeti</h4>
-      <div class="Reservation-form-detail-top">
-        <div class="Reservation-form-detail-top-item">
-          <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
-          <b>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</b>
-        </div>
-        <div class="Reservation-form-detail-top-item">
-          <p>Temizlik Ücreti <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-              title="Tooltip on right"></i></p>
-          <b>{{ availabilityData.cleaning_fee }}{{ availabilityData.night_price_currency_symbol }}</b>
-        </div>
-      </div>
-      <p class="Reservation-form-detail-total">
-        Toplam Ödeme <span>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</span>
-      </p>
-      <div class="Reservation-form-detail-bottom">
-        <div class="Reservation-form-detail-bottom-item">
-          <p>Ön Ödeme <span>{{ availabilityData.advance_payment }}{{ availabilityData.night_price_currency_symbol
-          }}</span></p>
-          <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
-        </div>
-        <div class="Reservation-form-detail-bottom-item">
-          <p>Tesise Girişte <span>{{ availabilityData.remaining_payment }}{{ availabilityData.night_price_currency_symbol
-          }}</span></p>
-          <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
-        </div>
-      </div>
-    </div>
+
     <div class="Reservation-form-bottom">
       <div class="Reservation-form-bottom-left">
         <b>14.120TL</b>
         <span v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">GECE</span>
         <span v-else>{{ formattedCheckIn }} - {{ formattedCheckOut }}</span>
         <small v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">Başlayan fiyatlar</small>
-        <button type="button" v-if="availabilityChecked" @click="reservationDetailToggle">{{ reservationDetail ?
+        <button type="button" v-if="availabilityChecked" @click="reservatinAction">{{ mobileReservation ?
           'DETAYLARI KAPAT' : 'DETAYLARI GÖSTER' }} </button>
       </div>
       <!-- mobile -->
@@ -544,14 +544,8 @@ export default {
     mobileReservationClose() {
       this.mobileReservation = false
     },
-    reservationDetailToggle() {
-      this.reservationDetail = !this.reservationDetail 
-    },
-    reservationDetailClose(){
-      this.reservationDetail = false
-    },
     reservatinAction() {
-      this.mobileReservation = true
+      this.mobileReservation = !this.mobileReservation
     }
   },
   mounted() {
@@ -814,4 +808,5 @@ body {
 :deep() .datepicker__month-button {
   border: 1px solid var(--bs-theme-first-dark);
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDcgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF80MDJfMTU5NCkiPgo8cGF0aCBkPSJNNS45MTQ5NyA0Ljc2Mjg4TDEuMzE3MDYgMC4xNjUwNkMxLjIxMDcxIDAuMDU4NjMyIDEuMDY4NzUgMCAwLjkxNzM4NiAwQzAuNzY2MDE4IDAgMC42MjQwNTggMC4wNTg2MzIgMC41MTc3MTQgMC4xNjUwNkwwLjE3OTExIDAuNTAzNThDLTAuMDQxMjIyNCAwLjcyNDE2NCAtMC4wNDEyMjI0IDEuMDgyNjggMC4xNzkxMSAxLjMwMjkyTDQuMDQwMDkgNS4xNjM5TDAuMTc0ODI2IDkuMDI5MTZDMC4wNjg0ODE2IDkuMTM1NTkgMC4wMDk3NjU2MiA5LjI3NzQ2IDAuMDA5NzY1NjIgOS40Mjg3NUMwLjAwOTc2NTYyIDkuNTgwMiAwLjA2ODQ4MTYgOS43MjIwOCAwLjE3NDgyNiA5LjgyODU5TDAuNTEzNDMgMTAuMTY3QzAuNjE5ODU4IDEwLjI3MzUgMC43NjE3MzQgMTAuMzMyMSAwLjkxMzEwMiAxMC4zMzIxQzEuMDY0NDcgMTAuMzMyMSAxLjIwNjQzIDEwLjI3MzUgMS4zMTI3NyAxMC4xNjdMNS45MTQ5NyA1LjU2NUM2LjAyMTU2IDUuNDU4MjQgNi4wODAxMSA1LjMxNTY5IDYuMDc5NzcgNS4xNjQxNUM2LjA4MDExIDUuMDEyMDMgNi4wMjE1NiA0Ljg2OTU2IDUuOTE0OTcgNC43NjI4OFoiIGZpbGw9IiMxMTI4NTUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF80MDJfMTU5NCI+CjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjExIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=) no-repeat 57%/10px;
-}</style>
+}
+</style>

@@ -34,6 +34,9 @@
     <client-only>
       <reservation-code-modal></reservation-code-modal>
     </client-only>
+    <client-only>
+      <reservation-success-modal></reservation-success-modal>
+    </client-only>
 
     <client-only>
       <register-modal></register-modal>
@@ -62,13 +65,14 @@ import CallModal from "@/components/modals/call-modal.vue";
 import FavModal from "@/components/modals/fav-modal.vue";
 import ReservationModal from "@/components/modals/reservation-modal.vue";
 import ReservationCodeModal from "@/components/modals/reservation-code-modal.vue";
+import ReservationSuccessModal from "@/components/modals/reservation-success-modal.vue";
 
 export default {
   name: "default",
   components: {
     ReservationCodeModal,
     ReservationModal,
-    LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal
+    LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal,ReservationSuccessModal
   },
   middleware: ['jwt'],
   head() {
