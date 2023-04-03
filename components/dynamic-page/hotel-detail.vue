@@ -157,337 +157,71 @@
             Odalar yükleniyor...
           </template>
           <template v-else>
-            <template v-if=" hotelPriceDetails ?.body?.hotels[0].offers[0]">
-              <template v-for="hotel in hotelPriceDetails?.body?.hotels">
-                <template v-for="offer in hotel.offers">
-                  <div v-for="room in offer.rooms" class="room border border-light  p-2 ">
-                    <div class="row">
-                      <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                        <div class="img-box position-relative flex-shrink-0">
-                          <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
-                               class="lazy cover flex-shrink-0 ">
-                        </div>
-                        <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
-                          <div class="d-flex align-items-center w-100 mb-2">
-                      <span class="d-inline-block me-auto room-title">{{room.roomName}}</span>
-                          </div>
-                          <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-
-                            <small
-                              class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                              <span class="text-theme-secondary me-1">Minibar</span>
-                            </small>
-                            <small
-                              class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                              <span class="text-theme-secondary me-1">Balkon</span>
-                            </small>
-                            <small
-                              class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                              <span class="text-theme-secondary me-1">Duşakabin</span>
-                            </small>
-                          </div>
-                          <div class="d-flex align-items-center mb-sm-0 mb-1">
-                            <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
-                              Özellikleri</small></u></b-button>
-                          </div>
-                        </div>
+            <template v-for="offer in offers">
+              <div v-for="room in offer.rooms" class="room border border-light  p-2 ">
+                <div class="row">
+                  <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
+                    <div class="img-box position-relative flex-shrink-0">
+                      <img v-if="room.mediaFiles" :src="room.mediaFiles[0].urlFull" width="297" height="208" alt="room image"
+                           class="lazy cover flex-shrink-0 ">
+                    </div>
+                    <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
+                      <div class="d-flex align-items-center w-100 mb-2">
+                        <span class="d-inline-block me-auto room-title">{{room.roomName}}</span>
                       </div>
-                      <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                        <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                          <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                            <div
-                              class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
-                              <div class="option-all">
-                                <span class="option-all-item">Oda Kahvaltı</span>
-                              </div>
-                              <div class="option-warning">
-                                <p>İptal Edilemez</p>
-                              </div>
-                            </div>
-                            <div
-                              class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                              <div class="Otel-card-price">
-                                <span>{{offer.night}} GECE</span>
-                                <b>{{offer.price.amount}} <small>{{offer.price.currency}}</small></b>
-                              </div>
-                              <div class="Otel-card-link">
-                                <button>Oda Seç</button>
-                              </div>
-                              <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
-                            </div>
+                      <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
+
+                        <small
+                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <span class="text-theme-secondary me-1">Minibar</span>
+                        </small>
+                        <small
+                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <span class="text-theme-secondary me-1">Balkon</span>
+                        </small>
+                        <small
+                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <span class="text-theme-secondary me-1">Duşakabin</span>
+                        </small>
+                      </div>
+                      <div class="d-flex align-items-center mb-sm-0 mb-1">
+                        <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
+                          Özellikleri</small></u></b-button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
+                    <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
+                      <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                        <div
+                          class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                          <div class="option-all">
+                            <span class="option-all-item">Oda Kahvaltı</span>
                           </div>
+                          <div class="option-warning">
+                            <p>İptal Edilemez</p>
+                          </div>
+                        </div>
+                        <div
+                          class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
+                          <div class="Otel-card-price">
+                            <span>{{offer.night}} GECE</span>
+                            <b>{{offer.price.amount}} <small>{{offer.price.currency}}</small></b>
+                          </div>
+                          <div class="Otel-card-link">
+                            <button>Oda Seç</button>
+                          </div>
+                          <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </template>
-              </template>
+                </div>
+              </div>
             </template>
-            <template v-else>
+            <template v-if="!roomsLoading && offers.length === 0">
               Uygun oda bulunamadı...
             </template>
-          </template>
-
-          <div>
-            --------------- TEMPLATE -----------------
-          </div>
-
-
-          <template>
-            <div class="room border border-light  p-2 ">
-              <div class="row">
-                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                  <div class="img-box position-relative flex-shrink-0">
-                    <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
-                      class="lazy cover flex-shrink-0 ">
-                  </div>
-                  <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
-                    <div class="d-flex align-items-center w-100 mb-2">
-                      <span class="d-inline-block me-auto room-title">Standart İki Yataklı Oda Penceresiz , 1 . Kat Twin
-                        NTT1 - 27 m2</span>
-                    </div>
-                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Minibar</span>
-                      </small>
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Balkon</span>
-                      </small>
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Duşakabin</span>
-                      </small>
-                    </div>
-                    <div class="d-flex align-items-center mb-sm-0 mb-1">
-                      <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
-                            Özellikleri</small></u></b-button>
-                    </div>
-                  </div>
-                </div>
-                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                    <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                      <div
-                        class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
-                        <div class="option-all">
-                          <span class="option-all-item">Oda Kahvaltı</span>
-                        </div>
-                        <div class="option-warning">
-                          <p>İptal Edilemez</p>
-                        </div>
-                      </div>
-                      <div
-                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                        <div class="Otel-card-price">
-                          <span>2 GECE</span>
-                          <s>16.500TL</s>
-                          <b>12.420 <small>TL</small></b>
-                          <p>Gecelik <span>1.400TL</span></p>
-                        </div>
-                        <div class="Otel-card-link">
-                          <button>Oda Seç</button>
-                        </div>
-                        <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="room-note "><i class="icon-information"></i>11 Eylül - 21 Eylül Tarihleri
-              arasında Aile Odası bulunmamaktadır. Müsait tarihleri görmek için <a href="#!"><u>Tıklayın</u></a></div>
-            <div class="room border border-light  p-2 ">
-              <div class="row">
-                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                  <div class="img-box position-relative flex-shrink-0">
-                    <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
-                      class="lazy cover flex-shrink-0 ">
-                  </div>
-                  <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
-                    <div class="d-flex align-items-center w-100 mb-2">
-                      <span class="d-inline-block me-auto room-title">Standart İki Yataklı Oda Penceresiz , 1 . Kat Twin
-                        NTT1 - 27 m2</span>
-                    </div>
-                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Minibar</span>
-                      </small>
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Balkon</span>
-                      </small>
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Duşakabin</span>
-                      </small>
-                    </div>
-                    <div class="d-flex align-items-center mb-sm-0 mb-1">
-                      <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
-                            Özellikleri</small></u></b-button>
-                    </div>
-                  </div>
-                </div>
-                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                    <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                      <div
-                        class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
-                        <div class="option-all">
-                          <span class="option-all-item">Oda Kahvaltı</span>
-                        </div>
-                        <div class="option-warning">
-                          <p>İptal Edilemez</p>
-                        </div>
-                      </div>
-                      <div
-                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                        <div class="Otel-card-price">
-                          <span>2 GECE</span>
-                          <s>16.500TL</s>
-                          <b>12.420 <small>TL</small></b>
-                          <p>Gecelik <span>1.400TL</span></p>
-                        </div>
-                        <div class="Otel-card-link">
-                          <button>Oda Seç</button>
-                        </div>
-                        <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="room border border-light  p-2 ">
-              <div class="row">
-                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                  <div class="img-box position-relative flex-shrink-0">
-                    <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
-                      class="lazy cover flex-shrink-0 ">
-                  </div>
-                  <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
-                    <div class="d-flex align-items-center w-100 mb-2">
-                      <span class="d-inline-block me-auto room-title">Standart İki Yataklı Oda Penceresiz , 1 . Kat Twin
-                        NTT1 - 27 m2</span>
-                    </div>
-                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Minibar</span>
-                      </small>
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Balkon</span>
-                      </small>
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Duşakabin</span>
-                      </small>
-                    </div>
-                    <div class="d-flex align-items-center mb-sm-0 mb-1">
-                      <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
-                            Özellikleri</small></u></b-button>
-                    </div>
-                  </div>
-                </div>
-                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                    <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                      <div
-                        class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
-                        <div class="option-all">
-                          <span class="option-all-item">Oda Kahvaltı</span>
-                        </div>
-                        <div class="option-warning">
-                          <p>İptal Edilemez</p>
-                        </div>
-                      </div>
-                      <div
-                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                        <div class="Otel-card-price">
-                          <span>2 GECE</span>
-                          <s>16.500TL</s>
-                          <b>12.420 <small>TL</small></b>
-                          <p>Gecelik <span>1.400TL</span></p>
-                        </div>
-                        <div class="Otel-card-link">
-                          <button>Oda Seç</button>
-                        </div>
-                        <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="room border border-light  p-2 ">
-              <div class="row">
-                <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
-                  <div class="img-box position-relative flex-shrink-0">
-                    <img src="/uploads/room-image1.jpg" width="297" height="208" alt="room image"
-                      class="lazy cover flex-shrink-0 ">
-                  </div>
-                  <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
-                    <div class="d-flex align-items-center w-100 mb-2">
-                      <span class="d-inline-block me-auto room-title">Standart İki Yataklı Oda Penceresiz , 1 . Kat Twin
-                        NTT1 - 27 m2</span>
-                    </div>
-                    <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Minibar</span>
-                      </small>
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Balkon</span>
-                      </small>
-                      <small
-                        class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                        <span class="text-theme-secondary me-1">Duşakabin</span>
-                      </small>
-                    </div>
-                    <div class="d-flex align-items-center mb-sm-0 mb-1">
-                      <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
-                            Özellikleri</small></u></b-button>
-                    </div>
-                  </div>
-                </div>
-                <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                  <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                    <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                      <div
-                        class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
-                        <div class="option-all">
-                          <span class="option-all-item">Oda Kahvaltı</span>
-                        </div>
-                        <div class="option-warning">
-                          <p>İptal Edilemez</p>
-                        </div>
-                      </div>
-                      <div
-                        class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                        <div class="Otel-card-price">
-                          <span>2 GECE</span>
-                          <s>16.500TL</s>
-                          <b>12.420 <small>TL</small></b>
-                          <p>Gecelik <span>1.400TL</span></p>
-                        </div>
-                        <div class="Otel-card-link">
-                          <button>Oda Seç</button>
-                        </div>
-                        <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </template>
 
         </div>
@@ -690,6 +424,7 @@ export default {
       hotel: this.hotelDetails,
       hotelPriceDetails: {},
       offerDetails: {},
+      offers: [],
       roomsLoading: true,
       slide: 0,
       slidePhotos: ['https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg']
@@ -699,21 +434,17 @@ export default {
     BCarousel,
   },
   async mounted() {
-    const response = await this.$dataService.getHotelPrice(this.hotelDetails.body.hotel.id, this.selectedFilters)
-    let searchId = response.data.body.searchId;
-    this.hotelPriceDetails = response.data;
-    console.log(this.hotelPriceDetails);
-    if (this.hotelPriceDetails.body?.hotels[0]?.offers.length > 0) {
-      const offerIds = this.hotelPriceDetails.body?.hotels[0]?.offers.map(offer => offer.offerId)
-      console.log(offerIds);
-      let response = await this.$dataService.getOfferDetails({ offerIds });
-      this.offerDetails = response.data.body.offerDetails;
+    // Adım 1: Hotel fiyatını al
+    const searchId = (await this.getHotelPrice()).body.searchId;
 
-      console.log(JSON.stringify(response.data));
+    // Adım 2: Offer ID'lerini al
+    const offerIds = this.getOfferIds();
 
-      // this.getRoomImages(this.hotelPriceDetails.body?.hotels[0]?.offers[0].rooms[0].roomId)
-    }
+    // Adım 3: Oda detaylarını al
+    const rooms = await this.getRoomDetails(offerIds);
 
+    // Adım 4: Oda detaylarını offer'lara entegre et
+    this.mergeRoomDetails(rooms);
 
     this.roomsLoading = false;
   },
@@ -721,7 +452,7 @@ export default {
     previewImages() {
       if (this.hotelDetails.body.custom?.hasOwnProperty('images') && this.hotelDetails.body.custom.images.length > 0) {
         return this.hotelDetails.body.custom.images
-      } else if (this.hotelDetails.body.hotel.seasons[0].hasOwnProperty('mediaFiles')) {
+      } else if (this.hotelDetails.body.hotel.seasons?.[0]?.hasOwnProperty('mediaFiles')) {
         return this.hotelDetails.body.hotel.seasons[0].mediaFiles.map(media => {
           return {
             "preview_url": media.urlFull,
@@ -734,18 +465,45 @@ export default {
     }
   },
   methods: {
-    getRoomImages(roomId) {
-      for (const offerDetail of this.offerDetails) {
-        for (const hotel of offerDetail.hotels) {
-          for (const offer of hotel.offers) {
-            const room = offer.rooms.find(room => room.roomId === roomId);
-            if (room) {
-              console.log(room);
-              return room.mediaFiles;
-            }
+    async getHotelPrice() {
+      let response = await this.$dataService.getHotelPrice(this.hotelDetails.body.hotel.id, this.selectedFilters);
+      this.hotelPriceDetails = response.data;
+      return response.data;
+    },
+
+    getOfferIds() {
+      let offers = [];
+
+      if (this.hotelPriceDetails.body && this.hotelPriceDetails.body.hotels) {
+        this.hotelPriceDetails.body.hotels.forEach(hotel => {
+          if (hotel.offers) {
+            hotel.offers.forEach(offer => {
+              offers.push(offer);
+            });
           }
-        }
+        });
       }
+
+      this.offers = offers;
+      return offers.map(offer => offer.offerId);
+    },
+
+    async getRoomDetails(offerIds) {
+      const response = await this.$dataService.getRooms({ offerIds });
+      return response.data;
+    },
+
+    mergeRoomDetails(rooms) {
+      this.offers.forEach(offer => {
+        if (offer.rooms && offer.rooms.length > 0) {
+          offer.rooms.forEach((room, roomIndex) => {
+            let roomDetail = rooms.find(r => r.offerId == offer.offerId);
+            if (roomDetail && roomDetail.mediaFiles) {
+              offer.rooms[roomIndex] = Object.assign({}, room, {mediaFiles: roomDetail.mediaFiles});
+            }
+          });
+        }
+      });
     },
     onSlideStart(slide) {
       this.sliding = true
