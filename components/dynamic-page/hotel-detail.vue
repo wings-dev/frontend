@@ -467,7 +467,7 @@ export default {
   },
   methods: {
     goReservation(offer) {
-      const url = process.env.HOTEL_RESERVATION + 'otelrezervasyon?searchId=' + this.searchId + '&offerId=' + offer.offerId;
+      const url = process.env.HOTEL_RESERVATION + 'otel/payments?searchId=' + this.searchId + '&offerId=' + offer.offerId;
       window.open(url, '_blank');
 
     },
