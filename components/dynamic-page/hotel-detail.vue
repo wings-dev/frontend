@@ -208,9 +208,9 @@
                             <span>{{offer.night}} GECE</span>
                             <b>{{offer.price.amount}} <small>{{offer.price.currency}}</small></b>
                           </div>
-                          <div class="Otel-card-link">
+                          <a @click.prevent="goReservation(offer)" target="_blank" class="Otel-card-link">
                             <button>Oda Seç</button>
-                          </div>
+                          </a>
                           <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
                         </div>
                       </div>
@@ -421,6 +421,7 @@ export default {
   props: ['hotelDetails', 'selectedFilters'],
   data() {
     return {
+      searchId: null,
       hotel: this.hotelDetails,
       hotelPriceDetails: {},
       offerDetails: {},
@@ -435,7 +436,7 @@ export default {
   },
   async mounted() {
     // Adım 1: Hotel fiyatını al
-    const searchId = (await this.getHotelPrice()).body.searchId;
+    this.searchId = (await this.getHotelPrice()).body.searchId;
 
     // Adım 2: Offer ID'lerini al
     const offerIds = this.getOfferIds();
@@ -465,6 +466,11 @@ export default {
     }
   },
   methods: {
+    goReservation(offer) {
+      const url = process.env.HOTEL_RESERVATION + 'otelrezervasyon?searchId=' + this.searchId + '&offerId=' + offer.offerId;
+      window.open(url, '_blank');
+
+    },
     async getHotelPrice() {
       let response = await this.$dataService.getHotelPrice(this.hotelDetails.body.hotel.id, this.selectedFilters);
       this.hotelPriceDetails = response.data;
