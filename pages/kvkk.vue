@@ -46,7 +46,6 @@ export default {
       return data
 
     })
-    console.log(pageURLs)
 
     pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
     return { pageData,pageURLs }

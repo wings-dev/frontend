@@ -1,5 +1,5 @@
 <template>
-  <section class="Filter"> 
+  <section class="Filter">
     <div class="container">
       <div class="Filter-in">
         <div class="Filter-left Filters" :class="{ show: isMobileFilterOpen }">
@@ -10,7 +10,7 @@
             </button>
           </div>
           <div class="Filter-left-selected">
-            
+
               <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
                 Bölge:{{ facilityType.text }}
                 <i class="icon-search-close" @click="unselect(facilityType)"></i>
@@ -56,13 +56,13 @@
 
               <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü Temizle</button>
 
-              <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>  
+              <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
           </div>
 
         </div>
         <div class="Filter-right">
-          
-          
+
+
 
           <div class="Filter-right-head">
             <div class="Filter-right-head-info">
@@ -70,7 +70,7 @@
               <p>{{ total_items }} villa listeleniyor</p>
             </div>
             <div class="Filter-right-head-buttons">
-              
+
               <div class="Filter-right-head-buttons-item">
                 <client-only>
                   <VSelect :options="orderValues" :labelTitle="orderPlaceholder" @input="orderChanged" />
@@ -548,7 +548,6 @@ export default {
     checkboxOpen(groupName){
       const targetDiv = this.$refs[groupName];
       targetDiv.classList.add('show')
-      console.log(targetDiv)
     },
     checkboxClose(groupName){
       const targetDivClose = this.$refs[groupName];

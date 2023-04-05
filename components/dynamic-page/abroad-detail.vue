@@ -1558,7 +1558,6 @@ export default {
     isMobile() {
       if (this.isMobile == true) {
         this.calendarColumn = 1
-        console.log(this.isMobile, this.calendarColumns)
       } else {
         this.calendarColumn = 2
       }

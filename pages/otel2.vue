@@ -909,7 +909,6 @@ export default {
   method: {
     showSwiper() {
       Swiper.use([Navigation, Pagination])
-console.log('TSET')
       const swiper = new Swiper('.swiper-otel', {
         slidesPerView: 1,
         spaceBetween: 18,

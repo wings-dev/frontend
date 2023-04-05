@@ -26,7 +26,7 @@
           <vue-slider v-model="value" @change="onChange" :lazy="true" :tooltip-formatter="formatter" :min="500" :max="5000" />
         </div>
       </div>
-      <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM</button>  
+      <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM</button>
     </div>
   </div>
 </template>
@@ -68,7 +68,6 @@ export default {
     checkboxOpen(groupName){
       const targetDiv = this.$refs[groupName];
       targetDiv.classList.add('show')
-      console.log(targetDiv)
     },
     checkboxClose(groupName){
       const targetDivClose = this.$refs[groupName];

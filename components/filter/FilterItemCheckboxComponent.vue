@@ -1,8 +1,9 @@
 <template>
   <div class="Filters Filters-region ">
     <div v-if="!hideTitle" class="Filters-head" v-bind:class="{ 'border-bottom' : !hideTitleBorder}" @click="checkboxOpen(groupName)"><i class="icon-location-1"></i><h5>{{title}} <span v-if="selectedLength">({{ selectedLength }})</span></h5></div>
-    
-    <div class="Filters-in" :ref="groupName">
+
+    <div v-if="loading">Yükleniyor...</div>
+    <div class="Filters-in" :ref="groupName" v-else>
       <div class="Filters-in-mobile">
         <div class="Filters-head" ><h5>{{title}}</h5></div>
         <button type="button" @click="checkboxClose(groupName)"><i class="icon-left-arrow"></i></button>
@@ -74,9 +75,9 @@
         </li>
         </template>
       </ul>
-      <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM <span v-if="selectedLength">({{ selectedLength }})</span></button>  
+      <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM <span v-if="selectedLength">({{ selectedLength }})</span></button>
     </div>
-    
+
   </div>
 </template>
 
@@ -91,6 +92,7 @@ export default {
     hideTitle: {type: Boolean, default: false},
     groups: {type: Array, default: () => []},
     groupName: {type: String},
+    loading: {type: Boolean, default: false},
   },
   data() {
     return {
@@ -133,7 +135,7 @@ export default {
           this.updateSelection(child, value);
         });
       }
-      
+
     },
     /**
      * selected true olan nodeların codelarını verir
@@ -149,7 +151,6 @@ export default {
           selectedCodes.push(...this.getSelectedCodes(checkbox.children));
         }
         this.selectedLength = selectedCodes.length
-        console.log(typeof this.selectedLength)
         return selectedCodes;
       }, []);
     },
@@ -220,7 +221,6 @@ export default {
     checkboxOpen(groupName){
       const targetDiv = this.$refs[groupName];
       targetDiv.classList.add('show')
-      console.log(targetDiv)
     },
     checkboxClose(groupName){
       const targetDivClose = this.$refs[groupName];

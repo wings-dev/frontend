@@ -16,7 +16,7 @@
             </label>
           </div> -->
           <div class="Filter-left-selected">
-            
+
             <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
               Olanak:{{ facility.text }}
               <i class="icon-search-close" @click="unselect(facility)"></i>
@@ -27,7 +27,7 @@
               <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
             </div>
 
-            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations"
+            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge" :checkboxes="destinations" :loading="loading"
               :hideTitleBorder="true" @updated="updateFilter('destinations', $event)" groupName="destinationCheckbox"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
@@ -39,7 +39,7 @@
 
               <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü Temizle</button>
 
-              <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>  
+              <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
           </div>
 
         </div>
@@ -47,7 +47,7 @@
           <div class="Filter-right-head">
             <div class="Filter-right-head-info">
               <i class="icon-list"></i>
-              <p>{{ total_items }} otel listeleniyor</p>
+              <p>{{ filteredHotels.length }} otel listeleniyor</p>
             </div>
             <div class="Filter-right-head-buttons">
 
@@ -80,7 +80,7 @@
 
           <div class="F_villa F_villa-otel ">
 
-            <filter-hotel-preview-component v-for="(hotel, index) in hotels" :key="index"
+            <filter-hotel-preview-component v-for="(hotel, index) in filteredHotels" :key="hotel.id"
               :hotel="hotel" :checkindate="checkIn" :requestId="requestId"></filter-hotel-preview-component>
 
             <div
@@ -172,10 +172,8 @@ export default {
       childAges: [],
       baby: null,
       orderValues: [
-        { value: 1, text: "Fiyata Göre Artan" },
-        { value: 2, text: "Fiyata Göre Azalan" },
-        { value: 3, text: "Yeniden Eskiye" },
-        { value: 4, text: "Eskiden Yeniye" },
+        { value: 'price_asc', text: "Fiyata Göre Artan" },
+        { value: 'price_desc', text: "Fiyata Göre Azalan" }
       ],
       orderValue: null,
       orderPlaceholder: "Sırala:",
@@ -190,8 +188,8 @@ export default {
   created() {
     const searchData = this.$store.state.hotels.searchData;
 
-    this.destinations = JSON.parse(JSON.stringify(searchData.destinations)).filter(destination => destination.type === 1);
-    this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
+    // this.destinations = JSON.parse(JSON.stringify(searchData.destinations)).filter(destination => destination.type === 1);
+    // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
   },
   beforeMount() {
     this.checkIn = this.selectedFilters['checkIn'] ?? null;
@@ -210,8 +208,32 @@ export default {
       this.filter();
     },50)
   },
-
   computed: {
+    filteredHotels() {
+      let hotels = [];
+      const selectedCityIds = this.destinations.filter(destination => destination.selected).map(d => d.code)
+      if (selectedCityIds.length > 0) {
+        hotels = this.hotels.filter(hotel => selectedCityIds.includes(hotel.city.id))
+      } else {
+        hotels = this.hotels
+      }
+
+      if (this.orderValue?.value === 'price_asc') {
+        return hotels.sort((a, b) => {
+          const aPrice = a.offers && a.offers[0] && a.offers[0].price && a.offers[0].price.amount ? a.offers[0].price.amount : 0;
+          const bPrice = b.offers && b.offers[0] && b.offers[0].price && b.offers[0].price.amount ? b.offers[0].price.amount : 0;
+          return aPrice - bPrice;
+        });
+      } else if (this.orderValue?.value === 'price_desc') {
+        return hotels.sort((a, b) => {
+          const aPrice = a.offers && a.offers[0] && a.offers[0].price && a.offers[0].price.amount ? a.offers[0].price.amount : 0;
+          const bPrice = b.offers && b.offers[0] && b.offers[0].price && b.offers[0].price.amount ? b.offers[0].price.amount : 0;
+          return bPrice - aPrice;
+        });
+      } else {
+        return hotels;
+      }
+    },
     totalPages() {
       return Math.ceil(this.total_items / this.per_page);
     },
@@ -265,7 +287,6 @@ export default {
     },
     updateFilter(key, value, sendRequest = true) {
       this[key] = value;
-      sendRequest && this.filter();
     },
     goToPage(pageNumber) {
       if (pageNumber === this.current_page) return;
@@ -287,6 +308,13 @@ export default {
         .then(response => {
           this.hotels = response.data.body?.hotels ?? [];
           this.requestId = response.data.header.requestId;
+          this.destinations = this.hotels.map(hotel => {
+            return {code: hotel.city.id, text: hotel.city.name, selected: false}
+          }).filter((destination, index, self) =>
+              index === self.findIndex((t) => (
+                t.text === destination.text
+              ))
+          );
         })
         .catch(console.error)
         .finally(() => {
@@ -311,10 +339,8 @@ export default {
       return null;
     },
     orderChanged(order) {
+      console.log(order);
       this.orderValue = order;
-      setTimeout(() => {
-        this.filter();
-      },50)
     },
     unselect(item) {
       item.selected = false;
@@ -349,7 +375,6 @@ export default {
     checkboxOpen(groupName){
       const targetDiv = this.$refs[groupName];
       targetDiv.classList.add('show')
-      console.log(targetDiv)
     },
     checkboxClose(groupName){
       const targetDivClose = this.$refs[groupName];

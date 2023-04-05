@@ -61,7 +61,7 @@
                   </span>
                   <span class="action-btn-text">{{ isFavorite ? 'Favorilerden Sil' : 'Favorilere Ekle' }}</span>
                 </button>
-                
+
                 <div class="dropdown Share">
                 <button type="button"
                 class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
@@ -140,7 +140,7 @@
             </div>
           </div>
           <div class="View-gallery-mobile-buttons">
-            
+
             <div class="dropdown Share">
                 <button type="button"
                 class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
@@ -1403,7 +1403,7 @@
     </div>
 
 
-    
+
     <more-villas></more-villas>
 
     <section class="Gallery" @keydown.esc="closeGallery">
@@ -1779,7 +1779,6 @@ export default {
     isMobile() {
       if (this.isMobile == true) {
         this.calendarColumn = 1
-        console.log(this.isMobile, this.calendarColumns)
       } else {
         this.calendarColumn = 2
       }

@@ -20,7 +20,6 @@ export default {
     const site_id = process.env.SITE;
     let pageData = {};
     pageData = await $getRedisKey(`web:${site_id}:pages:${params.slug}`);
-    console.log(pageData)
     return { pageData }
   },
   mounted() {

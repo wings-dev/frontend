@@ -221,7 +221,6 @@ export default {
       },
 
     })
-    console.log(this.hotel)
   }
 }
 </script>

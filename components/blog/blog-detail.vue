@@ -25,7 +25,7 @@
                 <div class="Blog-in detail">
 
                     <blog-sidebar></blog-sidebar>
-                    
+
                     <div class="Blog-content ">
                         <div class="Blog-detail">
                             <div class="Blog-detail-info">
@@ -41,8 +41,8 @@
                             </div>
                             <div class="Blog-detail-text">
                                 <h1>{{ data.name }}</h1>
-                                <div class="Blog-detail-text-in" v-html="data.page_content.article.data"></div> 
-                   
+                                <div class="Blog-detail-text-in" v-html="data.page_content.article.data"></div>
+
                             </div>
                         </div>
                     </div>
@@ -132,11 +132,9 @@ export default {
                     slidesPerView: 3,
                     spaceBetween: 18,
                 },
-                
+
             },
         })
-        console.log(this.data)
     }
 }
 </script>
-  
