@@ -9,16 +9,13 @@
             </div>
         </section>
 
-        <!-- <favorities></favorities> -->
-        <user-favorities></user-favorities>
+        <user-coupons></user-coupons>
 
     </main>
 </template>
 
 <script>
-import UserInformation from "@/components/user/information.vue";
-import VSelect from "@alfsnd/vue-bootstrap-select";
-import UserFavorities from '../../components/user/user-favorities.vue';
+import UserCoupons from '../../components/user/coupons.vue';
 export default {
     name: "favorilerim",
     layout: 'no-search',
@@ -34,7 +31,7 @@ export default {
         }
     },
     components:{
-        UserFavorities
+        UserCoupons
     }
 }
 </script>

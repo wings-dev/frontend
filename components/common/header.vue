@@ -246,17 +246,14 @@
                             </button>
                             <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>
-                                    <NuxtLink class="dropdown-item" to="/user/uyelik"><i
-                                            class="icon-right-arrows-new"></i>BİLGİLERİNİZ</NuxtLink>
+                                    <NuxtLink class="dropdown-item" to="/user/uyelik">BİLGİLERİNİZ</NuxtLink>
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i class="icon-right-arrows-new"></i>FAVORİLERİM</a>
+                                <li><NuxtLink class="dropdown-item" to="/user/rezervasyonlar">FAVORİLERİM</NuxtLink>
                                 </li>
                                 <li>
-                                    <NuxtLink class="dropdown-item" to="/user/rezervasyonlar"><i
-                                            class="icon-right-arrows-new"></i>REZERVASYONLARIM</NuxtLink>
+                                    <NuxtLink class="dropdown-item" to="/user/rezervasyonlar">REZERVASYONLARIM</NuxtLink>
                                 </li>
-                                <li><a class="dropdown-item" href="#" @click.prevent="logout()"><i
-                                            class="icon-right-arrows-new"></i>ÇIKIŞ YAP</a></li>
+                                <li><a class="dropdown-item" href="#" @click.prevent="logout()">ÇIKIŞ YAP</a></li>
                             </ul>
                         </div>
                         <button type="button" class="menu-toggle" @click="mobileMenuOpen"
@@ -327,8 +324,7 @@ export default {
         },
         searchActive() {
             document.querySelector('.Search-villas').classList.toggle('Search_villas_active')
-            document.querySelector('#searchButton i').classList.toggle('icon-search')
-            document.querySelector('#searchButton i').classList.toggle('icon-login-close')
+            document.querySelector('body').classList.add('over')
         }
     },
     methods: {

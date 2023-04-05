@@ -1,11 +1,11 @@
 <template>
     <div class="User-left">
-        <nuxt-link to="uyelik">Üyelik Bilgileriniz</nuxt-link>
+        <nuxt-link to="user/uyelik">Üyelik Bilgileriniz</nuxt-link>
         <a href="">Seyahatlerim</a>
-        <nuxt-link to="rezervasyonlar">Rezervasyonlarım</nuxt-link>
+        <nuxt-link to="user/rezervasyonlar">Rezervasyonlarım</nuxt-link>
         <a href="">Bana Özel</a>
-        <nuxt-link to="favs">Favorilerim</nuxt-link>
-        <a href="">Kuponlarım</a>
+        <nuxt-link to="user/favorilerim">Favorilerim</nuxt-link>
+        <nuxt-link to="user/kuponlar">Favorilerim</nuxt-link>
         <a href="">Yardım ve Destek</a>
         <a href="" class="exit" @click.prevent="logout()">Çıkış Yap</a>
 

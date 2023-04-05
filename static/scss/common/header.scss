@@ -958,25 +958,22 @@
     }
 
     &[aria-expanded="true"] {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
     }
 
     &-menu {
-      background-color: #193367;
+      background-color: var(--bs-theme-first);
       width: 170px;
       border: none;
-      border-radius: 0;
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 25px;
-      margin-top: -2px !important;
-      inset: unset !important;
-      right: 0px !important;
+      border-radius: 8px;
+      // margin-top: -2px !important;
+      // inset: unset !important;
+      // right: 0px !important;
       &.show {
-        transform: translate3d(0px, 0px, 0px) !important;
+        // transform: translate3d(0px, 0px, 0px) !important;
+        margin-top: 2px!important;
       }
       li {
-        border-bottom: 1px solid rgb(var(--bs-theme-first-rgb, 0.6));
+        border-bottom: 1px solid #294378;
 
         &:last-child {
           border-bottom: none;
@@ -986,16 +983,13 @@
         font-size: 11px;
         font-weight: normal;
         color: #b3c0dc;
-        padding: 8px 10px;
-        i {
-          opacity: 0;
-        }
-        &:hover {
-          background-color: transparent;
-          color: var(--bs-theme-second);
-          i {
-            opacity: 1;
-          }
+        padding: 10px 30px;
+        text-align: right;
+        border-right: 2px solid var(--bs-theme-first);
+        &:hover,&:focus,&.nuxt-link-active {
+          background-color: #162e5f;
+          color:#fff;
+          border-color:var(--bs-theme-second);
         }
       }
     }

@@ -129,6 +129,7 @@ export default {
       },
     ],
     "@nuxtjs/toast",
+    'nuxt-vue-multiselect'
   ],
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`

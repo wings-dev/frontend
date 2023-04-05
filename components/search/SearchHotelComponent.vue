@@ -5,10 +5,30 @@
         <span class="Search-item-name">Şehir, İlçe veya Otel adı yazın</span>
         <div class="Search-item-region-otel-in">
           <i class="icon-new-location Search-item-icon"></i>
-          <client-only>
+          <!-- <client-only>
             <v-select class="w-100" :options="filteredCities" id="code" v-model="selectedCity" :clearable="false"
               placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
-          </client-only>
+          </client-only> -->
+          <div class="Search-multiselect">
+            <multiselect v-model="otelSearchValue" :options="otelSearchOptions" group-values="groupItems"
+              group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false">
+              <template slot="singleLabel" slot-scope="props">
+                <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span></template>
+              <template slot="option" slot-scope="props">
+                <template v-if="!props.option.$isLabel">
+                  <i class="icon-hotel-category" v-if="props.option.category == 'tema'"></i>
+                  <i class="icon-location-pin" v-else-if="props.option.category == 'bolge'"></i>
+                  <i class="icon-hotel-key" v-else></i>
+                </template>
+                <div class="option__desc">
+                  <span class="option__title" v-if="props.option.$isLabel">{{ props.option.$groupLabel }}</span>
+                  <span class="option__title" v-else>{{ props.option.name }}</span>
+                  <span class="option__small" v-if="props.option.district">{{ props.option.district }}</span>
+                </div>
+              </template>
+              <span slot="noResult">Oops! Aramanıza uygun sonuç bulunamadı.</span>
+            </multiselect>
+          </div>
         </div>
 
       </div>
@@ -98,6 +118,39 @@ export default {
       },
       timeoutCheck: null,
       cancelToken: null,
+      otelSearchValue: null,
+      otelSearchOptions: [
+        {
+          groupName: 'Temalar',
+          groupItems: [
+            { name: 'Termal Spa Otel', category: 'tema' },
+            { name: 'Deniz Manzaralı Otel', category: 'tema' }
+          ]
+        },
+        {
+          groupName: 'Bölgeler',
+          groupItems: [
+            { name: 'Side', category: 'bolge', },
+          ]
+        },
+        {
+          groupName: 'Oteller',
+          groupItems: [
+            { name: 'Side Prenses Resort Hotel & Spa', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA2', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA3', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA4', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA5', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA6', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA7', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA8', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA9', district: 'Side, Antalya', category: 'otel' },
+            { name: 'Side Mare Resort & SPA10', district: 'Side, Antalya', category: 'otel' }
+          ]
+        }
+      ],
+      otelSearchValue: []
     }
   },
   beforeMount() {
@@ -242,6 +295,7 @@ export default {
       const datepickerInput = $('[data-qa="datepickerInput"][tabindex="' + tabIndex + '"]');
 
       datepickerInput.html(`<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`);
+
     },
   }
 }
@@ -386,4 +440,5 @@ export default {
     position: absolute;
     right: 0;
   }
-}</style>
+}
+</style>

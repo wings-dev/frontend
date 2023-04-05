@@ -1,5 +1,5 @@
 <template>
-  <div class="Search-item Search-item-people">
+  <div class="Search-item Search-item-people Search-item-people-otel">
     <span class="Search-item-name">Kişi Sayısı </span>
     <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
             data-bs-toggle="dropdown" aria-expanded="false">
