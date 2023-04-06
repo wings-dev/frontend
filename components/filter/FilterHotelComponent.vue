@@ -2,7 +2,7 @@
   <section class="Filter">
     <div class="container">
       <div class="Filter-in">
-        <div class="Filter-left Filters" :class="{ show: isMobileFilterOpen }">
+        <div class="Filter-left Filters Filter-left-otel" :class="{ show: isMobileFilterOpen }">
           <div class="Filter-left-head">
             <h4>Gelişmiş Arama</h4>
             <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter">
@@ -21,27 +21,209 @@
               Olanak:{{ facility.text }}
               <i class="icon-search-close" @click="unselect(facility)"></i>
             </a>
-        </div>
+          </div>
           <div class="Filter-left-in">
             <div class="Filters-item Filters-item-notfound">
               <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
             </div>
 
-            <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge" :checkboxes="destinations" :loading="loading"
-              :hideTitleBorder="true" @updated="updateFilter('destinations', $event)" groupName="destinationCheckbox"></filter-item-checkbox-component>
+            <otel-filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge" :checkboxes="destinations"
+              :loading="loading" :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"
+              groupName="destinationCheckbox"></otel-filter-item-checkbox-component>
 
-            <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
-              :groups="amenites.groups.facilities"
-              @updated="updateFilter('amenites.facilities', $event)" groupName="facilitiesCheckbox"></filter-item-checkbox-component>
+            <!-- <otel-filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
+              :groups="amenites.groups.facilities" @updated="updateFilter('amenites.facilities', $event)"
+              groupName="facilitiesCheckbox"></otel-filter-item-checkbox-component> -->
 
-            <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
-              @max_price="updateFilter('max_price', $event)" groupName="priceRange" ></filter-price-between-component>
+            <div class="Filters Filters-otel ">
+              <div class="Filters-head">
+                <h5>Pansiyon Tipi<span></span></h5>
+              </div>
+              <div class="Filters-in">
+                <div class="Filters-in-mobile">
+                  <div class="Filters-head">
+                    <h5>Pansiyon Tipi</h5>
+                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
+                </div> <!---->
+                <ul class="Filters-first">
 
-              <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü Temizle</button>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Bungalov</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Suit Daire</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Tiny House</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Villa</p>
+                    </label> </li>
+                </ul> <!----> <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
+              </div>
+            </div>
 
-              <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
+            <div class="Filters Filters-otel ">
+              <div class="Filters-head">
+                <h5>Yıldız Sayısı<span></span></h5>
+                <button type="button" class="Filters-head-clear">Temizle</button>
+              </div>
+              <div class="Filters-in">
+                <div class="Filters-in-mobile">
+                  <div class="Filters-head">
+                    <h5>Yıldız Sayısı</h5>
+                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
+                </div> 
+                <div class="Filters-checkbox">
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>1</span>
+                      <i class="icon-star"></i>
+                    </label>
+                  </div>
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>2</span>
+                      <i class="icon-star"></i>
+                    </label>
+                  </div>
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>3</span>
+                      <i class="icon-star"></i>
+                    </label>
+                  </div>
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>4</span>
+                      <i class="icon-star"></i>
+                    </label>
+                  </div>
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>5</span>
+                      <i class="icon-star"></i>
+                    </label>
+                  </div>
+                </div>
+                <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
+              </div>
+            </div>
+
+            <div class="Filters Filters-otel ">
+              <div class="Filters-head">
+                <h5>Misafir Puanı<span></span></h5>
+                <button type="button" class="Filters-head-clear">Temizle</button>
+              </div>
+              <div class="Filters-in">
+                <div class="Filters-in-mobile">
+                  <div class="Filters-head">
+                    <h5>Misafir Puanı</h5>
+                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
+                </div> 
+                <div class="Filters-checkbox">
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>1+</span>
+                    </label>
+                  </div>
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>6+</span>
+                    </label>
+                  </div>
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>7+</span>
+                    </label>
+                  </div>
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>8+</span>
+                    </label>
+                  </div>
+                  <div class="Filters-checkbox-item">
+                    <input type="checkbox">
+                    <label for="">
+                      <span>9+</span>
+                    </label>
+                  </div>
+                </div>
+                <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
+              </div>
+            </div>
+
+            <otel-filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
+              @max_price="updateFilter('max_price', $event)" groupName="priceRange"></otel-filter-price-between-component>
+            <div class="Filters Filters-otel ">
+              <div class="Filters-head">
+                <h5>Tesis Özellikleri<span></span></h5>
+              </div>
+              <div class="Filters-in">
+                <div class="Filters-in-mobile">
+                  <div class="Filters-head">
+                    <h5>Tesis Özellikleri</h5>
+                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
+                </div> <!---->
+                <ul class="Filters-first">
+
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Bungalov</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Suit Daire</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Tiny House</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Villa</p>
+                    </label> </li>
+                </ul> <!----> <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
+              </div>
+            </div>
+
+            <div class="Filters Filters-otel ">
+              <div class="Filters-head">
+                <h5>Temalar<span></span></h5>
+              </div>
+              <div class="Filters-in">
+                <div class="Filters-in-mobile">
+                  <div class="Filters-head">
+                    <h5>Temalar</h5>
+                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
+                </div> <!---->
+                <ul class="Filters-first">
+
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Bungalov</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Suit Daire</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Tiny House</p>
+                    </label> </li>
+                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
+                      <p class="check-text">Villa</p>
+                    </label> </li>
+                </ul> <!----> <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
+              </div>
+            </div>
+            <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü
+              Temizle</button>
+
+            <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
           </div>
-
         </div>
         <div class="Filter-right">
           <div class="Filter-right-head">
@@ -56,7 +238,9 @@
                   <VSelect :options="orderValues" :labelTitle="orderPlaceholder" @input="orderChanged" />
                 </client-only>
               </div>
-              <button type="button" @click="openMobileFilter()" class="Filter-right-head-buttons-item mobile-filter-button"><i class="icon-new-filter"></i>FİLTRELE <span>(4)</span></button>
+              <button type="button" @click="openMobileFilter()"
+                class="Filter-right-head-buttons-item mobile-filter-button"><i class="icon-new-filter"></i>FİLTRELE
+                <span>(4)</span></button>
             </div>
           </div>
 
@@ -80,8 +264,8 @@
 
           <div class="F_villa F_villa-otel ">
 
-            <filter-hotel-preview-component v-for="(hotel, index) in filteredHotels" :key="hotel.id"
-              :hotel="hotel" :checkindate="checkIn" :requestId="requestId"></filter-hotel-preview-component>
+            <filter-hotel-preview-component v-for="(hotel, index) in filteredHotels" :key="hotel.id" :hotel="hotel"
+              :checkindate="checkIn" :requestId="requestId"></filter-hotel-preview-component>
 
             <div
               class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
@@ -139,6 +323,8 @@
 
 <script>
 import VSelect from "@alfsnd/vue-bootstrap-select";
+import OtelFilterItemCheckboxComponent from "@/components/filter/OtelFilterItemCheckboxComponent.vue";
+import OtelFilterPriceBetweenComponent from "@/components/filter/OtelFilterPriceBetweenComponent.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -178,12 +364,12 @@ export default {
       orderValue: null,
       orderPlaceholder: "Sırala:",
       loading: true,
-      isMobileFilterOpen:false
+      isMobileFilterOpen: false
 
     }
   },
   components: {
-    VSelect
+    VSelect, OtelFilterItemCheckboxComponent,OtelFilterPriceBetweenComponent
   },
   created() {
     const searchData = this.$store.state.hotels.searchData;
@@ -206,7 +392,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.filter();
-    },50)
+    }, 50)
   },
   computed: {
     filteredHotels() {
@@ -309,11 +495,11 @@ export default {
           this.hotels = response.data.body?.hotels ?? [];
           this.requestId = response.data.header.requestId;
           this.destinations = this.hotels.map(hotel => {
-            return {code: hotel.city.id, text: hotel.city.name, selected: false}
+            return { code: hotel.city.id, text: hotel.city.name, selected: false }
           }).filter((destination, index, self) =>
-              index === self.findIndex((t) => (
-                t.text === destination.text
-              ))
+            index === self.findIndex((t) => (
+              t.text === destination.text
+            ))
           );
         })
         .catch(console.error)
@@ -362,21 +548,21 @@ export default {
     isMobile() {
       return window.innerWidth <= 991;
     },
-    openMobileFilter(){
-      if(this.isMobile()){
+    openMobileFilter() {
+      if (this.isMobile()) {
         this.isMobileFilterOpen = true
       }
     },
-    closeMobileFilter(){
-      if(this.isMobile()){
+    closeMobileFilter() {
+      if (this.isMobile()) {
         this.isMobileFilterOpen = false
       }
     },
-    checkboxOpen(groupName){
+    checkboxOpen(groupName) {
       const targetDiv = this.$refs[groupName];
       targetDiv.classList.add('show')
     },
-    checkboxClose(groupName){
+    checkboxClose(groupName) {
       const targetDivClose = this.$refs[groupName];
       targetDivClose.classList.remove('show')
     }
@@ -384,5 +570,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

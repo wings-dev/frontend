@@ -1,5 +1,5 @@
 <template>
-  <div class="Filters Filters-region ">
+  <div class="Filters Filters-otel ">
     <div v-if="!hideTitle" class="Filters-head" v-bind:class="{ 'border-bottom': !hideTitleBorder }"
       @click="checkboxOpen(groupName)"><i class="icon-location-1"></i>
       <h5>{{ title }} <span v-if="selectedLength">({{ selectedLength }})</span></h5>
@@ -27,6 +27,7 @@
             <input type="checkbox" v-model="checkbox1.selected" @change="selectCheckbox(checkbox1)">
             <span class="checkspan"></span>
             <p class="check-text" v-text="checkbox1.text"></p>
+            <small class="check-length">12</small>
           </label>
           <ul class="Filter-second" v-for="checkbox2 in checkbox1.children">
             <li>
@@ -94,7 +95,7 @@
 
 <script>
 export default {
-  name: "FilterItemCheckboxComponent",
+  name: "OtelFilterItemCheckboxComponent",
   props: {
     title: { type: String },
     checkboxes: { type: Array, default: [] },
