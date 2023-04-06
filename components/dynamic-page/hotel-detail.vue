@@ -35,13 +35,22 @@
                     </span>
                     <span class="action-btn-text">Favorilere Ekle</span>
                   </button>
-                  <button type="button"
-                    class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center">
-                    <span class="action-btn-icon">
-                      <i class="icon-share"></i>
-                    </span>
-                    <span class="action-btn-text">Arkadaşın ile Paylaş</span>
-                  </button>
+                  <div class="dropdown Share">
+                    <button type="button"
+                      class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                      id="dropdownMenuShare" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="action-btn-icon">
+                        <i class="icon-share"></i>
+                      </span>
+                      <span class="action-btn-text">Arkadaşın ile Paylaş</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare">
+                      <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
+                      <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
+                      <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
+                      <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
+                    </ul>
+                  </div>
                   <button type="button"
                     class="up-button d-none fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
                     @click.prevent="scrollTop">
@@ -78,7 +87,9 @@
                   </div>
                 </div>
                 <div class="View-menu-right">
-                  <a target="_blank" :href="`https://www.google.com/maps/@${ hotelDetails.body.hotel.geolocation.latitude },${ hotelDetails.body.hotel.geolocation.longitude },16z`" class="map-view">Haritada Görüntüle</a>
+                  <a target="_blank"
+                    :href="`https://www.google.com/maps/@${hotelDetails.body.hotel.geolocation.latitude},${hotelDetails.body.hotel.geolocation.longitude},16z`"
+                    class="map-view">Haritada Görüntüle</a>
                 </div>
               </div>
             </div>
@@ -151,73 +162,215 @@
         </div>
       </section>
 
+      <section class="Otel-desc">
+        <div class="container">
+          <div class="Otel-desc-in">
+            <div class="Otel-desc-text">
+              <h2>{{ hotelDetails.body.hotel.name }} <span>Genel Bilgiler</span></h2>
+              <div class="Otel-desc-text-in" :class="{ 'active': moreContent }">
+                <p>Premium Inn City Boutique, Kıbrıs Gazimağusa merkezinde bulunan nezih bir tesis. Modern dekorasyona
+                  sahip olan otelde konaklarken aileniz ve sevdiklerinizle mükemmel bir tatil deneyimi yaşayabilirsiniz.
+                  Tesiste misafirlerin unutulmaz anlar yaşayabileceği tüm imkânlar mevcut.</p>
+
+                <p>Tesis bünyesinde farklı kapasite ve büyüklüğe sahip konaklama alternatifleri mevcut. Odalarda banyo ve
+                  tuvalete ek olarak saç kurutma makinesi, terlik, ücretsiz banyo malzemeleri, çalışma masası, klima,
+                  makyaj masası, telefon, kahve makinesi, minibar, çay ve kahve makinesi bulunuyor. Premium Inn City
+                  Boutique aile odalarında çocuklarınızla konforlu bir tatil yapabilirsiniz.</p>
+
+                <p>Otel konuklarına oda-kahvaltı konseptinde hizmet veriyor. Premium Inn City Boutique restoran kahvaltıyı
+                  07.30 ile 11.30 saatleri arasında tabak şeklinde servis ediyor. Otelde alakart restoranın yanı sıra
+                  kafeterya,bar ve sushi restoranı bulunuyor.</p>
+              </div>
+              <button type="button" class="Otel-desc-text-more" @click="moreContentOpen">{{
+                moreContent ? 'Daha Az Bilgi Göster' : 'Daha Fazla Bilgi Göster' }} </button>
+            </div>
+            <div class="Otel-desc-features">
+              <h4>Tesis <span>Özellikleri</span></h4>
+              <p class="Otel-desc-features-item"><i class="icon-check-big"></i>Kapalı Otopark</p>
+              <p class="Otel-desc-features-item"><i class="icon-check-big"></i>Kapalı Otopark</p>
+              <p class="Otel-desc-features-item"><i class="icon-check-big"></i>Kapalı Otopark</p>
+              <p class="Otel-desc-features-item"><i class="icon-check-big"></i>Kapalı Otopark</p>
+              <b-button v-b-modal.amenitesModal class="Otel-desc-features-more">Tüm özellikleri gör</b-button>
+            </div>
+            <div class="Otel-desc-map" style="background-image: url(/img/map-bg.png);">
+              <a href="">
+                <span>Haritada Göster</span>
+                <i class="icon-search-new"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="rooms-section pt-3 mt-1">
         <div class="container">
-          <template v-if="roomsLoading">
-            Odalar yükleniyor...
-          </template>
-          <template v-else>
-            <template v-for="offer in offers">
-              <div v-for="room in offer.rooms" class="room border border-light  p-2 ">
+
+          <div class="room border border-light  ">
                 <div class="row">
-                  <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
+                  <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
                     <div class="img-box position-relative flex-shrink-0">
-                      <img v-if="room.mediaFiles" :src="room.mediaFiles[0].urlFull" width="297" height="208" alt="room image"
-                           class="lazy cover flex-shrink-0 ">
+                        <div class="no-rooms" >
+                          <img src="/img/no-img.svg" alt="">
+                          <p>Oda fotoğrafı <span>bulunmuyor.</span></p>
+                        </div>
                     </div>
                     <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
                       <div class="d-flex align-items-center w-100 mb-2">
-                        <span class="d-inline-block me-auto room-title">{{room.roomName}}</span>
+                        <span class="d-inline-block me-auto room-title">Kral Dairesi - 92m2</span>
                       </div>
                       <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
 
-                        <small
-                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <span class="text-theme-secondary me-1">Minibar</span>
+                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <i class="icon-check-big"></i> Minibar
                         </small>
-                        <small
-                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <span class="text-theme-secondary me-1">Balkon</span>
+                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <i class="icon-check-big"></i> Balkon
                         </small>
-                        <small
-                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <span class="text-theme-secondary me-1">Duşakabin</span>
+                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <i class="icon-check-big"></i> Duşakabin
                         </small>
                       </div>
                       <div class="d-flex align-items-center mb-sm-0 mb-1">
                         <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
-                          Özellikleri</small></u></b-button>
+                              Özellikleri</small></u></b-button>
                       </div>
                     </div>
                   </div>
                   <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
                     <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
                       <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
-                        <div
-                          class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                        <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
                           <div class="option-all">
-                            <span class="option-all-item">Oda Kahvaltı</span>
+                            <span>En Ucuzu</span>
+                            <b>Oda Kahvaltı</b>
                           </div>
                           <div class="option-warning">
-                            <p>İptal Edilemez</p>
+                            <p>Ücretsiz İptal</p>
                           </div>
                         </div>
-                        <div
-                          class="bg-white bg-opacity-50 d-flex flex-xl-column align-items-center justify-content-center px-3 px-xl-4 py-3 py-xl-2">
-                          <div class="Otel-card-price">
-                            <span>{{offer.night}} GECE</span>
-                            <b>{{offer.price.amount}} <small>{{offer.price.currency}}</small></b>
+                        <div class="room-price">
+                            <span>3 GECE</span>
+                            <div class="room-price-in">
+                              <s>16.500TL</s>
+                              <b>412.420<small>TL</small></b>
+                              <p>Gecelik <span>1.400TL</span></p>
+                            </div>
+                            <nuxt-link to="/">Odayı Seç</nuxt-link>
+                        </div>
+                      </div>
+                      <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                        <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                          <div class="option-all">
+                            <span>En Ucuzu</span>
+                            <b>Oda Kahvaltı</b>
                           </div>
-                          <a @click.prevent="goReservation(offer)" target="_blank" class="Otel-card-link">
-                            <button>Oda Seç</button>
-                          </a>
-                          <p class="Otel-card-content-warning mt-2">Son 2 oda</p>
+                          <div class="option-warning">
+                            <p>Ücretsiz İptal</p>
+                            <p>7 Ağustos 2023’e kadar</p>
+                          </div>
+                        </div>
+                        <div class="room-price">
+                            <span>3 GECE</span>
+                            <div class="room-price-in">
+                              <s>16.500TL</s>
+                              <b>412.420<small>TL</small></b>
+                              <p>Gecelik <span>1.400TL</span></p>
+                            </div>
+                            <nuxt-link to="/">Odayı Seç</nuxt-link>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+          </div>
+
+          <template v-if="roomsLoading">
+            Odalar yükleniyor...
+          </template>
+          <template v-else>
+            <template v-for="offer in offers">
+              <div v-for="room in offer.rooms" class="room border border-light  ">
+                <div class="row">
+                  <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
+                    <div class="img-box position-relative flex-shrink-0">
+                      <img v-if="room.mediaFiles" :src="room.mediaFiles[0].urlFull" width="297" height="208"
+                        alt="room image" class="lazy cover flex-shrink-0 ">
+                        <div class="no-rooms" v-else>
+                          <img src="/img/no-img.svg" alt="">
+                          <p>Oda fotoğrafı <span>bulunmuyor.</span></p>
+                        </div>
+                    </div>
+                    <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
+                      <div class="d-flex align-items-center w-100 mb-2">
+                        <span class="d-inline-block me-auto room-title">{{ room.roomName }}</span>
+                      </div>
+                      <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
+
+                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <i class="icon-check-big"></i> Minibar
+                        </small>
+                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <i class="icon-check-big"></i> Balkon
+                        </small>
+                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                          <i class="icon-check-big"></i> Duşakabin
+                        </small>
+                      </div>
+                      <div class="d-flex align-items-center mb-sm-0 mb-1">
+                        <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
+                              Özellikleri</small></u></b-button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
+                    <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
+                      <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                        <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                          <div class="option-all">
+                            <span>En Ucuzu</span>
+                            <b>Oda Kahvaltı</b>
+                          </div>
+                          <div class="option-warning">
+                            <p>Ücretsiz İptal</p>
+                          </div>
+                        </div>
+                        <div class="room-price">
+                            <span>{{offer.night}} GECE</span>
+                            <div class="room-price-in">
+                              <s>16.500TL</s>
+                              <b>{{offer.price.amount}}<small>{{offer.price.currency}}</small></b>
+                              <p>Gecelik <span>1.400TL</span></p>
+                            </div>
+                            <a @click.prevent="goReservation(offer)" target="_blank" class="Otel-card-link">
+                            Oda Seç
+                          </a>
+                        </div>
+                      </div>
+                      <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                        <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                          <div class="option-all">
+                            <span>En Ucuzu</span>
+                            <b>Oda Kahvaltı</b>
+                          </div>
+                          <div class="option-warning">
+                            <p>Ücretsiz İptal</p>
+                            <p>7 Ağustos 2023’e kadar</p>
+                          </div>
+                        </div>
+                        <div class="room-price">
+                            <span>3 GECE</span>
+                            <div class="room-price-in">
+                              <s>16.500TL</s>
+                              <b>412.420<small>TL</small></b>
+                              <p>Gecelik <span>1.400TL</span></p>
+                            </div>
+                            <nuxt-link to="/">Odayı Seç</nuxt-link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
             </template>
             <template v-if="!roomsLoading && offers.length === 0">
               Uygun oda bulunamadı...
@@ -227,29 +380,16 @@
         </div>
       </section>
 
-      <section class="general-informations-section mt-5 mb-5 pb-sm-2">
-        <div class="container">
-          <div class="general-informations-section-title"><span>{{ hotelDetails.body.hotel.name }}</span> Genel Bilgiler</div>
-          <div class="general-informations-section-in">
-            <div class="general-informations-section-text" v-html="hotelDetails.body.hotel.description.text">
-
-            </div>
-            <div class="general-informations-section-map">
-              <nuxt-img src="/img/map-bg.png"></nuxt-img>
-              <button type="button"><i class="icon-search-new"></i></button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <div class="otel-features">
         <div class="container">
           <div class="otel-features-in">
             <h4>{{ hotelDetails.body.hotel?.name }} <span>Özellikler</span></h4>
             <template v-for="season in hotelDetails.body?.hotel?.seasons">
               <template v-for="facilityCategory in season.facilityCategories">
-                <p class="otel-features-item" v-for="facility in facilityCategory.facilities" :key="facility.id">{{ facility.name }}
-                  <span v-if="facility.isPriced" style="font-weight:500;text-decoration:underline;margin-left: 5px;">(Ücretli)</span>
+                <p class="otel-features-item" v-for="facility in facilityCategory.facilities" :key="facility.id">{{
+                  facility.name }}
+                  <span v-if="facility.isPriced"
+                    style="font-weight:500;text-decoration:underline;margin-left: 5px;">(Ücretli)</span>
                 </p>
               </template>
             </template>
@@ -428,7 +568,9 @@ export default {
       offers: [],
       roomsLoading: true,
       slide: 0,
-      slidePhotos: ['https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg']
+      slidePhotos: ['https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg'],
+      moreContent: false,
+      moreFeatures: false,
     }
   },
   components: {
@@ -505,7 +647,7 @@ export default {
           offer.rooms.forEach((room, roomIndex) => {
             let roomDetail = rooms.find(r => r.offerId == offer.offerId);
             if (roomDetail && roomDetail.mediaFiles) {
-              offer.rooms[roomIndex] = Object.assign({}, room, {mediaFiles: roomDetail.mediaFiles});
+              offer.rooms[roomIndex] = Object.assign({}, room, { mediaFiles: roomDetail.mediaFiles });
             }
           });
         }
@@ -522,6 +664,9 @@ export default {
       document.querySelector('body').classList.add("over")
       document.querySelector('.main').classList.add("main-z")
       this.galleryIsOpen = true
+    },
+    moreContentOpen() {
+      this.moreContent = !this.moreContent
     },
   },
 }

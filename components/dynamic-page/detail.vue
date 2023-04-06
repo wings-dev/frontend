@@ -63,21 +63,21 @@
                 </button>
 
                 <div class="dropdown Share">
-                <button type="button"
-                class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
-                  id="dropdownMenuShare" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="action-btn-icon">
-                    <i class="icon-share"></i>
-                  </span>
-                  <span class="action-btn-text">Arkadaşın ile Paylaş</span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare">
-                  <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
-                  <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
-                  <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
-                  <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
-                </ul>
-              </div>
+                  <button type="button"
+                    class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                    id="dropdownMenuShare" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="action-btn-icon">
+                      <i class="icon-share"></i>
+                    </span>
+                    <span class="action-btn-text">Arkadaşın ile Paylaş</span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare">
+                    <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
+                    <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
+                  </ul>
+                </div>
                 <button type="button"
                   class="up-button d-none fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
                   @click.prevent="scrollTop">
@@ -142,21 +142,21 @@
           <div class="View-gallery-mobile-buttons">
 
             <div class="dropdown Share">
-                <button type="button"
+              <button type="button"
                 class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
-                  id="dropdownMenuShare2" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="action-btn-icon">
-                    <i class="icon-share"></i>
-                  </span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare2">
-                  <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
-                  <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
-                  <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
-                  <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
-                </ul>
-              </div>
-              <button type="button" @click="toggleFavorite"
+                id="dropdownMenuShare2" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="action-btn-icon">
+                  <i class="icon-share"></i>
+                </span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare2">
+                <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
+                <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
+                <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
+                <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
+              </ul>
+            </div>
+            <button type="button" @click="toggleFavorite"
               class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
               :class="isFavorite ? 'active' : ''">
               <span class="action-btn-icon">
@@ -1996,4 +1996,5 @@ export default {
   .modal-xl {
     max-width: 1140px;
   }
-}</style>
+}
+</style>
