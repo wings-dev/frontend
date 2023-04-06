@@ -380,24 +380,7 @@
         </div>
       </section>
 
-      <div class="otel-features">
-        <div class="container">
-          <div class="otel-features-in">
-            <h4>{{ hotelDetails.body.hotel?.name }} <span>Özellikler</span></h4>
-            <template v-for="season in hotelDetails.body?.hotel?.seasons">
-              <template v-for="facilityCategory in season.facilityCategories">
-                <p class="otel-features-item" v-for="facility in facilityCategory.facilities" :key="facility.id">{{
-                  facility.name }}
-                  <span v-if="facility.isPriced"
-                    style="font-weight:500;text-decoration:underline;margin-left: 5px;">(Ücretli)</span>
-                </p>
-              </template>
-            </template>
-          </div>
-        </div>
-      </div>
-
-      <section class="otel-reviews">
+      <section class="otel-reviews mt-5">
         <div class="container">
           <div class="otel-reviews-">
 
@@ -436,6 +419,7 @@
                       alteration in some form, by injected humour, or randomised words which don't look even slightly
                       believable
                     </p>
+                    <p>Temmuz '22</p>
                     <p class="mt-4 mb-4">YORUM KAYNAĞI : GOOGLE</p>
                   </div>
 
@@ -468,6 +452,7 @@
 
                 </div>
               </div>
+              <h5>Tüm Yorumları Göster</h5>
 
             </div>
           </div>
