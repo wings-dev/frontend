@@ -1,16 +1,23 @@
 <template>
     <div class="Home">
         <search-bar></search-bar>
-        <section class="Banner Banner_lg Banner-back mb-4" :style="{'background-image': 'url(' + pageData.page_content.default.page_banner + ')'}">
-            <img src="/img/banner-mobile.png" class="w-100 mobile" alt="">
-            <div class="container">
-                <div class=" Banner_search-text   pos-ab-xy-center ">
-                    <h1 class="animated fadeInDown ">KİRALIK VİLLA</h1>
-                    <h2 class="animated fadeInDown ">EXCLUSIVE KONFOR</h2>
-                    <p class="animated fadeInDown desktop flex-column "><span>Saklı bir cennet…</span>
-                        Nefes kesici doğa manzarası, muhteşem plajları, begonvillerin süslediği beyaz badanalı taş
-                        evleri ve
-                        yıldız yağmuru altındaki teraslarıyla bir Akdeniz rüyası… Huzurun diğer adı: KALKAN
+        <section class="Banner Banner-home mb-4"
+            :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
+            <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt="">
+            <div class="container Banner-home-in">
+                <div class=" Banner-home-text">
+                    <div class="Banner-home-text-spin">
+                        <h1>Bu sene tatil</h1>
+                        <div class="words">
+                            <span>Villada mı?</span>
+                            <span>Yurtdışı Villada mı?</span>
+                            <span>Otelde mi?</span>
+                            <span>Villada mı?</span>
+                        </div>
+                    </div>
+                    <h2 class="">dediysen, <span>doğru yerdesin.</span></h2>
+                    <p class="">
+                        10.000+ otel ve 1.000+ villa seçeneği ile en çok tatil seçeneği ve destinasyonu VillaKalkan’da!
                     </p>
                 </div>
             </div>
@@ -35,8 +42,10 @@
                             <div class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-link :to="'/'+item.code">
-                                             <nuxt-img :src="item.preview_image[0].preview_url" :srcset="item.preview_image[0].responsive_url" width="267" height="175"></nuxt-img>
+                                        <nuxt-link :to="'/' + item.code">
+                                            <nuxt-img :src="item.preview_image[0].preview_url"
+                                                :srcset="item.preview_image[0].responsive_url" width="267"
+                                                height="175"></nuxt-img>
                                         </nuxt-link>
                                         <button class="Card-fav" type="button">
                                             <i class="icon-heart"></i>
@@ -45,7 +54,7 @@
                                     <div class="Card-content">
                                         <div class="Card-content-head">
                                             <div class="Card-content-head-code">
-                                                <b>{{prefix+item.code}}</b>
+                                                <b>{{ prefix + item.code }}</b>
                                                 <span>Tesis Kodu</span>
                                             </div>
                                             <div class="Card-content-head-location">
@@ -70,10 +79,12 @@
                                     </div>
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
-                                            <p><b>{{ item.prices.min_price.price+item.prices.min_price.price_currency }} - {{ item.prices.max_price.price+item.prices.max_price.price_currency }} </b><span>/Gecelik</span></p>
+                                            <p><b>{{ item.prices.min_price.price + item.prices.min_price.price_currency }} -
+                                                    {{ item.prices.max_price.price + item.prices.max_price.price_currency }}
+                                                </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
                                         </div>
-                                        <nuxt-link :to="'/'+item.code" class="Card-content-bottom-link"><i
+                                        <nuxt-link :to="'/' + item.code" class="Card-content-bottom-link"><i
                                                 class="icon-right-arrows-new"></i></nuxt-link>
                                     </div>
                                 </div>
@@ -703,12 +714,12 @@ export default {
                 },
             },
         })
+
+
     }
 
 }
 </script>
-<style scoped>
-.list-item .list-image {
+<style scoped>.list-item .list-image {
     width: 100%;
-}
-</style>
+}</style>

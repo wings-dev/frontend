@@ -260,6 +260,83 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  &-home{
+    height: 700px;
+    &-in{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding-top: 155px;
+    }
+    &-text{
+      &-spin{
+        display: flex;
+        align-items: center;
+        height: 48px;
+        overflow: hidden;
+        margin-bottom: 5px;
+        h1{
+          font-size: 39px;
+          font-weight: 500;
+          line-height: normal;
+          color: var(--bs-theme-first);
+        }
+        span{
+          display: block;
+          color: var(--bs-theme-first);
+          font-size: 39px;
+          font-weight: 800;
+          line-height: normal;
+          color: var(--bs-theme-first);
+          animation: spin_words 6s infinite;
+        }
+        .words{
+          overflow: hidden;
+          margin-left: 9px;
+          height: 48px;
+        }
+        
+      }
+      h2{
+        font-size: 24px;
+        font-weight: bold;
+        line-height: normal;
+        color: var(--bs-theme-first);
+        span{
+          color: var(--bs-theme-second);
+        }
+        margin-bottom: 38px;
+      }
+      p{
+        max-width: 563px;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: normal;
+        color: var(--bs-theme-first);
+      }
+      @keyframes spin_words{
+        25%{
+            transform: translateY(-112%);
+        }
+        40%{
+            transform: translateY(-100%);
+        }
+        60%{
+            transform: translateY(-212%);
+        }
+        75%{
+            transform: translateY(-200%);
+        }
+        85%{
+            transform: translateY(-312%);
+        }
+        100%{
+            transform: translateY(-300%);
+        }
+      }
+    }
+  }
+
 }
 .Banner_md:before {
   height: 160px;
@@ -11643,4 +11720,7 @@ body {
     }
   }
 }
+
+
+
 @import "common/footer";
