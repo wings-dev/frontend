@@ -17,10 +17,8 @@
           </div> -->
           <div class="Filter-left-selected">
 
-            <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
-              Olanak:{{ facility.text }}
-              <i class="icon-search-close" @click="unselect(facility)"></i>
-            </a>
+
+
           </div>
           <div class="Filter-left-in">
             <div class="Filters-item Filters-item-notfound">
@@ -31,37 +29,17 @@
               :loading="loading" :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"
               groupName="destinationCheckbox"></otel-filter-item-checkbox-component>
 
-            <!-- <otel-filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
-              :groups="amenites.groups.facilities" @updated="updateFilter('amenites.facilities', $event)"
-              groupName="facilitiesCheckbox"></otel-filter-item-checkbox-component> -->
+            <otel-filter-item-checkbox-component title="Pansiyon Tipi" :checkboxes="boards"
+              :loading="loading" :hideTitleBorder="true" @updated="updateFilter('boards', $event)"
+            ></otel-filter-item-checkbox-component>
 
-            <div class="Filters Filters-otel ">
-              <div class="Filters-head">
-                <h5>Pansiyon Tipi<span></span></h5>
-              </div>
-              <div class="Filters-in">
-                <div class="Filters-in-mobile">
-                  <div class="Filters-head">
-                    <h5>Pansiyon Tipi</h5>
-                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
-                </div> <!---->
-                <ul class="Filters-first">
+            <otel-filter-item-checkbox-component title="Tesis Özellikleri" :checkboxes="facilities"
+              :loading="loading" :hideTitleBorder="true" @updated="updateFilter('facilities', $event)"
+            ></otel-filter-item-checkbox-component>
 
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Bungalov</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Suit Daire</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Tiny House</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Villa</p>
-                    </label> </li>
-                </ul> <!----> <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
-              </div>
-            </div>
+            <otel-filter-item-checkbox-component title="Temalar" :checkboxes="themes"
+              :loading="loading" :hideTitleBorder="true" @updated="updateFilter('themes', $event)"
+            ></otel-filter-item-checkbox-component>
 
             <div class="Filters Filters-otel ">
               <div class="Filters-head">
@@ -73,7 +51,7 @@
                   <div class="Filters-head">
                     <h5>Yıldız Sayısı</h5>
                   </div> <button type="button"><i class="icon-left-arrow"></i></button>
-                </div> 
+                </div>
                 <div class="Filters-checkbox">
                   <div class="Filters-checkbox-item">
                     <input type="checkbox">
@@ -125,7 +103,7 @@
                   <div class="Filters-head">
                     <h5>Misafir Puanı</h5>
                   </div> <button type="button"><i class="icon-left-arrow"></i></button>
-                </div> 
+                </div>
                 <div class="Filters-checkbox">
                   <div class="Filters-checkbox-item">
                     <input type="checkbox">
@@ -164,61 +142,7 @@
 
             <otel-filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
               @max_price="updateFilter('max_price', $event)" groupName="priceRange"></otel-filter-price-between-component>
-            <div class="Filters Filters-otel ">
-              <div class="Filters-head">
-                <h5>Tesis Özellikleri<span></span></h5>
-              </div>
-              <div class="Filters-in">
-                <div class="Filters-in-mobile">
-                  <div class="Filters-head">
-                    <h5>Tesis Özellikleri</h5>
-                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
-                </div> <!---->
-                <ul class="Filters-first">
 
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Bungalov</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Suit Daire</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Tiny House</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Villa</p>
-                    </label> </li>
-                </ul> <!----> <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
-              </div>
-            </div>
-
-            <div class="Filters Filters-otel ">
-              <div class="Filters-head">
-                <h5>Temalar<span></span></h5>
-              </div>
-              <div class="Filters-in">
-                <div class="Filters-in-mobile">
-                  <div class="Filters-head">
-                    <h5>Temalar</h5>
-                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
-                </div> <!---->
-                <ul class="Filters-first">
-
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Bungalov</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Suit Daire</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Tiny House</p>
-                    </label> </li>
-                  <li class="Filters-item"><label><input type="checkbox"> <span class="checkspan"></span>
-                      <p class="check-text">Villa</p>
-                    </label> </li>
-                </ul> <!----> <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
-              </div>
-            </div>
             <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü
               Temizle</button>
 
@@ -250,13 +174,23 @@
               <button type="button" id="Fetures_clear" v-show="filterCount > 0" @click="clearFilter()">Temizle</button>
 
               <a v-for="destination in selectedDestinations" class="Filter-right-selected-item">
-                Bölge:{{ destination.text }}
+                Bölge: {{ destination.text }}
                 <i class="icon-search-close" @click="unselect(destination)"></i>
               </a>
 
-              <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
-                Olanak:{{ facility.text }}
-                <i class="icon-search-close" @click="unselect(facility)"></i>
+              <a v-for="item in selectedBoards" class="Filter-right-selected-item">
+                Pansiyon Tipi: {{ item.text }}
+                <i class="icon-search-close" @click="unselect(item)"></i>
+              </a>
+
+              <a v-for="item in selectedFacilities" class="Filter-right-selected-item">
+                Tesis Özelliği: {{ item.text }}
+                <i class="icon-search-close" @click="unselect(item)"></i>
+              </a>
+
+              <a v-for="item in selectedThemes" class="Filter-right-selected-item">
+                Tema: {{ item.text }}
+                <i class="icon-search-close" @click="unselect(item)"></i>
               </a>
 
             </div>
@@ -344,16 +278,9 @@ export default {
       checkIn: null,
       checkOut: null,
       destinations: [],
-      amenites: {
-        groups: {
-          facilityTypes: [],
-          facilityConcepts: [],
-          facilities: []
-        },
-        facilityTypes: [],
-        facilityConcepts: [],
-        facilities: [],
-      },
+      boards: [],
+      facilities: [],
+      themes: [],
       adult: null,
       childAges: [],
       baby: null,
@@ -372,10 +299,7 @@ export default {
     VSelect, OtelFilterItemCheckboxComponent,OtelFilterPriceBetweenComponent
   },
   created() {
-    const searchData = this.$store.state.hotels.searchData;
 
-    // this.destinations = JSON.parse(JSON.stringify(searchData.destinations)).filter(destination => destination.type === 1);
-    // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
   },
   beforeMount() {
     this.checkIn = this.selectedFilters['checkIn'] ?? null;
@@ -385,9 +309,6 @@ export default {
     this.baby = this.selectedFilters['baby'] ?? null;
 
 
-    this.applySelectedFilters('amenites', 'facilityConcepts');
-    this.applySelectedFilters('amenites', 'facilityTypes');
-    this.applySelectedFilters('amenites', 'facilities');
   },
   mounted() {
     setTimeout(() => {
@@ -397,11 +318,27 @@ export default {
   computed: {
     filteredHotels() {
       let hotels = [];
-      const selectedCityIds = this.destinations.filter(destination => destination.selected).map(d => d.code)
-      if (selectedCityIds.length > 0) {
-        hotels = this.hotels.filter(hotel => selectedCityIds.includes(hotel.city.id))
+      const selectedCities = this.destinations.filter(destination => destination.selected).map(d => d.code)
+      const selectedBoards = this.boards.filter(board => board.selected).map(b => b.code);
+      const selectedFacilities = this.facilities.filter(facility => facility.selected).map(f => f.code);
+      const selectedThemes = this.themes.filter(theme => theme.selected).map(f => f.code);
+
+      if (selectedCities.length > 0) {
+        hotels = this.hotels.filter(hotel => selectedCities.includes(hotel.city.id))
       } else {
         hotels = this.hotels
+      }
+
+      if (selectedBoards.length > 0) {
+        hotels = hotels.filter(hotel => hotel.boardGroups.some(boardGroup => selectedBoards.includes(boardGroup.id)));
+      }
+
+      if (selectedFacilities.length > 0) {
+        hotels = hotels.filter(hotel => hotel.facilities.some(facility => selectedFacilities.includes(facility.id)));
+      }
+
+      if (selectedThemes.length > 0) {
+        hotels = hotels.filter(hotel => hotel.themes.some(theme => selectedThemes.includes(theme.id)));
       }
 
       if (this.orderValue?.value === 'price_asc') {
@@ -429,13 +366,19 @@ export default {
     selectedDestinations() {
       return this.getSelectedObjects(this.destinations);
     },
+    selectedBoards() {
+      return this.getSelectedObjects(this.boards);
+    },
     selectedFacilities() {
-      return this.getSelectedObjects(this.amenites.facilities);
+      return this.getSelectedObjects(this.facilities);
+    },
+    selectedThemes() {
+      return this.getSelectedObjects(this.themes);
     },
     filterCount() {
       return [
         ...this.selectedDestinations,
-        ...this.selectedFacilities
+        ...this.selectedBoards
       ].length;
     },
     displayedPageNumbers() {
@@ -494,13 +437,68 @@ export default {
         .then(response => {
           this.hotels = response.data.body?.hotels ?? [];
           this.requestId = response.data.header.requestId;
+
+          function compareText(a, b) {
+            if (a.text < b.text) {
+              return -1;
+            }
+            if (a.text > b.text) {
+              return 1;
+            }
+            return 0;
+          }
+
           this.destinations = this.hotels.map(hotel => {
             return { code: hotel.city.id, text: hotel.city.name, selected: false }
           }).filter((destination, index, self) =>
-            index === self.findIndex((t) => (
-              t.text === destination.text
-            ))
-          );
+              index === self.findIndex((t) => (
+                t.text === destination.text
+              ))
+          ).map(destination => {
+            const count = this.hotels.filter(hotel => hotel.city.name === destination.text).length;
+            return { ...destination, count: count };
+          }).sort(compareText);
+
+          this.boards = this.hotels.flatMap(hotel => {
+            return hotel.boardGroups.map(boardGroup => {
+              return { code: boardGroup.id, text: boardGroup.name, selected: false };
+            });
+          }).filter((board, index, self) =>
+              index === self.findIndex((t) => (
+                t.code === board.code
+              ))
+          ).filter(item => item.text !== 'Uncategorized')
+            .map(board => {
+              const count = this.hotels.flatMap(hotel => hotel.boardGroups).filter(boardGroup => boardGroup.id === board.code).length;
+              return { ...board, count: count };
+            }).sort(compareText);
+
+          this.facilities = this.hotels.flatMap(hotel => {
+            return hotel.facilities.map(facility => {
+              return { code: facility.id, text: facility.name, selected: false };
+            });
+          }).filter((facility, index, self) =>
+              index === self.findIndex((t) => (
+                t.code === facility.code
+              ))
+          ).map(f => {
+              const count = this.hotels.flatMap(hotel => hotel.facilities).filter(facility => facility.id === f.code).length;
+              return { ...f, count: count };
+            }).sort(compareText);
+
+          this.themes = this.hotels.flatMap(hotel => {
+            return hotel.themes.map(theme => {
+              return { code: theme.id, text: theme.name, selected: false };
+            });
+          }).filter((theme, index, self) =>
+              index === self.findIndex((t) => (
+                t.code === theme.code
+              ))
+          ).map(t => {
+              const count = this.hotels.flatMap(hotel => hotel.themes).filter(theme => theme.id === t.code).length;
+              return { ...t, count: count };
+            }).sort(compareText);
+
         })
         .catch(console.error)
         .finally(() => {
@@ -530,7 +528,6 @@ export default {
     },
     unselect(item) {
       item.selected = false;
-      this.filter();
     },
     updateSelection(checkbox, value) {
       checkbox.selected = value;
@@ -539,9 +536,7 @@ export default {
     clearFilter() {
       [
         ...this.destinations,
-        ...this.amenites.facilityConcepts,
-        ...this.amenites.facilityTypes,
-        ...this.amenites.facilities,
+        ...this.boards
       ].forEach(checkbox => this.updateSelection(checkbox, false));
       this.filter();
     },
