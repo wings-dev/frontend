@@ -1,7 +1,7 @@
 <template>
     <div class="Home">
         <search-bar></search-bar>
-        <section class="Banner Banner_lg Banner-back mb-4" style="background-image: url(/img/newbanner.jpg);">
+        <section class="Banner Banner_lg Banner-back mb-4" :style="{'background-image': 'url(' + pageData.page_content.default.page_banner + ')'}">
             <img src="/img/banner-mobile.png" class="w-100 mobile" alt="">
             <div class="container">
                 <div class=" Banner_search-text   pos-ab-xy-center ">
@@ -30,13 +30,13 @@
                 </div>
                 <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+                        <div class="swiper-slide" v-for="item in pageData.page_content.popular" :key="item.id">
 
                             <div class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-link to="/">
-                                            <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
+                                        <nuxt-link :to="'/'+item.code">
+                                             <nuxt-img :src="item.preview_image[0].preview_url" :srcset="item.preview_image[0].responsive_url" width="267" height="175"></nuxt-img>
                                         </nuxt-link>
                                         <button class="Card-fav" type="button">
                                             <i class="icon-heart"></i>
@@ -45,35 +45,35 @@
                                     <div class="Card-content">
                                         <div class="Card-content-head">
                                             <div class="Card-content-head-code">
-                                                <b>VKV3456</b>
+                                                <b>{{prefix+item.code}}</b>
                                                 <span>Tesis Kodu</span>
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>FETHİYE <span>Turkey / Muğla</span></p>
+                                                <p>{{ item.city }} <span>{{ item.country }} / {{ item.state }}</span></p>
                                             </div>
                                         </div>
                                         <div class="Card-content-info">
                                             <div class="Card-content-info-item">
                                                 <i class="icon-user"></i>
-                                                <span>4 Kişilik</span>
+                                                <span>{{ item.max_adult }} Kişilik</span>
                                             </div>
                                             <div class="Card-content-info-item">
                                                 <i class="icon-bed"></i>
-                                                <span>2 Yatak Odası</span>
+                                                <span>{{ item.bedroom }} Yatak Odası</span>
                                             </div>
                                             <div class="Card-content-info-item">
                                                 <i class="icon-shower"></i>
-                                                <span>2 Banyo</span>
+                                                <span>{{ item.bathrooms }} Banyo</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
-                                            <p><b>1.500TL - 2.500TL</b><span>/Gecelik</span></p>
+                                            <p><b>{{ item.prices.min_price.price+item.prices.min_price.price_currency }} - {{ item.prices.max_price.price+item.prices.max_price.price_currency }} </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
                                         </div>
-                                        <nuxt-link to="/" class="Card-content-bottom-link"><i
+                                        <nuxt-link :to="'/'+item.code" class="Card-content-bottom-link"><i
                                                 class="icon-right-arrows-new"></i></nuxt-link>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                         <h4>148+ destinasyonda</h4>
                         <h2>VillaKalkan <span>sizinle!</span></h2>
                         <p>Yunanistan, İspanya, Hırvatistan, Thailand, İtalya, Portekiz, Maldivler
-                        ve daha fazla ülkede <b>villa kalkan hep sizinle hep yanınızda!</b></p>
+                            ve daha fazla ülkede <b>villa kalkan hep sizinle hep yanınızda!</b></p>
                     </div>
                 </div>
             </div>
@@ -375,8 +375,7 @@
                     </h4>
                 </div>
                 <div class="categories">
-                    <a href="#!"
-                        class="cat-item no-hover area1 overflow-hidden position-relative">
+                    <a href="#!" class="cat-item no-hover area1 overflow-hidden position-relative">
                         <img src="/uploads/category-image1.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -392,8 +391,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#!"
-                        class="cat-item no-hover area2 overflow-hidden position-relative">
+                    <a href="#!" class="cat-item no-hover area2 overflow-hidden position-relative">
                         <img src="/uploads/category-image2.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -409,8 +407,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#!"
-                        class="cat-item no-hover area3 overflow-hidden position-relative">
+                    <a href="#!" class="cat-item no-hover area3 overflow-hidden position-relative">
                         <img src="/uploads/category-image3.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -426,8 +423,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#!"
-                        class="cat-item no-hover area4 overflow-hidden position-relative">
+                    <a href="#!" class="cat-item no-hover area4 overflow-hidden position-relative">
                         <img src="/uploads/category-image4.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1">
@@ -446,8 +442,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#!"
-                        class="cat-item no-hover area5 overflow-hidden position-relative">
+                    <a href="#!" class="cat-item no-hover area5 overflow-hidden position-relative">
                         <img src="/uploads/category-image5.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -463,8 +458,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#!"
-                        class="cat-item no-hover area6 overflow-hidden position-relative">
+                    <a href="#!" class="cat-item no-hover area6 overflow-hidden position-relative">
                         <img src="/uploads/category-image7.jpg" data-src="" width="380" height="235" alt="category image"
                             class="cat-image lazy cover w-100 h-100">
                         <div
@@ -494,81 +488,55 @@
             <div class="container">
                 <div class="Home-text-in">
                     <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
-                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
-                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
-                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
-                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
-                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
-                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
-                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
-                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
-                        villa tatilini sunuyoruz.</p>
-                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
-                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
-                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
-                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
-                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
-                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
-                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
-                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
-                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
-                        villa tatilini sunuyoruz.</p>
-                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
-                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
-                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
-                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
-                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
-                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
-                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
-                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
-                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
-                        villa tatilini sunuyoruz.</p>
+                    <div class="Home-text-desc" v-html="pageData.page_content.article.data">
+
+                    </div>
                 </div>
             </div>
         </section>
         <section class="Abroad-villas ">
-        <div class="container ">
-            <div class="section-caption d-flex align-items-center mb-3 pb-1">
-                <i class="icon-abroad-villa"></i>
-                <h4 class=""><b>Yurt Dışı</b>Kiralık Villa</h4>
-            </div>
-            <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                        <nuxt-link to="/" class="Abroad-villas-item">
-                            <div class="Abroad-villas-item-img">
-                                <img src="/img/country/italy.jpg" alt="">
-                            </div>
-                            <div class="Abroad-villas-item-content">
-                                <div class="Abroad-villas-item-content-left">
-                                    <b>İtalya</b>
-                                    <p>423 seçenek içeriyor</p>
+            <div class="container ">
+                <div class="section-caption d-flex align-items-center mb-3 pb-1">
+                    <i class="icon-abroad-villa"></i>
+                    <h4 class=""><b>Yurt Dışı</b>Kiralık Villa</h4>
+                </div>
+                <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+                            <nuxt-link to="/" class="Abroad-villas-item">
+                                <div class="Abroad-villas-item-img">
+                                    <img src="/img/country/italy.jpg" alt="">
                                 </div>
-                                <div class="Abroad-villas-item-content-right">
-                                    <div class="Abroad-villas-item-content-flag">
-                                        <img src="/img/flag/flag-italy.svg" alt="">
+                                <div class="Abroad-villas-item-content">
+                                    <div class="Abroad-villas-item-content-left">
+                                        <b>İtalya</b>
+                                        <p>423 seçenek içeriyor</p>
                                     </div>
-                                    <div class="Abroad-villas-item-content-smile">
-                                        <img src="/img/laughing-smile.svg" alt="">
-                                        <span>VİZE YOK!</span>
+                                    <div class="Abroad-villas-item-content-right">
+                                        <div class="Abroad-villas-item-content-flag">
+                                            <img src="/img/flag/flag-italy.svg" alt="">
+                                        </div>
+                                        <div class="Abroad-villas-item-content-smile">
+                                            <img src="/img/laughing-smile.svg" alt="">
+                                            <span>VİZE YOK!</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </nuxt-link>
+                            </nuxt-link>
+                        </div>
                     </div>
+
+
+                    <!-- If pagination is needed -->
+
+                    <!-- If navigation buttons are needed -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                    <div class="swiper-button-prev list-navigation-prev"></div>
+                    <div class="swiper-button-next list-navigation-next"></div>
                 </div>
 
-
-                <!-- If pagination is needed -->
-
-                <!-- If navigation buttons are needed -->
-                <!-- <div class="swiper-pagination"></div> -->
-                <div class="swiper-button-prev list-navigation-prev"></div>
-                <div class="swiper-button-next list-navigation-next"></div>
             </div>
-
-        </div>
-    </section>
+        </section>
         <!-- <div>
             <div id="">A DOM element on your page. The first step will pop on this element because its ID is 'v-step-0'.
             </div>
@@ -623,8 +591,16 @@ export default {
                         placement: "top"
                     }
                 }
-            ]
+            ],
+            prefix: process.env.PREFIX
         }
+    },
+    async asyncData({ $getRedisKey }) {
+        const site_id = process.env.SITE;
+        let pageData = {};
+        pageData = await $getRedisKey(`web:${site_id}:pages:anasayfa`);
+        console.log(pageData)
+        return { pageData }
     },
     mounted() {
         Swiper.use([Navigation, Pagination])
