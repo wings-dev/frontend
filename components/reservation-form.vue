@@ -412,7 +412,7 @@ export default {
         endDate: this.formatDateDMY(this.checkOut),
       }
 
-      const response = await this.$axios.post(`/api/website/check_availability?api_token=${process.env.WEBSITE_TOKEN}`, data)
+      const response = await this.$axios.post(`/website/check_availability?api_token=${process.env.WEBSITE_TOKEN}`, data)
       this.availabilityData = response.data.data;
 
       this.availabilityLoading = false;

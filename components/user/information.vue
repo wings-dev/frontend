@@ -432,7 +432,7 @@ export default {
     }
   },
   async mounted() {
-    const response = await this.$axios.post(`/api/website/countries?api_token=${process.env.WEBSITE_TOKEN}`);
+    const response = await this.$axios.post(`/website/countries?api_token=${process.env.WEBSITE_TOKEN}`);
     this.countries = response.data.countries.map(item => {
       item.name = item.name.charAt(0).toUpperCase() + item.name.slice(1);
       return item;
@@ -450,7 +450,7 @@ export default {
     async countryChanged(country) {
       this.cities = [];
       this.states = [];
-      const response = await this.$axios.post(`/api/website/states?api_token=${process.env.WEBSITE_TOKEN}`, {'country_id': country.id})
+      const response = await this.$axios.post(`/website/states?api_token=${process.env.WEBSITE_TOKEN}`, {'country_id': country.id})
       this.cities = response.data.states.map(item => {
         item.name = item.name.charAt(0).toUpperCase() + item.name.slice(1);
         return item;
@@ -458,7 +458,7 @@ export default {
     },
     async cityChanged(city) {
       this.states = [];
-      const response = await this.$axios.post(`/api/website/cities?api_token=${process.env.WEBSITE_TOKEN}`, {'state_id': city.id})
+      const response = await this.$axios.post(`/website/cities?api_token=${process.env.WEBSITE_TOKEN}`, {'state_id': city.id})
       this.states = response.data.cities.map(item => {
         item.name = item.name.charAt(0).toUpperCase() + item.name.slice(1);
         return item;

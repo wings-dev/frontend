@@ -160,7 +160,7 @@ export default {
     async register() {
       const data = Object.assign({}, this.reservationModalData, this.form);
       let reservationID;
-      const apiUrl = `/api/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`;
+      const apiUrl = `/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`;
 
       if (this.reservationModalData.reservationID) {
         const requestData = {
