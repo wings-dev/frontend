@@ -10067,15 +10067,12 @@ body {
 }
 
 .room {
-  border-radius: 10px;
+  border: solid 1px #e6eaf1;
+  border-radius: 17px;
   margin-bottom: 10px;
   padding: 20px;
   align-items: flex-start;
-  .option {
-    &:last-child {
-      margin-bottom: 0px !important;
-    }
-  }
+  transition: all 300ms;
   &-title {
     font-size: 18px;
     font-weight: 500;
@@ -10128,7 +10125,10 @@ body {
   .option {
     border-radius: 4px;
     background-color: #f2f5fb;
+    border: 1px solid #f2f5fb;
     justify-content: space-between;
+    margin-top: 10px;
+    transition: all 300ms;
     &-all {
       display: flex;
       flex-direction: column;
@@ -10181,13 +10181,50 @@ body {
     }
     &-warning {
       margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       p {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 500;
-        color: #e11818;
+        line-height: 1.71;
         text-align: center;
         text-decoration: underline;
+
+        &.irrevocable{
+          color: var(--bs-theme-second);
+        }
+        &.free-cancellation{
+          color: var(--bs-theme-first);
+        }
+        &.last-date{
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+            color: #989fb5;
+          i{
+            font-size: 16px;
+            color: var(--bs-theme-second);
+            margin-right: 6px;
+          }
+        }
+
       }
+    }
+
+    &:first-child{
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0px !important;
+    }
+
+    &:hover{
+      background-color: #fff;
+      border-color: #0db545;
     }
 
   }
@@ -10239,7 +10276,7 @@ body {
     }
     b {
       font-size: 25px;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1;
       color: var(--bs-theme-first);
       small {
@@ -10276,6 +10313,11 @@ body {
       }
     }
   }
+
+  &:hover{
+    border-color: #0db545;
+  }
+
 }
 .general-informations-section {
   &-title {
@@ -11322,6 +11364,7 @@ body {
     }
   }
 }
+
 .Otel-desc{
   margin-top: 100px;
   &-in{
@@ -11330,6 +11373,7 @@ body {
     border-bottom: 1px solid #f2f5fb;
     padding-bottom: 60px;
     margin-bottom: 50px;
+    align-items: flex-start;
   }
   &-text{
     width: 50%;
@@ -11441,6 +11485,7 @@ body {
   }
   &-map{
     width: 22%;
+    min-height: 275px;
     border-radius: 10px;
     position: relative;
     padding: 17px;
@@ -11482,6 +11527,26 @@ body {
       }
     }
 
+  }
+}
+.otel-reviews{
+  .View-reviews-head{
+    flex-direction: column;
+    align-items: flex-start
+  }
+  .Otel-card-review{
+    margin: 0;
+  }
+  &-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+    &-left{
+      width: 17%;
+    }
+    &-right{
+      width: calc(83% - 30px);
+    }
   }
 }
 @import "common/footer";

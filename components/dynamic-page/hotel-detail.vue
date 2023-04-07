@@ -205,7 +205,7 @@
       <section class="rooms-section pt-3 mt-1">
         <div class="container">
 
-          <div class="room border border-light  ">
+          <div class="room ">
                 <div class="row">
                   <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
                     <div class="img-box position-relative flex-shrink-0">
@@ -238,14 +238,16 @@
                   </div>
                   <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
                     <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                      <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div class="option d-flex flex-column flex-xl-row  flex-fill overflow-hidden">
                         <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
                           <div class="option-all">
                             <span>En Ucuzu</span>
                             <b>Oda Kahvaltı</b>
                           </div>
                           <div class="option-warning">
-                            <p>Ücretsiz İptal</p>
+                            
+                            <p class="free-cancellation">Ücretsiz İptal</p>
+                            <p class="last-date"><i class="icon-info-month"></i>7 Ağustos 2023’e kadar</p>
                           </div>
                         </div>
                         <div class="room-price">
@@ -258,15 +260,14 @@
                             <nuxt-link to="/">Odayı Seç</nuxt-link>
                         </div>
                       </div>
-                      <div class="option d-flex flex-column flex-xl-row bg-theme-light-2 flex-fill overflow-hidden mb-lg-1">
+                      <div class="option d-flex flex-column flex-xl-row  flex-fill overflow-hidden">
                         <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
                           <div class="option-all">
                             <span>En Ucuzu</span>
                             <b>Oda Kahvaltı</b>
                           </div>
                           <div class="option-warning">
-                            <p>Ücretsiz İptal</p>
-                            <p>7 Ağustos 2023’e kadar</p>
+                            <p class="irrevocable">İptal Edilemez</p>
                           </div>
                         </div>
                         <div class="room-price">
@@ -284,7 +285,7 @@
                 </div>
           </div>
 
-          <template v-if="roomsLoading">
+          <!-- <template v-if="roomsLoading">
             Odalar yükleniyor...
           </template>
           <template v-else>
@@ -375,7 +376,7 @@
             <template v-if="!roomsLoading && offers.length === 0">
               Uygun oda bulunamadı...
             </template>
-          </template>
+          </template> -->
 
         </div>
       </section>
@@ -384,35 +385,25 @@
         <div class="container">
           <div class="otel-reviews-">
 
-
             <div class="View-reviews comments view-menu-content-item" id="reviews-content">
               <div class="View-reviews-head">
                 <div class="general-informations-section-title mb-0"><span>The European Hotel</span> Değerlendirmesi</div>
-                <div class="View-reviews-head-stars">
-
-                  <i class="icon-star active"></i>
-                  <i class="icon-star active"></i>
-                  <i class="icon-star active"></i>
-                  <i class="icon-star"></i>
-                  <span>4.4 8.4 Olağanüstü</span>
-                </div>
+                <div class="Otel-card-review">
+                    <span>{{ hotelDetails.body.hotel.stars }}/5</span>
+                    <p>Mükemmel <u>124 yorum</u></p>
+                  </div>
               </div>
-              <div class="View-reviews-item">
-                <div class="View-reviews-item-top">
-                  <div class="View-reviews-item-top-left">
+              <div class="otel-reviews-item">
+                <div class="otel-reviews-item-left">
+                  <div class="otel-reviews-item-left-top">
                     <h6>Fatih ********</h6>
+                    <span>Holiday</span>
                   </div>
-                  <div class="View-reviews-item-top-right">
-                    <div class="View-reviews-item-top-stars">
-                      <i class="icon-star active"></i>
-                      <i class="icon-star active"></i>
-                      <i class="icon-star active"></i>
-                      <i class="icon-star"></i>
-                      <span>8,9 Olağanüstü </span>
-                    </div>
+                  <div class="otel-reviews-item-left-bottom">
+                    <p></p>
                   </div>
                 </div>
-                <div class="View-reviews-item-bottom">
+                <div class="otel-reviews-item-left">
                   <div class="View-reviews-item-bottom-left w-100">
                     <p>
                       There are many variations of passages of Lorem Ipsum available, but the majority have suffered
