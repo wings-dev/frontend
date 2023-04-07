@@ -265,7 +265,7 @@ import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 // import MoreVillas from '../MoreVillas.vue';
 export default {
-    name: 'IndexPage',
+    name: 'AbroadIndexPage',
     layout: 'no-search',
     components: {
         Swiper
