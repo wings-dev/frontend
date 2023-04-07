@@ -11541,11 +11541,105 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 24px;
+    border-radius: 10px;
+    border: solid 2px #f2f5fb;
+    margin-bottom: 16px;
     &-left{
       width: 17%;
+      &-top{
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #f2f5fb;
+        h6{
+          font-size: 20px;
+          font-weight: 600;
+          line-height: normal;
+          color: var(--bs-theme-first);
+        }
+        span{
+          display: block;
+          font-size: 11px;
+          font-weight: 500;
+          line-height: normal;
+          color: var(--bs-theme-second);
+        }
+      }
+      &-bottom{
+        p{
+          display: flex;
+          align-items: center;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: normal;
+          color: var(--bs-theme-first);
+          i{
+            font-size: 20px;
+            color: var(--bs-theme-second);
+            margin-right: 6px;
+          }
+        }
+      }
     }
     &-right{
       width: calc(83% - 30px);
+      &-head{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        .Otel-card-review{
+          display: flex;
+          align-items: center;
+          span{
+            margin-right: 6px;
+          }
+          b{
+            font-size: 14px;
+            font-weight: 500;
+            line-height: normal;
+            color: #00bb29;
+          }
+        }
+        p{
+          padding-bottom: 10px;
+          border-bottom: solid 2px #eff0f5;
+          font-size: 12px;
+          font-weight: normal;
+          line-height: 1.57;
+          color: var(--bs-theme-first);
+          a{
+            font-weight: 500;
+          }
+        }
+      }
+      &-text{
+      
+        p{
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1.62;
+          color: var(--bs-theme-first);
+        }
+     
+      }
+    }
+  }
+  &-more{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
+    color: var(--bs-theme-first);
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+    background-color: transparent;
+    padding: 0;
+    transition: all 300ms;
+    &:hover{
+      color: var(--bs-theme-second)
     }
   }
 }

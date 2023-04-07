@@ -206,83 +206,88 @@
         <div class="container">
 
           <div class="room ">
-                <div class="row">
-                  <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
-                    <div class="img-box position-relative flex-shrink-0">
-                        <div class="no-rooms" >
-                          <img src="/img/no-img.svg" alt="">
-                          <p>Oda fotoğrafı <span>bulunmuyor.</span></p>
-                        </div>
-                    </div>
-                    <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
-                      <div class="d-flex align-items-center w-100 mb-2">
-                        <span class="d-inline-block me-auto room-title">Kral Dairesi - 92m2</span>
-                      </div>
-                      <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
+            <div class="row">
+              <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
+                <div class="img-box position-relative flex-shrink-0">
+                  <div class="no-rooms">
+                    <img src="/img/no-img.svg" alt="">
+                    <p>Oda fotoğrafı <span>bulunmuyor.</span></p>
+                  </div>
+                </div>
+                <div class="room-content flex-fill d-flex flex-column align-items-start justify-content-between">
+                  <div class="d-flex align-items-center w-100 mb-2">
+                    <span class="d-inline-block me-auto room-title">Kral Dairesi - 92m2</span>
+                  </div>
+                  <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
 
-                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <i class="icon-check-big"></i> Minibar
-                        </small>
-                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <i class="icon-check-big"></i> Balkon
-                        </small>
-                        <small class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <i class="icon-check-big"></i> Duşakabin
-                        </small>
+                    <small
+                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                      <i class="icon-check-big"></i> Minibar
+                    </small>
+                    <small
+                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                      <i class="icon-check-big"></i> Balkon
+                    </small>
+                    <small
+                      class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                      <i class="icon-check-big"></i> Duşakabin
+                    </small>
+                  </div>
+                  <div class="d-flex align-items-center mb-sm-0 mb-1">
+                    <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
+                          Özellikleri</small></u></b-button>
+                  </div>
+                </div>
+              </div>
+              <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
+                <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
+                  <div class="option d-flex flex-column flex-xl-row  flex-fill overflow-hidden">
+                    <div
+                      class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                      <div class="option-all">
+                        <span>En Ucuzu</span>
+                        <b>Oda Kahvaltı</b>
                       </div>
-                      <div class="d-flex align-items-center mb-sm-0 mb-1">
-                        <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
-                              Özellikleri</small></u></b-button>
+                      <div class="option-warning">
+
+                        <p class="free-cancellation">Ücretsiz İptal</p>
+                        <p class="last-date"><i class="icon-info-month"></i>7 Ağustos 2023’e kadar</p>
                       </div>
+                    </div>
+                    <div class="room-price">
+                      <span>3 GECE</span>
+                      <div class="room-price-in">
+                        <s>16.500TL</s>
+                        <b>412.420<small>TL</small></b>
+                        <p>Gecelik <span>1.400TL</span></p>
+                      </div>
+                      <nuxt-link to="/">Odayı Seç</nuxt-link>
                     </div>
                   </div>
-                  <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                    <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                      <div class="option d-flex flex-column flex-xl-row  flex-fill overflow-hidden">
-                        <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
-                          <div class="option-all">
-                            <span>En Ucuzu</span>
-                            <b>Oda Kahvaltı</b>
-                          </div>
-                          <div class="option-warning">
-                            
-                            <p class="free-cancellation">Ücretsiz İptal</p>
-                            <p class="last-date"><i class="icon-info-month"></i>7 Ağustos 2023’e kadar</p>
-                          </div>
-                        </div>
-                        <div class="room-price">
-                            <span>3 GECE</span>
-                            <div class="room-price-in">
-                              <s>16.500TL</s>
-                              <b>412.420<small>TL</small></b>
-                              <p>Gecelik <span>1.400TL</span></p>
-                            </div>
-                            <nuxt-link to="/">Odayı Seç</nuxt-link>
-                        </div>
+                  <div class="option d-flex flex-column flex-xl-row  flex-fill overflow-hidden">
+                    <div
+                      class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                      <div class="option-all">
+                        <span>En Ucuzu</span>
+                        <b>Oda Kahvaltı</b>
                       </div>
-                      <div class="option d-flex flex-column flex-xl-row  flex-fill overflow-hidden">
-                        <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
-                          <div class="option-all">
-                            <span>En Ucuzu</span>
-                            <b>Oda Kahvaltı</b>
-                          </div>
-                          <div class="option-warning">
-                            <p class="irrevocable">İptal Edilemez</p>
-                          </div>
-                        </div>
-                        <div class="room-price">
-                            <span>3 GECE</span>
-                            <div class="room-price-in">
-                              <s>16.500TL</s>
-                              <b>412.420<small>TL</small></b>
-                              <p>Gecelik <span>1.400TL</span></p>
-                            </div>
-                            <nuxt-link to="/">Odayı Seç</nuxt-link>
-                        </div>
+                      <div class="option-warning">
+                        <p class="irrevocable">İptal Edilemez</p>
                       </div>
+                    </div>
+                    <div class="room-price">
+                      <span>3 GECE</span>
+                      <div class="room-price-in">
+                        <s>16.500TL</s>
+                        <b>412.420<small>TL</small></b>
+                        <p>Gecelik <span>1.400TL</span></p>
+                      </div>
+                      <nuxt-link to="/">Odayı Seç</nuxt-link>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
           </div>
 
           <!-- <template v-if="roomsLoading">
@@ -383,15 +388,15 @@
 
       <section class="otel-reviews mt-5">
         <div class="container">
-          <div class="otel-reviews-">
+          <div class="otel-reviews-in">
 
             <div class="View-reviews comments view-menu-content-item" id="reviews-content">
               <div class="View-reviews-head">
                 <div class="general-informations-section-title mb-0"><span>The European Hotel</span> Değerlendirmesi</div>
-                <div class="Otel-card-review">
-                    <span>{{ hotelDetails.body.hotel.stars }}/5</span>
-                    <p>Mükemmel <u>124 yorum</u></p>
-                  </div>
+                <div class="Otel-card-review mt-2">
+                  <span>{{ hotelDetails.body.hotel.stars }}/5</span>
+                  <p>Mükemmel <u>124 yorum</u></p>
+                </div>
               </div>
               <div class="otel-reviews-item">
                 <div class="otel-reviews-item-left">
@@ -400,50 +405,69 @@
                     <span>Holiday</span>
                   </div>
                   <div class="otel-reviews-item-left-bottom">
-                    <p></p>
+                    <p><i class="icon-date"></i> Temmuz '22</p>
                   </div>
                 </div>
-                <div class="otel-reviews-item-left">
-                  <div class="View-reviews-item-bottom-left w-100">
-                    <p>
-                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable
-                    </p>
-                    <p>Temmuz '22</p>
-                    <p class="mt-4 mb-4">YORUM KAYNAĞI : GOOGLE</p>
-                  </div>
-
-                </div>
-              </div>
-              <div class="View-reviews-item">
-                <div class="View-reviews-item-top">
-                  <div class="View-reviews-item-top-left">
-                    <h6>Fatih ********</h6>
-                  </div>
-                  <div class="View-reviews-item-top-right">
-                    <div class="View-reviews-item-top-stars">
-                      <i class="icon-star active"></i>
-                      <i class="icon-star active"></i>
-                      <i class="icon-star active"></i>
-                      <i class="icon-star"></i>
-                      <span>8,9 Olağanüstü </span>
+                <div class="otel-reviews-item-right">
+                  <div class="otel-reviews-item-right-head">
+                    <div class="Otel-card-review">
+                      <span>{{ hotelDetails.body.hotel.stars }}/5</span>
+                      <b>Mükemmel</b>
                     </div>
+                    <p>Yorum kaynağı <a href="">Google</a></p>
                   </div>
-                </div>
-                <div class="View-reviews-item-bottom">
-                  <div class="View-reviews-item-bottom-left w-100">
-                    <p>
-                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable
-                    </p>
-                    <p class="mt-4 mb-4">YORUM KAYNAĞI : GOOGLE</p>
-                  </div>
-
+                  <div class="otel-reviews-item-right-text">
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
+                  </div>   
                 </div>
               </div>
-              <h5>Tüm Yorumları Göster</h5>
+              <div class="otel-reviews-item">
+                <div class="otel-reviews-item-left">
+                  <div class="otel-reviews-item-left-top">
+                    <h6>Fatih ********</h6>
+                    <span>Holiday</span>
+                  </div>
+                  <div class="otel-reviews-item-left-bottom">
+                    <p><i class="icon-date"></i> Temmuz '22</p>
+                  </div>
+                </div>
+                <div class="otel-reviews-item-right">
+                  <div class="otel-reviews-item-right-head">
+                    <div class="Otel-card-review">
+                      <span>{{ hotelDetails.body.hotel.stars }}/5</span>
+                      <b>Mükemmel</b>
+                    </div>
+                    <p>Yorum kaynağı <a href="">Google</a></p>
+                  </div>
+                  <div class="otel-reviews-item-right-text">
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
+                  </div>   
+                </div>
+              </div>
+              <div class="otel-reviews-item">
+                <div class="otel-reviews-item-left">
+                  <div class="otel-reviews-item-left-top">
+                    <h6>Fatih ********</h6>
+                    <span>Holiday</span>
+                  </div>
+                  <div class="otel-reviews-item-left-bottom">
+                    <p><i class="icon-date"></i> Temmuz '22</p>
+                  </div>
+                </div>
+                <div class="otel-reviews-item-right">
+                  <div class="otel-reviews-item-right-head">
+                    <div class="Otel-card-review">
+                      <span>{{ hotelDetails.body.hotel.stars }}/5</span>
+                      <b>Mükemmel</b>
+                    </div>
+                    <p>Yorum kaynağı <a href="">Google</a></p>
+                  </div>
+                  <div class="otel-reviews-item-right-text">
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
+                  </div>   
+                </div>
+              </div>
+              <button class="otel-reviews-more" type="button">Tüm yorumları göster</button>
 
             </div>
           </div>

@@ -40,7 +40,7 @@ export default {
     let pageData = {};
     // store.state.routes.routes.filter(route => route.type == 16)
 
-    const pageURLs = Object.keys(store.state.routes.routes).filter(key => store.state.routes.routes[key].type === 16).map(key => {
+    const pageURLs = Object.keys(store.state.routes.routes).filter(key => store.state.routes.routes[key].type === 23).map(key => {
       const data = JSON.parse(JSON.stringify(store.state.routes.routes[key]))
       data.url = key;
       return data

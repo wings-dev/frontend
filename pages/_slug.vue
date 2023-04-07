@@ -59,7 +59,7 @@ export default {
         componentData = redisData.data;
       }
 
-      if (redisData.type === 1 || redisData.type === 16) {
+      if (redisData.type === 1 || redisData.type === 23) {
         // filtre redis datası
         componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
         componentData.page_content.article.data = componentData.page_content.article.data.replace(/&nbsp;/g,' ').trim();

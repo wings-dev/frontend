@@ -137,10 +137,11 @@
         width: 100%;
         justify-content: space-between;
         &-left {
-          width: 60%;
-          column-count: 3;
+          width: 100%;
+          column-count: 5;
           &-item {
             overflow: hidden;
+            margin-bottom: 10px;
             h5 {
               font-weight: 700;
               font-size: 14px;
@@ -158,10 +159,23 @@
           }
         }
         &-right {
-          width: 38%;
+          display: none;
+          
           img {
             width: 100%;
             border-radius: 10px;
+          }
+        }
+        &.with-img{
+          .Header-menu-item-otel{
+            &-left{
+              width: 60%;
+              column-count: 3;
+            }
+            &-right{
+              width: 38%;
+              display: block;
+            }
           }
         }
       }

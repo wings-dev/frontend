@@ -1,6 +1,6 @@
 <template>
   <div>
-    <blog-home></blog-home>
+    <blog-home :posts="pagePosts"></blog-home>
   </div>
 </template>
 
@@ -23,11 +23,28 @@ export default {
   data() {
 
   },
-  async asyncData({ $getRedisKey }) {
+  async asyncData({ $getRedisKey, route, store }) {
     const site_id = process.env.SITE;
     let pageData = {};
+    let pagePostData = {};
+    const pageURLs = Object.keys(store.state.routes.routes).filter(key => store.state.routes.routes[key].type === 15).map(key => {
+      const data = `web:${site_id}:pages:${key}`
+      return data
+    })
     pageData = await $getRedisKey(`web:${site_id}:pages:blog`);
-    return { pageData }
+    pagePostData = await $getRedisKey(pageURLs);
+
+    const pagePosts = Object.keys(pagePostData).map(key => {
+      const datapost = JSON.parse(JSON.stringify(pagePostData[key]))
+      console.log(datapost)
+      if(datapost !== null){
+      datapost.url = key.substring(12)
+    }
+      return datapost
+
+    })
+
+    return { pageData, pagePosts }
   },
   components: {
     BlogHome
