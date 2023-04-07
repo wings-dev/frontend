@@ -271,7 +271,7 @@
                             <b>{{ offer.price.amount }}<small>{{ offer.price.currency }}</small></b>
                             <p>Gecelik <span>1.400TL</span></p>
                           </div>
-                          <nuxt-link to="/">Odayı Seç</nuxt-link>
+                          <a href="" @click.prevent="goReservation(offer)">Odayı Seç</a>
                         </div>
                       </div>
 
