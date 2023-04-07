@@ -231,7 +231,7 @@ export default {
   },
 
   proxy: {
-    "/api/": {
+    "/website": {
       target: process.env.PROXY_API,
     },
     "/data": {

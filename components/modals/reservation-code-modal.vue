@@ -75,7 +75,7 @@
               <!-- <p class="Login-form-signup">Hesabın yok mu? <a href="javascript:void(0)" @click="openRegister">Hemen Üye
                   Ol!</a></p> -->
 
-              
+
             </form>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default {
     async resend() {
       let reservationID;
       try {
-        const response = await this.$axios.post(`/api/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, this.reservationModalData);
+        const response = await this.$axios.post(`/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, this.reservationModalData);
         reservationID = response.data.reservationID;
       } catch (error) {
         if (error.response) {
@@ -147,12 +147,12 @@ export default {
       };
 
       try {
-        const response = await this.$axios.post(`/api/website/pre_reservation_code?api_token=${process.env.WEBSITE_TOKEN}`, data)
+        const response = await this.$axios.post(`/website/pre_reservation_code?api_token=${process.env.WEBSITE_TOKEN}`, data)
       } catch (error) {
         if (error.response) {
           if (error.response.data.status) {
             this.$bvModal.hide('reservationCodeModal')
-            
+
             setTimeout(() => {
               this.$bvModal.show('reservationSuccessModal')
             }, 100)

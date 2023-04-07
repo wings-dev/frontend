@@ -27,7 +27,7 @@
             <input type="checkbox" v-model="checkbox1.selected" @change="selectCheckbox(checkbox1)">
             <span class="checkspan"></span>
             <p class="check-text" v-text="checkbox1.text"></p>
-            <small class="check-length">12</small>
+            <small v-if="checkbox1.hasOwnProperty('count')" class="check-length">{{checkbox1.count}}</small>
           </label>
           <ul class="Filter-second" v-for="checkbox2 in checkbox1.children">
             <li>
