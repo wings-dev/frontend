@@ -38,7 +38,7 @@
                     <blog-sidebar></blog-sidebar>
                     <div class="Blog-content ">
                         <template v-for="item in posts">
-                            <nuxt-link :to="item.url" class="Blog-item" :key="item.id" v-if="item !== null">
+                            <nuxt-link :to="'/blog/'+item.page_content.blog_category[0] +'/'+item.url" class="Blog-item" :key="item.id" v-if="item !== null">
                                 <div class="Blog-item-img">
                                     <img src="/img/blog.png" alt="">
                                     <div class="Blog-item-img-text">

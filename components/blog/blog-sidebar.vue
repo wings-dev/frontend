@@ -83,8 +83,6 @@ export default {
         // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
         this.blogMenu = blogMenuData.blogmenu;
-        console.log(this.blogMenu[0].children.length)
-        console.log(this.blogMenu)
     },
 }
 </script>

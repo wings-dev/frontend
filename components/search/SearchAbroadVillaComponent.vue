@@ -272,7 +272,7 @@ export default {
   },
   beforeMount() {
     this.parseQueryString();
-    if (this.$route.path !== '/kiralik-villa') {
+    if (this.$route.path !== '/yurtdisi-kiralik-villa-ara') {
       let lastSearch = localStorage.getItem('lastSearch');
       if (lastSearch) {
         lastSearch = JSON.parse(lastSearch);
@@ -413,7 +413,7 @@ export default {
         .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
         .join('&');
 
-      window.location.href = `${window.location.origin}/kiralik-villa?${urlSearchParams}`;
+      window.location.href = `${window.location.origin}/yurtdisi-kiralik-villa-ara?${urlSearchParams}`;
 
       /*
       this.$router.push({

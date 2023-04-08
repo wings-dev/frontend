@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dynamic-villa-filter-page :selectedFilters="selectedFilters" :pageContent="pageData" :highlights=true></dynamic-villa-filter-page>
+    <dynamic-villa-filter-page :selectedFilters="selectedFilters" :highlights=true></dynamic-villa-filter-page>
   </div>
 </template>
 
@@ -15,8 +15,8 @@ export default {
     return {
       title: 'Listele',
       meta: [
-        { hid: 'description', name: 'description', content: 'listele' },
-        { hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3' }
+        {hid: 'description', name: 'description', content: 'listele'},
+        {hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3'}
       ],
     }
   },
@@ -24,13 +24,6 @@ export default {
     return {
       selectedFilters: {}
     }
-  },
-  async asyncData({ $getRedisKey }) {
-    const site_id = process.env.SITE;
-    let pageData = {};
-    pageData = await $getRedisKey(`web:${site_id}:pages:kiralik-villa`);
-    console.log(pageData)
-    return { pageData }
   },
   components: {
     DynamicVillaFilterPage
