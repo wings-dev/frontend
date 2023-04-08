@@ -10,10 +10,11 @@
               placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
           </client-only> -->
           <div class="Search-multiselect">
-            <multiselect v-model="otelSearchValue" :options="otelSearchOptions" group-values="groupItems"
-              group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false">
+            <multiselect v-model="selectedCity" :options="otelSearchOptions" group-values="groupItems"
+                         group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false" @search-change="onOtelSearch">
               <template slot="singleLabel" slot-scope="props">
-                <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span></template>
+                <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
+              </template>
               <template slot="option" slot-scope="props">
                 <template v-if="!props.option.$isLabel">
                   <i class="icon-hotel-category" v-if="props.option.category == 'tema'"></i>
@@ -78,6 +79,7 @@
 import { mapState } from "vuex";
 import HotelDatePicker from "vue-hotel-datepicker2";
 import SelectHotelPersonCount from "@/components/search/SelectHotelPersonCount.vue";
+import slugify from "slugify";
 
 export default {
   name: "SearchHotelComponent",
@@ -118,39 +120,21 @@ export default {
       },
       timeoutCheck: null,
       cancelToken: null,
-      otelSearchValue: null,
+      otelSearchValue: '',
       otelSearchOptions: [
         {
           groupName: 'Temalar',
-          groupItems: [
-            { name: 'Termal Spa Otel', category: 'tema' },
-            { name: 'Deniz Manzaralı Otel', category: 'tema' }
-          ]
+          groupItems: []
         },
         {
           groupName: 'Bölgeler',
-          groupItems: [
-            { name: 'Side', category: 'bolge', },
-          ]
+          groupItems: []
         },
         {
           groupName: 'Oteller',
-          groupItems: [
-            { name: 'Side Prenses Resort Hotel & Spa', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA2', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA3', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA4', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA5', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA6', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA7', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA8', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA9', district: 'Side, Antalya', category: 'otel' },
-            { name: 'Side Mare Resort & SPA10', district: 'Side, Antalya', category: 'otel' }
-          ]
+          groupItems: []
         }
       ],
-      otelSearchValue: []
     }
   },
   beforeMount() {
@@ -200,8 +184,8 @@ export default {
   },
   methods: {
     search() {
-      // şehir
-      if (this.selectedCity.type === 1) {
+      // şehir ve otel
+      if ([1,2].includes(this.selectedCity.type)) {
         const queryParams = {
           destinations: this.selectedCity.city.id,
           checkIn: this.checkIn,
@@ -214,18 +198,38 @@ export default {
         localData['selectedCity'] = this.selectedCity;
         localStorage.setItem('lastHotelSearch', JSON.stringify(localData));
 
+        if (this.selectedCity.type === 2) {
+          delete queryParams.destinations;
+        }
+
         const urlSearchParams = Object.entries(queryParams)
           .filter(([key, value]) => value !== undefined && value !== null && value !== '')
           .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
           .join('&');
 
-        window.location.href = `${window.location.origin}/oteller?${urlSearchParams}`;
+        let page = this.selectedCity.type === 1 ? 'oteller' : 'otel/' + slugify(this.selectedCity.hotel.name.toLowerCase()) + '-' + this.selectedCity.hotel.id;
+
+        window.location.href = `${window.location.origin}/${page}?${urlSearchParams}`;
       }
     },
-    async onCitySearch(searchText) {
-      this.citySearchText = searchText;
-
+    async onOtelSearch(searchText) {
       if (!searchText || searchText.length < 3) return;
+
+      // reset
+      this.otelSearchOptions = [
+        {
+          groupName: 'Temalar',
+          groupItems: []
+        },
+        {
+          groupName: 'Bölgeler',
+          groupItems: []
+        },
+        {
+          groupName: 'Oteller',
+          groupItems: []
+        }
+      ]
 
       clearTimeout(this.timeoutCheck);
 
@@ -242,23 +246,32 @@ export default {
             { cancelToken: this.cancelToken.token }
           );
 
-          // tpye a göre öncelik sırası, ülke şehir hotel
           const sortOrder = { 1: 1, 2: 2 };
 
           const items = response.data.body?.items?.filter(item => [1, 2].includes(item.type))
             .sort((a, b) => sortOrder[a.type] - sortOrder[b.type])
             .map(item => {
-              item.label = item.type === 1 ? `${item.city.name}, ${item.country.name}` :
+              item.name = item.type === 1 ? `${item.city.name}, ${item.country.name}` :
                 item.type === 2 ? `${item.hotel.name}, ${item.city.name}, ${item.country.name}` :
                   item.type === 8 ? item.country.name : item.label;
               return item;
             }) || [];
 
-          this.searchResult = items.slice(0, 50);
+          this.updateOtelSearchOptions(items);
         } catch (error) {
           console.error(error);
         }
       }, 500);
+    },
+    updateOtelSearchOptions(items) {
+      // Temaları filtreleme ve ekleme
+      this.otelSearchOptions[0].groupItems = items.filter(item => item.type === 7);
+
+      // Bölgeleri filtreleme ve ekleme
+      this.otelSearchOptions[1].groupItems = items.filter(item => item.type === 1);
+
+      // Otelleri filtreleme ve ekleme
+      this.otelSearchOptions[2].groupItems = items.filter(item => item.type === 2);
     },
     checkInChanged(value) {
       this.checkIn = this.formatDate(value);
