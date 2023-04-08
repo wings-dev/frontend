@@ -242,7 +242,6 @@ export default {
       ],
       orderValue: null,
       orderPlaceholder: "Sırala:",
-      firstDayOfWeek: 1,
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
@@ -453,7 +452,7 @@ export default {
       datepickerInput.html(`<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`);
     },
     moreSearchToggle(){
-      this.moreSearch = !this.moreSearch 
+      this.moreSearch = !this.moreSearch
     }
   }
 }
