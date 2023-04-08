@@ -10,6 +10,7 @@
               placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
           </client-only> -->
           <div class="Search-multiselect">
+            <client-only>
             <multiselect v-model="selectedCity" :options="otelSearchOptions" group-values="groupItems"
                          group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false" @search-change="onOtelSearch">
               <template slot="singleLabel" slot-scope="props">
@@ -29,6 +30,7 @@
               </template>
               <span slot="noResult">Oops! Aramanıza uygun sonuç bulunamadı.</span>
             </multiselect>
+            </client-only>
           </div>
         </div>
 
