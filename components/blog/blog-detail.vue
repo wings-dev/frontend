@@ -16,7 +16,7 @@
         <section class="Blog-detail-img">
             <div class="container">
                 <div class="Blog-detail-img-in">
-                    <img src="/img/blog-detay.jpg" alt="">
+                    <img :src="data.page_content.default.page_banner" alt="">
                 </div>
             </div>
         </section>
@@ -31,7 +31,7 @@
                             <div class="Blog-detail-info">
                                 <div class="Blog-detail-info-user">
                                     <img src="/img/user.jpg" alt="">
-                                    <p>Yazar: <span>Ayşe ERYILMAZ</span>// <span>10 Mart 2023</span></p>
+                                    <p>Yazar: <span>{{ data.page_content.blog_author }}</span>// <span>{{ data.page_content.blog_publish_date }}</span></p>
                                 </div>
                                 <div class="Blog-detail-share">
                                     <i class="icon-facebook"></i>
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="Blog-detail-text">
-                                <h1>{{ data.name }}</h1>
+                                <h1>{{ data.title }}</h1>
                                 <div class="Blog-detail-text-in" v-html="data.page_content.article.data"></div>
 
                             </div>
@@ -135,6 +135,8 @@ export default {
 
             },
         })
+
+        console.log(this.data)
     }
 }
 </script>

@@ -88,7 +88,7 @@
                 <i class="icon-search-close" @click="unselect(destination)"></i>
               </a>
 
-              <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
+              <!-- <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
                 Bölge:{{ facilityType.text }}
                 <i class="icon-search-close" @click="unselect(facilityType)"></i>
               </a>
@@ -96,7 +96,7 @@
               <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">
                 Konsept:{{ facilityConcept.text }}
                 <i class="icon-search-close" @click="unselect(facilityConcept)"></i>
-              </a>
+              </a> -->
 
               <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
                 Olanak:{{ facility.text }}
@@ -526,6 +526,8 @@ export default {
       var div = document.getElementById("selectedItems");
       var divHeight = div.offsetHeight;
       var contentHeight = div.scrollHeight;
+      console.log(this.$refs)
+      console.log(this.$refs.moreButton)
       if (contentHeight > divHeight) {
         this.$refs.moreButton.classList.remove('morebutton')
       } else {

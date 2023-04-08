@@ -207,8 +207,8 @@
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
-            <h1 class="highlight-section-title">Fethiye Kiralık Villa</h1>
-            <p class="highlight-section-desc" :class="{ active: isExpanded }" v-html="content">
+            <h1 class="highlight-section-title">{{ pageContent.title }}</h1>
+            <p class="highlight-section-desc" :class="{ active: isExpanded }" v-html="pageContent.page_content.summary.data">
             </p>
 
             <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded }"
@@ -477,8 +477,8 @@
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
-            <h1 class="highlight-section-title">Fethiye Kiralık Villa</h1>
-            <p class="highlight-section-desc" :class="{ active: isExpanded2 }" v-html="content">
+            <h1 class="highlight-section-title">{{ pageContent.title }}</h1>
+            <p class="highlight-section-desc" :class="{ active: isExpanded2 }" v-html="pageContent.page_content.article.data">
             </p>
             <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded2 }"
               @click="isExpanded2 = !isExpanded2"><i class="readmore"></i> {{ !isExpanded2 ? 'TAMAMINI OKU' : 'DAHA AZ OKU' }}</div>
@@ -492,54 +492,20 @@
         <div class="List-sss">
           <h3>En çok sorulan sorular </h3>
           <div class="accordion" id="Faq">
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
-                aria-expanded="false" aria-controls="faq1">
-                Nasıl rezervasyon yapabilirim ?
+          
+              <div class="accordion-item" v-for="(item,index) in pageContent.page_content.faq[0].faq_list" :key="index">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#faq'+index"
+                aria-expanded="false" :aria-controls="'faq'+index">
+                {{ item.howrent_category_question }}
               </button>
-              <div id="faq1" class="accordion-collapse collapse " data-bs-parent="#Faq">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
+              <div :id="'faq'+index" class="accordion-collapse collapse " data-bs-parent="#Faq">
+                <div class="accordion-body" v-html="item.howrent_category_answer">
+                  
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
-                aria-expanded="false" aria-controls="faq2">
-                Kaç Kişi Konaklayabiliyoruz ?
-              </button>
-              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
-                aria-expanded="false" aria-controls="faq3">
-                Yemek servisi hizmetiniz var mı ?
-              </button>
-              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4"
-                aria-expanded="false" aria-controls="faq4">
-                Yemek servisi hizmetiniz var mı ?
-              </button>
-              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                </div>
-              </div>
-            </div>
+          
+           
           </div>
         </div>
       </div>
@@ -558,6 +524,7 @@ export default {
   name: 'DynamicVillaFilterPage',
   props: {
     selectedFilters: { type: Object, default: {} },
+    pageContent: { type: Object},
     highlights: { type: Boolean, default: false },
     opportunity: { type: Boolean, default: false }
   },
@@ -641,6 +608,7 @@ export default {
   },
   mounted() {
 
+    console.log(this.pageContent.page_content.faq[0].faq_list)
 
   },
 
