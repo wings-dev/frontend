@@ -211,7 +211,7 @@
           </template>
           <template v-else>
             <template v-for="offer in offers">
-            
+
               <div class="room " v-for="room in offer.rooms">
                 <div class="row">
                   <div
@@ -514,7 +514,8 @@ export default {
   },
   async mounted() {
     // Adım 1: Hotel fiyatını al
-    this.searchId = (await this.getHotelPrice()).body.searchId;
+    let response = await this.getHotelPrice();
+    this.searchId = response.body?.searchId;
 
     // Adım 2: Offer ID'lerini al
     const offerIds = this.getOfferIds();
