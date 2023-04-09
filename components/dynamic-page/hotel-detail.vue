@@ -258,18 +258,18 @@
                             <span>En Ucuzu</span>
                             <b>Oda Kahvaltı</b>
                           </div>
-                          <div class="option-warning">
+                          <div class="option-warning" v-if="offer.cancellationPolicies.length > 0">
 
                             <p class="free-cancellation">Ücretsiz İptal</p>
-                            <p class="last-date"><i class="icon-info-month"></i>7 Ağustos 2023’e kadar</p>
+                            <!-- TODO APİDEN ALINACAK <p class="last-date"><i class="icon-info-month"></i>7 Ağustos 2023’e kadar</p>-->
                           </div>
                         </div>
                         <div class="room-price">
                           <span>{{ offer.night }} GECE</span>
                           <div class="room-price-in">
-                            <s>16.500TL</s>
+                            <s v-if="offer.price.amount_old > 0">{{offer.price.amount_old}}{{ offer.price.currency }}</s>
                             <b>{{ offer.price.amount }}<small>{{ offer.price.currency }}</small></b>
-                            <p>Gecelik <span>1.400TL</span></p>
+                            <p>Gecelik <span>{{ (offer.price.amount / offer.night).toFixed(2) | numberFormat }}{{ offer.price.currency }}</span></p>
                           </div>
                           <a href="" @click.prevent="goReservation(offer)">Odayı Seç</a>
                         </div>
