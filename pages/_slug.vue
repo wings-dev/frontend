@@ -1,7 +1,7 @@
 <template>
   <div>
     <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1" v-if="type === 2"></dynamic-detail-page>
-    <dynamic-villa-filter-page :selectedFilters="componentData" v-if="type === 7"></dynamic-villa-filter-page>
+    <dynamic-villa-filter-page :pageContent="componentData" :highlights=true v-if="type === 5 || type === 8"></dynamic-villa-filter-page>
     <text-template-component :data="componentData" v-if="type === 1 || type === 16"></text-template-component>
   </div>
 </template>
@@ -54,9 +54,9 @@ export default {
         price_list_1 = data[`data:villas:${path}:prices`] ? data[`data:villas:${path}:prices`].price_list_1 : [];
       }
       // type 7 => filtre sayfası
-      if (redisData.type === 7) {
+      if (redisData.type === 5 || redisData.type === 8) {
         // filtre redis datası
-        componentData = redisData.data;
+        componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
       }
 
       if (redisData.type === 1 || redisData.type === 23) {

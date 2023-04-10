@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dynamic-villa-filter-page :selectedFilters="selectedFilters" :highlights=true></dynamic-villa-filter-page>
+    <dynamic-villa-filter-page :selectedFilters="selectedFilters" :highlights=false></dynamic-villa-filter-page>
   </div>
 </template>
 
