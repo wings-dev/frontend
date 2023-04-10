@@ -108,7 +108,7 @@ export default {
       }*/
 
       let data = JSON.parse(JSON.stringify(this.$route.query));
-      data.requestId = this.requestId;
+      // data.requestId = this.requestId;
       delete data['destinations']
       this.$router.push({
         path: 'otel/' + slugify(this.hotel.name.toLowerCase()) + '-' + this.hotel.id,
