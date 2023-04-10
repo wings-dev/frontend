@@ -1,5 +1,5 @@
 export default ({app, $axios, $config}, inject) => {
-  const serverAddr = (process.server ? 'http://localhost:3000' : '') + '/data/';
+  const serverAddr = (process.server ? 'http://localhost:' + process.env.PORT : '') + '/data/';
 
   const dataService = {
 
