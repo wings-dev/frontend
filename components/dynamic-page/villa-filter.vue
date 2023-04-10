@@ -608,7 +608,7 @@ export default {
   },
   mounted() {
 
-    console.log(this.pageContent)
+    // console.log(this.pageContent)
 
   },
 

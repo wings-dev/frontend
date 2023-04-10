@@ -131,7 +131,6 @@ export default {
     },
     methods: {
         openModal(campaignid) {
-            console.log(this.$refs)
             this.$refs[`my-modal`].show();
         },
     },

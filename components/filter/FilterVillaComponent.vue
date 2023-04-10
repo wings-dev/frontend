@@ -526,8 +526,6 @@ export default {
       var div = document.getElementById("selectedItems");
       var divHeight = div.offsetHeight;
       var contentHeight = div.scrollHeight;
-      console.log(this.$refs)
-      console.log(this.$refs.moreButton)
       if (contentHeight > divHeight) {
         this.$refs.moreButton.classList.remove('morebutton')
       } else {
