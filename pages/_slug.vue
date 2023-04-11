@@ -33,7 +33,7 @@ export default {
       price_list_1: [],
     }
   },
-  async asyncData({ $getRedisKey, route, store }) {
+  async asyncData({ $getRedisKey, route, store, redirect }) {
     const site_id = process.env.SITE;
     const path = route.params.slug;
     // Gelen sayfanın redisteki datası
@@ -44,6 +44,7 @@ export default {
     let blogPostData = {};
     let calendar = [];
     let price_list_1 = [];
+
     if (redisData) {
       const type = redisData.type;
       const headData = {
@@ -81,9 +82,9 @@ export default {
         });
 
         blogPostData = await $getRedisKey(blogPostKeys);
-        
+
       }
-      
+
 
       if (redisData.type === 1 || redisData.type === 23) {
         // filtre redis datası
@@ -93,7 +94,7 @@ export default {
 
       return { type, headData, componentData, calendar, price_list_1, blogPostData }
     } else {
-      return {}; // TODO 404 verilmeli
+      return redirect('/404')
     }
   },
 }

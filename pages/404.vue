@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: '404Page',
+  name: 'Page404',
   layout: 'no-search'
 }
 </script>
