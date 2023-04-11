@@ -62,7 +62,8 @@ export default {
     {src: "~/plugins/vue-tour.js", ssr: false},
     {src: '~/plugins/filters.js'},
     {src: '~/plugins/vue-select.js', ssr: false},
-    {src: '~/plugins/dataService.js'}
+    {src: '~/plugins/dataService.js'},
+    { src: '~/plugins/moment.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
