@@ -608,7 +608,9 @@ export default {
   },
   mounted() {
 
-    console.log(this.pageContent.page_content.faq[0].faq_list)
+    // console.log(this.pageContent)
+
+    
 
   },
 

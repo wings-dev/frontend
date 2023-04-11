@@ -192,7 +192,7 @@ export default {
             },
         })
 
-        console.log(this.posts)
+        // console.log(this.posts)
 
     }
 }

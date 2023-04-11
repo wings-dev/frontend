@@ -466,6 +466,7 @@ export default {
         order: this.orderValue?.value
       };
 
+
       this.$axios
         .post(`/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`, data)
         .then(({ data: responseData }) => {
@@ -526,8 +527,6 @@ export default {
       var div = document.getElementById("selectedItems");
       var divHeight = div.offsetHeight;
       var contentHeight = div.scrollHeight;
-      console.log(this.$refs)
-      console.log(this.$refs.moreButton)
       if (contentHeight > divHeight) {
         this.$refs.moreButton.classList.remove('morebutton')
       } else {

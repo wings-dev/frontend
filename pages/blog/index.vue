@@ -36,7 +36,6 @@ export default {
 
     const pagePosts = Object.keys(pagePostData).map(key => {
       const datapost = JSON.parse(JSON.stringify(pagePostData[key]))
-      console.log(datapost)
       if(datapost !== null){
       datapost.url = key.substring(12)
     }
