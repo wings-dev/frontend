@@ -30,10 +30,10 @@
                         Popüler Villaları
                         <span>keşfedin</span>
                     </h4>
-                    <a href=""
+                    <nuxt-link to="/kiralik-villa-ara"
                         class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
                         <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </a>
+                    </nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
@@ -121,10 +121,11 @@
                         Otelleri
                         <span>keşfedin</span>
                     </h4>
-                    <a href=""
+                   
+                    <nuxt-link to="/otel"
                         class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
                         <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </a>
+                    </nuxt-link>
                 </div>
                 <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -306,10 +307,10 @@
                     <h4 class="primary-title fw-medium ls-05 lh-1 text-white">
                         Kısa Süreli <span>Konaklama Fırsatları</span>
                     </h4>
-                    <a href=""
+                    <nuxt-link to="/firsat"
                         class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
                         <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </a>
+                    </nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
@@ -510,6 +511,10 @@
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-abroad-villa"></i>
                     <h4 class=""><b>Yurt Dışı</b>Kiralık Villa</h4>
+                    <nuxt-link to="/yurtdisi-kiralik-villa"
+                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
+                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
+                    </nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
                     <div class="swiper-wrapper">
