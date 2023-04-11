@@ -55,7 +55,7 @@
             <form action="" class="Login-form" @submit.prevent="register">
               <!-- {{ reservationModalData }} -->
               <label for="" class="Login-form-item mb-2">
-                <input type="text" placeholder="İsim Soyisim" v-model="form.name" required>
+                <input type="text" placeholder="İsim Soyisim" v-model="form.name" @input="checkName" required>
               </label>
               <label for="" class="Login-form-item mb-2">
                 <input type="text" placeholder="E-mail Adresiniz" value="" id="mailInput" v-model="form.email" required>
@@ -199,7 +199,10 @@ export default {
         this.$bvModal.hide('reservationModal')
         this.$bvModal.show('reservationCodeModal')
       }
-    }
+    },
+    checkName() {
+      this.form.name = this.form.name.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]/g, '');
+    },
   }
 }
 </script>
