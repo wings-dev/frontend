@@ -1,5 +1,5 @@
 export default ({app, $axios, $config}, inject) => {
-  const serverAddr = (process.server ? 'http://localhost:3000' : '') + '/data/';
+  const serverAddr = (process.server ? 'http://localhost:' + process.env.PORT : '') + '/data/';
 
   const dataService = {
 
@@ -13,6 +13,10 @@ export default ({app, $axios, $config}, inject) => {
 
     getOfferDetails: async (data) => {
       return await $axios.post(serverAddr + 'hotel/getOfferDetails', data)
+    },
+
+    getOffers: async (data) => {
+      return await $axios.post(serverAddr + 'hotel/getOffers', data)
     },
 
     getRooms: async (data) => {

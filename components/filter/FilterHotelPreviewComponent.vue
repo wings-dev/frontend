@@ -15,7 +15,7 @@
           </div>
           <div class="Otel-card-review mobile">
             <span>{{hotel.stars}}/5</span>
-            <p>Mükemmel <u>124 yorum</u></p>
+            <!--<p>Mükemmel <u>124 yorum</u></p>-->
           </div>
         </div>
         <div class="Otel-card-content-features">
@@ -36,7 +36,7 @@
     <div class="Otel-card-right">
       <div class="Otel-card-review desktop">
         <span>{{hotel.stars}}/5</span>
-        <p>Mükemmel <u>124 yorum</u></p>
+        <p>{{hotel.stars}} Yıldız <u>0 yorum</u></p>
       </div>
       <div class="Otel-card-price">
         <span>{{ hotel.offers[0].night }} GECE</span>
@@ -108,7 +108,7 @@ export default {
       }*/
 
       let data = JSON.parse(JSON.stringify(this.$route.query));
-      data.requestId = this.requestId;
+      // data.requestId = this.requestId;
       delete data['destinations']
       this.$router.push({
         path: 'otel/' + slugify(this.hotel.name.toLowerCase()) + '-' + this.hotel.id,

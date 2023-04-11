@@ -21,7 +21,7 @@
                   </div>
                   <div class="Otel-card-review">
                     <span>{{ hotelDetails.body.hotel.stars }}/5</span>
-                    <p>Mükemmel <u>124 yorum</u></p>
+                    <p>{{ hotelDetails.body.hotel.stars }} Yıldız <u>0 yorum</u></p>
                   </div>
                 </div>
 
@@ -51,14 +51,6 @@
                       <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
                     </ul>
                   </div>
-                  <button type="button"
-                    class="up-button d-none fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
-                    @click.prevent="scrollTop">
-                    <span class="action-btn-icon">
-                      <i class="icon-up-arrow"></i>
-                    </span>
-                    <span class="action-btn-text">Yukarı Çık</span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -68,11 +60,12 @@
               <div class="View-menu-in">
                 <div class="View-menu-left">
                   <div class="d-flex flex-wrap align-items-center fs-8 fw-medium ls-05 text-theme-primary">
-                    <div class="Otel-card-content-info-item erkenrezervasyon">
-                      <span>%35</span>
+                    <div v-if="hotelDetails.body.hotel.custom?.discount_rate > 0" class="Otel-card-content-info-item erkenrezervasyon">
+                      <span>%{{hotelDetails.body.hotel.custom.discount_rate}}</span>
                       <p>Erken Rezervasyon İndirimi</p>
                     </div>
-                    <div class="d-flex align-items-center my-2 my-sm-1 me-3 pe-1">
+
+                    <!-- <div class="d-flex align-items-center my-2 my-sm-1 me-3 pe-1">
                       <img src="/img/icons/019-virus.svg" width="20" height="20" alt="healt"
                         class="lazy contain flex-shrink-0 me-1 loaded"
                         style="background-image: url(/img/icons/019-virus.svg);">
@@ -83,7 +76,7 @@
                         class="lazy contain flex-shrink-0 me-1 loaded"
                         style="background-image: url(/img/icons/020-fence.svg);">
                       <span>Özel Bölgesi var</span>
-                    </div>
+                    </div>-->
                   </div>
                 </div>
                 <div class="View-menu-right">
@@ -167,33 +160,17 @@
           <div class="Otel-desc-in">
             <div class="Otel-desc-text">
               <h2>{{ hotelDetails.body.hotel.name }} <span>Genel Bilgiler</span></h2>
-              <div class="Otel-desc-text-in" :class="{ 'active': moreContent }">
-                <p>Premium Inn City Boutique, Kıbrıs Gazimağusa merkezinde bulunan nezih bir tesis. Modern dekorasyona
-                  sahip olan otelde konaklarken aileniz ve sevdiklerinizle mükemmel bir tatil deneyimi yaşayabilirsiniz.
-                  Tesiste misafirlerin unutulmaz anlar yaşayabileceği tüm imkânlar mevcut.</p>
-
-                <p>Tesis bünyesinde farklı kapasite ve büyüklüğe sahip konaklama alternatifleri mevcut. Odalarda banyo ve
-                  tuvalete ek olarak saç kurutma makinesi, terlik, ücretsiz banyo malzemeleri, çalışma masası, klima,
-                  makyaj masası, telefon, kahve makinesi, minibar, çay ve kahve makinesi bulunuyor. Premium Inn City
-                  Boutique aile odalarında çocuklarınızla konforlu bir tatil yapabilirsiniz.</p>
-
-                <p>Otel konuklarına oda-kahvaltı konseptinde hizmet veriyor. Premium Inn City Boutique restoran kahvaltıyı
-                  07.30 ile 11.30 saatleri arasında tabak şeklinde servis ediyor. Otelde alakart restoranın yanı sıra
-                  kafeterya,bar ve sushi restoranı bulunuyor.</p>
-              </div>
+              <div class="Otel-desc-text-in" :class="{ 'active': moreContent }" v-html="hotelDetails.body.hotel.description.text"></div>
               <button type="button" class="Otel-desc-text-more" @click="moreContentOpen">{{
                 moreContent ? 'Daha Az Bilgi Göster' : 'Daha Fazla Bilgi Göster' }} </button>
             </div>
             <div class="Otel-desc-features">
               <h4>Tesis <span>Özellikleri</span></h4>
-              <p class="Otel-desc-features-item"><i class="icon-check-big"></i>Kapalı Otopark</p>
-              <p class="Otel-desc-features-item"><i class="icon-check-big"></i>Kapalı Otopark</p>
-              <p class="Otel-desc-features-item"><i class="icon-check-big"></i>Kapalı Otopark</p>
-              <p class="Otel-desc-features-item"><i class="icon-check-big"></i>Kapalı Otopark</p>
+              <p class="Otel-desc-features-item" v-for="(item,index) in hotelDetails.body.hotel.facilities" v-if="index <= 4"><i class="icon-check-big"></i>{{item.name}}</p>
               <b-button v-b-modal.amenitesModal class="Otel-desc-features-more">Tüm özellikleri gör</b-button>
             </div>
             <div class="Otel-desc-map" style="background-image: url(/img/map-bg.png);">
-              <a href="">
+              <a :href="`https://www.google.com/maps/@${hotelDetails.body.hotel.geolocation.latitude},${hotelDetails.body.hotel.geolocation.longitude},16z`" target="_blank">
                 <span>Haritada Göster</span>
                 <i class="icon-search-new"></i>
               </a>
@@ -210,8 +187,7 @@
             Odalar yükleniyor...
           </template>
           <template v-else>
-            <template v-for="offer in offers">
-
+            <template v-for="(offer, offerIndex) in offers">
               <div class="room " v-for="room in offer.rooms">
                 <div class="row">
                   <div
@@ -230,18 +206,11 @@
                       </div>
                       <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
 
-                        <small
+                        <small v-for="group in room.boardGroups"
                           class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <i class="icon-check-big"></i> Minibar
+                          <i class="icon-check-big"></i> {{group.name}}
                         </small>
-                        <small
-                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <i class="icon-check-big"></i> Balkon
-                        </small>
-                        <small
-                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <i class="icon-check-big"></i> Duşakabin
-                        </small>
+
                       </div>
                       <div class="d-flex align-items-center mb-sm-0 mb-1">
                         <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
@@ -255,13 +224,13 @@
                         <div
                           class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
                           <div class="option-all">
-                            <span>En Ucuzu</span>
-                            <b>Oda Kahvaltı</b>
+                            <span v-if="offerIndex === 0">En Ucuzu</span>
+                            <b v-for="group in room.boardGroups">{{group.name}}</b>
                           </div>
                           <div class="option-warning" v-if="offer.cancellationPolicies.length > 0">
 
                             <p class="free-cancellation">Ücretsiz İptal</p>
-                            <!-- TODO APİDEN ALINACAK <p class="last-date"><i class="icon-info-month"></i>7 Ağustos 2023’e kadar</p>-->
+                            <p class="last-date"><i class="icon-info-month"></i>{{ $moment(offer.cancellationPolicies[0].dueDate).format('YYYY-MM-DD HH:mm') }} a kadar</p>
                           </div>
                         </div>
                         <div class="room-price">
@@ -553,6 +522,8 @@ export default {
     async getHotelPrice() {
       let response = await this.$dataService.getHotelPrice(this.hotelDetails.body.hotel.id, this.selectedFilters);
       this.hotelPriceDetails = response.data;
+      console.log(JSON.stringify(this.hotelPriceDetails));
+
       return response.data;
     },
 
@@ -578,9 +549,17 @@ export default {
       return response.data;
     },
 
-    mergeRoomDetails(rooms) {
-      this.offers.forEach(offer => {
+    async getOffers(searchId, offerId, productId) {
+      const response = await this.$dataService.getOffers({ searchId, offerId, productId });
+      return response.data;
+    },
+
+    async mergeRoomDetails(rooms) {
+
+      for (const offer of this.offers) {
         if (offer.rooms && offer.rooms.length > 0) {
+          // const response = await this.getOffers(this.searchId, offer.offerId, this.hotelDetails.body.hotel.id)
+          // console.log(response)
           offer.rooms.forEach((room, roomIndex) => {
             let roomDetail = rooms.find(r => r.offerId == offer.offerId);
             if (roomDetail && roomDetail.mediaFiles) {
@@ -588,7 +567,7 @@ export default {
             }
           });
         }
-      });
+      }
     },
     onSlideStart(slide) {
       this.sliding = true

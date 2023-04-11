@@ -2,14 +2,15 @@
   <div class="Filters Filters-otel ">
     <div class="Filters-head" @click="checkboxOpen(groupName)">
       <i class="icon-wallet"></i>
-      <h5>FİYAT ARALIĞI</h5>
+      <h5>FİYAT ARALIĞI {{min}} {{max}}</h5>
     </div>
     <div class="Filters-in" :ref="groupName">
       <div class="Filters-in-mobile">
         <div class="Filters-head" ><h5>FİYAT ARALIĞI</h5></div>
         <button type="button" @click="checkboxClose(groupName)"><i class="icon-left-arrow"></i></button>
       </div>
-      <div class="Filters-range">
+      <div v-if="loading">Yükleniyor...</div>
+      <div v-else class="Filters-range">
         <div class="Filters-range-inputs">
           <label for="">
             <small class="">Min</small>
@@ -48,6 +49,7 @@ export default {
   },
   props: {
     groupName: {type: String},
+    loading: { type: Boolean, default: false }
   },
   components: {
     VueSlider,
@@ -66,12 +68,20 @@ export default {
       return window.innerWidth <= 991;
     },
     checkboxOpen(groupName){
-      const targetDiv = this.$refs[groupName];
-      targetDiv.classList.add('show')
+      try {
+        const targetDiv = this.$refs[groupName];
+        targetDiv.classList.add('show')
+      } catch (e) {
+
+      }
     },
     checkboxClose(groupName){
-      const targetDivClose = this.$refs[groupName];
-      targetDivClose.classList.remove('show')
+      try {
+        const targetDivClose = this.$refs[groupName];
+        targetDivClose.classList.remove('show')
+      } catch (e) {
+
+      }
     }
   }
 

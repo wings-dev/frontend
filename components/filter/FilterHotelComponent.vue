@@ -41,59 +41,33 @@
               :loading="loading" :hideTitleBorder="true" @updated="updateFilter('themes', $event)"
             ></otel-filter-item-checkbox-component>
 
-            <div class="Filters Filters-otel ">
+            <div class="Filters Filters-otel">
               <div class="Filters-head">
                 <h5>Yıldız Sayısı<span></span></h5>
-                <button type="button" class="Filters-head-clear">Temizle</button>
               </div>
               <div class="Filters-in">
                 <div class="Filters-in-mobile">
                   <div class="Filters-head">
                     <h5>Yıldız Sayısı</h5>
-                  </div> <button type="button"><i class="icon-left-arrow"></i></button>
+                  </div>
+                  <button type="button"><i class="icon-left-arrow"></i></button>
                 </div>
                 <div class="Filters-checkbox">
-                  <div class="Filters-checkbox-item">
-                    <input type="checkbox">
-                    <label for="">
-                      <span>1</span>
-                      <i class="icon-star"></i>
-                    </label>
-                  </div>
-                  <div class="Filters-checkbox-item">
-                    <input type="checkbox">
-                    <label for="">
-                      <span>2</span>
-                      <i class="icon-star"></i>
-                    </label>
-                  </div>
-                  <div class="Filters-checkbox-item">
-                    <input type="checkbox">
-                    <label for="">
-                      <span>3</span>
-                      <i class="icon-star"></i>
-                    </label>
-                  </div>
-                  <div class="Filters-checkbox-item">
-                    <input type="checkbox">
-                    <label for="">
-                      <span>4</span>
-                      <i class="icon-star"></i>
-                    </label>
-                  </div>
-                  <div class="Filters-checkbox-item">
-                    <input type="checkbox">
-                    <label for="">
-                      <span>5</span>
-                      <i class="icon-star"></i>
-                    </label>
-                  </div>
+                  <div v-if="loading">Yükleniyor...</div>
+                  <template v-else>
+                    <div v-for="star in 5" :key="star" class="Filters-checkbox-item">
+                      <input type="checkbox" :id="'star' + star" :checked="selectedStars.includes(star)" :value="star" @click="handleStarSelection(star)">
+                      <label :for="'star' + star">
+                        <span>{{ star }}</span>
+                        <i class="icon-star"></i>
+                      </label>
+                    </div>
+                  </template>
                 </div>
-                <button type="button" class="Filters-in-m-button">TAMAM <span></span></button>
               </div>
             </div>
 
-            <div class="Filters Filters-otel ">
+            <div class="Filters Filters-otel " style="display: none">
               <div class="Filters-head">
                 <h5>Misafir Puanı<span></span></h5>
                 <button type="button" class="Filters-head-clear">Temizle</button>
@@ -140,8 +114,9 @@
               </div>
             </div>
 
-            <otel-filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
-              @max_price="updateFilter('max_price', $event)" groupName="priceRange"></otel-filter-price-between-component>
+
+            <!--<otel-filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
+              @max_price="updateFilter('max_price', $event)" groupName="priceRange"></otel-filter-price-between-component>-->
 
             <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü
               Temizle</button>
@@ -259,7 +234,6 @@
 import VSelect from "@alfsnd/vue-bootstrap-select";
 import OtelFilterItemCheckboxComponent from "@/components/filter/OtelFilterItemCheckboxComponent.vue";
 import OtelFilterPriceBetweenComponent from "@/components/filter/OtelFilterPriceBetweenComponent.vue";
-import { mapState } from "vuex";
 
 export default {
   name: "FilterHotelComponent",
@@ -291,8 +265,10 @@ export default {
       orderValue: null,
       orderPlaceholder: "Sırala:",
       loading: true,
-      isMobileFilterOpen: false
-
+      isMobileFilterOpen: false,
+      selectedStars: [],
+      min_hotel_price: null,
+      max_hotel_price: null
     }
   },
   components: {
@@ -341,6 +317,10 @@ export default {
         hotels = hotels.filter(hotel => hotel.themes.some(theme => selectedThemes.includes(theme.id)));
       }
 
+      if (this.selectedStars.length > 0) {
+        hotels = hotels.filter(hotel => this.selectedStars.includes(parseInt(hotel.stars)));
+      }
+
       if (this.orderValue?.value === 'price_asc') {
         return hotels.sort((a, b) => {
           const aPrice = a.offers && a.offers[0] && a.offers[0].price && a.offers[0].price.amount ? a.offers[0].price.amount : 0;
@@ -380,24 +360,22 @@ export default {
         ...this.selectedDestinations,
         ...this.selectedBoards
       ].length;
-    },
-    displayedPageNumbers() {
-      const currentIndex = this.pageNumbers.indexOf(this.current_page);
-      const leftIndex = Math.max(currentIndex - 3, 0);
-      const rightIndex = Math.min(currentIndex + 3, this.pageNumbers.length - 1);
-      const displayedNumbers = this.pageNumbers.slice(leftIndex, rightIndex + 1);
-      return displayedNumbers;
-    },
-    showLeftDots() {
-      const currentIndex = this.pageNumbers.indexOf(this.current_page);
-      return currentIndex > 3;
-    },
-    showRightDots() {
-      const currentIndex = this.pageNumbers.indexOf(this.current_page);
-      return currentIndex < this.pageNumbers.length - 4;
     }
   },
   methods: {
+    handleStarSelection(star) {
+      // Eğer seçili olan en düşük yıldızı seçtiyse, tüm yıldızları kaldır.
+      if (this.selectedStars.includes(star) && this.selectedStars[0] === star) {
+        this.selectedStars = [];
+      } else {
+        this.selectedStars = [];
+        this.$nextTick(() => {
+          for (let i = star; i <= 5; i++) {
+            this.selectedStars.push(i);
+          }
+        });
+      }
+    },
     applySelectedFilters(property, nestedProperty) {
       let filters = [];
       if (nestedProperty)
@@ -499,6 +477,16 @@ export default {
               return { ...t, count: count };
             }).sort(compareText);
 
+          const hotelPrices = this.hotels.map(hotel => {
+            const price = Math.ceil(hotel?.offers?.[0]?.price?.amount);
+            return price ?? Infinity;
+          });
+
+          const validPrices = hotelPrices.filter(price => price !== Infinity);
+
+          this.min_hotel_price = validPrices.length > 0 ? Math.min(...validPrices) : null;
+          this.max_hotel_price = validPrices.length > 0 ? Math.max(...validPrices) : null;
+
         })
         .catch(console.error)
         .finally(() => {
@@ -552,14 +540,6 @@ export default {
       if (this.isMobile()) {
         this.isMobileFilterOpen = false
       }
-    },
-    checkboxOpen(groupName) {
-      const targetDiv = this.$refs[groupName];
-      targetDiv.classList.add('show')
-    },
-    checkboxClose(groupName) {
-      const targetDivClose = this.$refs[groupName];
-      targetDivClose.classList.remove('show')
     }
   }
 }

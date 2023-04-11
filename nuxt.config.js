@@ -62,7 +62,8 @@ export default {
     {src: "~/plugins/vue-tour.js", ssr: false},
     {src: '~/plugins/filters.js'},
     {src: '~/plugins/vue-select.js', ssr: false},
-    {src: '~/plugins/dataService.js'}
+    {src: '~/plugins/dataService.js'},
+    { src: '~/plugins/moment.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -248,7 +249,7 @@ export default {
   },
 
   server: {
-    port: 3000, // default: 3000
+    port: process.env.PORT, // default: 3000
     host: '0.0.0.0', // default: localhost,
     timing: false
   }
