@@ -549,9 +549,17 @@ export default {
       return response.data;
     },
 
-    mergeRoomDetails(rooms) {
-      this.offers.forEach(offer => {
+    async getOffers(searchId, offerId, productId) {
+      const response = await this.$dataService.getOffers({ searchId, offerId, productId });
+      return response.data;
+    },
+
+    async mergeRoomDetails(rooms) {
+
+      for (const offer of this.offers) {
         if (offer.rooms && offer.rooms.length > 0) {
+          // const response = await this.getOffers(this.searchId, offer.offerId, this.hotelDetails.body.hotel.id)
+          // console.log(response)
           offer.rooms.forEach((room, roomIndex) => {
             let roomDetail = rooms.find(r => r.offerId == offer.offerId);
             if (roomDetail && roomDetail.mediaFiles) {
@@ -559,7 +567,7 @@ export default {
             }
           });
         }
-      });
+      }
     },
     onSlideStart(slide) {
       this.sliding = true
