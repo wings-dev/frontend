@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dynamic-villa-filter-page :selectedFilters="selectedFilters" :highlights=false :opportunity=true ></dynamic-villa-filter-page>
+    <dynamic-villa-filter-page :selectedFilters="selectedFilters" :highlights="false" :opportunity="true" :opportunities="opportunities" ></dynamic-villa-filter-page>
   </div>
 </template>
 
@@ -23,7 +23,16 @@ export default {
   },
   data() {
     return {
-      selectedFilters: {}
+      selectedFilters: {},
+      opportunities:[]
+    }
+  },
+  async asyncData({$axios}) {
+    try {
+      const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +`/website/opportunity-stats?api_token=${process.env.WEBSITE_TOKEN}`)
+      return {opportunities: response.data}
+    } catch (e) {
+      return {opportunities: []}
     }
   },
   components: {
