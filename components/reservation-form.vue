@@ -158,7 +158,7 @@
               <h5>Ön Ödeme Tutarı</h5>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>{{ availabilityData.advance_payment }} TL</b>
+              <b>{{ availabilityData.advance_payment | numberFormat }} {{ availabilityData.night_price_currency_symbol }}</b>
             </div>
           </div>
 
@@ -169,7 +169,7 @@
               <h5>Toplam Tutar</h5>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>{{ availabilityData.total_payment }} TL</b>
+              <b>{{ availabilityData.total_payment | numberFormat }} TL</b>
             </div>
           </div>
         </div>
@@ -178,25 +178,25 @@
           <div class="Reservation-form-detail-top">
             <div class="Reservation-form-detail-top-item">
               <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
-              <b>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</b>
+              <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
             </div>
             <div class="Reservation-form-detail-top-item">
               <p>Temizlik Ücreti <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                   title="Tooltip on right"></i></p>
-              <b>{{ availabilityData.cleaning_fee }}{{ availabilityData.night_price_currency_symbol }}</b>
+              <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
             </div>
           </div>
           <p class="Reservation-form-detail-total">
-            Toplam Ödeme <span>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</span>
+            Toplam Ödeme <span>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</span>
           </p>
           <div class="Reservation-form-detail-bottom">
             <div class="Reservation-form-detail-bottom-item">
-              <p>Ön Ödeme <span>{{ availabilityData.advance_payment }}{{ availabilityData.night_price_currency_symbol
+              <p>Ön Ödeme <span>{{ availabilityData.advance_payment | numberFormat }}{{ availabilityData.night_price_currency_symbol
               }}</span></p>
               <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
             </div>
             <div class="Reservation-form-detail-bottom-item">
-              <p>Tesise Girişte <span>{{ availabilityData.remaining_payment }}{{
+              <p>Tesise Girişte <span>{{ availabilityData.remaining_payment | numberFormat }}{{
                 availabilityData.night_price_currency_symbol
               }}</span></p>
               <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
@@ -217,7 +217,7 @@
                 <div class="Reservation-form-info-item-more-item-left">
                   <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
                 </div>
-                <b>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</b>
+                <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
               </div>
               <div class="Reservation-form-info-item-more-item">
                 <div class="Reservation-form-info-item-more-item-left">
@@ -225,14 +225,14 @@
                   <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                     title="Tooltip on right"></i>
                 </div>
-                <b>{{ availabilityData.cleaning_fee }}{{ availabilityData.night_price_currency_symbol }}</b>
+                <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
               </div>
 
               <div class="Reservation-form-info-item-more-item">
                 <div class="Reservation-form-info-item-more-item-left">
                   <p>Girişte Ödenecek</p>
                 </div>
-                <b>{{ availabilityData.remaining_payment }}{{ availabilityData.night_price_currency_symbol }}</b>
+                <b>{{ availabilityData.remaining_payment | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
               </div>
 
               <div class="Reservation-form-info-item-more-item">
@@ -241,7 +241,7 @@
                   <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                     title="Tooltip on right"></i>
                 </div>
-                <b>{{ availabilityData.total_price }}{{ availabilityData.night_price_currency_symbol }}</b>
+                <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
               </div>
 
 
@@ -304,7 +304,7 @@ import { mapMutations } from "vuex";
 
 export default {
   name: "ReservationForm",
-  props: ['propertyCode', 'disableReservation'],
+  props: ['villa', 'propertyCode', 'disableReservation'],
   components: {
     HotelDatePicker,
   },
@@ -434,6 +434,8 @@ export default {
         phone: null,
         name: null,
         email: null,
+        availabilityData: this.availabilityData,
+        villa: this.villa
       });
       this.$bvModal.show('reservationModal')
     },

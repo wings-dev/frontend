@@ -10,48 +10,48 @@
         <div class="Login-left">
           <div class="Login-card">
             <div class="Login-card-img">
-              <img src="/img/villa-grey.jpg" alt="">
+              <img :src="reservationModalData.villa?.watermark_images?.[0]?.preview_url" alt="">
               <div class="Login-card-img-text">
                 <div class="Login-card-img-text-head">
                   <span>Villa kodu</span>
-                  <b>VKV5261</b>
+                  <b>{{prefix}}{{reservationModalData.villa.code}}</b>
                 </div>
                 <div class="Login-card-img-text-in">
-                  <span>2 yetişkin</span>
-                  <span>1 Banyo</span>
-                  <span>1 Yatak Odası</span>
+                  <span>{{reservationModalData.adult}} yetişkin</span>
+                  <span>{{reservationModalData.villa.bathrooms}} Banyo</span>
+                  <span>{{reservationModalData.villa.bedroom}} Yatak Odası</span>
                 </div>
               </div>
               <div class="Login-card-img-link">
-                <nuxt-link to="/"><i class="icon-arrow-right-up"></i></nuxt-link>
+                <a><i class="icon-arrow-right-up"></i></a>
               </div>
             </div>
-            <div class="Login-card-discount-code">
+            <!--<div class="Login-card-discount-code">
               <p>İndirim(IND52668)</p>
               <span>-1.400₺</span>
-            </div>
+            </div>-->
             <div class="Login-card-content">
               <p class="Login-card-content-total">
-                Toplam Ödeme <span>14.210₺</span>
+                Toplam Ödeme <span>{{ reservationModalData.availabilityData.total_price | numberFormat }}{{ reservationModalData.availabilityData.night_price_currency_symbol }}</span>
               </p>
               <div class="Login-card-content-bottom">
                 <div class="Login-card-content-bottom-item">
-                  <p>Ön Ödeme <span>5400₺</span></p>
+                  <p>Ön Ödeme <span>{{ reservationModalData.availabilityData.advance_payment | numberFormat }}{{ reservationModalData.availabilityData.night_price_currency_symbol }}</span></p>
                   <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
                 </div>
                 <div class="Login-card-content-bottom-item">
-                  <p>Tesise Girişte <span>1500₺</span></p>
+                  <p>Tesise Girişte <span>{{ reservationModalData.availabilityData.remaining_payment | numberFormat }}{{reservationModalData.availabilityData.night_price_currency_symbol}}</span></p>
                   <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
                 </div>
               </div>
             </div>
-            <div class="Login-card-discount complete">
+            <!--<div class="Login-card-discount complete">
               <label for="">
                 <input type="text" placeholder="İndirim kodunuz mu var?" value="IND52564">
                 <i class="icon-check-big"></i>
                 <button type="button">Uygulandı</button>
               </label>
-            </div>
+            </div>-->
           </div>
         </div>
         <div class="Login-right">
@@ -92,6 +92,7 @@ export default {
   name: "ReservationCodeModal",
   data() {
     return {
+      prefix: process.env.PREFIX,
       key: 0,
       countdownTimeout: false,
       codes: ['', '', '', ''],

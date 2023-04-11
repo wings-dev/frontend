@@ -20,6 +20,8 @@ export default () => ({
     child: null,
     baby: null,
     reservationID: null, // TODO yeni rezervasyon sayfasına girildiğinde sıfırlanmalı. Sadettin ile senaryolar konusulacak
+    availabilityData: {},
+    villa: {},
   },
   visitorId: null,
   blogMenu: [

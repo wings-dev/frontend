@@ -1369,7 +1369,7 @@
           </div>
           <div class="View-right Reservation">
 
-            <reservation-form :property-code="villa.code" :disable-reservation="disableDate"></reservation-form>
+            <reservation-form :villa="villa" :property-code="villa.code" :disable-reservation="disableDate"></reservation-form>
 
             <div class="View-right-opportunity">
               <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
