@@ -2,7 +2,7 @@
   <div>
     <main class="main">
       <section class="view-detail-section otel mb-5">
-        <div class="view-detail-section-menus">
+        <div class="view-detail-section-menus view-detail-section-menus-otel">
           <div class="detail-top " id="detailTop">
             <div class="container">
               <div class="view-top d-flex">
@@ -55,7 +55,7 @@
               </div>
             </div>
           </div>
-          <div class="View-menu" id="detailMenu">
+          <div class="View-menu d-none" id="detailMenu">
             <div class="container">
               <div class="View-menu-in">
                 <div class="View-menu-left">
@@ -88,7 +88,7 @@
             </div>
           </div>
         </div>
-        <div class="container pb-1 ">
+        <div class="container pb-1 pt-5">
           <div class="view-gallery">
             <div class="area-1" v-if="previewImages.length > 0">
               <a :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon"
@@ -155,7 +155,7 @@
         </div>
       </section>
 
-      <section class="Otel-desc">
+      <section class="Otel-desc ">
         <div class="container">
           <div class="Otel-desc-in">
             <div class="Otel-desc-text">

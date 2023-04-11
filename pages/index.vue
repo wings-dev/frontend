@@ -1,7 +1,7 @@
 <template>
     <div class="Home">
         <search-bar></search-bar>
-        <section class="Banner Banner-home mb-4"
+        <section class="Banner Banner-home "
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
             <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt="">
             <div class="container Banner-home-in">
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </section>
-        <section class="popular-section bg-white overflow-hidden pb-sm-5 mt-5">
+        <section class="popular-section bg-white overflow-hidden pb-sm-5 ">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-flame"></i>
@@ -30,10 +30,7 @@
                         Popüler Villaları
                         <span>keşfedin</span>
                     </h4>
-                    <nuxt-link to="/kiralik-villa-ara"
-                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
-                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </nuxt-link>
+                    <nuxt-link to="/kiralik-villa-ara" class="button-more">Tümünü Görüntüleyin</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
@@ -121,11 +118,6 @@
                         Otelleri
                         <span>keşfedin</span>
                     </h4>
-                   
-                    <nuxt-link to="/otel"
-                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
-                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </nuxt-link>
                 </div>
                 <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -180,6 +172,7 @@
                             <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
                             <!-- <div class="swiper-button-next list-navigation-next"></div> -->
                         </div>
+                        <nuxt-link to="/otel" class="popular-section-otel-more">Tüm Kaş Otelleri</nuxt-link>
                     </div>
                     <div class="tab-pane fade" id="otel2" role="tabpanel" aria-labelledby="otel-tab2">
                         <div class="swiper list-slide-otel">
@@ -218,6 +211,7 @@
                             <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
                             <!-- <div class="swiper-button-next list-navigation-next"></div> -->
                         </div>
+                        <nuxt-link to="/otel" class="popular-section-otel-more">Tüm Fethiye Otelleri</nuxt-link>
                     </div>
                     <div class="tab-pane fade" id="otel3" role="tabpanel" aria-labelledby="otel-tab3">
                         <div class="swiper list-slide-otel">
@@ -256,13 +250,13 @@
                             <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
                             <!-- <div class="swiper-button-next list-navigation-next"></div> -->
                         </div>
+                        <nuxt-link to="/otel" class="popular-section-otel-more">Tüm Muğla Otelleri</nuxt-link>
                     </div>
                 </div>
 
 
             </div>
         </section>
-
         <section class="H_info">
             <div class="container">
                 <div class="H_info-in">
@@ -299,7 +293,6 @@
                 </div>
             </div>
         </section>
-
         <section class="popular-dark  bg-theme-first overflow-hidden mb-5 pb-sm-5 py-4">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
@@ -307,10 +300,7 @@
                     <h4 class="primary-title fw-medium ls-05 lh-1 text-white">
                         Kısa Süreli <span>Konaklama Fırsatları</span>
                     </h4>
-                    <nuxt-link to="/firsat"
-                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
-                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </nuxt-link>
+                    <nuxt-link to="/firsat" class="button-more button-more-dark">Tümünü Görüntüleyin</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
@@ -511,10 +501,7 @@
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-abroad-villa"></i>
                     <h4 class=""><b>Yurt Dışı</b>Kiralık Villa</h4>
-                    <nuxt-link to="/yurtdisi-kiralik-villa"
-                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
-                        <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                    </nuxt-link>
+                    <nuxt-link to="/yurtdisi-kiralik-villa" class="button-more">Tümünü Görüntüleyin</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
                     <div class="swiper-wrapper">

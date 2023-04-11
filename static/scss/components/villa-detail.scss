@@ -256,6 +256,9 @@
   }
   &-menus {
     height: 140px;
+    &-otel{
+      height: auto;
+    }
   }
   &.otel {
     padding-bottom: 30px;
@@ -561,7 +564,8 @@
     color: #0f2052;
   }
   &-desc {
-    margin-bottom: clamp(30px, 3.125vw, 60px);
+    // margin-bottom: clamp(30px, 3.125vw, 60px);
+    margin-bottom: 80px;
     .View-title {
       margin-bottom: 12px;
     }
@@ -653,7 +657,8 @@
     }
   }
   &-months {
-    margin-bottom: clamp(30px, 3.125vw, 60px);
+    // margin-bottom: clamp(30px, 3.125vw, 60px);
+    margin-bottom: 80px;
     .View-title {
       margin-bottom: 6px;
     }
@@ -788,7 +793,7 @@
     }
   }
   &-availibility {
-    margin-bottom: 34px;
+    margin-bottom: 80px;
     .View-title {
       margin-bottom: 12px;
     }
@@ -817,7 +822,7 @@
           color: #cf8080;
           font-size: 20px;
           &.close-day {
-            background-color: #f2f5fb;
+            background-color: #FFF7E3;
             color: #7e8f9a;
           }
         }
@@ -840,7 +845,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: clamp(30px, 3.125vw, 60px);
+    // margin-bottom: clamp(30px, 3.125vw, 60px);
+    margin-bottom: 80px;
     .View-title {
       display: none;
     }
@@ -939,12 +945,13 @@
         }
         .View-beds-item-name {
           background-color: #fff;
-          width: 150px;
-          transform: translateY(-31px);
-          padding-left: 0;
+          width: 170px;
+          transform: translateY(-35px);
+          padding: 10px 15px;
           margin-left: 20px;
           margin-bottom: -35px;
           font-size: 19px;
+          line-height: 24px;
         }
       }
     }
@@ -955,7 +962,8 @@
     }
   }
   &-pools {
-    margin-bottom: clamp(30px, 3.125vw, 60px);
+    // margin-bottom: clamp(30px, 3.125vw, 60px);
+    margin-bottom: 80px;
     &-head {
       display: flex;
       align-items: center;
@@ -1021,7 +1029,8 @@
     }
   }
   &-location {
-    margin-bottom: clamp(30px, 3.125vw, 60px);
+    // margin-bottom: clamp(30px, 3.125vw, 60px);
+    margin-bottom: 80px;
     &-in {
       display: flex;
       flex-wrap: wrap;
@@ -1572,7 +1581,8 @@
       }
     }
     &-warning {
-      margin-bottom: clamp(30px, 3.125vw, 60px);
+      // margin-bottom: clamp(30px, 3.125vw, 60px);
+      margin-bottom: 80px;
       &-in {
         display: flex;
         border-radius: 10px;
@@ -1665,7 +1675,7 @@
     }
   }
   &-reviews {
-    margin-bottom: 30px;
+    margin-bottom: 80px;
     &-head {
       display: flex;
       align-items: center;
@@ -2630,14 +2640,14 @@
 }
 
 .opsiyon {
-  background-image: linear-gradient(to bottom, #f2f5fb, #f2f5fb);
+  background-image: linear-gradient(to bottom, #FFF7E3, #FFF7E3);
 }
 
 .opsiyon-giris {
   background-image: linear-gradient(
     to top left,
-    #f2f5fb 0%,
-    #f2f5fb 50%,
+    #FFF7E3 0%,
+    #FFF7E3 50%,
     transparent 50%,
     transparent 100%
   );
@@ -2646,8 +2656,8 @@
 .opsiyon-cikis {
   background-image: linear-gradient(
     to bottom right,
-    #f2f5fb 0%,
-    #f2f5fb 50%,
+    #FFF7E3 0%,
+    #FFF7E3 50%,
     transparent 50%,
     transparent 100%
   );
@@ -2684,8 +2694,8 @@
 .kapali-cikis-to-opsiyon-giris {
   background-image: linear-gradient(
       to top left,
-      #f2f5fb 0%,
-      #f2f5fb 50%,
+      #FFF7E3 0%,
+      #FFF7E3 50%,
       transparent 50%,
       transparent 100%
     ),
@@ -2701,8 +2711,8 @@
 .opsiyon-cikis-to-kapali-giris {
   background-image: linear-gradient(
       to bottom right,
-      #f2f5fb 0%,
-      #f2f5fb 50%,
+      #FFF7E3 0%,
+      #FFF7E3 50%,
       transparent 50%,
       transparent 100%
     ),
@@ -2720,6 +2730,12 @@
   font-size: 11px;
   color: #989fb5;
   margin-bottom: 0;
+}
+
+.datepicker__month-day--disabled{
+  span{
+    opacity: 0.4;
+  }
 }
 
 .Amenites {

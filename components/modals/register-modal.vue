@@ -11,7 +11,7 @@
               <h2><b>KAYIT </b> OL</h2>
               <form action="" class="Login-form" @submit.prevent="register">
                 <label for="" class="Login-form-item mb-2">
-                  <input type="text" placeholder="İsim Soyisim" v-model="form.name" required>
+                  <input type="text" placeholder="İsim Soyisim" v-model="form.name" @input="checkName" required>
                 </label>
                 <label for="" class="Login-form-item mb-2">
                   <input type="text" placeholder="E-mail Adresiniz" value="" id="mailInput" v-model="form.email" required>
@@ -153,7 +153,10 @@ export default {
         this.$bvModal.hide('signupModal')
         this.$bvModal.show('loginCodeModal')
       }
-    }
+    },
+    checkName() {
+      this.form.name = this.form.name.replace(/[0-9]/g, '');
+    },
   }
 }
 </script>
