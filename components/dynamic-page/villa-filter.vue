@@ -326,7 +326,7 @@ export default {
     pageContent: { type: Object},
     highlights: { type: Boolean, default: false },
     opportunity: { type: Boolean, default: false },
-    opportunities: { type: Array, default: [] }
+    opportunities: { type: Array, default: () => [] }
   },
   data() {
     return {

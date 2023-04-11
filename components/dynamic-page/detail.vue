@@ -1770,28 +1770,30 @@ export default {
     const navLi = document.querySelectorAll(".View-menu-item");
 
     window.onscroll = function () {
-      scrollFunction()
-      var current = "";
+      try {
+        scrollFunction()
+        var current = "";
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 180) {
-          current = section.getAttribute("id");
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (scrollY >= sectionTop - 180) {
+            current = section.getAttribute("id");
+          }
+
+        });
+
+        navLi.forEach((li) => {
+          li.classList.remove("active");
+          if (li.classList.contains(current)) {
+            li.classList.add("active");
+          }
+        });
+        if (scrollY >= document.querySelector('#more-villas').offsetTop - 400) {
+          document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
+        } else {
+
         }
-
-      });
-
-      navLi.forEach((li) => {
-        li.classList.remove("active");
-        if (li.classList.contains(current)) {
-          li.classList.add("active");
-        }
-      });
-
-
-      if (scrollY >= document.querySelector('#more-villas').offsetTop - 400) {
-        document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
-      } else {
+      } catch (e) {
 
       }
     };
@@ -1823,7 +1825,7 @@ export default {
         }
 
       } catch (error) {
-        console.error('scrollFunction hatası:', error);
+        // console.error('scrollFunction hatası:', error);
       }
 
     }
