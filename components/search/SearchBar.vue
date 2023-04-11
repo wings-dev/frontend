@@ -14,7 +14,7 @@
                             :class="{ 'active': $route.path == '/yurtdisi-kiralik-villa' || $route.path == '/yurtdisi-kiralik-villa-ara'}"><span
                                 class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt Dışı
                                 Villalar</span></nuxt-link>
-                        <nuxt-link to="otel" class="nav-link-otel" :class="{ 'active': $route.path == '/otel' }">
+                        <nuxt-link to="otel" class="nav-link-otel" :class="{ 'active': $route.path == '/otel' || $route.path == '/oteller' }">
                             <i class="icon-otel-new"></i>
                             <span
                                 class="d-inline-block fw-medium px-2 px-sm-3 py-1">Otel</span><!-- <span class="comingsoon">ÇOK YAKINDA</span> --></nuxt-link>
@@ -34,7 +34,7 @@
                         id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <search-abroad-villa-component :key="$route.path"></search-abroad-villa-component>
                     </div>
-                    <div class="tab-pane fade " :class="{ 'show active': $route.path == '/otel' }" id="nav-contact"
+                    <div class="tab-pane fade " :class="{ 'show active': $route.path == '/otel' || $route.path == '/oteller' }" id="nav-contact"
                         role="tabpanel" aria-labelledby="nav-contact-tab">
                         <search-hotel-component :key="$route.path"></search-hotel-component>
                     </div>
