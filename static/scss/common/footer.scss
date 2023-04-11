@@ -6,12 +6,15 @@
       display: flex;
     }
     &-left {
-      padding-top: 110px;
+      padding-top: 60px;
       background-color: #f9fafd;
       width: 32%;
       padding-left: calc((100vw - 1200px) / 2);
       padding-right: 45px;
+      padding-bottom: 50px;
       position: relative;
+      display: flex;
+      flex-direction: column;
       z-index: 1;
       &:before {
         // content: "";
@@ -32,6 +35,7 @@
         font-weight: 500;
         line-height: 1.65;
         color: #989fb5;
+        max-width: 194px;
         a {
           color: #989fb5;
           transition: all 300ms;
@@ -87,7 +91,6 @@
     &-logo {
       display: flex;
       max-width: 200px;
-      margin-bottom: 40px;
       img {
         width: 100%;
       }
@@ -161,7 +164,7 @@
       flex-shrink: 0;
     }
     &-call {
-      margin-top: 50px;
+      margin-top: auto;
       .Contact-support {
         a {
           &:before {
@@ -193,7 +196,7 @@
     &-social {
       display: flex;
       flex-wrap: wrap;
-      margin-top: 70px;
+      margin-top: auto;
       h5 {
         width: 100%;
         font-size: 15px;

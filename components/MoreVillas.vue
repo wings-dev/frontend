@@ -4,9 +4,7 @@
             <div class="section-caption d-flex align-items-center mb-3 pb-1">
                 <i class="icon-opportunity-calendar"></i>
                 <h4 class="">Haftanın <span>Villaları</span></h4>
-                <a href="" class="section-caption-btn ms-auto">
-                    <span class="d-block py-1 px-3">Tümünü Görüntüleyin</span>
-                </a>
+                <nuxt-link to="/kiralik-villa-ara" class="button-more button-more-dark">Tümünü Görüntüleyin</nuxt-link>
             </div>
             <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                 <div class="swiper-wrapper">
@@ -49,8 +47,10 @@
                                     </div>
                                     <div class="Card-content-bottom opportunity">
                                         <div class="Card-content-bottom-price">
-                                            <p><b>2.500</b><span>TL</span></p>
-                                            <p>Fırsatı kaçırma!</p>
+                                            <p><b>2500TL -
+                                                    15000TL
+                                                </b><span>/Gecelik</span></p>
+                                            <p>Fiyat Aralığında</p>
                                         </div>
                                         <nuxt-link to="/" class="Card-content-bottom-link">
                                             <i class="icon-right-arrows-new"></i>

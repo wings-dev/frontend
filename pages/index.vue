@@ -22,7 +22,7 @@
                 </div>
             </div>
         </section>
-        <section class="popular-section bg-white overflow-hidden pb-sm-5 ">
+        <section class="popular-section bg-white overflow-hidden pb-sm-2 ">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-flame"></i>

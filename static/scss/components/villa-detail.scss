@@ -945,9 +945,9 @@
         }
         .View-beds-item-name {
           background-color: #fff;
-          width: 170px;
+          width: 150px;
           transform: translateY(-35px);
-          padding: 10px 15px;
+          padding: 10px 10px 10px 15px;
           margin-left: 20px;
           margin-bottom: -35px;
           font-size: 19px;
@@ -2836,11 +2836,16 @@
   }
 
   &.otel {
+    padding-bottom: 40px;
     .Amenites {
       &-head {
         padding-top: 40px;
         padding-left: 40px;
         margin-bottom: 60px;
+        flex-direction: column;
+        margin-bottom: 60px;
+        align-items: flex-start;
+        border-bottom: none;
       }
       &-title {
         font-size: 36px;
@@ -2849,6 +2854,7 @@
         letter-spacing: -2.29px;
         padding-left: 0;
         color: var(--bs-theme-first);
+        margin-bottom: 10px;
         &-sub {
           font-size: 22px;
           font-weight: normal;
@@ -2887,6 +2893,28 @@
               margin-right: 12px;
             }
           }
+        }
+      }    
+    }
+    .btn-close {
+      background-color: var(--bs-theme-first);
+      margin-top: 0;
+      margin-right: 0;
+      font-size: 14px;
+      color: #fff;
+      padding: 10px 20px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      i {
+        font-size: 28px;
+        color: #fff;
+        margin-left: 0;
+      }
+      &:hover {
+        i {
+          color: var(--bs-theme-second);
         }
       }
     }

@@ -387,8 +387,8 @@ body {
   margin: 0;
 }
 .Home-banner {
-  background-size: 100% 100%;
-  background-position: 160px center;
+  background-size: contain;
+  background-position: clamp(60px,8.34vw,160px) center;
   background-repeat: no-repeat;
   background-color: #fff;
   @media (min-width: 1800px) {
@@ -404,13 +404,13 @@ body {
     display: flex;
     flex-direction: column;
     h4 {
-      font-size: 34px;
+      font-size: clamp(24px,1.78vw,34px);
       font-weight: normal;
       line-height: normal;
       color: var(--bs-theme-first);
     }
     h2 {
-      font-size: 56px;
+      font-size: clamp(36px,2.92vw,56px);
       font-weight: bold;
       line-height: normal;
       color: var(--bs-theme-first);
@@ -434,8 +434,8 @@ body {
     &-in {
       padding-bottom: 0;
     }
-    background-size: 170% 220px;
-    background-position: -350px 20px;
+    background-size: clamp(1060px,164vw,1260px) 220px;
+    background-position: -350px 60px;
     &-text {
       align-items: center;
       justify-content: center;
@@ -455,8 +455,8 @@ body {
     }
   }
   @media (max-width: 600px) {
-    background-size: 200% 220px;
-    background-position: -270px 20px;
+    background-size: clamp(750px,159vw,1260px) 220px;
+    background-position: -270px 70px;
   }
 
   &-center {
@@ -2443,7 +2443,7 @@ body {
   left: 0;
   width: 100vw;
   height: 0;
-  padding-top: 40px;
+  padding-top: 20px;
   opacity: 0;
   visibility: hidden;
   transition: all 400ms;
@@ -2492,7 +2492,6 @@ body {
       transform: scale(0.98);
     }
   }
-
 
   &-title {
     font-size: clamp(20px, 1.52vw, 28.8px);
@@ -2727,11 +2726,15 @@ body {
             line-height: normal;
             color: var(--bs-theme-first);
             padding: 12px 32px;
-            opacity: 0.6;
+            opacity: 0.3;
             &.active{
               background-color: transparent;
               opacity: 1;
             }
+            
+          }
+          &:first-of-type{
+            border-right: 1px solid #E1E5EC;
           }
         }
       }
@@ -2766,15 +2769,53 @@ body {
     }
   }
 
+  &:before{
+    content: "";
+    display: inline-block;
+    width: 531px;
+    height: 436px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/search-villas-back.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
   @media (max-width: 991px) {
     padding-top: 20px;
+    &:before{
+    right: -30%;
+    }
     &-tabs{
       flex-direction: column;
       &-left{
         width: 100%;
         margin-bottom: 14px;
         i{
-          font-size: 30px;
+          &.icon-modern-house{
+            display: none;
+          }
+        }
+        .nav-pills {
+          width: 100%;
+          border-bottom: 1px solid #e1e5ec;
+          .nav-item {
+
+            &:first-of-type{
+              border-right: none;
+            }
+            .nav-link{
+              padding: 15px;
+              border-bottom: 1px solid transparent;
+              border-radius: 0;
+              margin-bottom: -1px;
+              &.active{
+                border-color: var(--bs-theme-second);
+              }
+            }
+          }
         }
       }
       &-right{
@@ -2814,8 +2855,9 @@ body {
     }
   }
   @media (max-width: 600px) {
-    top: 80px !important;
-    height: calc(100vh - 80px) !important;
+    &:before{
+      right: -70%;
+      }
   }
 }
 
