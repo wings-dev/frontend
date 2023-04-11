@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div> -->
-        <div class="Header-opportunity">
+        <div class="Header-opportunity d-none">
             <div class="container">
                 <div class="Header-opportunity-in">
                     <h3>Erken rezervasyon tarihlerini kaçırma!</h3>

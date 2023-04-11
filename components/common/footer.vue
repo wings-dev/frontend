@@ -191,7 +191,7 @@
                 </div>
             </div>
         </div>
-        <section class="Navigation">
+        <section class="Navigation d-none">
             <a class="Navigation-item">
                 <i class="icon-house"></i>
                 <span>Anasayfa</span>
