@@ -33,8 +33,9 @@
                         <h3 class="new-title">Banka Bilgilerimiz</h3>
                         <div class="Info-left-in">
                             <template v-for="item in pageData.page_content.corporate_banks">
+                                
                                 <div>
-                                    <nuxt-img :src="item.corporate_banks_logo" />
+                                    <nuxt-img :src="item.corporate_banks_logo" v-if="item.corporate_banks_logo"/>
                                     <div class="Info-left-item">
                                         <span>Alıcı Ünvan</span>
                                         <p>{{ item.corporate_banks_title }}</p>
@@ -282,6 +283,7 @@ export default {
         const site_id = process.env.SITE;
         let pageData = {};
         pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
+        console.log(pageData)
         return { pageData }
     }
 }
