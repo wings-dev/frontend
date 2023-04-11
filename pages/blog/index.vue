@@ -34,11 +34,13 @@ export default {
     pageData = await $getRedisKey(`web:${site_id}:pages:blog`);
     pagePostData = await $getRedisKey(pageURLs);
 
+    console.log('TESTTTT')
+
     const pagePosts = Object.keys(pagePostData).map(key => {
       const datapost = JSON.parse(JSON.stringify(pagePostData[key]))
-      if(datapost !== null){
-      datapost.url = key.substring(12)
-    }
+      if (datapost !== null) {
+        datapost.url = key.substring(12)
+      }
       return datapost
 
     })
