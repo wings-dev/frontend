@@ -4,7 +4,7 @@ export default ({ $axios, $config }, inject) => {
     const startTime = new Date().getTime();
 
     try {
-      const response = await $axios.post(process.server ?`http://localhost:${process.env.PORT}/data` : '/data', { key });
+      const response = await $axios.post(process.server ?`http://localhost:${process.env.NODE_PORT}/data` : '/data', { key });
 
       // Bitiş zamanı
       const endTime = new Date().getTime();
