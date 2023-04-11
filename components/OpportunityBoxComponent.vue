@@ -23,7 +23,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                   @click="$bvModal.hide('opportunityModal')"><i class="icon-search-close"></i></button>
         </div>
-        <a href="javascript:return void(0)" class="View-right-opportunity-item" v-for="opportunity in opportunities">
+        <a href="javascript:return void(0)" @click="selectOpportunity(opportunity)" class="View-right-opportunity-item" v-for="opportunity in opportunities">
           <div class="View-right-opportunity-item-day">
             <b>{{opportunity.price?.day}}</b>
             <span>GECE</span>

@@ -1487,7 +1487,17 @@ export default {
   },
   methods: {
     opportunitySelected(opportunity) {
-      console.log(opportunity);
+      function encodeTimestamp(dateString) {
+        return (new Date(dateString)).getTime();
+      }
+
+      const data = { i: encodeTimestamp(opportunity.price.start_date), o: encodeTimestamp(opportunity.price.end_date) };
+
+      const queryString = Object.keys(data)
+        .map(key => key + '=' + data[key])
+        .join('&');
+
+      window.location.href = this.villa.code + '?' + queryString;
     },
     setAttributes() {
       const dates = new Set();
