@@ -43,7 +43,7 @@
 
             <div class="Filters Filters-otel">
               <div class="Filters-head">
-                <h5>Yıldız Sayısı {{selectedStars}}<span></span></h5>
+                <h5>Yıldız Sayısı<span></span></h5>
               </div>
               <div class="Filters-in">
                 <div class="Filters-in-mobile">
@@ -67,7 +67,7 @@
               </div>
             </div>
 
-            <div class="Filters Filters-otel ">
+            <div class="Filters Filters-otel " style="display: none">
               <div class="Filters-head">
                 <h5>Misafir Puanı<span></span></h5>
                 <button type="button" class="Filters-head-clear">Temizle</button>
@@ -265,8 +265,9 @@ export default {
       orderPlaceholder: "Sırala:",
       loading: true,
       isMobileFilterOpen: false,
-      stars: [],
-      selectedStars: []
+      selectedStars: [],
+      min_hotel_price: null,
+      max_hotel_price: null
     }
   },
   components: {
@@ -313,6 +314,10 @@ export default {
 
       if (selectedThemes.length > 0) {
         hotels = hotels.filter(hotel => hotel.themes.some(theme => selectedThemes.includes(theme.id)));
+      }
+
+      if (this.selectedStars.length > 0) {
+        hotels = hotels.filter(hotel => this.selectedStars.includes(parseInt(hotel.stars)));
       }
 
       if (this.orderValue?.value === 'price_asc') {
@@ -471,15 +476,15 @@ export default {
               return { ...t, count: count };
             }).sort(compareText);
 
-          this.stars = this.hotels.flatMap(hotel => {
-            return parseInt(hotel.stars)
-          }).filter((val, index, self) =>
-              index === self.findIndex((t) => (
-                t === val
-              ))
-          ).sort(compareText);
+          const hotelPrices = this.hotels.map(hotel => {
+            const price = Math.ceil(hotel?.offers?.[0]?.price?.amount);
+            return price ?? Infinity;
+          });
 
-          console.log(this.stars);
+          const validPrices = hotelPrices.filter(price => price !== Infinity);
+
+          this.min_hotel_price = validPrices.length > 0 ? Math.min(...validPrices) : null;
+          this.max_hotel_price = validPrices.length > 0 ? Math.max(...validPrices) : null;
 
         })
         .catch(console.error)
