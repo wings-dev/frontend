@@ -540,14 +540,6 @@ export default {
       if (this.isMobile()) {
         this.isMobileFilterOpen = false
       }
-    },
-    checkboxOpen(groupName) {
-      const targetDiv = this.$refs[groupName];
-      targetDiv.classList.add('show')
-    },
-    checkboxClose(groupName) {
-      const targetDivClose = this.$refs[groupName];
-      targetDivClose.classList.remove('show')
     }
   }
 }
