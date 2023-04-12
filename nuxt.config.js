@@ -230,28 +230,7 @@ export default {
   build: {
     // standalone: true,
     transpile: ["swiper"],
-    publicPath: '/static/',
-    cache: true,
-    parallel: true,
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          commons: {
-            name: 'commons',
-            chunks: 'all',
-            minChunks: 2,
-            priority: 10,
-            reuseExistingChunk: true
-          },
-          vendors: {
-            name: 'vendors',
-            test: /[\\/]node_modules[\\/]/,
-            chunks: 'all',
-            priority: 20
-          }
-        }
-      }
-    },
+
   },
 
   proxy: {
