@@ -64,7 +64,7 @@ export default {
     {src: '~/plugins/vue-select.js', ssr: false},
     {src: '~/plugins/dataService.js'},
     { src: '~/plugins/moment.js' },
-    '~/plugins/bugsnag.js'
+    // '~/plugins/bugsnag.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
