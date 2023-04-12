@@ -42,7 +42,7 @@
                                 <div class="Blog-item-img">
                                     <img :src="item.page_content.default.page_list_img" alt="">
                                     <div class="Blog-item-img-text">
-                                        <h6>{{ item.title }}</h6>
+                                        <h6>{{ item.name }}</h6>
                                     </div>
                                     <div class="Blog-item-date">
                                         <div class="Blog-item-date-month">
@@ -55,8 +55,7 @@
                                     </div>
                                     <div class="Blog-item-more">Devamını Oku</div>
                                 </div>
-                                <div class="Blog-item-text">
-                                    <p v-html="item.page_content.summary.data"></p>
+                                <div class="Blog-item-text" v-html="item.page_content.summary.data">
                                 </div>
                             </nuxt-link>
                         </template>

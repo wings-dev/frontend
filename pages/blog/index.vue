@@ -33,6 +33,7 @@ export default {
     try {
       const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +`/website/blogs?api_token=${process.env.WEBSITE_TOKEN}`)
       const pagePosts = response.data.data;
+      console.log(pagePosts)
       return { pagePosts };
     } catch (error) {
       console.error('API isteği başarısız oldu:', error);

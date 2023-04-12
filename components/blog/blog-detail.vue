@@ -31,7 +31,8 @@
                             <div class="Blog-detail-info">
                                 <div class="Blog-detail-info-user">
                                     <img src="/img/user.jpg" alt="">
-                                    <p>Yazar: <span>{{ data.page_content.blog_author }}</span>// <span>{{ data.page_content.blog_publish_date }}</span></p>
+                                    <p>Yazar: <span>{{ data.page_content.blog_author }}</span>// <span>{{
+                                        data.page_content.blog_publish_date }}</span></p>
                                 </div>
                                 <div class="Blog-detail-share">
                                     <i class="icon-facebook"></i>
@@ -49,7 +50,7 @@
                 </div>
             </div>
         </section>
-        <section class="Blog-more">
+        <section class="Blog-more" v-if="morePost.length">
             <div class="container">
                 <div class="Blog-more-in">
                     <div class="Blog-more-head">
@@ -59,31 +60,29 @@
                     <div class="Blog-more-slider">
                         <div class="swiper blog-slider-more">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="(item,index) in 4" :key="index">
-                                    <a class="Blog-item">
+                                <div class="swiper-slide" v-for="(item, index) in morePost" :key="index" v-if="index < 8">
+                                    <nuxt-link :to="'/blog/' + item.page_content.blog_category[0] + '/' + item.url"
+                                        class="Blog-item" :key="item.id" v-if="item !== null">
                                         <div class="Blog-item-img">
-                                            <img src="/img/blog.png" alt="">
+                                            <img :src="item.page_content.default.page_list_img" alt="">
                                             <div class="Blog-item-img-text">
-                                                <h6>Roots in a piece of classical Latin literature</h6>
+                                                <h6>{{ item.name }}</h6>
                                             </div>
                                             <div class="Blog-item-date">
                                                 <div class="Blog-item-date-month">
-                                                    <b>03</b>
-                                                    <span>MART</span>
+                                                    <b>{{ item.page_content.blog_publish_date.split(' ')[0] }}</b>
+                                                    <span>{{ item.page_content.blog_publish_date.split(' ')[1] }}</span>
                                                 </div>
                                                 <div class="Blog-item-date-year">
-                                                    <span>2023</span>
+                                                    <span>{{ item.page_content.blog_publish_date.split(' ')[2] }}</span>
                                                 </div>
                                             </div>
                                             <div class="Blog-item-more">Devamını Oku</div>
                                         </div>
                                         <div class="Blog-item-text">
-                                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-                                                roots in a
-                                                piece of classical Latin literature from 45 BC, making it over 2000 years
-                                                old.</p>
+                                            <p v-html="item.page_content.summary.data"></p>
                                         </div>
-                                    </a>
+                                    </nuxt-link>
                                 </div>
                             </div>
                         </div>
@@ -100,9 +99,9 @@ import 'swiper/swiper-bundle.min.css'
 import BlogSidebar from "@/components/blog/blog-sidebar.vue";
 export default {
     name: 'DynamicBlogDetail',
-    props:['data'],
+    props: ['data', 'morePost'],
     components: {
-        Swiper,BlogSidebar
+        Swiper, BlogSidebar
     },
     mounted() {
         Swiper.use([Navigation, Pagination])

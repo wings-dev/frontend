@@ -7,17 +7,14 @@
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
-                        <h1>Bu sene tatil</h1>
+                        <h1>{{ pageData.page_content.banner.banner_title }}</h1>
                         <div class="words">
-                            <span>Villada mı?</span>
-                            <span>Yurtdışı Villada mı?</span>
-                            <span>Otelde mi?</span>
-                            <span>Villada mı?</span>
+                            <span v-for="(item,index) in pageData.page_content.banner.banner_animation_title" :key="index">{{ item.banner_animation_title }}</span>
                         </div>
                     </div>
-                    <h2 class="">dediysen, <span>doğru yerdesin.</span></h2>
+                    <h2 class="">{{ pageData.page_content.banner.banner_subtitle }} <span>{{ pageData.page_content.banner.banner_subtitle2 }}</span></h2>
                     <p class="">
-                        10.000+ otel ve 1.000+ villa seçeneği ile en çok tatil seçeneği ve destinasyonu VillaKalkan’da!
+                        {{ pageData.page_content.banner.banner_desc }}
                     </p>
                 </div>
             </div>
@@ -101,11 +98,9 @@
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
-                        <h4>20+ ülke ve</h4>
-                        <h4>148+ destinasyonda</h4>
-                        <h2>VillaKalkan <span>sizinle!</span></h2>
-                        <p>Yunanistan, İspanya, Hırvatistan, Thailand, İtalya, Portekiz, Maldivler
-                            ve daha fazla ülkede <b>villa kalkan hep sizinle hep yanınızda!</b></p>
+                        <h4>{{ pageData.page_content.section_banner.section_banner_title }}</h4>
+                        <h2>{{ pageData.page_content.section_banner.section_banner_subtitle }} <span>{{ pageData.page_content.section_banner.section_banner_subtitle2 }} </span></h2>
+                        <p>{{ pageData.page_content.section_banner.section_banner_desc }}  <b>{{ pageData.page_content.section_banner.section_banner_desc_bold }}</b></p>
                     </div>
                 </div>
             </div>
@@ -602,7 +597,7 @@ export default {
         const site_id = process.env.SITE;
         let pageData = {};
         pageData = await $getRedisKey(`web:${site_id}:pages:anasayfa`);
-        // console.log(pageData)
+        console.log(pageData)
         return { pageData }
     },
     mounted() {
@@ -712,6 +707,8 @@ export default {
 
 }
 </script>
-<style scoped>.list-item .list-image {
+<style scoped>
+.list-item .list-image {
     width: 100%;
-}</style>
+}
+</style>

@@ -18,27 +18,30 @@
                 <div class="Blog-in">
                     <blog-sidebar></blog-sidebar>
                     <div class="Blog-content ">
-                        <!-- <nuxt-link :to="'/blog/' + item.page_content.blog_category[0] + '/' + item.url"
-                            v-for="(item, index) in pagePosts" class="Blog-item" :key="index">
-                            <div class="Blog-item-img">
-                                <img src="/img/blog.png" alt="">
-                                <div class="Blog-item-img-text">
-                                    <h6>{{ item.title }}</h6>
-                                </div>
-                                <div class="Blog-item-date">
-                                    <div class="Blog-item-date-month">
-                                        <b>{{ item.page_content.blog_publish_date.split(' ')[0] }}</b>
-                                        <span>{{ item.page_content.blog_publish_date.split(' ')[1] }}</span>
+                        <template v-for="item in posts">
+                            <nuxt-link :to="'/blog/'+item.page_content.blog_category[0] +'/'+item.url" class="Blog-item" :key="item.id" v-if="item !== null">
+                                <div class="Blog-item-img">
+                                    <img :src="item.page_content.default.page_list_img" alt="">
+                                    <div class="Blog-item-img-text">
+                                        <h6>{{ item.name }}</h6>
                                     </div>
-                                    <div class="Blog-item-date-year">
-                                        <span>{{ item.page_content.blog_publish_date.split(' ')[2] }}</span>
+                                    <div class="Blog-item-date">
+                                        <div class="Blog-item-date-month">
+                                            <b>{{ item.page_content.blog_publish_date.split(' ')[0] }}</b>
+                                            <span>{{ item.page_content.blog_publish_date.split(' ')[1] }}</span>
+                                        </div>
+                                        <div class="Blog-item-date-year">
+                                            <span>{{ item.page_content.blog_publish_date.split(' ')[2] }}</span>
+                                        </div>
                                     </div>
+                                    <div class="Blog-item-more">Devamını Oku</div>
                                 </div>
-                                <div class="Blog-item-more">Devamını Oku</div>
-                            </div>
-                            <div class="Blog-item-text" v-html="item.page_content.summary.data">
-                            </div>
-                        </nuxt-link> -->
+                                <div class="Blog-item-text">
+                                    <p v-html="item.page_content.summary.data"></p>
+                                </div>
+                            </nuxt-link>
+                        </template>
+
 
                         <nav class="w-100">
                             <ul class="w-100 pagination d-flex flex-wrap justify-content-center align-items-center">
@@ -141,7 +144,11 @@ import BlogSidebar from "@/components/blog/blog-sidebar.vue";
 export default {
     name: 'DynamicBlogList',
     components: { BlogSidebar },
-    
+    props: {
+        posts: {
+            required: true
+        },
+    },
     mounted(){
         
     }
