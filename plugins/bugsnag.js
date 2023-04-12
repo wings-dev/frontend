@@ -1,13 +1,12 @@
-require('dotenv').config()
 import Vue from 'vue'
 import Bugsnag from '@bugsnag/js'
 import BugsnagPluginVue from '@bugsnag/plugin-vue'
 
 const bugsnagClient = Bugsnag.start({
-  apiKey: process.env.BUGSNAG_API_KEY,
+  apiKey: '945d438235e53a52bf36473606733754',
   plugins: [new BugsnagPluginVue(Vue)],
   enabledReleaseStages: ['production'],
-  releaseStage: process.env.NODE_ENV,
+  releaseStage: 'production',
 })
 
 export default (_, inject) => {
