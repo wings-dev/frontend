@@ -17,7 +17,7 @@
             <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
             <div class="flex-grow overflow-y-auto overflow-x-auto">
               <p class="calendar-price" style="" :class="attr.customData.class">
-                {{ !attr.customData.status.includes(2) ? attr.customData.price : '' }}
+                {{ !attr.customData.status.includes(2) || (attr.customData.dateStatus.length === 1 && attr.customData.dateStatus.includes(2)) ? attr.customData.price : '' }}
               </p>
             </div>
           </div>

@@ -1,5 +1,5 @@
 <template>
-  <a @click="goDetail" class="Otel-card">
+  <nuxt-link :to="{path: detailUrl ,query: detailUrlData}" target="_blank" class="Otel-card">
     <div class="Otel-card-left">
       <div class="Otel-card-img">
         <img :src="previewImageUrl" width="361" height="255" alt="hotel image" class="" />
@@ -51,7 +51,7 @@
         <button><span class="desktop">Oda Seç</span><i class="icon-right-arrows-new mobile"></i></button>
       </div>
     </div>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
@@ -91,40 +91,18 @@ export default {
       } else {
         return 'https://media.dev.paximum.com/hotelimages/102627/' + this.hotel.id + '.jpg';
       }
+    },
+    detailUrl() {
+      return 'otel/' + slugify(this.hotel.name.toLowerCase()) + '-' + this.hotel.id
+    },
+    detailUrlData() {
+      let data = JSON.parse(JSON.stringify(this.$route.query));
+      delete data['destinations']
+      return data;
     }
   },
   methods: {
     slugify,
-    backgroundImageStyle() {
-      const imageUrl = this.previewImageUrl;
-      return `background-image: url('${imageUrl}');`;
-    },
-    goDetail() {
-
-      /*const query = this.$route.query;
-      let data = null;
-      if (query.checkIn && query.checkOut) {
-        data = {i:this.encodeTimestamp(query.checkIn), o:this.encodeTimestamp(query.checkOut), v: localStorage.getItem('visitorId')};
-      }*/
-
-      let data = JSON.parse(JSON.stringify(this.$route.query));
-      // data.requestId = this.requestId;
-      delete data['destinations']
-      this.$router.push({
-        path: 'otel/' + slugify(this.hotel.name.toLowerCase()) + '-' + this.hotel.id,
-        query: data,
-      });
-    },
-    encodeTimestamp(dateString) {
-      // Tarih stringini (ISO formatında) Date nesnesine dönüştür
-      const date = new Date(dateString);
-
-      // Date nesnesini zaman damgasına (timestamp) dönüştür
-      return date.getTime();
-    },
-    amenitesList(villa) {
-      return (Object.values(villa.amenites || {}).flatMap(amenite => amenite.list) || []).filter(i => !!i);
-    },
     toggleFavorite(event) {
       event.stopPropagation();
       if (this.isFavorite) {

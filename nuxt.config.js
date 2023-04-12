@@ -249,7 +249,7 @@ export default {
   },
 
   server: {
-    port: process.env.PORT, // default: 3000
+    port: process.env.NODE_PORT, // default: 3000
     host: '0.0.0.0', // default: localhost,
     timing: false
   }

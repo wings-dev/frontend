@@ -1369,33 +1369,11 @@
           </div>
           <div class="View-right Reservation">
 
-            <reservation-form :property-code="villa.code" :disable-reservation="disableDate"></reservation-form>
+            <client-only>
+              <reservation-form :villa="villa" :property-code="villa.code" :disable-reservation="disableDate"></reservation-form>
 
-            <div class="View-right-opportunity">
-              <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
-              <nuxt-link to="/" class="View-right-opportunity-item">
-                <div class="View-right-opportunity-item-day">
-                  <b>3</b>
-                  <span>GECE</span>
-                </div>
-                <div class="View-right-opportunity-item-price">
-                  <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-                  <span>12.120TL</span>
-                </div>
-              </nuxt-link>
-              <nuxt-link to="/" class="View-right-opportunity-item">
-                <div class="View-right-opportunity-item-day">
-                  <b>3</b>
-                  <span>GECE</span>
-                </div>
-                <div class="View-right-opportunity-item-price">
-                  <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-                  <span>12.120TL</span>
-                </div>
-              </nuxt-link>
-
-              <b-button type="button" v-b-modal.opportunityModal>Diğer tarihleri <span>görüntüle(4)</span></b-button>
-            </div>
+              <opportunity-box-component :propertyCode="villa.code" @selected="opportunitySelected($event)"></opportunity-box-component>
+            </client-only>
 
           </div>
         </div>
@@ -1450,97 +1428,6 @@
 
     <amenites-modal sectionTitle="Haftanın Villaları"></amenites-modal>
 
-    <b-modal id="opportunityModal" class="Login" :hide-header="true" hide-footer>
-      <div class="View-right-opportunity">
-        <div class="View-right-opportunity-head">
-          <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            @click="$bvModal.hide('opportunityModal')"><i class="icon-search-close"></i></button>
-        </div>
-        <nuxt-link to="/" class="View-right-opportunity-item">
-          <div class="View-right-opportunity-item-day">
-            <b>3</b>
-            <span>GECE</span>
-          </div>
-          <div class="View-right-opportunity-item-price">
-            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-            <span>12.120TL</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link to="/" class="View-right-opportunity-item">
-          <div class="View-right-opportunity-item-day">
-            <b>3</b>
-            <span>GECE</span>
-          </div>
-          <div class="View-right-opportunity-item-price">
-            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-            <span>12.120TL</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link to="/" class="View-right-opportunity-item">
-          <div class="View-right-opportunity-item-day">
-            <b>3</b>
-            <span>GECE</span>
-          </div>
-          <div class="View-right-opportunity-item-price">
-            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-            <span>12.120TL</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link to="/" class="View-right-opportunity-item">
-          <div class="View-right-opportunity-item-day">
-            <b>3</b>
-            <span>GECE</span>
-          </div>
-          <div class="View-right-opportunity-item-price">
-            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-            <span>12.120TL</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link to="/" class="View-right-opportunity-item">
-          <div class="View-right-opportunity-item-day">
-            <b>3</b>
-            <span>GECE</span>
-          </div>
-          <div class="View-right-opportunity-item-price">
-            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-            <span>12.120TL</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link to="/" class="View-right-opportunity-item">
-          <div class="View-right-opportunity-item-day">
-            <b>3</b>
-            <span>GECE</span>
-          </div>
-          <div class="View-right-opportunity-item-price">
-            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-            <span>12.120TL</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link to="/" class="View-right-opportunity-item">
-          <div class="View-right-opportunity-item-day">
-            <b>3</b>
-            <span>GECE</span>
-          </div>
-          <div class="View-right-opportunity-item-price">
-            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-            <span>12.120TL</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link to="/" class="View-right-opportunity-item">
-          <div class="View-right-opportunity-item-day">
-            <b>3</b>
-            <span>GECE</span>
-          </div>
-          <div class="View-right-opportunity-item-price">
-            <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-            <span>12.120TL</span>
-          </div>
-        </nuxt-link>
-
-      </div>
-    </b-modal>
-
     <client-only>
       <close-villa-modal></close-villa-modal>
     </client-only>
@@ -1556,6 +1443,7 @@ import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import CloseVillaModal from '../modals/close-villa-modal.vue';
 import AmenitesModal from '../modals/amenites-modal.vue';
 import MoreVillas from '../MoreVillas.vue';
+import opportunityBoxComponent from "@/components/OpportunityBoxComponent.vue";
 export default {
   name: 'DynamicDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
@@ -1598,6 +1486,19 @@ export default {
     }
   },
   methods: {
+    opportunitySelected(opportunity) {
+      function encodeTimestamp(dateString) {
+        return (new Date(dateString)).getTime();
+      }
+
+      const data = { i: encodeTimestamp(opportunity.price.start_date), o: encodeTimestamp(opportunity.price.end_date) };
+
+      const queryString = Object.keys(data)
+        .map(key => key + '=' + data[key])
+        .join('&');
+
+      window.location.href = this.villa.code + '?' + queryString;
+    },
     setAttributes() {
       const dates = new Set();
       const attributes = [];
@@ -1869,28 +1770,30 @@ export default {
     const navLi = document.querySelectorAll(".View-menu-item");
 
     window.onscroll = function () {
-      scrollFunction()
-      var current = "";
+      try {
+        scrollFunction()
+        var current = "";
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 180) {
-          current = section.getAttribute("id");
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (scrollY >= sectionTop - 180) {
+            current = section.getAttribute("id");
+          }
+
+        });
+
+        navLi.forEach((li) => {
+          li.classList.remove("active");
+          if (li.classList.contains(current)) {
+            li.classList.add("active");
+          }
+        });
+        if (scrollY >= document.querySelector('#more-villas').offsetTop - 400) {
+          document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
+        } else {
+
         }
-
-      });
-
-      navLi.forEach((li) => {
-        li.classList.remove("active");
-        if (li.classList.contains(current)) {
-          li.classList.add("active");
-        }
-      });
-
-
-      if (scrollY >= document.querySelector('#more-villas').offsetTop - 400) {
-        document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
-      } else {
+      } catch (e) {
 
       }
     };
@@ -1922,7 +1825,7 @@ export default {
         }
 
       } catch (error) {
-        console.error('scrollFunction hatası:', error);
+        // console.error('scrollFunction hatası:', error);
       }
 
     }
@@ -1936,6 +1839,9 @@ export default {
     window.addEventListener("resize", this.handleResize);
   },
   computed: {
+    opportunityBoxComponent() {
+      return opportunityBoxComponent
+    },
     isFavorite() {
       return this.$store.state.favorite.favorites.includes(this.villa.code)
     },
