@@ -1,6 +1,6 @@
 <template>
   <div>
-    <opportunity-header :opportunities="opportunities" v-if="opportunity"></opportunity-header>
+    <opportunity-header :opportunities="opportunities" v-if="opportunity" @selected="opportunitySelected($event)"></opportunity-header>
 
     <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5" v-if="highlights">
       <div class="container">
@@ -270,7 +270,7 @@
     </div>
 
 
-    <filter-villa-component :selectedFilters="selectedFilters"></filter-villa-component>
+    <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity" :month="month" :day="day"></filter-villa-component>
 
     <section class="highlight-section bg-theme-light-2 pt-5 pb-4" v-if="highlights">
       <div class="container">
@@ -362,7 +362,9 @@ export default {
                   masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
                   mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
                   kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.`
+                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.`,
+      day: null,
+      month: null
     }
   },
   components: {
@@ -381,7 +383,10 @@ export default {
         }
       }, 50)
     },
-
+    opportunitySelected(obj) {
+      this.day = obj.day
+      this.month = obj.month
+    }
   },
 
   watch: {

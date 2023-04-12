@@ -305,6 +305,9 @@ export default {
   name: "FilterVillaComponent",
   props: {
     selectedFilters: { type: Object, default: {} },
+    opportunity: { type: Boolean, default: false },
+    day: { type: Number, default: null },
+    month: { type: Number, default: null },
   },
   data() {
     return {
@@ -341,11 +344,20 @@ export default {
       orderPlaceholder: "Sırala:",
       loading: true,
       novillas: false,
-      isMobileFilterOpen:false
+      isMobileFilterOpen:false,
+      timeoutId: null,
     }
   },
   components: {
     VSelect
+  },
+  watch: {
+    day() {
+      this.dayMonthChanged();
+    },
+    month() {
+      this.dayMonthChanged();
+    },
   },
   created() {
     const searchData = this.$store.state['settings'].searchData;
@@ -415,6 +427,16 @@ export default {
     }
   },
   methods: {
+    dayMonthChanged() {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+      }
+
+      this.timeoutId = setTimeout(() => {
+        this.filter();
+        this.timeoutId = null;
+      }, 50);
+    },
     applySelectedFilters(property, nestedProperty) {
       let filters = [];
       if (nestedProperty)
@@ -450,7 +472,7 @@ export default {
 
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
-      const data = {
+      let data = {
         destination: this.selectedDestinations.map(({ code }) => code),
         amenites: [
           ...this.selectedFacilityConcepts,
@@ -466,9 +488,15 @@ export default {
         order: this.orderValue?.value
       };
 
+      if (this.opportunity) {
+        data = {...data, ...{day: this.day, month: this.month}}
+      }
+
+      const url = this.opportunity ? `/website/opportunity?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`
+        : `/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`
 
       this.$axios
-        .post(`/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`, data)
+        .post(url, data)
         .then(({ data: responseData }) => {
           this.villas = responseData.data;
           this.per_page = responseData.per_page;

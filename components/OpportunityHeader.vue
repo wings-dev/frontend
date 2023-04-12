@@ -21,7 +21,7 @@
             <div class="tab-pane fade" v-for="(monthData, monthName, index) in groupedOpportunities" :id="`pills-${monthName}`" role="tabpanel"
                  :class="{show: index === 0, active: index === 0}" :aria-labelledby="`pills-${monthName}-tab`">
               <div class="Opportunity-list">
-                <a href="javascript:return void(0)" class="Opportunity-list-item" v-for="(count, night) in monthData" :key="night" v-bind:class="{'passive': count === 0}">
+                <a href="javascript:return void(0)" @click="selectOpportunity(index, night)" class="Opportunity-list-item" v-for="(count, night) in monthData" :key="night" v-bind:class="{'passive': count === 0}">
                   <div class="Opportunity-list-item-content">
                     <b>{{ night }}</b>
                     <div class="Opportunity-list-item-content-in">
@@ -103,6 +103,19 @@ export default {
     this.total = getTotalNightCount(this.groupedOpportunities);
 
     console.log(this.groupedOpportunities);
+  },
+  methods: {
+    selectOpportunity(index, night) {
+      function getObjectKey(obj, index) {
+        const keys = Object.keys(obj);
+        return keys[index];
+      }
+
+      const objectAtIndex = getObjectKey(this.groupedOpportunities, index);
+      const month = this.opportunities.find(o => o.month_name === objectAtIndex).month
+      console.log(month, night)
+      this.$emit('selected', {month, day: parseInt(night)})
+    }
   }
 }
 </script>
