@@ -54,25 +54,7 @@
                   <div class="Search-villas-top-hotel">
                     <i class="icon-search-new"></i>
                     <div class="Search-multiselect">
-                      <multiselect v-model="otelSearchValue" :options="otelSearchOptions" group-values="groupItems"
-                        group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false">
-                        <template slot="singleLabel" slot-scope="props">
-                          <span class="option__desc"><span class="option__title">{{ props.option.name
-                          }}</span></span></template>
-                        <template slot="option" slot-scope="props">
-                          <template v-if="!props.option.$isLabel">
-                            <i class="icon-hotel-category" v-if="props.option.category == 'tema'"></i>
-                            <i class="icon-location-pin" v-else-if="props.option.category == 'bolge'"></i>
-                            <i class="icon-hotel-key" v-else></i>
-                          </template>
-                          <div class="option__desc">
-                            <span class="option__title" v-if="props.option.$isLabel">{{ props.option.$groupLabel }}</span>
-                            <span class="option__title" v-else>{{ props.option.name }}</span>
-                            <span class="option__small" v-if="props.option.district">{{ props.option.district }}</span>
-                          </div>
-                        </template>
-                        <span slot="noResult">Oops! Aramanıza uygun sonuç bulunamadı.</span>
-                      </multiselect>
+                      <live-hotel-search-component></live-hotel-search-component>
                     </div>
                   </div>
                 </div>
@@ -88,25 +70,7 @@
               <div class="Search-villas-top-hotel">
                 <i class="icon-search-new"></i>
                 <div class="Search-multiselect">
-                  <multiselect v-model="otelSearchValue" :options="otelSearchOptions" group-values="groupItems"
-                    group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false">
-                    <template slot="singleLabel" slot-scope="props">
-                      <span class="option__desc"><span class="option__title">{{ props.option.name
-                      }}</span></span></template>
-                    <template slot="option" slot-scope="props">
-                      <template v-if="!props.option.$isLabel">
-                        <i class="icon-hotel-category" v-if="props.option.category == 'tema'"></i>
-                        <i class="icon-location-pin" v-else-if="props.option.category == 'bolge'"></i>
-                        <i class="icon-hotel-key" v-else></i>
-                      </template>
-                      <div class="option__desc">
-                        <span class="option__title" v-if="props.option.$isLabel">{{ props.option.$groupLabel }}</span>
-                        <span class="option__title" v-else>{{ props.option.name }}</span>
-                        <span class="option__small" v-if="props.option.district">{{ props.option.district }}</span>
-                      </div>
-                    </template>
-                    <span slot="noResult">Oops! Aramanıza uygun sonuç bulunamadı.</span>
-                  </multiselect>
+                  <live-hotel-search-component></live-hotel-search-component>
                 </div>
               </div>
             </div>
@@ -169,8 +133,11 @@
 </template>
 
 <script>
+import LiveHotelSearchComponent from "@/components/search/LiveHotelSearchComponent.vue";
+
 export default {
   name: "live-villa-search",
+  components: {LiveHotelSearchComponent},
   data() {
     return {
       input: '',
