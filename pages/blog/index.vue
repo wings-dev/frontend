@@ -1,12 +1,13 @@
 <template>
   <div>
     <blog-home :posts="pagePosts"></blog-home>
+    <!-- <blog-home></blog-home> -->
   </div>
 </template>
 
 <script>
 import BlogHome from "@/components/blog/blog-home.vue";
-
+import axios from 'axios';
 export default {
   name: 'BlogIndexPage',
   layout: 'no-search',
@@ -20,40 +21,24 @@ export default {
       ],
     }
   },
-  data() {
-
-  },
-  async asyncData({ $getRedisKey, route, store }) {
-    const site_id = process.env.SITE;
-    let pageData = {};
-    let pagePostData = {};
-    const pageURLs = Object.keys(store.state.routes.routes).filter(key => store.state.routes.routes[key].type === 15).map(key => {
-      const data = `web:${site_id}:pages:${key}`
-      return data
-    })
-    pageData = await $getRedisKey(`web:${site_id}:pages:blog`);
-    pagePostData = await $getRedisKey(pageURLs);
-
-    console.log('TESTTTT')
-
-    const pagePosts = Object.keys(pagePostData).map(key => {
-      const datapost = JSON.parse(JSON.stringify(pagePostData[key]))
-      if (datapost !== null) {
-        datapost.url = key.substring(12)
-      }
-      return datapost
-
-    })
-
-    return { pageData, pagePosts }
-  },
   components: {
     BlogHome
   },
-
+  data() {
+    pagePosts:[]
+  },
+  async asyncData({ $axios }) {
+    try {
+      const response = await $axios.get(`https://api.wings.com.tr/website/blogs?api_token=${process.env.WEBSITE_TOKEN}`)
+      const pagePosts = response.data.data;
+      return { pagePosts };
+    } catch (error) {
+      console.error('API isteği başarısız oldu:', error);
+    }
+  },
   mounted() {
   },
-
+  
   methods: {
 
   },

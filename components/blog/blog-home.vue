@@ -40,17 +40,17 @@
                         <template v-for="item in posts">
                             <nuxt-link :to="'/blog/'+item.page_content.blog_category[0] +'/'+item.url" class="Blog-item" :key="item.id" v-if="item !== null">
                                 <div class="Blog-item-img">
-                                    <img src="/img/blog.png" alt="">
+                                    <img :src="item.page_content.default.page_list_img" alt="">
                                     <div class="Blog-item-img-text">
                                         <h6>{{ item.title }}</h6>
                                     </div>
                                     <div class="Blog-item-date">
                                         <div class="Blog-item-date-month">
-                                            <b>03</b>
-                                            <span>MART</span>
+                                            <b>{{ item.page_content.blog_publish_date.split(' ')[0] }}</b>
+                                            <span>{{ item.page_content.blog_publish_date.split(' ')[1] }}</span>
                                         </div>
                                         <div class="Blog-item-date-year">
-                                            <span>2023</span>
+                                            <span>{{ item.page_content.blog_publish_date.split(' ')[2] }}</span>
                                         </div>
                                     </div>
                                     <div class="Blog-item-more">Devamını Oku</div>

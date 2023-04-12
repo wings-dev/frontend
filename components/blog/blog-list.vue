@@ -18,138 +18,28 @@
                 <div class="Blog-in">
                     <blog-sidebar></blog-sidebar>
                     <div class="Blog-content ">
-                        <a class="Blog-item">
+                        <!-- <nuxt-link :to="'/blog/' + item.page_content.blog_category[0] + '/' + item.url"
+                            v-for="(item, index) in pagePosts" class="Blog-item" :key="index">
                             <div class="Blog-item-img">
                                 <img src="/img/blog.png" alt="">
                                 <div class="Blog-item-img-text">
-                                    <h6>Roots in a piece of classical Latin literature</h6>
+                                    <h6>{{ item.title }}</h6>
                                 </div>
                                 <div class="Blog-item-date">
                                     <div class="Blog-item-date-month">
-                                        <b>03</b>
-                                        <span>MART</span>
+                                        <b>{{ item.page_content.blog_publish_date.split(' ')[0] }}</b>
+                                        <span>{{ item.page_content.blog_publish_date.split(' ')[1] }}</span>
                                     </div>
                                     <div class="Blog-item-date-year">
-                                        <span>2023</span>
+                                        <span>{{ item.page_content.blog_publish_date.split(' ')[2] }}</span>
                                     </div>
                                 </div>
                                 <div class="Blog-item-more">Devamını Oku</div>
                             </div>
-                            <div class="Blog-item-text">
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                            <div class="Blog-item-text" v-html="item.page_content.summary.data">
                             </div>
-                        </a>
-                        <a class="Blog-item">
-                            <div class="Blog-item-img">
-                                <img src="/img/blog2.png" alt="">
-                                <div class="Blog-item-img-text">
-                                    <h6>Roots in a piece of classical Latin literature</h6>
-                                </div>
-                                <div class="Blog-item-date">
-                                    <div class="Blog-item-date-month">
-                                        <b>03</b>
-                                        <span>MART</span>
-                                    </div>
-                                    <div class="Blog-item-date-year">
-                                        <span>2023</span>
-                                    </div>
-                                </div>
-                                <div class="Blog-item-more">Devamını Oku</div>
-                            </div>
-                            <div class="Blog-item-text">
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                            </div>
-                        </a>
-                        <a class="Blog-item">
-                            <div class="Blog-item-img">
-                                <img src="/img/blog.png" alt="">
-                                <div class="Blog-item-img-text">
-                                    <h6>Roots in a piece of classical Latin literature</h6>
-                                </div>
-                                <div class="Blog-item-date">
-                                    <div class="Blog-item-date-month">
-                                        <b>03</b>
-                                        <span>MART</span>
-                                    </div>
-                                    <div class="Blog-item-date-year">
-                                        <span>2023</span>
-                                    </div>
-                                </div>
-                                <div class="Blog-item-more">Devamını Oku</div>
-                            </div>
-                            <div class="Blog-item-text">
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                            </div>
-                        </a>
-                        <a class="Blog-item">
-                            <div class="Blog-item-img">
-                                <img src="/img/blog2.png" alt="">
-                                <div class="Blog-item-img-text">
-                                    <h6>Roots in a piece of classical Latin literature</h6>
-                                </div>
-                                <div class="Blog-item-date">
-                                    <div class="Blog-item-date-month">
-                                        <b>03</b>
-                                        <span>MART</span>
-                                    </div>
-                                    <div class="Blog-item-date-year">
-                                        <span>2023</span>
-                                    </div>
-                                </div>
-                                <div class="Blog-item-more">Devamını Oku</div>
-                            </div>
-                            <div class="Blog-item-text">
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                            </div>
-                        </a>
-                        <a class="Blog-item">
-                            <div class="Blog-item-img">
-                                <img src="/img/blog.png" alt="">
-                                <div class="Blog-item-img-text">
-                                    <h6>Roots in a piece of classical Latin literature</h6>
-                                </div>
-                                <div class="Blog-item-date">
-                                    <div class="Blog-item-date-month">
-                                        <b>03</b>
-                                        <span>MART</span>
-                                    </div>
-                                    <div class="Blog-item-date-year">
-                                        <span>2023</span>
-                                    </div>
-                                </div>
-                                <div class="Blog-item-more">Devamını Oku</div>
-                            </div>
-                            <div class="Blog-item-text">
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                            </div>
-                        </a>
-                        <a class="Blog-item">
-                            <div class="Blog-item-img">
-                                <img src="/img/blog2.png" alt="">
-                                <div class="Blog-item-img-text">
-                                    <h6>Roots in a piece of classical Latin literature</h6>
-                                </div>
-                                <div class="Blog-item-date">
-                                    <div class="Blog-item-date-month">
-                                        <b>03</b>
-                                        <span>MART</span>
-                                    </div>
-                                    <div class="Blog-item-date-year">
-                                        <span>2023</span>
-                                    </div>
-                                </div>
-                                <div class="Blog-item-more">Devamını Oku</div>
-                            </div>
-                            <div class="Blog-item-text">
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                            </div>
-                        </a>
+                        </nuxt-link> -->
+
                         <nav class="w-100">
                             <ul class="w-100 pagination d-flex flex-wrap justify-content-center align-items-center">
                                 <li class="page-item me-2 me-sm-3 mb-1">
@@ -249,8 +139,12 @@
 <script>
 import BlogSidebar from "@/components/blog/blog-sidebar.vue";
 export default {
-  name: 'DynamicBlogList',
-  components: { BlogSidebar },
+    name: 'DynamicBlogList',
+    components: { BlogSidebar },
+    
+    mounted(){
+        
+    }
 }
 </script>
   
