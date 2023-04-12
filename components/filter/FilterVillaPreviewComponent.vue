@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="F_villa-item opportunity" >
+    <div class="F_villa-item opportunity">
       <div class="F_villa-item-img">
         <div class="swiper villa-list-slider">
           <div class="swiper-wrapper">
@@ -28,7 +28,7 @@
           <span>GECE</span>
         </div>
       </div>
-      <a class="F_villa-item-right"  @click="goDetail">
+      <a class="F_villa-item-right" @click="goDetail">
         <div class="F_villa-item-head">
           <div class="F_villa-item-head-name">
             <span>Tesis Kodu</span>
@@ -53,17 +53,15 @@
               </p>
             </div>
           </div>
-          <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-if="checkindate">
+          <div class="F_villa-item-head-price F_villa-item-head-price-promotion with-price" v-if="checkindate">
             <div class="F_villa-item-head-price-in">
-              <span>TOPLAM</span>
-              <b>{{ villa.total.total | numberFormat }}<span>TL</span></b>
-              <p>{{ villa.total.day }} gece fiyatı</p>
+              <p>{{ villa.total.day }} GECE</p>
+              <strong>{{ checkin }} - {{ checkout }}</strong>
             </div>
+            <b>{{ villa.total.total | numberFormat }}<span>TL</span></b>
 
-            
           </div>
           <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
-
 
             <div class="F_villa-item-head-price-in">
               <span>GECELİK</span>
@@ -71,7 +69,7 @@
               <p>‘den başlayan fiyatlar</p>
             </div>
 
-            
+
           </div>
         </div>
         <div class="F_villa-item-info">
@@ -104,7 +102,10 @@
             </div>
 
           </div>
-          <button type="button" class="F_villa-item-show" @click.stop="openModal(villa.code)"><i class="icon-calendar"></i>Müsaitlik Takvimi</button>
+          <button type="button" class="F_villa-item-show" @click.stop="openModal(villa.code)"><i
+              class="icon-calendar"></i>Müsaitlik Takvimi</button>
+              <button type="button" class="F_villa-item-more" @click="goDetail">
+                <i class="icon-right-arrow"></i></button>
         </div>
       </a>
     </div>
@@ -113,23 +114,24 @@
       <div class="Login Calendar">
         <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide(`modal-${code}`)"><i
             class="icon-login-close"></i></button>
-            <h3 class=""><span>{{ prefix + villa.code }}</span> Müsaitlik Takvimi</h3>
-            <div class="View-availibility-legand mt-2">
-                <div class="View-availibility-legand-item">
-                  <span class="close-day"></span>
-                  <p>Dolu</p>
-                </div>
-                <div class="View-availibility-legand-item">
-                  <span></span>
-                  <p>Onay Bekleniyor</p>
-                </div>
-              </div>
+        <h3 class=""><span>{{ prefix + villa.code }}</span> Müsaitlik Takvimi</h3>
+        <div class="View-availibility-legand mt-2">
+          <div class="View-availibility-legand-item">
+            <span class="close-day"></span>
+            <p>Dolu</p>
+          </div>
+          <div class="View-availibility-legand-item">
+            <span></span>
+            <p>Onay Bekleniyor</p>
+          </div>
+        </div>
         <client-only>
-          <availibility-calendar :slug="code" :calendarColumns="3" :calendarRows="2" :calendarStep="5"></availibility-calendar>
+          <availibility-calendar :slug="code" :calendarColumns="3" :calendarRows="2"
+            :calendarStep="5"></availibility-calendar>
         </client-only>
       </div>
     </b-modal>
-    
+
   </div>
 </template>
 
@@ -139,7 +141,7 @@ import 'swiper/swiper-bundle.min.css'
 
 export default {
   name: "FilterVillaPreviewComponent",
-  props: ['villa', 'checkindate'],
+  props: ['villa', 'checkindate', 'checkoutdate'],
   components: {
     Swiper
   },
@@ -154,14 +156,16 @@ export default {
           prevEl: '.swiper-button-prev'
         }
       },
-      prefix: process.env.PREFIX
+      prefix: process.env.PREFIX,
+      checkin: null,
+      checkout: null
     }
   },
   computed: {
     isFavorite() {
       return this.$store.state.favorite.favorites.includes(this.villa.code)
     },
-    code(){
+    code() {
       return this.villa.code
     }
   },
@@ -199,6 +203,23 @@ export default {
     openModal(villaCode) {
       this.$refs[`modalRef-${villaCode}`].show();
     },
+    formatDate(value,valueout) {
+      const currentDate = new Date(value);
+      const formattedDate = currentDate.toLocaleDateString('tr-TR', {
+        day: 'numeric',
+        month: 'short',
+      }).toUpperCase();
+
+      const currentDateOut = new Date(valueout);
+      const formattedDateOut = currentDateOut.toLocaleDateString('tr-TR', {
+        day: 'numeric',
+        month: 'short',
+      }).toUpperCase();
+
+      this.checkin = formattedDate
+      this.checkout = formattedDateOut
+
+    },
   },
   mounted() {
     Swiper.use([Navigation, Pagination])
@@ -221,6 +242,8 @@ export default {
       //   },
       // }
     })
+
+    this.formatDate(this.checkindate,this.checkoutdate)
   }
 }
 </script>

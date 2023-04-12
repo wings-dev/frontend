@@ -1041,6 +1041,8 @@ body {
     align-items: center;
     &-in {
       max-width: 700px;
+      max-height: 90vh;
+      overflow-y: scroll;
     }
     img {
       width: 100%;
@@ -1093,6 +1095,9 @@ body {
       line-height: normal;
       text-align: justify;
       color: #fff;
+      position: sticky;
+      z-index: 1;
+      top: 0;
 
       &:hover {
         background-color: #fff;

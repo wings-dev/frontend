@@ -113,7 +113,7 @@
             <template v-if="villas.length > 2">
 
               <filter-villa-preview-component v-for="(villa, index) in villas.slice(0, 2)" :key="index" :villa="villa"
-                :checkindate="checkIn"></filter-villa-preview-component>
+                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
               <div
                 class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
                 <img src="/uploads/holiday-banner.jpg" alt=""
@@ -141,13 +141,13 @@
                 </svg>
               </div>
               <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index + 3" :villa="villa"
-                :checkindate="checkIn"></filter-villa-preview-component>
+                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
 
             </template>
 
             <template v-if="villas.length > 0 && villas.length <= 2">
               <filter-villa-preview-component v-for="(villa, index) in villas" :key="index" :villa="villa"
-                :checkindate="checkIn"></filter-villa-preview-component>
+                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
               <div
                 class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
                 <img src="/uploads/holiday-banner.jpg" alt=""
