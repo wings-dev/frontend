@@ -25,11 +25,13 @@ export default {
     BlogHome
   },
   data() {
-    pagePosts:[]
+    return {
+      pagePosts:[]
+    }
   },
   async asyncData({ $axios }) {
     try {
-      const response = await $axios.get(`https://api.wings.com.tr/website/blogs?api_token=${process.env.WEBSITE_TOKEN}`)
+      const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +`/website/blogs?api_token=${process.env.WEBSITE_TOKEN}`)
       const pagePosts = response.data.data;
       return { pagePosts };
     } catch (error) {
@@ -38,7 +40,7 @@ export default {
   },
   mounted() {
   },
-  
+
   methods: {
 
   },

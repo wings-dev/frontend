@@ -10,18 +10,20 @@ export default {
   layout: 'no-search',
   components: { DynamicBlogCategory },
   data() {
-    pagePosts: []
+    return {
+      pagePosts: []
+    }
   },
   async asyncData({ $axios }) {
     try {
-      const response = await $axios.get(`https://api.wings.com.tr/website/blogs?api_token=${process.env.WEBSITE_TOKEN}`)
-      const pagePosts = response.data.data;
+      const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +`/website/blogs?api_token=${process.env.WEBSITE_TOKEN}`)
+      let pagePosts = response.data.data;
 
       const pageURLs = Object.keys(this.$store.state.routes.routes)
       .filter(key => this.$store.state.routes.routes[key].type === 14)
       .filter(key => key == this.$route.params.category)
       .map(key => {
-        const data = this.$store.state.routes.routes[key].id  
+        const data = this.$store.state.routes.routes[key].id
         return data
       })
 
