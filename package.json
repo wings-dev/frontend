@@ -8,7 +8,7 @@
     "start": "node update.js && nuxt start",
     "generate": "nuxt generate",
     "update-state": "node update.js",
-    "deploy": "node update.js && nuxt build && pm2 restart ./ecosystem.config.js"
+    "deploy": "node update.js && nuxt generate && nuxt build && pm2 restart ./ecosystem.config.js"
   },
   "dependencies": {
     "@alfsnd/vue-bootstrap-select": "^0.4.4",
