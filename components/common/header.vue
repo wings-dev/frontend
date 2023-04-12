@@ -38,6 +38,16 @@
                     </NuxtLink>
 
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
+                        <div class="Header-menu-top">
+                            <Nuxt-link :to="!$auth.loggedIn ? '/favorilerim' : '/user/favorilerim'"
+                                class="Header-menu-top-fav">
+                                <i class="icon-heart-full"></i>
+                                <span>Favorilerim(4)</span>
+                            </Nuxt-link>
+                            <b-button v-b-modal.loginModal v-if="!$auth.loggedIn" type="button" class="Login-button">
+                                <span class="">ÜYE GİRİŞİ YAP </span>
+                            </b-button>
+                        </div>
                         <template v-for="(item, index) in mainMenu">
                             <div class="Header-menu-item" v-if="!item.children" :key="index">
                                 <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}</NuxtLink>
@@ -46,37 +56,43 @@
                             <div class="Header-menu-item otel" v-else :id="index">
                                 <!--  -->
                                 <button type="button" class="Header-menu-item-link menu-children menu-item"
-                                    :data-dropdown="'dropdown' + index" :id="index">{{
-                                        item.text }}
-                                    <i class="icon-right-arrows-new"></i>
+                                    :data-dropdown="'dropdown' + index" :id="index">
+                                    {{ item.text }}
+                                    <i class="icon-right-arrow mobile"></i>
                                 </button>
 
                                 <div class="Header-menu-item-in menu-item-dropdown" :id="'dropdown' + index">
                                     <button type="button" class="mobile-back-button">
-                                            <i class="icon-right-arrows-new" @click="closeSubMenu($event)"></i>
-                                            {{ item.text }}
-                                        </button>
-                                    
-                                        <div class="Header-menu-item-otel" :class="{'with-img':item.image}">
-                                            <div class="Header-menu-item-otel-left">
-                                                <template v-for="subitem in item.children">
+                                        <i class="icon-left-arrow" @click="closeSubMenu($event)"></i>
+                                        Geri dön
+                                    </button>
+
+                                    <div class="Header-menu-item-otel" :class="{ 'with-img': item.image }">
+                                        <div class="Header-menu-item-otel-left">
+                                            <template v-for="(subitem, index) in item.children">
                                                 <div class="Header-menu-item-otel-left-item">
-                                                    <h5>{{ subitem.text }}{{ subitem.href }}</h5>
-                                                    <div class="Header-menu-sub-item-list">
-                                                        <NuxtLink :to="'/' + subitemchildren.href" class="Header-top-menu-item"
-                                                    v-for="(subitemchildren, index) in subitem.children" :key="index">{{
-                                                        subitemchildren.text }}</NuxtLink>
+                                                    <h5 @click="toggleMenuItem(index)"
+                                                        :class="{ 'active': openIndexes.includes(index) }">{{ subitem.text
+                                                        }}<i class="icon-down-arrow mobile"></i></h5>
+                                                    <div class="Header-menu-sub-item-list"
+                                                        :class="{ 'active': openIndexes.includes(index) }">
+                                                        <NuxtLink :to="'/' + subitemchildren.href"
+                                                            class="Header-top-menu-item"
+                                                            v-for="(subitemchildren, index) in subitem.children"
+                                                            :key="index">
+                                                            {{ subitemchildren.text }}
+                                                        </NuxtLink>
                                                     </div>
                                                 </div>
                                             </template>
-                                            </div>
-                                            <div class="Header-menu-item-otel-right" v-if="item.image">
-                                                <img src="/img/otel-menu.png" alt="">
-                                            </div>
                                         </div>
+                                        <div class="Header-menu-item-otel-right" v-if="item.image">
+                                            <img src="/img/otel-menu.png" alt="">
+                                        </div>
+                                    </div>
 
 
-                                        <!-- <div class="Header-menu-sub-villa" v-else>
+                                    <!-- <div class="Header-menu-sub-villa" v-else>
                                             <a href="/asd" class="Header-menu-sub-villa-item">
                                                 <i class="icon-child-pool-villas"></i>
                                                 <span>Çocuk Havuzlu</span>
@@ -102,7 +118,7 @@
                                                 <span>Balayı Villaları</span>
                                             </a>
                                         </div> -->
-                                        <!-- <div class="Header-menu-sub-item popular">
+                                    <!-- <div class="Header-menu-sub-item popular">
                                             <h5>Popüler Villa Seçenekleri</h5>
                                             <div class="Header-menu-sub-item-list">
                                                 <a href="">Fethiye Kiralık Villa</a>
@@ -118,13 +134,23 @@
                                             </div>
                                         </div> -->
 
-                                    
+
 
                                 </div>
 
                             </div>
                         </template>
-
+                        <div class="Header-menu-bottom">
+                            <a href="tel:4448484" class="Header-call">
+                                <i class="icon-header-call"></i>
+                                <p><span>müşteri hizmetleri</span>444 8 484</p>
+                            </a>
+                            <div class="Header-menu-bottom-social">
+                            <a href="" class="Header-menu-bottom-social-item"><i class="icon-facebook"></i></a>
+                            <a href="" class="Header-menu-bottom-social-item"><i class="icon-instagram"></i></a>
+                            <a href="" class="Header-menu-bottom-social-item"><i class="icon-twitter"></i></a>
+                            </div>
+                        </div>
                     </div>
                     <div class="Header-buttons">
                         <button type="button" class="search-button" aria-label="Favorileri aç" id="searchButton"
@@ -210,6 +236,7 @@ export default {
             site_id: process.env.SITE,
             topMenu: [],
             mainMenu: [],
+            openIndexes: [],
             labels: {
                 days: 'Gün',
                 hours: 'Saat',
@@ -278,6 +305,14 @@ export default {
 
         onRouteChange(to, from) {
             this.mobileMenuActive = false;
+        },
+        toggleMenuItem(index) {
+            const itemIndex = this.openIndexes.indexOf(index);
+            if (itemIndex !== -1) {
+                this.openIndexes.splice(itemIndex, 1);
+            } else {
+                this.openIndexes.push(index);
+            }
         }
 
     },
@@ -295,6 +330,7 @@ export default {
         };
 
         const menuItems = document.querySelectorAll(".menu-item");
+        const menuItemsClose = document.querySelectorAll(".mobile-back-button");
         const dropdowns = document.querySelectorAll(".menu-item-dropdown");
 
         function closeAllDropdowns(exceptDropdownId) {
@@ -318,6 +354,24 @@ export default {
                         closeAllDropdowns(dropdownId);
                         dropdown.classList.add("active");
                         this.parentNode.classList.add("active");
+                    }
+                } else {
+                    closeAllDropdowns();
+                }
+            });
+        });
+        menuItemsClose.forEach((menuItemClose) => {
+            menuItemClose.addEventListener("click", function (event) {
+                event.stopPropagation();
+                const dropdownId = this.getAttribute("data-dropdown");
+                if (dropdownId) {
+                    const dropdown = document.getElementById(dropdownId);
+                    if (dropdown.classList.contains("active")) {
+                        closeAllDropdowns();
+                    } else {
+                        closeAllDropdowns(dropdownId);
+                        dropdown.classList.remove("active");
+                        this.parentNode.classList.remove("active");
                     }
                 } else {
                     closeAllDropdowns();
