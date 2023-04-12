@@ -59,7 +59,7 @@
             <i class="icon-check-big"></i>
             <h2>Ön rezervasyon talebiniz başarıyla alındı.</h2>
             <p>Size en kısa sürede E-posta ve SMS ile dönüş sağlayacağız.</p>
-            <nuxt-link to="/" class="Login-form-button mt-1">Anasayfaya Dön</nuxt-link>
+            <a href="javascript:void(0)" @click="goHome" class="Login-form-button mt-1">Anasayfaya Dön</a>
           </div>
         </div>
       </div>
@@ -82,7 +82,10 @@ export default {
     ...mapState(['reservationModalData'])
   },
   methods: {
-
+    goHome() {
+      this.$bvModal.hide('reservationSuccessModal')
+      this.$router.push('/')
+    }
   }
 }
 </script>
