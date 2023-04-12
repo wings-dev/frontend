@@ -83,7 +83,7 @@
                                 <h5 class="Footer-menu-item-head">{{ menu.text }}</h5>
                                 
                                 <template v-if="menu.children">
-                                    <nuxt-link :to="'/'+child.href" v-for="child in menu.children" >{{ child.text }}</nuxt-link>
+                                    <nuxt-link :to="'/'+child.href" v-for="child in menu.children" :key="child.href">{{ child.text }}</nuxt-link>
                                 </template>
                             </div>
 
