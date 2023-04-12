@@ -4,7 +4,7 @@
       v-if="type === 2"></dynamic-detail-page>
     <dynamic-villa-filter-page :selectedFilters="categoryFilter" :pageContent="componentData" :highlights=true
       v-if="type === 5 || type === 8"></dynamic-villa-filter-page>
-    <text-template-component :data="componentData" v-if="type === 1 || type === 16"></text-template-component>
+    <text-template-component :data="componentData" v-if="type === 1 || type === 23"></text-template-component>
     <hotel-list :data="componentData" :blog="blogPostData" v-if="type === 18"></hotel-list>
     <hotel-destination :data="componentData" :blog="blogPostData" v-if="type === 19"></hotel-destination>
   </div>

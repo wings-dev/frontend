@@ -210,7 +210,6 @@ export default {
             site_id: process.env.SITE,
             topMenu: [],
             mainMenu: [],
-            footerMenu: [],
             labels: {
                 days: 'Gün',
                 hours: 'Saat',

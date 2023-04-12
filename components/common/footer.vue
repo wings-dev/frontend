@@ -79,46 +79,15 @@
                 <div class="Footer-right">
                     <div class="Footer-right-top">
                         <div class="Footer-menu">
-                            <div class="Footer-menu-item">
-                                <h5 class="Footer-menu-item-head">Kurumsal</h5>
-                                <nuxt-link to="/">Gizlilik Şartları</nuxt-link>
-                                <nuxt-link to="/">İptal Şartları</nuxt-link>
-                                <nuxt-link to="/">Banka Hesapları</nuxt-link>
-                                <nuxt-link to="/">Kiralama Sözleşmesi</nuxt-link>
-                                <nuxt-link to="/">Hakkımızda</nuxt-link>
-                                <nuxt-link to="/">Sıkca Sorulan Sorular</nuxt-link>
-                                <nuxt-link to="/">Bize Ulaşın</nuxt-link>
+                            <div class="Footer-menu-item" v-for="(menu,index) in footerMenu" :key="index">
+                                <h5 class="Footer-menu-item-head">{{ menu.text }}</h5>
+                                
+                                <template v-if="menu.children">
+                                    <nuxt-link :to="'/'+child.href" v-for="child in menu.children" >{{ child.text }}</nuxt-link>
+                                </template>
                             </div>
-                            <div class="Footer-menu-item">
-                                <h5 class="Footer-menu-item-head">Popüler Rotalar</h5>
-                                <nuxt-link to="/">Marmaris</nuxt-link>
-                                <nuxt-link to="/">Fethiye</nuxt-link>
-                                <nuxt-link to="/">Kaş</nuxt-link>
-                                <nuxt-link to="/">Kalkan</nuxt-link>
-                                <nuxt-link to="/">Göcek</nuxt-link>
-                                <nuxt-link to="/">Bodrum</nuxt-link>
-                                <nuxt-link to="/">Dalyan</nuxt-link>
-                            </div>
-                            <div class="Footer-menu-item">
-                                <h5 class="Footer-menu-item-head">Kurumsal</h5>
-                                <nuxt-link to="/">Gizlilik Şartları</nuxt-link>
-                                <nuxt-link to="/">İptal Şartları</nuxt-link>
-                                <nuxt-link to="/">Banka Hesapları</nuxt-link>
-                                <nuxt-link to="/">Kiralama Sözleşmesi</nuxt-link>
-                                <nuxt-link to="/">Hakkımızda</nuxt-link>
-                                <nuxt-link to="/">Sıkca Sorulan Sorular</nuxt-link>
-                                <nuxt-link to="/">Bize Ulaşın</nuxt-link>
-                            </div>
-                            <div class="Footer-menu-item">
-                                <h5 class="Footer-menu-item-head">Popüler Rotalar</h5>
-                                <nuxt-link to="/">Marmaris</nuxt-link>
-                                <nuxt-link to="/">Fethiye</nuxt-link>
-                                <nuxt-link to="/">Kaş</nuxt-link>
-                                <nuxt-link to="/">Kalkan</nuxt-link>
-                                <nuxt-link to="/">Göcek</nuxt-link>
-                                <nuxt-link to="/">Bodrum</nuxt-link>
-                                <nuxt-link to="/">Dalyan</nuxt-link>
-                            </div>
+
+                               
                         </div>
                         <div class="Footer-creditcard">
                             <img src="/img/credit-card.svg" alt="">
@@ -226,6 +195,7 @@ export default {
     data() {
         return {
             site_id: process.env.SITE,
+            footerMenu: [],
         }
     },
     computed: {
@@ -233,6 +203,10 @@ export default {
     },
     methods: {
 
-    }
+    },
+    created() {
+        const menuData = this.$store.state['settings'].menuData;
+        this.footerMenu = menuData.foootermenu;
+    },
 }
 </script>
