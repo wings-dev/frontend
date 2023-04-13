@@ -366,14 +366,58 @@ export default {
   beforeMount() {
     const query = this.$route.query;
     if (query.i && query.o) {
-      this.checkIn = this.decodeTimestamp(query.i);
-      this.checkOut = this.decodeTimestamp(query.o);
-      const visitorId = query.v;
-      if (visitorId === localStorage.getItem('visitorId')) {
-        this.availabilityCheck();
+      function isDateRangeValid(checkInParam, checkOutParam, disableReservation) {
+        const checkInDate = new Date(checkInParam);
+        const checkOutDate = new Date(checkOutParam);
+
+        // checkInParam tarihinin bu günden önce olmamasını kontrol et
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        if (checkInDate < today) {
+          return false;
+        }
+
+        // checkInDate ve checkOutDate arasındaki tarihleri bir diziye ekleyin
+        const datesInRange = [];
+
+        let currentDate = new Date(checkInDate);
+
+        while (currentDate <= checkOutDate) {
+          datesInRange.push(currentDate.toISOString().slice(0, 10));
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+
+        // Tarihlerin her birini this.disableReservation içinde kontrol edin
+        for (const dateInRange of datesInRange) {
+          if (disableReservation.includes(dateInRange)) {
+            return false;
+          }
+        }
+
+        return true;
       }
-      this.datePickerProps.startingDateValue = this.checkIn ? new Date(this.checkIn) : null;
-      this.datePickerProps.endingDateValue = this.checkOut ? new Date(this.checkOut) : null;
+
+      const checkInParam = this.decodeTimestamp(query.i);
+      const checkOutParam = this.decodeTimestamp(query.o);
+
+      // Eğer tarih aralığı uygunsa checkIn ve checkOut değişkenlerini güncelle
+      if (isDateRangeValid(checkInParam, checkOutParam, this.disableReservation)) {
+        this.checkIn = checkInParam;
+        this.checkOut = checkOutParam;
+        this.datePickerProps.startingDateValue = new Date(checkInParam);
+        this.datePickerProps.endingDateValue = new Date(checkOutParam);
+
+        const visitorId = query.v;
+        if (visitorId === localStorage.getItem('visitorId')) {
+          this.availabilityCheck();
+        }
+      } else {
+        this.checkIn = null;
+        this.checkOut = null;
+        this.datePickerProps.startingDateValue = null;
+        this.datePickerProps.endingDateValue = null;
+      }
     }
   },
   computed: {
