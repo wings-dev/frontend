@@ -633,6 +633,7 @@ export default {
         this.mobilePeoples = true
         document.querySelector('body').classList.add('over')
         document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('.Home').classList.add('Home-z')
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     },
@@ -641,6 +642,7 @@ export default {
         this.mobileCalendar = true
         document.querySelector('body').classList.add('over')
         document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('.Home').classList.add('Home-z')
         window.scrollTo({ top: 0, behavior: 'smooth' });
         this.$refs.datePickerModal.showDatepicker()
       }
@@ -650,6 +652,7 @@ export default {
         this.mobileRegions = false
         document.querySelector('body').classList.remove('over')
         document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('.Home').classList.remove('Home-z')
       }
     },
     closePeoples() {
@@ -657,6 +660,7 @@ export default {
         this.mobilePeoples = false
         document.querySelector('body').classList.remove('over')
         document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('.Home').classList.remove('Home-z')
       }
     },
     closeCalendar() {
@@ -664,6 +668,7 @@ export default {
         this.mobileCalendar = false
         document.querySelector('body').classList.remove('over')
         document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('.Home').classList.remove('Home-z')
         this.$refs.datePickerModal.hideDatepicker()
       }
     },
