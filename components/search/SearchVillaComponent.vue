@@ -85,23 +85,11 @@
                 <p>Yetişkin</p>
                 <div class="Search-item-person-item-in ">
                   <button type="button" class="minus-person" @click="adultDecrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                   <i class="icon-minus"></i>
                   </button>
                   <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
                   <button type="button" class="plus-person" @click="adultIncrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-plus"></i>
                   </button>
                 </div>
               </div>
@@ -109,23 +97,11 @@
                 <p>Çocuk <br><span>6-17 arası</span></p>
                 <div class="Search-item-person-item-in ">
                   <button type="button" class="minus-person" @click="children_Decrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-minus"></i>
                   </button>
                   <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
                   <button type="button" class="plus-person" @click="children_Increase">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-plus"></i>
                   </button>
                 </div>
               </div>
@@ -134,23 +110,11 @@
                 <div class="Search-item-person-item-in ">
 
                   <button type="button" class="minus-person" @click="baby_Decrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-minus"></i>
                   </button>
                   <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
                   <button type="button" class="plus-person" @click="baby_Increase">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-plus"></i>
                   </button>
 
                 </div>
@@ -292,81 +256,45 @@
         <button type="button" @click="closePeoples"><i class="icon-login-close"></i></button>
       </div>
       <div class="Search-item-person">
-        <div class="Search-item-person-item ">
-          <p>Yetişkin</p>
-          <div class="Search-item-person-item-in ">
-            <button type="button" class="minus-person" @click="adultDecrease">
-              <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                <path
-                  d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                  stroke="#1C274C" stroke-linecap="round" />
-              </svg>
-            </button>
-            <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
-            <button type="button" class="plus-person" @click="adultIncrease">
-              <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                  stroke="#1C274C" stroke-linecap="round" />
-                <path
-                  d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                  stroke="#1C274C" stroke-linecap="round" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="Search-item-person-item">
-          <p>Çocuk <br><span>6-17 arası</span></p>
-          <div class="Search-item-person-item-in ">
-            <button type="button" class="minus-person" @click="children_Decrease">
-              <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                <path
-                  d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                  stroke="#1C274C" stroke-linecap="round" />
-              </svg>
-            </button>
-            <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
-            <button type="button" class="plus-person" @click="children_Increase">
-              <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                  stroke="#1C274C" stroke-linecap="round" />
-                <path
-                  d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                  stroke="#1C274C" stroke-linecap="round" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="Search-item-person-item ">
-          <p>Bebek<br><span>0-5 arası</span></p>
-          <div class="Search-item-person-item-in ">
+              <div class="Search-item-person-item ">
+                <p>Yetişkin</p>
+                <div class="Search-item-person-item-in ">
+                  <button type="button" class="minus-person" @click="adultDecrease">
+                   <i class="icon-minus"></i>
+                  </button>
+                  <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
+                  <button type="button" class="plus-person" @click="adultIncrease">
+                    <i class="icon-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="Search-item-person-item">
+                <p>Çocuk <br><span>6-17 arası</span></p>
+                <div class="Search-item-person-item-in ">
+                  <button type="button" class="minus-person" @click="children_Decrease">
+                    <i class="icon-minus"></i>
+                  </button>
+                  <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
+                  <button type="button" class="plus-person" @click="children_Increase">
+                    <i class="icon-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="Search-item-person-item ">
+                <p>Bebek<br><span>0-5 arası</span></p>
+                <div class="Search-item-person-item-in ">
 
-            <button type="button" class="minus-person" @click="baby_Decrease">
-              <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                <path
-                  d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                  stroke="#1C274C" stroke-linecap="round" />
-              </svg>
-            </button>
-            <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
-            <button type="button" class="plus-person" @click="baby_Increase">
-              <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                  stroke="#1C274C" stroke-linecap="round" />
-                <path
-                  d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                  stroke="#1C274C" stroke-linecap="round" />
-              </svg>
-            </button>
+                  <button type="button" class="minus-person" @click="baby_Decrease">
+                    <i class="icon-minus"></i>
+                  </button>
+                  <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
+                  <button type="button" class="plus-person" @click="baby_Increase">
+                    <i class="icon-plus"></i>
+                  </button>
 
-          </div>
-        </div>
-      </div>
+                </div>
+              </div>
+            </div>
       <div class="Search-mobile-bottom">
         <button type="button" @click="closePeoples">Uygula</button>
       </div>

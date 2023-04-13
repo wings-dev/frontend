@@ -273,7 +273,9 @@ export default {
         },
         mobileMenuActive() {
             if (this.mobileMenuActive == true) {
+                document.querySelector('body').classList.add('over')
             } else {
+                document.querySelector('body').classList.remove('over')
             }
         },
         searchActive() {
@@ -295,12 +297,8 @@ export default {
         },
 
         closeSubMenu(e) {
-            if (this.subMenuActive == true) {
-                this.subMenuActive = false
-            }
-            if (this.subMenuVillasActive == true) {
-                this.subMenuVillasActive = false
-            }
+            e.target.parentNode.parentNode.classList.remove('active')
+            this.openIndexes = []
         },
 
         onRouteChange(to, from) {
@@ -320,11 +318,11 @@ export default {
 
         window.onscroll = function () {
             if (scrollY >= 65) {
-                document.querySelector('.Header-inner').classList.add('Header-inner-fixed');
+                // document.querySelector('.Header-inner').classList.add('Header-inner-fixed');
                 document.querySelector('.Search-villas').classList.add('Search-villas-scroll');
             } else {
                 document.querySelector('.Header-inner').classList.remove('Header-inner-fixed')
-                document.querySelector('.Search-villas').classList.remove('Search-villas-scroll')
+                // document.querySelector('.Search-villas').classList.remove('Search-villas-scroll')
             }
 
         };

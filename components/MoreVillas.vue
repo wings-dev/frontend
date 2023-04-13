@@ -4,7 +4,7 @@
             <div class="section-caption d-flex align-items-center mb-3 pb-1">
                 <i class="icon-opportunity-calendar"></i>
                 <h4 class="">Haftanın <span>Villaları</span></h4>
-                <nuxt-link to="/kiralik-villa-ara" class="button-more button-more-dark">Tümünü Görüntüleyin</nuxt-link>
+                <nuxt-link to="/kiralik-villa-ara" class="button-more button-more-dark">Tümünü Gör</nuxt-link>
             </div>
             <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                 <div class="swiper-wrapper">
