@@ -13,7 +13,7 @@
 
           <div class="Search-item-date">
             <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
-            <div class="Search-item-date-inputs">
+            <div class="Search-item-date-inputs" ref="datePickerContainer">
 
               <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
                 @check-out-changed="checkOutChanged($event)" format="DD dddd" ref="datePicker" :i18n="calendarLanguage"
@@ -180,9 +180,12 @@ export default {
         weekday: 'long',
       }).toUpperCase();
 
-      const datepickerInput = $('[data-qa="datepickerInput"][tabindex="' + tabIndex + '"]');
+      const datepickerInputParent = this.$refs.datePickerContainer;
+      const datepickerInput = datepickerInputParent.querySelector(
+        `[data-qa="datepickerInput"][tabindex="${tabIndex}"]`
+      );
 
-      datepickerInput.html(`<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`);
+      datepickerInput.innerHTML = `<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`;
     },
   }
 }
