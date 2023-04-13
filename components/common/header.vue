@@ -146,9 +146,9 @@
                                 <p><span>müşteri hizmetleri</span>444 8 484</p>
                             </a>
                             <div class="Header-menu-bottom-social">
-                            <a href="" class="Header-menu-bottom-social-item"><i class="icon-facebook"></i></a>
-                            <a href="" class="Header-menu-bottom-social-item"><i class="icon-instagram"></i></a>
-                            <a href="" class="Header-menu-bottom-social-item"><i class="icon-twitter"></i></a>
+                                <a href="" class="Header-menu-bottom-social-item"><i class="icon-facebook"></i></a>
+                                <a href="" class="Header-menu-bottom-social-item"><i class="icon-instagram"></i></a>
+                                <a href="" class="Header-menu-bottom-social-item"><i class="icon-twitter"></i></a>
                             </div>
                         </div>
                     </div>

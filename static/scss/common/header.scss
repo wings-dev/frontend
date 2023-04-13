@@ -122,7 +122,6 @@
         top: 100%;
         left: 0;
         padding: 40px;
-        z-index: 9;
         opacity: 0;
         visibility: hidden;
         transition: all 400ms;
@@ -136,6 +135,20 @@
           top: -10px;
           left: 26%;
         }
+        &:after{
+          content: "";
+          display: inline-block;
+          width: 100vw;
+          height: calc(100vh - 80px);
+          background-color: var(--bs-theme-first);
+          position: fixed;
+          opacity: 0.2;
+          left: 0;
+          bottom: 0;
+          z-index: -1;
+          transition: all 300ms;
+          display: none;
+        }
         &.active {
           opacity: 1;
           visibility: visible;
@@ -144,7 +157,6 @@
       .mobile-back-button {
         display: none;
       }
-
       &.otel {
       }
       &-otel {
@@ -202,6 +214,12 @@
       &:nth-child(3){
         .Header-menu-item-in:before{
           left: 47%;
+        }
+      }
+      &:hover{
+        .Header-menu-item-in{
+          opacity: 1;
+          visibility: visible;
         }
       }
     }
@@ -476,6 +494,10 @@
     &-call {
       display: none;
     }
+  }
+
+  &-z{
+    z-index: 1;
   }
 }
 .header-call {
