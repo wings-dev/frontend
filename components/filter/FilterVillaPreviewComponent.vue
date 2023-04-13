@@ -23,7 +23,8 @@
             </span>
           </button>
         </div>
-        <div class="F_villa-item-opportunity">
+        <!-- TODO fırsatdan geldiğinde görünecek -->
+        <div class="F_villa-item-opportunity" v-if="false">
           <b>3</b>
           <span>GECE</span>
         </div>
@@ -47,9 +48,9 @@
             <i class="icon-name-location"></i>
             <div class="F_villa-item-head-location-text">
               <!-- <p>{{ villa.city[0].toUpperCase() + villa.city.substring(1) }}</p> -->
-              <p>{{ villa.city.toUpperCase() }}
-                <span>{{ villa.country[0].toUpperCase() + villa.country.substring(1) }} /
-                  {{ villa.city[0].toUpperCase() + villa.city.substring(1) }} </span>
+              <p>{{ villa.city | titlecase }}
+                <span>{{ villa.country | titlecase }} /
+                  {{ villa.city | titlecase }} </span>
               </p>
             </div>
           </div>

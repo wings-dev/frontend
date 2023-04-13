@@ -27,11 +27,12 @@
               <div class="view-top-right">
                 <div class="d-flex align-items-center text-theme-secondary">
                   <i class="icon-pin"></i>
-                  <p class="view-top-right-location">FETHİYE<span class="lh-sm">Turkey / Muğla</span></p>
+                  <p class="view-top-right-location">{{ villa.location.city.name | titlecase }}
+                    <span class="lh-sm">{{ villa.location.country.name  | titlecase}} / {{ villa.location.state.name  | titlecase}}</span></p>
                 </div>
-                <div class="view-top-right-price">
+                <div class="view-top-right-price" v-if="lowestPrice">
                   <span>GECELİK</span>
-                  <p>7500 <span>₺</span></p>
+                  <p>{{lowestPrice | numberFormat}} <span>₺</span></p>
                   <small>'den başlayan fiyatlar'</small>
                 </div>
               </div>
@@ -174,8 +175,8 @@
             <div class="View-desc genelbakis view-menu-content-item" id="desc-content">
               <h2 class="View-title"><b>Tesise</b> Genel Bakış</h2>
               <div class="View-desc-category">
-                <nuxt-link to="/">Deniz Manzaralı</nuxt-link>
-                <nuxt-link to="/">Muhafazakar Villa</nuxt-link>
+                <a href="javascript:void(0)">Deniz Manzaralı</a>
+                <a href="javascript:void(0)">Muhafazakar Villa</a>
               </div>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
                 tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve müthiş
@@ -1388,6 +1389,7 @@ export default {
       mobileLocation: false,
       mobilePolicy: false,
       isMobile: false,
+      lowestPrice: null,
       monthlyPrices: []
     }
   },
@@ -1604,12 +1606,14 @@ export default {
     this.setAttributes();
   },
   async mounted() {
+    console.log(this.villa);
     try {
       const response = await this.$axios.post(`/website/property/month-prices?api_token=${process.env.WEBSITE_TOKEN}`, {
         "code":this.villa.code,
         "pricelist_id": process.env.PRICELIST_ID
       })
       this.monthlyPrices = response.data
+      this.lowestPrice = Math.min(...this.monthlyPrices.map(price => price.lowest_price));
     } catch (e) {}
 
     this.$nextTick(() => {
