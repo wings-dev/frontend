@@ -72,10 +72,9 @@
                     <span class="action-btn-text">Arkadaşın ile Paylaş</span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare">
-                    <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
-                    <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
+                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnFacebook"><i class="icon-facebook"></i></a></li>
+                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnTwitter"><i class="icon-twitter"></i></a></li>
+                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnWhatsApp"><i class="icon-whatsapp"></i></a></li>
                   </ul>
                 </div>
                 <button type="button"
@@ -1443,6 +1442,8 @@ import CloseVillaModal from '../modals/close-villa-modal.vue';
 import AmenitesModal from '../modals/amenites-modal.vue';
 import MoreVillas from '../MoreVillas.vue';
 import opportunityBoxComponent from "@/components/OpportunityBoxComponent.vue";
+import { shareOnFacebook, shareOnInstagram, shareOnTwitter, shareOnWhatsApp } from '@/assets/share';
+
 export default {
   name: 'DynamicDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
@@ -1485,6 +1486,15 @@ export default {
     }
   },
   methods: {
+    shareOnFacebook() {
+      shareOnFacebook(window.location.href);
+    },
+    shareOnTwitter() {
+      shareOnTwitter(window.location.href);
+    },
+    shareOnWhatsApp() {
+      shareOnWhatsApp(window.location.href);
+    },
     opportunitySelected(opportunity) {
       function encodeTimestamp(dateString) {
         return (new Date(dateString)).getTime();
