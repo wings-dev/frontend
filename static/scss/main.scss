@@ -5625,6 +5625,8 @@ body {
       }
       .datepicker--open {
         height: calc(100vh - 240px);
+        top: unset;
+    bottom: unset;
       }
       .datepicker__month-name:last-of-type {
         padding: 1rem 0 2.5rem;
