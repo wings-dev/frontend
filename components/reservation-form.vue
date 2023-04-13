@@ -547,7 +547,21 @@ export default {
       }
     },
     baby_Increase() {
-      if (this.baby < 10) {
+      const max = this.baby === this.villa.max_baby
+      if (max) {
+        this.$toast.error("<p>Bu villada en fazla " + this.villa.max_adult + " bebek kalabilir</p>", {
+          className:'custom-toast error-toast',
+          icon: {
+            name: 'icon-reservation-cancel',
+          },
+          action : {
+            icon:'icon-toast-exit',
+            onClick : (e, toastObject) => {
+              toastObject.goAway(0);
+            }
+          }
+        })
+      } else {
         this.baby += 1;
       }
     },
