@@ -624,6 +624,7 @@ export default {
         this.mobileRegions = true
         document.querySelector('body').classList.add('over')
         document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('.Home').classList.add('Home-z')
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     },

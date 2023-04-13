@@ -1565,6 +1565,9 @@ body {
     .search-engine-section::before {
       display: none !important;
     }
+    &-z{
+      height: 100vh;
+    }
   }
   .popular-section{
     padding-top: 30px;
@@ -5527,7 +5530,7 @@ body {
     }
     &-mobile {
       width: 100vw;
-      height: 100vh;
+      height: 100dvh;
       position: fixed;
       left: 0;
       top: 0;
@@ -5540,7 +5543,7 @@ body {
       &.show {
         opacity: 1;
         visibility: visible;
-        top: -141px;
+        // top: -211px;
       }
       &-head {
         display: flex;
@@ -5566,7 +5569,8 @@ body {
       }
       .Filters {
         border: none;
-        height: calc(100% - 150px);
+        height: 100%;
+        overflow: hidden;
         &-in {
           display: block;
           position: static;
