@@ -206,7 +206,6 @@
                   <p>Barbekü / Mangal Alanı</p>
                 </div>
                 <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar (14)</b-button>
-                <b-button v-b-modal.reservationSuccessModal class="View-desc-amenites-more">başarılı</b-button>
 
               </div>
             </div>
