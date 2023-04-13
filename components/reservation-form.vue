@@ -285,7 +285,7 @@
 
       <!-- desktop -->
       <template v-else>
-        <button v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading"
+        <button v-if="!availabilityChecked"
           class="Reservation-form-submit" @click.prevent="availabilityCheck()">
           Uygunluk Durumunu Kontrol Edin
         </button>
@@ -404,6 +404,13 @@ export default {
       return `${year}-${month}-${day}`;
     },
     async availabilityCheck() {
+      if (!this.dateSelected || this.availabilityLoading) {
+        setTimeout(() => {
+          this.$refs.datePicker.showDatepicker();
+        }, 50)
+        return
+      }
+
       this.availabilityLoading = true;
 
       const data = {
