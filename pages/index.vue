@@ -41,8 +41,8 @@
                                                 :srcset="item.preview_image[0].responsive_url" width="267"
                                                 height="175"></nuxt-img>
                                         </nuxt-link>
-                                        <button class="Card-fav" type="button">
-                                            <i class="icon-heart"></i>
+                                        <button class="Card-fav" type="button" @click="toggleFavorite(item.code)" :class="isFavorite(item.code) ? 'active' : ''">
+                                            <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
                                         </button>
                                     </div>
                                     <div class="Card-content">
@@ -568,8 +568,6 @@ export default {
             ],
         }
     },
-    components: {
-    },
     data() {
         return {
             steps: [
@@ -703,6 +701,19 @@ export default {
         })
 
 
+    },
+    methods: {
+      isFavorite(code) {
+        return this.$store.state.favorite.favorites.includes(code)
+      },
+      toggleFavorite(code) {
+        event.stopPropagation();
+        if (this.isFavorite(code)) {
+          this.$store.dispatch('favorite/removeFavorite', code)
+        } else {
+          this.$store.dispatch('favorite/addFavorite', code)
+        }
+      }
     }
 
 }
