@@ -4,10 +4,14 @@
             <form action="" class="search-engine">
                 <nav>
                     <div class="nav nav-tabs border-0 lh-sm" id="search-tab" role="tablist">
-                        <nuxt-link to="/" button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0"
-                            :class="{ 'active': $route.path == '/kiralik-villa-ara' || $route.path == '/' || $route.path == '/kiralik-villa' }" type="button"><span
+                        <nuxt-link to="/" button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0 active"
+                             type="button"><span
                                 class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt İçi
                                 Villalar</span></nuxt-link>
+                        <!-- <nuxt-link to="/" button class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0"
+                            :class="{ 'active': $route.path == '/kiralik-villa-ara' || $route.path == '/' || $route.path == '/kiralik-villa' }" type="button"><span
+                                class="d-inline-block fw-medium px-2 px-sm-3 py-1">Yurt İçi
+                                Villalar</span></nuxt-link> -->
 
                         <nuxt-link to="yurtdisi-kiralik-villa"
                             class="nav-link text-white ls-05 py-2 py-sm-3 px-3 px-sm-4 mb-0"
@@ -25,11 +29,16 @@
                     </div>
                 </nav>
                 <div class="tab-content" id="search-tabContent">
-                    <div class="tab-pane fade"
-                        :class="{ 'show active': $route.path == '/kiralik-villa-ara' || $route.path == '/' || $route.path == '/kiralik-villa' }" id="nav-home"
+                    <div class="tab-pane fade show active"
+                         id="nav-home"
                         role="tabpanel" aria-labelledby="nav-home-tab">
                         <search-villa-component :key="$route.path"></search-villa-component>
                     </div>
+                    <!-- <div class="tab-pane fade"
+                        :class="{ 'show active': $route.path == '/kiralik-villa-ara' || $route.path == '/' || $route.path == '/kiralik-villa' }" id="nav-home"
+                        role="tabpanel" aria-labelledby="nav-home-tab">
+                        <search-villa-component :key="$route.path"></search-villa-component>
+                    </div> -->
                     <div class="tab-pane fade" :class="{ 'show active': $route.path == '/yurtdisi-kiralik-villa' || $route.path == '/yurtdisi-kiralik-villa-ara' }"
                         id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <search-abroad-villa-component :key="$route.path"></search-abroad-villa-component>

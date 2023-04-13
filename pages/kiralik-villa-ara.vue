@@ -32,6 +32,7 @@ export default {
     this.parseQueryString();
   },
   mounted() {
+    
   },
   methods: {
     parseQueryString() {
