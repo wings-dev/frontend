@@ -125,7 +125,7 @@ export default {
           data.email = this.email;
         }
 
-        const response = await this.$axios.post('/api/sendcode', data);
+        const response = await this.$axios.post('/website/sendcode', data);
         // TODO numaranın doğruluğu cevaptan kontrol edilecek ?
 
         // show Login Code Modal

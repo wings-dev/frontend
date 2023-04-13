@@ -444,7 +444,7 @@ export default {
   methods: {
     async update() {
       this.loading = true;
-      await this.$axios.put('/api/profile', this.form)
+      await this.$axios.put('/website/profile', this.form)
       this.loading = false;
     },
     async countryChanged(country) {

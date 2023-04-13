@@ -3,17 +3,17 @@ require("dotenv").config();
 export default {
   // environment variables, access with like this.$config.NODE_ENV
   publicRuntimeConfig: {
-    message: process.env.hey || "hello world!",
+    message: process.env.hey || "hello world!"
   },
   privateRuntimeConfig: {
-    message: process.env.hey || "hello world!",
+    message: process.env.hey || "hello world!"
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "wings-frontend",
     htmlAttrs: {
-      lang: "en",
+      lang: "en"
     },
     meta: [
       {charset: "utf-8"},
@@ -26,28 +26,28 @@ export default {
     link: [
       {rel: "icon", type: "image/x-icon", href: "/favicon.ico"},
       {rel: "stylesheet", href: "/css/custom-bootstrap.min.css"},
-      {rel: "stylesheet", href: "/css/main.min.css"},
+      {rel: "stylesheet", href: "/css/main.min.css"}
     ],
     script: [
       {
-        src: "/js/bootstrap/bootstrap.bundle.min.js",
-      },
-    ],
+        src: "/js/bootstrap/bootstrap.bundle.min.js"
+      }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     {
       src: "@fancyapps/ui/dist/fancybox.css",
-      lang: "css",
+      lang: "css"
     },
     "vue-tour/dist/vue-tour.css",
     'vue-select/dist/vue-select.css'
   ],
   googleFonts: {
     families: {
-      Montserrat: [200, 300, 400, 500, 700],
-    },
+      Montserrat: [200, 300, 400, 500, 700]
+    }
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -63,7 +63,7 @@ export default {
     {src: '~/plugins/filters.js'},
     {src: '~/plugins/vue-select.js', ssr: false},
     {src: '~/plugins/dataService.js'},
-    { src: '~/plugins/moment.js' },
+    { src: '~/plugins/moment.js' }
     // '~/plugins/bugsnag.js'
   ],
 
@@ -118,17 +118,17 @@ export default {
           checkboxActiveCircleBackground: "#00c58e",
           checkboxInactiveCircleBackground: "#f44336",
           checkboxDisabledBackground: "#ddd",
-          checkboxDisabledCircleBackground: "#fff",
+          checkboxDisabledCircleBackground: "#fff"
         },
         text: {
           locale: {
             en: {
               barTitle: "Çerezler",
-              barDescription: "We use our own cookies and third-party...",
-            },
-          },
-        },
-      },
+              barDescription: "We use our own cookies and third-party..."
+            }
+          }
+        }
+      }
     ],
     "@nuxtjs/toast",
     'nuxt-vue-multiselect'
@@ -149,14 +149,14 @@ export default {
     necessary: [
       {
         name: {
-          en: "Default cookies",
+          en: "Default cookies"
         },
 
         description: {
-          en: "Used for cookie control.",
+          en: "Used for cookie control."
         },
-        cookies: ["cookie_control_consent", "cookie_control_enabled_cookies"],
-      },
+        cookies: ["cookie_control_consent", "cookie_control_enabled_cookies"]
+      }
     ],
     optional: [
       {
@@ -166,10 +166,10 @@ export default {
           es: "Google Analytics",
           fr: "Google Analytics",
           hr: "Google Analitika",
-          it: "Google Analytics",
+          it: "Google Analytics"
         },
         description: {
-          en: "Google Analytics is a web analytics service offered by Google that tracks and reports website traffic.",
+          en: "Google Analytics is a web analytics service offered by Google that tracks and reports website traffic."
         },
         src: "https://www.googletagmanager.com/gtag/js?id=UA-138616567-1",
         async: true,
@@ -183,9 +183,9 @@ export default {
 
           gtag("js", new Date());
           gtag("config", "UA-138616567-1");
-        },
-      },
-    ],
+        }
+      }
+    ]
   },
 
   auth: {
@@ -203,46 +203,46 @@ export default {
           login: {
             url: "/api/login",
             method: "post",
-            propertyName: "access_token",
+            propertyName: "access_token"
           },
           logout: false,
-          user: false, // disables the default /api/auth/user endpoint
+          user: false // disables the default /api/auth/user endpoint
         },
         token: {
           property: "access_token",
-          maxAge: 60 * 60,
+          maxAge: 60 * 60
         },
         refreshToken: {
-          maxAge: 20160 * 60,
+          maxAge: 20160 * 60
         }
-      },
-    },
+      }
+    }
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: "/",
-    proxy: true,
+    proxy: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     // standalone: true,
-    transpile: ["swiper"],
+    transpile: ["swiper"]
 
   },
 
   proxy: {
     "/website": {
-      target: process.env.PROXY_API,
+      target: process.env.PROXY_API
     },
     "/data": {
-      target: process.env.PROXY_DATA,
+      target: process.env.PROXY_DATA
     },
     "/visitor": {
-      target: process.env.PROXY_VISITOR,
-    },
+      target: process.env.PROXY_VISITOR
+    }
   },
 
   router: {

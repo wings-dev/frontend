@@ -124,10 +124,10 @@ export default {
       }
 
       try {
-        const response = await this.$axios.post('/api/register', this.form);
+        const response = await this.$axios.post('/website/register', this.form);
         //if (response.data.status === true) {
         if (response.data.hasOwnProperty('access_token')) {
-          const response = await this.$axios.post('/api/sendcode', data);
+          const response = await this.$axios.post('/website/sendcode', data);
 
           this.setLoginCodeModalData({
             loginType: this.form.prephone === '90' ? 'phone': 'email',

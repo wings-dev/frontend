@@ -95,7 +95,7 @@ export default {
       }
     },
     async resend() {
-      const response = await this.$axios.post('/api/sendcode', this.data);
+      const response = await this.$axios.post('/website/sendcode', this.data);
       this.codes = ['', '', '', ''];
       this.key = this.key + 1; // contdown yeniliyor.
     },
