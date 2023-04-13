@@ -508,8 +508,26 @@ export default {
         return `${month}/${day}/${year}`;
       }
     },
+    checkMaxPerson() {
+      const max = this.adult + this.child === this.villa.max_adult
+      if (max) {
+        this.$toast.error("<p>Bu villada en fazla " + this.villa.max_adult + " kişi kalabilir</p>", {
+          className:'custom-toast error-toast',
+          icon: {
+            name: 'icon-reservation-cancel',
+          },
+          action : {
+            icon:'icon-toast-exit',
+            onClick : (e, toastObject) => {
+              toastObject.goAway(0);
+            }
+          }
+        })
+      }
+      return max
+    },
     adultIncrease() {
-      if (this.adult < 20) {
+      if (!this.checkMaxPerson()) {
         this.adult += 1;
       }
     },
@@ -519,7 +537,7 @@ export default {
       }
     },
     children_Increase() {
-      if (this.child < 10) {
+      if (!this.checkMaxPerson()) {
         this.child += 1;
       }
     },
@@ -556,6 +574,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.villa);
     window.addEventListener("load", this.handleResize);
     window.addEventListener("resize", this.handleResize);
   },
