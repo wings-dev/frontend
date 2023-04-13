@@ -251,7 +251,7 @@
                     class="icon-right-arrow"></i></button>
               </div>
             </div>
-            <div class="View-months">
+            <div class="View-months" v-if="monthlyPrices.length > 0">
               <h4 class="View-title"><b>Aylara</b> Göre Genel Bakış</h4>
               <p class="View-text">
                 Fiyatlar belirtilen ay için belirlenmiş en düşük gecelik ücrettir. Ay içerisinde farklı fiyatlandırmalar
@@ -260,116 +260,21 @@
 
               <div class="swiper swiper-months swiper-overflow mt-4">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide disabled">
-                    <div class="View-months-item ">
-                      <div class="View-months-item-title">
-                        <h5>MAYIS </h5>
-                      </div>
-                      <div class="View-months-item-in">
-                        <div class="View-months-item-price">
-                          <span>GECELİK</span>
-                          <b>-</b>
-                          <small>‘den başlayan fiyatlarla</small>
-                        </div>
-                        <div class="View-months-item-days">
-                          <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                              title="Tooltip on right"></i></b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide disabled">
-                    <div class="View-months-item ">
-                      <div class="View-months-item-title">
-                        <h5>MAYIS </h5>
-                      </div>
-                      <div class="View-months-item-in">
-                        <div class="View-months-item-price">
-                          <span>GECELİK</span>
-                          <b>-</b>
-                          <small>‘den başlayan fiyatlarla</small>
-                        </div>
-                        <div class="View-months-item-days">
-                          <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                              title="Tooltip on right"></i></b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide disabled">
-                    <div class="View-months-item ">
-                      <div class="View-months-item-title">
-                        <h5>MAYIS </h5>
-                      </div>
-                      <div class="View-months-item-in">
-                        <div class="View-months-item-price">
-                          <span>GECELİK</span>
-                          <b>-</b>
-                          <small>‘den başlayan fiyatlarla</small>
-                        </div>
-                        <div class="View-months-item-days">
-                          <p>EN AZ KONAKLAMA</p>
-                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                              title="Tooltip on right"></i></b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
+                  <div class="swiper-slide" v-for="price in monthlyPrices" :key="price.month">
                     <div class="View-months-item">
                       <div class="View-months-item-title">
-                        <h5>MAYIS </h5>
+                        <h5>{{ price.month }}</h5>
                       </div>
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
                           <span>GECELİK</span>
-                          <b>3500₺</b>
+                          <b>{{ price.lowest_price }}₺</b>
                           <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
                           <p>En az konaklama</p>
-                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                              title="Tooltip on right"></i></b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="View-months-item">
-                      <div class="View-months-item-title">
-                        <h5>MAYIS </h5>
-                      </div>
-                      <div class="View-months-item-in">
-                        <div class="View-months-item-price">
-                          <span>GECELİK</span>
-                          <b>3500₺</b>
-                          <small>‘den başlayan fiyatlarla</small>
-                        </div>
-                        <div class="View-months-item-days">
-                          <p>En az konaklama</p>
-                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                              title="Tooltip on right"></i></b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="View-months-item">
-                      <div class="View-months-item-title">
-                        <h5>MAYIS </h5>
-                      </div>
-                      <div class="View-months-item-in">
-                        <div class="View-months-item-price">
-                          <span>GECELİK</span>
-                          <b>3500₺</b>
-                          <small>‘den başlayan fiyatlarla</small>
-                        </div>
-                        <div class="View-months-item-days">
-                          <p>En az konaklama</p>
-                          <b>2 GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                              title="Tooltip on right"></i></b>
+                          <b>{{ price.minaccomodationday }} GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                                                                    title="Tooltip on right"></i></b>
                         </div>
                       </div>
                     </div>
@@ -1483,6 +1388,7 @@ export default {
       mobileLocation: false,
       mobilePolicy: false,
       isMobile: false,
+      monthlyPrices: []
     }
   },
   methods: {
@@ -1697,7 +1603,15 @@ export default {
   beforeMount() {
     this.setAttributes();
   },
-  mounted() {
+  async mounted() {
+    try {
+      const response = await this.$axios.post(`/website/property/month-prices?api_token=${process.env.WEBSITE_TOKEN}`, {
+        "code":this.villa.code,
+        "pricelist_id": process.env.PRICELIST_ID
+      })
+      this.monthlyPrices = response.data
+    } catch (e) {}
+
     Swiper.use([Navigation, Pagination])
 
     const swiper = new Swiper('.swiper-months', {
