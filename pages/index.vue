@@ -53,7 +53,7 @@
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>{{ item.city }} <span>{{ item.country }} / {{ item.state }}</span></p>
+                                                <p>{{ item.city | titlecase}} <span>{{ item.country | titlecase }} / {{ item.state | titlecase }}</span></p>
                                             </div>
                                         </div>
                                         <div class="Card-content-info">
