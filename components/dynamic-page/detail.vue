@@ -1612,154 +1612,156 @@ export default {
       this.monthlyPrices = response.data
     } catch (e) {}
 
-    Swiper.use([Navigation, Pagination])
+    this.$nextTick(() => {
+      Swiper.use([Navigation, Pagination])
 
-    const swiper = new Swiper('.swiper-months', {
-      slidesPerView: 4,
-      spaceBetween: 18,
-      breakpoints: {
-        200: {
-          slidesPerView: 3,
-          spaceBetween: 8,
+      const swiper = new Swiper('.swiper-months', {
+        slidesPerView: 4,
+        spaceBetween: 18,
+        breakpoints: {
+          200: {
+            slidesPerView: 3,
+            spaceBetween: 8,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 18,
+          },
+          1199: {
+            slidesPerView: 6,
+            spaceBetween: 18,
+          },
         },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 18,
+      })
+      const swiperFloorplan = new Swiper('.swiper-floorplan', {
+        slidesPerView: 1,
+        watchSlidesProgress: true,
+        navigation: {
+          nextEl: ".floorplan-navigation-next",
+          prevEl: ".floorplan-navigation-prev",
         },
-        1199: {
-          slidesPerView: 6,
-          spaceBetween: 18,
+        breakpoints: {
+          576: {
+            slidesPerView: 2,
+            spaceBetween: 17,
+          },
+          768: {
+            slidesPerView: 2.5,
+            spaceBetween: 17,
+          }
         },
-      },
-    })
-    const swiperFloorplan = new Swiper('.swiper-floorplan', {
-      slidesPerView: 1,
-      watchSlidesProgress: true,
-      navigation: {
-        nextEl: ".floorplan-navigation-next",
-        prevEl: ".floorplan-navigation-prev",
-      },
-      breakpoints: {
-        576: {
-          slidesPerView: 2,
-          spaceBetween: 17,
+      })
+
+      const swiper3 = new Swiper('.list-slide-opportunity', {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        direction: 'horizontal',
+        loop: true,
+        modules: [Navigation, Pagination],
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         },
-        768: {
-          slidesPerView: 2.5,
-          spaceBetween: 17,
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+        },
+        breakpoints: {
+          576: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1199: {
+            slidesPerView: 2,
+          },
+        },
+      })
+
+      this.$el.addEventListener('click', function (e) {
+        if (e.target.closest('.dropdown-menu')) {
+          e.stopPropagation();
         }
-      },
-    })
+      });
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-    const swiper3 = new Swiper('.list-slide-opportunity', {
-      slidesPerView: 1,
-      spaceBetween: 16,
-      direction: 'horizontal',
-      loop: true,
-      modules: [Navigation, Pagination],
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-      },
-      breakpoints: {
-        576: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        1199: {
-          slidesPerView: 2,
-        },
-      },
-    })
+      document.querySelector('.Header').classList.add('villa-detay')
+      document.querySelector('body').classList.add('villa-detay')
 
-    this.$el.addEventListener('click', function (e) {
-      if (e.target.closest('.dropdown-menu')) {
-        e.stopPropagation();
-      }
-    });
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+      const sections = document.querySelectorAll(".view-menu-content-item");
+      const navLi = document.querySelectorAll(".View-menu-item");
 
-    document.querySelector('.Header').classList.add('villa-detay')
-    document.querySelector('body').classList.add('villa-detay')
+      window.onscroll = function () {
+        try {
+          scrollFunction()
+          var current = "";
 
-    const sections = document.querySelectorAll(".view-menu-content-item");
-    const navLi = document.querySelectorAll(".View-menu-item");
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (scrollY >= sectionTop - 180) {
+              current = section.getAttribute("id");
+            }
 
-    window.onscroll = function () {
-      try {
-        scrollFunction()
-        var current = "";
+          });
 
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          if (scrollY >= sectionTop - 180) {
-            current = section.getAttribute("id");
+          navLi.forEach((li) => {
+            li.classList.remove("active");
+            if (li.classList.contains(current)) {
+              li.classList.add("active");
+            }
+          });
+          if (scrollY >= document.querySelector('#more-villas').offsetTop - 400) {
+            document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
+          } else {
+
+          }
+        } catch (e) {
+
+        }
+      };
+
+      function scrollFunction() {
+        try {
+          if (document.body.scrollTop > 151 || document.documentElement.scrollTop > 151) {
+            document.getElementById("detailTop").classList.add('custom-fixed')
+            document.getElementById("detailMenu").classList.add('custom-fixed', 'custom-fixed-menu')
+            document.querySelector(".View").classList.add('View-top')
+            document.querySelector("body").classList.add('body-fixed')
+            document.querySelector('.share-btn').classList.add('d-none')
+            document.querySelector('.up-button').classList.remove('d-none')
+          } else {
+            document.getElementById("detailTop").classList.remove('custom-fixed')
+            document.getElementById("detailMenu").classList.remove('custom-fixed', 'custom-fixed-menu')
+            document.querySelector(".View").classList.remove('View-top')
+            document.querySelector("body").classList.remove('body-fixed')
+            document.querySelector('.share-btn').classList.remove('d-none')
+            document.querySelector('.up-button').classList.add('d-none')
+          }
+          if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
+            document.querySelector(".View-right-opportunity").classList.add('opacity-0')
+
+          } else {
+            document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
+            document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
           }
 
-        });
-
-        navLi.forEach((li) => {
-          li.classList.remove("active");
-          if (li.classList.contains(current)) {
-            li.classList.add("active");
-          }
-        });
-        if (scrollY >= document.querySelector('#more-villas').offsetTop - 400) {
-          document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
-        } else {
-
+        } catch (error) {
+          // console.error('scrollFunction hatası:', error);
         }
-      } catch (e) {
 
       }
-    };
 
-    function scrollFunction() {
-      try {
-        if (document.body.scrollTop > 151 || document.documentElement.scrollTop > 151) {
-          document.getElementById("detailTop").classList.add('custom-fixed')
-          document.getElementById("detailMenu").classList.add('custom-fixed', 'custom-fixed-menu')
-          document.querySelector(".View").classList.add('View-top')
-          document.querySelector("body").classList.add('body-fixed')
-          document.querySelector('.share-btn').classList.add('d-none')
-          document.querySelector('.up-button').classList.remove('d-none')
-        } else {
-          document.getElementById("detailTop").classList.remove('custom-fixed')
-          document.getElementById("detailMenu").classList.remove('custom-fixed', 'custom-fixed-menu')
-          document.querySelector(".View").classList.remove('View-top')
-          document.querySelector("body").classList.remove('body-fixed')
-          document.querySelector('.share-btn').classList.remove('d-none')
-          document.querySelector('.up-button').classList.add('d-none')
-        }
-        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-          document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
-          document.querySelector(".View-right-opportunity").classList.add('opacity-0')
-
-        } else {
-          document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
-          document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
-        }
-
-      } catch (error) {
-        // console.error('scrollFunction hatası:', error);
+      if (this.attributes.length === 0) {
+        setTimeout(() => {
+          this.$bvModal.show('closeVillaModal')
+        }, 50)
       }
-
-    }
-
-    if (this.attributes.length === 0) {
-      setTimeout(() => {
-        this.$bvModal.show('closeVillaModal')
-      }, 50)
-    }
-    window.addEventListener("load", this.handleResize);
-    window.addEventListener("resize", this.handleResize);
+      window.addEventListener("load", this.handleResize);
+      window.addEventListener("resize", this.handleResize);
+    })
   },
   computed: {
     opportunityBoxComponent() {
