@@ -60,7 +60,9 @@
               <label for="" class="Login-form-item mb-2">
                 <input type="text" placeholder="E-mail Adresiniz" value="" id="mailInput" v-model="form.email" required>
               </label>
-              <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup"></p>
+              <p v-if="form.email && !isValidEmail(form.email)" class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup">
+                Lütfen geçerli bir email adresi giriniz.
+              </p>
               <label for="" class="Login-form-item Login-form-item-tr">
                 <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"
                   :defaultCountry="'TR'"></vue-tel-input>
@@ -137,11 +139,20 @@ export default {
   computed: {
     ...mapState(['reservationModalData']),
     formValidated() {
-      return this.form.name && this.form.email && this.phoneObject.valid && this.checkboxAcceptRules;
-    }
+      return (
+        this.form.name &&
+        this.isValidEmail(this.form.email) &&
+        this.phoneObject.valid &&
+        this.checkboxAcceptRules
+      );
+    },
   },
   methods: {
     ...mapMutations(['setReservationModalData']),
+    isValidEmail(email) {
+      const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+      return emailRegex.test(email);
+    },
     getBrowserInfo() {
       return navigator.userAgent;
     },
