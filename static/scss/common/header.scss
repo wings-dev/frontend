@@ -855,7 +855,7 @@
           flex-wrap: unset;
           background-image: none;
           background-color: var(--bs-theme-first);
-
+          pointer-events: all;
           &.active {
             opacity: 1;
             visibility: visible;
