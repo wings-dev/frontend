@@ -390,6 +390,15 @@
         width: 100%;
       }
     }
+    &-icons {
+      .Card-content {
+        &-info {
+          &-item {
+            margin-right: 20px;
+          }
+        }
+      }
+    }
   }
 }
 .O_Card {

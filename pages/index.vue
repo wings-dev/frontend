@@ -634,10 +634,13 @@ export default {
                 prevEl: '.swiper-button-prev'
             },
             breakpoints: {
-                576: {
+                680: {
                     slidesPerView: 2,
                 },
                 768: {
+                    slidesPerView: 2,
+                },
+                991:{
                     slidesPerView: 3,
                 },
                 1199: {

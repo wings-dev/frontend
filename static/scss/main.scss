@@ -1203,6 +1203,9 @@ body {
     .cat-item .cat-image {
       height: 300px !important;
     }
+    .area7 {
+      width: calc(50% - 6px);
+     }
   }
 }
 
@@ -1257,6 +1260,9 @@ body {
           }
         }
       }
+    }
+    .area7 {
+     width: 100%;
     }
     &-more {
       a {
@@ -9745,8 +9751,18 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
-    .list-item {
-      width: calc(25% - 14px);
+    .Card{
+      width: calc(33.3% - 16px);
+    }
+    @media (max-width:991px) {
+      .Card{
+        width: calc(50% - 16px);
+        }
+    }
+    @media (max-width:650px) {
+      .Card{
+        width: calc(100%);
+        }
     }
   }
 }

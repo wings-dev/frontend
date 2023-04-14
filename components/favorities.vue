@@ -4,59 +4,53 @@
       <div class="Favs-in">
         <h2>Favorilerinizdeki Villalar <span>({{ villas.length }})</span></h2>
         <div class="Favs-list">
-          <div class="list-item rounded-xxl" v-for="villa in villas">
-            <div class="list-image position-relative">
-              <a :href="villa.detail.code" class="d-block flex-shrink-0">
-                <nuxt-img :src="villa.detail.watermark_images[0].preview_url" width="280" height="186"
-                          class="main-image bg-light lazy cover rounded-xl w-100" />
-              </a>
-              <div class="position-absolute top-0 end-0 pt-3 mt-1 pe-3">
-                <a href="javascript:void(0);" @click="removeFavorite(villa.detail.code)"
-                   class="fav-btn rounded-circle d-flex align-items-center justify-content-center p-0"
-                   onclick="$(this).toggleClass('active')">
+        
+          <div class="Card" v-for="(villa, index) in villas" :key="index">
+            <div class="Card-in">
+              <div class="Card-img">
+                <nuxt-link :to="'/'+villa.detail.code">
+                  <nuxt-img :src="villa.detail.watermark_images[0].preview_url" :srcset="villa.detail.watermark_images[0].responsive"
+                    width="267" height="175"></nuxt-img>
+                </nuxt-link>
+                <button class="Card-fav active" type="button" @click="removeFavorite(villa.detail.code)">
                   <i class="icon-heart-full"></i>
-                </a>
+                </button>
               </div>
-            </div>
-            <div class="list-content ps-3 pe-3 pt-2 pb-3">
-              <div class="d-flex justify-content-between  mb-2 pb-1">
-                <div class="d-flex align-items-end">
-                  <div class="d-flex flex-column item-name">
-                    <small>Tesis Kodu</small>
-                    <span class="list-title fs-6 lh-sm fw-medium ls-05 d-block me-2">{{ prefix + villa.detail.code
-                      }}</span>
+              <div class="Card-content">
+                <div class="Card-content-head">
+                  <div class="Card-content-head-code">
+                    <b>{{ prefix + villa.detail.code}}</b>
+                    <span>Tesis Kodu</span>
                   </div>
-                  <div class="d-flex align-items-center fw-medium text-theme-secondary">
-                    <i class="icon-star"></i>
-                    <span>4,9</span>
+                  <div class="Card-content-head-location">
+                    <i class="icon-pin"></i>
+                    <p>{{ villa.detail.location.district.name | titlecase }} <span>{{ villa.detail.location.country.name | titlecase }} / {{ villa.detail.location.city.name | titlecase
+                    }}</span></p>
                   </div>
                 </div>
-                <div class="item-location d-flex align-items-center text-theme-secondary">
-                  <i class="icon-pin"></i>
-                  <span class="lh-sm d-flex flex-column"><b class="text-theme-first">{{
-                      villa.detail.location.district.name }}</b>{{ villa.detail.location.country.name }}
-                      / {{ villa.detail.location.city.name }}</span>
+                <div class="Card-content-info">
+                  <div class="Card-content-info-item">
+                    <i class="icon-user"></i>
+                    <span>{{ villa.detail.max_adult }} Kişilik</span>
+                  </div>
+                  <div class="Card-content-info-item">
+                    <i class="icon-bed"></i>
+                    <span>{{ villa.detail.bedroom }} Yatak Odası</span>
+                  </div>
+                  <div class="Card-content-info-item">
+                    <i class="icon-shower"></i>
+                    <span>{{ villa.detail.bathrooms }} Banyo</span>
+                  </div>
                 </div>
               </div>
-
-              <div class="item-infos row gx-2 pe-1 pb-2 d-flex">
-                <div class="info  d-flex align-items-center rounded-sm">
-                  <i class="icon-user"></i>
-                  <span class="lh-sm text-theme-first text-sm">{{ villa.detail.max_adult }} Kişilik</span>
+              <div class="Card-content-bottom">
+                <div class="Card-content-bottom-price">
+                  <p><b>1.400TL - 2.200TL
+                    </b><span>/Gecelik</span></p>
+                  <p>Fiyat Aralığında</p>
                 </div>
-                <div class="info  d-flex align-items-center rounded-sm">
-                  <i class="icon-shower"></i>
-                  <span class="lh-sm text-theme-first text-sm">{{ villa.detail.bedroom }} Yatak Odası</span>
-                </div>
-                <div class="info  d-flex align-items-center rounded-sm">
-                  <i class="icon-bed"></i>
-                  <span class="lh-sm text-theme-first text-sm">{{ villa.detail.bathrooms }} Banyo</span>
-                </div>
-              </div>
-              <div class="lh-sm ls-05 mt-1" v-if="villa.price !== null">
-                  <span class="text-secondary list-item-info">Gecelik <strong
-                    class="text-theme-second fs-5-5 fw-medium">11.526 TL</strong> başlayan
-                    fiyatlarla</span>
+                <nuxt-link :to="'/'+villa.detail.code" class="Card-content-bottom-link"><i
+                    class="icon-right-arrows-new"></i></nuxt-link>
               </div>
             </div>
           </div>
@@ -92,16 +86,15 @@ export default {
         this.villas.push(villaData)
       }
     }
+    console.log(this.villas)
   },
   methods: {
     removeFavorite(code) {
       this.$store.dispatch('favorite/removeFavorite', code)
       this.villas = this.villas.filter(villa => villa.detail.code !== code)
     },
-  }
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
