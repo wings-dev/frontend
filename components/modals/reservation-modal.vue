@@ -92,7 +92,7 @@
 
 <script>
 
-import { mapActions, mapMutations, mapState } from "vuex";
+import {mapMutations, mapState} from "vuex";
 
 export default {
   name: "ReservationModal",
@@ -142,6 +142,39 @@ export default {
   },
   methods: {
     ...mapMutations(['setReservationModalData']),
+    getBrowserInfo() {
+      return navigator.userAgent;
+    },
+    async getUserIP() {
+      try {
+        const response = await this.$axios.get("https://api.ipify.org?format=json");
+        return response.data.ip;
+      } catch (error) {
+        console.error("IP adresi alınamadı", error);
+        return null;
+      }
+    },
+    getOperatingSystem() {
+      const userAgent = window.navigator.userAgent;
+      const platform = window.navigator.platform;
+      let os = null;
+
+      if (platform.startsWith("Win")) {
+        os = "Windows";
+      } else if (platform.startsWith("Mac")) {
+        os = "macOS";
+      } else if (platform.startsWith("Linux")) {
+        os = "Linux";
+      } else if (/Android/.test(userAgent)) {
+        os = "Android";
+      } else if (/iPhone|iPad|iPod/.test(userAgent)) {
+        os = "iOS";
+      } else {
+        os = "Bilinmeyen İşletim Sistemi";
+      }
+
+      return os;
+    },
     onInput(phone, phoneObject) {
       setTimeout(() => {
         this.phoneObject = phoneObject;
@@ -173,6 +206,9 @@ export default {
           name: data.name,
           email: data.email,
           reservationID: this.reservationModalData.reservationID,
+          ip: await this.getUserIP(),
+          os: this.getOperatingSystem(),
+          browser: this.getBrowserInfo(),
         };
 
         try {
@@ -187,7 +223,12 @@ export default {
         }
       } else {
         try {
-          const response = await this.$axios.post(apiUrl, data);
+          const response = await this.$axios.post(apiUrl, {
+            ...data,
+            ip: await this.getUserIP(),
+            os: this.getOperatingSystem(),
+            browser: this.getBrowserInfo()
+          });
           reservationID = response.data.reservationID;
         } catch (error) {
           if (error.response) {
