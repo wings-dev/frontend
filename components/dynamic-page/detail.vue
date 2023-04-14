@@ -1390,7 +1390,27 @@ export default {
       mobilePolicy: false,
       isMobile: false,
       lowestPrice: null,
-      monthlyPrices: []
+      monthlyPrices: [],
+      places: {
+        beaches: [
+
+        ],
+        locations: [
+
+        ],
+        health: [
+
+        ],
+        restaurant: [
+
+        ],
+        market: [
+
+        ],
+        transport: [
+
+        ]
+      }
     }
   },
   methods: {
@@ -1606,7 +1626,65 @@ export default {
     this.setAttributes();
   },
   async mounted() {
-    console.log(this.villa);
+    // console.log(this.villa);
+
+    const places = {
+      beaches: [
+
+      ],
+      locations: [
+
+      ],
+      health: [
+
+      ],
+      restaurant: [
+
+      ],
+      market: [
+
+      ],
+      transport: [
+
+      ]
+    }
+
+    for (const key in this.villa.places) {
+      const placeType = this.villa.places[key];
+      const placeTypeId = parseInt(placeType.place_type_id);
+
+      switch (placeTypeId) {
+        case 4:
+          places.beaches = [...places.beaches, ...placeType.place ?? []];
+          break;
+        case 9:
+          places.locations = [...places.locations, ...placeType.place ?? []];
+          break;
+        case 3:
+          places.health = [...places.health, ...placeType.place ?? []];
+          break;
+        case 1:
+          places.restaurant = [...places.restaurant, ...placeType.place ?? []];
+          break;
+        case 10:
+          places.market = [...places.market, ...placeType.place ?? []];
+          break;
+        case 11:
+          places.market = [...places.market, ...placeType.place ?? []];
+          break;
+        case 6:
+          places.transport = [...places.transport, ...placeType.place ?? []];
+          break;
+        case 7:
+          places.transport = [...places.transport, ...placeType.place] ?? [];
+          break;
+        default:
+          break;
+      }
+    }
+
+    this.places = places;
+
     try {
       const response = await this.$axios.post(`/website/property/month-prices?api_token=${process.env.WEBSITE_TOKEN}`, {
         "code":this.villa.code,
