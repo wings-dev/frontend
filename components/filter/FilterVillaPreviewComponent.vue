@@ -93,7 +93,7 @@
       <b>Max price:{{ villa.prices.max_price.price }}₺</b>
       <b>Total price:{{ villa.total.total }}₺</b>
       <b>Day:{{ villa.total.day }}</b> -->
-        <div class="F_villa-item-bottom price">
+        <div class="F_villa-item-bottom " :class="{'price':checkindate}">
           <div class="F_villa-item-features">
             <h6>Öne çıkan özellikleri</h6>
             <div class="F_villa-item-features-in">
@@ -110,7 +110,7 @@
             </p>
             <small>Fiyat Aralığında</small>
           </div>
-          <div class="F_villa-item-bottom-price" v-else>
+          <div class="F_villa-item-bottom-price " v-else>
             <div class="F_villa-item-bottom-price-in">
               <p class="F_villa-item-bottom-price-in-day"><span>{{ villa.total.day }}</span> GECE</p>
               <div class="F_villa-item-bottom-price-in-date">
