@@ -1363,24 +1363,12 @@ export default {
       lowestPrice: null,
       monthlyPrices: [],
       places: {
-        beaches: [
-
-        ],
-        locations: [
-
-        ],
-        health: [
-
-        ],
-        restaurant: [
-
-        ],
-        market: [
-
-        ],
-        transport: [
-
-        ]
+        beaches: [],
+        locations: [],
+        health: [],
+        restaurant: [],
+        market: [],
+        transport: []
       }
     }
   },
@@ -1600,57 +1588,33 @@ export default {
     // console.log(this.villa);
 
     const places = {
-      beaches: [
+      beaches: [],
+      locations: [],
+      health: [],
+      restaurant: [],
+      market: [],
+      transport: []
+    };
 
-      ],
-      locations: [
-
-      ],
-      health: [
-
-      ],
-      restaurant: [
-
-      ],
-      market: [
-
-      ],
-      transport: [
-
-      ]
-    }
+    const placeTypeMapping = {
+      4: 'beaches',
+      9: 'locations',
+      3: 'health',
+      1: 'restaurant',
+      10: 'market',
+      11: 'market',
+      6: 'transport',
+      7: 'transport'
+    };
 
     for (const key in this.villa.places) {
       const placeType = this.villa.places[key];
       const placeTypeId = parseInt(placeType.place_type_id);
 
-      switch (placeTypeId) {
-        case 4:
-          places.beaches = [...places.beaches, ...placeType.place ?? []];
-          break;
-        case 9:
-          places.locations = [...places.locations, ...placeType.place ?? []];
-          break;
-        case 3:
-          places.health = [...places.health, ...placeType.place ?? []];
-          break;
-        case 1:
-          places.restaurant = [...places.restaurant, ...placeType.place ?? []];
-          break;
-        case 10:
-          places.market = [...places.market, ...placeType.place ?? []];
-          break;
-        case 11:
-          places.market = [...places.market, ...placeType.place ?? []];
-          break;
-        case 6:
-          places.transport = [...places.transport, ...placeType.place ?? []];
-          break;
-        case 7:
-          places.transport = [...places.transport, ...placeType.place] ?? [];
-          break;
-        default:
-          break;
+      const mappedType = placeTypeMapping[placeTypeId];
+
+      if (mappedType) {
+        places[mappedType] = [...places[mappedType], ...placeType.place ?? []];
       }
     }
 
