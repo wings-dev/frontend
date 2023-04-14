@@ -274,13 +274,16 @@ export default {
         mobileMenuActive() {
             if (this.mobileMenuActive == true) {
                 document.querySelector('body').classList.add('over')
+                document.querySelector('html').classList.add('over')
             } else {
                 document.querySelector('body').classList.remove('over')
+                document.querySelector('html').classList.remove('over')
             }
         },
         searchActive() {
             document.querySelector('.Search-villas').classList.toggle('Search_villas_active')
             document.querySelector('body').classList.add('over')
+            document.querySelector('html').classList.add('over')
         }
     },
     methods: {

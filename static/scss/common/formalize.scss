@@ -20,6 +20,9 @@ body {
   }
   .over {
     overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
+    position: relative;
   }
   
   a {
