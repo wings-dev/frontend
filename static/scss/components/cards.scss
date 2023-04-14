@@ -1216,12 +1216,9 @@
         }
       }
       &.price {
-        .F_villa-item-more {
-          display: none;
-        }
         .F_villa-item-bottom-price {
           width: 100%;
-          display: flex;
+          display: none;
           align-items: center;
           justify-content: space-between;
           flex-direction: row;
@@ -1824,8 +1821,18 @@
       }
       &-bottom {
         padding-top: 12px;
-        &-price {
+        &-price{
+          display: flex!important;
+          flex-direction: column;
+          .F_villa-item-more {
+            display: flex;
+          }
+        }
+        &.price {
           display: flex;
+          .F_villa-item-more {
+            display: none;
+          }
         }
       }
       &-more {

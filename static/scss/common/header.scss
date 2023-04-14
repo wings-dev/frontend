@@ -1152,12 +1152,21 @@
     transition: all 400ms;
   }
   &:hover {
-    background-color: var(--bs-theme-second);
+    background-color: var(--bs-theme-second)!important;
     span,
     i {
       color: #fff;
     }
   }
+
+  &:focus {
+    background-color: #fff!important;
+    span,
+    i {
+      color: var(--bs-theme-first);
+    }
+  }
+
 
   &-user {
     width: 170px;
