@@ -3401,7 +3401,6 @@
       width: 100%;
       margin-bottom: 40px;
     }
-
     &-menu {
       &-in {
         flex-direction: column;
@@ -3412,6 +3411,7 @@
       }
     }
     &-desc {
+      margin-bottom: 30px;
       &-amenites {
         &-in {
           p {
@@ -3419,6 +3419,30 @@
           }
         }
       }
+    }
+    &-months {
+      margin-bottom: 30px;
+    }
+    &-availibility {
+      margin-bottom: 30px;
+     
+    }
+    &-beds {
+      margin-bottom: 30px;
+    }
+    &-pools {
+      margin-bottom: 30px; 
+    }
+    &-location {
+      margin-bottom: 30px;
+    }
+    &-info{
+      &-warning{
+        margin-bottom: 30px;
+      }
+    }
+    &-reviews {
+      margin-bottom:30px;
     }
   }
 }

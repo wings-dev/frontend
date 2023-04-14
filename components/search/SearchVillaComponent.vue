@@ -347,6 +347,7 @@ export default {
       ],
       orderValue: null,
       orderPlaceholder: "Sırala:",
+      firstDayOfWeek: 1,
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
@@ -603,6 +604,7 @@ export default {
         this.isMobileFilterOpen = true
         document.querySelector('body').classList.add('over')
         document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('.Home').classList.add('Home-z')
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     },
@@ -611,6 +613,7 @@ export default {
         this.isMobileFilterOpen = false
         document.querySelector('body').classList.remove('over')
         document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('.Home').classList.remove('Home-z')
       }
     },
     checkboxOpen(groupName) {
@@ -647,6 +650,7 @@ export default {
         document.querySelector('.Home').classList.add('Home-z')
         window.scrollTo({ top: 0, behavior: 'smooth' });
         this.$refs.datePickerModal.showDatepicker()
+        this.$refs.datePickerModal.clearSelection()
       }
     },
     closeRegions() {
