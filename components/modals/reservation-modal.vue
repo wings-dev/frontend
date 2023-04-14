@@ -60,14 +60,14 @@
               <label for="" class="Login-form-item mb-2">
                 <input type="text" placeholder="E-mail Adresiniz" value="" id="mailInput" v-model="form.email" required>
               </label>
-              <p v-if="form.email && !isValidEmail(form.email)" class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup">
+              <p v-if="form.email && !isValidEmail(form.email)" class="Login-form-alert Login-form-alert-mail mt-2 text-danger text-sm mail-alert mail-alert-signup">
                 Lütfen geçerli bir email adresi giriniz.
               </p>
               <label for="" class="Login-form-item Login-form-item-tr">
                 <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"
                   :defaultCountry="'TR'"></vue-tel-input>
               </label>
-              <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert" v-if="phoneNumberValid === false">
+              <p class="Login-form-alert   mt-2 text-danger text-sm phone-alert" v-if="phoneNumberValid === false">
                 Lütfen doğru bir telefon numarası giriniz</p>
               <label for="gizlilik" class="Login-form-item Login-form-item-check">
                 <input v-model="checkboxAcceptRules" type="checkbox" id="gizlilik">

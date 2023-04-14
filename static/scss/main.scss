@@ -3669,8 +3669,11 @@ body {
     &-alert {
       font-size: 14px !important;
       &.mail-alert-signup {
-        transform: translateY(-40px);
+        // transform: translateY(-40px);
         margin-left: 20px;
+      }
+      &-mail{
+        margin-bottom: 5px!important;
       }
     }
     &-call {
