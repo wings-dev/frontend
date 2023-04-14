@@ -1607,14 +1607,21 @@ export default {
       7: 'transport'
     };
 
-    for (const key in this.villa.places) {
-      const placeType = this.villa.places[key];
-      const placeTypeId = parseInt(placeType.place_type_id);
+    if (this.villa && this.villa.places) {
+      for (const key in this.villa.places) {
+        const placeType = this.villa.places[key];
 
-      const mappedType = placeTypeMapping[placeTypeId];
+        if (placeType) {
+          const placeTypeId = parseInt(placeType.place_type_id);
+          const mappedType = placeTypeMapping[placeTypeId];
 
-      if (mappedType) {
-        places[mappedType] = [...places[mappedType], ...placeType.place ?? []];
+          if (mappedType) {
+            places[mappedType] = [
+              ...places[mappedType],
+              ...(placeType.place ?? [])
+            ];
+          }
+        }
       }
     }
 
