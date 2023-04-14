@@ -568,12 +568,14 @@ export default {
       if(this.isMobile()){
         this.isMobileFilterOpen = true
         document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
       }
     },
     closeMobileFilter(){
       if(this.isMobile()){
         this.isMobileFilterOpen = false
         document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
       }
     },
     checkboxOpen(groupName){

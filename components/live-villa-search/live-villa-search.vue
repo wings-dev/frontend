@@ -204,6 +204,7 @@ export default {
     closeSearch() {
       document.querySelector('.Search-villas').classList.toggle('Search_villas_active')
       document.querySelector('body').classList.remove('over')
+      document.querySelector('html').classList.remove('over')
     }
   }
 }
