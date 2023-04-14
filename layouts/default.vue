@@ -108,6 +108,9 @@ export default {
         e.stopPropagation();
       }
     });
+
+    
+
   },
   beforeRouteLeave(to, from, next) {
     console.log('Route Leave')
