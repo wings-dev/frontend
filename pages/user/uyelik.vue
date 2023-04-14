@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="User-header-in">
                     <h5>Hoşgeldiniz,</h5>
-                    <h4>Sn. Mehmet <b>YILDIZ</b></h4>
+                    <h4>Sn. <b>{{ $auth.user.name | titlecase}}</b></h4>
                 </div>
             </div>
         </section>

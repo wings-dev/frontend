@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="User-header-in">
                     <h5>Hoşgeldiniz,</h5>
-                    <h4>Sn. Mehmet <b>YILDIZ</b></h4>
+                    <h4>Sn. <b>{{ $auth.user.name | titlecase}}</b></h4>
                 </div>
             </div>
         </section>
@@ -30,7 +30,7 @@ export default {
                 { hid: 'description', name: 'description', content: 'anasayfa' },
                 { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
             ],
-          
+
         }
     },
     components:{
