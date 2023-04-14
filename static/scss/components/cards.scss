@@ -1192,6 +1192,105 @@
       padding-top: 22px;
       border-top: 1px solid #eff0f5;
       margin-top: auto;
+
+      &-price {
+        display: none;
+        flex-direction: column;
+        p {
+          font-weight: 600;
+          font-size: 17px;
+          line-height: 1;
+          display: flex;
+          align-items: flex-start;
+          span {
+            font-weight: 500;
+            font-size: 9px;
+            color: var(--bs-theme-second);
+          }
+        }
+        small {
+          font-weight: 500;
+          font-size: 11px;
+          line-height: 1;
+          color: #8a92a8;
+        }
+      }
+      &.price {
+        .F_villa-item-more {
+          display: none;
+        }
+        .F_villa-item-bottom-price {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row;
+          &-in {
+            display: flex;
+            align-items: center;
+            &-day {
+              width: 40px;
+              height: 40px;
+              border-radius: 3px;
+              background-color: var(--bs-theme-second);
+              color: #fff;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              margin-right: 9px;
+              font-size: 9px;
+              color: #fff;
+              line-height: 1;
+              span {
+                font-size: 17px;
+                font-weight: 600;
+                line-height: 1;
+                color: #fff;
+              }
+            }
+            &-date {
+              p {
+                display: flex;
+                align-items: center;
+                line-height: 1;
+                span {
+                  font-size: 14px;
+                  font-weight: bold;
+                  color: var(--bs-theme-first);
+                }
+                .icon-arrow-right-2 {
+                  margin: 0 7px;
+                  font-size: 12px;
+                  color: var(--bs-theme-second);
+                }
+              }
+              small {
+                font-size: 11px;
+                font-weight: bold;
+                color: #7e8f9a;
+              }
+            }
+          }
+          &-right{
+            p {
+              b {
+                font-size: 22px;
+              }
+              span {
+                font-weight: 500;
+                color: var(--bs-theme-first);
+              }
+              &.orange {
+                font-weight: 500;
+                font-size: 10px;
+                color: var(--bs-theme-second);
+              }
+            }
+          }
+        }
+      }
     }
 
     &-features {
@@ -1294,10 +1393,13 @@
       color: var(--bs-theme-first);
       transition: all 300ms;
       white-space: nowrap;
-      i {
+      i.icon-right-arrow {
         font-size: 18px;
         margin-right: 0;
         flex-shrink: 0;
+      }
+      i.icon-right-arrows-new {
+        display: none;
       }
 
       &:hover {
@@ -1681,14 +1783,71 @@
           }
         }
       }
-      &-info{
-        &-item{
+      &-head {
+        margin-bottom: 8px;
+        &-name {
+          flex-direction: column-reverse;
+          a {
+            font-size: 19px;
+            font-weight: bold;
+          }
+          &-star {
+            display: none;
+          }
+        }
+        &-price {
+          display: none;
+          &.with-price{
+            display: none;
+          }
+        }
+      }
+      &-info {
+        border-top: 1px solid #eff0f5;
+        margin-bottom: 0;
+        padding: 14px 0;
+        &-item {
           padding: 4px 10px 4px 4px;
+          background-color: transparent;
+          i {
+            width: unset;
+            height: unset;
+            background-color: transparent;
+            padding: 0;
+          }
         }
       }
       &-right {
         width: 100%;
         padding: 15px 8px;
+        padding-bottom: 0;
+      }
+      &-bottom {
+        padding-top: 12px;
+        &-price {
+          display: flex;
+        }
+      }
+      &-more {
+        width: 46px;
+        height: 46px;
+        background-color: #cad4dd;
+        i.icon-right-arrow {
+          display: none;
+        }
+        i.icon-right-arrows-new {
+          display: block;
+          font-size: 21px;
+          color: #fff;
+        }
+      }
+      &-show {
+        display: none;
+      }
+      &:hover {
+        i.icon-right-arrows-new {
+          color: var(--bs-theme-first);
+        }
       }
     }
   }

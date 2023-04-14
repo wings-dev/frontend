@@ -3,7 +3,7 @@
         <search-bar></search-bar>
         <section class="Banner Banner-home "
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
-            <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt="">
+            <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -27,7 +27,7 @@
                         Popüler Villaları
                         <span>keşfedin</span>
                     </h4>
-                    <nuxt-link to="/kiralik-villa-ara" class="button-more">Tümünü Görüntüleyin</nuxt-link>
+                    <nuxt-link to="/kiralik-villa-ara" class="button-more">Tümünü Gör</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
@@ -295,7 +295,7 @@
                     <h4 class="primary-title fw-medium ls-05 lh-1 text-white">
                         Kısa Süreli <span>Konaklama Fırsatları</span>
                     </h4>
-                    <nuxt-link to="/firsat" class="button-more button-more-dark">Tümünü Görüntüleyin</nuxt-link>
+                    <nuxt-link to="/firsat" class="button-more button-more-dark">Tümünü Gör</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
@@ -496,7 +496,7 @@
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-abroad-villa"></i>
                     <h4 class=""><b>Yurt Dışı</b>Kiralık Villa</h4>
-                    <nuxt-link to="/yurtdisi-kiralik-villa" class="button-more">Tümünü Görüntüleyin</nuxt-link>
+                    <nuxt-link to="/yurtdisi-kiralik-villa" class="button-more">Tümünü Gör</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
                     <div class="swiper-wrapper">

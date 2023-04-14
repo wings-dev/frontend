@@ -93,7 +93,7 @@
       <b>Max price:{{ villa.prices.max_price.price }}₺</b>
       <b>Total price:{{ villa.total.total }}₺</b>
       <b>Day:{{ villa.total.day }}</b> -->
-        <div class="F_villa-item-bottom">
+        <div class="F_villa-item-bottom price">
           <div class="F_villa-item-features">
             <h6>Öne çıkan özellikleri</h6>
             <div class="F_villa-item-features-in">
@@ -103,10 +103,33 @@
             </div>
 
           </div>
+          <div class="F_villa-item-bottom-price" v-if="!checkindate">
+            <p>{{ villa.prices.min_price.price | numberFormat }}{{ villa.prices.min_price.price_currency }} - {{
+              villa.prices.max_price.price | numberFormat }}{{ villa.prices.max_price.price_currency }}
+              <span>/Gecelik</span>
+            </p>
+            <small>Fiyat Aralığında</small>
+          </div>
+          <div class="F_villa-item-bottom-price" v-else>
+            <div class="F_villa-item-bottom-price-in">
+              <p class="F_villa-item-bottom-price-in-day"><span>{{ villa.total.day }}</span> GECE</p>
+              <div class="F_villa-item-bottom-price-in-date">
+              <p><span>{{ checkin }}</span><i class="icon-arrow-right-2"></i><span>{{ checkout }}</span></p>
+                                            <small>Fırsatı kaçırma!</small>
+            </div>
+            </div>
+            <div class="F_villa-item-bottom-price-right">
+              <p class="orange">TOPLAM FİYAT</p>
+              <p><b>{{ villa.total.total | numberFormat }}</b><span>TL</span></p>
+            </div>
+          </div>
           <button type="button" class="F_villa-item-show" @click.stop="openModal(villa.code)"><i
-              class="icon-calendar"></i>Müsaitlik Takvimi</button>
-              <button type="button" class="F_villa-item-more" @click="goDetail">
-                <i class="icon-right-arrow"></i></button>
+              class="icon-calendar"></i>Müsaitlik Takvimi
+          </button>
+          <button type="button" class="F_villa-item-more" @click="goDetail">
+            <i class="icon-right-arrow"></i>
+            <i class="icon-right-arrows-new"></i>
+          </button>
         </div>
       </a>
     </div>
@@ -204,7 +227,7 @@ export default {
     openModal(villaCode) {
       this.$refs[`modalRef-${villaCode}`].show();
     },
-    formatDate(value,valueout) {
+    formatDate(value, valueout) {
       const currentDate = new Date(value);
       const formattedDate = currentDate.toLocaleDateString('tr-TR', {
         day: 'numeric',
@@ -244,7 +267,9 @@ export default {
       // }
     })
 
-    this.formatDate(this.checkindate,this.checkoutdate)
+    this.formatDate(this.checkindate, this.checkoutdate)
+
+
   }
 }
 </script>

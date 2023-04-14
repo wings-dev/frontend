@@ -2,6 +2,7 @@
   // height: 132px;
   position: relative;
   z-index: 999;
+  min-height: 80px;
   &-top {
     &-in {
       padding: 10px 0;
@@ -50,6 +51,8 @@
     background-color: var(--bs-theme-first);
     height: 80px;
     width: 100%;
+    position: fixed;
+    top: 0;
     &-in {
       display: flex;
       align-items: center;
@@ -59,8 +62,13 @@
     }
 
     &-fixed {
-      position: fixed;
-      top: 0;
+      
+    }
+  }
+
+  &.villa-detay{
+    .Header-inner{
+      position: static;
     }
   }
 
@@ -216,10 +224,13 @@
           left: 47%;
         }
       }
-      &:hover{
-        .Header-menu-item-in{
-          opacity: 1;
-          visibility: visible;
+      
+      @media (min-width:991px) {
+        &:hover{
+          .Header-menu-item-in{
+            opacity: 1;
+            visibility: visible;
+          }
         }
       }
     }
@@ -787,11 +798,12 @@
       visibility: hidden;
       transition: all 400ms;
       border-top: 1px solid #223967;
+      overflow: hidden;
       &.active {
         opacity: 1;
         visibility: visible;
         left: -20px;
-        overflow-y: scroll;
+        
       }
       &-item {
         width: 100%;
