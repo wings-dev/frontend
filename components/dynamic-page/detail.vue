@@ -248,7 +248,7 @@
               <div class="View-desc-mobile-amenites">
                 <nuxt-link to="/">Havuzu görünmeyen(Muhafazakar)</nuxt-link>
                 <nuxt-link to="/">Kalabalık ailelere uygun</nuxt-link>
-                <button type="button" @click="mobileAmenitesOpen">Tüm Olanarakları <i
+                <button type="button" @click="mobileAmenitesToggle">Tüm Olanarakları <i
                     class="icon-right-arrow"></i></button>
               </div>
             </div>
@@ -328,7 +328,7 @@
                   <span>12.120TL</span>
                 </div>
               </nuxt-link>
-              <button type="button" @click="mobileOpportunityOpen">Diğer tarihleri görüntüle(4) <i
+              <button type="button" @click="mobileOpportunityToggle">Diğer tarihleri görüntüle(4) <i
                   class="icon-right-arrow"></i></button>
             </div>
             <div class="View-beds">
@@ -670,7 +670,7 @@
                             <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
                             <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
                           </div>
-                          <button type="button" class="more" @click="mobileLocationOpen">Daha Fazla Göster</button>
+                          <button type="button" class="more" @click="mobileLocationToggle">Daha Fazla Göster</button>
                         </div>
                       </div>
                     </div>
@@ -936,7 +936,7 @@
                     <div class="View-info-policy-mobile-in">
                       <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi...
                       </p>
-                      <button type="button" class="more" @click="mobilePolicyOpen"><i
+                      <button type="button" class="more" @click="mobilePolicyToggle"><i
                           class="icon-right-arrow"></i></button>
                     </div>
                   </div>
@@ -1031,7 +1031,7 @@
             </div>
 
             <div class="View-mobile-modal" :class="{ 'show': mobileAmenites }">
-              <button type="button" class="mobile-menus-back" @click="mobileAmenitesClose"><i
+              <button type="button" class="mobile-menus-back" @click="mobileAmenitesToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="Amenites">
                 <div class="Amenites-head">
@@ -1146,7 +1146,7 @@
               </div>
             </div>
             <div class="View-mobile-modal" :class="{ 'show': mobileOpportunity }">
-              <button type="button" class="mobile-menus-back" @click="mobileOpportunityClose"><i
+              <button type="button" class="mobile-menus-back" @click="mobileOpportunityToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-right-opportunity View-right-opportunity-modal">
                 <div class="View-right-opportunity-head">
@@ -1237,7 +1237,7 @@
               </div>
             </div>
             <div class="View-mobile-modal" :class="{ 'show': mobileLocation }">
-              <button type="button" class="mobile-menus-back" @click="mobileLocationClose"><i
+              <button type="button" class="mobile-menus-back" @click="mobileLocationToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
                 <div class="second-tab-item w-100">
@@ -1259,7 +1259,7 @@
               </div>
             </div>
             <div class="View-mobile-modal" :class="{ 'show': mobilePolicy }">
-              <button type="button" class="mobile-menus-back" @click="mobilePolicyClose"><i
+              <button type="button" class="mobile-menus-back" @click="mobilePolicyToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-info-policy-modal">
                 <h5>İptal Politikası</h5>
@@ -1556,29 +1556,18 @@ export default {
     moreMobileContentOpen() {
       this.moreMobileContent = !this.moreMobileContent
     },
-    mobileAmenitesOpen() {
-      this.mobileAmenites = true
+    mobileAmenitesToggle() {
+      this.mobileAmenites = !this.mobileAmenites
     },
-    mobileAmenitesClose() {
-      this.mobileAmenites = false
+
+    mobileOpportunityToggle() {
+      this.mobileOpportunity = !this.mobileOpportunity
     },
-    mobileOpportunityOpen() {
-      this.mobileOpportunity = true
+    mobileLocationToggle() {
+      this.mobileLocation = !this.mobileLocation 
     },
-    mobileOpportunityClose() {
-      this.mobileOpportunity = false
-    },
-    mobileLocationOpen() {
-      this.mobileLocation = true
-    },
-    mobileLocationClose() {
-      this.mobileLocation = false
-    },
-    mobilePolicyOpen() {
-      this.mobilePolicy = true
-    },
-    mobilePolicyClose() {
-      this.mobilePolicy = false
+    mobilePolicyToggle() {
+      this.mobilePolicy = !this.mobilePolicy
     },
     handleResize() {
       if (window.innerWidth <= 768) {
@@ -1600,13 +1589,48 @@ export default {
       } else {
         this.calendarColumn = 2
       }
-    }
+    },
+    mobileAmenites(){
+      if(this.mobileAmenites == true){
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+      }else{
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+      }
+    },
+    mobileOpportunity(){
+      if(this.mobileOpportunity == true){
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+      }else{
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+      }
+    },
+    mobileLocation(){
+      if(this.mobileLocation == true){
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+      }else{
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+      }
+    },
+    mobilePolicy(){
+      if(this.mobilePolicy == true){
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+      }else{
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+      }
+    },
   },
   beforeMount() {
     this.setAttributes();
   },
   async mounted() {
-    console.log(this.villa);
     try {
       const response = await this.$axios.post(`/website/property/month-prices?api_token=${process.env.WEBSITE_TOKEN}`, {
         "code":this.villa.code,
@@ -1763,8 +1787,8 @@ export default {
           this.$bvModal.show('closeVillaModal')
         }, 50)
       }
-      window.addEventListener("load", this.handleResize);
-      window.addEventListener("resize", this.handleResize);
+      window.addEventListener("load", this.handleResize());
+      window.addEventListener("resize", this.handleResize());
     })
   },
   computed: {

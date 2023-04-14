@@ -2,7 +2,7 @@
   <form action="" class="Reservation-form" id="reservationForm">
 
     <div class="Reservation-form-top" :class="{ 'mobile-active': mobileReservation }">
-      <button type="button" class="mobile-menus-back" @click="mobileReservationClose"><i
+      <button type="button" class="mobile-menus-back" @click="reservatinAction"><i
           class="icon-left-arrow"></i></button>
       <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
       <span class="tarihsec">TARİH SEÇ</span>
@@ -46,100 +46,44 @@
               </button>
               <client-only>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <div class="select-item d-flex align-items-center justify-content-between ">
-                    <div class="d-flex flex-column">
-                      <strong class="">Yetişkinler</strong>
-                      <span class="">13 yaş ve üzeri</span>
+                  <div class="Search-item-person">
+                    <div class="Search-item-person-item ">
+                      <p>Yetişkinler <br><span class="">13 yaş ve üzeri</span></p>
+                      <div class="Search-item-person-item-in ">
+                        <button type="button" class="minus-person" @click="adultDecrease">
+                          <i class="icon-minus"></i>
+                        </button>
+                        <input id="Search_PeopleAdult" class="person"  name="yetiskinler" type="text" v-model="adult" data-min="1" data-max="10" data-text="Yetişkin, " max="20" readonly>
+                        <button type="button" class="plus-person" @click="adultIncrease">
+                          <i class="icon-plus"></i>
+                        </button>
+                      </div>
                     </div>
-                    <div class="d-flex align-items-center text-center">
-                      <button type="button" @click="adultDecrease"
-                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
-
-                      </button>
-                      <input v-model="adult" type="text" name="yetiskinler" class="select-input text-center fs-5 px-2"
-                        data-min="1" data-max="10" data-text="Yetişkin, " readonly>
-                      <button type="button" @click="adultIncrease"
-                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                            stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
-
-                      </button>
+                    <div class="Search-item-person-item">
+                      <p>Çocuk <br><span>6-17 arası</span></p>
+                      <div class="Search-item-person-item-in ">
+                        <button type="button" class="minus-person" @click="children_Decrease">
+                          <i class="icon-minus"></i>
+                        </button>
+                        <input id="Search_PeopleChild" class="person" type="text" :value="child" name="cocuklar" max="10" data-text="Çocuk" data-min="0" data-max="10" readonly>
+                        <button type="button" class="plus-person" @click="children_Increase">
+                          <i class="icon-plus"></i>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div class="select-item d-flex align-items-center justify-content-between ">
-                    <div class="d-flex flex-column">
-                      <strong class="fw-medium fs-6">Çocuklar</strong>
-                      <span class="text-theme-secondary text-opacity-75">2-12 yaş</span>
-                    </div>
-                    <div class="d-flex align-items-center text-center">
-                      <button type="button" @click="children_Decrease"
-                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
+                    <div class="Search-item-person-item ">
+                      <p>Bebek<br><span>0-5 arası</span></p>
+                      <div class="Search-item-person-item-in ">
+                        <button type="button" class="minus-person" @click="baby_Decrease">
+                          <i class="icon-minus"></i>
+                        </button>
+                        <input id="Search_PeopleBaby" class="person" type="text" v-model="baby" name="cocuklar" data-min="0" data-max="10" data-text="Bebek"
+                          readonly>
+                        <button type="button" class="plus-person" @click="baby_Increase">
+                          <i class="icon-plus"></i>
+                        </button>
 
-                      </button>
-                      <input v-model="child" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
-                        data-min="0" data-max="10" data-text="Çocuk" readonly>
-                      <button type="button" @click="children_Increase"
-                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                            stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
-
-                      </button>
-                    </div>
-                  </div>
-                  <div class="select-item d-flex align-items-center justify-content-between ">
-                    <div class="d-flex flex-column">
-                      <strong class="fw-medium fs-6">Bebek</strong>
-                      <span class="text-theme-secondary text-opacity-75">0-2 yaş</span>
-                    </div>
-                    <div class="d-flex align-items-center text-center">
-                      <button type="button" @click="baby_Decrease"
-                        class="select-btn minus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
-
-                      </button>
-                      <input v-model="baby" type="text" name="cocuklar" class="select-input text-center fs-5 px-2"
-                        data-min="0" data-max="10" data-text="Çocuk" readonly>
-                      <button type="button" @click="baby_Increase"
-                        class="select-btn plus bg-transparent d-flex align-items-center justify-content-center rounded-circle">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                            stroke="#1C274C" stroke-linecap="round" />
-                          <path
-                            d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                            stroke="#1C274C" stroke-linecap="round" />
-                        </svg>
-
-                      </button>
+                      </div>
                     </div>
                   </div>
 
@@ -158,7 +102,8 @@
               <h5>Ön Ödeme Tutarı</h5>
             </div>
             <div class="Reservation-form-info-item-right">
-              <b>{{ availabilityData.advance_payment | numberFormat }} {{ availabilityData.night_price_currency_symbol }}</b>
+              <b>{{ availabilityData.advance_payment | numberFormat }} {{ availabilityData.night_price_currency_symbol
+              }}</b>
             </div>
           </div>
 
@@ -187,11 +132,13 @@
             </div>
           </div>
           <p class="Reservation-form-detail-total">
-            Toplam Ödeme <span>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</span>
+            Toplam Ödeme <span>{{ availabilityData.total_price | numberFormat }}{{
+              availabilityData.night_price_currency_symbol }}</span>
           </p>
           <div class="Reservation-form-detail-bottom">
             <div class="Reservation-form-detail-bottom-item">
-              <p>Ön Ödeme <span>{{ availabilityData.advance_payment | numberFormat }}{{ availabilityData.night_price_currency_symbol
+              <p>Ön Ödeme <span>{{ availabilityData.advance_payment | numberFormat }}{{
+                availabilityData.night_price_currency_symbol
               }}</span></p>
               <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
             </div>
@@ -225,14 +172,16 @@
                   <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                     title="Tooltip on right"></i>
                 </div>
-                <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
+                <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                }}</b>
               </div>
 
               <div class="Reservation-form-info-item-more-item">
                 <div class="Reservation-form-info-item-more-item-left">
                   <p>Girişte Ödenecek</p>
                 </div>
-                <b>{{ availabilityData.remaining_payment | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
+                <b>{{ availabilityData.remaining_payment | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                }}</b>
               </div>
 
               <div class="Reservation-form-info-item-more-item">
@@ -277,16 +226,15 @@
         <!-- form acıksa -->
         <template v-else>
           <button class="Reservation-form-submit" :disabled="!dateSelected || availabilityLoading"
-            @click.prevent="mobileReservationClose()">
-            Kaydet
+            @click="reservatinAction()">
+            Kaydet {{ dateSelected + availabilityLoading }}
           </button>
         </template>
       </template>
 
       <!-- desktop -->
       <template v-else>
-        <button v-if="!availabilityChecked"
-          class="Reservation-form-submit" @click.prevent="availabilityCheck()">
+        <button v-if="!availabilityChecked" class="Reservation-form-submit" @click.prevent="availabilityCheck()">
           Uygunluk Durumunu Kontrol Edin
         </button>
         <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
@@ -432,6 +380,18 @@ export default {
     checkOut(newValue) {
       this.changeHotelInput(-1, newValue);
     },
+    mobileReservation(){
+      if(this.mobileReservation == true){
+        document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+      }else{
+        document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+        document.querySelector('body').style.overflow = "auto"
+      }
+    }
   },
   methods: {
     ...mapMutations(['setReservationModalData']),
@@ -449,9 +409,11 @@ export default {
     },
     async availabilityCheck() {
       if (!this.dateSelected || this.availabilityLoading) {
-        setTimeout(() => {
-          this.$refs.datePicker.showDatepicker();
-        }, 50)
+        if (!this.isMobile) {
+          setTimeout(() => {
+            this.$refs.datePicker.showDatepicker();
+          }, 50)
+        }
         return
       }
 
@@ -556,13 +518,13 @@ export default {
       const max = this.adult + this.child === this.villa.max_adult
       if (max) {
         this.$toast.error("<p>Bu villada en fazla " + this.villa.max_adult + " kişi kalabilir</p>", {
-          className:'custom-toast error-toast',
+          className: 'custom-toast error-toast',
           icon: {
             name: 'icon-reservation-cancel',
           },
-          action : {
-            icon:'icon-toast-exit',
-            onClick : (e, toastObject) => {
+          action: {
+            icon: 'icon-toast-exit',
+            onClick: (e, toastObject) => {
               toastObject.goAway(0);
             }
           }
@@ -594,13 +556,13 @@ export default {
       const max = this.baby === this.villa.max_baby
       if (max) {
         this.$toast.error("<p>Bu villada en fazla " + this.villa.max_adult + " bebek kalabilir</p>", {
-          className:'custom-toast error-toast',
+          className: 'custom-toast error-toast',
           icon: {
             name: 'icon-reservation-cancel',
           },
-          action : {
-            icon:'icon-toast-exit',
-            onClick : (e, toastObject) => {
+          action: {
+            icon: 'icon-toast-exit',
+            onClick: (e, toastObject) => {
               toastObject.goAway(0);
             }
           }
@@ -621,15 +583,11 @@ export default {
         this.isMobile = false
       }
     },
-    mobileReservationOpen() {
-      this.mobileReservation = true
-    },
-    mobileReservationClose() {
-      this.mobileReservation = false
-    },
+    
     reservatinAction() {
       this.mobileReservation = !this.mobileReservation
-    }
+      
+    },
   },
   mounted() {
     console.log(this.villa);
@@ -637,8 +595,7 @@ export default {
     window.addEventListener("resize", this.handleResize);
   },
   beforeDestroy() {
-    // window.removeEventListener("resize", this.handleResize);
-    // window.removeEventListener("load", this.handleResize);
+    this.mobileReservation == false
   },
 }
 </script>

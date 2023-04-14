@@ -19,7 +19,7 @@ body {
     display: block;
   }
   .over {
-    overflow: hidden;
+    overflow: hidden!important;
     touch-action: none;
     -ms-touch-action: none;
     position: relative;
