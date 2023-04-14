@@ -502,14 +502,14 @@
                       <button class="nav-link active" id="pills-beach-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-beach" type="button" role="tab" aria-controls="pills-home"
                         aria-selected="true">
-                        <p><i class="icon-beach"></i>Tesise Yakın Plaj</p> <span>12</span>
+                        <p><i class="icon-beach"></i>Tesise Yakın Plaj</p> <span>{{places.beaches.length}}</span>
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" id="pills-architecture-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-architecture" type="button" role="tab" aria-controls="pills-profile"
                         aria-selected="false">
-                        <p><i class="icon-architecture"></i>Gezilecek yerler</p> <span>12</span>
+                        <p><i class="icon-architecture"></i>Gezilecek yerler</p> <span>{{places.locations.length}}</span>
                       </button>
                     </li>
                   </ul>
@@ -518,36 +518,19 @@
                       aria-labelledby="pills-beach-tab">
                       <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığa kuş bakışı
                         olarak hesaplanmıştır.</p>
-                      <div class="first-tab-item">
-                        <div class="first-tab-item-img">
-                          <img src="/img/kaputas.png" alt="" width="157" height="95">
+                      <div class="first-tab-item" v-for="(item, index) in places.beaches">
+                        <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
+                          <img :src="item.images[0].preview_url" alt="" width="157" height="95">
                         </div>
                         <div class="first-tab-item-content">
-                          <b>Kaputaş Plajı</b>
-                          <p>It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using</p>
+                          <b>{{item.name}}</b>
+                          <p>{{item.description}}</p>
                         </div>
                         <div class="first-tab-item-length">
-                          <b>7</b>
-                          <p>km</p>
+                          <b>{{ item.distance.match(/\d+/)[0] }}</b>
+                          <p>{{ item.distance.replace(/\d+/, '') }}</p>
                           <small>Uzaklıkta</small>
-                          <span>#1</span>
-                        </div>
-                      </div>
-                      <div class="first-tab-item">
-                        <div class="first-tab-item-img">
-                          <img src="/img/kaputas.png" alt="" width="157" height="95">
-                        </div>
-                        <div class="first-tab-item-content">
-                          <b>Ölüdeniz</b>
-                          <p>It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using</p>
-                        </div>
-                        <div class="first-tab-item-length">
-                          <b>7</b>
-                          <p>km</p>
-                          <small>Uzaklıkta</small>
-                          <span>#2</span>
+                          <span>#{{index + 1}}</span>
                         </div>
                       </div>
                     </div>
@@ -555,43 +538,26 @@
                       aria-labelledby="pills-architecture-tab">
                       <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığa kuş bakışı
                         olarak hesaplanmıştır.</p>
-                      <div class="first-tab-item">
-                        <div class="first-tab-item-img">
-                          <img src="/img/kaputas.png" alt="" width="157" height="95">
+                      <div class="first-tab-item" v-for="(item, index) in places.locations">
+                        <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
+                          <img :src="item.images[0].preview_url" alt="" width="157" height="95">
                         </div>
                         <div class="first-tab-item-content">
-                          <b>Kaputaş Plajı</b>
-                          <p>It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using</p>
+                          <b>{{item.name}}</b>
+                          <p>{{item.description}}</p>
                         </div>
                         <div class="first-tab-item-length">
-                          <b>7</b>
-                          <p>km</p>
+                          <b>{{ item.distance.match(/\d+/)[0] }}</b>
+                          <p>{{ item.distance.replace(/\d+/, '') }}</p>
                           <small>Uzaklıkta</small>
-                          <span>#1</span>
+                          <span>#{{index + 1}}</span>
                         </div>
                       </div>
-                      <div class="first-tab-item">
-                        <div class="first-tab-item-img">
-                          <img src="/img/kaputas.png" alt="" width="157" height="95">
-                        </div>
-                        <div class="first-tab-item-content">
-                          <b>Ölüdeniz</b>
-                          <p>It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using</p>
-                        </div>
-                        <div class="first-tab-item-length">
-                          <b>7</b>
-                          <p>km</p>
-                          <small>Uzaklıkta</small>
-                          <span>#2</span>
-                        </div>
-                      </div>
-
                     </div>
 
                   </div>
                 </div>
+
                 <div class="second-tab">
                   <ul class="nav nav-pills " id="location-tab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -622,32 +588,37 @@
                     </li>
                   </ul>
                   <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-health" role="tabpanel"
-                      aria-labelledby="pills-health-tab">
+                    <div class="tab-pane fade show active" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
                       <div class="second-tab-in">
-                        <div class="second-tab-item">
-                          <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
-                          <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
-                        </div>
-                        <div class="second-tab-item">
-                          <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
-                          <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
-                        </div>
-                        <div class="second-tab-item">
-                          <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
-                          <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
-                        </div>
-                        <div class="second-tab-item">
-                          <p class="name"><b>Hastane</b>Fethiye Devlet Hastanesi</p>
-                          <p class="length"><b>0,2</b> km <small>Uzaklıkta</small></p>
+                        <div class="second-tab-item" v-for="(item, index) in places.health">
+                          <p class="name"><b>{{item.name}}</b>{{item.description}}</p>
+                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
                         </div>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="pills-restoran" role="tabpanel" aria-labelledby="pills-restoran-tab">
+                      <div class="second-tab-in">
+                        <div class="second-tab-item" v-for="(item, index) in places.restaurant">
+                          <p class="name"><b>{{item.name}}</b>{{item.description}}</p>
+                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+                        </div>
+                      </div>
                     </div>
                     <div class="tab-pane fade" id="pills-market" role="tabpanel" aria-labelledby="pills-market-tab">
+                      <div class="second-tab-in">
+                        <div class="second-tab-item" v-for="(item, index) in places.market">
+                          <p class="name"><b>{{item.name}}</b>{{item.description}}</p>
+                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+                        </div>
+                      </div>
                     </div>
                     <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                      <div class="second-tab-in">
+                        <div class="second-tab-item" v-for="(item, index) in places.transport">
+                          <p class="name"><b>{{item.name}}</b>{{item.description}}</p>
+                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+                        </div>
+                      </div>
                     </div>
 
                   </div>
