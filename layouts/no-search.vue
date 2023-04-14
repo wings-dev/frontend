@@ -73,7 +73,7 @@ export default {
   components: {
     ReservationCodeModal,
     ReservationModal,
-    LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal,ReservationSuccessModal
+    LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, ReservationSuccessModal
   },
   middleware: ['jwt'],
   head() {
@@ -101,7 +101,18 @@ export default {
         e.stopPropagation();
       }
     });
-  }
+  },
+  beforeRouteLeave(to, from, next) {
+    if (document.body.classList.contains("over")) {
+      document.body.classList.remove("over");
+    }
+    next();
+  },
+  $route() {
+    if (document.body.classList.contains("over")) {
+      document.body.classList.remove("over");
+    }
+  },
 }
 </script>
 

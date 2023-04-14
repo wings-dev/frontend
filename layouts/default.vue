@@ -109,6 +109,18 @@ export default {
       }
     });
   },
+  beforeRouteLeave(to, from, next) {
+    console.log('Route Leave')
+    if (document.body.classList.contains("over")) {
+      document.body.classList.remove("over");
+    }
+    next();
+  },
+  $route() {
+    if (document.body.classList.contains("over")) {
+      document.body.classList.remove("over");
+    }
+  },
 }
 </script>
 

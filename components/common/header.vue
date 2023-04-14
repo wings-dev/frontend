@@ -316,17 +316,6 @@ export default {
     },
     mounted() {
 
-        window.onscroll = function () {
-            if (scrollY >= 65) {
-                // document.querySelector('.Header-inner').classList.add('Header-inner-fixed');
-                document.querySelector('.Search-villas').classList.add('Search-villas-scroll');
-            } else {
-                document.querySelector('.Header-inner').classList.remove('Header-inner-fixed')
-                // document.querySelector('.Search-villas').classList.remove('Search-villas-scroll')
-            }
-
-        };
-
         const menuItems = document.querySelectorAll(".menu-item");
         const menuItemsClose = document.querySelectorAll(".mobile-back-button");
         const dropdowns = document.querySelectorAll(".menu-item-dropdown");

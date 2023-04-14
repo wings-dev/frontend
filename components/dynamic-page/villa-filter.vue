@@ -1,18 +1,21 @@
 <template>
   <div>
-    <opportunity-header :opportunities="opportunities" v-if="opportunity" @selected="opportunitySelected($event)"></opportunity-header>
+    <opportunity-header :opportunities="opportunities" v-if="opportunity"
+      @selected="opportunitySelected($event)"></opportunity-header>
 
     <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5 desktop" v-if="highlights">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
             <h1 class="highlight-section-title">{{ pageContent.title }}</h1>
-            <p class="highlight-section-desc" :class="{ active: isExpanded }" v-html="pageContent.page_content.summary.data">
+            <p class="highlight-section-desc" :class="{ active: isExpanded }"
+              v-html="pageContent.page_content.summary.data">
             </p>
 
             <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded }"
               @click="isExpanded = !isExpanded"><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' : 'DAHA AZ OKU'
-              }}</div>
+              }}
+            </div>
           </div>
         </div>
       </div>
@@ -270,17 +273,22 @@
     </div>
 
 
-    <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity" :month="month" :day="day"></filter-villa-component>
+    <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity" :month="month"
+      :day="day"></filter-villa-component>
 
     <section class="highlight-section bg-theme-light-2 pt-5 pb-4" v-if="highlights">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
             <h1 class="highlight-section-title">{{ pageContent.title }}</h1>
-            <p class="highlight-section-desc" :class="{ active: isExpanded2 }" v-html="pageContent.page_content.article.data">
+            <p class="highlight-section-desc" :class="{ active: isExpanded2 }"
+              v-html="pageContent.page_content.article.data">
             </p>
             <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded2 }"
-              @click="isExpanded2 = !isExpanded2"><i class="readmore"></i> {{ !isExpanded2 ? 'TAMAMINI OKU' : 'DAHA AZ OKU' }}</div>
+              @click="isExpanded2 = !isExpanded2">
+              <i class="readmore"></i>
+              {{ !isExpanded2 ? 'TAMAMINI OKU' : 'DAHA AZ OKU' }}
+            </div>
           </div>
         </div>
       </div>
@@ -292,12 +300,12 @@
           <h3>En çok sorulan sorular </h3>
           <div class="accordion" id="Faq">
 
-              <div class="accordion-item" v-for="(item,index) in pageContent.page_content.faq[0].faq_list" :key="index">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#faq'+index"
-                aria-expanded="false" :aria-controls="'faq'+index">
+            <div class="accordion-item" v-for="(item, index) in pageContent.page_content.faq[0].faq_list" :key="index">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                :data-bs-target="'#faq' + index" aria-expanded="false" :aria-controls="'faq' + index">
                 {{ item.howrent_category_question }}
               </button>
-              <div :id="'faq'+index" class="accordion-collapse collapse " data-bs-parent="#Faq">
+              <div :id="'faq' + index" class="accordion-collapse collapse " data-bs-parent="#Faq">
                 <div class="accordion-body" v-html="item.howrent_category_answer">
 
                 </div>
@@ -323,7 +331,7 @@ export default {
   name: 'DynamicVillaFilterPage',
   props: {
     selectedFilters: { type: Object, default: {} },
-    pageContent: { type: Object},
+    pageContent: { type: Object },
     highlights: { type: Boolean, default: false },
     opportunity: { type: Boolean, default: false },
     opportunities: { type: Array, default: () => [] }
@@ -412,12 +420,15 @@ export default {
 
   },
   mounted() {
-
-    // console.log(this.pageContent)
-
-
+    setTimeout(() => {
+      document.querySelector('.Header').classList.add('Header-no-fixed')
+    }, 50)
 
   },
+  beforeDestroy() {
+    document.querySelector('.Header').classList.remove('Header-no-fixed')
+  },
+
 
 }
 </script>
