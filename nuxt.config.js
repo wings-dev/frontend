@@ -201,7 +201,7 @@ export default {
         url: "/",
         endpoints: {
           login: {
-            url: "/api/login",
+            url: "/website/login",
             method: "post",
             propertyName: "access_token"
           },
