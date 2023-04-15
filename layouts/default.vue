@@ -73,7 +73,8 @@ export default {
     let site_id = process.env.SITE
     return {
       link: [
-        { rel: 'stylesheet', href: `/css/site${site_id}/theme.min.css` },
+        { rel: 'stylesheet', href: `/css/theme${site_id}.min.css` },
+        // { rel: 'stylesheet', href: `/css/theme.min.css` },
       ]
     }
   },

@@ -784,7 +784,7 @@ body {
   width: 24px;
   height: 24px;
   background-size: 100% 100%;
-  background-image: url(/img/date-new.svg);
+  
   margin-right: 9px;
 }
 
@@ -796,7 +796,6 @@ body {
   content: "";
   width: 18px;
   height: 10px;
-  background-image: url(/img/date-right.svg);
   background-size: 100% 100%;
   margin-left: auto;
   margin-right: auto;
