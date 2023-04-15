@@ -4,8 +4,8 @@
     ref="searchBar">
     <div class="Search-fixed-in" :class="{ 'fixed-active': fixedSearch }">
       <div class="Search-fixed-in-left">
-        <b>14 HAZ - 19 HAZ</b>
-        <p>Antalya, Kaş <span>2 Yetişkin, 2 Çocuk</span></p>
+        <b>{{checkIn}} - {{checkOut}}</b>
+        <p>Antalya, Kaş <span>{{adult}} Yetişkin, {{children}} Çocuk</span></p>
       </div>
       <button type="button" @click="fixedSearchOpen">Değiştir</button>
     </div>
