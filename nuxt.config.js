@@ -31,6 +31,17 @@ export default {
     script: [
       {
         src: "/js/bootstrap/bootstrap.bundle.min.js"
+      },
+      {
+        hid: 'gtm-script',
+        src: `https://www.googletagmanager.com/gtm.js?id=${process.env.GTM_ID}`,
+        async: true
+      }
+    ],
+    noscript: [
+      {
+        hid: 'gtm-noscript',
+        innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
       }
     ]
   },
@@ -247,7 +258,7 @@ export default {
 
   router: {
     trailingSlash: false,
-    middleware: ['301']
+    middleware: ['301', 'gtm'],
   },
 
   server: {
