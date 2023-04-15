@@ -675,7 +675,6 @@ export default {
           document.querySelector('.Header')?.classList.add('Header-z')
           document.querySelector('.Home')?.classList.add('Home-z')
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 50)
           this.$refs.datePickerModal.showDatepicker()
           this.$refs.datePickerModal.clearSelection()
         }, 10)
@@ -711,7 +710,6 @@ export default {
           document.querySelector('html')?.classList.remove('over')
           document.querySelector('.Header')?.classList.remove('Header-z')
           document.querySelector('.Home')?.classList.remove('Home-z')
-        }, 50)
           this.$refs.datePickerModal.hideDatepicker()
         }, 10)
       }
