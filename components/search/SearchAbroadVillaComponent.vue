@@ -1,8 +1,20 @@
 <template>
-  <div class="Search  ">
-    <div class="Search-left">
-      <div class="Search-item Search-item-region dropdown">
-        <span class="Search-item-name">Bölge</span>
+  <div class="Search  "
+    :class="{ 'list': $route.path == '/kiralik-villa-ara' || $route.path == '/yurtdisi-kiralik-villa-ara'}"
+    ref="searchBar">
+    <div class="Search-fixed-in" :class="{'fixed-active':fixedSearch}">
+      <div class="Search-fixed-in-left">
+        <b>14 HAZ - 19 HAZ</b>
+        <p>Antalya, Kaş <span>2 Yetişkin, 2 Çocuk</span></p>
+      </div>
+      <button type="button" @click="fixedSearchOpen">Değiştir</button>
+    </div>
+    <div class="Search-left" :class="{'fixed-active' : fixedSearch}">
+      <div class="Search-item Search-item-region dropdown" @click="openRegions">
+        <div class="Search-item-title">
+          <i class="icon-new-location Search-item-icon"></i>
+          <span class="Search-item-name">Bölge</span>
+        </div>
         <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
           aria-expanded="false">
           <i class="icon-new-location Search-item-icon"></i>
@@ -12,7 +24,7 @@
           <i class="icon-down-arrow"></i>
         </button>
         <client-only>
-          <ul class="dropdown-menu filtered" aria-labelledby="dropdownMenuButton1">
+          <ul class="dropdown-menu filtered " aria-labelledby="dropdownMenuButton1">
             <filter-item-checkbox-component :hideTitle="true" filterInputPlaceholder="Bölge Arayın"
               :checkboxes="destinations" :hideTitleBorder="true"
               @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
@@ -20,7 +32,7 @@
           </ul>
         </client-only>
       </div>
-      <div class="Search-item date">
+      <div class="Search-item date" @click="openCalendar">
         <div class="dates d-flex">
           <div class="date-title w-50 Search-item-name">
             Giriş Tarihi
@@ -50,8 +62,12 @@
           </div>
         </div>
       </div>
-      <div class="Search-item Search-item-people">
-        <span class="Search-item-name">Kişi Sayısı </span>
+      <div class="Search-item Search-item-people" @click="openPeoples">
+
+        <div class="Search-item-title">
+          <i class="icon-user Search-item-icon"></i>
+          <span class="Search-item-name">Kişi Sayısı </span>
+        </div>
         <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
           data-bs-toggle="dropdown" aria-expanded="false">
           <i class="icon-user Search-item-icon"></i>
@@ -69,23 +85,11 @@
                 <p>Yetişkin</p>
                 <div class="Search-item-person-item-in ">
                   <button type="button" class="minus-person" @click="adultDecrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                   <i class="icon-minus"></i>
                   </button>
                   <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
                   <button type="button" class="plus-person" @click="adultIncrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-plus"></i>
                   </button>
                 </div>
               </div>
@@ -93,23 +97,11 @@
                 <p>Çocuk <br><span>6-17 arası</span></p>
                 <div class="Search-item-person-item-in ">
                   <button type="button" class="minus-person" @click="children_Decrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-minus"></i>
                   </button>
                   <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
                   <button type="button" class="plus-person" @click="children_Increase">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-plus"></i>
                   </button>
                 </div>
               </div>
@@ -118,23 +110,11 @@
                 <div class="Search-item-person-item-in ">
 
                   <button type="button" class="minus-person" @click="baby_Decrease">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.3984 9H6.59844" stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-minus"></i>
                   </button>
                   <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
                   <button type="button" class="plus-person" @click="baby_Increase">
-                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M11.4016 9.00012L9.00156 9.00012M9.00156 9.00012L6.60156 9.00012M9.00156 9.00012L9.00156 6.6001M9.00156 9.00012L9.00156 11.4001"
-                        stroke="#1C274C" stroke-linecap="round" />
-                      <path
-                        d="M5 2.07026C6.17669 1.38958 7.54285 1 9 1C13.4183 1 17 4.58172 17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 7.54285 1.38958 6.17669 2.07026 5"
-                        stroke="#1C274C" stroke-linecap="round" />
-                    </svg>
+                    <i class="icon-plus"></i>
                   </button>
 
                 </div>
@@ -151,7 +131,8 @@
         </button>
       </div>
     </div>
-    <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="showMobileFilter()">
+    <button class="Search-fixed-button" :class="{'fixed-active' : fixedSearch}" type="button" @click="fixedSearchClose">Kapat</button>
+    <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="openMobileFilter()">
       <i class="icon-new-filter"></i>
       <span class="dropdown-toggle-title">Gelişmiş Arama</span>
       <i class="icon-down-arrow"></i>
@@ -159,7 +140,7 @@
     <button type="button" class="Search-button" id="searchVilla" @click="search">
       <i class="icon-search"></i><span>Arama yap</span>
     </button>
-    <div class="Search-more" :class="{'active':moreSearch}">
+    <div class="Search-more desktop" :class="{ 'active': moreSearch }">
       <div class="Search-more-item facility-type">
         <button class=" dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown"
           aria-expanded="false">
@@ -200,11 +181,135 @@
           <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton4">
             <div class="dropdown-menu-in ">
               <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
-              :groups="amenites.groups.facilities"
-              @updated="updateFilter('amenites.facilities', $event)" groupName="facilitiesCheckbox"></filter-item-checkbox-component>
+                :groups="amenites.groups.facilities" @updated="updateFilter('amenites.facilities', $event)"
+                groupName="facilitiesCheckbox"></filter-item-checkbox-component>
             </div>
           </ul>
         </client-only>
+      </div>
+    </div>
+    <div class="Filter-left Filters mobile" :class="{ show: isMobileFilterOpen }">
+      <div class="Filter-left-head">
+        <h4>Gelişmiş Arama</h4>
+        <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter()">
+          <i class="icon-login-close"></i>
+        </button>
+      </div>
+      <div class="Filter-left-selected">
+
+        <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
+          Bölge:{{ facilityType.text }}
+          <i class="icon-search-close" @click="unselect(facilityType)"></i>
+        </a>
+
+        <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">
+          Konsept:{{ facilityConcept.text }}
+          <i class="icon-search-close" @click="unselect(facilityConcept)"></i>
+        </a>
+
+        <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
+          Olanak:{{ facility.text }}
+          <i class="icon-search-close" @click="unselect(facility)"></i>
+        </a>
+      </div>
+      <div class="Filter-left-in">
+        <div class="Filters-item Filters-item-notfound">
+          <p class="Filters-item-notfound-text"><i class="icon-filter"></i>Sonuç bulunamadı</p>
+        </div>
+
+        <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
+          :groups="amenites.groups.facilityTypes" @updated="updateFilter('amenites.facilityTypes', $event)"
+          groupName="typeCheckbox"></filter-item-checkbox-component>
+
+        <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts"
+          :groups="amenites.groups.facilityConcepts" @updated="updateFilter('amenites.facilityConcepts', $event)"
+          groupName="categoryCheckbox"></filter-item-checkbox-component>
+
+        <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
+          :groups="amenites.groups.facilities" @updated="updateFilter('amenites.facilities', $event)"
+          groupName="facilitiesCheckbox"></filter-item-checkbox-component>
+
+        <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
+          @max_price="updateFilter('max_price', $event)" groupName="priceRange"></filter-price-between-component>
+
+        <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü
+          Temizle</button>
+
+        <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
+      </div>
+
+    </div>
+    <div class="Search-mobile" :class="{ 'show': mobileRegions }">
+      <div class="Search-mobile-head">
+        <h4>Bölge Seçiniz</h4>
+        <button type="button" @click="closeRegions"><i class="icon-login-close"></i></button>
+      </div>
+      <filter-item-checkbox-component :hideTitle="true" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations"
+        :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"></filter-item-checkbox-component>
+      <div class="Search-mobile-bottom">
+        <button type="button" @click="closeRegions">Uygula</button>
+      </div>
+    </div>
+    <div class="Search-mobile" :class="{ 'show': mobilePeoples }">
+      <div class="Search-mobile-head">
+        <h4>Kişi sayısı</h4>
+        <button type="button" @click="closePeoples"><i class="icon-login-close"></i></button>
+      </div>
+      <div class="Search-item-person">
+              <div class="Search-item-person-item ">
+                <p>Yetişkin</p>
+                <div class="Search-item-person-item-in ">
+                  <button type="button" class="minus-person" @click="adultDecrease">
+                   <i class="icon-minus"></i>
+                  </button>
+                  <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
+                  <button type="button" class="plus-person" @click="adultIncrease">
+                    <i class="icon-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="Search-item-person-item">
+                <p>Çocuk <br><span>6-17 arası</span></p>
+                <div class="Search-item-person-item-in ">
+                  <button type="button" class="minus-person" @click="children_Decrease">
+                    <i class="icon-minus"></i>
+                  </button>
+                  <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
+                  <button type="button" class="plus-person" @click="children_Increase">
+                    <i class="icon-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="Search-item-person-item ">
+                <p>Bebek<br><span>0-5 arası</span></p>
+                <div class="Search-item-person-item-in ">
+
+                  <button type="button" class="minus-person" @click="baby_Decrease">
+                    <i class="icon-minus"></i>
+                  </button>
+                  <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
+                  <button type="button" class="plus-person" @click="baby_Increase">
+                    <i class="icon-plus"></i>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+      <div class="Search-mobile-bottom">
+        <button type="button" @click="closePeoples">Uygula</button>
+      </div>
+    </div>
+    <div class="Search-mobile" :class="{ 'show': mobileCalendar }">
+      <div class="Search-mobile-head">
+        <h4>Tarih Seçiniz</h4>
+        <button type="button" @click="closeCalendar"><i class="icon-login-close"></i></button>
+      </div>
+      <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
+        @check-out-changed="checkOutChanged($event)" format="DD dddd" ref="datePickerModal" :i18n="calendarLanguage"
+        :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
+      </HotelDatePicker>
+      <div class="Search-mobile-bottom">
+        <button type="button" @click="closeCalendar">Uygula</button>
       </div>
     </div>
   </div>
@@ -217,7 +322,7 @@ import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import { mapMutations, mapState } from "vuex";
 
 export default {
-  name: "SearchAbroadVillaComponent",
+  name: "SearchVillaComponent",
   data() {
     return {
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
@@ -242,6 +347,7 @@ export default {
       ],
       orderValue: null,
       orderPlaceholder: "Sırala:",
+      firstDayOfWeek: 1,
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',
@@ -259,19 +365,24 @@ export default {
         week: "hafta",
         weeks: "haftalar",
       },
-      moreSearch:false,
+      moreSearch: false,
+      isMobileFilterOpen: false,
+      mobileRegions: false,
+      mobilePeoples: false,
+      mobileCalendar: false,
+      fixedSearch:false,
     }
   },
   components: {
     HotelDatePicker,
   },
   created() {
-    this.destinations = JSON.parse(JSON.stringify(this.$store.state['settings'].searchWorldData.destinations));
-    this.amenites = JSON.parse(JSON.stringify(this.$store.state['settings'].searchWorldData.amenites));
+    this.destinations = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.destinations));
+    this.amenites = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.amenites));
   },
   beforeMount() {
     this.parseQueryString();
-    if (this.$route.path !== '/yurtdisi-kiralik-villa-ara') {
+    if (this.$route.path !== '/kiralik-villa-ara') {
       let lastSearch = localStorage.getItem('lastSearch');
       if (lastSearch) {
         lastSearch = JSON.parse(lastSearch);
@@ -288,6 +399,17 @@ export default {
     }
   },
   mounted() {
+    if (window.innerWidth <= 991 && this.$refs.searchBar.classList.contains('list')) {
+      // console.log(this.$refs.searchBar.classList)
+      window.onscroll = function () {
+        if (scrollY >= 300) {
+          document.querySelector('.Search').classList.add('fixed')
+        } else {
+          document.querySelector('.Search').classList.remove('fixed')
+        }
+
+      };
+    }
   },
   watch: {
     checkIn(newValue) {
@@ -320,7 +442,18 @@ export default {
         text += `${this.baby} Bebek `;
       }
       return text;
-    }
+    },
+    selectedFacilities() {
+      return this.getSelectedObjects(this.amenites.facilities);
+    },
+    filterCount() {
+      return [
+        ...this.selectedDestinations,
+        ...this.selectedFacilityConcepts,
+        ...this.selectedFacilityTypes,
+        ...this.selectedFacilities
+      ].length;
+    },
   },
   methods: {
     parseQueryString() {
@@ -334,9 +467,6 @@ export default {
       this.adult = parseInt(query.adult || 1);
       this.children = parseInt(query.children || 0);
       this.baby = parseInt(query.baby || 0);
-    },
-    showMobileFilter() {
-      document.querySelector('.Filter-left').classList.add("show")
     },
     updateFilter(key, value) {
       this[key] = value;
@@ -412,7 +542,7 @@ export default {
         .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
         .join('&');
 
-      window.location.href = `${window.location.origin}/yurtdisi-kiralik-villa-ara?${urlSearchParams}`;
+      window.location.href = `${window.location.origin}/kiralik-villa-ara?${urlSearchParams}`;
 
       /*
       this.$router.push({
@@ -454,9 +584,118 @@ export default {
 
       datepickerInput.innerHTML = `<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`;
     },
-    moreSearchToggle(){
+    moreSearchToggle() {
       this.moreSearch = !this.moreSearch
-    }
+    },
+    clearFilter() {
+      [
+        ...this.destinations,
+        ...this.amenites.facilityConcepts,
+        ...this.amenites.facilityTypes,
+        ...this.amenites.facilities,
+      ].forEach(checkbox => this.updateSelection(checkbox, false));
+      this.filter();
+    },
+    isMobile() {
+      return window.innerWidth <= 991;
+    },
+    openMobileFilter() {
+      if (this.isMobile()) {
+        this.isMobileFilterOpen = true
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+        document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('.Home').classList.add('Home-z')
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    },
+    closeMobileFilter() {
+      if (this.isMobile()) {
+        this.isMobileFilterOpen = false
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+        document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('.Home').classList.remove('Home-z')
+      }
+    },
+    checkboxOpen(groupName) {
+      const targetDiv = this.$refs[groupName];
+      targetDiv.classList.add('show')
+    },
+    checkboxClose(groupName) {
+      const targetDivClose = this.$refs[groupName];
+      targetDivClose.classList.remove('show')
+    },
+    openRegions() {
+      if (this.isMobile()) {
+        this.mobileRegions = true
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+        document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('.Home').classList.add('Home-z')
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    },
+    openPeoples() {
+      if (this.isMobile()) {
+        this.mobilePeoples = true
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+        document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('.Home').classList.add('Home-z')
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    },
+    openCalendar() {
+      if (this.isMobile()) {
+        this.mobileCalendar = true
+        document.querySelector('body').classList.add('over')
+        document.querySelector('html').classList.add('over')
+        document.querySelector('.Header').classList.add('Header-z')
+        document.querySelector('.Home').classList.add('Home-z')
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.$refs.datePickerModal.showDatepicker()
+        this.$refs.datePickerModal.clearSelection()
+      }
+    },
+    closeRegions() {
+      if (this.isMobile()) {
+        this.mobileRegions = false
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+        document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('.Home').classList.remove('Home-z')
+      }
+    },
+    closePeoples() {
+      if (this.isMobile()) {
+        this.mobilePeoples = false
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+        document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('.Home').classList.remove('Home-z')
+      }
+    },
+    closeCalendar() {
+      if (this.isMobile()) {
+        this.mobileCalendar = false
+        document.querySelector('body').classList.remove('over')
+        document.querySelector('html').classList.remove('over')
+        document.querySelector('.Header').classList.remove('Header-z')
+        document.querySelector('.Home').classList.remove('Home-z')
+        this.$refs.datePickerModal.hideDatepicker()
+      }
+    },
+    fixedSearchOpen() {
+      if (this.isMobile()) {
+        this.fixedSearch = true
+      }
+    },
+    fixedSearchClose() {
+      if (this.isMobile()) {
+        this.fixedSearch = false
+      }
+    },
   }
 }
 </script>
@@ -532,16 +771,18 @@ export default {
 :deep().datepicker__input .formatted-date {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: #24252e;
-
+  color: var(--bs-theme-first);
+  line-height: 1;
 }
 
 :deep().datepicker__input .formatted-date span {
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
-  color: #c1c1c1;
+  color: var(--bs-search-text-light);
+  text-align: left;
+  margin-top: 3px;
 }
 
 :deep() .datepicker__month-day--first-day-selected,
