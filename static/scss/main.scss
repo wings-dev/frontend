@@ -839,16 +839,23 @@ body.overflow-hidden {
 }
 
 @media only screen and (max-width: 991px) {
-  .search-engine {
-    .dropdown-wrapper {
-      margin-bottom: 4px;
-      &.rg,
-      &.gst {
-        width: 100%;
-      }
-      &.dt {
-        width: 50%;
-      }
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: unset;
+    margin-left: -8px;
+    margin-right: -8px;
+    width: unset !important;
+    .cat-item {
+      width: calc(50% - 12px);
+      flex-grow: 1;
+      margin: 6px;
+    }
+    .cat-item .cat-image {
+      height: 300px !important;
+    }
+    .area7 {
+      width: calc(50% - 6px);
     }
   }
 }
@@ -1178,19 +1185,7 @@ body.overflow-hidden {
   .popular-section {
     padding-top: 20px;
   }
-  #search-tab {
-    .nav-link {
-      padding: 10px 30px !important;
-      span {
-        font-size: 14px;
-      }
-      &-otel {
-        span {
-          font-size: 14px;
-        }
-      }
-    }
-  }
+
   .section-caption {
     i.icon-popular-calendar {
       width: 30px;
@@ -1284,7 +1279,7 @@ body.overflow-hidden {
       .readmore {
         width: 12px;
         height: 16px;
-        
+
         background-size: 100% 100%;
         margin-right: 6px;
       }
@@ -2665,6 +2660,9 @@ body.overflow-hidden {
         column-count: 1;
         &-item {
           width: 100%;
+        }
+        &-button{
+          font-size: 12px;
         }
       }
     }
