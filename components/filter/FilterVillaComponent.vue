@@ -314,6 +314,7 @@ export default {
     day: { type: Number, default: null },
     month: { type: Number, default: null },
     pageContent: { type: Object, default: null },
+    world: { type: Number, default: 0 },
   },
   data() {
     return {
@@ -367,7 +368,12 @@ export default {
     },
   },
   created() {
-    const searchData = this.$store.state['settings'].searchData;
+    let searchData = {}
+    if (this.world) {
+      searchData = this.$store.state['settings'].searchWorldData;
+    } else {
+      searchData = this.$store.state['settings'].searchData;
+    }
 
     this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
     this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
@@ -378,7 +384,8 @@ export default {
     this.adult = this.selectedFilters['adult'] ?? null;
     this.children = this.selectedFilters['children'] ?? null;
     this.baby = this.selectedFilters['baby'] ?? null;
-
+  },
+  mounted() {
     this.extraFilters = this.pageContent?.page_content?.villa_filter || null;
     // eski redis yapısına göre
     this.applySelectedFilters('destinations', null);
@@ -393,10 +400,8 @@ export default {
       // this.applySelectedFilters2('amenites', 'facilityTypes', this.extraFilters.add_amenites_select);
       // this.applySelectedFilters2('amenites', 'facilities', this.extraFilters.add_amenites_select);
     }
-  },
-  mounted() {
-    this.filter();
 
+    this.filter();
   },
 
   computed: {
@@ -525,6 +530,7 @@ export default {
         adult: adult,
         baby: this.baby ? parseInt(this.baby) : null,
         order: this.orderValue?.value,
+        world: this.world
         // ...this.extraFilters
       };
 

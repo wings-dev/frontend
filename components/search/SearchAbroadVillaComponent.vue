@@ -330,7 +330,7 @@ import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import { mapMutations, mapState } from "vuex";
 
 export default {
-  name: "SearchVillaComponent",
+  name: "SearchAbroadVillaComponent",
   data() {
     return {
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
@@ -555,7 +555,7 @@ export default {
         .map(([key, value]) => Array.isArray(value) ? value.map(item => `${key}=${item}`).join('&') : `${key}=${value}`)
         .join('&');
 
-      window.location.href = `${window.location.origin}/kiralik-villa-ara?${urlSearchParams}`;
+      window.location.href = `${window.location.origin}/yurtdisi-kiralik-villa-ara?${urlSearchParams}`;
 
       /*
       this.$router.push({
