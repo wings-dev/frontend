@@ -1,17 +1,21 @@
 <template>
     <div class="Home">
         <search-bar></search-bar>
-        <section class="Banner Banner_lg Banner-back mb-6" style="background-image: url(/img/yurtdisi-banner.jpg);">
-            <img src="/img/banner-mobile.png" class="w-100 mobile" alt="">
-            <div class="container">
-                <div class=" Banner_search-text   pos-ab-xy-center ">
-                    <h2 class="animated fadeInDown ">Exclusive Villa</h2>
-                    <h1 class="animated fadeInDown ">Stylish & Luxury Design</h1>
-                    
-                    <p class="animated fadeInDown desktop flex-column "><span>Saklı bir cennet…</span>
-                        Nefes kesici doğa manzarası, muhteşem plajları, begonvillerin süslediği beyaz badanalı taş
-                        evleri ve
-                        yıldız yağmuru altındaki teraslarıyla bir Akdeniz rüyası… Huzurun diğer adı: KALKAN
+        <section class="Banner Banner-home " style="background-image: url(http://office.wingswebservices.com/storage/page/18161/381385/banner.jpg)">
+            <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
+            <div class="container Banner-home-in">
+                <div class=" Banner-home-text">
+                    <div class="Banner-home-text-spin">
+                        <h1>Bu sene tatil</h1>
+                        <div class="words">
+                            <span >Villada mı?</span>
+                            <span>Yurtdışı Villada mı?</span>
+                            <span>Otelde mi?</span>
+                            <span>Villada mı?</span></div>
+                    </div>
+                    <h2 class="">dediysen, <span>doğru yerdesin!</span></h2>
+                    <p class="">
+                        10.000+ otel ve 1.000+ villa seçeneği ile en çok tatil seçeneği ve destinasyonu VillaKalkan’da!
                     </p>
                 </div>
             </div>
