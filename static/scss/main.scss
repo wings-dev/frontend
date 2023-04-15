@@ -2210,17 +2210,25 @@ body.overflow-hidden {
         padding-left: 18px;
         padding-right: 18px;
       }
-      h2,
-      h3,
-      p,
+
       span {
         text-align: center;
-      }
-      span {
         display: block;
         &.vti__selection {
           display: flex;
         }
+      }
+
+      h3{
+        font-size: 15px;
+      }
+      h2{
+        font-size: 28px;
+        text-align: center;
+      }
+      p{
+        font-size: 13px;
+        text-align: center;
       }
     }
     &-form {
@@ -2231,6 +2239,15 @@ body.overflow-hidden {
       }
       &-item {
         max-width: 100%;
+        input{
+          font-size: 13px;
+        }
+        &-check{
+          p{
+            text-align: left;
+            font-size: 12px;
+          }
+        }
       }
       &-button {
         width: 100%;
@@ -2244,6 +2261,14 @@ body.overflow-hidden {
       }
       &-signup {
         text-align: center;
+      }
+    }
+    .btn-close{
+      padding: 7px 11px;
+      right: 10px;
+      top: 10px;
+      i{
+        font-size: 18px;
       }
     }
   }
@@ -2415,7 +2440,7 @@ body.overflow-hidden {
 }
 
 .modal-open {
-  overflow: hidden;
+  overflow: hidden!important;
 }
 
 @media (min-width: 992px) {

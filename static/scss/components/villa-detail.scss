@@ -3558,9 +3558,8 @@
       &-top {
         width: 100%;
         position: fixed;
-        left: 0;
-        bottom: 96px;
-        height: calc(100vh - 96px);
+        inset: 0;
+        height: calc(100dvh - 96px);
         background-color: #fff;
         opacity: 0;
         visibility: hidden;
@@ -3570,12 +3569,36 @@
           opacity: 1;
           visibility: visible;
           pointer-events: all;
-          overflow-y: scroll;
+        }
+        &-head{
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+          @media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+            margin-bottom: 0;
+          }
+        }
+        &-in{
+          // overflow-y: scroll;
+          height: calc(100% - 10px);
+
+          @media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+            overflow-y: scroll;
+          }
         }
 
         .tarihsec {
           display: none;
         }
+      }
+      .mobile-menus-back{
+        margin-bottom: 0;
+        margin-right: auto;
+      }
+      &-title{
+        margin-right: auto;
+        margin-left: -22px;
+        margin-bottom: 0;
       }
       &-submit {
         border-bottom-right-radius: 0px;
@@ -3594,6 +3617,7 @@
       }
 
       &-info {
+        overflow-y: scroll;
         &-item {
           display: none;
           &-more {
