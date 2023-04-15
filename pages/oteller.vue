@@ -9,7 +9,7 @@ import DynamicHotelFilterPage from "@/components/dynamic-page/hotel-filter.vue";
 
 
 export default {
-  name: 'ListPage',
+  name: 'HotelListPage',
   layout:'no-search',
   head() {
     let site_id = process.env.SITE

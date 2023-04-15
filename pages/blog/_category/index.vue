@@ -6,7 +6,7 @@
 
 import DynamicBlogCategory from "@/components/blog/blog-list.vue";
 export default {
-  name: 'ListPage',
+  name: 'BlogListPage',
   layout: 'no-search',
   components: { DynamicBlogCategory },
   data() {

@@ -9,7 +9,7 @@ import DynamicVillaFilterPage from "@/components/dynamic-page/villa-filter.vue";
 
 
 export default {
-  name: 'ListPage',
+  name: 'KiralikVillaListPage',
   head() {
     let site_id = process.env.SITE
     return {
@@ -32,7 +32,7 @@ export default {
     this.parseQueryString();
   },
   mounted() {
-    
+
   },
   methods: {
     parseQueryString() {

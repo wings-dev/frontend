@@ -9,7 +9,7 @@ import DynamicAbroadVillaFilterPage from "@/components/dynamic-page/abroad-villa
 
 
 export default {
-  name: 'ListPage',
+  name: 'AbroadVillaListPage',
   head() {
     let site_id = process.env.SITE
     return {

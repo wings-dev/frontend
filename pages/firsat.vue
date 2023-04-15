@@ -9,7 +9,7 @@ import DynamicVillaFilterPage from "@/components/dynamic-page/villa-filter.vue";
 
 
 export default {
-  name: 'ListPage',
+  name: 'FirsatListPage',
   layout:'no-search',
   head() {
     let site_id = process.env.SITE

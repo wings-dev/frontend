@@ -1,5 +1,6 @@
 <template>
   <div>
+    <search-bar v-if="[2, 5, 8, 18, 19].includes(type)"></search-bar>
     <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1"
       v-if="type === 2"></dynamic-detail-page>
     <dynamic-villa-filter-page :selectedFilters="categoryFilter" :pageContent="componentData" :highlights=true
