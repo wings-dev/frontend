@@ -495,6 +495,9 @@ export default {
     },
     checkOutChanged(value) {
       this.checkOut = this.formatDate(value);
+      if (this.checkIn && this.checkOut) {
+        this.closeCalendar()
+      }
     },
     formatDate(value) {
       if (value) {
