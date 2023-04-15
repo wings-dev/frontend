@@ -23,6 +23,7 @@ body {
     touch-action: none;
     -ms-touch-action: none;
     position: relative;
+    transition: overflow 500ms ease, position 500ms ease;
   }
   
   a {
@@ -70,6 +71,14 @@ body {
     .container-sm,
     .container {
       max-width: 1198px;
+    }
+  }
+  @media (max-width:991px) {
+    .over{
+      position: fixed;
+      overflow: hidden;
+      inset: 0px;
+      inset-inline-end: 0px;
     }
   }
 

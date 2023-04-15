@@ -1,7 +1,7 @@
 <template>
     <div class="Success">
         <div class="container">
-            <div class="Success-in py-5">
+            <div class="Success-in ">
                 <div class="Login">
 
                     <div class="Login-in">
@@ -49,10 +49,11 @@
                         <div class="Login-right success">
                             <div class="Login-right-in">
                                 <i class="icon-check-big"></i>
-                                <h2>Ön rezervasyon talebiniz başarıyla alındı.</h2>
-                                <p>Size en kısa sürede E-posta ve SMS ile dönüş sağlayacağız.</p>
-                                <a href="javascript:void(0)" @click="goHome" class="Login-form-button mt-1">Anasayfaya
-                                    Dön</a>
+                                <h3><span>VKV1195110532417</span> Rezervasyon kodu ile</h3>
+                                <h2>Ön Rezervasyon talebiniz alınmıştır.</h2>
+                                <p>Satış ekibimiz tesisle ilgili son kontrolleri yapıp sms veya telefonla size geri dönüş
+                                    sağlayacaktır.</p>
+                                <nuxt-link to="/" class="Login-form-button mt-1">Anasayfaya Dön</nuxt-link>
                             </div>
                         </div>
                     </div>
@@ -65,7 +66,10 @@
 <script>
 export default {
     name: 'ReservationSuccess',
-    layout: 'no-search'
+    layout: 'no-search',
+    mounted(){
+        console.log(navigator)
+    }
 }
 </script>
     

@@ -385,8 +385,8 @@ export default {
     HotelDatePicker,
   },
   created() {
-    this.destinations = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.destinations));
-    this.amenites = JSON.parse(JSON.stringify(this.$store.state['settings'].searchData.amenites));
+    this.destinations = JSON.parse(JSON.stringify(this.$store.state['settings'].searchWorldData.destinations));
+    this.amenites = JSON.parse(JSON.stringify(this.$store.state['settings'].searchWorldData.amenites));
   },
   beforeMount() {
     this.parseQueryString();

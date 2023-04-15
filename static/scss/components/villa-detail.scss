@@ -3318,6 +3318,9 @@
       transition: all 400ms;
       border-bottom-right-radius: 10px;
       border-bottom-left-radius: 10px;
+      &.disabled{
+        opacity: 0.5;
+      }
     }
     &-detail {
       display: none;
@@ -3567,6 +3570,7 @@
           opacity: 1;
           visibility: visible;
           pointer-events: all;
+          overflow-y: scroll;
         }
 
         .tarihsec {
@@ -3631,7 +3635,7 @@
             justify-content: space-between;
             margin-bottom: 12px;
             p {
-              font-size: 15px;
+              font-size: 14px;
               font-weight: 500;
               line-height: 1.55;
               color: var(--bs-theme-first);
@@ -3641,7 +3645,7 @@
               }
             }
             b {
-              font-size: 15px;
+              font-size: 14px;
               font-weight: 500;
               line-height: 1.55;
               text-align: right;
@@ -3655,7 +3659,7 @@
           margin: 12px 0;
           border-radius: 4px;
           background-color: #f5f6f8;
-          font-size: 17px;
+          font-size: 16px;
           font-weight: bold;
           line-height: 1.15;
           color: var(--bs-theme-second);
@@ -3663,7 +3667,7 @@
           align-items: center;
           justify-content: space-between;
           span {
-            font-size: 20px;
+            font-size: 18px;
             text-align: right;
           }
         }
@@ -3675,7 +3679,7 @@
               display: flex;
               align-items: center;
               justify-content: space-between;
-              font-size: 15px;
+              font-size: 14px;
               font-weight: 500;
               line-height: 1.55;
               color: var(--bs-theme-first);
