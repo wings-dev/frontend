@@ -2,200 +2,209 @@
   <form action="" class="Reservation-form" id="reservationForm">
 
     <div class="Reservation-form-top" :class="{ 'mobile-active': mobileReservation }">
-      <button type="button" class="mobile-menus-back" @click="reservatinAction"><i class="icon-left-arrow"></i></button>
-      <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
+      <div class="Reservation-form-top-head">
+        <button type="button" class="mobile-menus-back" @click="reservatinAction"><i class="icon-left-arrow"></i></button>
+        <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
+      </div>
+
       <span class="tarihsec">TARİH SEÇ</span>
-      <div class="Reservation-form-in">
-        <div class="Reservation-form-item w-100">
-          <div class="dates d-flex">
-            <div class="date-title w-50">
-              Giriş Tarihi
-            </div>
-            <div class="date-title w-50">
-              Çıkış Tarihi
-            </div>
-          </div>
-
-          <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
-            @check-out-changed="checkOutChanged($event)" format="DD dddd" :positionRight="true"
-            :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
-            :displayClearButton=false>
-
-            <div slot="content">
-              <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
-                <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
-                <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
+      <div class="Reservation-form-top-in">
+        <div class="Reservation-form-in">
+          <div class="Reservation-form-item w-100">
+            <div class="dates d-flex">
+              <div class="date-title w-50">
+                Giriş Tarihi
+              </div>
+              <div class="date-title w-50">
+                Çıkış Tarihi
               </div>
             </div>
-          </HotelDatePicker>
-        </div>
-        <div class="Reservation-form-item Reservation-form-item-person">
-          <label for="">
-            <span class="Reservation-form-item-title">Kişi Sayısı</span>
-            <div class="Reservation-form-item-icon">
-              <i class="icon-user"></i>
-            </div>
-            <div class="Reservation-form-item-input">
-              <button class=" dropdown-toggle" type="button" id="dropdownPerson" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <p><span class="adult-people">{{ adult }}</span> Yetişkin,
-                  <span class="child-people">{{ child }}</span> Çocuk,
-                  <span class="child-people">{{ baby }}</span> Bebek
-                </p>
-              </button>
-              <client-only>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <div class="Search-item-person">
-                    <div class="Search-item-person-item ">
-                      <p>Yetişkinler <br><span class="">13 yaş ve üzeri</span></p>
-                      <div class="Search-item-person-item-in ">
-                        <button type="button" class="minus-person" @click="adultDecrease">
-                          <i class="icon-minus"></i>
-                        </button>
-                        <input id="Search_PeopleAdult" class="person" name="yetiskinler" type="text" v-model="adult"
-                          data-min="1" data-max="10" data-text="Yetişkin, " max="20" readonly>
-                        <button type="button" class="plus-person" @click="adultIncrease">
-                          <i class="icon-plus"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="Search-item-person-item">
-                      <p>Çocuk <br><span>6-17 arası</span></p>
-                      <div class="Search-item-person-item-in ">
-                        <button type="button" class="minus-person" @click="children_Decrease">
-                          <i class="icon-minus"></i>
-                        </button>
-                        <input id="Search_PeopleChild" class="person" type="text" :value="child" name="cocuklar" max="10"
-                          data-text="Çocuk" data-min="0" data-max="10" readonly>
-                        <button type="button" class="plus-person" @click="children_Increase">
-                          <i class="icon-plus"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="Search-item-person-item ">
-                      <p>Bebek<br><span>0-5 arası</span></p>
-                      <div class="Search-item-person-item-in ">
-                        <button type="button" class="minus-person" @click="baby_Decrease">
-                          <i class="icon-minus"></i>
-                        </button>
-                        <input id="Search_PeopleBaby" class="person" type="text" v-model="baby" name="cocuklar"
-                          data-min="0" data-max="10" data-text="Bebek" readonly>
-                        <button type="button" class="plus-person" @click="baby_Increase">
-                          <i class="icon-plus"></i>
-                        </button>
 
-                      </div>
-                    </div>
-                  </div>
+            <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
+              @check-out-changed="checkOutChanged($event)" format="DD dddd" :positionRight="true"
+              :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage"
+              :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
 
-                </ul>
-              </client-only>
-            </div>
-
-          </label>
-        </div>
-      </div>
-      <div class="Reservation-form-info">
-
-        <div class="Reservation-form-info-item">
-          <div class="Reservation-form-info-item-in">
-            <div class="Reservation-form-info-item-left">
-              <h5>Ön Ödeme Tutarı</h5>
-            </div>
-            <div class="Reservation-form-info-item-right">
-              <b>{{ availabilityData.advance_payment | numberFormat }} {{ availabilityData.night_price_currency_symbol
-              }}</b>
-            </div>
-          </div>
-
-        </div>
-        <div class="Reservation-form-info-item">
-          <div class="Reservation-form-info-item-in">
-            <div class="Reservation-form-info-item-left">
-              <h5>Toplam Tutar</h5>
-            </div>
-            <div class="Reservation-form-info-item-right">
-              <b>{{ availabilityData.total_payment | numberFormat }} TL</b>
-            </div>
-          </div>
-        </div>
-        <div class="Reservation-form-detail" :class="{ 'mobile-active': mobileReservation }">
-
-          <div class="Reservation-form-detail-top">
-            <div class="Reservation-form-detail-top-item">
-              <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
-              <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
-            </div>
-            <div class="Reservation-form-detail-top-item">
-              <p>Temizlik Ücreti <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                  title="Tooltip on right"></i></p>
-              <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
-            </div>
-          </div>
-          <p class="Reservation-form-detail-total">
-            Toplam Ödeme <span>{{ availabilityData.total_price | numberFormat }}{{
-              availabilityData.night_price_currency_symbol }}</span>
-          </p>
-          <div class="Reservation-form-detail-bottom">
-            <div class="Reservation-form-detail-bottom-item">
-              <p>Ön Ödeme <span>{{ availabilityData.advance_payment | numberFormat }}{{
-                availabilityData.night_price_currency_symbol
-              }}</span></p>
-              <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
-            </div>
-            <div class="Reservation-form-detail-bottom-item">
-              <p>Tesise Girişte <span>{{ availabilityData.remaining_payment | numberFormat }}{{
-                availabilityData.night_price_currency_symbol
-              }}</span></p>
-              <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
-            </div>
-          </div>
-        </div>
-        <div class="accordion Reservation-form-info-item-more" id="accordionExample">
-          <div class="accordion-item">
-            <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
-              data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Detayları Gör
-              <i class="icon-down-arrow"></i>
-            </button>
-
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample">
-              <div class="Reservation-form-info-item-more-item">
-                <div class="Reservation-form-info-item-more-item-left">
-                  <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
+              <div slot="content">
+                <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
+                  <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
+                  <button @click.prevent="hidePickerRez()"><i class="icon-date-close"></i>Kapat</button>
                 </div>
+              </div>
+            </HotelDatePicker>
+          </div>
+          <div class="Reservation-form-item Reservation-form-item-person">
+            <label for="">
+              <span class="Reservation-form-item-title">Kişi Sayısı</span>
+              <div class="Reservation-form-item-icon">
+                <i class="icon-user"></i>
+              </div>
+              <div class="Reservation-form-item-input">
+                <button class=" dropdown-toggle" type="button" id="dropdownPerson" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <p><span class="adult-people">{{ adult }}</span> Yetişkin,
+                    <span class="child-people">{{ child }}</span> Çocuk,
+                    <span class="child-people">{{ baby }}</span> Bebek
+                  </p>
+                </button>
+                <client-only>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <div class="Search-item-person">
+                      <div class="Search-item-person-item ">
+                        <p>Yetişkinler <br><span class="">13 yaş ve üzeri</span></p>
+                        <div class="Search-item-person-item-in ">
+                          <button type="button" class="minus-person" @click="adultDecrease">
+                            <i class="icon-minus"></i>
+                          </button>
+                          <input id="Search_PeopleAdult" class="person" name="yetiskinler" type="text" v-model="adult"
+                            data-min="1" data-max="10" data-text="Yetişkin, " max="20" readonly>
+                          <button type="button" class="plus-person" @click="adultIncrease">
+                            <i class="icon-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="Search-item-person-item">
+                        <p>Çocuk <br><span>6-17 arası</span></p>
+                        <div class="Search-item-person-item-in ">
+                          <button type="button" class="minus-person" @click="children_Decrease">
+                            <i class="icon-minus"></i>
+                          </button>
+                          <input id="Search_PeopleChild" class="person" type="text" :value="child" name="cocuklar"
+                            max="10" data-text="Çocuk" data-min="0" data-max="10" readonly>
+                          <button type="button" class="plus-person" @click="children_Increase">
+                            <i class="icon-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="Search-item-person-item ">
+                        <p>Bebek<br><span>0-5 arası</span></p>
+                        <div class="Search-item-person-item-in ">
+                          <button type="button" class="minus-person" @click="baby_Decrease">
+                            <i class="icon-minus"></i>
+                          </button>
+                          <input id="Search_PeopleBaby" class="person" type="text" v-model="baby" name="cocuklar"
+                            data-min="0" data-max="10" data-text="Bebek" readonly>
+                          <button type="button" class="plus-person" @click="baby_Increase">
+                            <i class="icon-plus"></i>
+                          </button>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </ul>
+                </client-only>
+              </div>
+
+            </label>
+          </div>
+        </div>
+        <div class="Reservation-form-info">
+
+          <div class="Reservation-form-info-item">
+            <div class="Reservation-form-info-item-in">
+              <div class="Reservation-form-info-item-left">
+                <h5>Ön Ödeme Tutarı</h5>
+              </div>
+              <div class="Reservation-form-info-item-right">
+                <b>{{ availabilityData.advance_payment | numberFormat }} {{ availabilityData.night_price_currency_symbol
+                }}</b>
+              </div>
+            </div>
+
+          </div>
+          <div class="Reservation-form-info-item">
+            <div class="Reservation-form-info-item-in">
+              <div class="Reservation-form-info-item-left">
+                <h5>Toplam Tutar</h5>
+              </div>
+              <div class="Reservation-form-info-item-right">
+                <b>{{ availabilityData.total_payment | numberFormat }} TL</b>
+              </div>
+            </div>
+          </div>
+          <div class="Reservation-form-detail" :class="{ 'mobile-active': mobileReservation }">
+
+            <div class="Reservation-form-detail-top">
+              <div class="Reservation-form-detail-top-item">
+                <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
                 <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
               </div>
-              <div class="Reservation-form-info-item-more-item">
-                <div class="Reservation-form-info-item-more-item-left">
-                  <p>Temizlik Ücreti</p>
-                  <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                    title="Tooltip on right"></i>
-                </div>
+              <div class="Reservation-form-detail-top-item">
+                <p>Temizlik Ücreti <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                    title="Tooltip on right"></i></p>
                 <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol
                 }}</b>
               </div>
-
-              <div class="Reservation-form-info-item-more-item">
-                <div class="Reservation-form-info-item-more-item-left">
-                  <p>Girişte Ödenecek</p>
-                </div>
-                <b>{{ availabilityData.remaining_payment | numberFormat }}{{ availabilityData.night_price_currency_symbol
-                }}</b>
+            </div>
+            <p class="Reservation-form-detail-total">
+              Toplam Ödeme <span>{{ availabilityData.total_price | numberFormat }}{{
+                availabilityData.night_price_currency_symbol }}</span>
+            </p>
+            <div class="Reservation-form-detail-bottom">
+              <div class="Reservation-form-detail-bottom-item">
+                <p>Ön Ödeme <span>{{ availabilityData.advance_payment | numberFormat }}{{
+                  availabilityData.night_price_currency_symbol
+                }}</span></p>
+                <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
               </div>
-
-              <div class="Reservation-form-info-item-more-item">
-                <div class="Reservation-form-info-item-more-item-left">
-                  <p>Toplam Tutar</p>
-                  <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                    title="Tooltip on right"></i>
-                </div>
-                <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
+              <div class="Reservation-form-detail-bottom-item">
+                <p>Tesise Girişte <span>{{ availabilityData.remaining_payment | numberFormat }}{{
+                  availabilityData.night_price_currency_symbol
+                }}</span></p>
+                <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
               </div>
+            </div>
+          </div>
+          <div class="accordion Reservation-form-info-item-more" id="accordionExample">
+            <div class="accordion-item">
+              <button class="accordion-button Reservation-form-info-item-more-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Detayları Gör
+                <i class="icon-down-arrow"></i>
+              </button>
+
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="Reservation-form-info-item-more-item">
+                  <div class="Reservation-form-info-item-more-item-left">
+                    <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
+                  </div>
+                  <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                  }}</b>
+                </div>
+                <div class="Reservation-form-info-item-more-item">
+                  <div class="Reservation-form-info-item-more-item-left">
+                    <p>Temizlik Ücreti</p>
+                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                      title="Tooltip on right"></i>
+                  </div>
+                  <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                  }}</b>
+                </div>
+
+                <div class="Reservation-form-info-item-more-item">
+                  <div class="Reservation-form-info-item-more-item-left">
+                    <p>Girişte Ödenecek</p>
+                  </div>
+                  <b>{{ availabilityData.remaining_payment | numberFormat }}{{
+                    availabilityData.night_price_currency_symbol
+                  }}</b>
+                </div>
+
+                <div class="Reservation-form-info-item-more-item">
+                  <div class="Reservation-form-info-item-more-item-left">
+                    <p>Toplam Tutar</p>
+                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
+                      title="Tooltip on right"></i>
+                  </div>
+                  <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                  }}</b>
+                </div>
 
 
 
+              </div>
             </div>
           </div>
         </div>
@@ -228,14 +237,15 @@
         <template v-else>
           <button class="Reservation-form-submit" :disabled="!dateSelected || availabilityLoading"
             @click.prevent="reservatinAction()">
-            Kaydet 
+            Kaydet
           </button>
         </template>
       </template>
 
       <!-- desktop -->
       <template v-else>
-        <button v-if="!availabilityChecked" class="Reservation-form-submit" @click.prevent="availabilityCheck()" :class="{'disabled' : !this.dateSelected || this.availabilityLoading}">
+        <button v-if="!availabilityChecked" class="Reservation-form-submit" @click.prevent="availabilityCheck()"
+          :class="{ 'disabled': !this.dateSelected || this.availabilityLoading }">
           Uygunluk Durumunu Kontrol Edin
         </button>
         <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
@@ -447,8 +457,8 @@ export default {
       this.availabilityChecked = true;
       setTimeout(() => {
         document.querySelector('.Reservation-form').classList.add("show")
-        }, 50)
-      
+      }, 50)
+
     },
     preReservation() {
       this.setReservationModalData({
@@ -483,8 +493,8 @@ export default {
       this.checkIn = this.formatDate(value);
       setTimeout(() => {
         document.querySelector('.tarihsec').classList.add("tarihsec-active")
-        }, 50)
-      
+      }, 50)
+
     },
     checkOutChanged(value) {
       this.checkOut = this.formatDate(value);
@@ -868,5 +878,4 @@ body {
 :deep() .datepicker__month-button {
   border: 1px solid var(--bs-theme-first-dark);
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDcgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF80MDJfMTU5NCkiPgo8cGF0aCBkPSJNNS45MTQ5NyA0Ljc2Mjg4TDEuMzE3MDYgMC4xNjUwNkMxLjIxMDcxIDAuMDU4NjMyIDEuMDY4NzUgMCAwLjkxNzM4NiAwQzAuNzY2MDE4IDAgMC42MjQwNTggMC4wNTg2MzIgMC41MTc3MTQgMC4xNjUwNkwwLjE3OTExIDAuNTAzNThDLTAuMDQxMjIyNCAwLjcyNDE2NCAtMC4wNDEyMjI0IDEuMDgyNjggMC4xNzkxMSAxLjMwMjkyTDQuMDQwMDkgNS4xNjM5TDAuMTc0ODI2IDkuMDI5MTZDMC4wNjg0ODE2IDkuMTM1NTkgMC4wMDk3NjU2MiA5LjI3NzQ2IDAuMDA5NzY1NjIgOS40Mjg3NUMwLjAwOTc2NTYyIDkuNTgwMiAwLjA2ODQ4MTYgOS43MjIwOCAwLjE3NDgyNiA5LjgyODU5TDAuNTEzNDMgMTAuMTY3QzAuNjE5ODU4IDEwLjI3MzUgMC43NjE3MzQgMTAuMzMyMSAwLjkxMzEwMiAxMC4zMzIxQzEuMDY0NDcgMTAuMzMyMSAxLjIwNjQzIDEwLjI3MzUgMS4zMTI3NyAxMC4xNjdMNS45MTQ5NyA1LjU2NUM2LjAyMTU2IDUuNDU4MjQgNi4wODAxMSA1LjMxNTY5IDYuMDc5NzcgNS4xNjQxNUM2LjA4MDExIDUuMDEyMDMgNi4wMjE1NiA0Ljg2OTU2IDUuOTE0OTcgNC43NjI4OFoiIGZpbGw9IiMxMTI4NTUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF80MDJfMTU5NCI+CjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjExIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=) no-repeat 57%/10px;
-}
-</style>
+}</style>
