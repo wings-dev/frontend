@@ -313,6 +313,7 @@ export default {
     opportunity: { type: Boolean, default: false },
     day: { type: Number, default: null },
     month: { type: Number, default: null },
+    pageContent: { type: Object, default: null },
   },
   data() {
     return {
@@ -351,6 +352,7 @@ export default {
       novillas: false,
       isMobileFilterOpen: false,
       timeoutId: null,
+      extraFilters: {}
     }
   },
   components: {
@@ -377,11 +379,20 @@ export default {
     this.children = this.selectedFilters['children'] ?? null;
     this.baby = this.selectedFilters['baby'] ?? null;
 
-
+    this.extraFilters = this.pageContent?.page_content?.villa_filter || null;
+    // eski redis yapısına göre
     this.applySelectedFilters('destinations', null);
     this.applySelectedFilters('amenites', 'facilityConcepts');
     this.applySelectedFilters('amenites', 'facilityTypes');
     this.applySelectedFilters('amenites', 'facilities');
+
+    if (this.extraFilters) {
+      // yeni redis yapısına göre
+      // this.applySelectedFilters2('destinations', null, this.extraFilters.add_destination_select);
+      // this.applySelectedFilters2('amenites', 'facilityConcepts', this.extraFilters.add_amenites_select);
+      // this.applySelectedFilters2('amenites', 'facilityTypes', this.extraFilters.add_amenites_select);
+      // this.applySelectedFilters2('amenites', 'facilities', this.extraFilters.add_amenites_select);
+    }
   },
   mounted() {
     this.filter();
@@ -458,6 +469,26 @@ export default {
         checkbox.selected = true;
       }
     },
+    applySelectedFilters2(property, nestedProperty, addFilters) {
+      let filters = [];
+      if (nestedProperty) {
+        filters = addFilters || [];
+      } else {
+        filters = addFilters || [];
+      }
+      let checkboxes = [];
+      if (nestedProperty) {
+        checkboxes = this[property][nestedProperty];
+      } else {
+        checkboxes = this[property];
+      }
+      for (let i = 0; i < filters.length; i++) {
+        const checkbox = this.findNestedObject(checkboxes, filters[i]);
+        if (checkbox) {
+          checkbox.selected = true;
+        }
+      }
+    },
     updateFilter(key, value, sendRequest = true) {
       this[key] = value;
       sendRequest && this.filter();
@@ -478,19 +509,23 @@ export default {
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
       let data = {
-        destination: this.selectedDestinations.map(({ code }) => code),
+        destination: [
+          ...this.selectedDestinations.map(({ code }) => code),
+          ...(this.extraFilters?.add_destination_select ?? []).map(i => parseInt(i))
+        ],
         amenites: [
           ...this.selectedFacilityConcepts,
           ...this.selectedFacilityTypes,
           ...this.selectedFacilities,
-        ].map(({ code }) => code),
+        ].map(({ code }) => code).concat((this.extraFilters?.add_amenites_select ?? []).map(i => parseInt(i))),
         min_price: this.min_price,
         max_price: this.max_price,
         startDate: this.checkIn,
         endDate: this.checkOut,
         adult: adult,
         baby: this.baby ? parseInt(this.baby) : null,
-        order: this.orderValue?.value
+        order: this.orderValue?.value,
+        // ...this.extraFilters
       };
 
       if (this.opportunity) {
