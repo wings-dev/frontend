@@ -1,15 +1,15 @@
 <template>
   <div class="Search  "
-    :class="{ 'list': $route.path == '/kiralik-villa-ara' || $route.path == '/yurtdisi-kiralik-villa-ara'}"
+    :class="{ 'list': $route.path == '/kiralik-villa-ara' || $route.path == '/yurtdisi-kiralik-villa-ara' }"
     ref="searchBar">
-    <div class="Search-fixed-in" :class="{'fixed-active':fixedSearch}">
+    <div class="Search-fixed-in" :class="{ 'fixed-active': fixedSearch }">
       <div class="Search-fixed-in-left">
         <b>14 HAZ - 19 HAZ</b>
         <p>Antalya, Kaş <span>2 Yetişkin, 2 Çocuk</span></p>
       </div>
       <button type="button" @click="fixedSearchOpen">Değiştir</button>
     </div>
-    <div class="Search-left" :class="{'fixed-active' : fixedSearch}">
+    <div class="Search-left" :class="{ 'fixed-active': fixedSearch }">
       <div class="Search-item Search-item-region dropdown" @click="openRegions">
         <div class="Search-item-title">
           <i class="icon-new-location Search-item-icon"></i>
@@ -85,7 +85,7 @@
                 <p>Yetişkin</p>
                 <div class="Search-item-person-item-in ">
                   <button type="button" class="minus-person" @click="adultDecrease">
-                   <i class="icon-minus"></i>
+                    <i class="icon-minus"></i>
                   </button>
                   <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
                   <button type="button" class="plus-person" @click="adultIncrease">
@@ -131,7 +131,8 @@
         </button>
       </div>
     </div>
-    <button class="Search-fixed-button" :class="{'fixed-active' : fixedSearch}" type="button" @click="fixedSearchClose">Kapat</button>
+    <button class="Search-fixed-button" :class="{ 'fixed-active': fixedSearch }" type="button"
+      @click="fixedSearchClose">Kapat</button>
     <button type="button" class="Search-item-more-mobile" id="mobileFilter" @click="openMobileFilter()">
       <i class="icon-new-filter"></i>
       <span class="dropdown-toggle-title">Gelişmiş Arama</span>
@@ -256,45 +257,45 @@
         <button type="button" @click="closePeoples"><i class="icon-login-close"></i></button>
       </div>
       <div class="Search-item-person">
-              <div class="Search-item-person-item ">
-                <p>Yetişkin</p>
-                <div class="Search-item-person-item-in ">
-                  <button type="button" class="minus-person" @click="adultDecrease">
-                   <i class="icon-minus"></i>
-                  </button>
-                  <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
-                  <button type="button" class="plus-person" @click="adultIncrease">
-                    <i class="icon-plus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="Search-item-person-item">
-                <p>Çocuk <br><span>6-17 arası</span></p>
-                <div class="Search-item-person-item-in ">
-                  <button type="button" class="minus-person" @click="children_Decrease">
-                    <i class="icon-minus"></i>
-                  </button>
-                  <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
-                  <button type="button" class="plus-person" @click="children_Increase">
-                    <i class="icon-plus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="Search-item-person-item ">
-                <p>Bebek<br><span>0-5 arası</span></p>
-                <div class="Search-item-person-item-in ">
+        <div class="Search-item-person-item ">
+          <p>Yetişkin</p>
+          <div class="Search-item-person-item-in ">
+            <button type="button" class="minus-person" @click="adultDecrease">
+              <i class="icon-minus"></i>
+            </button>
+            <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
+            <button type="button" class="plus-person" @click="adultIncrease">
+              <i class="icon-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="Search-item-person-item">
+          <p>Çocuk <br><span>6-17 arası</span></p>
+          <div class="Search-item-person-item-in ">
+            <button type="button" class="minus-person" @click="children_Decrease">
+              <i class="icon-minus"></i>
+            </button>
+            <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
+            <button type="button" class="plus-person" @click="children_Increase">
+              <i class="icon-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="Search-item-person-item ">
+          <p>Bebek<br><span>0-5 arası</span></p>
+          <div class="Search-item-person-item-in ">
 
-                  <button type="button" class="minus-person" @click="baby_Decrease">
-                    <i class="icon-minus"></i>
-                  </button>
-                  <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
-                  <button type="button" class="plus-person" @click="baby_Increase">
-                    <i class="icon-plus"></i>
-                  </button>
+            <button type="button" class="minus-person" @click="baby_Decrease">
+              <i class="icon-minus"></i>
+            </button>
+            <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
+            <button type="button" class="plus-person" @click="baby_Increase">
+              <i class="icon-plus"></i>
+            </button>
 
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
+      </div>
       <div class="Search-mobile-bottom">
         <button type="button" @click="closePeoples">Uygula</button>
       </div>
@@ -370,7 +371,7 @@ export default {
       mobileRegions: false,
       mobilePeoples: false,
       mobileCalendar: false,
-      fixedSearch:false,
+      fixedSearch: false,
     }
   },
   components: {
@@ -403,9 +404,13 @@ export default {
       // console.log(this.$refs.searchBar.classList)
       window.onscroll = function () {
         if (scrollY >= 300) {
-          document.querySelector('.Search').classList.add('fixed')
+          setTimeout(() => {
+            document.querySelector('.Search').classList.add('fixed')
+          }, 50)
         } else {
-          document.querySelector('.Search').classList.remove('fixed')
+          setTimeout(() => {
+            document.querySelector('.Search').classList.remove('fixed')
+          }, 50)
         }
 
       };
@@ -602,20 +607,25 @@ export default {
     openMobileFilter() {
       if (this.isMobile()) {
         this.isMobileFilterOpen = true
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('.Home').classList.add('Home-z')
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+          document.querySelector('.Header').classList.add('Header-z')
+          document.querySelector('.Home').classList.add('Home-z')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 50)
+
       }
     },
     closeMobileFilter() {
       if (this.isMobile()) {
         this.isMobileFilterOpen = false
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('.Home').classList.remove('Home-z')
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+          document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('.Home').classList.remove('Home-z')
+        }, 50)
       }
     },
     checkboxOpen(groupName) {
@@ -629,31 +639,37 @@ export default {
     openRegions() {
       if (this.isMobile()) {
         this.mobileRegions = true
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('.Home').classList.add('Home-z')
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+          document.querySelector('.Header').classList.add('Header-z')
+          document.querySelector('.Home').classList.add('Home-z')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 50)
       }
     },
     openPeoples() {
       if (this.isMobile()) {
         this.mobilePeoples = true
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('.Home').classList.add('Home-z')
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+          document.querySelector('.Header').classList.add('Header-z')
+          document.querySelector('.Home').classList.add('Home-z')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 50)
       }
     },
     openCalendar() {
       if (this.isMobile()) {
         this.mobileCalendar = true
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('.Home').classList.add('Home-z')
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+          document.querySelector('.Header').classList.add('Header-z')
+          document.querySelector('.Home').classList.add('Home-z')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 50)
         this.$refs.datePickerModal.showDatepicker()
         this.$refs.datePickerModal.clearSelection()
       }
@@ -661,28 +677,34 @@ export default {
     closeRegions() {
       if (this.isMobile()) {
         this.mobileRegions = false
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('.Home').classList.remove('Home-z')
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+          document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('.Home').classList.remove('Home-z')
+        }, 50)
       }
     },
     closePeoples() {
       if (this.isMobile()) {
         this.mobilePeoples = false
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('.Home').classList.remove('Home-z')
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+          document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('.Home').classList.remove('Home-z')
+        }, 50)
       }
     },
     closeCalendar() {
       if (this.isMobile()) {
         this.mobileCalendar = false
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('.Home').classList.remove('Home-z')
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+          document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('.Home').classList.remove('Home-z')
+        }, 50)
         this.$refs.datePickerModal.hideDatepicker()
       }
     },

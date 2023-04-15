@@ -28,11 +28,13 @@
                 <div class="d-flex align-items-center text-theme-secondary">
                   <i class="icon-pin"></i>
                   <p class="view-top-right-location">{{ villa.location.city.name | titlecase }}
-                    <span class="lh-sm">{{ villa.location.country.name  | titlecase}} / {{ villa.location.state.name  | titlecase}}</span></p>
+                    <span class="lh-sm">{{ villa.location.country.name | titlecase }} / {{ villa.location.state.name |
+                      titlecase }}</span>
+                  </p>
                 </div>
                 <div class="view-top-right-price" v-if="lowestPrice">
                   <span>GECELİK</span>
-                  <p>{{lowestPrice | numberFormat}} <span>₺</span></p>
+                  <p>{{ lowestPrice | numberFormat }} <span>₺</span></p>
                   <small>'den başlayan fiyatlar'</small>
                 </div>
               </div>
@@ -73,9 +75,12 @@
                     <span class="action-btn-text">Arkadaşın ile Paylaş</span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare">
-                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnFacebook"><i class="icon-facebook"></i></a></li>
-                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnTwitter"><i class="icon-twitter"></i></a></li>
-                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnWhatsApp"><i class="icon-whatsapp"></i></a></li>
+                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnFacebook"><i
+                          class="icon-facebook"></i></a></li>
+                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnTwitter"><i class="icon-twitter"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="#" @click.prevent="shareOnWhatsApp"><i
+                          class="icon-whatsapp"></i></a></li>
                   </ul>
                 </div>
                 <button type="button"
@@ -274,8 +279,8 @@
                         </div>
                         <div class="View-months-item-days">
                           <p>En az konaklama</p>
-                          <b>{{ price.minaccomodationday }} GECE <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                                                                    title="Tooltip on right"></i></b>
+                          <b>{{ price.minaccomodationday }} GECE <i class="icon-information" data-bs-toggle="tooltip"
+                              data-bs-placement="right" title="Tooltip on right"></i></b>
                         </div>
                       </div>
                     </div>
@@ -502,14 +507,15 @@
                       <button class="nav-link active" id="pills-beach-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-beach" type="button" role="tab" aria-controls="pills-home"
                         aria-selected="true">
-                        <p><i class="icon-beach"></i>Tesise Yakın Plaj</p> <span>{{places.beaches.length}}</span>
+                        <p><i class="icon-beach"></i>Tesise Yakın Plaj</p> <span>{{ places.beaches.length }}</span>
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" id="pills-architecture-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-architecture" type="button" role="tab" aria-controls="pills-profile"
                         aria-selected="false">
-                        <p><i class="icon-architecture"></i>Gezilecek yerler</p> <span>{{places.locations.length}}</span>
+                        <p><i class="icon-architecture"></i>Gezilecek yerler</p> <span>{{ places.locations.length
+                        }}</span>
                       </button>
                     </li>
                   </ul>
@@ -523,14 +529,14 @@
                           <img :src="item.images[0].preview_url" alt="" width="157" height="95">
                         </div>
                         <div class="first-tab-item-content">
-                          <b>{{item.name}}</b>
-                          <p>{{item.description}}</p>
+                          <b>{{ item.name }}</b>
+                          <p>{{ item.description }}</p>
                         </div>
                         <div class="first-tab-item-length">
                           <b>{{ item.distance.match(/\d+/)[0] }}</b>
                           <p>{{ item.distance.replace(/\d+/, '') }}</p>
                           <small>Uzaklıkta</small>
-                          <span>#{{index + 1}}</span>
+                          <span>#{{ index + 1 }}</span>
                         </div>
                       </div>
                     </div>
@@ -543,14 +549,14 @@
                           <img :src="item.images[0].preview_url" alt="" width="157" height="95">
                         </div>
                         <div class="first-tab-item-content">
-                          <b>{{item.name}}</b>
-                          <p>{{item.description}}</p>
+                          <b>{{ item.name }}</b>
+                          <p>{{ item.description }}</p>
                         </div>
                         <div class="first-tab-item-length">
                           <b>{{ item.distance.match(/\d+/)[0] }}</b>
                           <p>{{ item.distance.replace(/\d+/, '') }}</p>
                           <small>Uzaklıkta</small>
-                          <span>#{{index + 1}}</span>
+                          <span>#{{ index + 1 }}</span>
                         </div>
                       </div>
                     </div>
@@ -588,35 +594,40 @@
                     </li>
                   </ul>
                   <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
+                    <div class="tab-pane fade show active" id="pills-health" role="tabpanel"
+                      aria-labelledby="pills-health-tab">
                       <div class="second-tab-in">
                         <div class="second-tab-item" v-for="(item, index) in places.health">
-                          <p class="name"><b>{{item.name}}</b>{{item.description}}</p>
-                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+                          <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
+                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '')
+                          }} <small>Uzaklıkta</small></p>
                         </div>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="pills-restoran" role="tabpanel" aria-labelledby="pills-restoran-tab">
                       <div class="second-tab-in">
                         <div class="second-tab-item" v-for="(item, index) in places.restaurant">
-                          <p class="name"><b>{{item.name}}</b>{{item.description}}</p>
-                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+                          <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
+                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '')
+                          }} <small>Uzaklıkta</small></p>
                         </div>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="pills-market" role="tabpanel" aria-labelledby="pills-market-tab">
                       <div class="second-tab-in">
                         <div class="second-tab-item" v-for="(item, index) in places.market">
-                          <p class="name"><b>{{item.name}}</b>{{item.description}}</p>
-                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+                          <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
+                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '')
+                          }} <small>Uzaklıkta</small></p>
                         </div>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
                       <div class="second-tab-in">
                         <div class="second-tab-item" v-for="(item, index) in places.transport">
-                          <p class="name"><b>{{item.name}}</b>{{item.description}}</p>
-                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+                          <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
+                          <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b> {{ item.distance.replace(/\d+/, '')
+                          }} <small>Uzaklıkta</small></p>
                         </div>
                       </div>
                     </div>
@@ -1245,9 +1256,11 @@
           <div class="View-right Reservation">
 
             <client-only>
-              <reservation-form :villa="villa" :property-code="villa.code" :disable-reservation="disableDate"></reservation-form>
+              <reservation-form :villa="villa" :property-code="villa.code"
+                :disable-reservation="disableDate"></reservation-form>
 
-              <opportunity-box-component :propertyCode="villa.code" @selected="opportunitySelected($event)"></opportunity-box-component>
+              <opportunity-box-component :propertyCode="villa.code"
+                @selected="opportunitySelected($event)"></opportunity-box-component>
             </client-only>
 
           </div>
@@ -1498,15 +1511,19 @@ export default {
       }
     },
     showGallery() {
-      document.querySelector('.Gallery').classList.add("show")
-      document.querySelector('body').classList.add("over")
-      document.querySelector('.main').classList.add("main-z")
+      setTimeout(() => {
+        document.querySelector('.Gallery').classList.add("show")
+        document.querySelector('body').classList.add("over")
+        document.querySelector('.main').classList.add("main-z")
+      }, 50)
       this.galleryIsOpen = true
     },
     closeGallery() {
-      document.querySelector('.Gallery').classList.remove("show")
-      document.querySelector('body').classList.remove("over")
-      document.querySelector('.main').classList.remove("main-z")
+      setTimeout(() => {
+        document.querySelector('.Gallery').classList.remove("show")
+        document.querySelector('body').classList.remove("over")
+        document.querySelector('.main').classList.remove("main-z")
+      }, 50)
       this.galleryIsOpen = false
     },
     scrollGallery(event) {
@@ -1569,40 +1586,56 @@ export default {
         this.calendarColumn = 2
       }
     },
-    mobileAmenites(){
-      if(this.mobileAmenites == true){
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-      }else{
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
+    mobileAmenites() {
+      if (this.mobileAmenites == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+        }, 50)
       }
     },
-    mobileOpportunity(){
-      if(this.mobileOpportunity == true){
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-      }else{
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
+    mobileOpportunity() {
+      if (this.mobileOpportunity == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+        }, 50)
       }
     },
-    mobileLocation(){
-      if(this.mobileLocation == true){
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-      }else{
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
+    mobileLocation() {
+      if (this.mobileLocation == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+        }, 50)
       }
     },
-    mobilePolicy(){
-      if(this.mobilePolicy == true){
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-      }else{
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
+    mobilePolicy() {
+      if (this.mobilePolicy == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+        }, 50)
       }
     },
   },
@@ -1654,12 +1687,12 @@ export default {
 
     try {
       const response = await this.$axios.post(`/website/property/month-prices?api_token=${process.env.WEBSITE_TOKEN}`, {
-        "code":this.villa.code,
+        "code": this.villa.code,
         "pricelist_id": process.env.PRICELIST_ID
       })
       this.monthlyPrices = response.data
       this.lowestPrice = Math.min(...this.monthlyPrices.map(price => price.lowest_price));
-    } catch (e) {}
+    } catch (e) { }
 
     this.$nextTick(() => {
       Swiper.use([Navigation, Pagination])
@@ -1736,9 +1769,10 @@ export default {
       const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
       const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-      document.querySelector('.Header').classList.add('villa-detay')
-      document.querySelector('body').classList.add('villa-detay')
-
+      setTimeout(() => {
+        document.querySelector('.Header').classList.add('villa-detay')
+        document.querySelector('body').classList.add('villa-detay')
+      }, 50)
       const sections = document.querySelectorAll(".view-menu-content-item");
       const navLi = document.querySelectorAll(".View-menu-item");
 

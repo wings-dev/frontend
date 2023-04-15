@@ -2,8 +2,7 @@
   <form action="" class="Reservation-form" id="reservationForm">
 
     <div class="Reservation-form-top" :class="{ 'mobile-active': mobileReservation }">
-      <button type="button" class="mobile-menus-back" @click="reservatinAction"><i
-          class="icon-left-arrow"></i></button>
+      <button type="button" class="mobile-menus-back" @click="reservatinAction"><i class="icon-left-arrow"></i></button>
       <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
       <span class="tarihsec">TARİH SEÇ</span>
       <div class="Reservation-form-in">
@@ -53,7 +52,8 @@
                         <button type="button" class="minus-person" @click="adultDecrease">
                           <i class="icon-minus"></i>
                         </button>
-                        <input id="Search_PeopleAdult" class="person"  name="yetiskinler" type="text" v-model="adult" data-min="1" data-max="10" data-text="Yetişkin, " max="20" readonly>
+                        <input id="Search_PeopleAdult" class="person" name="yetiskinler" type="text" v-model="adult"
+                          data-min="1" data-max="10" data-text="Yetişkin, " max="20" readonly>
                         <button type="button" class="plus-person" @click="adultIncrease">
                           <i class="icon-plus"></i>
                         </button>
@@ -65,7 +65,8 @@
                         <button type="button" class="minus-person" @click="children_Decrease">
                           <i class="icon-minus"></i>
                         </button>
-                        <input id="Search_PeopleChild" class="person" type="text" :value="child" name="cocuklar" max="10" data-text="Çocuk" data-min="0" data-max="10" readonly>
+                        <input id="Search_PeopleChild" class="person" type="text" :value="child" name="cocuklar" max="10"
+                          data-text="Çocuk" data-min="0" data-max="10" readonly>
                         <button type="button" class="plus-person" @click="children_Increase">
                           <i class="icon-plus"></i>
                         </button>
@@ -77,8 +78,8 @@
                         <button type="button" class="minus-person" @click="baby_Decrease">
                           <i class="icon-minus"></i>
                         </button>
-                        <input id="Search_PeopleBaby" class="person" type="text" v-model="baby" name="cocuklar" data-min="0" data-max="10" data-text="Bebek"
-                          readonly>
+                        <input id="Search_PeopleBaby" class="person" type="text" v-model="baby" name="cocuklar"
+                          data-min="0" data-max="10" data-text="Bebek" readonly>
                         <button type="button" class="plus-person" @click="baby_Increase">
                           <i class="icon-plus"></i>
                         </button>
@@ -380,16 +381,21 @@ export default {
     checkOut(newValue) {
       this.changeHotelInput(-1, newValue);
     },
-    mobileReservation(){
-      if(this.mobileReservation == true){
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-      }else{
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('body').style.overflow = "auto"
+    mobileReservation() {
+      if (this.mobileReservation == true) {
+        setTimeout(() => {
+          document.querySelector('.Header').classList.add('Header-z')
+          document.querySelector('body').classList.add('over')
+          document.querySelector('html').classList.add('over')
+        }, 50)
+
+      } else {
+        setTimeout(() => {
+          document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('body').classList.remove('over')
+          document.querySelector('html').classList.remove('over')
+          document.querySelector('body').style.overflow = "auto"
+        }, 50)
       }
     }
   },
@@ -431,7 +437,10 @@ export default {
       this.availabilityLoading = false;
 
       this.availabilityChecked = true;
-      document.querySelector('.Reservation-form').classList.add("show")
+      setTimeout(() => {
+        document.querySelector('.Reservation-form').classList.add("show")
+        }, 50)
+      
     },
     preReservation() {
       this.setReservationModalData({
@@ -464,7 +473,10 @@ export default {
     },
     checkInChanged(value) {
       this.checkIn = this.formatDate(value);
-      document.querySelector('.tarihsec').classList.add("tarihsec-active")
+      setTimeout(() => {
+        document.querySelector('.tarihsec').classList.add("tarihsec-active")
+        }, 50)
+      
     },
     checkOutChanged(value) {
       this.checkOut = this.formatDate(value);
@@ -583,10 +595,10 @@ export default {
         this.isMobile = false
       }
     },
-    
+
     reservatinAction() {
       this.mobileReservation = !this.mobileReservation
-      
+
     },
   },
   mounted() {
@@ -784,7 +796,7 @@ body {
   width: 24px;
   height: 24px;
   background-size: 100% 100%;
-  
+
   margin-right: 9px;
 }
 

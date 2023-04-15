@@ -86,7 +86,7 @@ export default {
   components: {
     ReservationCodeModal,
     ReservationModal,
-    HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, VSelect,SearchBar
+    HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, VSelect, SearchBar
   },
   methods: {
     async logout() {
@@ -94,8 +94,13 @@ export default {
       location.reload();
     },
     showMobileFilter() {
-      document.querySelector('.Filter-left').classList.add("show")
-      document.querySelector('body').classList.add("over")
+
+
+      setTimeout(() => {
+        document.querySelector('.Filter-left').classList.add("show")
+        document.querySelector('body').classList.add("over")
+      }, 50)
+
     },
     ...mapActions(['openLoginModal', 'showCallModal', 'showFavModal'])
   },
@@ -110,7 +115,7 @@ export default {
       }
     });
 
-    
+
 
   },
   beforeRouteLeave(to, from, next) {

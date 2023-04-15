@@ -60,8 +60,9 @@
               <div class="View-menu-in">
                 <div class="View-menu-left">
                   <div class="d-flex flex-wrap align-items-center fs-8 fw-medium ls-05 text-theme-primary">
-                    <div v-if="hotelDetails.body.hotel.custom?.discount_rate > 0" class="Otel-card-content-info-item erkenrezervasyon">
-                      <span>%{{hotelDetails.body.hotel.custom.discount_rate}}</span>
+                    <div v-if="hotelDetails.body.hotel.custom?.discount_rate > 0"
+                      class="Otel-card-content-info-item erkenrezervasyon">
+                      <span>%{{ hotelDetails.body.hotel.custom.discount_rate }}</span>
                       <p>Erken Rezervasyon İndirimi</p>
                     </div>
 
@@ -160,17 +161,20 @@
           <div class="Otel-desc-in">
             <div class="Otel-desc-text">
               <h2>{{ hotelDetails.body.hotel.name }} <span>Genel Bilgiler</span></h2>
-              <div class="Otel-desc-text-in" :class="{ 'active': moreContent }" v-html="hotelDetails.body.hotel.description.text"></div>
+              <div class="Otel-desc-text-in" :class="{ 'active': moreContent }"
+                v-html="hotelDetails.body.hotel.description.text"></div>
               <button type="button" class="Otel-desc-text-more" @click="moreContentOpen">{{
                 moreContent ? 'Daha Az Bilgi Göster' : 'Daha Fazla Bilgi Göster' }} </button>
             </div>
             <div class="Otel-desc-features">
               <h4>Tesis <span>Özellikleri</span></h4>
-              <p class="Otel-desc-features-item" v-for="(item,index) in hotelDetails.body.hotel.facilities" v-if="index <= 4"><i class="icon-check-big"></i>{{item.name}}</p>
+              <p class="Otel-desc-features-item" v-for="(item, index) in hotelDetails.body.hotel.facilities"
+                v-if="index <= 4"><i class="icon-check-big"></i>{{ item.name }}</p>
               <b-button v-b-modal.amenitesModal class="Otel-desc-features-more">Tüm özellikleri gör</b-button>
             </div>
             <div class="Otel-desc-map" style="background-image: url(/img/map-bg.png);">
-              <a :href="`https://www.google.com/maps/@${hotelDetails.body.hotel.geolocation.latitude},${hotelDetails.body.hotel.geolocation.longitude},16z`" target="_blank">
+              <a :href="`https://www.google.com/maps/@${hotelDetails.body.hotel.geolocation.latitude},${hotelDetails.body.hotel.geolocation.longitude},16z`"
+                target="_blank">
                 <span>Haritada Göster</span>
                 <i class="icon-search-new"></i>
               </a>
@@ -208,7 +212,7 @@
 
                         <small v-for="group in room.boardGroups"
                           class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <i class="icon-check-big"></i> {{group.name}}
+                          <i class="icon-check-big"></i> {{ group.name }}
                         </small>
 
                       </div>
@@ -225,20 +229,23 @@
                           class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
                           <div class="option-all">
                             <span v-if="offerIndex === 0">En Ucuzu</span>
-                            <b v-for="group in room.boardGroups">{{group.name}}</b>
+                            <b v-for="group in room.boardGroups">{{ group.name }}</b>
                           </div>
                           <div class="option-warning" v-if="offer.cancellationPolicies.length > 0">
 
                             <p class="free-cancellation">Ücretsiz İptal</p>
-                            <p class="last-date"><i class="icon-info-month"></i>{{ $moment(offer.cancellationPolicies[0].dueDate).format('YYYY-MM-DD HH:mm') }} a kadar</p>
+                            <p class="last-date"><i class="icon-info-month"></i>{{
+                              $moment(offer.cancellationPolicies[0].dueDate).format('YYYY-MM-DD HH:mm') }} a kadar</p>
                           </div>
                         </div>
                         <div class="room-price">
                           <span>{{ offer.night }} GECE</span>
                           <div class="room-price-in">
-                            <s v-if="offer.price.amount_old > 0">{{offer.price.amount_old}}{{ offer.price.currency }}</s>
+                            <s v-if="offer.price.amount_old > 0">{{ offer.price.amount_old }}{{ offer.price.currency
+                            }}</s>
                             <b>{{ offer.price.amount }}<small>{{ offer.price.currency }}</small></b>
-                            <p>Gecelik <span>{{ (offer.price.amount / offer.night).toFixed(2) | numberFormat }}{{ offer.price.currency }}</span></p>
+                            <p>Gecelik <span>{{ (offer.price.amount / offer.night).toFixed(2) | numberFormat }}{{
+                              offer.price.currency }}</span></p>
                           </div>
                           <a href="" @click.prevent="goReservation(offer)">Odayı Seç</a>
                         </div>
@@ -576,9 +583,11 @@ export default {
       this.sliding = false
     },
     showGallery() {
-      document.querySelector('.Gallery').classList.add("show")
-      document.querySelector('body').classList.add("over")
-      document.querySelector('.main').classList.add("main-z")
+      setTimeout(() => {
+        document.querySelector('.Gallery').classList.add("show")
+        document.querySelector('body').classList.add("over")
+        document.querySelector('.main').classList.add("main-z")
+      }, 50)
       this.galleryIsOpen = true
     },
     moreContentOpen() {
@@ -695,13 +704,13 @@ export default {
 
 .carousel-control-prev-icon {
   width: 15px;
-    height: 15px;
+  height: 15px;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
 }
 
 .carousel-control-next-icon {
   width: 15px;
-    height: 15px;
+  height: 15px;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 

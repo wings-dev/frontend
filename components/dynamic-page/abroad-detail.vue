@@ -1486,15 +1486,19 @@ export default {
       }
     },
     showGallery() {
-      document.querySelector('.Gallery').classList.add("show")
-      document.querySelector('body').classList.add("over")
-      document.querySelector('.main').classList.add("main-z")
+      setTimeout(() => {
+        document.querySelector('.Gallery').classList.add("show")
+        document.querySelector('body').classList.add("over")
+        document.querySelector('.main').classList.add("main-z")
+      }, 50)
       this.galleryIsOpen = true
     },
     closeGallery() {
-      document.querySelector('.Gallery').classList.remove("show")
-      document.querySelector('body').classList.remove("over")
-      document.querySelector('.main').classList.remove("main-z")
+      setTimeout(() => {
+        document.querySelector('.Gallery').classList.remove("show")
+        document.querySelector('body').classList.remove("over")
+        document.querySelector('.main').classList.remove("main-z")
+      }, 50)
       this.galleryIsOpen = false
     },
     scrollGallery(event) {
@@ -1670,8 +1674,12 @@ export default {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-    document.querySelector('.Header').classList.add('villa-detay')
-    document.querySelector('body').classList.add('villa-detay')
+
+
+    setTimeout(() => {
+      document.querySelector('.Header').classList.add('villa-detay')
+      document.querySelector('body').classList.add('villa-detay')
+    }, 50)
 
     const sections = document.querySelectorAll(".view-menu-content-item");
     const navLi = document.querySelectorAll(".View-menu-item");
