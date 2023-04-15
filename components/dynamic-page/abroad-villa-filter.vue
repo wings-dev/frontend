@@ -9,7 +9,7 @@
               <i class="icon-opportunity"></i>
               <h3>Aylara göre Fırsatlar</h3>
             </div>
-            
+
             <p>Bu aya özel toplam <span>179 fırsat villası</span> var. Fırsatı kaçırma, huzurlu bi tatili yakala!</p>
           </div>
           <div class="Opportunity-right">
@@ -471,7 +471,9 @@
     </div>
 
 
-    <filter-abroad-villa-component :selectedFilters="selectedFilters"></filter-abroad-villa-component>
+    <!-- <filter-abroad-villa-component :selectedFilters="selectedFilters"></filter-abroad-villa-component>-->
+
+    <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity" :world="1"></filter-villa-component>
 
     <section class="highlight-section bg-theme-light-2 pt-5 pb-4" v-if="highlights">
       <div class="container">
@@ -555,7 +557,7 @@ import { mapActions } from "vuex";
 
 
 export default {
-  name: 'DynamicVillaFilterPage',
+  name: 'DynamicAbroadVillaFilterPage',
   props: {
     selectedFilters: { type: Object, default: {} },
     highlights: { type: Boolean, default: false },
