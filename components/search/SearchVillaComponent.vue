@@ -19,7 +19,14 @@
           aria-expanded="false">
           <i class="icon-new-location Search-item-icon"></i>
           <div class="Search-item-region-in">
-            <span class="dropdown-toggle-title">{{ selectedDestinations.length }} destinations</span>
+            <span class="dropdown-toggle-title">
+              <template v-if="selectedDestinations.length">
+              {{ selectedDestinations.length }} Bölge
+              </template>
+              <template v-else>
+              Bölge Seçin
+              </template>
+            </span>
           </div>
           <i class="icon-down-arrow"></i>
         </button>
@@ -399,13 +406,17 @@ export default {
     }
   },
   mounted() {
-    if (window.innerWidth <= 991 && this.$refs.searchBar.classList.contains('list')) {
+    if (window.innerWidth <= 991 && this.$refs.searchBar?.classList.contains('list')) {
       // console.log(this.$refs.searchBar.classList)
       window.onscroll = function () {
         if (scrollY >= 300) {
-          document.querySelector('.Search').classList.add('fixed')
+          setTimeout(() => {
+            document.querySelector('.Search')?.classList.add('fixed')
+          }, 10)
+          setTimeout(() => {
+            document.querySelector('.Search')?.classList.remove('fixed')
+          }, 10)
         } else {
-          document.querySelector('.Search').classList.remove('fixed')
         }
 
       };
@@ -602,88 +613,104 @@ export default {
     openMobileFilter() {
       if (this.isMobile()) {
         this.isMobileFilterOpen = true
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('.Home').classList.add('Home-z')
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 10)
       }
     },
     closeMobileFilter() {
       if (this.isMobile()) {
         this.isMobileFilterOpen = false
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('.Home').classList.remove('Home-z')
+        setTimeout(() => {
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+        }, 10)
       }
     },
     checkboxOpen(groupName) {
       const targetDiv = this.$refs[groupName];
-      targetDiv.classList.add('show')
+      targetDiv?.classList.add('show')
     },
     checkboxClose(groupName) {
       const targetDivClose = this.$refs[groupName];
-      targetDivClose.classList.remove('show')
+      targetDivClose?.classList.remove('show')
     },
     openRegions() {
       if (this.isMobile()) {
         this.mobileRegions = true
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('.Home').classList.add('Home-z')
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 10)
       }
     },
     openPeoples() {
       if (this.isMobile()) {
         this.mobilePeoples = true
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('.Home').classList.add('Home-z')
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 10)
       }
     },
     openCalendar() {
       if (this.isMobile()) {
         this.mobileCalendar = true
-        document.querySelector('body').classList.add('over')
-        document.querySelector('html').classList.add('over')
-        document.querySelector('.Header').classList.add('Header-z')
-        document.querySelector('.Home').classList.add('Home-z')
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        this.$refs.datePickerModal.showDatepicker()
-        this.$refs.datePickerModal.clearSelection()
+        setTimeout(() => {
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          this.$refs.datePickerModal.showDatepicker()
+          this.$refs.datePickerModal.clearSelection()
+        }, 10)
       }
     },
     closeRegions() {
       if (this.isMobile()) {
         this.mobileRegions = false
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('.Home').classList.remove('Home-z')
+        setTimeout(() => {
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+        }, 10)
       }
     },
     closePeoples() {
       if (this.isMobile()) {
         this.mobilePeoples = false
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('.Home').classList.remove('Home-z')
+        setTimeout(() => {
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+        }, 10)
       }
     },
     closeCalendar() {
       if (this.isMobile()) {
         this.mobileCalendar = false
-        document.querySelector('body').classList.remove('over')
-        document.querySelector('html').classList.remove('over')
-        document.querySelector('.Header').classList.remove('Header-z')
-        document.querySelector('.Home').classList.remove('Home-z')
-        this.$refs.datePickerModal.hideDatepicker()
+        setTimeout(() => {
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+          this.$refs.datePickerModal.hideDatepicker()
+        }, 10)
       }
     },
     fixedSearchOpen() {

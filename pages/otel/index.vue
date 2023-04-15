@@ -1,6 +1,8 @@
 <template>
     <div>
-        <search-bar></search-bar>
+      <client-only>
+        <search-bar :key="$route.path"></search-bar>
+      </client-only>
         <section class="blog-section">
             <div class="container">
                 <div class="blog ">
@@ -552,7 +554,7 @@ export default {
         Swiper.use([Navigation, Pagination])
 
         const swiper1 = new Swiper(".blog-carousel", {
-            
+
             direction: "horizontal",
             slidesPerView: 1,
             modules: [Pagination],
@@ -564,11 +566,11 @@ export default {
                 delay: 5000,
             },
             breakpoints: {
-             
+
                 768: {
                     direction: "vertical",
                 },
-               
+
             },
         });
         const swiper2 = new Swiper('.list-slide-otel', {

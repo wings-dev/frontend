@@ -1,6 +1,8 @@
 <template>
     <div class="Home">
-        <search-bar></search-bar>
+      <client-only>
+        <search-bar :key="$route.path"></search-bar>
+      </client-only>
         <section class="Banner Banner-home " style="background-image: url(http://office.wingswebservices.com/storage/page/18161/381385/banner.jpg)">
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <div class="container Banner-home-in">
@@ -107,7 +109,7 @@
                 </div>
             </div>
         </section>
-    
+
         <section class="Abroad-villas mt-5">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
@@ -250,7 +252,7 @@
                 </div>
             </div>
         </section>
-     
+
         <!-- <div>
             <div id="">A DOM element on your page. The first step will pop on this element because its ID is 'v-step-0'.
             </div>

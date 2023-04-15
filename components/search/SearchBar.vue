@@ -84,23 +84,27 @@ export default {
     }
   },
   mounted() {
-    const currentPageComponent = this.$route.matched[0].instances.default.$options.name;
+    try {
+      const currentPageComponent = this.$route.matched[0].instances.default.$options.name;
 
-    const activeComponents = {
-      'DynamicPage': {tab: 1},
-      'IndexPage': {tab: 1},
-      'VillaListPage': {tab: 1},
-      'VillaAreaListPage': {tab: 1},
-      'FirsatListPage': {tab: 1},
-      'KiralikVillaListPage': {tab: 1},
-      'AbroadIndexPage': {tab: 2},
-      'AbroadVillaListPage': {tab: 2},
-      'OtelIndexPage': {tab: 3},
-      'HotelListPage': {tab: 3},
-     };
+      const activeComponents = {
+        'DynamicPage': {tab: 1},
+        'IndexPage': {tab: 1},
+        'VillaListPage': {tab: 1},
+        'VillaAreaListPage': {tab: 1},
+        'FirsatListPage': {tab: 1},
+        'KiralikVillaListPage': {tab: 1},
+        'AbroadIndexPage': {tab: 2},
+        'AbroadVillaListPage': {tab: 2},
+        'OtelIndexPage': {tab: 3},
+        'HotelListPage': {tab: 3},
+      };
 
-    if (Object.keys(activeComponents).includes(currentPageComponent)) {
-      this.searchbar = activeComponents[currentPageComponent]
+      if (Object.keys(activeComponents).includes(currentPageComponent)) {
+        this.searchbar = activeComponents[currentPageComponent]
+      }
+    } catch (e) {
+      this.searchbar = {tab: false}
     }
   }
 }

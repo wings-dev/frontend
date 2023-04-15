@@ -3,7 +3,9 @@
     <common-header></common-header>
 
     <main class="main">
-      <search-bar v-if="$route.path == '/oteller'"></search-bar>
+      <client-only>
+        <search-bar :key="$route.path" v-if="$route.path == '/oteller'"></search-bar>
+      </client-only>
       <Nuxt />
 
       <!-- <div class="header-call">

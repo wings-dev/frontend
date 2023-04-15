@@ -7,7 +7,14 @@
           aria-expanded="false">
           <i class="icon-new-location Search-item-icon"></i>
           <div class="Search-item-region-in">
-            <span class="dropdown-toggle-title">{{ selectedDestinations.length }} destinations</span>
+            <span class="dropdown-toggle-title">
+              <template v-if="selectedDestinations.length">
+              {{ selectedDestinations.length }} Bölge
+              </template>
+              <template v-else>
+              Bölge Seçin
+              </template>
+            </span>
           </div>
           <i class="icon-down-arrow"></i>
         </button>
