@@ -208,7 +208,7 @@
         <span v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">GECE</span>
         <span v-else>{{ formattedCheckIn }} - {{ formattedCheckOut }}</span>
         <small v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">Başlayan fiyatlar</small>
-        <button type="button" v-if="availabilityChecked" @click="reservatinAction">{{ mobileReservation ?
+        <button type="button" v-if="availabilityChecked" @click.prevent="reservatinAction">{{ mobileReservation ?
           'DETAYLARI KAPAT' : 'DETAYLARI GÖSTER' }} </button>
       </div>
       <!-- mobile -->
@@ -227,7 +227,7 @@
         <!-- form acıksa -->
         <template v-else>
           <button class="Reservation-form-submit" :disabled="!dateSelected || availabilityLoading"
-            @click="reservatinAction()">
+            @click.prevent="reservatinAction()">
             Kaydet {{ dateSelected + availabilityLoading }}
           </button>
         </template>
