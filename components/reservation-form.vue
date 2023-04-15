@@ -620,7 +620,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.villa);
     window.addEventListener("load", this.handleResize);
     window.addEventListener("resize", this.handleResize);
   },
