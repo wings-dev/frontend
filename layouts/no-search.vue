@@ -105,13 +105,9 @@ export default {
       }
     });
   },
-  beforeRouteLeave(to, from, next) {
-    if (document.body.classList.contains("over")) {
-      document.body.classList.remove("over");
-    }
-    next();
-  },
+
   $route() {
+    console.log('TEST ROUTE NO SEARCH')
     if (document.body.classList.contains("over")) {
       document.body.classList.remove("over");
     }
