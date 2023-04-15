@@ -780,7 +780,7 @@ export default {
 :deep().datepicker__input .formatted-date span {
   font-size: 11px;
   font-weight: 500;
-  color: #899abd;
+  color: var(--bs-search-text-light);
   text-align: left;
   margin-top: 3px;
 }

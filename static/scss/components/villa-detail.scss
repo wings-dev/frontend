@@ -572,7 +572,7 @@
     p {
       font-size: 12px;
       font-weight: normal;
-      color: var(--bs-theme-first-dark);
+      color: var(--bs-detail-text);
       margin-bottom: 10px;
     }
 
@@ -1161,7 +1161,7 @@
         font-size: 13px;
         font-weight: normal;
         line-height: 1.44;
-        color: var(--bs-theme-first-dark);
+        color: var(--bs-detail-text);
         margin-bottom: 18px;
         i {
           color: var(--bs-theme-second);
@@ -1393,7 +1393,7 @@
             font-size: 16.6px;
             font-weight: 500;
             line-height: 0.96;
-            color: var(--bs-theme-first-dark);
+            color: var(--bs-detail-text);
           }
           p {
             font-size: 9.3px;
@@ -3020,7 +3020,7 @@
         margin-right: 10px;
         i {
           font-size: 18px;
-          color: var(--bs-theme-first);
+          color: var(--bs-search-icon);
         }
       }
       &-title {

@@ -48,7 +48,7 @@
     }
   }
   &-inner {
-    background-color: var(--bs-theme-first);
+    
     height: 80px;
     width: 100%;
     position: fixed;
@@ -1100,7 +1100,7 @@
   width: 41px;
   height: 41px;
   border-radius: 50%;
-  background-color: var(--bs-theme-first-dark);
+  background-color: var(--bs-header-button-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1109,7 +1109,7 @@
   transition: all 400ms;
   flex-shrink: 0;
   &:hover {
-    background-color: #fff;
+    background-color: var(--bs-header-button-dark-hover);
     color: var(--bs-theme-first-dark);
   }
 }
