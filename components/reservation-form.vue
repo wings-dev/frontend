@@ -228,14 +228,14 @@
         <template v-else>
           <button class="Reservation-form-submit" :disabled="!dateSelected || availabilityLoading"
             @click.prevent="reservatinAction()">
-            Kaydet {{ dateSelected + availabilityLoading }}
+            Kaydet 
           </button>
         </template>
       </template>
 
       <!-- desktop -->
       <template v-else>
-        <button v-if="!availabilityChecked" class="Reservation-form-submit" @click.prevent="availabilityCheck()">
+        <button v-if="!availabilityChecked" class="Reservation-form-submit" @click.prevent="availabilityCheck()" :class="{'disabled' : !this.dateSelected || this.availabilityLoading}">
           Uygunluk Durumunu Kontrol Edin
         </button>
         <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
@@ -415,11 +415,19 @@ export default {
     },
     async availabilityCheck() {
       if (!this.dateSelected || this.availabilityLoading) {
-        if (!this.isMobile) {
-          setTimeout(() => {
-            this.$refs.datePicker.showDatepicker();
-          }, 50)
-        }
+        // this.$refs.datePicker.showDatepicker();
+        this.$toast.error("<p>Lütfen tarih seçiniz</p>", {
+          className: 'custom-toast error-toast',
+          icon: {
+            name: 'icon-reservation-cancel',
+          },
+          action: {
+            icon: 'icon-toast-exit',
+            onClick: (e, toastObject) => {
+              toastObject.goAway(0);
+            }
+          }
+        })
         return
       }
 

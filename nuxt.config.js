@@ -254,7 +254,7 @@ export default {
 
   router: {
     trailingSlash: false,
-    middleware: ['301'],
+    middleware: ['301','remove-over-class'],
   },
 
   server: {
