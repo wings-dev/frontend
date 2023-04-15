@@ -6,10 +6,10 @@
     <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1"
       v-if="type === 2"></dynamic-detail-page>
     <dynamic-villa-filter-page :selectedFilters="categoryFilter" :pageContent="componentData" :highlights=true
-      v-if="type === 5 || type === 8"></dynamic-villa-filter-page>
-    <text-template-component :data="componentData" v-if="type === 1 || type === 23"></text-template-component>
-    <hotel-list :data="componentData" :blog="blogPostData" v-if="type === 18"></hotel-list>
-    <hotel-destination :data="componentData" :blog="blogPostData" v-if="type === 19"></hotel-destination>
+      v-else-if="type === 5 || type === 8"></dynamic-villa-filter-page>
+    <text-template-component :data="componentData" v-else-if="type === 1 || type === 23"></text-template-component>
+    <hotel-list :data="componentData" :blog="blogPostData" v-else-if="type === 18"></hotel-list>
+    <hotel-destination :data="componentData" :blog="blogPostData" v-else-if="type === 19"></hotel-destination>
   </div>
 </template>
 
@@ -34,6 +34,8 @@ export default {
       componentData: {},
       calendar: [],
       price_list_1: [],
+      categoryFilter: {},
+      blogPostData: {}
     }
   },
   async asyncData({ $getRedisKey, route, store, redirect }) {
