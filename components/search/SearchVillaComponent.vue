@@ -5,7 +5,7 @@
     <div class="Search-fixed-in" :class="{ 'fixed-active': fixedSearch }">
       <div class="Search-fixed-in-left">
         <b>{{checkIn}} - {{checkOut}}</b>
-        <p>Antalya, Kaş <span>{{adult}} Yetişkin, {{children}} Çocuk</span></p>
+        <p>{{selectedDestinations.length ? selectedDestinations[0].text : ''}} <span>{{adult}} Yetişkin, {{children}} Çocuk</span></p>
       </div>
       <button type="button" @click="fixedSearchOpen">Değiştir</button>
     </div>
