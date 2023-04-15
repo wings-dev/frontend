@@ -7,7 +7,9 @@
     <common-header></common-header>
 
     <main class="main">
-      <search-bar></search-bar>
+      <client-only>
+        <search-bar :key="$route.path"></search-bar>
+      </client-only>
 
       <Nuxt />
       <!-- <div class="header-call">

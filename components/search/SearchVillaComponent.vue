@@ -19,7 +19,14 @@
           aria-expanded="false">
           <i class="icon-new-location Search-item-icon"></i>
           <div class="Search-item-region-in">
-            <span class="dropdown-toggle-title">{{ selectedDestinations.length }} destinations</span>
+            <span class="dropdown-toggle-title">
+              <template v-if="selectedDestinations.length">
+              {{ selectedDestinations.length }} Bölge
+              </template>
+              <template v-else>
+              Bölge Seçin
+              </template>
+            </span>
           </div>
           <i class="icon-down-arrow"></i>
         </button>
@@ -400,17 +407,17 @@ export default {
     }
   },
   mounted() {
-    if (window.innerWidth <= 991 && this.$refs.searchBar.classList.contains('list')) {
+    if (window.innerWidth <= 991 && this.$refs.searchBar?.classList.contains('list')) {
       // console.log(this.$refs.searchBar.classList)
       window.onscroll = function () {
         if (scrollY >= 300) {
           setTimeout(() => {
-            document.querySelector('.Search').classList.add('fixed')
-          }, 50)
-        } else {
+            document.querySelector('.Search')?.classList.add('fixed')
+          }, 10)
           setTimeout(() => {
-            document.querySelector('.Search').classList.remove('fixed')
-          }, 50)
+            document.querySelector('.Search')?.classList.remove('fixed')
+          }, 10)
+        } else {
         }
 
       };
@@ -608,104 +615,105 @@ export default {
       if (this.isMobile()) {
         this.isMobileFilterOpen = true
         setTimeout(() => {
-          document.querySelector('body').classList.add('over')
-          document.querySelector('html').classList.add('over')
-          document.querySelector('.Header').classList.add('Header-z')
-          document.querySelector('.Home').classList.add('Home-z')
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 50)
-
+        }, 10)
       }
     },
     closeMobileFilter() {
       if (this.isMobile()) {
         this.isMobileFilterOpen = false
         setTimeout(() => {
-          document.querySelector('body').classList.remove('over')
-          document.querySelector('html').classList.remove('over')
-          document.querySelector('.Header').classList.remove('Header-z')
-          document.querySelector('.Home').classList.remove('Home-z')
-        }, 50)
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+        }, 10)
       }
     },
     checkboxOpen(groupName) {
       const targetDiv = this.$refs[groupName];
-      targetDiv.classList.add('show')
+      targetDiv?.classList.add('show')
     },
     checkboxClose(groupName) {
       const targetDivClose = this.$refs[groupName];
-      targetDivClose.classList.remove('show')
+      targetDivClose?.classList.remove('show')
     },
     openRegions() {
       if (this.isMobile()) {
         this.mobileRegions = true
         setTimeout(() => {
-          document.querySelector('body').classList.add('over')
-          document.querySelector('html').classList.add('over')
-          document.querySelector('.Header').classList.add('Header-z')
-          document.querySelector('.Home').classList.add('Home-z')
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 50)
+        }, 10)
       }
     },
     openPeoples() {
       if (this.isMobile()) {
         this.mobilePeoples = true
         setTimeout(() => {
-          document.querySelector('body').classList.add('over')
-          document.querySelector('html').classList.add('over')
-          document.querySelector('.Header').classList.add('Header-z')
-          document.querySelector('.Home').classList.add('Home-z')
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 50)
+        }, 10)
       }
     },
     openCalendar() {
       if (this.isMobile()) {
         this.mobileCalendar = true
         setTimeout(() => {
-          document.querySelector('body').classList.add('over')
-          document.querySelector('html').classList.add('over')
-          document.querySelector('.Header').classList.add('Header-z')
-          document.querySelector('.Home').classList.add('Home-z')
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50)
-        this.$refs.datePickerModal.showDatepicker()
-        this.$refs.datePickerModal.clearSelection()
+          this.$refs.datePickerModal.showDatepicker()
+          this.$refs.datePickerModal.clearSelection()
+        }, 10)
       }
     },
     closeRegions() {
       if (this.isMobile()) {
         this.mobileRegions = false
         setTimeout(() => {
-          document.querySelector('body').classList.remove('over')
-          document.querySelector('html').classList.remove('over')
-          document.querySelector('.Header').classList.remove('Header-z')
-          document.querySelector('.Home').classList.remove('Home-z')
-        }, 50)
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+        }, 10)
       }
     },
     closePeoples() {
       if (this.isMobile()) {
         this.mobilePeoples = false
         setTimeout(() => {
-          document.querySelector('body').classList.remove('over')
-          document.querySelector('html').classList.remove('over')
-          document.querySelector('.Header').classList.remove('Header-z')
-          document.querySelector('.Home').classList.remove('Home-z')
-        }, 50)
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+        }, 10)
       }
     },
     closeCalendar() {
       if (this.isMobile()) {
         this.mobileCalendar = false
         setTimeout(() => {
-          document.querySelector('body').classList.remove('over')
-          document.querySelector('html').classList.remove('over')
-          document.querySelector('.Header').classList.remove('Header-z')
-          document.querySelector('.Home').classList.remove('Home-z')
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.Home')?.classList.remove('Home-z')
         }, 50)
-        this.$refs.datePickerModal.hideDatepicker()
+          this.$refs.datePickerModal.hideDatepicker()
+        }, 10)
       }
     },
     fixedSearchOpen() {

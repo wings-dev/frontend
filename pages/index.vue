@@ -1,6 +1,8 @@
 <template>
     <div class="Home">
-        <search-bar></search-bar>
+        <client-only>
+          <search-bar :key="$route.path"></search-bar>
+        </client-only>
         <section class="Banner Banner-home "
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
