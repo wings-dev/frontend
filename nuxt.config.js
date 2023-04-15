@@ -3,7 +3,10 @@ require("dotenv").config();
 export default {
   // environment variables, access with like this.$config.NODE_ENV
   publicRuntimeConfig: {
-    message: process.env.hey || "hello world!"
+    message: process.env.hey || "hello world!",
+    gtm: {
+      id: process.env.GTM_ID
+    }
   },
   privateRuntimeConfig: {
     message: process.env.hey || "hello world!"
@@ -31,17 +34,6 @@ export default {
     script: [
       {
         src: "/js/bootstrap/bootstrap.bundle.min.js"
-      },
-      {
-        hid: 'gtm-script',
-        src: `https://www.googletagmanager.com/gtm.js?id=${process.env.GTM_ID}`,
-        async: true
-      }
-    ],
-    noscript: [
-      {
-        hid: 'gtm-noscript',
-        innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
       }
     ]
   },
@@ -142,8 +134,12 @@ export default {
       }
     ],
     "@nuxtjs/toast",
-    'nuxt-vue-multiselect'
+    'nuxt-vue-multiselect',
+    '@nuxtjs/gtm'
   ],
+  gtm: {
+    id: process.env.GTM_ID
+  },
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`
     bootstrapVueCSS: false // Or `bvCSS: false`
@@ -258,7 +254,7 @@ export default {
 
   router: {
     trailingSlash: false,
-    middleware: ['301', 'gtm'],
+    middleware: ['301'],
   },
 
   server: {
