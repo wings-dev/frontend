@@ -512,10 +512,22 @@ export default {
       }, []);
     },
     checkInChanged(value) {
-      this.checkIn = this.formatDate(value);
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkIn = this.formatDate(value);
+      }
     },
     checkOutChanged(value) {
-      this.checkOut = this.formatDate(value);
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkOut = this.formatDate(value);
+
+        setTimeout(() => {
+          if (this.checkIn && this.checkOut) {
+            this.closeCalendar()
+          }
+        }, 50)
+      }
     },
     formatDate(value) {
       if (value) {
