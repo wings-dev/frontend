@@ -8,17 +8,17 @@
             <div class="Login-left">
               <div class="Login-card">
                 <div class="Login-card-img">
-                  <img src="https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/conversions/1-preview.jpg"
+                  <img :src="villa.watermark_images[0].preview_url"
                        alt="">
                   <div class="Login-card-img-text">
                     <div class="Login-card-img-text-head">
                       <span>Villa kodu</span>
-                      <b>VKV7435</b>
+                      <b>{{prefix}}{{villa.code}}</b>
                     </div>
                     <div class="Login-card-img-text-in">
-                      <span>4 yetişkin</span>
-                      <span>2 Banyo</span>
-                      <span>2 Yatak Odası</span>
+                      <span>{{ villa.max_adult }} yetişkin</span>
+                      <span>{{ villa.bathrooms }} Banyo</span>
+                      <span>{{ villa.bedroom }} Yatak Odası</span>
                     </div>
                   </div>
                   <div class="Login-card-img-link">
@@ -28,16 +28,16 @@
 
                 <div class="Login-card-content">
                   <p class="Login-card-content-total">
-                    Toplam Ödeme <span>34.500TL</span>
+                    Toplam Ödeme <span>{{hash.availabilityData.total_payment | numberFormat}}TL</span>
                   </p>
                   <div class="Login-card-content-bottom">
                     <div class="Login-card-content-bottom-item">
-                      <p>Ön Ödeme <span>10.200TL</span></p>
+                      <p>Ön Ödeme <span>{{hash.availabilityData.advance_payment | numberFormat}}TL</span></p>
                       <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme
                         tutarı</small>
                     </div>
                     <div class="Login-card-content-bottom-item">
-                      <p>Tesise Girişte <span>24.300TL</span></p>
+                      <p>Tesise Girişte <span>{{hash.availabilityData.remaining_payment | numberFormat}}TL</span></p>
                       <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte
                         alınacaktır.</small>
                     </div>
@@ -49,7 +49,7 @@
             <div class="Login-right success">
               <div class="Login-right-in">
                 <i class="icon-check-big"></i>
-                <h3><span>VKV1195110532417</span> Rezervasyon kodu ile</h3>
+                <h3><span>{{prefix}}{{hash.reservationID}}</span> Rezervasyon kodu ile</h3>
                 <h2>Ön Rezervasyon talebiniz alınmıştır.</h2>
                 <p>Satış ekibimiz tesisle ilgili son kontrolleri yapıp sms veya telefonla size geri dönüş
                   sağlayacaktır.</p>
@@ -69,26 +69,24 @@ export default {
   layout: 'no-search',
   data() {
     return {
-      reservationID: null,
-      hash: {}
+      hash: {},
+      villa: {},
+      prefix: process.env.PREFIX
     }
   },
-  async asyncData({query}) {
-    // Query içindeki base64 ile encode edilmiş hash'i decode et
-    const decodeHash = (encodedHash) => {
-      return JSON.parse(atob(encodedHash));
-    };
+  async asyncData({query, $getRedisKey}) {
+    const hash = JSON.parse(Buffer.from(query.hash, 'base64').toString('utf-8'));
 
-    const reservationID = query.reservationID;
-    const hash = decodeHash(query.hash);
+    const data = await $getRedisKey([`data:villas:${hash.villa_id}:detail`])
+    // villa redis datası
+    const villa = data[`data:villas:${hash.villa_id}:detail`];
 
     return {
-      reservationID,
       hash,
+      villa
     };
   },
   mounted() {
-    console.log(navigator)
   }
 }
 </script>
