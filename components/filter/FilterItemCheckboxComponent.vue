@@ -8,15 +8,19 @@
     <div v-if="loading">Yükleniyor...</div>
     <div class="Filters-in" :ref="groupName" v-else>
       <div class="Filters-in-mobile">
+        <button type="button" @click="checkboxClose(groupName)"><i class="icon-left-arrow"></i></button>
         <div class="Filters-head">
           <h5>{{ title }}</h5>
         </div>
-        <button type="button" @click="checkboxClose(groupName)"><i class="icon-left-arrow"></i></button>
       </div>
       <div class="Filters-search" v-if="filterInputPlaceholder.length">
-        <label><i class="icon-search-new"></i><input type="search" :placeholder="filterInputPlaceholder"
-            v-model="filterText" @keyup="applyFilter()"></label>
+        <label>
+          <i class="icon-search-new"></i>
+          <input type="search" :placeholder="filterInputPlaceholder" v-model="filterText" @keyup="applyFilter()">
+        </label>
+        <button type="button" class="Filters-clear-mobile">Temizle</button>
       </div>
+      <button type="button" class="Filters-clear-mobile right" v-if="!filterInputPlaceholder.length">Temizle</button>
       <ul class="Filters-first" v-if="groups.length === 0">
         <li class="Filters-item Filters-item-notfound"
           v-bind:style="filterText.length && !filteredCheckboxes.length ? 'display:block' : 'display:none'">
