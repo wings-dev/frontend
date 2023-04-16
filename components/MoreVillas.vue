@@ -80,7 +80,7 @@
                 <!-- If pagination is needed -->
 
                 <!-- If navigation buttons are needed -->
-                <!-- <div class="swiper-pagination"></div> -->
+                <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev list-navigation-prev"></div>
                 <div class="swiper-button-next list-navigation-next"></div>
             </div>
@@ -108,9 +108,10 @@ export default {
         Swiper.use([Navigation, Pagination])
 
         const swiper3 = new Swiper('.list-slide-opportunity', {
-            slidesPerView: 1,
-            spaceBetween: 16,
+            slidesPerView: 1.2,
+            spaceBetween: 10,
             direction: 'horizontal',
+            centeredSlides: true,
             loop: true,
             modules: [Navigation, Pagination],
             navigation: {
@@ -120,16 +121,20 @@ export default {
             pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
+                clickable: true,
             },
             breakpoints: {
                 576: {
                     slidesPerView: 2,
+                    centeredSlides: false,
                 },
                 768: {
                     slidesPerView: 2,
+                    centeredSlides: false,
                 },
                 1199: {
                     slidesPerView: 2,
+                    centeredSlides: false,
                 },
             },
         })

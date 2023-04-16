@@ -88,7 +88,7 @@
         content: "";
         display: inline-block;
         width: 100vw;
-        height: calc(100vh - 80px);
+        height: calc(100dvh - 80px);
         background-color: var(--bs-theme-first);
         position: fixed;
         left: 0;
@@ -788,7 +788,7 @@
     &-menu {
       position: absolute;
       width: calc(100% + 40px);
-      height: calc(100vh - 80px);
+      height: calc(100dvh - 80px);
       left: 50%;
       top: 80px;
       right: 0;
@@ -1066,6 +1066,11 @@
           display: flex;
           align-items: center;
           margin-top: 40px;
+
+          @media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+            margin-top: auto;
+          }
+
           &-item{
             display: flex;
             font-size: 22px;

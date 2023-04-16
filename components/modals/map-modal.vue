@@ -71,7 +71,6 @@ export default {
             iconAnchor: [56, 56]
         });
 
-        console.log(this.villacode,this.villalocationcity)
     }
 }
 </script>
