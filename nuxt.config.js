@@ -138,7 +138,9 @@ export default {
     '@nuxtjs/gtm'
   ],
   gtm: {
-    id: process.env.GTM_ID
+    id: process.env.GTM_ID,
+    enabled: process.env.NODE_ENV === 'production', // Sadece prod ortamında çalışacak
+    debug:false // true olduğunda console da eventleri gösteriyor
   },
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`
