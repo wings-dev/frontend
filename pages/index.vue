@@ -301,12 +301,12 @@
                 </div>
                 <div class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                            <nuxt-link to="/" class="Card Card-icons">
+                        <div class="swiper-slide" v-for="(villa, index) in opportunities" :key="index">
+                            <nuxt-link :to="'/' + villa.code" class="Card Card-icons">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-link to="/">
-                                            <nuxt-img src="/img/villa3.png" width="371" height="225"></nuxt-img>
+                                        <nuxt-link :to="'/' + villa.code">
+                                            <nuxt-img :src="villa.preview_image[0].preview_url" width="371" height="225"></nuxt-img>
                                         </nuxt-link>
                                         <button class="Card-fav" type="button">
                                             <i class="icon-heart"></i>
@@ -319,26 +319,26 @@
                                     <div class="Card-content">
                                         <div class="Card-content-head">
                                             <div class="Card-content-head-code">
-                                                <b>VKV3456</b>
+                                                <b>{{prefix}}{{villa.code}}</b>
                                                 <span>Tesis Kodu</span>
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>FETHİYE <span>Turkey / Muğla</span></p>
+                                                <p>{{villa.city | titlecase}} <span>{{villa.country | titlecase}} / {{villa.state | titlecase}}</span></p>
                                             </div>
                                         </div>
                                         <div class="Card-content-info">
                                             <div class="Card-content-info-item">
                                                 <i class="icon-user"></i>
-                                                <span>4 Kişilik</span>
+                                                <span>{{villa.max_adult}} Kişilik</span>
                                             </div>
                                             <div class="Card-content-info-item">
                                                 <i class="icon-bed"></i>
-                                                <span>2 Yatak Odası</span>
+                                                <span>{{villa.bedroom}} Yatak Odası</span>
                                             </div>
                                             <div class="Card-content-info-item">
                                                 <i class="icon-shower"></i>
-                                                <span>2 Banyo</span>
+                                                <span>{{villa.bethroom}} Banyo</span>
                                             </div>
                                         </div>
                                     </div>
@@ -347,12 +347,12 @@
                                             <p><span>3</span>Gece</p>
                                         </div>
                                         <div class="Card-content-bottom-date">
-                                            <p><span>12 TEM</span><i class="icon-arrow-right-2"></i><span>18 TEM</span></p>
+                                            <p><span>{{villa.start_date}}</span><i class="icon-arrow-right-2"></i><span>{{villa.end_date}}</span></p>
                                             <small>Fırsatı kaçırma!</small>
                                         </div>
                                         <div class="Card-content-bottom-price single">
                                             <p class="orange">TOPLAM FİYAT</p>
-                                            <p><b>2.500</b><span>TL</span></p>
+                                            <p><b>{{villa.total.total | numberFormat}}</b><span>{{villa.total.price_currency}}</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -590,14 +590,16 @@ export default {
                     }
                 }
             ],
-            prefix: process.env.PREFIX
+            prefix: process.env.PREFIX,
+            pageData: {},
+            opportunities: []
         }
     },
-    async asyncData({ $getRedisKey }) {
+    async asyncData({ $getRedisKey, $axios }) {
       const site_id = process.env.SITE;
       const redisPageKey = `web:${site_id}:pages:anasayfa`;
 
-      const response = await $getRedisKey([redisPageKey]);
+      let response = await $getRedisKey([redisPageKey]);
       const pageData = response[redisPageKey] || {};
       const popularVillas = pageData.page_content?.popular || [];
 
@@ -619,9 +621,21 @@ export default {
         };
       });
 
+      let data = {
+        day: 2, // (new Date()).getMonth() + 1
+        month: 10 // (new Date()).getMonth() + 1
+      };
+
+      response = await $axios.post((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +
+        `/website/opportunity?api_token=${process.env.WEBSITE_TOKEN}&page=1`, data)
+
+      const opportunities = response.data.data;
+
+      console.log(opportunities[0]);
+
       pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas };
 
-      return { pageData };
+      return { pageData, opportunities };
     },
     mounted() {
         Swiper.use([Navigation, Pagination])
