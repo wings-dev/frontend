@@ -446,9 +446,14 @@ export default {
         const millisecondsPerDay = 24 * 60 * 60 * 1000;
         const nightCount = Math.floor((checkOut - checkIn) / millisecondsPerDay);
 
-        return nightCount
+        // NaN kontrolü ekleyerek nightCount değerinin geçerli olup olmadığını kontrol et
+        if (isNaN(nightCount)) {
+          return 0;
+        }
+
+        return nightCount;
       } catch (e) {
-        return 0
+        return 0;
       }
     },
     selectedDestinations() {
