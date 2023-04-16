@@ -440,13 +440,17 @@ export default {
   },
   computed: {
     night() {
-      const checkIn = new Date(this.checkIn);
-      const checkOut = new Date(this.checkOut);
+      try {
+        const checkIn = new Date(this.checkIn);
+        const checkOut = new Date(this.checkOut);
 
-      const millisecondsPerDay = 24 * 60 * 60 * 1000;
-      const nightCount = Math.floor((checkOut - checkIn) / millisecondsPerDay);
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const nightCount = Math.floor((checkOut - checkIn) / millisecondsPerDay);
 
-      return nightCount
+        return nightCount
+      } catch (e) {
+        return 0
+      }
     },
     selectedDestinations() {
       return this.getSelectedObjects(this.destinations);
