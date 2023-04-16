@@ -16,7 +16,7 @@
                 Giriş Tarihi
               </div>
               <div class="date-title w-50">
-                Çıkış Tarihi
+                Çıkış Tarihi 
               </div>
             </div>
 
