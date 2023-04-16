@@ -170,6 +170,11 @@
     background-position: clamp(60px, 8.34vw, 160px) center;
     background-repeat: no-repeat;
     background-color: #fff;
+    padding-top: 40px;
+    img{
+      display: none;
+    }
+
     @media (min-width: 1800px) {
       background-position: right center;
       background-size: contain;
@@ -210,15 +215,21 @@
       }
     }
     @media (max-width: 768px) {
+      img{
+        display: block;
+        width: 100%;
+      }
       &-in {
         padding-bottom: 0;
+        padding-top: 0;
       }
-      background-size: clamp(1060px, 164vw, 1260px) 220px;
-      background-position: -350px 60px;
+      // background-size: clamp(1060px, 164vw, 1260px) 220px;
+      // background-position: -350px 60px;
+      background-image: none!important;
       &-text {
         align-items: center;
         justify-content: center;
-        padding-top: 217px;
+        padding-top: 0;
         h4 {
           font-size: 19px;
           text-align: center;
@@ -234,11 +245,11 @@
       }
     }
     @media (max-width: 600px) {
-      background-size: clamp(750px, 159vw, 1260px) 200px;
-      background-position: -270px 30px;
+      // background-size: clamp(750px, 159vw, 1260px) 200px;
+      // background-position: -270px 30px;
   
       &-text{
-        padding-top: 160px;
+        // padding-top: 160px;
       }
     }
   

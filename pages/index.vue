@@ -1,7 +1,7 @@
 <template>
     <div class="Home">
         <client-only>
-          <search-bar :key="$route.path"></search-bar>
+            <search-bar :key="$route.path"></search-bar>
         </client-only>
         <section class="Banner Banner-home "
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
@@ -11,10 +11,12 @@
                     <div class="Banner-home-text-spin">
                         <h1>{{ pageData.page_content.banner.banner_title }}</h1>
                         <div class="words">
-                            <span v-for="(item,index) in pageData.page_content.banner.banner_animation_title" :key="index">{{ item.banner_animation_title }}</span>
+                            <span v-for="(item, index) in pageData.page_content.banner.banner_animation_title"
+                                :key="index">{{ item.banner_animation_title }}</span>
                         </div>
                     </div>
-                    <h2 class="">{{ pageData.page_content.banner.banner_subtitle }} <span>{{ pageData.page_content.banner.banner_subtitle2 }}</span></h2>
+                    <h2 class="">{{ pageData.page_content.banner.banner_subtitle }} <span>{{
+                        pageData.page_content.banner.banner_subtitle2 }}</span></h2>
                     <p class="">
                         {{ pageData.page_content.banner.banner_desc }}
                     </p>
@@ -43,7 +45,8 @@
                                                 :srcset="item.preview_image[0].responsive_url" width="267"
                                                 height="175"></nuxt-img>
                                         </nuxt-link>
-                                        <button class="Card-fav" type="button" @click="toggleFavorite(item.code)" :class="isFavorite(item.code) ? 'active' : ''">
+                                        <button class="Card-fav" type="button" @click="toggleFavorite(item.code)"
+                                            :class="isFavorite(item.code) ? 'active' : ''">
                                             <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
                                         </button>
                                     </div>
@@ -55,7 +58,8 @@
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>{{ item.city | titlecase}} <span>{{ item.country | titlecase }} / {{ item.state | titlecase }}</span></p>
+                                                <p>{{ item.city | titlecase }} <span>{{ item.country | titlecase }} / {{
+                                                    item.state | titlecase }}</span></p>
                                             </div>
                                         </div>
                                         <div class="Card-content-info">
@@ -88,7 +92,7 @@
                         </div>
                     </div>
                     <!-- If pagination is needed -->
-
+                    <div class="swiper-pagination"></div>
                     <!-- If navigation buttons are needed -->
                     <div class="swiper-button-prev list-navigation-prev"></div>
                     <div class="swiper-button-next list-navigation-next"></div>
@@ -97,12 +101,15 @@
             </div>
         </section>
         <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
+            <img src="/img/home-banner-mobile.png" alt="">
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
-                        <h4>{{ pageData.page_content.section_banner.section_banner_title }}</h4>
-                        <h2>{{ pageData.page_content.section_banner.section_banner_subtitle }} <span>{{ pageData.page_content.section_banner.section_banner_subtitle2 }} </span></h2>
-                        <p>{{ pageData.page_content.section_banner.section_banner_desc }}  <b>{{ pageData.page_content.section_banner.section_banner_desc_bold }}</b></p>
+                        <h4 v-html="pageData.page_content.section_banner.section_banner_title"></h4>
+                        <h2>{{ pageData.page_content.section_banner.section_banner_subtitle }} <span>
+                                {{ pageData.page_content.section_banner.section_banner_subtitle2 }} </span></h2>
+                        <p>{{ pageData.page_content.section_banner.section_banner_desc }} <b>{{
+                            pageData.page_content.section_banner.section_banner_desc_bold }}</b></p>
                     </div>
                 </div>
             </div>
@@ -359,6 +366,7 @@
                             </nuxt-link>
                         </div>
                     </div>
+                    <div class="swiper-pagination"></div>
                     <div class="swiper-button-prev list-navigation-prev"></div>
                     <div class="swiper-button-next list-navigation-next"></div>
                 </div>
@@ -526,11 +534,7 @@
                         </div>
                     </div>
 
-
-                    <!-- If pagination is needed -->
-
-                    <!-- If navigation buttons are needed -->
-                    <!-- <div class="swiper-pagination"></div> -->
+                    <div class="swiper-pagination"></div>
                     <div class="swiper-button-prev list-navigation-prev"></div>
                     <div class="swiper-button-next list-navigation-next"></div>
                 </div>
@@ -642,7 +646,8 @@ export default {
 
         const swiper = new Swiper('.list-slide-first', {
             slidesPerView: 1.1,
-            spaceBetween: 10,
+            spaceBetween: 14,
+            centeredSlides: true,
             direction: 'horizontal',
             loop: true,
             modules: [Navigation, Pagination],
@@ -650,15 +655,26 @@ export default {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev'
             },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
             breakpoints: {
                 576: {
                     slidesPerView: 2,
+                    centeredSlides: false,
                 },
                 768: {
+                    slidesPerView: 2,
+                    centeredSlides: false,
+                },
+                991: {
                     slidesPerView: 3,
+                    centeredSlides: false,
                 },
                 1199: {
                     slidesPerView: 4,
+                    centeredSlides: false,
                 },
             },
         })
@@ -666,11 +682,16 @@ export default {
             slidesPerView: 1.1,
             spaceBetween: 10,
             direction: 'horizontal',
+            centeredSlides: true,
             loop: true,
             modules: [Navigation, Pagination],
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
             },
             breakpoints: {
                 680: {
@@ -678,19 +699,23 @@ export default {
                 },
                 768: {
                     slidesPerView: 2,
+                    centeredSlides: false,
                 },
-                991:{
+                991: {
                     slidesPerView: 3,
+                    centeredSlides: false,
                 },
                 1199: {
                     slidesPerView: 3,
+                    centeredSlides: false,
                 },
             },
         })
         const swiper3 = new Swiper('.list-slide-abroad', {
-            slidesPerView: 1,
+            slidesPerView: 1.1,
             spaceBetween: 16,
             direction: 'horizontal',
+            centeredSlides: true,
             loop: true,
             modules: [Navigation, Pagination],
             navigation: {
@@ -707,14 +732,20 @@ export default {
                 },
                 768: {
                     slidesPerView: 2,
+                    centeredSlides: false,
+                },
+                991:{
+                    slidesPerView: 3,
+                    centeredSlides: false,
                 },
                 1199: {
                     slidesPerView: 3,
+                    centeredSlides: false,
                 },
             },
         })
         const swiper4 = new Swiper('.list-slide-otel', {
-            slidesPerView: 1.1,
+            slidesPerView: 1.2,
             spaceBetween: 10,
             direction: 'horizontal',
             loop: true,
@@ -742,20 +773,19 @@ export default {
             },
         })
 
-
     },
     methods: {
-      isFavorite(code) {
-        return this.$store.state.favorite.favorites.includes(code)
-      },
-      toggleFavorite(code) {
-        event.stopPropagation();
-        if (this.isFavorite(code)) {
-          this.$store.dispatch('favorite/removeFavorite', code)
-        } else {
-          this.$store.dispatch('favorite/addFavorite', code)
+        isFavorite(code) {
+            return this.$store.state.favorite.favorites.includes(code)
+        },
+        toggleFavorite(code) {
+            event.stopPropagation();
+            if (this.isFavorite(code)) {
+                this.$store.dispatch('favorite/removeFavorite', code)
+            } else {
+                this.$store.dispatch('favorite/addFavorite', code)
+            }
         }
-      }
     }
 
 }
