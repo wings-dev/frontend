@@ -141,7 +141,9 @@ export default {
   gtm: {
     id: process.env.GTM_ID,
     enabled: process.env.NODE_ENV === 'production', // Sadece prod ortamında çalışacak
-    debug:false // true olduğunda console da eventleri gösteriyor
+    debug:false, // true olduğunda console da eventleri gösteriyor
+    pageTracking: true, // true veya false, GTM'in sayfa izlemesini etkinleştirip etkinleştirilmeyeceğini belirler
+    autoInit: true // true veya false, GTM'in otomatik olarak başlatılıp başlatılmayacağını belirler
   },
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`

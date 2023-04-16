@@ -122,8 +122,11 @@ export default {
     },
     async resend() {
       let reservationID;
+      const reservationModalData = JSON.parse(JSON.stringify(this.reservationModalData))
+      delete reservationModalData.villa
+      delete reservationModalData.availabilityData
       try {
-        const response = await this.$axios.post(`/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, this.reservationModalData);
+        const response = await this.$axios.post(`/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, reservationModalData);
         reservationID = response.data.reservationID;
       } catch (error) {
         if (error.response) {
