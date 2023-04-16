@@ -351,7 +351,7 @@
                                     </div>
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-day">
-                                            <p><span>3</span>Gece</p>
+                                            <p><span>{{villa.total.day}}</span>Gece</p>
                                         </div>
                                         <div class="Card-content-bottom-date">
                                             <p><span>{{villa.start_date}}</span><i class="icon-arrow-right-2"></i><span>{{villa.end_date}}</span></p>
