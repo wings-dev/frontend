@@ -154,9 +154,25 @@ export default {
           if (error.response.data.status) {
             this.$bvModal.hide('reservationCodeModal')
 
-            setTimeout(() => {
+            const redirectData = {
+              reservationID: this.reservationModalData.reservationID,
+              hash: btoa(JSON.stringify({
+                villa_id: 0,
+                total: 0,
+                pre: 0,
+                enter: 0,
+              })),
+            }
+
+            await this.$router.push({
+              path: '/basarili',
+              query: redirectData,
+            });
+
+            /*setTimeout(() => {
               this.$bvModal.show('reservationSuccessModal')
-            }, 100)
+            }, 100)*/
+
           }
         } else {
           console.error(error);
