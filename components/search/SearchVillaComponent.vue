@@ -1,6 +1,6 @@
 <template>
   <div class="Search"
-    :class="{ 'list': $route.path == '/kiralik-villa-ara' || $route.path == '/yurtdisi-kiralik-villa-ara' }"
+    :class="{ 'list': $route.path !== '/' }"
     ref="searchBar">
     <div class="Search-fixed-in" :class="{ 'fixed-active': fixedSearch }">
       <div class="Search-fixed-in-left">
