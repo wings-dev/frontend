@@ -66,7 +66,8 @@
 
             <div class="F_villa-item-head-price-in">
               <span>GECELİK</span>
-              <b>{{ villa.prices.min_price.price | numberFormat }}<span>TL</span></b>
+              <b v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}<span>TL</span></b>
+              <b v-if="villa.total">{{ villa.total.total | numberFormat }}<span>TL</span></b>
               <p>‘den başlayan fiyatlar</p>
             </div>
 
@@ -104,8 +105,12 @@
 
           </div>
           <div class="F_villa-item-bottom-price" v-if="!checkindate">
-            <p>{{ villa.prices.min_price.price | numberFormat }}{{ villa.prices.min_price.price_currency }} - {{
+            <p v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}{{ villa.prices.min_price.price_currency }} - {{
               villa.prices.max_price.price | numberFormat }}{{ villa.prices.max_price.price_currency }}
+              <span>/Gecelik</span>
+            </p>
+            <p v-if="villa.total">
+              {{ villa.total.total | numberFormat }}{{ villa.total.price_currency }}
               <span>/Gecelik</span>
             </p>
             <small>Fiyat Aralığında</small>
