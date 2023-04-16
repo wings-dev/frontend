@@ -25,6 +25,14 @@ body {
     position: relative;
     transition: overflow 500ms ease, position 500ms ease;
   }
+
+  .detail-over{
+    overflow: hidden!important;
+    touch-action: none;
+    -ms-touch-action: none;
+    position: relative;
+    transition: overflow 500ms ease, position 500ms ease;
+  }
   
   a {
     text-decoration: none;

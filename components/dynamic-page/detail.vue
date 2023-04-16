@@ -312,17 +312,17 @@
               </div>
             </div>
             <client-only>
-              <opportunity-box-component :propertyCode="villa.code"
-                @selected="opportunitySelected($event)" componentclass="View-right-opportunity-mobile"></opportunity-box-component>
+              <opportunity-box-component :propertyCode="villa.code" @selected="opportunitySelected($event)"
+                componentclass="View-right-opportunity-mobile"></opportunity-box-component>
             </client-only>
             <div class="View-beds">
               <h4 class="View-title">Kişi Bilgisi ve Yatak Düzeni</h4>
               <div class="View-beds-in">
                 <div class="View-beds-item first">
                   <p class="View-beds-item-name"><b>Yatak ve</b> Kişi Kapasitesi</p>
-                  <div class="View-beds-item-in">
-                    <p><i class="icon-user-double"></i><b>4</b> Kişi Konaklayabilir</p>
-                    <p><i class="icon-user-double"></i><b>2</b> Yatak Odası</p>
+                  <div class="View-beds-item-in top">
+                    <p><i class="icon-user-double"></i><b>{{ villa.max_adult }}</b> Kişi Konaklayabilir</p>
+                    <p><i class="icon-bed-new"></i><b>{{ villa.bedroom }}</b> Yatak Odası</p>
                   </div>
                 </div>
                 <div class="View-beds-item single">
@@ -330,18 +330,18 @@
                   <p class="View-beds-item-name"><b>Tek Kişilik</b> Yatak</p>
                   <div class="View-beds-item-in">
                     <div class="View-beds-item-total">
-                      <p>1</p>
+                      <p>{{ singleBed }}</p>
                       <span>adet</span>
                     </div>
                     <span class="x-span">x</span>
-                    <i class="icon-bed"></i>
+                    <i class="icon-single-bed"></i>
                   </div>
                 </div>
                 <div class="View-beds-item double">
                   <p class="View-beds-item-name"><b>Çift Kişilik</b> Yatak</p>
                   <div class="View-beds-item-in">
                     <div class="View-beds-item-total">
-                      <p>1</p>
+                      <p>{{ doubleBed }}</p>
                       <span>adet</span>
                     </div>
                     <span class="x-span">x</span>
@@ -352,22 +352,25 @@
                   <p class="View-beds-item-name"><b>Banyo</b> Sayısı</p>
                   <div class="View-beds-item-in">
                     <div class="View-beds-item-total">
-                      <p>4</p>
+                      <p>{{ villa.bathrooms }}</p>
                       <span>kişilik</span>
                     </div>
                     <span class="x-span">x</span>
                     <i class="icon-shower"></i>
                   </div>
                 </div>
-                <div class="View-beds-item capacity">
+                <div class="View-beds-item capacity" :class="{ 'passive': jacuziNum == 0 }">
                   <p class="View-beds-item-name"><b>Jakuzi</b> Sayısı</p>
                   <div class="View-beds-item-in">
                     <div class="View-beds-item-total">
-                      <p>4</p>
+                      <p>{{ jacuziNum }}</p>
                       <span>kişilik</span>
                     </div>
-                    <span class="x-span">x</span>
-                    <i class="icon-shower"></i>
+                    <div class="View-beds-item-no">
+                      <p>Bu Tesiste Bulunmuyor</p>
+                    </div>
+                    <span class="x-span" v-if="jacuziNum > 0">x</span>
+                    <i class="icon-jacuzi" :class="{ 'passive': jacuziNum == 0 }"></i>
                   </div>
                 </div>
               </div>
@@ -435,7 +438,7 @@
 
               </div>
             </div>
-            <div class="View-pools">
+            <div class="View-pools"> 
               <div class="View-pools-head  mb-3">
                 <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
 
@@ -448,11 +451,11 @@
 
               <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
                 <div class="pool-item-left">
-                  <img src="/uploads/003-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
+                  <img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon" class="lazy contain"
                     v-if="poolitem.pool == 52">
-                  <img src="/uploads/005-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
+                  <img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon" class="lazy contain"
                     v-if="poolitem.pool == 58">
-                  <!-- <img src="/uploads/002-watch-your-children.svg" width="28" height="28" alt="pool icon" -->
+                  <!-- <img :src="'/img/site' + site_id + '/pool3.svg'" width="28" height="28" alt="pool icon" -->
                   <span class="">{{ poolitem.name }}</span>
                 </div>
                 <div class="pool-item-right">
@@ -1247,9 +1250,6 @@
         </div>
       </div>
     </div>
-
-
-
     <more-villas></more-villas>
 
     <section class="Gallery" @keydown.esc="closeGallery">
@@ -1295,7 +1295,8 @@
     </section>
 
     <amenites-modal sectionTitle="Haftanın Villaları"></amenites-modal>
-    <location-map-modal :villalocationcity="villa.location.city.name" :villalocationdistrict="villa.location.state.name" :villacode="villa.code" :villaprefix="villa_prefix"></location-map-modal>
+    <location-map-modal :villalocationcity="villa.location.city.name" :villalocationdistrict="villa.location.state.name"
+      :villacode="villa.code" :villaprefix="villa_prefix"></location-map-modal>
 
     <client-only>
       <close-villa-modal></close-villa-modal>
@@ -1323,11 +1324,12 @@ export default {
   components: {
     Swiper,
     HotelDatePicker,
-    CloseVillaModal, AmenitesModal,LocationMapModal,
+    CloseVillaModal, AmenitesModal, LocationMapModal,
     MoreVillas
   },
   data() {
     return {
+      site_id: process.env.SITE,
       attributes: [],
       galleryIsOpen: false,
       modalIsOpen: false,
@@ -1554,8 +1556,17 @@ export default {
         this.isMobile = false
       }
     },
-    locationMapOpen(){
+    locationMapOpen() {
       this.$bvModal.show('locationMapModal')
+    },
+    getAmeniteCount(ameniteId) {
+      const amenite = this.villa.amenites[`amenite_${ameniteId}`];
+      if (amenite && amenite.list && amenite.list.length > 0) {
+        const countString = amenite.list[0].split(" ")[0];
+        const count = parseInt(countString, 10);
+        return count;
+      }
+      return 0;
     }
   },
   watch: {
@@ -1572,52 +1583,52 @@ export default {
     mobileAmenites() {
       if (this.mobileAmenites == true) {
         setTimeout(() => {
-          document.querySelector('body').classList.add('over')
-          document.querySelector('html').classList.add('over')
+          document.querySelector('body').classList.add('detail-over')
+          document.querySelector('html').classList.add('detail-over')
         }, 50)
       } else {
         setTimeout(() => {
-          document.querySelector('body').classList.remove('over')
-          document.querySelector('html').classList.remove('over')
+          document.querySelector('body').classList.remove('detail-over')
+          document.querySelector('html').classList.remove('detail-over')
         }, 50)
       }
     },
     mobileOpportunity() {
       if (this.mobileOpportunity == true) {
         setTimeout(() => {
-          document.querySelector('body').classList.add('over')
-          document.querySelector('html').classList.add('over')
+          document.querySelector('body').classList.add('detail-over')
+          document.querySelector('html').classList.add('detail-over')
         }, 50)
       } else {
         setTimeout(() => {
-          document.querySelector('body').classList.remove('over')
-          document.querySelector('html').classList.remove('over')
+          document.querySelector('body').classList.remove('detail-over')
+          document.querySelector('html').classList.remove('detail-over')
         }, 50)
       }
     },
     mobileLocation() {
       if (this.mobileLocation == true) {
         setTimeout(() => {
-          document.querySelector('body').classList.add('over')
-          document.querySelector('html').classList.add('over')
+          document.querySelector('body').classList.add('detail-over')
+          document.querySelector('html').classList.add('detail-over')
         }, 50)
       } else {
         setTimeout(() => {
-          document.querySelector('body').classList.remove('over')
-          document.querySelector('html').classList.remove('over')
+          document.querySelector('body').classList.remove('detail-over')
+          document.querySelector('html').classList.remove('detail-over')
         }, 50)
       }
     },
     mobilePolicy() {
       if (this.mobilePolicy == true) {
         setTimeout(() => {
-          document.querySelector('body').classList.add('over')
-          document.querySelector('html').classList.add('over')
+          document.querySelector('body').classList.add('detail-over')
+          document.querySelector('html').classList.add('detail-over')
         }, 50)
       } else {
         setTimeout(() => {
-          document.querySelector('body').classList.remove('over')
-          document.querySelector('html').classList.remove('over')
+          document.querySelector('body').classList.remove('detail-over')
+          document.querySelector('html').classList.remove('detail-over')
         }, 50)
       }
     },
@@ -1827,6 +1838,8 @@ export default {
       }
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
+
+      console.log(this.villa)
     })
   },
   computed: {
@@ -1844,7 +1857,17 @@ export default {
         }
       });
       return disableDate;
-    }
+    },
+    singleBed() {
+      return this.getAmeniteCount(503)
+    },
+    doubleBed() {
+      return this.getAmeniteCount(504)
+    },
+    jacuziNum() {
+      return this.getAmeniteCount(505)
+    },
+
 
   }
 

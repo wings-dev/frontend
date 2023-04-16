@@ -869,15 +869,23 @@
       }
       &-in {
         display: flex;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         height: 100%;
         padding: 16px 23px;
+
+        &.top{
+          flex-wrap: wrap;
+        }
+
       }
       i {
         font-size: clamp(28px, 1.9vw, 36px);
         color: var(--bs-theme-second);
+        &.passive{
+          color: #8A92A8;
+        }
       }
       &-name {
         font-size: 15px;
@@ -954,6 +962,25 @@
           line-height: 24px;
         }
       }
+      .View-beds-item-no{
+        display: none;
+        max-width: 74px;
+        margin-right: 15px;
+        p{
+          font-size: 11px;  
+          color: #8A92A8;
+        }
+      }
+
+      &.passive{
+       .View-beds-item-total{
+        display: none;
+       } 
+       .View-beds-item-no{
+        display: block;
+       }
+      }
+
     }
   }
   &-rooms {
