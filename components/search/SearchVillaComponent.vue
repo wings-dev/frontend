@@ -1,6 +1,6 @@
 <template>
   <div class="Search"
-    :class="{ 'list': $route.path == '/kiralik-villa-ara' || $route.path == '/yurtdisi-kiralik-villa-ara' }"
+    :class="{ 'list': $route.path !== '/' }"
     ref="searchBar">
     <div class="Search-fixed-in" :class="{ 'fixed-active': fixedSearch }">
       <div class="Search-fixed-in-left">
@@ -63,6 +63,8 @@
                 </div>
               </div>
             </HotelDatePicker>
+
+            <span class="Search-item-nightday">5 Gece</span>
 
             <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
@@ -197,7 +199,7 @@
       </div>
     </div>
     <div class="Filter-left Filters mobile" :class="{ show: isMobileFilterOpen }">
-      <div class="Filter-left-head">
+      <div class="Filter-left-head more">
         <h4>Gelişmiş Arama</h4>
         <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter()">
           <i class="icon-login-close"></i>
@@ -783,6 +785,13 @@ export default {
   background-size: 100% 100%;
   background-image: url(/img/date-new.svg);
   margin-right: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width:1100px) {
+  :deep() .datepicker__input:before{
+    display: none;
+  }
 }
 
 :deep().datepicker__input--first {
@@ -796,7 +805,7 @@ export default {
   background-image: url(/img/date-right.svg);
   background-size: 100% 100%;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 18%;
 }
 
 :deep().datepicker__input .formatted-date {
@@ -854,11 +863,13 @@ export default {
   width: 100%;
 }
 
-@media (max-width:800px) {
+@media (max-width:991px) {
   :deep().datepicker__input--first:after {
     background-size: 18px 10px;
     background-repeat: no-repeat;
     background-position: center;
+    width: 36px;
+    height: 36px;
     padding: 14px;
     background-color: #eff1f5;
     border-radius: 4px;
@@ -869,8 +880,13 @@ export default {
   }
 
   :deep() .datepicker__input:before {
-    position: absolute;
-    right: 0;
+    display: none;
+  }
+}
+@media (max-width:500px) {
+  :deep().datepicker__input--first:after {
+    margin-right: unset;
+    margin-left: 20px;
   }
 }
 </style>

@@ -6,8 +6,8 @@
     </div>
     <div class="Filters-in" :ref="groupName">
       <div class="Filters-in-mobile">
-        <div class="Filters-head" ><h5>FİYAT ARALIĞI</h5></div>
         <button type="button" @click="checkboxClose(groupName)"><i class="icon-left-arrow"></i></button>
+        <div class="Filters-head" ><h5>FİYAT ARALIĞI</h5></div>
       </div>
       <div class="Filters-range">
         <div class="Filters-range-inputs">

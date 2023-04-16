@@ -3,7 +3,7 @@
     <div class="container">
       <div class="Filter-in">
         <div class="Filter-left Filters" :class="{ show: isMobileFilterOpen }">
-          <div class="Filter-left-head">
+          <div class="Filter-left-head more">
             <h4>Gelişmiş Arama</h4>
             <button type="button" class="Search-filter-close" id="mobileFilterClose" @click="closeMobileFilter()">
               <i class="icon-login-close"></i>
