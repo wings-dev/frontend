@@ -311,31 +311,10 @@
                 </div>
               </div>
             </div>
-            <div class="View-right-opportunity View-right-opportunity-mobile">
-              <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
-              <nuxt-link to="/" class="View-right-opportunity-item">
-                <div class="View-right-opportunity-item-day">
-                  <b>3</b>
-                  <span>GECE</span>
-                </div>
-                <div class="View-right-opportunity-item-price">
-                  <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-                  <span>12.120TL</span>
-                </div>
-              </nuxt-link>
-              <nuxt-link to="/" class="View-right-opportunity-item">
-                <div class="View-right-opportunity-item-day">
-                  <b>3</b>
-                  <span>GECE</span>
-                </div>
-                <div class="View-right-opportunity-item-price">
-                  <p>24 MAY <i class="icon-right-arrow"></i>27 MAY</p>
-                  <span>12.120TL</span>
-                </div>
-              </nuxt-link>
-              <button type="button" @click="mobileOpportunityToggle">Diğer tarihleri görüntüle(4) <i
-                  class="icon-right-arrow"></i></button>
-            </div>
+            <client-only>
+              <opportunity-box-component :propertyCode="villa.code"
+                @selected="opportunitySelected($event)" componentclass="View-right-opportunity-mobile"></opportunity-box-component>
+            </client-only>
             <div class="View-beds">
               <h4 class="View-title">Kişi Bilgisi ve Yatak Düzeni</h4>
               <div class="View-beds-in">
@@ -493,10 +472,11 @@
                   </h4>
                   <p class="View-text">Yakınında Neler Var </p>
                 </div>
-                <a href="">
+
+                <button type="button" class="more" @click="locationMapOpen">
                   <i class="icon-map"></i>
                   <p><span>Tesis Konumunu</span>Haritada Gör</p>
-                </a>
+                </button>
 
               </div>
 
@@ -1315,6 +1295,7 @@
     </section>
 
     <amenites-modal sectionTitle="Haftanın Villaları"></amenites-modal>
+    <location-map-modal :villalocationcity="villa.location.city.name" :villalocationdistrict="villa.location.state.name" :villacode="villa.code" :villaprefix="villa_prefix"></location-map-modal>
 
     <client-only>
       <close-villa-modal></close-villa-modal>
@@ -1330,6 +1311,7 @@ import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import CloseVillaModal from '../modals/close-villa-modal.vue';
 import AmenitesModal from '../modals/amenites-modal.vue';
+import LocationMapModal from '../modals/map-modal.vue';
 import MoreVillas from '../MoreVillas.vue';
 import opportunityBoxComponent from "@/components/OpportunityBoxComponent.vue";
 import { shareOnFacebook, shareOnInstagram, shareOnTwitter, shareOnWhatsApp } from '@/assets/share';
@@ -1341,7 +1323,7 @@ export default {
   components: {
     Swiper,
     HotelDatePicker,
-    CloseVillaModal, AmenitesModal,
+    CloseVillaModal, AmenitesModal,LocationMapModal,
     MoreVillas
   },
   data() {
@@ -1572,8 +1554,9 @@ export default {
         this.isMobile = false
       }
     },
-
-
+    locationMapOpen(){
+      this.$bvModal.show('locationMapModal')
+    }
   },
   watch: {
     galleryIsOpen() {

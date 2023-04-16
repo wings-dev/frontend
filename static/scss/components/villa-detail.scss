@@ -256,7 +256,7 @@
   }
   &-menus {
     height: 140px;
-    &-otel{
+    &-otel {
       height: auto;
     }
   }
@@ -822,7 +822,7 @@
           color: #cf8080;
           font-size: 20px;
           &.close-day {
-            background-color: #FFF7E3;
+            background-color: #fff7e3;
             color: #7e8f9a;
           }
         }
@@ -1042,7 +1042,7 @@
       align-items: center;
       justify-content: space-between;
 
-      a {
+      button {
         padding: 4px 16px;
         border-radius: 8px;
         border: solid 2px #f2f5fb;
@@ -1050,6 +1050,7 @@
         align-items: center;
         width: max-content;
         transition: all 400ms;
+        background-color: transparent;
         i {
           font-size: 33px;
           color: var(--bs-theme-second);
@@ -2641,14 +2642,14 @@
 }
 
 .opsiyon {
-  background-image: linear-gradient(to bottom, #FFF7E3, #FFF7E3);
+  background-image: linear-gradient(to bottom, #fff7e3, #fff7e3);
 }
 
 .opsiyon-giris {
   background-image: linear-gradient(
     to top left,
-    #FFF7E3 0%,
-    #FFF7E3 50%,
+    #fff7e3 0%,
+    #fff7e3 50%,
     transparent 50%,
     transparent 100%
   );
@@ -2657,8 +2658,8 @@
 .opsiyon-cikis {
   background-image: linear-gradient(
     to bottom right,
-    #FFF7E3 0%,
-    #FFF7E3 50%,
+    #fff7e3 0%,
+    #fff7e3 50%,
     transparent 50%,
     transparent 100%
   );
@@ -2695,8 +2696,8 @@
 .kapali-cikis-to-opsiyon-giris {
   background-image: linear-gradient(
       to top left,
-      #FFF7E3 0%,
-      #FFF7E3 50%,
+      #fff7e3 0%,
+      #fff7e3 50%,
       transparent 50%,
       transparent 100%
     ),
@@ -2712,8 +2713,8 @@
 .opsiyon-cikis-to-kapali-giris {
   background-image: linear-gradient(
       to bottom right,
-      #FFF7E3 0%,
-      #FFF7E3 50%,
+      #fff7e3 0%,
+      #fff7e3 50%,
       transparent 50%,
       transparent 100%
     ),
@@ -2733,8 +2734,8 @@
   margin-bottom: 0;
 }
 
-.datepicker__month-day--disabled{
-  span{
+.datepicker__month-day--disabled {
+  span {
     opacity: 0.4;
   }
 }
@@ -2895,7 +2896,7 @@
             }
           }
         }
-      }    
+      }
     }
     .btn-close {
       background-color: var(--bs-theme-first);
@@ -3095,7 +3096,7 @@
           box-shadow: 0 34px 44px 0 rgba(0, 0, 0, 0.1);
           border: solid 1px #eff0f5;
           background-color: #fff;
-          margin-top: 10px!important;
+          margin-top: 10px !important;
           padding: 20px;
 
           .select-item {
@@ -3318,7 +3319,7 @@
       transition: all 400ms;
       border-bottom-right-radius: 10px;
       border-bottom-left-radius: 10px;
-      &.disabled{
+      &.disabled {
         opacity: 0.5;
       }
     }
@@ -3371,9 +3372,9 @@
   }
 }
 .mobile-menus-back {
-    display: none;
-  }
-  
+  display: none;
+}
+
 .pool-item,
 .distances {
   .icon-box {
@@ -3386,6 +3387,83 @@
     background-position: center center;
   }
 }
+
+.LocationMap {
+  padding: 10px;
+  padding-top: 23px;
+  display: flex;
+  flex-direction: column;
+
+  &-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--bs-theme-first);
+  }
+  p {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    color: #989fb5;
+  }
+  #map-wrap {
+    width: 100%;
+    height: 400px;
+    border-radius: 11px;
+
+    @media (max-width: 768px) {
+      height: 435px;
+    }
+  }
+
+  .btn-close {
+    background-color: transparent;
+    margin-top: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms;
+    font-size: 14px;
+    font-weight: 500;
+    color: #162651;
+    i {
+      font-size: 28px;
+      color: #989fb5;
+      transition: all 300ms;
+      margin-left: 10px;
+    }
+    &:hover {
+      i {
+        color: var(--bs-theme-second);
+      }
+    }
+  }
+
+  &-modal{
+    @media (max-width:991px) {
+      .modal-dialog{
+        margin:0 auto ;
+        margin: auto;
+        margin-top: 10%;
+        max-height: 540px;
+        width: 96%;
+      }
+      .modal-content{
+        border-radius: 17px!important;
+      }
+    }
+  }
+
+}
+
 @media (max-width: 991px) {
   .view-top {
     flex-wrap: wrap;
@@ -3431,24 +3509,23 @@
     }
     &-availibility {
       margin-bottom: 30px;
-     
     }
     &-beds {
       margin-bottom: 30px;
     }
     &-pools {
-      margin-bottom: 30px; 
+      margin-bottom: 30px;
     }
     &-location {
       margin-bottom: 30px;
     }
-    &-info{
-      &-warning{
+    &-info {
+      &-warning {
         margin-bottom: 30px;
       }
     }
     &-reviews {
-      margin-bottom:30px;
+      margin-bottom: 30px;
     }
   }
 }
@@ -3570,7 +3647,7 @@
           visibility: visible;
           pointer-events: all;
         }
-        &-head{
+        &-head {
           display: flex;
           align-items: center;
           margin-bottom: 20px;
@@ -3578,7 +3655,7 @@
             margin-bottom: 0;
           }
         }
-        &-in{
+        &-in {
           // overflow-y: scroll;
           height: calc(100% - 10px);
 
@@ -3591,11 +3668,11 @@
           display: none;
         }
       }
-      .mobile-menus-back{
+      .mobile-menus-back {
         margin-bottom: 0;
         margin-right: auto;
       }
-      &-title{
+      &-title {
         margin-right: auto;
         margin-left: -22px;
         margin-bottom: 0;
