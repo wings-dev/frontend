@@ -64,7 +64,7 @@
               </div>
             </HotelDatePicker>
 
-            <span class="Search-item-nightday">5 Gece</span>
+            <span class="Search-item-nightday">{{night}} Gece</span>
 
             <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
@@ -438,6 +438,15 @@ export default {
     },
   },
   computed: {
+    night() {
+      const checkIn = new Date(this.checkIn);
+      const checkOut = new Date(this.checkOut);
+
+      const millisecondsPerDay = 24 * 60 * 60 * 1000;
+      const nightCount = Math.floor((checkOut - checkIn) / millisecondsPerDay);
+
+      return nightCount
+    },
     selectedDestinations() {
       return this.getSelectedObjects(this.destinations);
     },
