@@ -64,6 +64,8 @@
               </div>
             </HotelDatePicker>
 
+            <span class="Search-item-nightday">{{night}} Gece</span>
+
             <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
           </div>
@@ -437,6 +439,24 @@ export default {
     },
   },
   computed: {
+    night() {
+      try {
+        const checkIn = new Date(this.checkIn);
+        const checkOut = new Date(this.checkOut);
+
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const nightCount = Math.floor((checkOut - checkIn) / millisecondsPerDay);
+
+        // NaN kontrolü ekleyerek nightCount değerinin geçerli olup olmadığını kontrol et
+        if (isNaN(nightCount)) {
+          return 0;
+        }
+
+        return nightCount;
+      } catch (e) {
+        return 0;
+      }
+    },
     selectedDestinations() {
       return this.getSelectedObjects(this.destinations);
     },
@@ -492,10 +512,22 @@ export default {
       }, []);
     },
     checkInChanged(value) {
-      this.checkIn = this.formatDate(value);
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkIn = this.formatDate(value);
+      }
     },
     checkOutChanged(value) {
-      this.checkOut = this.formatDate(value);
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkOut = this.formatDate(value);
+
+        setTimeout(() => {
+          if (this.checkIn && this.checkOut) {
+            this.closeCalendar()
+          }
+        }, 50)
+      }
     },
     formatDate(value) {
       if (value) {

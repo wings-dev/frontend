@@ -75,8 +75,8 @@
                                     </div>
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
-                                            <p><b>{{ item.prices.min_price.price + item.prices.min_price.price_currency }} -
-                                                    {{ item.prices.max_price.price + item.prices.max_price.price_currency }}
+                                            <p><b>{{ item.min_price }} -
+                                                    {{ item.max_price }}
                                                 </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
                                         </div>
@@ -594,11 +594,34 @@ export default {
         }
     },
     async asyncData({ $getRedisKey }) {
-        const site_id = process.env.SITE;
-        let pageData = {};
-        pageData = await $getRedisKey(`web:${site_id}:pages:anasayfa`);
-        console.log(pageData)
-        return { pageData }
+      const site_id = process.env.SITE;
+      const redisPageKey = `web:${site_id}:pages:anasayfa`;
+
+      const response = await $getRedisKey([redisPageKey]);
+      const pageData = response[redisPageKey] || {};
+      const popularVillas = pageData.page_content?.popular || [];
+
+      const popularVillaPriceKeys = popularVillas.map(villa => `data:villas:${villa.code}:prices`);
+      const responsePrice = await $getRedisKey(popularVillaPriceKeys);
+
+      const updatedPopularVillas = popularVillas.map(villa => {
+        const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
+        const priceList = priceInfo[`price_list_${process.env.PRICELIST_ID}`] || [];
+
+        const prices = priceList.map(item => parseInt(item.price.replace("₺", "")));
+        const min_price = Math.min(...prices) || null;
+        const max_price = Math.max(...prices) || null;
+
+        return {
+          ...villa,
+          min_price: min_price ? min_price + "₺" : null,
+          max_price: max_price ? max_price + "₺" : null,
+        };
+      });
+
+      pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas };
+
+      return { pageData };
     },
     mounted() {
         Swiper.use([Navigation, Pagination])
