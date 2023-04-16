@@ -122,8 +122,11 @@ export default {
     },
     async resend() {
       let reservationID;
+      const reservationModalData = JSON.parse(JSON.stringify(this.reservationModalData))
+      delete reservationModalData.villa
+      delete reservationModalData.availabilityData
       try {
-        const response = await this.$axios.post(`/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, this.reservationModalData);
+        const response = await this.$axios.post(`/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, reservationModalData);
         reservationID = response.data.reservationID;
       } catch (error) {
         if (error.response) {
@@ -156,12 +159,11 @@ export default {
 
             const redirectData = {
               reservationID: this.reservationModalData.reservationID,
-              hash: btoa(JSON.stringify({
-                villa_id: 0,
-                total: 0,
-                pre: 0,
-                enter: 0,
-              })),
+              hash: Buffer.from(JSON.stringify({
+                reservationID: this.reservationModalData.reservationID,
+                villa_id: 7994,
+                availabilityData: this.reservationModalData.availabilityData,
+              })).toString('base64')
             }
 
             await this.$router.push({
