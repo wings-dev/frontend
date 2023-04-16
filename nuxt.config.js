@@ -14,7 +14,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "wings-frontend",
+    title: '',
+    titleTemplate: '%s | ' + (process.env.SITE_NAME),
     htmlAttrs: {
       lang: "en"
     },
