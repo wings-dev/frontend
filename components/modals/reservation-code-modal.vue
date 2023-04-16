@@ -156,12 +156,11 @@ export default {
 
             const redirectData = {
               reservationID: this.reservationModalData.reservationID,
-              hash: btoa(JSON.stringify({
-                villa_id: 0,
-                total: 0,
-                pre: 0,
-                enter: 0,
-              })),
+              hash: Buffer.from(JSON.stringify({
+                reservationID: this.reservationModalData.reservationID,
+                villa_id: 7994,
+                availabilityData: this.reservationModalData.availabilityData,
+              })).toString('base64')
             }
 
             await this.$router.push({
