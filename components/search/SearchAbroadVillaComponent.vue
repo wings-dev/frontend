@@ -813,6 +813,13 @@ export default {
   background-size: 100% 100%;
   background-image: url(/img/date-new.svg);
   margin-right: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width:1100px) {
+  :deep() .datepicker__input:before {
+    display: none;
+  }
 }
 
 :deep().datepicker__input--first {
@@ -826,7 +833,7 @@ export default {
   background-image: url(/img/date-right.svg);
   background-size: 100% 100%;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 18%;
 }
 
 :deep().datepicker__input .formatted-date {
@@ -884,11 +891,13 @@ export default {
   width: 100%;
 }
 
-@media (max-width:800px) {
+@media (max-width:991px) {
   :deep().datepicker__input--first:after {
     background-size: 18px 10px;
     background-repeat: no-repeat;
     background-position: center;
+    width: 36px;
+    height: 36px;
     padding: 14px;
     background-color: #eff1f5;
     border-radius: 4px;
@@ -899,8 +908,23 @@ export default {
   }
 
   :deep() .datepicker__input:before {
-    position: absolute;
-    right: 0;
+    display: none;
+  }
+}
+
+@media (max-width:500px) {
+
+  .Search-mobile.show :deep() .datepicker__dummy-wrapper{
+    justify-content: center;
+  }
+  .Search-mobile.show :deep() .datepicker__input {
+    width: max-content;
+  }
+
+  .Search-mobile.show :deep().datepicker__input--first:after {
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: transparent;
   }
 }
 </style>

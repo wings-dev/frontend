@@ -1,290 +1,294 @@
 .Banner_lg {
-    height: 586px;
+  height: 586px;
+}
+.Banner {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+}
+.Banner_search-text {
+  width: 100%;
+  top: 45% !important;
+  color: #fff;
+  z-index: 9;
+  text-align: center;
+}
+
+.Banner_search-text h1 {
+  font-size: 51px;
+  font-weight: 700;
+}
+.Banner_search-text p {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.Banner-otel {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(51, 59, 75, 0.4);
+  &-in {
+    padding: clamp(50px, 6.25vw, 120px) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-  .Banner {
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    z-index: -1;
+  &-text {
+    margin-bottom: 40px;
+    h1 {
+      font-size: clamp(24px, 3.125vw, 60px);
+      font-weight: bold;
+      line-height: 0.79;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      max-width: 715px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.38;
+      text-align: center;
+      color: #fff;
+    }
   }
-  .Banner_search-text {
-    width: 100%;
-    top: 45% !important;
-    color: #fff;
-    z-index: 9;
-    text-align: center;
-  }
-  
-  .Banner_search-text h1 {
-    font-size: 51px;
-    font-weight: 700;
-  }
-  .Banner_search-text p {
-    font-size: 12px;
-    font-style: italic;
-  }
-  
-  .Banner-otel {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: rgba(51, 59, 75, 0.4);
+}
+
+.Banner_md {
+  height: 570px;
+}
+.Banner {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  &-home {
+    height: clamp(550px, 36.5vw, 700px);
+    transform: translateY(-45px);
     &-in {
-      padding: clamp(50px, 6.25vw, 120px) 0;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding-top: clamp(90px, 8.1vw, 155px);
     }
     &-text {
-      margin-bottom: 40px;
-      h1 {
-        font-size: clamp(24px, 3.125vw, 60px);
-        font-weight: bold;
-        line-height: 0.79;
-        color: #fff;
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      p {
-        max-width: 715px;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.38;
-        text-align: center;
-        color: #fff;
-      }
-    }
-  }
-  
-  .Banner_md {
-    height: 570px;
-  }
-  .Banner {
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    &-home {
-      height: clamp(550px,36.5vw,700px);
-      transform: translateY(-45px);
-      &-in {
-        height: 100%;
+      &-spin {
         display: flex;
-        flex-direction: column;
-        padding-top: clamp(90px,8.1vw,155px);
-      }
-      &-text {
-        &-spin {
-          display: flex;
-          align-items: center;
-          height: 48px;
-          overflow: hidden;
-          margin-bottom: 5px;
-          h1 {
-            font-size: 39px;
-            font-weight: 500;
-            line-height: normal;
-            color: var(--bs-theme-first);
-          }
-          span {
-            display: block;
-            color: var(--bs-theme-first);
-            font-size: 39px;
-            font-weight: 800;
-            line-height: normal;
-            color: var(--bs-theme-first);
-            animation: spin_words 6s infinite;
-          }
-          .words {
-            overflow: hidden;
-            margin-left: 9px;
-            height: 48px;
-          }
-        }
-        h2 {
-          font-size: 24px;
-          font-weight: bold;
-          line-height: normal;
-          color: var(--bs-theme-first);
-          span {
-            color: var(--bs-theme-second);
-          }
-          margin-bottom: 38px;
-        }
-        p {
-          max-width: 563px;
-          font-size: 15px;
+        align-items: center;
+        height: 48px;
+        overflow: hidden;
+        margin-bottom: 5px;
+        h1 {
+          font-size: 39px;
           font-weight: 500;
           line-height: normal;
           color: var(--bs-theme-first);
         }
-        @keyframes spin_words {
-          25% {
-            transform: translateY(-112%);
-          }
-          40% {
-            transform: translateY(-100%);
-          }
-          60% {
-            transform: translateY(-212%);
-          }
-          75% {
-            transform: translateY(-200%);
-          }
-          85% {
-            transform: translateY(-312%);
-          }
-          100% {
-            transform: translateY(-300%);
-          }
+        span {
+          display: block;
+          color: var(--bs-theme-first);
+          font-size: 39px;
+          font-weight: 800;
+          line-height: normal;
+          color: var(--bs-theme-first);
+          animation: spin_words 6s infinite;
+        }
+        .words {
+          overflow: hidden;
+          margin-left: 9px;
+          height: 48px;
         }
       }
-    }
-  }
-  .Banner_md:before {
-    height: 160px;
-  }
-  .Banner_search-text {
-    width: 100%;
-    top: 45% !important;
-    color: #fff;
-    z-index: 9;
-    text-align: center;
-  }
-  .Banner_search-text p {
-    font-size: 12px;
-    font-style: italic;
-    max-width: 580px;
-    margin: 0 auto;
-  }
-  .Banner-kurumsal .Banner_search-text p span {
-    font-size: 25px;
-    font-weight: 500;
-    text-align: center;
-    margin: 0;
-  }
-  .Home-banner {
-    background-size: contain;
-    background-position: clamp(60px, 8.34vw, 160px) center;
-    background-repeat: no-repeat;
-    background-color: #fff;
-    padding-top: 40px;
-    img{
-      display: none;
-    }
-
-    @media (min-width: 1800px) {
-      background-position: right center;
-      background-size: contain;
-    }
-  
-    &-in {
-      padding-top: 55px;
-      padding-bottom: 70px;
-    }
-    &-text {
-      display: flex;
-      flex-direction: column;
-      h4 {
-        font-size: clamp(24px, 1.78vw, 34px);
-        font-weight: normal;
-        line-height: normal;
-        color: var(--bs-theme-first);
-      }
       h2 {
-        font-size: clamp(36px, 2.92vw, 56px);
+        font-size: 24px;
         font-weight: bold;
         line-height: normal;
         color: var(--bs-theme-first);
-        margin-bottom: 20px;
         span {
           color: var(--bs-theme-second);
         }
+        margin-bottom: 38px;
       }
       p {
-        font-size: 13px;
-        font-weight: normal;
-        line-height: 1.54;
-        color: #000;
-        max-width: 440px;
-        b {
-          font-weight: 600;
-        }
+        max-width: 563px;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: normal;
+        color: var(--bs-theme-first);
       }
-    }
-    @media (max-width: 768px) {
-      img{
-        display: block;
-        width: 100%;
-      }
-      &-in {
-        padding-bottom: 0;
-        padding-top: 0;
-      }
-      // background-size: clamp(1060px, 164vw, 1260px) 220px;
-      // background-position: -350px 60px;
-      background-image: none!important;
-      &-text {
-        align-items: center;
-        justify-content: center;
-        padding-top: 0;
-        h4 {
-          font-size: 19px;
-          text-align: center;
+      @keyframes spin_words {
+        25% {
+          transform: translateY(-112%);
         }
-        h2 {
-          font-size: 30px;
-          margin-bottom: 20px;
-          text-align: center;
+        40% {
+          transform: translateY(-100%);
         }
-        p {
-          text-align: center;
+        60% {
+          transform: translateY(-212%);
         }
-      }
-    }
-    @media (max-width: 600px) {
-      // background-size: clamp(750px, 159vw, 1260px) 200px;
-      // background-position: -270px 30px;
-  
-      &-text{
-        // padding-top: 160px;
-      }
-    }
-  
-    &-center {
-      background-position: right;
-      padding: 70px 0;
-      .Home-banner-text {
-        h4 {
-          font-size: 30px;
-          text-align: center;
+        75% {
+          transform: translateY(-200%);
         }
-        h2 {
-          font-size: 44px;
-          text-align: center;
-          margin-bottom: 0;
+        85% {
+          transform: translateY(-312%);
         }
-        span {
-          text-align: center;
-        }
-      }
-  
-      @media (max-width: 600px) {
-        padding-bottom: 40px;
-        padding-top: 0;
-        background-position: -160px 20px;
-        background-size: 150% 180px;
-        .Home-banner-text {
-          padding-top: 170px;
-          h4 {
-            font-size: 22px;
-          }
-          h2 {
-            font-size: 28px;
-          }
+        100% {
+          transform: translateY(-300%);
         }
       }
     }
   }
+}
+.Banner_md:before {
+  height: 160px;
+}
+.Banner_search-text {
+  width: 100%;
+  top: 45% !important;
+  color: #fff;
+  z-index: 9;
+  text-align: center;
+}
+.Banner_search-text p {
+  font-size: 12px;
+  font-style: italic;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.Banner-kurumsal .Banner_search-text p span {
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+}
+.Home-banner {
+  background-size: contain;
+  background-position: clamp(60px, 8.34vw, 160px) center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  padding-top: 40px;
+  position: relative;
+  overflow: hidden;
+  img {
+    display: none;
+  }
+
+  @media (min-width: 1800px) {
+    background-position: right center;
+    background-size: contain;
+  }
+
+  &-in {
+    padding-top: 55px;
+    padding-bottom: 70px;
+  }
+  &-text {
+    display: flex;
+    flex-direction: column;
+    h4 {
+      font-size: clamp(24px, 1.78vw, 34px);
+      font-weight: normal;
+      line-height: normal;
+      color: var(--bs-theme-first);
+    }
+    h2 {
+      font-size: clamp(36px, 2.92vw, 56px);
+      font-weight: bold;
+      line-height: normal;
+      color: var(--bs-theme-first);
+      margin-bottom: 20px;
+      span {
+        color: var(--bs-theme-second);
+      }
+    }
+    p {
+      font-size: 13px;
+      font-weight: normal;
+      line-height: 1.54;
+      color: #000;
+      max-width: 440px;
+      b {
+        font-weight: 600;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    padding-top: 10px;
+    img {
+      display: block;
+      width: 100%;
+    }
+    &-in {
+      padding-bottom: 0;
+      padding-top: 0;
+      margin-top: -15px;
+    }
+    // background-size: clamp(1060px, 164vw, 1260px) 220px;
+    // background-position: -350px 60px;
+    background-image: none !important;
+    &-text {
+      align-items: center;
+      justify-content: center;
+      padding-top: 0;
+      h4 {
+        font-size: 19px;
+        text-align: center;
+      }
+      h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    // background-size: clamp(750px, 159vw, 1260px) 200px;
+    // background-position: -270px 30px;
+
+    &-text {
+      // padding-top: 160px;
+    }
+  }
+
+  &-center {
+    background-position: right;
+    padding: 70px 0;
+    .Home-banner-text {
+      h4 {
+        font-size: 30px;
+        text-align: center;
+      }
+      h2 {
+        font-size: 44px;
+        text-align: center;
+        margin-bottom: 0;
+      }
+      span {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      padding-bottom: 40px;
+      padding-top: 0;
+      background-position: -160px 20px;
+      background-size: 150% 180px;
+      .Home-banner-text {
+        padding-top: 170px;
+        h4 {
+          font-size: 22px;
+        }
+        h2 {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}

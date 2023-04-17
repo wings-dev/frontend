@@ -1,10 +1,8 @@
 <template>
     <div class="Home">
-        <client-only>
-            <search-bar :key="$route.path"></search-bar>
-        </client-only>
-        <section class="Banner Banner-home "
-            :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
+       
+        <section class="Banner Banner-home " style="background-image: url(http://office.wingswebservices.com/storage/page/18168/381398/balayi-banner-home.jpg)">
+            <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
@@ -23,6 +21,9 @@
                 </div>
             </div>
         </section>
+        <client-only>
+            <search-bar :key="$route.path"></search-bar>
+        </client-only>
         <section class="popular-section bg-white overflow-hidden pb-sm-2 ">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
@@ -37,15 +38,13 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="item in pageData.page_content.popular" :key="item.id">
 
-                            <div class="Card">
+                            <nuxt-link :to="'/' + item.code" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-link :to="'/' + item.code">
-                                            <nuxt-img :src="item.preview_image[0].preview_url"
-                                                :srcset="item.preview_image[0].responsive_url" width="267"
-                                                height="175"></nuxt-img>
-                                        </nuxt-link>
-                                        <button class="Card-fav" type="button" @click="toggleFavorite(item.code)"
+                                        <nuxt-img :src="item.preview_image[0].preview_url"
+                                            :srcset="item.preview_image[0].responsive_url" width="267"
+                                            height="175"></nuxt-img>
+                                        <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
                                             :class="isFavorite(item.code) ? 'active' : ''">
                                             <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
                                         </button>
@@ -88,7 +87,7 @@
                                                 class="icon-right-arrows-new"></i></nuxt-link>
                                     </div>
                                 </div>
-                            </div>
+                            </nuxt-link>
                         </div>
                     </div>
                     <!-- If pagination is needed -->
@@ -312,11 +311,12 @@
                             <nuxt-link :to="'/' + villa.code" class="Card Card-icons">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-link :to="'/' + villa.code">
-                                            <nuxt-img :src="villa.preview_image[0].preview_url" width="371" height="225"></nuxt-img>
-                                        </nuxt-link>
-                                        <button class="Card-fav" type="button">
-                                            <i class="icon-heart"></i>
+
+                                        <nuxt-img :src="villa.preview_image[0].preview_url" width="371"
+                                            height="225"></nuxt-img>
+                                        <button class="Card-fav" type="button" @click.prevent="toggleFavorite(villa.code)"
+                                            :class="isFavorite(villa.code) ? 'active' : ''">
+                                            <i :class="isFavorite(villa.code) ? 'icon-heart-full' : 'icon-heart'"></i>
                                         </button>
                                         <div class="Card-img-info">
                                             <p><span>%30</span>ŞİMDİ</p>
@@ -326,26 +326,27 @@
                                     <div class="Card-content">
                                         <div class="Card-content-head">
                                             <div class="Card-content-head-code">
-                                                <b>{{prefix}}{{villa.code}}</b>
+                                                <b>{{ prefix }}{{ villa.code }}</b>
                                                 <span>Tesis Kodu</span>
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>{{villa.city | titlecase}} <span>{{villa.country | titlecase}} / {{villa.state | titlecase}}</span></p>
+                                                <p>{{ villa.city | titlecase }} <span>{{ villa.country | titlecase }} /
+                                                        {{ villa.state | titlecase }}</span></p>
                                             </div>
                                         </div>
                                         <div class="Card-content-info">
                                             <div class="Card-content-info-item">
                                                 <i class="icon-user"></i>
-                                                <span>{{villa.max_adult}} Kişilik</span>
+                                                <span>{{ villa.max_adult }} Kişilik</span>
                                             </div>
                                             <div class="Card-content-info-item">
                                                 <i class="icon-bed"></i>
-                                                <span>{{villa.bedroom}} Yatak Odası</span>
+                                                <span>{{ villa.bedroom }} Yatak Odası</span>
                                             </div>
                                             <div class="Card-content-info-item">
                                                 <i class="icon-shower"></i>
-                                                <span>{{villa.bethroom}} Banyo</span>
+                                                <span>{{ villa.bethroom }} Banyo</span>
                                             </div>
                                         </div>
                                     </div>
@@ -354,12 +355,14 @@
                                             <p><span>{{villa.total.day}}</span>Gece</p>
                                         </div>
                                         <div class="Card-content-bottom-date">
-                                            <p><span>{{villa.start_date}}</span><i class="icon-arrow-right-2"></i><span>{{villa.end_date}}</span></p>
+                                            <p><span>{{ villa.start_date }}</span><i class="icon-arrow-right-2"></i><span>{{
+                                                villa.end_date }}</span></p>
                                             <small>Fırsatı kaçırma!</small>
                                         </div>
                                         <div class="Card-content-bottom-price single">
                                             <p class="orange">TOPLAM FİYAT</p>
-                                            <p><b>{{villa.total.total | numberFormat}}</b><span>{{villa.total.price_currency}}</span></p>
+                                            <p><b>{{ villa.total.total |
+                                                numberFormat }}</b><span>{{ villa.total.price_currency }}</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -600,46 +603,46 @@ export default {
         }
     },
     async asyncData({ $getRedisKey, $axios }) {
-      const site_id = process.env.SITE;
-      const redisPageKey = `web:${site_id}:pages:anasayfa`;
+        const site_id = process.env.SITE;
+        const redisPageKey = `web:${site_id}:pages:anasayfa`;
 
-      let response = await $getRedisKey([redisPageKey]);
-      const pageData = response[redisPageKey] || {};
-      const popularVillas = pageData.page_content?.popular || [];
+        let response = await $getRedisKey([redisPageKey]);
+        const pageData = response[redisPageKey] || {};
+        const popularVillas = pageData.page_content?.popular || [];
 
-      const popularVillaPriceKeys = popularVillas.map(villa => `data:villas:${villa.code}:prices`);
-      const responsePrice = await $getRedisKey(popularVillaPriceKeys);
+        const popularVillaPriceKeys = popularVillas.map(villa => `data:villas:${villa.code}:prices`);
+        const responsePrice = await $getRedisKey(popularVillaPriceKeys);
 
-      const updatedPopularVillas = popularVillas.map(villa => {
-        const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
-        const priceList = priceInfo[`price_list_${process.env.PRICELIST_ID}`] || [];
+        const updatedPopularVillas = popularVillas.map(villa => {
+            const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
+            const priceList = priceInfo[`price_list_${process.env.PRICELIST_ID}`] || [];
 
-        const prices = priceList.map(item => parseInt(item.price.replace("₺", "")));
-        const min_price = Math.min(...prices) || null;
-        const max_price = Math.max(...prices) || null;
+            const prices = priceList.map(item => parseInt(item.price.replace("₺", "")));
+            const min_price = Math.min(...prices) || null;
+            const max_price = Math.max(...prices) || null;
 
-        return {
-          ...villa,
-          min_price: min_price ? min_price + "₺" : null,
-          max_price: max_price ? max_price + "₺" : null,
+            return {
+                ...villa,
+                min_price: min_price ? min_price + "₺" : null,
+                max_price: max_price ? max_price + "₺" : null,
+            };
+        });
+
+        let data = {
+            day: 2, // (new Date()).getMonth() + 1
+            month: 10 // (new Date()).getMonth() + 1
         };
-      });
 
-      let data = {
-        day: 2, // (new Date()).getMonth() + 1
-        month: 10 // (new Date()).getMonth() + 1
-      };
+        response = await $axios.post((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +
+            `/website/opportunity?api_token=${process.env.WEBSITE_TOKEN}&page=1`, data)
 
-      response = await $axios.post((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +
-        `/website/opportunity?api_token=${process.env.WEBSITE_TOKEN}&page=1`, data)
+        const opportunities = response.data.data;
 
-      const opportunities = response.data.data;
+        console.log(opportunities[0]);
 
-      console.log(opportunities[0]);
+        pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas };
 
-      pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas };
-
-      return { pageData, opportunities };
+        return { pageData, opportunities };
     },
     mounted() {
         Swiper.use([Navigation, Pagination])
@@ -734,7 +737,7 @@ export default {
                     slidesPerView: 2,
                     centeredSlides: false,
                 },
-                991:{
+                991: {
                     slidesPerView: 3,
                     centeredSlides: false,
                 },
