@@ -87,4 +87,12 @@ export default {
   background-color: var(--bs-theme-second);
   border-color: var(--bs-theme-second);
 }
+
+@media (max-width:575px) {
+  :deep() .vue-slider-dot{
+    width: 18px!important;
+    height: 18px!important;
+  }
+}
+
 </style>

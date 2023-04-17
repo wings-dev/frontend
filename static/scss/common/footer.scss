@@ -259,13 +259,15 @@
     }
     @media (max-width: 800px) {
       background-color: #f2f5fb;
+
       &-in {
         flex-direction: column;
       }
       &-left {
         width: 100%;
         background-color: transparent;
-        padding-top: 60px;
+        padding-top: 40px;
+        padding-bottom: 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -280,6 +282,7 @@
         width: 100%;
         padding: 20px;
         margin-top: 10px;
+        padding-top: 0;
         &-bottom {
           flex-direction: column;
           &-address {
@@ -367,6 +370,9 @@
           }
           img {
             width: 100%;
+            display: flex;
+            max-width: 300px;
+            margin: 0 auto;
           }
   
           &:before {
@@ -405,20 +411,28 @@
         display: none;
       }
       &-tursab {
+        display: none;
         &-item {
           img {
             width: 100%;
           }
           &.tursab {
-            width: 241px;
+            width: 170px;
           }
           &.etbis {
-            width: 88px;
+            width: 68px;
           }
+        }
+        &-mobile{
+          display: flex;
+          justify-content: center;
         }
       }
       &-mobile {
         padding: 26px 0;
+        &.villa-detay{
+          padding-bottom: 100px;
+        }
         .Footer-web {
           display: flex;
           flex-wrap: wrap;

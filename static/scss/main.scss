@@ -1117,7 +1117,6 @@ body.overflow-hidden {
     flex-direction: column;
     background-color: #f2f5fb;
     .Banner {
-      order: -1;
       height: 170px;
       transform: translateY(0);
       background-color: var(--bs-theme-first);
@@ -1166,6 +1165,7 @@ body.overflow-hidden {
       transform: translateY(-105px);
       z-index: 2;
       margin-bottom: -80px;
+      order: unset;
     }
     .search-engine-section::before {
       display: none !important;
@@ -1195,6 +1195,7 @@ body.overflow-hidden {
     .Banner {
       &-home {
         height: 220px;
+        min-height: 220px;
         &-in {
           padding-top: 40px;
         }

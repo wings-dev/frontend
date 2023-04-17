@@ -1,11 +1,10 @@
 <template>
-  <div class="Search"
-    :class="{ 'list': $route.path !== '/' }"
-    ref="searchBar">
+  <div class="Search" :class="{ 'list': $route.path !== '/' }" ref="searchBar">
     <div class="Search-fixed-in" :class="{ 'fixed-active': fixedSearch }">
       <div class="Search-fixed-in-left">
-        <b>{{checkIn}} - {{checkOut}}</b>
-        <p>{{selectedDestinations.length ? selectedDestinations[0].text : ''}} <span>{{adult}} Yetişkin, {{children}} Çocuk</span></p>
+        <b>{{ checkIn }} - {{ checkOut }}</b>
+        <p>{{ selectedDestinations.length ? selectedDestinations[0].text : '' }} <span>{{ adult }} Yetişkin, {{ children }}
+            Çocuk</span></p>
       </div>
       <button type="button" @click="fixedSearchOpen">Değiştir</button>
     </div>
@@ -21,10 +20,10 @@
           <div class="Search-item-region-in">
             <span class="dropdown-toggle-title">
               <template v-if="selectedDestinations.length">
-              {{ selectedDestinations.length }} Bölge
+                {{ selectedDestinations.length }} Bölge
               </template>
               <template v-else>
-              Bölge Seçin
+                Bölge Seçin
               </template>
             </span>
           </div>
@@ -64,7 +63,7 @@
               </div>
             </HotelDatePicker>
 
-            <span class="Search-item-nightday">{{night}} Gece</span>
+            <span class="Search-item-nightday">{{ night }} Gece</span>
 
             <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
               format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
@@ -647,9 +646,10 @@ export default {
       if (this.isMobile()) {
         this.isMobileFilterOpen = true
         setTimeout(() => {
+          document.querySelector('.Header')?.classList.add('Header-z')
           document.querySelector('body')?.classList.add('over')
           document.querySelector('html')?.classList.add('over')
-          document.querySelector('.Header')?.classList.add('Header-z')
+          
           document.querySelector('.Home')?.classList.add('Home-z')
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 10)
@@ -659,9 +659,10 @@ export default {
       if (this.isMobile()) {
         this.isMobileFilterOpen = false
         setTimeout(() => {
+          document.querySelector('.Header')?.classList.remove('Header-z')
           document.querySelector('body')?.classList.remove('over')
           document.querySelector('html')?.classList.remove('over')
-          document.querySelector('.Header')?.classList.remove('Header-z')
+          
           document.querySelector('.Home')?.classList.remove('Home-z')
         }, 10)
       }
@@ -816,7 +817,7 @@ export default {
 }
 
 @media (max-width:1100px) {
-  :deep() .datepicker__input:before{
+  :deep() .datepicker__input:before {
     display: none;
   }
 }
@@ -910,10 +911,19 @@ export default {
     display: none;
   }
 }
+
 @media (max-width:500px) {
-  :deep().datepicker__input--first:after {
-    margin-right: unset;
-    margin-left: 20px;
+  .Search-mobile.show :deep() .datepicker__dummy-wrapper{
+    justify-content: center;
+  }
+  .Search-mobile.show :deep() .datepicker__input {
+    width: max-content;
+  }
+
+  .Search-mobile.show :deep().datepicker__input--first:after {
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: transparent;
   }
 }
 </style>

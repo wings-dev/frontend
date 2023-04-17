@@ -2154,6 +2154,14 @@
   position: relative;
 }
 
+.Home{
+  display: flex;
+  flex-direction: column;
+ .search-engine-section{
+  order: -1;
+ }
+}
+
 @media (max-width: 991px) {
   .Filter {
     margin-top: 0;
@@ -2973,6 +2981,7 @@
         left: 0;
         z-index: 99;
         border-radius: 0;
+        background-color: #fff;
         box-shadow: 0 4px 14px 0 rgba(16, 39, 84, 0.06);
         .Search-fixed-in {
           display: flex;
