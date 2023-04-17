@@ -131,13 +131,7 @@
           </ul>
         </client-only>
       </div>
-      <div class="Search-item Search-item-more">
-        <button class="dropdown-toggle" type="button" @click="moreSearchToggle">
-          <i class="icon-new-filter Search-item-icon"></i>
-          <span class="dropdown-toggle-title">Gelişmiş Arama</span>
-          <i class="icon-down-arrow"></i>
-        </button>
-      </div>
+   
     </div>
     <button class="Search-fixed-button" :class="{ 'fixed-active': fixedSearch }" type="button"
       @click="fixedSearchClose">Kapat</button>
@@ -147,56 +141,9 @@
       <i class="icon-down-arrow"></i>
     </button>
     <button type="button" class="Search-button" id="searchVilla" @click="search">
-      <i class="icon-search"></i><span>Arama yap</span>
+      <i class="icon-search-new"></i><span>Arama yap</span>
     </button>
-    <div class="Search-more desktop" :class="{ 'active': moreSearch }">
-      <div class="Search-more-item facility-type">
-        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <span class="dropdown-toggle-title">Tesis Tipi</span>
-          <i class="icon-sort"></i>
-        </button>
-        <client-only>
-          <ul class="dropdown-menu filtered " aria-labelledby="dropdownMenuButton4">
-            <div class="dropdown-menu-in filtered-in">
-              <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
-                @updated="updateFilter('amenites.facilityTypes', $event)"></filter-item-checkbox-component>
-            </div>
-          </ul>
-        </client-only>
-      </div>
-      <div class="Search-more-item facility-category">
-        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <span class="dropdown-toggle-title">Tesis Kategorileri</span>
-          <i class="icon-sort"></i>
-        </button>
-        <client-only>
-          <ul class="dropdown-menu  " aria-labelledby="dropdownMenuButton4">
-            <div class="dropdown-menu-in ">
-              <filter-item-checkbox-component title="TESİS KONSEPTİ" :checkboxes="amenites.facilityConcepts"
-                @updated="updateFilter('amenites.facilityConcepts', $event)"></filter-item-checkbox-component>
-            </div>
-          </ul>
-        </client-only>
-      </div>
-      <div class="Search-more-item facility-amenites">
-        <button class=" dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <span class="dropdown-toggle-title">Tesis Özellikleri</span>
-          <i class="icon-sort"></i>
-        </button>
-        <client-only>
-          <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton4">
-            <div class="dropdown-menu-in ">
-              <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
-                :groups="amenites.groups.facilities" @updated="updateFilter('amenites.facilities', $event)"
-                groupName="facilitiesCheckbox"></filter-item-checkbox-component>
-            </div>
-          </ul>
-        </client-only>
-      </div>
-    </div>
+    
     <div class="Filter-left Filters mobile" :class="{ show: isMobileFilterOpen }">
       <div class="Filter-left-head more">
         <h4>Gelişmiş Arama</h4>
@@ -259,68 +206,7 @@
         <button type="button" @click="closeRegions">Uygula</button>
       </div>
     </div>
-    <div class="Search-mobile" :class="{ 'show': mobilePeoples }">
-      <div class="Search-mobile-head">
-        <h4>Kişi sayısı</h4>
-        <button type="button" @click="closePeoples"><i class="icon-login-close"></i></button>
-      </div>
-      <div class="Search-item-person">
-        <div class="Search-item-person-item ">
-          <p>Yetişkin</p>
-          <div class="Search-item-person-item-in ">
-            <button type="button" class="minus-person" @click="adultDecrease">
-              <i class="icon-minus"></i>
-            </button>
-            <input id="Search_PeopleAdult" class="person" type="text" :value="adult" max="20" readonly>
-            <button type="button" class="plus-person" @click="adultIncrease">
-              <i class="icon-plus"></i>
-            </button>
-          </div>
-        </div>
-        <div class="Search-item-person-item">
-          <p>Çocuk <br><span>6-17 arası</span></p>
-          <div class="Search-item-person-item-in ">
-            <button type="button" class="minus-person" @click="children_Decrease">
-              <i class="icon-minus"></i>
-            </button>
-            <input id="Search_PeopleChild" class="person" type="text" :value="children" max="10" readonly>
-            <button type="button" class="plus-person" @click="children_Increase">
-              <i class="icon-plus"></i>
-            </button>
-          </div>
-        </div>
-        <div class="Search-item-person-item ">
-          <p>Bebek<br><span>0-5 arası</span></p>
-          <div class="Search-item-person-item-in ">
-
-            <button type="button" class="minus-person" @click="baby_Decrease">
-              <i class="icon-minus"></i>
-            </button>
-            <input id="Search_PeopleBaby" class="person" type="text" :value="baby" name="baby" max="5" readonly>
-            <button type="button" class="plus-person" @click="baby_Increase">
-              <i class="icon-plus"></i>
-            </button>
-
-          </div>
-        </div>
-      </div>
-      <div class="Search-mobile-bottom">
-        <button type="button" @click="closePeoples">Uygula</button>
-      </div>
-    </div>
-    <div class="Search-mobile" :class="{ 'show': mobileCalendar }">
-      <div class="Search-mobile-head">
-        <h4>Tarih Seçiniz</h4>
-        <button type="button" @click="closeCalendar"><i class="icon-login-close"></i></button>
-      </div>
-      <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
-        @check-out-changed="checkOutChanged($event)" format="DD dddd" ref="datePickerModal" :i18n="calendarLanguage"
-        :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
-      </HotelDatePicker>
-      <div class="Search-mobile-bottom">
-        <button type="button" @click="closeCalendar">Uygula</button>
-      </div>
-    </div>
+    
   </div>
 </template>
 
@@ -648,8 +534,8 @@ export default {
         setTimeout(() => {
           document.querySelector('.Header')?.classList.add('Header-z')
           document.querySelector('body')?.classList.add('over')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
           document.querySelector('html')?.classList.add('over')
-          
           document.querySelector('.Home')?.classList.add('Home-z')
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 10)
@@ -661,6 +547,7 @@ export default {
         setTimeout(() => {
           document.querySelector('.Header')?.classList.remove('Header-z')
           document.querySelector('body')?.classList.remove('over')
+          document.querySelector('.search-home-mobile-open')?.classList.remove('over')
           document.querySelector('html')?.classList.remove('over')
           
           document.querySelector('.Home')?.classList.remove('Home-z')
@@ -683,6 +570,7 @@ export default {
           document.querySelector('html')?.classList.add('over')
           document.querySelector('.Header')?.classList.add('Header-z')
           document.querySelector('.Home')?.classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 10)
       }
@@ -695,6 +583,7 @@ export default {
           document.querySelector('html')?.classList.add('over')
           document.querySelector('.Header')?.classList.add('Header-z')
           document.querySelector('.Home')?.classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 10)
       }
@@ -707,6 +596,7 @@ export default {
           document.querySelector('html')?.classList.add('over')
           document.querySelector('.Header')?.classList.add('Header-z')
           document.querySelector('.Home')?.classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
           window.scrollTo({ top: 0, behavior: 'smooth' });
           this.$refs.datePickerModal.showDatepicker()
           this.$refs.datePickerModal.clearSelection()
@@ -720,6 +610,7 @@ export default {
           document.querySelector('body')?.classList.remove('over')
           document.querySelector('html')?.classList.remove('over')
           document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
           document.querySelector('.Home')?.classList.remove('Home-z')
         }, 10)
       }
@@ -731,6 +622,7 @@ export default {
           document.querySelector('body')?.classList.remove('over')
           document.querySelector('html')?.classList.remove('over')
           document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
           document.querySelector('.Home')?.classList.remove('Home-z')
         }, 10)
       }
@@ -742,6 +634,7 @@ export default {
           document.querySelector('body')?.classList.remove('over')
           document.querySelector('html')?.classList.remove('over')
           document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
           document.querySelector('.Home')?.classList.remove('Home-z')
           this.$refs.datePickerModal.hideDatepicker()
         }, 10)
