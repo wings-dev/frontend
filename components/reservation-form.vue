@@ -275,7 +275,7 @@ export default {
       datePickerProps: {},
       checkIn: null,
       checkOut: null,
-      adult: 1,
+      adult: 0,
       child: 0,
       baby: 0,
       availabilityChecked: false,
@@ -464,6 +464,25 @@ export default {
 
     },
     preReservation() {
+
+      if (this.adult === 0) {
+
+        this.$toast.error("<p>Lütfen kişi sayısı seçiniz</p>", {
+          className: 'custom-toast error-toast',
+          icon: {
+            name: 'icon-reservation-cancel',
+          },
+          action: {
+            icon: 'icon-toast-exit',
+            onClick: (e, toastObject) => {
+              toastObject.goAway(0);
+            }
+          }
+        })
+
+        return
+      }
+
       this.setReservationModalData({
         propertyCode: this.propertyCode,
         startDate: this.checkIn,

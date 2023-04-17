@@ -43,7 +43,7 @@ export default {
     const path = route.params.slug;
     // Gelen sayfanın redisteki datası
 
-    let redisData = store.state['routes'].routes[path]; // await $getRedisKey(`web:${site_id}:pages:${path}`);
+    let redisData = JSON.parse(JSON.stringify(store.state['routes'].routes[path])); // await $getRedisKey(`web:${site_id}:pages:${path}`);
     let componentData = {};
     let categoryFilter = {};
     let blogPostData = {};
