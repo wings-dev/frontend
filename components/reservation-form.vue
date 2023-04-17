@@ -235,9 +235,12 @@
         </template>
         <!-- form acıksa -->
         <template v-else>
-          <button class="Reservation-form-submit" :disabled="!dateSelected || availabilityLoading"
+          <button class="Reservation-form-submit" :disabled="!dateSelected || availabilityLoading" v-if="!dateSelected"
             @click.prevent="reservatinAction()">
             Kaydet
+          </button>
+          <button v-else class="Reservation-form-submit" @click.prevent="preReservation()">
+            Ön Rezervasyon Talebi Gönder
           </button>
         </template>
       </template>

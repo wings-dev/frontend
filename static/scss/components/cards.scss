@@ -353,6 +353,10 @@
           color: #fff;
         }
       }
+      &-fav{
+        right: 20px;
+        top: 20px;
+      }
     }
     &-in {
       width: 60%;
@@ -384,10 +388,13 @@
         &-img {
           width: 100%;
           padding: 10px;
+          padding-bottom: 0;
         }
       }
       &-in {
         width: 100%;
+        padding: 16px 16px;
+        padding-top: 0;
       }
     }
     &-icons {

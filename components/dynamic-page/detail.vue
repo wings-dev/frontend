@@ -137,7 +137,7 @@
                 class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
                 <span @click.prevent="showGallery()">Tüm Fotoğraflar ( 32 ) </span>
                 <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
-                <a href="https://www.youtube.com/watch?v=5SMaakuGyH0" data-fancybox>
+                <a :href="villa.video" data-fancybox v-if="villa.video">
                   <i class="icon-play-button"></i> Video İzle
                 </a>
                 <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
@@ -229,7 +229,9 @@
               <div class="View-desc-mobile-bottom">
                 <div class="View-desc-mobile-bottom-head">
                   <h1><span>Tesis Kodu</span> VKV1020</h1>
-                  <a href=""><i class="icon-play-button"></i>Tesisin Videosu</a>
+                  <a :href="villa.video" data-fancybox v-if="villa.video"><i class="icon-play-button"></i>Tesisin
+                    Videosu</a>
+                  <a href="" @click.prevent="noVillaVideo" v-else><i class="icon-play-button"></i>Tesisin Videosu</a>
                 </div>
                 <div class="View-desc-mobile-bottom-content">
                   <div class="View-desc-mobile-bottom-content-in" :class="{ 'active': moreMobileContent }">
@@ -438,7 +440,7 @@
 
               </div>
             </div>
-            <div class="View-pools"> 
+            <div class="View-pools">
               <div class="View-pools-head  mb-3">
                 <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
 
@@ -451,10 +453,10 @@
 
               <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
                 <div class="pool-item-left">
-                  <img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon" class="lazy contain"
-                    v-if="poolitem.pool == 52">
-                  <img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon" class="lazy contain"
-                    v-if="poolitem.pool == 58">
+                  <img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
+                    class="lazy contain" v-if="poolitem.pool == 52">
+                  <img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon"
+                    class="lazy contain" v-if="poolitem.pool == 58">
                   <!-- <img :src="'/img/site' + site_id + '/pool3.svg'" width="28" height="28" alt="pool icon" -->
                   <span class="">{{ poolitem.name }}</span>
                 </div>
@@ -505,11 +507,14 @@
                   <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-beach" role="tabpanel"
                       aria-labelledby="pills-beach-tab">
-                      <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığa kuş bakışı
+                      <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığı kuş bakışı
                         olarak hesaplanmıştır.</p>
-                      <div class="first-tab-item" v-for="(item, index) in places.beaches">
+                      <div class="first-tab-item" v-for="(item, index) in places.beaches"
+                        v-if="places.beaches.length <= 4" :key="index">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
-                          <img :src="item.images[0].preview_url" alt="" width="157" height="95">
+                          <img :src="item.images[0].preview_url" alt="" width="157" height="95"
+                            v-if="item.images.length > 0">
+                          <img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -517,19 +522,24 @@
                         </div>
                         <div class="first-tab-item-length">
                           <b>{{ item.distance.match(/\d+/)[0] }}</b>
-                          <p>{{ item.distance.replace(/\d+/, '') }}</p>
-                          <small>Uzaklıkta</small>
+                          <p>{{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+
                           <span>#{{ index + 1 }}</span>
                         </div>
                       </div>
+                      <button type="button" class="first-tab-more" @click="mobileBeachToggle"
+                        v-if="places.beaches.length > 4">Tümünü Görüntüle <i class="icon-right-arrow"></i></button>
                     </div>
                     <div class="tab-pane fade" id="pills-architecture" role="tabpanel"
                       aria-labelledby="pills-architecture-tab">
-                      <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığa kuş bakışı
+                      <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığı kuş bakışı
                         olarak hesaplanmıştır.</p>
-                      <div class="first-tab-item" v-for="(item, index) in places.locations">
-                        <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
-                          <img :src="item.images[0].preview_url" alt="" width="157" height="95">
+                      <div class="first-tab-item" v-for="(item, index) in places.locations"
+                        v-if="places.locations.length <= 4" :key="index">
+                        <div class="first-tab-item-img">
+                          <img :src="item.images[0].preview_url" alt="" width="157" height="95"
+                            v-if="item.images && item.images.length > 0">
+                          <img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -537,11 +547,13 @@
                         </div>
                         <div class="first-tab-item-length">
                           <b>{{ item.distance.match(/\d+/)[0] }}</b>
-                          <p>{{ item.distance.replace(/\d+/, '') }}</p>
-                          <small>Uzaklıkta</small>
+                          <p>{{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+
                           <span>#{{ index + 1 }}</span>
                         </div>
                       </div>
+                      <button type="button" class="first-tab-more" @click="mobilePlaceToggle"
+                        v-if="places.locations.length > 4">Tümünü Görüntüle <i class="icon-right-arrow"></i></button>
                     </div>
 
                   </div>
@@ -1234,6 +1246,92 @@
                   bir kahvaltı sofrası hazırlayabilirsiniz.</p>
               </div>
             </div>
+            <div class="View-mobile-modal" :class="{ 'show': mobileBeach }">
+              <button type="button" class="mobile-menus-back" @click="mobileBeachToggle"><i
+                  class="icon-left-arrow"></i></button>
+              <div class="View-location">
+                <div class="first-tab">
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-beach-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-beach" type="button" role="tab" aria-controls="pills-home"
+                        aria-selected="true">
+                        <p><i class="icon-beach"></i>Tesise Yakın Plaj</p> <span>{{ places.beaches.length }}</span>
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-beach" role="tabpanel"
+                      aria-labelledby="pills-beach-tab">
+                      <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığı kuş bakışı
+                        olarak hesaplanmıştır.</p>
+                      <div class="first-tab-item" v-for="(item, index) in places.beaches">
+                        <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
+                          <img :src="item.images[0].preview_url" alt="" width="157" height="95"
+                            v-if="item.images.length > 0">
+                          <img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else>
+                        </div>
+                        <div class="first-tab-item-content">
+                          <b>{{ item.name }}</b>
+                          <p>{{ item.description }}</p>
+                        </div>
+                        <div class="first-tab-item-length">
+                          <b>{{ item.distance.match(/\d+/)[0] }}</b>
+                          <p>{{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+
+                          <span>#{{ index + 1 }}</span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="View-mobile-modal" :class="{ 'show': mobilePlace }">
+              <button type="button" class="mobile-menus-back" @click="mobilePlaceToggle"><i
+                  class="icon-left-arrow"></i></button>
+              <div class="View-location">
+                <div class="first-tab">
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-architecture-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-architecture" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="true">
+                        <p><i class="icon-architecture"></i>Gezilecek yerler</p> <span>{{ places.locations.length
+                        }}</span>
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-architecture" role="tabpanel"
+                      aria-labelledby="pills-architecture-tab">
+                      <p class="first-tab-info"><i class="icon-info-month"></i> Mekanların, tesise olan yakınlığı kuş
+                        bakışı
+                        olarak hesaplanmıştır.</p>
+                      <div class="first-tab-item" v-for="(item, index) in places.locations">
+                        <div class="first-tab-item-img">
+                          <img :src="item.images[0].preview_url" alt="" width="157" height="95"
+                            v-if="item.images && item.images.length > 0">
+                          <img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else>
+                        </div>
+                        <div class="first-tab-item-content">
+                          <b>{{ item.name }}</b>
+                          <p>{{ item.description }}</p>
+                        </div>
+                        <div class="first-tab-item-length">
+                          <b>{{ item.distance.match(/\d+/)[0] }}</b>
+                          <p>{{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+
+                          <span>#{{ index + 1 }}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
 
           </div>
           <div class="View-right Reservation">
@@ -1337,7 +1435,6 @@ export default {
       date: null,
       disableReservation: ['2023-03-20', '2023-03-21', '2023-03-22', '2023-03-23', '2023-03-24', '2023-03-25', '2023-03-26', '2023-03-27'],
       disabledDates: [
-        // { start: null, end: new Date() },
         { start: null, end: new Date() },
       ],
       center: [36.618867138910204, 29.145069037654377],
@@ -1356,6 +1453,8 @@ export default {
       mobileOpportunity: false,
       mobileLocation: false,
       mobilePolicy: false,
+      mobileBeach: false,
+      mobilePlace: false,
       isMobile: false,
       lowestPrice: null,
       monthlyPrices: [],
@@ -1539,12 +1638,17 @@ export default {
     mobileAmenitesToggle() {
       this.mobileAmenites = !this.mobileAmenites
     },
-
     mobileOpportunityToggle() {
       this.mobileOpportunity = !this.mobileOpportunity
     },
     mobileLocationToggle() {
       this.mobileLocation = !this.mobileLocation
+    },
+    mobileBeachToggle() {
+      this.mobileBeach = !this.mobileBeach
+    },
+    mobilePlaceToggle() {
+      this.mobilePlace = !this.mobilePlace
     },
     mobilePolicyToggle() {
       this.mobilePolicy = !this.mobilePolicy
@@ -1567,6 +1671,20 @@ export default {
         return count;
       }
       return 0;
+    },
+    noVillaVideo() {
+      this.$toast.error("<p>Video bulunmamaktadır!</p>", {
+        className: 'custom-toast error-toast',
+        icon: {
+          name: 'icon-play-button',
+        },
+        action: {
+          icon: 'icon-toast-exit',
+          onClick: (e, toastObject) => {
+            toastObject.goAway(0);
+          }
+        }
+      })
     }
   },
   watch: {
@@ -1608,6 +1726,32 @@ export default {
     },
     mobileLocation() {
       if (this.mobileLocation == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add('detail-over')
+          document.querySelector('html').classList.add('detail-over')
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('detail-over')
+          document.querySelector('html').classList.remove('detail-over')
+        }, 50)
+      }
+    },
+    mobilBeach() {
+      if (this.mobileBeach == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add('detail-over')
+          document.querySelector('html').classList.add('detail-over')
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('detail-over')
+          document.querySelector('html').classList.remove('detail-over')
+        }, 50)
+      }
+    },
+    mobilPlace() {
+      if (this.mobilePlace == true) {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
@@ -1688,6 +1832,8 @@ export default {
       this.lowestPrice = Math.min(...this.monthlyPrices.map(price => price.lowest_price));
     } catch (e) { }
 
+    console.log(places)
+
     this.$nextTick(() => {
       Swiper.use([Navigation, Pagination])
 
@@ -1728,33 +1874,6 @@ export default {
         },
       })
 
-      const swiper3 = new Swiper('.list-slide-opportunity', {
-        slidesPerView: 1,
-        spaceBetween: 16,
-        direction: 'horizontal',
-        loop: true,
-        modules: [Navigation, Pagination],
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-        },
-        breakpoints: {
-          576: {
-            slidesPerView: 2,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1199: {
-            slidesPerView: 2,
-          },
-        },
-      })
-
       this.$el.addEventListener('click', function (e) {
         if (e.target.closest('.dropdown-menu')) {
           e.stopPropagation();
@@ -1765,6 +1884,7 @@ export default {
 
       setTimeout(() => {
         document.querySelector('.Header').classList.add('villa-detay')
+        document.querySelector('.Footer-mobile').classList.add('villa-detay')
         document.querySelector('body').classList.add('villa-detay')
       }, 50)
       const sections = document.querySelectorAll(".view-menu-content-item");
@@ -1916,5 +2036,4 @@ export default {
   .modal-xl {
     max-width: 1140px;
   }
-}
-</style>
+}</style>

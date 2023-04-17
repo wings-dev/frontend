@@ -98,8 +98,8 @@
                             <a href="" class="Footer-web-item wings"><img src="/img/logo-wings-grey.svg" alt=""></a>
                             <a href="" class="Footer-web-item"><img src="/img/logo-villakalkan-grey.svg" alt=""></a>
                             <a href="" class="Footer-web-item"><img src="/img/logo-otelbnb-grey.svg" alt=""></a>
-                            <a href="" class="Footer-web-item"><img src="/img/logo-balayitatil-grey.svg" alt=""></a>
                             <a href="" class="Footer-web-item"><img src="/img/logo-balayivillasi-grey.svg" alt=""></a>
+                            <a href="" class="Footer-web-item"><img src="/img/logo-balayi-sepeti-grey.svg" alt=""></a>
                         </div>
                         <div class="Footer-tursab">
                             <a href="" class="Footer-tursab-item tursab"><img src="/img/tursab.png" alt=""></a>
@@ -148,6 +148,10 @@
                         <a href="" class="Footer-web-item"><img src="/img/logo-balayitatil-grey.svg" alt=""></a>
                         <a href="" class="Footer-web-item"><img src="/img/logo-balayivillasi-grey.svg" alt=""></a>
                     </div>
+                        <div class="Footer-tursab Footer-tursab-mobile">
+                            <a href="" class="Footer-tursab-item tursab"><img src="/img/tursab.png" alt=""></a>
+                            <a href="" class="Footer-tursab-item etbis"><img src="/img/etbis.png" alt=""></a>
+                        </div>
                     <div class="Footer-mobile-text">
                         <div class="Footer-mobile-text-link">
                             <nuxt-link to="/">Rezervasyon Koşulları</nuxt-link>

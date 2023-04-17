@@ -14,9 +14,15 @@
                             <div class="Card-in">
                                 <div class="Card-img">
                                     <nuxt-link to="/">
-                                        <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
+                                        <nuxt-img
+                                            src="https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/conversions/1-preview.jpg"
+                                            width="292" height="187"
+                                            srcset="https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_1920_1080.jpg 1920w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_1606_903.jpg 1606w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_1344_756.jpg 1344w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_1124_632.jpg 1124w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_940_529.jpg 940w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_787_443.jpg 787w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_658_370.jpg 658w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_550_309.jpg 550w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_460_259.jpg 460w"></nuxt-img>
                                     </nuxt-link>
-
+                                    <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
+                                        :class="isFavorite(item.code) ? 'active' : ''">
+                                        <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
+                                    </button>
                                 </div>
                                 <div class="Card-h-in">
                                     <div class="Card-content">
@@ -104,11 +110,11 @@ export default {
         }
     },
 
-    mounted() {
+    async mounted() {
         Swiper.use([Navigation, Pagination])
 
         const swiper3 = new Swiper('.list-slide-opportunity', {
-            slidesPerView: 1.2,
+            slidesPerView: 1.1,
             spaceBetween: 10,
             direction: 'horizontal',
             centeredSlides: true,
@@ -124,7 +130,7 @@ export default {
                 clickable: true,
             },
             breakpoints: {
-                576: {
+                600: {
                     slidesPerView: 2,
                     centeredSlides: false,
                 },
@@ -140,6 +146,20 @@ export default {
         })
 
     },
+
+    methods: {
+        isFavorite(code) {
+            return this.$store.state.favorite.favorites.includes(code)
+        },
+        toggleFavorite(code) {
+            event.stopPropagation();
+            if (this.isFavorite(code)) {
+                this.$store.dispatch('favorite/removeFavorite', code)
+            } else {
+                this.$store.dispatch('favorite/addFavorite', code)
+            }
+        }
+    }
 
 
 }
