@@ -3080,6 +3080,11 @@
   .search-engine-section::before {
     height: calc(50% - 61px);
   }
+  .Home-z{
+    .search-engine-section.search-home-mobile-open{
+      order: -1;
+    }
+  }
 }
 
 @media only screen and (max-width: 1199px) {

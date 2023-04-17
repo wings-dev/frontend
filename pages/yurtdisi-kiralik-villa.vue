@@ -1,23 +1,25 @@
 <template>
     <div class="Home">
-      <client-only>
-        <search-bar :key="$route.path"></search-bar>
-      </client-only>
-        <section class="Banner Banner-home " style="background-image: url(http://office.wingswebservices.com/storage/page/18161/381385/banner.jpg)">
+        <client-only>
+            <search-bar :key="$route.path"></search-bar>
+        </client-only>
+        <section class="Banner Banner-home "
+            style="background-image: url(http://office.wingswebservices.com/storage/page/18168/381398/balayi-banner-home.jpg)">
+            <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
-                        <h1>Bu sene tatil</h1>
+                        <h1>{{ pageData.page_content.banner.banner_title }}</h1>
                         <div class="words">
-                            <span >Villada mı?</span>
-                            <span>Yurtdışı Villada mı?</span>
-                            <span>Otelde mi?</span>
-                            <span>Villada mı?</span></div>
+                            <span v-for="(item, index) in pageData.page_content.banner.banner_animation_title"
+                                :key="index">{{ item.banner_animation_title }}</span>
+                        </div>
                     </div>
-                    <h2 class="">dediysen, <span>doğru yerdesin!</span></h2>
+                    <h2 class="">{{ pageData.page_content.banner.banner_subtitle }} <span>{{
+                        pageData.page_content.banner.banner_subtitle2 }}</span></h2>
                     <p class="">
-                        10.000+ otel ve 1.000+ villa seçeneği ile en çok tatil seçeneği ve destinasyonu VillaKalkan’da!
+                        {{ pageData.page_content.banner.banner_desc }}
                     </p>
                 </div>
             </div>
@@ -97,14 +99,15 @@
             </div>
         </section>
         <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
+            <img src="/img/home-banner-mobile.png" alt="">
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
-                        <h4>20+ ülke ve</h4>
-                        <h4>148+ destinasyonda</h4>
-                        <h2>VillaKalkan <span>sizinle!</span></h2>
-                        <p>Yunanistan, İspanya, Hırvatistan, Thailand, İtalya, Portekiz, Maldivler
-                            ve daha fazla ülkede <b>villa kalkan hep sizinle hep yanınızda!</b></p>
+                        <h4 v-html="pageData.page_content.section_banner.section_banner_title"></h4>
+                        <h2>{{ pageData.page_content.section_banner.section_banner_subtitle }} <span>
+                                {{ pageData.page_content.section_banner.section_banner_subtitle2 }} </span></h2>
+                        <p>{{ pageData.page_content.section_banner.section_banner_desc }} <b>{{
+                            pageData.page_content.section_banner.section_banner_desc_bold }}</b></p>
                     </div>
                 </div>
             </div>
@@ -159,56 +162,13 @@
                 <div class="List-sss">
                     <h3>En çok sorulan sorular </h3>
                     <div class="accordion" id="Faq">
-                        <div class="accordion-item">
+                        <div class="accordion-item" v-for="(item, index) in pageData.page_content.faq[0].faq_list" :key="index">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
-                                Nasıl rezervasyon yapabilirim ?
+                                :data-bs-target="'#faq'+index" aria-expanded="false" :aria-controls="'faq'+index">
+                                {{ item.howrent_category_question }}
                             </button>
-                            <div id="faq1" class="accordion-collapse collapse " data-bs-parent="#Faq">
-                                <div class="accordion-body">
-                                    <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                                        yemeklerinizi
-                                        pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                                Kaç Kişi Konaklayabiliyoruz ?
-                            </button>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                                <div class="accordion-body">
-                                    <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                                        yemeklerinizi
-                                        pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                                Yemek servisi hizmetiniz var mı ?
-                            </button>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                                <div class="accordion-body">
-                                    <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                                        yemeklerinizi
-                                        pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
-                                Yemek servisi hizmetiniz var mı ?
-                            </button>
-                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                                <div class="accordion-body">
-                                    <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                                        yemeklerinizi
-                                        pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                                </div>
+                            <div :id="'faq'+index" class="accordion-collapse collapse " data-bs-parent="#Faq">
+                                <div class="accordion-body" v-html="item.howrent_category_answer "></div>
                             </div>
                         </div>
                     </div>
@@ -219,36 +179,7 @@
         <section class="Home-text">
             <div class="container">
                 <div class="Home-text-in">
-                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
-                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
-                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
-                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
-                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
-                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
-                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
-                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
-                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
-                        villa tatilini sunuyoruz.</p>
-                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
-                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
-                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
-                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
-                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
-                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
-                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
-                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
-                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
-                        villa tatilini sunuyoruz.</p>
-                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
-                    <p>Aileniz ya da sevdikleriniz ile beraber tatil denildiği zaman akla öncelikli olarak gelen yerlere
-                        gitmek istiyor fakat bu aşamada hayalinizdeki tatile nasıl ulaşabileceğinizi bilemiyorsanız, kiralık
-                        villa sizin konu ile alakalı isteklerinizi en iyi şekilde yerine getirecektir. Her ne kadar
-                        şimdilerde karşınıza bu konuda size hizmet verdiğini söyleyecek pek çok isim olsa da alanında
-                        yeterli deneyime sahip bir firma ile iletişime geçmeniz, sizin isteklerinizin eksiksiz olarak yerine
-                        getirilmesi anlamında son derece önemli olacaktır. Villa Kalkan olarak bizler ise tam da bu aşamada
-                        devreye giriyor ve sizlere en iyisini sunmayı hedefliyoruz. Portföyümüzde yer alan ve birbirinden
-                        farklı lokasyonlarda yer alan villalarımız ile sizlere daha öncesinde yaşamadığınız kadar güzel bir
-                        villa tatilini sunuyoruz.</p>
+                    <div class="Home-text-desc" v-html="pageData.page_content.article.data"></div>
                 </div>
             </div>
         </section>
@@ -309,6 +240,18 @@ export default {
                 }
             ]
         }
+    },
+    async asyncData({ $getRedisKey, $axios }) {
+        const site_id = process.env.SITE;
+        const redisPageKey = `web:${site_id}:pages:yurtdisi-kiralik-villa`;
+
+        let response = await $getRedisKey([redisPageKey]);
+        const pageData = response[redisPageKey] || {};
+        
+
+        
+
+        return {pageData} ;
     },
     mounted() {
         Swiper.use([Navigation, Pagination])
@@ -411,6 +354,10 @@ export default {
                 },
             },
         })
+        
+        console.log('pageData', this.pageData)
+
+
     }
 
 }

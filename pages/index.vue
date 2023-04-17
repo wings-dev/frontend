@@ -1,9 +1,10 @@
 <template>
     <div class="Home">
        
-        <section class="Banner Banner-home " style="background-image: url(http://office.wingswebservices.com/storage/page/18168/381398/balayi-banner-home.jpg)">
+        <section class="Banner Banner-home " style="background-image: url(/img/banner.jpg)">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
+            <img src="/img/banner-mobile.jpg" alt="">
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -312,8 +313,13 @@
                                 <div class="Card-in">
                                     <div class="Card-img">
 
-                                        <nuxt-img :src="villa.preview_image[0].preview_url" width="371"
-                                            height="225"></nuxt-img>
+                                        <!-- <nuxt-img :src="villa.preview_image[0].preview_url" width="371"
+                                            height="225"></nuxt-img> -->
+
+                                            <nuxt-img :src="villa.preview_image[0].preview_url"
+                                            :srcset="villa.preview_image[0].responsive_url" width="267"
+                                            height="175"></nuxt-img>
+
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(villa.code)"
                                             :class="isFavorite(villa.code) ? 'active' : ''">
                                             <i :class="isFavorite(villa.code) ? 'icon-heart-full' : 'icon-heart'"></i>
@@ -352,7 +358,7 @@
                                     </div>
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-day">
-                                            <p><span>{{villa.total.day}}</span>Gece</p>
+                                            <p><span>3</span>Gece</p>
                                         </div>
                                         <div class="Card-content-bottom-date">
                                             <p><span>{{ villa.start_date }}</span><i class="icon-arrow-right-2"></i><span>{{
@@ -497,7 +503,6 @@
         <section class="Home-text">
             <div class="container">
                 <div class="Home-text-in">
-                    <h5>Fethiye, Kaş ve Kalkan Tatiliniz için Villa Kiralayın</h5>
                     <div class="Home-text-desc" v-html="pageData.page_content.article.data">
 
                     </div>
@@ -637,8 +642,6 @@ export default {
             `/website/opportunity?api_token=${process.env.WEBSITE_TOKEN}&page=1`, data)
 
         const opportunities = response.data.data;
-
-        console.log(opportunities[0]);
 
         pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas };
 

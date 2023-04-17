@@ -1,12 +1,15 @@
 <template>
     <main class="main">
-        <section class="Home-banner Home-banner-center" style="background-image: url(/img/home-banner.png);">
+        <section class="Home-banner Home-banner-center"
+            :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
+            <img :src="pageData.page_content.default.page_list_img" alt="">
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
-                        <h4>Türkiye’yi tatile koşturan</h4>
-                        <h2>Kampanyalar</h2>
-                        <span>villakalkan’da!</span>
+                        <h4>{{ pageData.page_content.section_banner.section_banner_title }}</h4>
+                        <h2>{{ pageData.page_content.section_banner.section_banner_subtitle }}</h2>
+                        <h2 class="small"><span>{{ pageData.page_content.section_banner.section_banner_subtitle2 }}</span>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -14,19 +17,20 @@
         <section class="Campaigns">
             <div class="container">
                 <div class="Campaigns-in">
-                    <button type="button" @click.stop="openModal(item.campaign_id)" class="Campaigns-item"
-                        v-for="item in items" :key="item.campaign_id">
-                        <nuxt-img :src="item.campaign_img" :alt="item.campaign_title"> </nuxt-img>
-                    </button>
+                    <b-button type="button" class="Campaigns-item" @click="showModal(index)"
+                        v-for="(campaign, index) in campaigns" :key="index" v-if="campaign">
+                        <nuxt-img :src="campaign.page_content.default.page_list_img"> </nuxt-img>
+                    </b-button>
+
                 </div>
             </div>
         </section>
 
-        <b-modal :id="`modal-${modal.campaign_id}`" :ref="`modalRef-${modal.campaign_id}`" class="Login" size="xl"
-            :hide-header="true" hide-footer v-for="modal in items" :key="'modal' + modal.campaign_id">
+        <b-modal :id="`modal-${index}`" class="Login" size="xl" :hide-header="true" hide-footer
+            v-for="(campaign, index) in campaigns" :key="'modal-' + index" v-if="campaign">
             <div class="Login Calendar">
-                <button type="button" class="btn-close" aria-label="Close"
-                    @click="$bvModal.hide(`campaign-modal-${modal.campaign_id}`)"><i class="icon-login-close"></i></button>
+                <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide(`modal${index}`)"><i
+                        class="icon-login-close"></i></button>
                 <h3 class=""> Müsaitlik Takvimi</h3>
                 <div class="View-availibility-legand mt-2">
                     <div class="View-availibility-legand-item">
@@ -41,7 +45,7 @@
             </div>
         </b-modal>
 
-        <b-modal id="campaign-modal-12" ref="my-modal" class="Login" size="xl" :hide-header="true" hide-footer>
+        <!-- <b-modal id="campaign-modal-12" ref="my-modal" class="Login" size="xl" :hide-header="true" hide-footer>
             <div class="Login Calendar">
                 <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide(`campaign-modal-12`)"><i
                         class="icon-login-close"></i></button>
@@ -61,7 +65,7 @@
                     </div>
                 </div>
             </div>
-        </b-modal>
+        </b-modal> -->
     </main>
 </template>
     
@@ -129,13 +133,37 @@ export default {
             ]
         }
     },
+    async asyncData({ $getRedisKey, route, store, redirect }) {
+        const site_id = process.env.SITE;
+        let pageData = {};
+        pageData = await $getRedisKey(`web:${site_id}:pages:kampanyalar`);
+
+        const pageURLs = Object.keys(store.state.routes.routes)
+            .filter(key => store.state.routes.routes[key].type === 21)
+
+        const campaignRedisKeys = []
+
+        pageURLs.forEach(element => {
+            const data = `web:${site_id}:pages:${element}`
+            campaignRedisKeys.push(data)
+        });
+
+        const campaigns = await $getRedisKey(campaignRedisKeys)
+
+        console.log(campaigns)
+
+        return { pageData, campaigns }
+    },
     methods: {
         openModal(campaignid) {
-            this.$refs[`my-modal`].show();
+            this.$refs[`modalRef${campaignid}`].show();
+        },
+        showModal(index) {
+            this.$bvModal.show(`modal-${index}`);
         },
     },
     mounted() {
-
+        console.log('data', this.campaigns)
     }
 }
 </script>

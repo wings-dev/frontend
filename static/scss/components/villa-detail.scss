@@ -3743,6 +3743,11 @@
         line-height: normal;
         text-align: center;
         padding: 14px 23px;
+
+        &:disabled{
+          opacity: 0.4;
+        }
+
       }
 
       &-info {
