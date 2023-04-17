@@ -4,13 +4,13 @@
       <div class="Favs-in">
         <h2>Favorilerinizdeki Villalar <span>({{ villas.length }})</span></h2>
         <div class="Favs-list">
-        
+
           <div class="Card" v-for="(villa, index) in villas" :key="index">
             <div class="Card-in">
               <div class="Card-img">
-                <nuxt-link :to="'/'+villa.detail.code">
-                  <nuxt-img :src="villa.detail.watermark_images[0].preview_url" :srcset="villa.detail.watermark_images[0].responsive"
-                    width="267" height="175"></nuxt-img>
+                <nuxt-link :to="'/'+(villa.detail.code || '')">
+                  <nuxt-img v-if="villa.detail.watermark_images && villa.detail.watermark_images[0]" :src="villa.detail.watermark_images[0].preview_url" :srcset="villa.detail.watermark_images[0].responsive"
+                            width="267" height="175"></nuxt-img>
                 </nuxt-link>
                 <button class="Card-fav active" type="button" @click="removeFavorite(villa.detail.code)">
                   <i class="icon-heart-full"></i>
@@ -19,47 +19,46 @@
               <div class="Card-content">
                 <div class="Card-content-head">
                   <div class="Card-content-head-code">
-                    <b>{{ prefix + villa.detail.code}}</b>
+                    <b>{{ prefix + (villa.detail.code || '')}}</b>
                     <span>Tesis Kodu</span>
                   </div>
                   <div class="Card-content-head-location">
                     <i class="icon-pin"></i>
-                    <p>{{ villa.detail.location.district.name | titlecase }} <span>{{ villa.detail.location.country.name | titlecase }} / {{ villa.detail.location.city.name | titlecase
-                    }}</span></p>
+                    <p v-if="villa.detail.location && villa.detail.location.district && villa.detail.location.country && villa.detail.location.city">
+                      {{ villa.detail.location.district.name | titlecase }} <span>{{ villa.detail.location.country.name | titlecase }} / {{ villa.detail.location.city.name | titlecase
+                      }}</span></p>
                   </div>
                 </div>
                 <div class="Card-content-info">
                   <div class="Card-content-info-item">
                     <i class="icon-user"></i>
-                    <span>{{ villa.detail.max_adult }} Kişilik</span>
+                    <span>{{ villa.detail.max_adult || 0 }} Kişilik</span>
                   </div>
                   <div class="Card-content-info-item">
                     <i class="icon-bed"></i>
-                    <span>{{ villa.detail.bedroom }} Yatak Odası</span>
+                    <span>{{ villa.detail.bedroom || 0 }} Yatak Odası</span>
                   </div>
                   <div class="Card-content-info-item">
                     <i class="icon-shower"></i>
-                    <span>{{ villa.detail.bathrooms }} Banyo</span>
+                    <span>{{ villa.detail.bathrooms || 0 }} Banyo</span>
                   </div>
                 </div>
               </div>
               <div class="Card-content-bottom">
                 <div class="Card-content-bottom-price">
-                  <p><b>1.400TL - 2.200TL
-                    </b><span>/Gecelik</span></p>
+                  <p><b>{{villa.detail.min_price || ''}} - {{villa.detail.max_price || ''}}
+                  </b><span>/Gecelik</span></p>
                   <p>Fiyat Aralığında</p>
                 </div>
-                <nuxt-link :to="'/'+villa.detail.code" class="Card-content-bottom-link"><i
-                    class="icon-right-arrows-new"></i></nuxt-link>
+                <nuxt-link :to="'/'+(villa.detail.code || '')" class="Card-content-bottom-link"><i
+                  class="icon-right-arrows-new"></i></nuxt-link>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </div>  </section>
 </template>
-
 <script>
 export default {
   name: "favorities",
@@ -70,23 +69,32 @@ export default {
     }
   },
   async mounted() {
-    let ids = [];
-    const data = localStorage.getItem('favorites')
-    if (data) {
-      for (const id of JSON.parse(data)) {
-        ids.push(id);
-      }
+    try {
+      const storedFavorites = localStorage.getItem('favorites');
 
-      const response = await this.$axios.post('/data/get-villas', { ids: ids });
-      for (let i = 0; i < response.data.length; i++) {
-        let villa = response.data[i];
-        let villaData = {};
-        villaData['detail'] = villa.detail;
-        villaData['price'] = villa.price;
-        this.villas.push(villaData)
+      if (storedFavorites) {
+        const ids = JSON.parse(storedFavorites);
+        const response = await this.$axios.post('/data/get-villas', { ids });
+
+        this.villas = response.data.map(villa => {
+          const priceList = (villa && villa.price) ? villa.price[`price_list_${process.env.PRICELIST_ID}`] || [] : [];
+          const prices = priceList.map(item => parseInt(item.price.replace("₺", "")));
+          const min_price = prices.length ? Math.min(...prices) : null;
+          const max_price = prices.length ? Math.max(...prices) : null;
+
+          return {
+            detail: {
+              ...(villa && villa.detail ? villa.detail : {}),
+              min_price: min_price ? min_price + "₺" : null,
+              max_price: max_price ? max_price + "₺" : null,
+            },
+            price: villa && villa.price ? villa.price : {},
+          };
+        });
       }
+    } catch (error) {
+      console.error(error);
     }
-    console.log(this.villas)
   },
   methods: {
     removeFavorite(code) {
@@ -96,5 +104,4 @@ export default {
   },
 }
 </script>
-
 <style scoped></style>

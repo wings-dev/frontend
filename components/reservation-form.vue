@@ -4,7 +4,7 @@
     <div class="Reservation-form-top" :class="{ 'mobile-active': mobileReservation }">
       <div class="Reservation-form-top-head">
         <button type="button" class="mobile-menus-back" @click="reservatinAction"><i class="icon-left-arrow"></i></button>
-        <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
+        <h4 class="Reservation-form-title">Rezervasyon Yap {{checkIn}} {{checkOut}}</h4>
       </div>
 
       <span class="tarihsec">TARİH SEÇ</span>
@@ -16,7 +16,7 @@
                 Giriş Tarihi
               </div>
               <div class="date-title w-50">
-                Çıkış Tarihi 
+                Çıkış Tarihi
               </div>
             </div>
 
@@ -493,15 +493,26 @@ export default {
       this.$refs.datePicker.hideDatepicker();
     },
     checkInChanged(value) {
-      this.checkIn = this.formatDate(value);
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkIn = this.formatDate(value);
+      }
       setTimeout(() => {
         document.querySelector('.tarihsec').classList.add("tarihsec-active")
       }, 50)
-
     },
     checkOutChanged(value) {
-      this.checkOut = this.formatDate(value);
-      this.availabilityCheck();
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkOut = this.formatDate(value);
+        this.availabilityCheck();
+
+        setTimeout(() => {
+          if (this.checkIn && this.checkOut) {
+            // this.closeCalendar()
+          }
+        }, 50)
+      }
     },
     changeHotelInput(tabIndex, value) {
       const currentDate = new Date(value);
