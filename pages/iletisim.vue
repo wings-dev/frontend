@@ -160,31 +160,31 @@
                     <form action="">
                         <div class="Contact-form-item">
                             <label for="">
-                                <input type="text" placeholder="Adınız" v-model="form.data.name">
+                                <input type="text" placeholder="Adınız*" v-model="form.data.name">
                                 <i class="icon-user"></i>
                             </label>
                         </div>
                         <div class="Contact-form-item">
                             <label for="">
-                                <input type="text" placeholder="Soyadınız" v-model="form.data.surname">
+                                <input type="text" placeholder="Soyadınız*" v-model="form.data.surname">
                                 <i class="icon-user"></i>
                             </label>
                         </div>
                         <div class="Contact-form-item">
                             <label for="">
-                                <input type="text" placeholder="Mail Adresiniz" v-model="form.data.email">
+                                <input type="text" placeholder="Mail Adresiniz*" v-model="form.data.email">
                                 <i class="icon-user"></i>
                             </label>
                         </div>
                         <div class="Contact-form-item">
                             <label for="">
-                                <input type="text" placeholder="Telefon" v-model="form.data.phone">
+                                <input type="text" placeholder="Telefon*" v-model="form.data.phone">
                                 <i class="icon-user"></i>
                             </label>
                         </div>
                         <div class="Contact-form-item w-100">
                             <label for="">
-                                <textarea name="" id="" placeholder="Mesajınız" v-model="form.data.message"></textarea>
+                                <textarea name="" id="" placeholder="Mesajınız*" v-model="form.data.message"></textarea>
                                 <i class="icon-user"></i>
                             </label>
                         </div>
@@ -192,7 +192,7 @@
                             <label for="" id="kvkkinput">
                                 <input type="checkbox" id="kvkkinput" v-model="form.data.kvkkSelected" :checked="form.data.kvkkSelected">
                                 <span></span>
-                                <p><a href="">KVKK Aydınlatma metnini</a> okudum.</p>
+                                <p><a href="">KVKK Aydınlatma metnini</a> okudum.*</p>
                             </label>
                         </div>
                         <div class="Contact-form-item Contact-form-item-checkbox w-100">
@@ -204,7 +204,7 @@
                             </label>
                         </div>
 
-                        <button type="button" @click="send" :disabled="buttonDisabled">GÖNDER {{buttonDisabled}}</button>
+                        <button type="button" @click="send" :disabled="buttonDisabled">GÖNDER</button>
 
                     </form>
                 </div>
