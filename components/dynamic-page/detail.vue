@@ -180,8 +180,8 @@
             <div class="View-desc genelbakis view-menu-content-item" id="desc-content">
               <h2 class="View-title"><b>Tesise</b> Genel Bakış</h2>
               <div class="View-desc-category">
-                <a href="javascript:void(0)">Deniz Manzaralı</a>
-                <a href="javascript:void(0)">Muhafazakar Villa</a>
+                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(175)">Deniz Manzaralı</a>
+                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(175)">Muhafazakar Villa</a>
               </div>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
                 tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve müthiş
@@ -1469,6 +1469,14 @@ export default {
     }
   },
   methods: {
+    goFacilityConceptsFilter(id) {
+      this.$router.push({
+        path: '/kiralik-villa-ara',
+        query: {
+          facilityConcepts: id
+        },
+      });
+    },
     shareOnFacebook() {
       shareOnFacebook(window.location.href);
     },
