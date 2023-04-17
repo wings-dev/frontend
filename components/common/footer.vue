@@ -90,16 +90,16 @@
                                
                         </div>
                         <div class="Footer-creditcard">
-                            <img src="/img/credit-card.svg" alt="">
+                            <nuxt-img :src="'/img/site' + site_id + '/credit-card.svg'" />
                         </div>
                     </div>
                     <div class="Footer-right-bottom">
                         <div class="Footer-web">
-                            <a href="" class="Footer-web-item wings"><img src="/img/logo-wings-grey.svg" alt=""></a>
-                            <a href="" class="Footer-web-item"><img src="/img/logo-villakalkan-grey.svg" alt=""></a>
-                            <a href="" class="Footer-web-item"><img src="/img/logo-otelbnb-grey.svg" alt=""></a>
-                            <a href="" class="Footer-web-item"><img src="/img/logo-balayivillasi-grey.svg" alt=""></a>
-                            <a href="" class="Footer-web-item"><img src="/img/logo-balayi-sepeti-grey.svg" alt=""></a>
+                            <a href="" target="_blank" class="Footer-web-item wings"><img src="/img/logo-wings-grey.svg" alt=""></a>
+                            <a href="" target="_blank" class="Footer-web-item"><img src="/img/logo-villakalkan-grey.svg" alt=""></a>
+                            <a href="" target="_blank" class="Footer-web-item"><img src="/img/logo-otelbnb-grey.svg" alt=""></a>
+                            <a href="" target="_blank" class="Footer-web-item"><img src="/img/logo-balayivillasi-grey.svg" alt=""></a>
+                            <a href="" target="_blank" class="Footer-web-item"><img src="/img/logo-balayi-sepeti-grey.svg" alt=""></a>
                         </div>
                         <div class="Footer-tursab">
                             <a href="" class="Footer-tursab-item tursab"><img src="/img/tursab.png" alt=""></a>
