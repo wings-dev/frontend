@@ -8,7 +8,7 @@
           <div class="Card" v-for="(villa, index) in villas" :key="index">
             <div class="Card-in">
               <div class="Card-img">
-                <nuxt-link :to="'/'+(villa.detail.code || '')">
+                <nuxt-link :to="'/'+(villa.detail.url || '')">
                   <nuxt-img v-if="villa.detail.watermark_images && villa.detail.watermark_images[0]" :src="villa.detail.watermark_images[0].preview_url" :srcset="villa.detail.watermark_images[0].responsive"
                             width="267" height="175"></nuxt-img>
                 </nuxt-link>
@@ -50,7 +50,7 @@
                   </b><span>/Gecelik</span></p>
                   <p>Fiyat Aralığında</p>
                 </div>
-                <nuxt-link :to="'/'+(villa.detail.code || '')" class="Card-content-bottom-link"><i
+                <nuxt-link :to="'/'+(villa.detail.url || '')" class="Card-content-bottom-link"><i
                   class="icon-right-arrows-new"></i></nuxt-link>
               </div>
             </div>
@@ -60,6 +60,8 @@
     </div>  </section>
 </template>
 <script>
+import {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
+
 export default {
   name: "favorities",
   data() {
@@ -81,6 +83,8 @@ export default {
           const prices = priceList.map(item => parseInt(item.price.replace("₺", "")));
           const min_price = prices.length ? Math.min(...prices) : null;
           const max_price = prices.length ? Math.max(...prices) : null;
+
+          villa.detail.url = findVillaUrlByCode(villa.detail.code, this.$store.state.routes.routes);
 
           return {
             detail: {
