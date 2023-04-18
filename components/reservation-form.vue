@@ -370,10 +370,7 @@ export default {
         this.datePickerProps.startingDateValue = new Date(checkInParam);
         this.datePickerProps.endingDateValue = new Date(checkOutParam);
 
-        const visitorId = query.v;
-        if (visitorId === localStorage.getItem('visitorId')) {
-          this.availabilityCheck();
-        }
+        this.availabilityCheck();
       } else {
         this.checkIn = null;
         this.checkOut = null;
