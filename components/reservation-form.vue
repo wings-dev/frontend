@@ -4,7 +4,7 @@
     <div class="Reservation-form-top" :class="{ 'mobile-active': mobileReservation }">
       <div class="Reservation-form-top-head">
         <button type="button" class="mobile-menus-back" @click="reservatinAction"><i class="icon-left-arrow"></i></button>
-        <h4 class="Reservation-form-title">Rezervasyon Yap {{checkIn}} {{checkOut}}</h4>
+        <h4 class="Reservation-form-title">Rezervasyon Yap</h4>
       </div>
 
       <span class="tarihsec">TARİH SEÇ</span>
@@ -363,6 +363,17 @@ export default {
       const checkInParam = this.decodeTimestamp(query.i);
       const checkOutParam = this.decodeTimestamp(query.o);
 
+      console.log(checkInParam);
+      console.log(checkOutParam);
+
+      this.checkIn = checkInParam;
+      this.checkOut = checkOutParam;
+      this.datePickerProps.startingDateValue = new Date(checkInParam);
+      this.datePickerProps.endingDateValue = new Date(checkOutParam);
+
+      this.availabilityCheck();
+
+      /*
       // Eğer tarih aralığı uygunsa checkIn ve checkOut değişkenlerini güncelle
       if (isDateRangeValid(checkInParam, checkOutParam, this.disableReservation)) {
         this.checkIn = checkInParam;
@@ -370,13 +381,14 @@ export default {
         this.datePickerProps.startingDateValue = new Date(checkInParam);
         this.datePickerProps.endingDateValue = new Date(checkOutParam);
 
-        this.availabilityCheck();
+
       } else {
+        console.log(this.disableReservation);
         this.checkIn = null;
         this.checkOut = null;
         this.datePickerProps.startingDateValue = null;
         this.datePickerProps.endingDateValue = null;
-      }
+      }*/
     }
   },
   computed: {

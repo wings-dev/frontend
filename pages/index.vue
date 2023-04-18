@@ -308,7 +308,7 @@
                 </div>
                 <div class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(villa, index) in opportunities" :key="index">
+                        <div class="swiper-slide" v-for="(villa, index) in opportunities.slice(0, 10)" :key="index">
                             <nuxt-link :to="'/' + villa.url" class="Card Card-icons">
                                 <div class="Card-in">
                                     <div class="Card-img">
