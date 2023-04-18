@@ -1465,10 +1465,19 @@ export default {
         restaurant: [],
         market: [],
         transport: []
-      }
+      },
+      categories: []
     }
   },
   methods: {
+    filterObjectsByPrefix(obj, prefix) {
+      return Object.keys(obj)
+        .filter(key => key.startsWith(prefix))
+        .reduce((result, key) => {
+          result[key] = obj[key];
+          return result;
+        }, {});
+    },
     goFacilityConceptsFilter(id) {
       this.$router.push({
         path: '/kiralik-villa-ara',
@@ -1789,7 +1798,10 @@ export default {
     this.setAttributes();
   },
   async mounted() {
-    // console.log(this.villa);
+    console.log(JSON.stringify(this.villa.amenites));
+
+    this.categories = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_2')
+    console.log(this.categories);
 
     const places = {
       beaches: [],
