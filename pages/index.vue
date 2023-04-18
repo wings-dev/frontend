@@ -652,7 +652,8 @@ export default {
       }
 
         const opportunities = response.data.data.map(villa => {
-          villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes) + '?i=' + encodeTimestamp(villa.start_date)  + '&o='  + encodeTimestamp(villa.end_date) ;
+          villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes) +
+            '?i=' + encodeTimestamp(villa.start_date)  + '&o='  + encodeTimestamp(villa.end_date) // + '&v=' + localStorage.getItem('visitorId') ;
           return villa
         });
 
