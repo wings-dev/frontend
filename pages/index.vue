@@ -1,6 +1,6 @@
 <template>
     <div class="Home">
-       
+
         <section class="Banner Banner-home " style="background-image: url(/img/banner.jpg)">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
@@ -39,7 +39,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="item in pageData.page_content.popular" :key="item.id">
 
-                            <nuxt-link :to="'/' + item.code" class="Card">
+                            <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
                                         <nuxt-img :src="item.preview_image[0].preview_url"
@@ -84,7 +84,7 @@
                                                 </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
                                         </div>
-                                        <nuxt-link :to="'/' + item.code" class="Card-content-bottom-link"><i
+                                        <nuxt-link :to="'/' + item.url" class="Card-content-bottom-link"><i
                                                 class="icon-right-arrows-new"></i></nuxt-link>
                                     </div>
                                 </div>
@@ -309,7 +309,7 @@
                 <div class="swiper popular list-slide list-slide-firsat list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(villa, index) in opportunities" :key="index">
-                            <nuxt-link :to="'/' + villa.code" class="Card Card-icons">
+                            <nuxt-link :to="'/' + villa.url" class="Card Card-icons">
                                 <div class="Card-in">
                                     <div class="Card-img">
 
@@ -565,10 +565,12 @@
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
-// import MoreVillas from '../MoreVillas.vue';
+import findVillaUrlMixin, {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
+
 export default {
     name: 'IndexPage',
     layout: 'no-search',
+    mixins: [findVillaUrlMixin],
     components: {
         Swiper
     },
@@ -607,7 +609,7 @@ export default {
             opportunities: []
         }
     },
-    async asyncData({ $getRedisKey, $axios }) {
+    async asyncData({ $getRedisKey, $axios, store }) {
         const site_id = process.env.SITE;
         const redisPageKey = `web:${site_id}:pages:anasayfa`;
 
@@ -626,6 +628,8 @@ export default {
             const min_price = Math.min(...prices) || null;
             const max_price = Math.max(...prices) || null;
 
+            villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes);
+
             return {
                 ...villa,
                 min_price: min_price ? min_price + "₺" : null,
@@ -641,14 +645,23 @@ export default {
         response = await $axios.post((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +
             `/website/opportunity?api_token=${process.env.WEBSITE_TOKEN}&page=1`, data)
 
-        const opportunities = response.data.data;
+      function encodeTimestamp(dateString) {
+        // Tarih formatını "dd-MM-yyyy" olarak kabul ediyoruz
+        const [day, month, year] = dateString.split('-').map(Number);
+        return (new Date(year, month - 1, day)).getTime();
+      }
+
+        const opportunities = response.data.data.map(villa => {
+          villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes) + '?i=' + encodeTimestamp(villa.start_date)  + '&o='  + encodeTimestamp(villa.end_date) ;
+          return villa
+        });
 
         pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas };
 
         return { pageData, opportunities };
     },
     mounted() {
-        Swiper.use([Navigation, Pagination])
+      Swiper.use([Navigation, Pagination])
 
         const swiper = new Swiper('.list-slide-first', {
             slidesPerView: 1.1,
