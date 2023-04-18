@@ -18,9 +18,9 @@
           <i class="icon-search-new"></i>
           <input type="search" :placeholder="filterInputPlaceholder" v-model="filterText" @keyup="applyFilter()">
         </label>
-        <button type="button" class="Filters-clear-mobile">Temizle</button>
+        <button type="button" class="Filters-clear-mobile" @click="clear">Temizle</button>
       </div>
-      <button type="button" class="Filters-clear-mobile right" v-if="!filterInputPlaceholder.length">Temizle</button>
+      <button type="button" class="Filters-clear-mobile right" v-if="!filterInputPlaceholder.length" @click="clear">Temizle</button>
       <ul class="Filters-first" v-if="groups.length === 0">
         <li class="Filters-item Filters-item-notfound"
           v-bind:style="filterText.length && !filteredCheckboxes.length ? 'display:block' : 'display:none'">
@@ -127,6 +127,10 @@ export default {
     }
   },
   methods: {
+    clear() {
+      this.checkboxes.forEach(checkbox => this.updateSelection(checkbox, false));
+      this.emitSelectedCodes();
+    },
     getCheckboxesByGroupId(group_id) {
       return this.checkboxes.filter(checkbox => checkbox.group_id == group_id);
     },
