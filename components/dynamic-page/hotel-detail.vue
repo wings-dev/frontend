@@ -152,7 +152,7 @@
           </div>
         </div>
         <div class="container search-otel">
-          <search-hotel-detail-component :key="$route.path"></search-hotel-detail-component>
+          <search-hotel-detail-component :key="$route.path" @search="search($event)"></search-hotel-detail-component>
         </div>
       </section>
 
@@ -479,21 +479,8 @@ export default {
     BCarousel,
   },
   async mounted() {
-    console.log(this.hotelDetails);
-    // Adım 1: Hotel fiyatını al
-    let response = await this.getHotelPrice();
-    this.searchId = response.body?.searchId;
-
-    // Adım 2: Offer ID'lerini al
-    const offerIds = this.getOfferIds();
-
-    // Adım 3: Oda detaylarını al
-    const rooms = await this.getRoomDetails(offerIds);
-
-    // Adım 4: Oda detaylarını offer'lara entegre et
-    this.mergeRoomDetails(rooms);
-
-    this.roomsLoading = false;
+    console.log(this.selectedFilters);
+    this.roomSearch()
   },
   computed: {
     previewImages() {
@@ -527,6 +514,32 @@ export default {
     }
   },
   methods: {
+    async roomSearch() {
+      this.roomsLoading = true;
+
+      // Adım 1: Hotel fiyatını al
+      let response = await this.getHotelPrice();
+      this.searchId = response.body?.searchId;
+
+      // Adım 2: Offer ID'lerini al
+      const offerIds = this.getOfferIds();
+
+      // Adım 3: Oda detaylarını al
+      const rooms = await this.getRoomDetails(offerIds);
+
+      // Adım 4: Oda detaylarını offer'lara entegre et
+      this.mergeRoomDetails(rooms);
+
+      this.roomsLoading = false;
+    },
+    search(queryParams) {
+      this.selectedFilters.adult = queryParams.adult
+      this.selectedFilters.checkIn = queryParams.checkIn
+      this.selectedFilters.checkOut = queryParams.checkOut
+      this.selectedFilters.childAges = queryParams.childAges
+
+      this.roomSearch()
+    },
     mobileAmenitesToggle() {
       this.mobileAmenites = !this.mobileAmenites
     },
