@@ -156,8 +156,8 @@ export default {
   },
 
   image: {
-    provider: 'static',
-    static: {
+    provider: 'ipx',
+    ipx: {
       baseURL: process.env.NODE_ENV === "production" ? process.env.CDN_URL + '/_ipx/' : '/_ipx/'
     }
   },
