@@ -19,7 +19,7 @@ export default {
         {hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3'}
       ],
       link: [
-        {rel: 'stylesheet', href: `/css/listeleme.min.css`}
+        {rel: 'stylesheet', href: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + `/css/listeleme.min.css`}
       ]
     }
   },

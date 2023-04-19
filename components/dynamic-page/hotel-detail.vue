@@ -168,9 +168,9 @@
             </div>
             <div class="Otel-desc-features">
               <h4>Tesis <span>Özellikleri</span></h4>
-              <p class="Otel-desc-features-item" v-for="(item, index) in hotelDetails.body.hotel.facilities"
+              <p class="Otel-desc-features-item" v-for="(item, index) in hotelDetails.body.hotel?.seasons?.[0]?.facilityCategories?.[0]?.facilities"
                 v-if="index <= 4"><i class="icon-check-big"></i>{{ item.name }}</p>
-              <b-button v-b-modal.amenitesModal class="Otel-desc-features-more">Tüm özellikleri gör</b-button>
+              <b-button @click="mobileAmenitesToggle" class="Otel-desc-features-more">Tüm özellikleri gör</b-button>
             </div>
             <div class="Otel-desc-map" style="background-image: url(/img/map-bg.png);">
               <a :href="`https://www.google.com/maps/@${hotelDetails.body.hotel.geolocation.latitude},${hotelDetails.body.hotel.geolocation.longitude},16z`"
@@ -182,6 +182,30 @@
           </div>
         </div>
       </section>
+
+      <div class="V iew-mobile-modal" :class="{ 'show': mobileAmenites }">
+        <button type="button" class="mobile-menus-back" @click="mobileAmenitesToggle"><i
+          class="icon-left-arrow"></i></button>
+        <div class="Amenites">
+          <div class="Amenites-head">
+            <div class="Amenites-head-in">
+              <h3 class="Amenites-title">Tüm <b>özellikler</b></h3>
+            </div>
+          </div>
+          <div class="Amenites-in">
+            <div class="Amenites-item" v-for="(category, index) in hotelDetails.body.hotel?.seasons?.[0]?.facilityCategories">
+              <span class="Amenites-item-title">{{ category.name }}</span>
+              <div class="Amenites-item-in">
+                <template v-if="category.facilities && category.facilities.length">
+                  <template v-for="facility in category.facilities">
+                    <p>{{ facility.name }}</p>
+                  </template>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <section class="rooms-section pt-3 mt-1">
         <div class="container">
@@ -292,10 +316,10 @@
 
             <div class="View-reviews comments view-menu-content-item" id="reviews-content">
               <div class="View-reviews-head">
-                <div class="general-informations-section-title mb-0"><span>The European Hotel</span> Değerlendirmesi</div>
+                <div class="general-informations-section-title mb-0"><span>{{ hotelDetails.body.hotel.name }}</span> Değerlendirmesi</div>
                 <div class="Otel-card-review mt-2">
                   <span>{{ hotelDetails.body.hotel.stars }}/5</span>
-                  <p>Mükemmel <u>124 yorum</u></p>
+                  <p>Mükemmel <u>0 yorum</u></p>
                 </div>
               </div>
               <div class="otel-reviews-item">
@@ -393,55 +417,19 @@
 
           <div class="Amenites-slider" style="position:relative">
             <b-carousel id="carousel-1" v-model="slide" controls img-width="1024" img-height="500">
-              <b-carousel-slide :img-src="photo" v-for="(photo, index) in slidePhotos" :key="index"></b-carousel-slide>
+              <b-carousel-slide :img-src="photo" v-for="(photo, index) in previewImages.map(image => image.responsive_url)" :key="index"></b-carousel-slide>
             </b-carousel>
             <div class="slide-numbers">
-              {{ slide + 1 }}/{{ slidePhotos.length }}
+              {{ slide + 1 }}/{{ previewImages.map(image => image.responsive_url).length }}
             </div>
           </div>
 
           <div class="Amenites-head">
-            <h3 class="Amenites-title">The European Hotel</h3>
-            <h4 class="Amenites-title-sub">Standart İki Yataklı Oda / Penceresiz , 1 . Kat Twin NTT1 - 27 m2</h4>
+            <h3 class="Amenites-title">{{ hotelDetails.body.hotel.name }}</h3>
+<!--            <h4 class="Amenites-title-sub">Standart İki Yataklı Oda / Penceresiz , 1 . Kat Twin NTT1 - 27 m2</h4>-->
           </div>
 
           <div class="Amenites-in">
-            <div class="Amenites-item">
-              <div class="Amenites-item-in">
-                <p>Jakuzi</p>
-                <p>Jakuzi</p>
-                <p>Bilardo Masası</p>
-                <p>Barbekü / Mangal Alanı</p>
-                <p>Barbekü / Mangal Alanı</p>
-              </div>
-            </div>
-            <div class="Amenites-item">
-              <div class="Amenites-item-in">
-                <p>Jakuzi</p>
-                <p>Jakuzi</p>
-                <p>Bilardo Masası</p>
-                <p>Barbekü / Mangal Alanı</p>
-                <p>Barbekü / Mangal Alanı</p>
-              </div>
-            </div>
-            <div class="Amenites-item">
-              <div class="Amenites-item-in">
-                <p>Jakuzi</p>
-                <p>Jakuzi</p>
-                <p>Bilardo Masası</p>
-                <p>Barbekü / Mangal Alanı</p>
-                <p>Barbekü / Mangal Alanı</p>
-              </div>
-            </div>
-            <div class="Amenites-item">
-              <div class="Amenites-item-in">
-                <p>Jakuzi</p>
-                <p>Jakuzi</p>
-                <p>Bilardo Masası</p>
-                <p>Barbekü / Mangal Alanı</p>
-                <p>Barbekü / Mangal Alanı</p>
-              </div>
-            </div>
             <div class="Amenites-item">
               <div class="Amenites-item-in">
                 <p>Jakuzi</p>
@@ -455,6 +443,7 @@
           </div>
         </div>
       </b-modal>
+
     </main>
   </div>
 </template>
@@ -483,12 +472,14 @@ export default {
       slidePhotos: ['https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg'],
       moreContent: false,
       moreFeatures: false,
+      mobileAmenites: false,
     }
   },
   components: {
     BCarousel,
   },
   async mounted() {
+    console.log(this.hotelDetails);
     // Adım 1: Hotel fiyatını al
     let response = await this.getHotelPrice();
     this.searchId = response.body?.searchId;
@@ -520,7 +511,25 @@ export default {
       return []
     }
   },
+  watch: {
+    mobileAmenites() {
+      if (this.mobileAmenites == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add('detail-over')
+          document.querySelector('html').classList.add('detail-over')
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('detail-over')
+          document.querySelector('html').classList.remove('detail-over')
+        }, 50)
+      }
+    }
+  },
   methods: {
+    mobileAmenitesToggle() {
+      this.mobileAmenites = !this.mobileAmenites
+    },
     goReservation(offer) {
       const url = process.env.HOTEL_RESERVATION + 'otel/payments?searchId=' + this.searchId + '&offerId=' + offer.offerId;
       window.open(url, '_blank');

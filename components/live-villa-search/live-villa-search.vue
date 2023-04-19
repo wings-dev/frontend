@@ -134,6 +134,7 @@
 
 <script>
 import LiveHotelSearchComponent from "@/components/search/LiveHotelSearchComponent.vue";
+import {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
 
 export default {
   name: "live-villa-search",
@@ -196,7 +197,10 @@ export default {
           { keyword: keyword, site_id: process.env.SITE },
           { cancelToken: this.cancelToken.token }
         )
-        this.villas = response.data
+        this.villas = response.data.map(villa => {
+          villa.url = findVillaUrlByCode(villa.code, this.$store.state.routes.routes);
+          return villa
+        })
       } catch (error) {
         console.error(error)
       }

@@ -28,13 +28,13 @@ export default {
       { 'http-equiv': 'Cache-Control', content: 'max-age=3600' }
     ],
     link: [
-      {rel: "icon", type: "image/x-icon", href: "/favicon.ico"},
-      {rel: "stylesheet", href: "/css/custom-bootstrap.min.css"},
-      {rel: "stylesheet", href: "/css/main.min.css"}
+      {rel: "icon", type: "image/x-icon", href: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + "/favicon.ico"},
+      {rel: "stylesheet", href:  (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + "/css/custom-bootstrap.min.css"},
+      {rel: "stylesheet", href: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + "/css/main.min.css"}
     ],
     script: [
       {
-        src: "/js/bootstrap/bootstrap.bundle.min.js"
+        src: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + "/js/bootstrap/bootstrap.bundle.min.js"
       }
     ]
   },
@@ -155,7 +155,12 @@ export default {
     iconPack: 'custom-class'
   },
 
-  image: {},
+  image: {
+    provider: 'ipx',
+    ipx: {
+      baseURL: process.env.NODE_ENV === "production" ? process.env.CDN_URL + '/_ipx/' : '/_ipx/'
+    }
+  },
 
   cookies: {
     necessary: [
@@ -241,8 +246,11 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     // standalone: true,
-    transpile: ["swiper"]
-
+    transpile: ["swiper"],
+    publicPath:
+      process.env.NODE_ENV === "production"
+        ? process.env.CDN_URL + "/_nuxt/"
+        : "/_nuxt/"
   },
 
   proxy: {

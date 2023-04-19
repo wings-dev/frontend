@@ -16,7 +16,7 @@
                 Giriş Tarihi
               </div>
               <div class="date-title w-50">
-                Çıkış Tarihi 
+                Çıkış Tarihi
               </div>
             </div>
 
@@ -275,7 +275,7 @@ export default {
       datePickerProps: {},
       checkIn: null,
       checkOut: null,
-      adult: 1,
+      adult: 0,
       child: 0,
       baby: 0,
       availabilityChecked: false,
@@ -363,6 +363,17 @@ export default {
       const checkInParam = this.decodeTimestamp(query.i);
       const checkOutParam = this.decodeTimestamp(query.o);
 
+      console.log(checkInParam);
+      console.log(checkOutParam);
+
+      this.checkIn = checkInParam;
+      this.checkOut = checkOutParam;
+      this.datePickerProps.startingDateValue = new Date(checkInParam);
+      this.datePickerProps.endingDateValue = new Date(checkOutParam);
+
+      this.availabilityCheck();
+
+      /*
       // Eğer tarih aralığı uygunsa checkIn ve checkOut değişkenlerini güncelle
       if (isDateRangeValid(checkInParam, checkOutParam, this.disableReservation)) {
         this.checkIn = checkInParam;
@@ -370,16 +381,14 @@ export default {
         this.datePickerProps.startingDateValue = new Date(checkInParam);
         this.datePickerProps.endingDateValue = new Date(checkOutParam);
 
-        const visitorId = query.v;
-        if (visitorId === localStorage.getItem('visitorId')) {
-          this.availabilityCheck();
-        }
+
       } else {
+        console.log(this.disableReservation);
         this.checkIn = null;
         this.checkOut = null;
         this.datePickerProps.startingDateValue = null;
         this.datePickerProps.endingDateValue = null;
-      }
+      }*/
     }
   },
   computed: {
@@ -464,6 +473,25 @@ export default {
 
     },
     preReservation() {
+
+      if (this.adult === 0) {
+
+        this.$toast.error("<p>Lütfen kişi sayısı seçiniz</p>", {
+          className: 'custom-toast error-toast',
+          icon: {
+            name: 'icon-reservation-cancel',
+          },
+          action: {
+            icon: 'icon-toast-exit',
+            onClick: (e, toastObject) => {
+              toastObject.goAway(0);
+            }
+          }
+        })
+
+        return
+      }
+
       this.setReservationModalData({
         propertyCode: this.propertyCode,
         startDate: this.checkIn,
@@ -493,15 +521,26 @@ export default {
       this.$refs.datePicker.hideDatepicker();
     },
     checkInChanged(value) {
-      this.checkIn = this.formatDate(value);
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkIn = this.formatDate(value);
+      }
       setTimeout(() => {
         document.querySelector('.tarihsec').classList.add("tarihsec-active")
       }, 50)
-
     },
     checkOutChanged(value) {
-      this.checkOut = this.formatDate(value);
-      this.availabilityCheck();
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkOut = this.formatDate(value);
+        this.availabilityCheck();
+
+        setTimeout(() => {
+          if (this.checkIn && this.checkOut) {
+            // this.closeCalendar()
+          }
+        }, 50)
+      }
     },
     changeHotelInput(tabIndex, value) {
       const currentDate = new Date(value);

@@ -375,8 +375,8 @@ export default {
       searchData = this.$store.state['settings'].searchData;
     }
 
-    this.destinations = JSON.parse(JSON.stringify(searchData.destinations));
-    this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
+    this.destinations = JSON.parse(JSON.stringify(searchData.destinations || []));
+    this.amenites = JSON.parse(JSON.stringify(searchData.amenites || {}));
   },
   beforeMount() {
     this.checkIn = this.selectedFilters['checkIn'] ?? null;
@@ -387,11 +387,13 @@ export default {
   },
   mounted() {
     this.extraFilters = this.pageContent?.page_content?.villa_filter || null;
-    // eski redis yapısına göre
-    this.applySelectedFilters('destinations', null);
-    this.applySelectedFilters('amenites', 'facilityConcepts');
-    this.applySelectedFilters('amenites', 'facilityTypes');
-    this.applySelectedFilters('amenites', 'facilities');
+
+    if (this.destinations && this.amenites) {
+      this.applySelectedFilters('destinations', null);
+      this.applySelectedFilters('amenites', 'facilityConcepts');
+      this.applySelectedFilters('amenites', 'facilityTypes');
+      this.applySelectedFilters('amenites', 'facilities');
+    }
 
     if (this.extraFilters) {
       // yeni redis yapısına göre
@@ -564,6 +566,8 @@ export default {
       }, []);
     },
     findNestedObject(checkboxes, code) {
+      if (!checkboxes) return null;
+
       for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].code == code) return checkboxes[i];
         if (checkboxes[i].children) {

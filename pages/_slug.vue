@@ -43,7 +43,7 @@ export default {
     const path = route.params.slug;
     // Gelen sayfanın redisteki datası
 
-    let redisData = store.state['routes'].routes[path]; // await $getRedisKey(`web:${site_id}:pages:${path}`);
+    let redisData = JSON.parse(JSON.stringify(store.state['routes'].routes[path])); // await $getRedisKey(`web:${site_id}:pages:${path}`);
     let componentData = {};
     let categoryFilter = {};
     let blogPostData = {};
@@ -59,13 +59,13 @@ export default {
       // type 2 => villa detay sayfası
       if (redisData.type === 2) {
         headData.link = [
-          { rel: 'stylesheet', href: `/css/villa-detay.min.css` }
+          { rel: 'stylesheet', href: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + `/css/villa-detay.min.css` }
         ]
-        const data = await $getRedisKey([`data:villas:${path}:detail`, `data:villas:${path}:calendar`, `data:villas:${path}:prices`])
+        const data = await $getRedisKey([`data:villas:${redisData.code}:detail`, `data:villas:${redisData.code}:calendar`, `data:villas:${redisData.code}:prices`])
         // villa redis datası
-        componentData = data[`data:villas:${path}:detail`];
-        calendar = data[`data:villas:${path}:calendar`] ? data[`data:villas:${path}:calendar`] : [];
-        price_list_1 = data[`data:villas:${path}:prices`] ? data[`data:villas:${path}:prices`].price_list_1 : [];
+        componentData = data[`data:villas:${redisData.code}:detail`];
+        calendar = data[`data:villas:${redisData.code}:calendar`] ? data[`data:villas:${redisData.code}:calendar`] : [];
+        price_list_1 = data[`data:villas:${redisData.code}:prices`] ? data[`data:villas:${redisData.code}:prices`].price_list_1 : [];
       }
       // type 7 => filtre sayfası
       if (redisData.type === 5 || redisData.type === 8) {
