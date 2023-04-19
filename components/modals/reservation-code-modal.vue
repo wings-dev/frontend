@@ -57,7 +57,12 @@
         <div class="Login-right">
           <div class="Login-right-in">
             <h2>DOĞRULAMA KODU</h2>
-            <span>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
+            <template v-if="reservationModalData.prephone === '90'">
+              <span>Lütfen +{{reservationModalData.prephone}} {{reservationModalData.phone}} telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
+            </template>
+            <template v-else>
+              <span>Lütfen {{reservationModalData.email}} adresinize gelen <u>4 haneli</u> giriş kodunu giriniz. </span>
+            </template>
             <p class="Login-form-signup"><a href="javascript:void(0)" @click="goBack">Bu numara size ait değil mi?</a></p>
             <form action="" class="Login-form" @submit.prevent="entercode">
               <fieldset name='number-code' data-number-code-form>

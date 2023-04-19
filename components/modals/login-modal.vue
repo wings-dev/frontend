@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     enabledLoginButton() {
-      if (this.loginType === 'phone' && this.phone.length === 10) {
+      if ((this.loginType === 'phone' && this.phone.length === 10) || (this.loginType === 'email' && this.email.length)) {
         return true;
       }
     }

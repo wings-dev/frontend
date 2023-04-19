@@ -14,7 +14,8 @@
             <span v-if="message">
               {{message}}
             </span>
-            <span v-else>Lütfen telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
+            <span v-else-if="phone">Lütfen +90 {{phone}} telefon numaranıza gelen <u>4 haneli</u> giriş kodunu giriniz.</span>
+            <span v-else>Lütfen {{email}} adresinize gelen <u>4 haneli</u> giriş kodunu giriniz. </span>
             <form action="" class="Login-form" @submit.prevent="entercode">
               <fieldset name='number-code' data-number-code-form>
                 <input v-for="(code, index) in codes" :key="index" ref="codeInputs" class="number-code" type="number"
