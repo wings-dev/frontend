@@ -21,7 +21,7 @@
         <div class="O_List-card-in">
           <div class="O_List-card-item" v-for="hotel in hotels">
             <div class="O_List-card-item-img">
-              <img src="/img/otel-list.png" alt="">
+              <img :src="cdn + hotel.images?.[0]?.ImageUrl" alt="">
             </div>
             <div class="O_List-card-item-content">
               <div class="O_List-card-item-content-head">
@@ -35,7 +35,7 @@
                 </div>
               </div>
               <template v-if="hotel.descriptions.length > 0">
-                <p v-html="villa.descriptions[0].Description"></p>
+                <p v-html="hotel.descriptions[0].Description"></p>
               </template>
             </div>
             <div class="O_List-card-item-link">
@@ -298,7 +298,8 @@ export default {
                   masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
                   mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
                   kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.`
+                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.`,
+      cdn: process.env.HOTEL_CDN_URL + '/'
     }
   },
   async asyncData({route, $axios}) {
