@@ -249,8 +249,8 @@ export default {
     transpile: ["swiper"],
     publicPath:
       process.env.NODE_ENV === "production"
-        ? process.env.CDN_URL
-        : "/_static/"
+        ? process.env.CDN_URL + "/_nuxt/"
+        : "/_nuxt/"
   },
 
   proxy: {
