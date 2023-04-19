@@ -306,7 +306,7 @@ export default {
         { hid: 'keywords', name: 'keywords', content: 'hakkımızda1, hakkımızda2, hakkımızd3' }
       ],
       link: [
-        { rel: 'stylesheet', href: `/css/hakkimizda.min.css` }
+        { rel: 'stylesheet', href: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + `/css/hakkimizda.min.css` }
       ]
     }
   },

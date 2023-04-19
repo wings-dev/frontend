@@ -59,7 +59,7 @@ export default {
       // type 2 => villa detay sayfası
       if (redisData.type === 2) {
         headData.link = [
-          { rel: 'stylesheet', href: `/css/villa-detay.min.css` }
+          { rel: 'stylesheet', href: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + `/css/villa-detay.min.css` }
         ]
         const data = await $getRedisKey([`data:villas:${redisData.code}:detail`, `data:villas:${redisData.code}:calendar`, `data:villas:${redisData.code}:prices`])
         // villa redis datası
