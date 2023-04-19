@@ -156,11 +156,12 @@
                                                     <small>Ankara,Türkiye</small>
                                                 </div>
                                                 <div class="O_Card-content-in">
-                                                    <div class="O_Card-content-price">
+                                                    <div class="O_Card-content-price d-none">
                                                         <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
                                                         <p>Başlayan Fiyatlar</p>
                                                     </div>
                                                     <nuxt-link to="/" class="O_Card-content-link">
+                                                        Oteli İncele
                                                         <i class="icon-right-arrows-new"></i>
                                                     </nuxt-link>
                                                 </div>
