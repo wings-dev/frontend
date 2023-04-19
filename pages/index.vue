@@ -4,7 +4,7 @@
         <section class="Banner Banner-home " style="background-image: url(/img/banner.jpg)">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
-            <img src="/img/banner-mobile.jpg" alt="">
+            <nuxt-img src="/img/banner-mobile.jpg" alt=""></nuxt-img>
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -101,7 +101,7 @@
             </div>
         </section>
         <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
-            <img src="/img/home-banner-mobile.png" alt="">
+            <nuxt-img src="/img/home-banner-mobile.png" alt=""></nuxt-img>
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
@@ -145,7 +145,7 @@
                                     <nuxt-link to="" class="O_Card">
                                         <div class="O_Card-in">
                                             <div class="O_Card-img">
-                                                <img src="/img/otel-list.png" alt="">
+                                              <nuxt-img src="/img/otel-list.png" alt=""></nuxt-img>
                                                 <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                                     <span>9,5/10</span>
                                                 </div>
@@ -185,7 +185,7 @@
                                     <nuxt-link to="" class="O_Card">
                                         <div class="O_Card-in">
                                             <div class="O_Card-img">
-                                                <img src="/img/otel-list.png" alt="">
+                                                <nuxt-img src="/img/otel-list.png" alt=""></nuxt-img>
                                                 <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                                     <span>9,5/10</span>
                                                 </div>
@@ -224,7 +224,7 @@
                                     <nuxt-link to="" class="O_Card">
                                         <div class="O_Card-in">
                                             <div class="O_Card-img">
-                                                <img src="/img/otel-list.png" alt="">
+                                                <nuxt-img src="/img/otel-list.png" alt=""></nuxt-img>
                                                 <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                                     <span>9,5/10</span>
                                                 </div>
@@ -266,7 +266,7 @@
                 <div class="H_info-in">
                     <div class="H_info-item">
                         <div class="H_info-item-icon">
-                            <img src="/img/tursabnew.png" alt="">
+                          <nuxt-img src="/img/tursabnew.png" alt=""></nuxt-img>
                         </div>
                         <div class="H_info-item-icon-text">
                             <p>Wings Seyehat Tur. San.ve Tic.Ltd.Şti. 11095’nolu <span>Türsab Acentesidir.</span></p>
@@ -392,8 +392,8 @@
                 </div>
                 <div class="categories">
                     <a href="#!" class="cat-item no-hover area1 overflow-hidden position-relative">
-                        <img src="/uploads/category-image1.jpg" data-src="" width="380" height="235" alt="category image"
-                            class="cat-image lazy cover w-100 h-100">
+                        <nuxt-img src="/uploads/category-image1.jpg" data-src="" width="380" height="235" alt="category image"
+                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -408,8 +408,8 @@
                         </div>
                     </a>
                     <a href="#!" class="cat-item no-hover area2 overflow-hidden position-relative">
-                        <img src="/uploads/category-image2.jpg" data-src="" width="380" height="235" alt="category image"
-                            class="cat-image lazy cover w-100 h-100">
+                        <nuxt-img src="/uploads/category-image2.jpg" data-src="" width="380" height="235" alt="category image"
+                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -424,8 +424,8 @@
                         </div>
                     </a>
                     <a href="#!" class="cat-item no-hover area3 overflow-hidden position-relative">
-                        <img src="/uploads/category-image3.jpg" data-src="" width="380" height="235" alt="category image"
-                            class="cat-image lazy cover w-100 h-100">
+                        <nuxt-img src="/uploads/category-image3.jpg" data-src="" width="380" height="235" alt="category image"
+                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -440,8 +440,8 @@
                         </div>
                     </a>
                     <a href="#!" class="cat-item no-hover area4 overflow-hidden position-relative">
-                        <img src="/uploads/category-image4.jpg" data-src="" width="380" height="235" alt="category image"
-                            class="cat-image lazy cover w-100 h-100">
+                        <nuxt-img src="/uploads/category-image4.jpg" data-src="" width="380" height="235" alt="category image"
+                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1">
                             <small>Yeni Listenenler</small>
                         </div>
@@ -459,8 +459,8 @@
                         </div>
                     </a>
                     <a href="#!" class="cat-item no-hover area5 overflow-hidden position-relative">
-                        <img src="/uploads/category-image5.jpg" data-src="" width="380" height="235" alt="category image"
-                            class="cat-image lazy cover w-100 h-100">
+                        <nuxt-img src="/uploads/category-image5.jpg" data-src="" width="380" height="235" alt="category image"
+                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -475,8 +475,8 @@
                         </div>
                     </a>
                     <a href="#!" class="cat-item no-hover area6 overflow-hidden position-relative">
-                        <img src="/uploads/category-image7.jpg" data-src="" width="380" height="235" alt="category image"
-                            class="cat-image lazy cover w-100 h-100">
+                        <nuxt-img src="/uploads/category-image7.jpg" data-src="" width="380" height="235" alt="category image"
+                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -521,7 +521,7 @@
                         <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
                             <nuxt-link to="/" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <img src="/img/country/italy.jpg" alt="">
+                                  <nuxt-img src="/img/country/italy.jpg" alt=""></nuxt-img>
                                 </div>
                                 <div class="Abroad-villas-item-content">
                                     <div class="Abroad-villas-item-content-left">
@@ -530,10 +530,10 @@
                                     </div>
                                     <div class="Abroad-villas-item-content-right">
                                         <div class="Abroad-villas-item-content-flag">
-                                            <img src="/img/flag/flag-italy.svg" alt="">
+                                          <nuxt-img src="/img/flag/flag-italy.svg" alt=""></nuxt-img>
                                         </div>
                                         <div class="Abroad-villas-item-content-smile">
-                                            <img src="/img/laughing-smile.svg" alt="">
+                                          <nuxt-img src="/img/laughing-smile.svg" alt=""></nuxt-img>
                                             <span>VİZE YOK!</span>
                                         </div>
                                     </div>
