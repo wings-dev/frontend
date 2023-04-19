@@ -148,16 +148,6 @@
         visibility: hidden;
         pointer-events: none;
         transition: all 400ms;
-        &::before{
-          content: "";
-          display: inline-block;
-          border-bottom: 10px solid #fff;
-          border-left: 10px solid transparent;
-          border-right: 10px solid transparent;
-          position: absolute;
-          top: -10px;
-          left: 26%;
-        }
         &.active {
           opacity: 1;
           visibility: visible;
@@ -167,6 +157,18 @@
         display: none;
       }
       &.otel {
+        .Header-menu-item-in{
+          &::before{
+            content: "";
+            display: inline-block;
+            border-bottom: 10px solid #fff;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            position: absolute;
+            top: -10px;
+            left: 46.7%;
+          }
+        }
       }
       &-otel {
         display: flex;
@@ -217,12 +219,12 @@
       }
       &:nth-child(2){
         .Header-menu-item-in:before{
-          left: 38%;
+          left: 26%;
         }
       }
       &:nth-child(3){
         .Header-menu-item-in:before{
-          left: 47%;
+          left: 36.5%;
         }
       }
       
@@ -1303,7 +1305,7 @@
     position: absolute;
     height: 2px;
     width: 100%;
-    background: #ffffff;
+    background: var(--bs-menu-toggle-color);
     opacity: 1;
     right: 0;
     transform: rotate(0deg);

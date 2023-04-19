@@ -220,15 +220,16 @@
                   <i class="icon-pin"></i>
                   <p>FETHİYE<span>Turkey / Muğla</span></p>
                 </div>
-                <div class="View-desc-mobile-top-price">
+                <div class="View-desc-mobile-top-price" v-if="lowestPrice">
                   <span>GECELİK</span>
-                  <p>7500 <span>₺</span></p>
+                  <p>{{ lowestPrice | numberFormat }} <span>₺</span></p>
                   <small>'den başlayan fiyatlar'</small>
                 </div>
+                
               </div>
               <div class="View-desc-mobile-bottom">
                 <div class="View-desc-mobile-bottom-head">
-                  <h1><span>Tesis Kodu</span> VKV1020</h1>
+                  <h1><span>Tesis Kodu</span> {{ villa_prefix }}{{ villa.code }}</h1>
                   <a :href="villa.video" data-fancybox v-if="villa.video"><i class="icon-play-button"></i>Tesisin
                     Videosu</a>
                   <a href="" @click.prevent="noVillaVideo" v-else><i class="icon-play-button"></i>Tesisin Videosu</a>
