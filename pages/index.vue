@@ -520,7 +520,7 @@ export default {
     },
     async asyncData({ $getRedisKey, $axios, store }) {
         const site_id = process.env.SITE;
-        const redisPageKey = `web:${site_id}:pages:anasayfa2`;
+        const redisPageKey = `web:${site_id}:pages:anasayfa`;
 
         let response = await $getRedisKey([redisPageKey]);
         const pageData = response[redisPageKey] || {};
