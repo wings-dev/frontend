@@ -566,17 +566,20 @@ export default {
           return villa
         });
 
-        const otelCategories = pageData.page_content?.select_otel || [];
-        otelCategories.forEach((otelCategory, index) => {
+      const otelCategories = Array.isArray(pageData.page_content?.select_otel) ? pageData.page_content.select_otel : [];
+
+      otelCategories.forEach((otelCategory, index) => {
+        if (otelCategory && Array.isArray(otelCategory.otel_list)) {
           otelCategory.otel_list = otelCategory.otel_list.map(hotel => {
-            hotel.url = '/otel/' + slugify(hotel.Name.toLowerCase()) + '-' + hotel.Id;
+            if (hotel && hotel.Name && hotel.Id) {
+              hotel.url = '/otel/' + slugify(hotel.Name.toLowerCase()) + '-' + hotel.Id;
+            }
             return hotel;
           });
-        });
+        }
+      });
 
         pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas, select_otel: otelCategories };
-
-        console.log(pageData.page_content?.select_otel?.[0]?.otel_list);
 
         return { pageData, opportunities };
     },
