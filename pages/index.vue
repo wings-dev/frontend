@@ -123,143 +123,49 @@
                         <span>keşfedin</span>
                     </h4>
                 </div>
-                <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="otel-tab" data-bs-toggle="pill" data-bs-target="#otel"
-                            type="button" role="tab" aria-selected="true">Kaş <span>Otelleri</span></button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="otel-tab2" data-bs-toggle="pill" data-bs-target="#otel2" type="button"
-                            role="tab" aria-selected="false">Fethiye <span>Otelleri</span></button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="otel-tab3" data-bs-toggle="pill" data-bs-target="#otel3" type="button"
-                            role="tab" aria-selected="false">Muğla <span>Otelleri</span></button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="otel-tabContent">
-                    <div class="tab-pane fade show active" id="otel" role="tabpanel" aria-labelledby="otel-tab">
-                        <div class="swiper list-slide-otel">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                                    <nuxt-link to="" class="O_Card">
-                                        <div class="O_Card-in">
-                                            <div class="O_Card-img">
-                                              <nuxt-img src="/img/otel-list.png" alt=""></nuxt-img>
-                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
-                                                    <span>9,5/10</span>
-                                                </div>
-                                            </div>
-                                            <div class="O_Card-content">
-                                                <div class="O_Card-content-head">
-                                                    <b>Pera Palace Hotel</b>
-                                                    <small>Ankara,Türkiye</small>
-                                                </div>
-                                                <div class="O_Card-content-in">
-                                                    <div class="O_Card-content-price d-none">
-                                                        <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
-                                                        <p>Başlayan Fiyatlar</p>
-                                                    </div>
-                                                    <nuxt-link to="/" class="O_Card-content-link">
-                                                        Oteli İncele
-                                                        <i class="icon-right-arrows-new"></i>
-                                                    </nuxt-link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </nuxt-link>
-                                </div>
+              <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
+                <li class="nav-item" role="presentation" v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index">
+                  <button :class="['nav-link', { active: index === 0 }]" :id="`otel-tab${index}`" data-bs-toggle="pill" :data-bs-target="`#otel${index}`"
+                          type="button" role="tab" :aria-selected="index === 0">{{otelCategory.otel_category}}</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="otel-tabContent">
+                <div v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index" :class="['tab-pane', 'fade', { 'show active': index === 0 }]" :id="`otel${index}`" role="tabpanel" :aria-labelledby="`otel-tab${index}`">
+                  <div class="swiper list-slide-otel">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide" v-for="(hotel, hotelIndex) in otelCategory.otel_list" :key="hotelIndex">
+                        <nuxt-link :to="hotel.url" class="O_Card">
+                          <div class="O_Card-in">
+                            <div class="O_Card-img">
+                              <nuxt-img :src="cdn_hotel + hotel.images[0].ImageUrl" alt=""></nuxt-img>
+                              <div class="O_Card-img-text" style="background-color: #5d91c1;">
+                                <span>{{parseFloat(hotel.Rating).toFixed(2)}}/10</span>
+                              </div>
                             </div>
-                            <!-- If pagination is needed -->
-
-                            <!-- If navigation buttons are needed -->
-                            <!-- <div class="swiper-pagination"></div> -->
-                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
-                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
-                        </div>
-                        <nuxt-link to="/otel" class="popular-section-otel-more">Tüm Kaş Otelleri</nuxt-link>
-                    </div>
-                    <div class="tab-pane fade" id="otel2" role="tabpanel" aria-labelledby="otel-tab2">
-                        <div class="swiper list-slide-otel">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                                    <nuxt-link to="" class="O_Card">
-                                        <div class="O_Card-in">
-                                            <div class="O_Card-img">
-                                                <nuxt-img src="/img/otel-list.png" alt=""></nuxt-img>
-                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
-                                                    <span>9,5/10</span>
-                                                </div>
-                                            </div>
-                                            <div class="O_Card-content">
-                                                <div class="O_Card-content-head">
-                                                    <b>Pera Palace Hotel</b>
-                                                    <small>Ankara,Türkiye</small>
-                                                </div>
-                                                <div class="O_Card-content-in">
-                                                    <div class="O_Card-content-price">
-                                                        <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
-                                                        <p>Başlayan Fiyatlar</p>
-                                                    </div>
-                                                    <nuxt-link to="/" class="O_Card-content-link">
-                                                        <i class="icon-right-arrows-new"></i>
-                                                    </nuxt-link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </nuxt-link>
+                            <div class="O_Card-content">
+                              <div class="O_Card-content-head">
+                                <b>{{hotel.Name}}</b>
+                                <small>{{hotel.DestinationName}}</small>
+                              </div>
+                              <div class="O_Card-content-in">
+                                <div class="O_Card-content-price d-none">
+                                  <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
+                                  <p>Başlayan Fiyatlar</p>
                                 </div>
+                                <nuxt-link :to="hotel.url" class="O_Card-content-link">
+                                  Oteli İncele
+                                  <i class="icon-right-arrows-new"></i>
+                                </nuxt-link>
+                              </div>
                             </div>
-                            <!-- If pagination is needed -->
-
-                            <!-- If navigation buttons are needed -->
-                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
-                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
-                        </div>
-                        <nuxt-link to="/otel" class="popular-section-otel-more">Tüm Fethiye Otelleri</nuxt-link>
+                          </div>
+                        </nuxt-link>
+                      </div>
                     </div>
-                    <div class="tab-pane fade" id="otel3" role="tabpanel" aria-labelledby="otel-tab3">
-                        <div class="swiper list-slide-otel">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                                    <nuxt-link to="" class="O_Card">
-                                        <div class="O_Card-in">
-                                            <div class="O_Card-img">
-                                                <nuxt-img src="/img/otel-list.png" alt=""></nuxt-img>
-                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
-                                                    <span>9,5/10</span>
-                                                </div>
-                                            </div>
-                                            <div class="O_Card-content">
-                                                <div class="O_Card-content-head">
-                                                    <b>Pera Palace Hotel</b>
-                                                    <small>Ankara,Türkiye</small>
-                                                </div>
-                                                <div class="O_Card-content-in">
-                                                    <div class="O_Card-content-price">
-                                                        <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
-                                                        <p>Başlayan Fiyatlar</p>
-                                                    </div>
-                                                    <nuxt-link to="/" class="O_Card-content-link">
-                                                        <i class="icon-right-arrows-new"></i>
-                                                    </nuxt-link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </nuxt-link>
-                                </div>
-                            </div>
-                            <!-- If pagination is needed -->
-
-                            <!-- If navigation buttons are needed -->
-                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
-                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
-                        </div>
-                        <nuxt-link to="/otel" class="popular-section-otel-more">Tüm Muğla Otelleri</nuxt-link>
-                    </div>
+                  </div>
+                  <nuxt-link :to="`/otel`" class="popular-section-otel-more">Tüm {{otelCategory.otel_category}} Otelleri</nuxt-link>
                 </div>
-
-
+              </div>
             </div>
         </section>
         <section class="H_info">
@@ -567,6 +473,7 @@
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import findVillaUrlMixin, {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
+import slugify from "slugify";
 
 export default {
     name: 'IndexPage',
@@ -607,12 +514,13 @@ export default {
             ],
             prefix: process.env.PREFIX,
             pageData: {},
-            opportunities: []
+            opportunities: [],
+            cdn_hotel: process.env.HOTEL_CDN_URL + '/'
         }
     },
     async asyncData({ $getRedisKey, $axios, store }) {
         const site_id = process.env.SITE;
-        const redisPageKey = `web:${site_id}:pages:anasayfa`;
+        const redisPageKey = `web:${site_id}:pages:anasayfa2`;
 
         let response = await $getRedisKey([redisPageKey]);
         const pageData = response[redisPageKey] || {};
@@ -658,7 +566,17 @@ export default {
           return villa
         });
 
-        pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas };
+        const otelCategories = pageData.page_content?.select_otel || [];
+        otelCategories.forEach((otelCategory, index) => {
+          otelCategory.otel_list = otelCategory.otel_list.map(hotel => {
+            hotel.url = '/otel/' + slugify(hotel.Name.toLowerCase()) + '-' + hotel.Id;
+            return hotel;
+          });
+        });
+
+        pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas, select_otel: otelCategories };
+
+        console.log(pageData.page_content?.select_otel?.[0]?.otel_list);
 
         return { pageData, opportunities };
     },
