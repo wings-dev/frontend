@@ -1,32 +1,52 @@
-const https = require('https');
-const fs = require('fs');
-const unzipper = require('unzipper');
-const path = require('path');
+const https = require("https");
+const fs = require("fs");
+const unzipper = require("unzipper");
+const path = require("path");
 require("dotenv").config();
 
+const urls = [
+  "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + ".zip",
+  "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + "_301.zip",
+  // "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + "_sitemap.zip",
+];
+const outputDir = "./";
 
-const url = 'https://wings-web.s3.us-east-2.amazonaws.com/nuxt/' + process.env.SITE  + '.zip';
-const outputDir = './';
+function downloadAndUnzip(url) {
+  return new Promise((resolve, reject) => {
+    const fileName = path.basename(url);
 
-// Dosya indirme işlemi
-https.get(url, (response) => {
-  const fileStream = fs.createWriteStream('store.zip');
-  response.pipe(fileStream);
-  fileStream.on('finish', () => {
-    console.log('Dosya indirme işlemi tamamlandı.');
+    https.get(url, (response) => {
+      const fileStream = fs.createWriteStream(fileName);
+      response.pipe(fileStream);
 
-    // Dosya çıkarma işlemi
-    fs.createReadStream('store.zip')
-      .pipe(unzipper.Extract({ path: outputDir }))
-      .on('close', () => {
-        console.log('Dosya çıkarma işlemi tamamlandı.');
+      fileStream.on("finish", () => {
+        console.log(`Dosya indirme işlemi tamamlandı: ${url}`);
 
-        // İndirilen dosya silme işlemi
-        fs.unlinkSync('store.zip');
+        fs.createReadStream(fileName)
+          .pipe(unzipper.Extract({ path: outputDir }))
+          .on("close", () => {
+            console.log(`Dosya çıkarma işlemi tamamlandı: ${url}`);
 
-        console.log('Program sonlandı.');
+            fs.unlinkSync(fileName);
+
+            console.log(`İşlem tamamlandı: ${url}`);
+            resolve();
+          });
       });
+    }).on("error", (err) => {
+      console.error(`Hata: ${err.message}`);
+      reject(err);
+    });
   });
-}).on('error', (err) => {
-  console.error(`Hata: ${err.message}`);
-});
+}
+
+(async () => {
+  for (const url of urls) {
+    try {
+      await downloadAndUnzip(url);
+    } catch (error) {
+      console.error(`İşlem sırasında hata oluştu: ${url}`, error);
+    }
+  }
+  console.log("Tüm işlemler tamamlandı.");
+})();
