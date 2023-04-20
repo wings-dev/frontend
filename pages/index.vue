@@ -124,20 +124,20 @@
                     </h4>
                 </div>
               <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
-                <li class="nav-item" role="presentation" v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index">
+                <li class="nav-item" role="presentation" v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index" v-if="otelCategory">
                   <button :class="['nav-link', { active: index === 0 }]" :id="`otel-tab${index}`" data-bs-toggle="pill" :data-bs-target="`#otel${index}`"
                           type="button" role="tab" :aria-selected="index === 0">{{otelCategory.otel_category}}</button>
                 </li>
               </ul>
               <div class="tab-content" id="otel-tabContent">
-                <div v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index" :class="['tab-pane', 'fade', { 'show active': index === 0 }]" :id="`otel${index}`" role="tabpanel" :aria-labelledby="`otel-tab${index}`">
+                <div v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index" :class="['tab-pane', 'fade', { 'show active': index === 0 }]" :id="`otel${index}`" role="tabpanel" :aria-labelledby="`otel-tab${index}`" v-if="otelCategory">
                   <div class="swiper list-slide-otel">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide" v-for="(hotel, hotelIndex) in otelCategory.otel_list" :key="hotelIndex">
-                        <nuxt-link :to="hotel.url" class="O_Card">
+                      <div class="swiper-slide" v-for="(hotel, hotelIndex) in otelCategory.otel_list" :key="hotelIndex" v-if="hotel">
+                        <nuxt-link :to="hotel.url" class="O_Card" v-if="hotel.url">
                           <div class="O_Card-in">
                             <div class="O_Card-img">
-                              <nuxt-img :src="cdn_hotel + hotel.images[0].ImageUrl" alt=""></nuxt-img>
+                              <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" alt="" v-if="hotel.images && hotel.images[0]?.ImageUrl"></nuxt-img>
                               <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                 <span>{{parseFloat(hotel.Rating).toFixed(2)}}/10</span>
                               </div>
@@ -152,7 +152,7 @@
                                   <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
                                   <p>Başlayan Fiyatlar</p>
                                 </div>
-                                <nuxt-link :to="hotel.url" class="O_Card-content-link">
+                                <nuxt-link :to="hotel.url" class="O_Card-content-link" v-if="hotel.url">
                                   Oteli İncele
                                   <i class="icon-right-arrows-new"></i>
                                 </nuxt-link>
