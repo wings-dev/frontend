@@ -5,14 +5,24 @@ const path = require("path");
 require("dotenv").config();
 
 const urls = [
-  "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + ".zip",
-  "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + "_301.zip",
-  // "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + "_sitemap.zip",
+  {
+    url: "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + ".zip",
+    outputDir: "./",
+  },
+  {
+    url: "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + "_301.zip",
+    outputDir: "./",
+  },
+  {
+    url: "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + "_sitemap.zip",
+    outputDir: "./static",
+  },
 ];
-const outputDir = "./";
 
-function downloadAndUnzip(url) {
+function downloadAndUnzip(urlObj) {
   return new Promise((resolve, reject) => {
+    const url = urlObj.url;
+    const outputDir = urlObj.outputDir;
     const fileName = path.basename(url);
 
     https.get(url, (response) => {
@@ -41,11 +51,11 @@ function downloadAndUnzip(url) {
 }
 
 (async () => {
-  for (const url of urls) {
+  for (const urlObj of urls) {
     try {
-      await downloadAndUnzip(url);
+      await downloadAndUnzip(urlObj);
     } catch (error) {
-      console.error(`İşlem sırasında hata oluştu: ${url}`, error);
+      console.error(`İşlem sırasında hata oluştu: ${urlObj.url}`, error);
     }
   }
   console.log("Tüm işlemler tamamlandı.");

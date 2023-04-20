@@ -92,3 +92,6 @@ sw.*
 __MACOSX
 store/routes/state.js
 store/settings/state.js
+middleware/301_sites/*.js
+static/sitemap*.xml
+static/__MACOSX
