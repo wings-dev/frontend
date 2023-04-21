@@ -1,7 +1,7 @@
 <template>
   <div>
     <main class="main">
-      <section class="view-detail-section otel mb-5">
+      <section class="view-detail-section otel">
         <div class="view-detail-section-menus view-detail-section-menus-otel">
           <div class="detail-top " id="detailTop">
             <div class="container">
@@ -89,7 +89,7 @@
             </div>
           </div>
         </div>
-        <div class="container pb-1 pt-5">
+        <div class="container pb-1 pt-5 gallery-container">
           <div class="view-gallery">
             <div class="area-1" v-if="previewImages.length > 0">
               <a :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon"
@@ -151,9 +151,7 @@
 
           </div>
         </div>
-        <div class="container search-otel">
-          <search-hotel-detail-component :key="$route.path" @search="search($event)"></search-hotel-detail-component>
-        </div>
+
       </section>
 
       <section class="Otel-desc ">
@@ -168,9 +166,11 @@
             </div>
             <div class="Otel-desc-features">
               <h4>Tesis <span>Özellikleri</span></h4>
-              <p class="Otel-desc-features-item" v-for="(item, index) in hotelDetails.body.hotel?.seasons?.[0]?.facilityCategories?.[0]?.facilities"
+              <p class="Otel-desc-features-item"
+                v-for="(item, index) in hotelDetails.body.hotel?.seasons?.[0]?.facilityCategories?.[0]?.facilities"
                 v-if="index <= 4"><i class="icon-check-big"></i>{{ item.name }}</p>
-              <b-button @click="mobileAmenitesToggle" class="Otel-desc-features-more">Tüm özellikleri gör</b-button>
+              <b-button v-b-modal.amenitesModal class="Otel-desc-features-more"><u><small>Tüm özellikleri
+                    gör</small></u></b-button>
             </div>
             <div class="Otel-desc-map" style="background-image: url(/img/map-bg.png);">
               <a :href="`https://www.google.com/maps/@${hotelDetails.body.hotel.geolocation.latitude},${hotelDetails.body.hotel.geolocation.longitude},16z`"
@@ -183,30 +183,10 @@
         </div>
       </section>
 
-      <div class="V iew-mobile-modal" :class="{ 'show': mobileAmenites }">
-        <button type="button" class="mobile-menus-back" @click="mobileAmenitesToggle"><i
-          class="icon-left-arrow"></i></button>
-        <div class="Amenites">
-          <div class="Amenites-head">
-            <div class="Amenites-head-in">
-              <h3 class="Amenites-title">Tüm <b>özellikler</b></h3>
-            </div>
-          </div>
-          <div class="Amenites-in">
-            <div class="Amenites-item" v-for="(category, index) in hotelDetails.body.hotel?.seasons?.[0]?.facilityCategories">
-              <span class="Amenites-item-title">{{ category.name }}</span>
-              <div class="Amenites-item-in">
-                <template v-if="category.facilities && category.facilities.length">
-                  <template v-for="facility in category.facilities">
-                    <p>{{ facility.name }}</p>
-                  </template>
-                </template>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
+      <div class="container search-otel mb-4">
+        <search-hotel-detail-component :key="$route.path" @search="search($event)"></search-hotel-detail-component>
+      </div>
       <section class="rooms-section pt-3 mt-1">
         <div class="container">
 
@@ -316,7 +296,8 @@
 
             <div class="View-reviews comments view-menu-content-item" id="reviews-content">
               <div class="View-reviews-head">
-                <div class="general-informations-section-title mb-0"><span>{{ hotelDetails.body.hotel.name }}</span> Değerlendirmesi</div>
+                <div class="general-informations-section-title mb-0"><span>{{ hotelDetails.body.hotel.name }}</span>
+                  Değerlendirmesi</div>
                 <div class="Otel-card-review mt-2">
                   <span>{{ hotelDetails.body.hotel.stars }}/5</span>
                   <p>Mükemmel <u>0 yorum</u></p>
@@ -417,7 +398,9 @@
 
           <div class="Amenites-slider" style="position:relative">
             <b-carousel id="carousel-1" v-model="slide" controls img-width="1024" img-height="500">
-              <b-carousel-slide :img-src="photo" v-for="(photo, index) in previewImages.map(image => image.responsive_url)" :key="index"></b-carousel-slide>
+              <b-carousel-slide :img-src="photo"
+                v-for="(photo, index) in previewImages.map(image => image.responsive_url)"
+                :key="index"></b-carousel-slide>
             </b-carousel>
             <div class="slide-numbers">
               {{ slide + 1 }}/{{ previewImages.map(image => image.responsive_url).length }}
@@ -426,21 +409,24 @@
 
           <div class="Amenites-head">
             <h3 class="Amenites-title">{{ hotelDetails.body.hotel.name }}</h3>
-<!--            <h4 class="Amenites-title-sub">Standart İki Yataklı Oda / Penceresiz , 1 . Kat Twin NTT1 - 27 m2</h4>-->
+            <h4 class="Amenites-title-sub">Tüm <b>özellikler</b></h4>
           </div>
 
           <div class="Amenites-in">
-            <div class="Amenites-item">
+            <div class="Amenites-item"
+              v-for="(category, index) in hotelDetails.body.hotel?.seasons?.[0]?.facilityCategories">
+              <span class="Amenites-item-title">{{ category.name }}</span>
               <div class="Amenites-item-in">
-                <p>Jakuzi</p>
-                <p>Jakuzi</p>
-                <p>Bilardo Masası</p>
-                <p>Barbekü / Mangal Alanı</p>
-                <p>Barbekü / Mangal Alanı</p>
+                <template v-if="category.facilities && category.facilities.length">
+                  <template v-for="facility in category.facilities">
+                    <p>{{ facility.name }}</p>
+                  </template>
+                </template>
               </div>
             </div>
-
           </div>
+
+
         </div>
       </b-modal>
 
@@ -618,175 +604,4 @@ export default {
   },
 }
 </script>
-<style lang="scss">
-.carousel {
-  position: relative;
-}
-
-.carousel.pointer-event {
-  touch-action: pan-y;
-}
-
-.carousel-inner {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.carousel-item {
-  position: relative;
-  display: none;
-  float: left;
-  width: 100%;
-  margin-right: -100%;
-  backface-visibility: hidden;
-}
-
-.carousel-item.active,
-.carousel-item-next,
-.carousel-item-prev {
-  display: block;
-}
-
-.carousel-item-next:not(.carousel-item-start),
-.active.carousel-item-end {
-  transform: translateX(100%);
-}
-
-.carousel-item-prev:not(.carousel-item-end),
-.active.carousel-item-start {
-  transform: translateX(-100%);
-}
-
-
-.carousel-fade {
-  .carousel-item {
-    opacity: 0;
-    transition-property: opacity;
-    transform: none;
-  }
-
-  .carousel-item.active,
-  .carousel-item-next.carousel-item-start,
-  .carousel-item-prev.carousel-item-end {
-    z-index: 1;
-    opacity: 1;
-  }
-
-  .active.carousel-item-start,
-  .active.carousel-item-end {
-    z-index: 0;
-    opacity: 0;
-  }
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-  // Use flex for alignment (1-3)
-  display: flex; // 1. allow flex styles
-  align-items: center; // 2. vertically center contents
-  justify-content: center; // 3. horizontally center contents
-  border: none;
-  padding: 0;
-  color: #fff;
-  text-align: center;
-  background: none;
-  border: 0;
-  opacity: 1;
-  width: 41px;
-  height: 41px;
-  background: #fff;
-  border-radius: 50%;
-
-  .sr-only {
-    display: none;
-  }
-
-  // Hover/focus state
-  &:hover,
-  &:focus {
-    color: #fff;
-    text-decoration: none;
-    outline: 0;
-    opacity: 1;
-  }
-}
-
-.carousel-control-prev {
-  left: 30px;
-}
-
-.carousel-control-next {
-  right: 30px;
-}
-
-.carousel-control-prev-icon {
-  width: 15px;
-  height: 15px;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
-}
-
-.carousel-control-next-icon {
-  width: 15px;
-  height: 15px;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-}
-
-// Optional indicator pips/controls
-//
-// Add a container (such as a list) with the following class and add an item (ideally a focusable control,
-// like a button) with data-bs-target for each slide your carousel holds.
-
-.carousel-indicators {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  // Use the .carousel-control's width as margin so we don't overlay those
-  margin-right: 0;
-  margin-bottom: 1rem;
-  margin-left: 0;
-  list-style: none;
-
-  [data-bs-target] {
-    box-sizing: content-box;
-    flex: 0 1 auto;
-    padding: 0;
-    margin-right: 0;
-    margin-left: 0;
-    text-indent: -999px;
-    cursor: pointer;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 0;
-    // Use transparent borders to increase the hit area by 10px on top and bottom.
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    opacity: 1;
-
-  }
-
-  .active {
-    opacity: 1;
-  }
-}
-
-.slide-numbers {
-  background-color: var(--bs-theme-third) !important;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  font-weight: 500;
-  font-size: 30px;
-  color: #F5F5F5;
-  padding: 10px 35px;
-}
-</style>
+<style lang="scss"></style>

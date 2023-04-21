@@ -2,7 +2,7 @@
   <div>
     <section class="view-detail-section">
       <div class="view-detail-section-menus">
-        <div class="detail-top bg-theme-first-dark" id="detailTop">
+        <div class="detail-top" id="detailTop">
           <div class="container">
             <div class="view-top d-flex">
 
@@ -204,13 +204,9 @@
               <div class="View-desc-amenites">
                 <h4 class="View-title"><b>Tesis</b> Olanakları</h4>
                 <div class="View-desc-amenites-in">
-                  <p>Jakuzi</p>
-                  <p>Jakuzi</p>
-                  <p>Bilardo Masası</p>
-                  <p>Barbekü / Mangal Alanı</p>
-                  <p>Barbekü / Mangal Alanı</p>
+                  <p v-for="(item,index) in amenites" :key="index" v-if="index <=5">{{item}}</p>
                 </div>
-                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar (14)</b-button>
+                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar ({{ amenites.length }})</b-button>
 
               </div>
             </div>
@@ -218,14 +214,14 @@
               <div class="View-desc-mobile-top">
                 <div class="View-desc-mobile-top-location">
                   <i class="icon-pin"></i>
-                  <p>FETHİYE<span>Turkey / Muğla</span></p>
+                  <p>{{ villa.location.city.name | titlecase }}<span>{{ villa.location.country.name | titlecase }} / {{ villa.location.state.name | titlecase }}</span></p>
                 </div>
                 <div class="View-desc-mobile-top-price" v-if="lowestPrice">
                   <span>GECELİK</span>
                   <p>{{ lowestPrice | numberFormat }} <span>₺</span></p>
                   <small>'den başlayan fiyatlar'</small>
                 </div>
-                
+
               </div>
               <div class="View-desc-mobile-bottom">
                 <div class="View-desc-mobile-bottom-head">
@@ -254,10 +250,9 @@
                 </div>
               </div>
               <div class="View-desc-mobile-amenites">
-                <nuxt-link to="/">Havuzu görünmeyen(Muhafazakar)</nuxt-link>
-                <nuxt-link to="/">Kalabalık ailelere uygun</nuxt-link>
-                <button type="button" @click="mobileAmenitesToggle">Tüm Olanarakları <i
-                    class="icon-right-arrow"></i></button>
+                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(175)">Deniz Manzaralı</a>
+                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(175)">Muhafazakar Villa</a>
+                <button type="button" @click="mobileAmenitesToggle">Tüm Olanarakları <i class="icon-right-arrow"></i></button>
               </div>
             </div>
             <div class="View-months" v-if="monthlyPrices.length > 0">
@@ -328,7 +323,7 @@
                     <p><i class="icon-bed-new"></i><b>{{ villa.bedroom }}</b> Yatak Odası</p>
                   </div>
                 </div>
-                <div class="View-beds-item single">
+                <div class="View-beds-item single" :class="{ 'passive': singleBed == 0 }">
 
                   <p class="View-beds-item-name"><b>Tek Kişilik</b> Yatak</p>
                   <div class="View-beds-item-in">
@@ -336,19 +331,25 @@
                       <p>{{ singleBed }}</p>
                       <span>adet</span>
                     </div>
-                    <span class="x-span">x</span>
-                    <i class="icon-single-bed"></i>
+                    <div class="View-beds-item-no">
+                      <p>Bu Tesiste Bulunmuyor</p>
+                    </div>
+                    <span class="x-span" v-if="singleBed > 0">x</span>
+                    <i class="icon-single-bed" :class="{ 'passive': singleBed == 0 }"></i>
                   </div>
                 </div>
-                <div class="View-beds-item double">
+                <div class="View-beds-item double" :class="{ 'passive': doubleBed == 0 }">
                   <p class="View-beds-item-name"><b>Çift Kişilik</b> Yatak</p>
                   <div class="View-beds-item-in">
                     <div class="View-beds-item-total">
                       <p>{{ doubleBed }}</p>
                       <span>adet</span>
                     </div>
-                    <span class="x-span">x</span>
-                    <i class="icon-bed-new"></i>
+                    <div class="View-beds-item-no">
+                      <p>Bu Tesiste Bulunmuyor</p>
+                    </div>
+                    <span class="x-span" v-if="doubleBed > 0">x</span>
+                    <i class="icon-bed-new" :class="{ 'passive': doubleBed == 0 }"></i>
                   </div>
                 </div>
                 <div class="View-beds-item capacity">
@@ -919,18 +920,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="View-info-fee">
-                  <div class="View-info-fee-left">
+                <div class="View-info-fee" >
+                  <div class="View-info-fee-left" v-if="villa.amenites.amenite_302.list">
                     <h5>Ücrete Dahil olanlar</h5>
-                    <div class="View-info-fee-item">
-                      <p>Elektrik , Su ve Tüpgaz Kullanımı</p>
+                    <div class="View-info-fee-item" v-for="(item,index) in villa.amenites.amenite_302.list" :key="index">
+                      <p>{{ item }}</p>
                     </div>
-                    <div class="View-info-fee-item">
-                      <p>Wifi</p>
-                    </div>
-                    <div class="View-info-fee-item">
-                      <p>Günlük Havuz ve Bahçe Bakımı</p>
-                    </div>
+                    
                   </div>
                   <div class="View-info-fee-right">
                     <h5>Hasar Depozitosu</h5>
@@ -1017,29 +1013,19 @@
                     <h3 class="Amenites-title">Tesis <b>olanakları</b></h3>
                     <div class="Amenites-head-link">
                       <p>Tesis kategorisi</p>
-                      <nuxt-link to="/">Doğa manzaralı</nuxt-link>
-                      <nuxt-link to="/">Muhafazar villa</nuxt-link>
+                      <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(175)">Deniz Manzaralı</a>
+                      <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(175)">Muhafazakar Villa</a>
                     </div>
                   </div>
                 </div>
                 <div class="Amenites-in">
                   <div class="Amenites-item">
-                    <span class="Amenites-item-title">Bahçe Alanı</span>
+                    <!-- <span class="Amenites-item-title">Bahçe Alanı</span> -->
                     <div class="Amenites-item-in">
-                      <p>Jakuzi</p>
-                      <p>Jakuzi</p>
-                      <p>Bilardo Masası</p>
-                      <p>Barbekü / Mangal Alanı</p>
-                      <p>Bilardo Masası</p>
-                      <p>Barbekü / Mangal Alanı</p>
-                      <p>Bilardo Masası</p>
-                      <p>Barbekü / Mangal Alanı</p>
-                      <p>Bilardo Masası</p>
-                      <p>Barbekü / Mangal Alanı</p>
-                      <p>Barbekü / Mangal Alanı</p>
+                      <p v-for="(item,index) in amenites" :key="index">{{item}}</p>
                     </div>
                   </div>
-                  <div class="Amenites-item">
+                  <!-- <div class="Amenites-item">
                     <span class="Amenites-item-title">Bahçe Alanı</span>
                     <div class="Amenites-item-in">
                       <p>Jakuzi</p>
@@ -1118,7 +1104,7 @@
                       <p>Barbekü / Mangal Alanı</p>
                       <p>Barbekü / Mangal Alanı</p>
                     </div>
-                  </div>
+                  </div> -->
 
                 </div>
               </div>
@@ -1393,7 +1379,7 @@
       </div>
     </section>
 
-    <amenites-modal sectionTitle="Haftanın Villaları"></amenites-modal>
+    <amenites-modal sectionTitle="Haftanın Villaları" :amenitelist="amenites" :categorielist="categories"></amenites-modal>
     <location-map-modal :villalocationcity="villa.location.city.name" :villalocationdistrict="villa.location.state.name"
       :villacode="villa.code" :villaprefix="villa_prefix"></location-map-modal>
 
@@ -1468,6 +1454,7 @@ export default {
         transport: []
       },
       categories: [],
+      amenites: [],
     }
   },
   methods: {
@@ -1799,10 +1786,12 @@ export default {
     this.setAttributes();
   },
   async mounted() {
-    console.log(JSON.stringify(this.villa.amenites));
 
     this.categories = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_2')
-    console.log(this.categories);
+    this.amenites = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_600')
+    this.amenites = this.amenites.amenite_600.list
+
+    console.log(this.categories, this.amenites);
 
     const places = {
       beaches: [],
@@ -2055,4 +2044,5 @@ export default {
   .modal-xl {
     max-width: 1140px;
   }
-}</style>
+}
+</style>

@@ -109,7 +109,8 @@ export default {
 
         }
     },
-
+    created() {
+    },
     async mounted() {
         Swiper.use([Navigation, Pagination])
 

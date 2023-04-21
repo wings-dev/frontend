@@ -15,7 +15,7 @@
       h1 {
         font-size: 29.2px;
         font-weight: bold;
-        color: #f2f5fb;
+        color: var(--bs-detail-menu-text);
         margin-bottom: 0;
       }
     }
@@ -31,7 +31,7 @@
         flex-direction: column;
         font-size: 18.2px;
         font-weight: bold;
-        color: #f2f5fb;
+        color: var(--bs-detail-menu-text);
         margin-bottom: 0;
         span {
           font-size: 11px;
@@ -62,7 +62,7 @@
           line-height: 1;
           font-size: 29.7px;
           font-weight: bold;
-          color: #fff;
+          color: var(--bs-detail-menu-text);
           margin-bottom: 0;
           span {
             font-size: 17.1px;
@@ -74,13 +74,13 @@
           font-weight: 500;
           line-height: normal;
           letter-spacing: 6.06px;
-          color: #f2f5fb;
+          color: var(--bs-detail-menu-text);
         }
         small {
           font-size: 6.7px;
           font-weight: 500;
           letter-spacing: 0.84px;
-          color: #fff;
+          color: var(--bs-detail-menu-text);
         }
         @media (max-width: 991px) {
           display: none;
@@ -103,13 +103,13 @@
         i {
           font-size: 22px;
           margin-right: 15px;
-          color: #f2f5fb;
+          color: var(--bs-detail-menu-text);
         }
         span {
           font-size: 14.2px;
           font-weight: 600;
           letter-spacing: -0.57px;
-          color: #f2f5fb;
+          color: var(--bs-detail-menu-text);
         }
         &:last-of-type {
           margin-right: 0;
@@ -227,7 +227,7 @@
       }
       @media (max-width: 768px) {
         img {
-          max-height: 226px;
+          max-height: unset;
         }
       }
       &:hover {
@@ -263,6 +263,7 @@
   }
   &.otel {
     padding-bottom: 30px;
+    margin-bottom: 40px;
     &:before {
       height: 100%;
     }
@@ -277,9 +278,16 @@
           flex-direction: column;
         }
         h1 {
-          font-size: 24px;
-          font-weight: 600;
+          font-size: 17px;
+          font-weight: 500;
           color: var(--bs-theme-first);
+        }
+        i{
+          font-size: 14px;
+          margin-right: 6px;
+        }
+        span{
+          font-size: 11px;
         }
       }
       .Otel-card-review {
@@ -347,6 +355,7 @@
         }
       }
     }
+
   }
 }
 .View {
@@ -1874,6 +1883,9 @@
     display: none;
   }
 }
+.detail-top{
+  background-color: var(--bs-theme-first-dark);
+}
 
 @media (max-width: 768px) {
   .View {
@@ -2892,16 +2904,15 @@
     padding-bottom: 40px;
     .Amenites {
       &-head {
-        padding-top: 40px;
+        padding-top: 30px;
         padding-left: 40px;
-        margin-bottom: 60px;
+        margin-bottom: 20px;
         flex-direction: column;
-        margin-bottom: 60px;
         align-items: flex-start;
         border-bottom: none;
       }
       &-title {
-        font-size: 36px;
+        font-size: 32px;
         font-weight: bold;
         line-height: 1.01;
         letter-spacing: -2.29px;
@@ -2912,7 +2923,7 @@
           font-size: 22px;
           font-weight: normal;
           line-height: 1.21;
-          letter-spacing: -1.61px;
+          // letter-spacing: -1.61px;
           color: var(--bs-theme-first);
         }
       }
@@ -2924,30 +2935,7 @@
         max-height: 220px;
         overflow-y: scroll;
       }
-      &-item {
-        width: 33.3%;
-        &-in {
-          p {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1.55;
-            color: #7f8090;
-
-            &:before {
-              content: "";
-              display: inline-block;
-              width: 13px;
-              height: 9px;
-              background-image: url(../img/text-tick.svg);
-              background-size: cover;
-              margin-right: 12px;
-            }
-          }
-        }
-      }
+   
     }
     .btn-close {
       background-color: var(--bs-theme-first);
@@ -2972,6 +2960,29 @@
       }
     }
   }
+
+  @media (max-width:768px) {
+    &.otel{
+      .Amenites-title{
+        font-size: 20px;
+        letter-spacing: 0;
+      }
+      .Amenites-title-sub{
+        font-size: 16px;
+      }
+    }
+    &-in{
+      max-height: 100%!important;
+      padding-bottom: 40px;
+    }
+
+    &-item{
+      p{
+        width: 50%;
+      }
+    }
+  }
+
 }
 
 .Reservation {
@@ -3951,6 +3962,23 @@
         .view-item {
           border-radius: 0 !important;
         }
+      }
+    }
+    &.otel{
+      margin-bottom: 0;
+      .view-detail-section-menus {
+        display: block;
+        .view-top-title{
+          width: 100%;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .view-top-right{
+          display: none;
+        }
+      }
+      &:before{
+        display: none;
       }
     }
   }
