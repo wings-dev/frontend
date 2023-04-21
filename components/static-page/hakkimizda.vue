@@ -131,8 +131,8 @@
                     <div class="Basin-content">
                         <div class="Basin-content-item" v-for="(item,index) in data.page_content.corporate_brands.corporate_brands_info" :key="index">
                             <a target="_blank" :href="item.corporate_brand_link">
-                                <img :src="item.corporate_brand_logo"
-                                    alt="Diğer Markalarımız - Balayı Villası">
+                                <nuxt-img :src="item.corporate_brand_logo"
+                                    alt="Diğer Markalarımız - Balayı Villası"></nuxt-img>
                             </a>
                         </div>
 
@@ -147,14 +147,14 @@
                     <div class="Ofis-content">
                         <div class="Ofis-content-item">
                             <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis">
-                                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                                    alt="Villa Kalkan - Kalkan Ofis">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                                    alt="Villa Kalkan - Kalkan Ofis"></nuxt-img>
                             </a>
                         </div>
                         <div class="Ofis-content-item">
                             <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis">
-                                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                                    alt="Balayı Villası - Kalkan Ofis">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                                    alt="Balayı Villası - Kalkan Ofis"></nuxt-img>
                                 <span class="Ofis-content-item-more"><i class="icon-gallery"></i>+6 Fotoğraf Daha</span>
                             </a>
                             <div class="Ofis-content-item-list">
@@ -174,8 +174,8 @@
                         </div>
                         <div class="Ofis-content-item Ofis-content-item-video">
                             <a href="https://www.youtube.com/embed/abWhzr3Y2Ow" data-fancybox="">
-                                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                                    alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                                    alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu"></nuxt-img>
                                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
                             </a>
                         </div>
@@ -207,13 +207,13 @@
                         <div class="Ofis-content-item">
                             <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg"
                                 data-fancybox="group-ofis-fethiye">
-                                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="">
                             </a>
                         </div>
                         <div class="Ofis-content-item">
                             <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg"
                                 data-fancybox="group-ofis-fethiye">
-                                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="">
                                 <span class="Ofis-content-item-more"><i class="icon-gallery"></i>+7 Fotoğraf Daha</span>
                             </a>
                             <div class="Ofis-content-item-list">
@@ -235,7 +235,7 @@
                         </div>
                         <div class="Ofis-content-item Ofis-content-item-video">
                             <a href="https://www.youtube.com/watch?v=abWhzr3Y2Ow" data-fancybox="">
-                                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
                                     alt="Balayı Villası - Fethiye Ofis Tanıtım Videosu">
                                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
                             </a>

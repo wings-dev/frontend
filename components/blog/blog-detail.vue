@@ -16,7 +16,7 @@
         <section class="Blog-detail-img">
             <div class="container">
                 <div class="Blog-detail-img-in">
-                    <img :src="data.page_content.default.page_banner" alt="">
+                    <nuxt-img :src="data.page_content.default.page_banner" alt=""></nuxt-img>
                 </div>
             </div>
         </section>
@@ -30,7 +30,7 @@
                         <div class="Blog-detail">
                             <div class="Blog-detail-info">
                                 <div class="Blog-detail-info-user">
-                                    <img src="/img/user.jpg" alt="">
+                                    <nuxt-img src="/img/user.jpg" alt=""></nuxt-img>
                                     <p>Yazar: <span>{{ data.page_content.blog_author }}</span>// <span>{{
                                         data.page_content.blog_publish_date }}</span></p>
                                 </div>
@@ -64,7 +64,7 @@
                                     <nuxt-link :to="'/blog/' + item.page_content.blog_category[0] + '/' + item.url"
                                         class="Blog-item" :key="item.id" v-if="item !== null">
                                         <div class="Blog-item-img">
-                                            <img :src="item.page_content.default.page_list_img" alt="">
+                                            <nuxt-img :src="item.page_content.default.page_list_img" alt=""></nuxt-img>
                                             <div class="Blog-item-img-text">
                                                 <h6>{{ item.name }}</h6>
                                             </div>

@@ -2,7 +2,7 @@
   <nuxt-link :to="{path: detailUrl ,query: detailUrlData}" target="_blank" class="Otel-card">
     <div class="Otel-card-left">
       <div class="Otel-card-img">
-        <img :src="previewImageUrl" width="361" height="255" alt="hotel image" class="" />
+        <nuxt-img :src="previewImageUrl" width="361" height="255" alt="hotel image" class="" ></nuxt-img>
         <button class="Card-fav" type="button" @click="toggleFavorite">
           <i class="icon-heart"></i>
         </button>

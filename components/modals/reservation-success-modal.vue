@@ -10,7 +10,7 @@
         <div class="Login-left">
           <div class="Login-card">
             <div class="Login-card-img">
-              <img :src="reservationModalData.villa?.watermark_images?.[0]?.preview_url" alt="">
+              <nuxt-img :src="reservationModalData.villa?.watermark_images?.[0]?.preview_url" alt=""></nuxt-img>
               <div class="Login-card-img-text">
                 <div class="Login-card-img-text-head">
                   <span>Villa kodu</span>

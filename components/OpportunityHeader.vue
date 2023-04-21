@@ -102,7 +102,6 @@ export default {
     this.groupedOpportunities = groupData(this.opportunities);
     this.total = getTotalNightCount(this.groupedOpportunities);
 
-    console.log(this.groupedOpportunities);
   },
   methods: {
     selectOpportunity(index, night) {
@@ -113,7 +112,6 @@ export default {
 
       const objectAtIndex = getObjectKey(this.groupedOpportunities, index);
       const month = this.opportunities.find(o => o.month_name === objectAtIndex).month
-      console.log(month, night)
       this.$emit('selected', {month, day: parseInt(night)})
     }
   }

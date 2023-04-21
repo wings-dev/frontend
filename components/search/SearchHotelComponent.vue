@@ -69,8 +69,8 @@
         @change="adult = $event.adult; childAges = $event.childAges"></select-hotel-person-count>
     </div>
     <button type="button" class="Search-button" id="searchVilla" @click="search">
-      <img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
-        class="contain flex-shrink-0 my-1 desktop"><span class="mobile">Otel Ara</span>
+      <nuxt-img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
+        class="contain flex-shrink-0 my-1 desktop"></nuxt-img><span class="mobile">Otel Ara</span>
     </button>
     <div class="Search-mobile" :class="{ 'show': mobileCalendar }">
       <div class="Search-mobile-head">

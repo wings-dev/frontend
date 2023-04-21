@@ -48,7 +48,7 @@
                         :aria-labelledby="'pills-office-tab' + index"
                         v-for="(item, index) in pageData.page_content.contact_list" :key="index">
                         <div class="Contact-offices-tab-img">
-                            <img src="/img/office.jpg" alt="">
+                            <nuxt-img src="/img/office.jpg" alt=""/>
                         </div>
                         <div class="Contact-offices-tab-in">
 
@@ -79,72 +79,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <div class="Contact-offices-tab-img">
-                            <img src="/img/office.jpg" alt="">
-                        </div>
-                        <div class="Contact-offices-tab-in">
-
-                            <div class="Contact-offices-tab-text">
-                                <div class="Contact-offices-tab-text-item">
-                                    <h6>ADRES</h6>
-                                    <p>Kalkan Mah. Cumhuriyet Cd. No:48/2
-                                        <a href="">info@villakalkan.com.tr</a>
-                                    </p>
-                                </div>
-                                <div class="Contact-offices-tab-text-item">
-                                    <h6>TELEFON</h6>
-                                    <a class="phone" href="">+90 242 252 00 32</a>
-                                </div>
-                            </div>
-                            <div class="Contact-offices-tab-text">
-                                <div class="Contact-offices-tab-text-item">
-                                    <h6>ÇALIŞMA SAATLERİMİZ</h6>
-                                    <p class="hours"><span>Hafta içi:</span>09:00 - 23:00</p>
-                                    <p class="hours"><span>Hafta sonu:</span>09:00 - 23:00</p>
-                                </div>
-                                <div class="Contact-offices-tab-text-item">
-                                    <h6>SOSYAL MEDYA’DA</h6>
-                                    <a href="" class="social"><i class="icon-facebook"></i></a>
-                                    <a href="" class="social"><i class="icon-instagram"></i></a>
-                                    <a href="" class="social"><i class="icon-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        <div class="Contact-offices-tab-img">
-                            <img src="/img/office.jpg" alt="">
-                        </div>
-                        <div class="Contact-offices-tab-in">
-
-                            <div class="Contact-offices-tab-text">
-                                <div class="Contact-offices-tab-text-item">
-                                    <h6>ADRES</h6>
-                                    <p>Kalkan Mah. Cumhuriyet Cd. No:48/2
-                                        <a href="">info@villakalkan.com.tr</a>
-                                    </p>
-                                </div>
-                                <div class="Contact-offices-tab-text-item">
-                                    <h6>TELEFON</h6>
-                                    <a class="phone" href="">+90 242 252 00 32</a>
-                                </div>
-                            </div>
-                            <div class="Contact-offices-tab-text">
-                                <div class="Contact-offices-tab-text-item">
-                                    <h6>ÇALIŞMA SAATLERİMİZ</h6>
-                                    <p class="hours"><span>Hafta içi:</span>09:00 - 23:00</p>
-                                    <p class="hours"><span>Hafta sonu:</span>09:00 - 23:00</p>
-                                </div>
-                                <div class="Contact-offices-tab-text-item">
-                                    <h6>SOSYAL MEDYA’DA</h6>
-                                    <a href="" class="social"><i class="icon-facebook"></i></a>
-                                    <a href="" class="social"><i class="icon-instagram"></i></a>
-                                    <a href="" class="social"><i class="icon-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>

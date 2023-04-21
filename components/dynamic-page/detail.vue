@@ -420,9 +420,9 @@
                           <div class="room-item">
                             <div class="img-box w-100">
 
-                              <img :src="img.preview_url" width="312" height="213" alt="room image"
+                              <nuxt-img :src="img.preview_url" width="312" height="213" alt="room image"
                                 class="lazy cover rounded-xl w-100" v-for="(img, index2) in bolum.gorsel" :key="index2"
-                                v-if="index <= 0">
+                                v-if="index <= 0"></nuxt-img>
                             </div>
                             <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                               <span class="room-item-title">{{ bolum.name }}</span>
@@ -455,10 +455,10 @@
 
               <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
                 <div class="pool-item-left">
-                  <img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
-                    class="lazy contain" v-if="poolitem.pool == 52">
-                  <img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon"
-                    class="lazy contain" v-if="poolitem.pool == 58">
+                  <nuxt-img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
+                    class="lazy contain" v-if="poolitem.pool == 52"></nuxt-img>
+                  <nuxt-img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon"
+                    class="lazy contain" v-if="poolitem.pool == 58"></nuxt-img>
                   <!-- <img :src="'/img/site' + site_id + '/pool3.svg'" width="28" height="28" alt="pool icon" -->
                   <span class="">{{ poolitem.name }}</span>
                 </div>
@@ -467,7 +467,6 @@
                   <p><span>Boy</span>{{ poolitem['havuz-boy'] }}m</p>
                   <p><span>Derinlik</span>{{ poolitem['havuz-derinlik'] }}m</p>
                 </div>
-
               </div>
 
             </div>
@@ -514,9 +513,9 @@
                       <div class="first-tab-item" v-for="(item, index) in places.beaches"
                         v-if="places.beaches.length <= 4" :key="index">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
-                          <img :src="item.images[0].preview_url" alt="" width="157" height="95"
-                            v-if="item.images.length > 0">
-                          <img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else>
+                          <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
+                            v-if="item.images.length > 0"></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -539,9 +538,9 @@
                       <div class="first-tab-item" v-for="(item, index) in places.locations"
                         v-if="places.locations.length <= 4" :key="index">
                         <div class="first-tab-item-img">
-                          <img :src="item.images[0].preview_url" alt="" width="157" height="95"
-                            v-if="item.images && item.images.length > 0">
-                          <img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else>
+                          <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
+                            v-if="item.images && item.images.length > 0"></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -733,10 +732,10 @@
                     </div>
                     <div class="View-reviews-item-bottom-right">
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <img src="/img/reviews.png" alt="">
+                        <nuxt-img src="/img/reviews.png" alt=""></nuxt-img>
                       </a>
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <img src="/img/reviews.png" alt="">
+                        <nuxt-img src="/img/reviews.png" alt=""></nuxt-img>
                       </a>
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item more"
                         data-fancybox="reviews">Daha fazla görüntüle (12)</a>
@@ -762,7 +761,7 @@
                     </div>
                     <div class="View-reviews-item-mobile-right">
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <img src="/img/reviews.png" alt="">
+                        <nuxt-img src="/img/reviews.png" alt=""></nuxt-img>
                         <span>+6</span>
                       </a>
                       <div class="d-none">
@@ -1254,9 +1253,9 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.beaches">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
-                          <img :src="item.images[0].preview_url" alt="" width="157" height="95"
-                            v-if="item.images.length > 0">
-                          <img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else>
+                          <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
+                            v-if="item.images.length > 0"></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -1298,9 +1297,9 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.locations">
                         <div class="first-tab-item-img">
-                          <img :src="item.images[0].preview_url" alt="" width="157" height="95"
-                            v-if="item.images && item.images.length > 0">
-                          <img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else>
+                          <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
+                            v-if="item.images && item.images.length > 0"></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -1350,7 +1349,7 @@
               <template v-for="(floor, index) in villa.floorplan.kat">
                 <button type="button" class="Gallery-list-item" :id="'Gallery_item' + index"
                   @click="scrollGallery($event)" v-for="(bolum, index) in floor.bolum" :key="index">
-                  <img :src="bolum.gorsel[0].preview_url" class="w-100" alt="test" />
+                  <nuxt-img :src="bolum.gorsel[0].preview_url" class="w-100" alt="test" ></nuxt-img>
                   <p>{{ bolum.name }} <br> <span>({{ floor.name }})</span></p>
                 </button>
               </template>
@@ -1791,8 +1790,6 @@ export default {
     this.amenites = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_600')
     this.amenites = this.amenites.amenite_600.list
 
-    console.log(this.categories, this.amenites);
-
     const places = {
       beaches: [],
       locations: [],
@@ -1967,7 +1964,6 @@ export default {
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
 
-      console.log(this.villa)
     })
   },
   computed: {

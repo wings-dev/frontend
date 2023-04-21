@@ -65,19 +65,6 @@
                       <span>%{{ hotelDetails.body.hotel.custom.discount_rate }}</span>
                       <p>Erken Rezervasyon İndirimi</p>
                     </div>
-
-                    <!-- <div class="d-flex align-items-center my-2 my-sm-1 me-3 pe-1">
-                      <img src="/img/icons/019-virus.svg" width="20" height="20" alt="healt"
-                        class="lazy contain flex-shrink-0 me-1 loaded"
-                        style="background-image: url(/img/icons/019-virus.svg);">
-                      <span>Sağlık Sertifikalı</span>
-                    </div>
-                    <div class="d-flex align-items-center my-2 my-sm-1">
-                      <img src="/img/icons/020-fence.svg" width="20" height="20" alt="healt"
-                        class="lazy contain flex-shrink-0 me-1 loaded"
-                        style="background-image: url(/img/icons/020-fence.svg);">
-                      <span>Özel Bölgesi var</span>
-                    </div>-->
                   </div>
                 </div>
                 <div class="View-menu-right">
@@ -92,17 +79,15 @@
         <div class="container pb-1 pt-5 gallery-container">
           <div class="view-gallery">
             <div class="area-1" v-if="previewImages.length > 0">
-              <a :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon"
+              <a :href="previewImages[0].preview_url" data-fancybox="gallery" :data-caption="hotelDetails.body.hotel.name"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <!-- <img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive"
-                   alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
                 <nuxt-img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive" width="585"
                   height="387" sizes="sm:100vw md:50vw lg:585px" />
 
               </a>
             </div>
             <div class="area-2 d-md-block d-none" v-if="previewImages.length > 1">
-              <a :href="previewImages[1].preview_url" data-fancybox="gallery" data-caption="Salon"
+              <a :href="previewImages[1].preview_url" data-fancybox="gallery" :data-caption="hotelDetails.body.hotel.name"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
                 <nuxt-img :src="previewImages[1].preview_url" :srcset="previewImages[1].responsive" width="284"
                   height="187" sizes="sm:100vw md:50vw lg:284px" />
@@ -110,7 +95,7 @@
               </a>
             </div>
             <div class="area-3 d-md-block d-none" v-if="previewImages.length > 2">
-              <a :href="previewImages[2].preview_url" data-fancybox="gallery" data-caption="Salon"
+              <a :href="previewImages[2].preview_url" data-fancybox="gallery" :data-caption="hotelDetails.body.hotel.name"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
                 <nuxt-img :src="previewImages[2].preview_url" :srcset="previewImages[2].responsive" width="284"
                   height="187" sizes="sm:100vw md:50vw lg:284px" />
@@ -118,7 +103,7 @@
               </a>
             </div>
             <div class="area-4 d-none d-lg-block" v-if="previewImages.length > 3">
-              <a :href="previewImages[3].preview_url" data-fancybox="gallery" data-caption="Salon"
+              <a :href="previewImages[3].preview_url" data-fancybox="gallery" :data-caption="hotelDetails.body.hotel.name"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
                 <nuxt-img :src="previewImages[3].preview_url" :srcset="previewImages[3].responsive" width="284"
                   height="187" sizes="sm:100vw md:50vw lg:284px" />
@@ -131,7 +116,8 @@
                   height="187" sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
-                  <span :href="previewImages[0].preview_url" data-fancybox="gallery" data-caption="Salon">Tüm Fotoğraflar
+                  <span :href="previewImages[0].preview_url" data-fancybox="gallery"
+                    :data-caption="hotelDetails.body.hotel.name">Tüm Fotoğraflar
                     ( {{ previewImages.length }} ) </span>
                   <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
                   <a href="https://www.youtube.com/watch?v=5SMaakuGyH0" data-fancybox>
@@ -182,8 +168,6 @@
           </div>
         </div>
       </section>
-
-
       <div class="container search-otel mb-4">
         <search-hotel-detail-component :key="$route.path" @search="search($event)"></search-hotel-detail-component>
       </div>
@@ -192,7 +176,11 @@
 
 
           <template v-if="roomsLoading">
-            Odalar yükleniyor...
+            <div class="Loading">
+              <lottie :width="168" :height="125" :options="lottieOptions" v-on:animCreated="handleAnimation" />
+              <h4 class="Loading-title">Odalar hazırlanıyor...</h4>
+              <h3 class="Loading-subtitle"><b>En uygun</b> fiyatları arıyoruz</h3>
+            </div>
           </template>
           <template v-else>
             <template v-for="(offer, offerIndex) in offers">
@@ -201,10 +189,10 @@
                   <div
                     class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
                     <div class="img-box position-relative flex-shrink-0">
-                      <img v-if="room.mediaFiles" :src="room.mediaFiles[0].urlFull" width="297" height="208"
-                        alt="room image" class="lazy cover flex-shrink-0 ">
+                      <nuxt-img v-if="room.mediaFiles" :src="room.mediaFiles[0].urlFull" width="297" height="208"
+                        alt="room image" class="lazy cover flex-shrink-0 "></nuxt-img>
                       <div class="no-rooms" v-else>
-                        <img src="/img/no-img.svg" alt="">
+                        <nuxt-img src="/img/no-img.svg" alt=""></nuxt-img>
                         <p>Oda fotoğrafı <span>bulunmuyor.</span></p>
                       </div>
                     </div>
@@ -227,10 +215,9 @@
                     </div>
                   </div>
                   <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                    <div class="room-options d-flex flex-lg-column pb-lg-0 pb-1">
-                      <div class="option d-flex flex-column flex-xl-row  flex-fill overflow-hidden">
-                        <div
-                          class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
+                    <div class="room-options d-flex pb-lg-0 pb-1">
+                      <div class="option d-flex flex-fill overflow-hidden">
+                        <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
                           <div class="option-all">
                             <span v-if="offerIndex === 0">En Ucuzu</span>
                             <b v-for="group in room.boardGroups">{{ group.name }}</b>
@@ -283,7 +270,11 @@
               </div>
             </template>
             <template v-if="!roomsLoading && offers.length === 0">
-              Uygun oda bulunamadı...
+              <div class="No-villas">
+                <nuxt-img src="img/no-villas.svg" alt=""></nuxt-img>
+                <h2>Uygun oda bulunamadı.</h2>
+                <p>Arama filtrenizi veya tarihi değiştirerek yeniden deneyebilirsiniz.</p>
+              </div>
             </template>
           </template>
 
@@ -434,7 +425,7 @@
   </div>
 </template>
 
-
+<!-- ~ -->
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
@@ -442,6 +433,10 @@ import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import CloseVillaModal from '../modals/close-villa-modal.vue';
 import { BCarousel } from 'bootstrap-vue'
+import lottie from 'vue-lottie/src/lottie.vue'
+import * as animationData from "~/assets/yukleniyor.json";
+
+
 
 export default {
   name: 'DynamicHotelDetailPage',
@@ -459,10 +454,12 @@ export default {
       moreContent: false,
       moreFeatures: false,
       mobileAmenites: false,
+      anim: null, // for saving the reference to the animation
+      lottieOptions: { animationData: animationData.default }
     }
   },
   components: {
-    BCarousel,
+    BCarousel, lottie
   },
   async mounted() {
     console.log(this.selectedFilters);
@@ -500,6 +497,9 @@ export default {
     }
   },
   methods: {
+    handleAnimation: function (anim) {
+      this.anim = anim;
+    },
     async roomSearch() {
       this.roomsLoading = true;
 
@@ -602,6 +602,11 @@ export default {
       this.moreContent = !this.moreContent
     },
   },
+  mounted(){
+    if(window.innerWidth <= 991){
+      document.querySelector('.Header').classList.add('Header-z')
+    }
+  }
 }
 </script>
 <style lang="scss"></style>

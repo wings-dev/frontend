@@ -9,8 +9,8 @@
               <div class="Login-left">
                 <div class="Login-card">
                   <div class="Login-card-img">
-                    <img :src="villa.watermark_images[0].preview_url"
-                         alt="">
+                    <nuxt-img :src="villa.watermark_images[0].preview_url"
+                         alt="" />
                     <div class="Login-card-img-text">
                       <div class="Login-card-img-text-head">
                         <span>Villa kodu</span>

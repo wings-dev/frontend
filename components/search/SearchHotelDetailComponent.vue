@@ -10,14 +10,11 @@
             Çıkış Tarihi
           </div>
         </div>
-
         <div class="Search-item-date">
-          <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs" ref="datePickerContainer">
-
             <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
-                             @check-out-changed="checkOutChanged($event)" format="DD dddd" ref="datePicker" :i18n="calendarLanguage"
-                             :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
+              @check-out-changed="checkOutChanged($event)" format="DD dddd" ref="datePicker" :i18n="calendarLanguage"
+              :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
               <div slot="content">
                 <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
                   <button @click.prevent="clearDatesRez()" class="me-1"><i class="icon-date-clear"></i> Temizle</button>
@@ -25,18 +22,15 @@
                 </div>
               </div>
             </HotelDatePicker>
-
-            <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-              format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
           </div>
         </div>
       </div>
       <select-hotel-person-count :adult="adult" :childAges="childAges"
-                                 @change="adult = $event.adult; childAges = $event.childAges"></select-hotel-person-count>
+        @change="adult = $event.adult; childAges = $event.childAges"></select-hotel-person-count>
     </div>
     <button type="button" class="Search-button" id="searchVilla" @click="search">
-      <img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
-           class="contain flex-shrink-0 my-1 desktop"><span class="mobile">Otel Ara</span>
+      <nuxt-img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
+        class="contain flex-shrink-0 my-1 desktop"></nuxt-img><span class="mobile">Otel Ara</span>
     </button>
   </div>
 </template>
@@ -116,14 +110,14 @@ export default {
   },
   watch: {
     checkIn(newValue) {
-      if(newValue !== undefined){
-      this.changeHotelInput(0, newValue);
-    }
+      if (newValue !== undefined) {
+        this.changeHotelInput(0, newValue);
+      }
     },
     checkOut(newValue) {
-      if(newValue !== undefined){
-      this.changeHotelInput(-1, newValue);
-    }
+      if (newValue !== undefined) {
+        this.changeHotelInput(-1, newValue);
+      }
     },
   },
   methods: {

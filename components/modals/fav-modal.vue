@@ -9,7 +9,7 @@
         <div class="Login-right">
           <div class="Login-right-in">
             <div class="Login-fav">
-              <img src="/img/fav-heart-big.svg" alt="">
+              <nuxt-img src="/img/fav-heart-big.svg" alt=""></nuxt-img>
               <p class="Login-fav-text">
                 Beğendiğiniz tesisleri favorilere eklemek için lütfen üye olunuz eğer zaten üyeyseniz giriş
                 yapınız.

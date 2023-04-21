@@ -1,7 +1,7 @@
 <template>
     <div class="Home">
 
-        <section class="Banner Banner-home " style="background-image: url(/img/banner.jpg)">
+        <section class="Banner Banner-home " :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <nuxt-img src="/img/banner-mobile.jpg" alt=""></nuxt-img>
@@ -226,7 +226,7 @@
 
                                             <nuxt-img :src="villa.preview_image[0].preview_url"
                                             :srcset="villa.preview_image[0].responsive_url" width="267"
-                                            height="175"></nuxt-img>
+                                            height="225"></nuxt-img>
 
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(villa.code)"
                                             :class="isFavorite(villa.code) ? 'active' : ''">
@@ -299,7 +299,7 @@
                     </h4>
                 </div>
                 <div class="categories">
-                    <a href="#!" class="cat-item no-hover area1 overflow-hidden position-relative">
+                    <nuxt-link to="/hamamli--saunali-villalar" class="cat-item no-hover area1 overflow-hidden position-relative">
                         <nuxt-img src="/uploads/category-image1.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
@@ -314,8 +314,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="#!" class="cat-item no-hover area2 overflow-hidden position-relative">
+                    </nuxt-link>
+                    <nuxt-link to="/kapali-havuzlu-balayi-villalari" class="cat-item no-hover area2 overflow-hidden position-relative">
                         <nuxt-img src="/uploads/category-image2.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
@@ -330,8 +330,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="#!" class="cat-item no-hover area3 overflow-hidden position-relative">
+                    </nuxt-link>
+                    <nuxt-link to="/kis-aylarina-uygun-villalar" class="cat-item no-hover area3 overflow-hidden position-relative">
                         <nuxt-img src="/uploads/category-image3.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
@@ -346,8 +346,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="#!" class="cat-item no-hover area4 overflow-hidden position-relative">
+                    </nuxt-link>
+                    <nuxt-link to="/2023-villalari" class="cat-item no-hover area4 overflow-hidden position-relative">
                         <nuxt-img src="/uploads/category-image4.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1">
@@ -356,7 +356,7 @@
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
-                                <strong class="title fs-5 fw-normal ls-05">2022 Vilları</strong>
+                                <strong class="title fs-5 fw-normal ls-05">2023 Vilları</strong>
                                 <span class="ls-1">423 seçenek içeriyor</span>
                             </div>
                             <div class="caption-content flex-fill d-flex align-items-end ps-2 pb-2">
@@ -365,8 +365,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="#!" class="cat-item no-hover area5 overflow-hidden position-relative">
+                    </nuxt-link>
+                    <nuxt-link to="/tum-balayi-villalari" class="cat-item no-hover area5 overflow-hidden position-relative">
                         <nuxt-img src="/uploads/category-image5.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
@@ -381,8 +381,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="#!" class="cat-item no-hover area6 overflow-hidden position-relative">
+                    </nuxt-link>
+                    <nuxt-link to="/balayi-otelleri" class="cat-item no-hover area6 overflow-hidden position-relative">
                         <nuxt-img src="/uploads/category-image7.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
@@ -397,10 +397,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </nuxt-link>
                     <div
                         class="area7 border border-light  d-flex align-items-center justify-content-center categories-more">
-                        <nuxt-link to="/">
+                        <nuxt-link to="/kiralik-villa-ara">
                             <span>Daha fazla görüntüle</span>
                             <i class="icon-arrow-right-up"></i>
                         </nuxt-link>
@@ -591,7 +591,6 @@ export default {
 
         pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas, select_otel: otelCategories };
 
-        console.log(pageData)
 
         return { pageData, opportunities };
     },
@@ -727,7 +726,6 @@ export default {
             },
         })
 
-        console.log(this.pageData.page_content.propery_category)
 
     },
     methods: {

@@ -2,7 +2,7 @@
     <main class="main">
         <section class="Home-banner Home-banner-center"
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
-            <img :src="pageData.page_content.default.page_list_img" alt="">
+            <nuxt-img :src="pageData.page_content.default.page_list_img" alt=""/>
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
@@ -150,7 +150,6 @@ export default {
 
         const campaigns = await $getRedisKey(campaignRedisKeys)
 
-        console.log(campaigns)
 
         return { pageData, campaigns }
     },
@@ -163,7 +162,6 @@ export default {
         },
     },
     mounted() {
-        console.log('data', this.campaigns)
     }
 }
 </script>

@@ -21,7 +21,7 @@
                         <template v-for="item in posts">
                             <nuxt-link :to="'/blog/'+item.page_content.blog_category[0] +'/'+item.url" class="Blog-item" :key="item.id" v-if="item !== null">
                                 <div class="Blog-item-img">
-                                    <img :src="item.page_content.default.page_list_img" alt="">
+                                    <nuxt-img :src="item.page_content.default.page_list_img" alt=""></nuxt-img>
                                     <div class="Blog-item-img-text">
                                         <h6>{{ item.name }}</h6>
                                     </div>

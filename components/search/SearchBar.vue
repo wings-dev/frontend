@@ -1,5 +1,5 @@
 <template>
-    <section class="search-engine-section position-relative pt-3" v-if="searchbar.tab">
+    <section class="search-engine-section position-relative pt-3" v-if="searchbar.tab" :class="{ 'search-engine-section-otel': searchbar.tab === 3 }">
         <div class="container pt-1">
             <form action="" class="search-engine">
               <nav>

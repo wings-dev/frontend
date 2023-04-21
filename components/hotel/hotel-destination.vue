@@ -33,7 +33,7 @@
                             <nuxt-link to="" class="O_Card O_Card-price">
                                 <div class="O_Card-in">
                                     <div class="O_Card-img">
-                                        <img src="/img/otel-list.png" alt="">
+                                        <nuxt-img src="/img/otel-list.png" alt=""></nuxt-img>
                                         <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                             <span>9,5/10</span>
                                         </div>
@@ -354,7 +354,6 @@ export default {
 
             },
         })
-        console.log(this.blog)
     }
 }
 </script>

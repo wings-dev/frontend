@@ -525,9 +525,9 @@
                           <div class="room-item">
                             <div class="img-box w-100">
 
-                              <img :src="img.preview_url" width="312" height="213" alt="room image"
+                              <nuxt-img :src="img.preview_url" width="312" height="213" alt="room image"
                                 class="lazy cover rounded-xl w-100" v-for="(img, index2) in bolum.gorsel" :key="index2"
-                                v-if="index <= 0">
+                                v-if="index <= 0"></nuxt-img>
                             </div>
                             <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
                               <span class="room-item-title">{{ bolum.name }}</span>
@@ -560,10 +560,10 @@
 
               <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
                 <div class="pool-item-left">
-                  <img src="/uploads/003-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
-                    v-if="poolitem.pool == 52">
-                  <img src="/uploads/005-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
-                    v-if="poolitem.pool == 58">
+                  <nuxt-img src="/uploads/003-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
+                    v-if="poolitem.pool == 52"/>
+                  <nuxt-img src="/uploads/005-swimming-pool.svg" width="28" height="28" alt="pool icon" class="lazy contain"
+                    v-if="poolitem.pool == 58"/>
                   <!-- <img src="/uploads/002-watch-your-children.svg" width="28" height="28" alt="pool icon" -->
                   <span class="">{{ poolitem.name }}</span>
                 </div>
@@ -616,10 +616,10 @@
                     </div>
                     <div class="View-reviews-item-bottom-right">
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <img src="/img/reviews.png" alt="">
+                        <nuxt-img src="/img/reviews.png" alt=""/>
                       </a>
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <img src="/img/reviews.png" alt="">
+                        <nuxt-img src="/img/reviews.png" alt=""/>
                       </a>
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item more"
                         data-fancybox="reviews">Daha fazla görüntüle (12)</a>
@@ -645,7 +645,7 @@
                     </div>
                     <div class="View-reviews-item-mobile-right">
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <img src="/img/reviews.png" alt="">
+                        <nuxt-img src="/img/reviews.png" alt=""/>
                         <span>+6</span>
                       </a>
                       <div class="d-none">
@@ -1162,7 +1162,7 @@
                 <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
                   <a class="Blog-item">
                     <div class="Blog-item-img">
-                      <img src="/img/blog.png" alt="">
+                      <nuxt-img src="/img/blog.png" alt=""/>
                       <div class="Blog-item-img-text">
                         <h6>Roots in a piece of classical Latin literature</h6>
                       </div>
@@ -1205,7 +1205,7 @@
               <template v-for="(floor, index) in villa.floorplan.kat">
                 <button type="button" class="Gallery-list-item" :id="'Gallery_item' + index"
                   @click="scrollGallery($event)" v-for="(bolum, index) in floor.bolum" :key="index">
-                  <img :src="bolum.gorsel[0].preview_url" class="w-100" alt="test" />
+                  <nuxt-img :src="bolum.gorsel[0].preview_url" class="w-100" alt="test" />
                   <p>{{ bolum.name }} <br> <span>({{ floor.name }})</span></p>
                 </button>
               </template>

@@ -8,7 +8,7 @@
                             <div class="swiper-slide" v-for="item in 4">
                                 <div class="Blog-banner-item">
                                     <div class="Blog-banner-item-img">
-                                        <img src="/img/blog-banner.jpg" alt="">
+                                        <nuxt-img src="/img/blog-banner.jpg" alt=""></nuxt-img>
                                     </div>
                                     <div class="Blog-banner-item-text">
                                         <h5>Tatil için yola çıkmadan önce valizinizde bulunması gereken 10 şey!</h5>
@@ -40,7 +40,7 @@
                         <template v-for="item in posts">
                             <nuxt-link :to="'/blog/'+item.page_content.blog_category[0] +'/'+item.url" class="Blog-item" :key="item.id" v-if="item !== null">
                                 <div class="Blog-item-img">
-                                    <img :src="item.page_content.default.page_list_img" alt="">
+                                    <nuxt-img :src="item.page_content.default.page_list_img" alt=""></nuxt-img>
                                     <div class="Blog-item-img-text">
                                         <h6>{{ item.name }}</h6>
                                     </div>

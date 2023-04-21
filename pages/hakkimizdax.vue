@@ -155,31 +155,31 @@
           </div>
           <div class="Basin-content">
             <div class="Basin-content-item">
-              <a href="https://www.balayivillasi.com.tr/"><img
+              <a href="https://www.balayivillasi.com.tr/"><nuxt-img
                   src="	https://villakalkan.com.tr/images/balayi-villasi-logo.svg"
-                  alt="Diğer Markalarımız - Balayı Villası"></a>
+                  alt="Diğer Markalarımız - Balayı Villası"/></a>
             </div>
             <div class="Basin-content-item">
-              <a href="https://www.lycianescapes.com/"><img src="https://villakalkan.com.tr/images/lyc-logo.png"
-                  alt="Diğer Markalarımız - Lycian Escapes"></a>
+              <a href="https://www.lycianescapes.com/"><nuxt-img src="https://villakalkan.com.tr/images/lyc-logo.png"
+                  alt="Diğer Markalarımız - Lycian Escapes"/></a>
             </div>
             <div class="Basin-content-item">
-              <a href="https://villapusulasi.com/"><img
+              <a href="https://villapusulasi.com/"><nuxt-img
                   src="https://villakalkan.com.tr/images/villa-pusulasi-logo-renkli.png"
-                  alt="Diğer Markalarımız - Villa Pusulası"></a>
+                  alt="Diğer Markalarımız - Villa Pusulası"/></a>
             </div>
             <div class="Basin-content-item">
-              <a href="https://villadukkani.com/"><img src="	https://villakalkan.com.tr/images/villadukkani-logo.png"
-                  alt="Diğer Markalarımız - Villa Dükkanı"></a>
+              <a href="https://villadukkani.com/"><nuxt-img src="	https://villakalkan.com.tr/images/villadukkani-logo.png"
+                  alt="Diğer Markalarımız - Villa Dükkanı"/></a>
             </div>
             <div class="Basin-content-item">
-              <a href="https://kalkanaktivite.com/"><img
+              <a href="https://kalkanaktivite.com/"><nuxt-img
                   src="https://villakalkan.com.tr/images/kalkan-aktivite-logo.svg"
-                  alt="Diğer Markalarımız - Kalkan Aktivite"></a>
+                  alt="Diğer Markalarımız - Kalkan Aktivite"/></a>
             </div>
             <div class="Basin-content-item">
-              <a href="https://otelbnb.com/"><img src="https://villakalkan.com.tr/images/otelbnb-logo.png"
-                  alt="Diğer Markalarımız - Otel Bnb"></a>
+              <a href="https://otelbnb.com/"><nuxt-img src="https://villakalkan.com.tr/images/otelbnb-logo.png"
+                  alt="Diğer Markalarımız - Otel Bnb"/></a>
             </div>
           </div>
         </div>
@@ -192,12 +192,12 @@
           <div class="Ofis-content">
             <div class="Ofis-content-item">
               <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis">
-                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="Villa Kalkan - Kalkan Ofis">
+                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="Villa Kalkan - Kalkan Ofis"/>
               </a>
             </div>
             <div class="Ofis-content-item">
               <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis">
-                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="Balayı Villası - Kalkan Ofis">
+                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="Balayı Villası - Kalkan Ofis"/>
                 <span class="Ofis-content-item-more"><i class="icon-gallery"></i>+6 Fotoğraf Daha</span>
               </a>
               <div class="Ofis-content-item-list">
@@ -211,8 +211,8 @@
             </div>
             <div class="Ofis-content-item Ofis-content-item-video">
               <a href="https://www.youtube.com/embed/abWhzr3Y2Ow" data-fancybox="">
-                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                  alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu">
+                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                  alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu"/>
                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
               </a>
             </div>
@@ -243,12 +243,12 @@
           <div class="Ofis-content">
             <div class="Ofis-content-item">
               <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis-fethiye">
-                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="">
+                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt=""/>
               </a>
             </div>
             <div class="Ofis-content-item">
               <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis-fethiye">
-                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt="">
+                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" alt=""/>
                 <span class="Ofis-content-item-more"><i class="icon-gallery"></i>+7 Fotoğraf Daha</span>
               </a>
               <div class="Ofis-content-item-list">
@@ -264,8 +264,8 @@
             </div>
             <div class="Ofis-content-item Ofis-content-item-video">
               <a href="https://www.youtube.com/watch?v=abWhzr3Y2Ow" data-fancybox="">
-                <img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                  alt="Balayı Villası - Fethiye Ofis Tanıtım Videosu">
+                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                  alt="Balayı Villası - Fethiye Ofis Tanıtım Videosu" />
                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
               </a>
             </div>

@@ -36,7 +36,7 @@
                             <nuxt-link to="" class="O_Card O_Card-price">
                                 <div class="O_Card-in">
                                     <div class="O_Card-img">
-                                        <img src="/img/otel-list.png" alt="">
+                                        <nuxt-img src="/img/otel-list.png" alt=""/>
                                         <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                             <span>9,5/10</span>
                                         </div>
@@ -279,7 +279,7 @@
                                 <div class="swiper-slide" v-for="(item,index) in 4" :key="index">
                                     <a class="Blog-item">
                                         <div class="Blog-item-img">
-                                            <img src="/img/blog.png" alt="">
+                                            <nuxt-img src="/img/blog.png" alt=""/>
                                             <div class="Blog-item-img-text">
                                                 <h6>Roots in a piece of classical Latin literature</h6>
                                             </div>

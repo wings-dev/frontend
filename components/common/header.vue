@@ -87,7 +87,7 @@
                                             </template>
                                         </div>
                                         <div class="Header-menu-item-otel-right" v-if="item.image">
-                                            <img src="/img/otel-menu.png" alt="">
+                                            <nuxt-img src="/img/otel-menu.png" alt=""></nuxt-img>
                                         </div>
                                     </div>
 

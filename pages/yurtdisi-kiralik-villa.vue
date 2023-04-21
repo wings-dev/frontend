@@ -1,9 +1,9 @@
 <template>
     <div class="Home">
        
-        <section class="Banner Banner-home " style="background-image: url(/img/banner.jpg)">
+        <section class="Banner Banner-home " :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
-            <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
+            <!-- <nuxt-img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <nuxt-img src="/img/banner-mobile.jpg" alt=""></nuxt-img>
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
@@ -59,7 +59,7 @@
                                                 <span>Tesis Kodu</span>
                                             </div>
                                             <div class="Card-content-head-location">
-                                                <img src="/img/flag/flag-italy.svg" alt="">
+                                                <nuxt-img src="/img/flag/flag-italy.svg" alt=""/>
                                                 <p>İtalya <span>Roma</span></p>
                                             </div>
                                         </div>
@@ -100,7 +100,7 @@
             </div>
         </section>
         <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
-            <img src="/img/home-banner-mobile.png" alt="">
+            <nuxt-img src="/img/home-banner-mobile.png" alt=""/>
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
@@ -125,7 +125,7 @@
                         <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
                             <nuxt-link to="/" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <img src="/img/country/italy.jpg" alt="">
+                                    <nuxt-img src="/img/country/italy.jpg" alt=""/>
                                 </div>
                                 <div class="Abroad-villas-item-content">
                                     <div class="Abroad-villas-item-content-left">
@@ -134,10 +134,10 @@
                                     </div>
                                     <div class="Abroad-villas-item-content-right">
                                         <div class="Abroad-villas-item-content-flag">
-                                            <img src="/img/flag/flag-italy.svg" alt="">
+                                            <nuxt-img src="/img/flag/flag-italy.svg" alt=""/>
                                         </div>
                                         <div class="Abroad-villas-item-content-smile">
-                                            <img src="/img/laughing-smile.svg" alt="">
+                                            <nuxt-img src="/img/laughing-smile.svg" alt=""/>
                                             <span>VİZE YOK!</span>
                                         </div>
                                     </div>
@@ -355,10 +355,6 @@ export default {
                 },
             },
         })
-        
-        console.log('pageData', this.pageData)
-
-
     }
 
 }

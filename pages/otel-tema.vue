@@ -42,8 +42,8 @@
                     <div class="O_Themes-banner">
                         <div
                             class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 ">
-                            <img src="/uploads/holiday-banner.jpg" alt=""
-                                class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100">
+                            <nuxt-img src="/uploads/holiday-banner.jpg" alt=""
+                                class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100"/>
 
                             <div class="d-flex flex-column position-relative ls-05 pt-3">
                                 <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
@@ -178,7 +178,7 @@
                                 <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
                                     <a class="Blog-item">
                                         <div class="Blog-item-img">
-                                            <img src="/img/blog.png" alt="">
+                                            <nuxt-img src="/img/blog.png" alt=""/>
                                             <div class="Blog-item-img-text">
                                                 <h6>Roots in a piece of classical Latin literature</h6>
                                             </div>

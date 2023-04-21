@@ -26,7 +26,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -109,7 +109,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -192,7 +192,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -275,7 +275,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -358,7 +358,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -443,7 +443,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -526,7 +526,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -609,7 +609,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -692,7 +692,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -775,7 +775,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <img src="/img/reservation-img.jpg" alt="">
+                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">
@@ -870,7 +870,7 @@
 
                     <div class="User-modal-in">
                         <div class="User-modal-left">
-                            <img src="/img/invoice-text.svg" alt="">
+                            <nuxt-img src="/img/invoice-text.svg" alt=""/>
                         </div>
                         <div class="User-modal-right">
                             <h4><span>FATURA</span> BİLGİLERİ EKLE</h4>
@@ -954,7 +954,7 @@
 
                     <div class="User-modal-in">
                         <div class="User-modal-left">
-                            <img src="/img/invoice-text.svg" alt="">
+                            <nuxt-img src="/img/invoice-text.svg" alt=""/>
                         </div>
                         <div class="User-modal-right">
                             <h4><span>FATURA</span> BİLGİLERİ GÜNCELLE</h4>

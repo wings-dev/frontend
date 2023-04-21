@@ -123,7 +123,6 @@ export default {
   },
 
   $route() {
-    console.log('TEST ROUTE')
     if (document.body.classList.contains("over")) {
       document.body.classList.remove("over");
     }

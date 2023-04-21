@@ -9,8 +9,8 @@
               <div class="view-top-title d-flex">
                 <h1>The European Hotel</h1>
                 <div class="fs-7 d-inline-flex align-items-center fw-medium text-theme-secondary ms-3">
-                  <img src="/img/icons/011-star-icon.svg" width="13" height="13" alt="star"
-                    class="lazy contain flex-shrink-0">&nbsp;
+                  <nuxt-img src="/img/icons/011-star-icon.svg" width="13" height="13" alt="star"
+                    class="lazy contain flex-shrink-0"/>&nbsp;
                   <span>4,9</span>
                 </div>
               </div>
@@ -35,15 +35,15 @@
                     <span class="view-item d-block px-1">Erken Rezervasyonda %35 indirim</span>
                   </div>
                   <div class="d-flex align-items-center my-2 my-sm-1 me-3 pe-1">
-                    <img src="/img/icons/019-virus.svg" width="20" height="20" alt="healt"
+                    <nuxt-img src="/img/icons/019-virus.svg" width="20" height="20" alt="healt"
                       class="lazy contain flex-shrink-0 me-1 loaded"
-                      style="background-image: url(/img/icons/019-virus.svg);">
+                      style="background-image: url(/img/icons/019-virus.svg);"/>
                     <span>Sağlık Sertifikalı</span>
                   </div>
                   <div class="d-flex align-items-center my-2 my-sm-1">
-                    <img src="/img/icons/020-fence.svg" width="20" height="20" alt="healt"
+                    <nuxt-img src="/img/icons/020-fence.svg" width="20" height="20" alt="healt"
                       class="lazy contain flex-shrink-0 me-1 loaded"
-                      style="background-image: url(/img/icons/020-fence.svg);">
+                      style="background-image: url(/img/icons/020-fence.svg);"/>
                     <span>Özel Bölgesi var</span>
                   </div>
                 </div>
@@ -126,8 +126,8 @@
           <div class="row">
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
-                <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
-                  class="lazy cover flex-shrink-0 rounded-xl">
+                <nuxt-img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                  class="lazy cover flex-shrink-0 rounded-xl"/>
               </div>
               <div
                 class="flex-fill d-flex flex-column align-items-start justify-content-between ps-2 ps-sm-3 ps-xl-4 pt-3">
@@ -140,17 +140,17 @@
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Minibar</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Balkon</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Duşakabin</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                 </div>
                 <div class="d-flex align-items-center mb-sm-0 mb-1">
@@ -188,15 +188,15 @@
             </div>
           </div>
         </div>
-        <div class="note note-warning ls-05 fw-medium text-center my-3 py-1"><img src="/img/icons/026-alert.svg"
+        <div class="note note-warning ls-05 fw-medium text-center my-3 py-1"><nuxt-img src="/img/icons/026-alert.svg"
             width="17" height="17" alt="alert" class="lazy contain flex-shrink-0 me-1" />11 Eylül - 21 Eylül Tarihleri
           arasında Aile Odası bulunmamaktadır. Müsait tarihleri görmek için <a href="#!"><u>Tıklayın</u></a></div>
         <div class="room border border-light rounded-xxl pt-2 px-2 pb-1 p-lg-2 mb-3">
           <div class="row">
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
-                <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
-                  class="lazy cover flex-shrink-0 rounded-xl">
+                <nuxt-img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                  class="lazy cover flex-shrink-0 rounded-xl"/>
               </div>
               <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
                 <div class="d-flex align-items-center w-100 mb-2">
@@ -213,17 +213,17 @@
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Minibar</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Balkon</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Duşakabin</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                 </div>
                 <div class="d-flex align-items-center mb-sm-0 mb-1">
@@ -306,8 +306,8 @@
           <div class="row">
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
-                <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
-                  class="lazy cover flex-shrink-0 rounded-xl">
+                <nuxt-img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                  class="lazy cover flex-shrink-0 rounded-xl"/>
               </div>
               <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
                 <div class="d-flex align-items-center w-100 mb-2">
@@ -324,17 +324,17 @@
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Minibar</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Balkon</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Duşakabin</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                 </div>
                 <div class="d-flex align-items-center mb-sm-0 mb-1">
@@ -376,8 +376,8 @@
           <div class="row">
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2">
               <div class="img-box position-relative flex-shrink-0">
-                <img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
-                  class="lazy cover flex-shrink-0 rounded-xl">
+                <nuxt-img src="/uploads/room-image1.jpg" width="281" height="186" alt="room image"
+                  class="lazy cover flex-shrink-0 rounded-xl"/>
               </div>
               <div class="flex-fill d-flex flex-column align-items-start ps-2 ps-sm-3 ps-xl-4 pt-3">
                 <div class="d-flex align-items-center w-100 mb-2">
@@ -394,17 +394,17 @@
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Minibar</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Balkon</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                   <small
                     class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                     <span class="text-theme-secondary me-1">Duşakabin</span>
-                    <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain">
+                    <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="" class="lazy contain"/>
                   </small>
                 </div>
                 <div class="d-flex align-items-center mb-sm-0 mb-1">
@@ -521,103 +521,103 @@
         </div>
         <ul class="properties lh-sm ls-05 d-flex flex-wrap text-theme-secondary">
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Market</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Su Kaydırağı (4 Adet)</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Fotoğrafçı</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Kapalı Havuz</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">A La Carte Restaurant</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Otopark</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Tiyatro</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Güzellik Salonu</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Kapalı Restaurant</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Açık Havuz (2 Adet)</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Resepsiyon'da Kasa</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Wireless Internet</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Havaalanı Servis</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Konferans</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Açık Restaurant</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Asansör</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Haşema</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Bedensel Engelli Odası</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Kuaför</span>
           </li>
           <li class="d-flex pe-2 mb-3 pb-1">
-            <img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
-              class="lazy contain flex-shrink-0 me-2">
+            <nuxt-img src="/img/icons/025-tick-second.svg" width="18" height="18" alt="checked"
+              class="lazy contain flex-shrink-0 me-2"/>
             <span class="d-block ps-md-1">Doktor</span>
           </li>
         </ul>
@@ -840,7 +840,7 @@
         <div class="swiper swiper-otel">
           <div class="swiper-wrapper" style="overflow: hidden;">
             <div class="swiper-slide" v-for="(item, index) in 10" :key="index" style="overflow: hidden;">
-              <img src="/uploads/room-image1.jpg" class="w-100" alt="">
+              <nuxt-img src="/uploads/room-image1.jpg" class="w-100" alt=""/>
             </div>
           </div>
           <!-- If pagination is needed -->

@@ -21,7 +21,7 @@
         <div class="O_List-card-in">
           <div class="O_List-card-item" v-for="hotel in hotels">
             <div class="O_List-card-item-img">
-              <img :src="cdn + hotel.images?.[0]?.ImageUrl" alt="">
+              <nuxt-img :src="cdn + hotel.images?.[0]?.ImageUrl" alt=""/>
             </div>
             <div class="O_List-card-item-content">
               <div class="O_List-card-item-content-head">
@@ -230,7 +230,7 @@
                 <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
                   <a class="Blog-item">
                     <div class="Blog-item-img">
-                      <img src="/img/blog.png" alt="">
+                      <nuxt-img src="/img/blog.png" alt=""/>
                       <div class="Blog-item-img-text">
                         <h6>Roots in a piece of classical Latin literature</h6>
                       </div>

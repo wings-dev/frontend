@@ -363,8 +363,6 @@ export default {
       const checkInParam = this.decodeTimestamp(query.i);
       const checkOutParam = this.decodeTimestamp(query.o);
 
-      console.log(checkInParam);
-      console.log(checkOutParam);
 
       this.checkIn = checkInParam;
       this.checkOut = checkOutParam;
