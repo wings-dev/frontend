@@ -281,7 +281,7 @@ export default {
     async asyncData({ $getRedisKey }) {
         const site_id = process.env.SITE;
         let pageData = {};
-        pageData = await $getRedisKey(`web:${site_id}:pages:anasayfa`);
+        pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
         console.log(`pageData`,pageData)
         return { pageData }
     },
