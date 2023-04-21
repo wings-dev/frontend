@@ -137,7 +137,8 @@
                         <nuxt-link :to="hotel.url" class="O_Card" v-if="hotel.url">
                           <div class="O_Card-in">
                             <div class="O_Card-img">
-                              <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" alt="" v-if="hotel.images && hotel.images[0]?.ImageUrl"></nuxt-img>
+                              <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" alt="" v-if="hotel.images && hotel.images[0]?.ImageUrl" width="299"
+                                            height="188"></nuxt-img>
                               <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                 <span>{{parseFloat(hotel.Rating).toFixed(2)}}/10</span>
                               </div>
@@ -185,7 +186,7 @@
                             <i class="icon-secure-payment"></i>
                         </div>
                         <div class="H_info-item-icon-text">
-                            <p>%20’sini rezervasyon anında<span>Kalan tutarı girişte öde.</span></p>
+                            <p>Tüm Kredi Kartlarına<span>Taksit İmkanı.</span></p>
                             <a href="">Şartları Görüntüle</a>
                         </div>
                     </div>
@@ -194,10 +195,10 @@
                             <i class="icon-vkv"></i>
                         </div>
                         <div class="H_info-item-icon-text">
-                            <p>%20’sini rezervasyon anında<span>Kalan tutarı girişte öde.</span></p>
+                            <p>balayivillasi.com.tr’yi<b> Keşfet</b></p>
                             <div class="H_info-item-links">
-                                <a href="">Hakkımızda</a>
-                                <a href=""><i class="icon-play"></i>Video İzle</a>
+                                <nuxt-link to="/hakkimizda">Hakkımızda</nuxt-link>
+                                <a href=""><i class="icon-icon-play-sm"></i>Video İzle</a>
                             </div>
                         </div>
                     </div>
@@ -425,23 +426,28 @@
                 </div>
                 <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                            <nuxt-link to="/" class="Abroad-villas-item">
+                        <div class="swiper-slide" v-for="(item, index) in pageData.page_content.property_category" :key="index">
+                            <nuxt-link :to="item.category_url" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                  <nuxt-img src="/img/country/italy.jpg" alt=""></nuxt-img>
+                                  <nuxt-img :src="item.category_img" alt="" v-if="item.category_img"></nuxt-img>
+                                  <nuxt-img src="/img/country/italy.jpg" alt="" v-else></nuxt-img>
                                 </div>
                                 <div class="Abroad-villas-item-content">
                                     <div class="Abroad-villas-item-content-left">
-                                        <b>İtalya</b>
-                                        <p>423 seçenek içeriyor</p>
+                                        <b>{{ item.cateogory_name }}</b>
+                                        <p>{{ item.property_count }} seçenek içeriyor</p>
                                     </div>
                                     <div class="Abroad-villas-item-content-right">
                                         <div class="Abroad-villas-item-content-flag">
-                                          <nuxt-img src="/img/flag/flag-italy.svg" alt=""></nuxt-img>
+                                            <country-flag :country='item.countryFlag' :rounded="true"/>
+                                            <!-- <country-flag country='tr' />
+                                            <country-flag country='us' />
+                                            <country-flag country='ca' /> -->
                                         </div>
-                                        <div class="Abroad-villas-item-content-smile">
-                                          <nuxt-img src="/img/laughing-smile.svg" alt=""></nuxt-img>
-                                            <span>VİZE YOK!</span>
+                                        
+                                        <div class="Abroad-villas-item-content-smile" v-if="item.emojiStatus !== 'emojistatus_2'">
+                                          <nuxt-img src="/img/laughing-smile.svg" alt="" v-if="item.emojiStatus == 'emojistatus_1'"></nuxt-img>
+                                            <span>{{ item.vizeStatus }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -474,13 +480,16 @@ import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import findVillaUrlMixin, {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
 import slugify from "slugify";
+import CountryFlag from 'vue-country-flag'
+
 
 export default {
     name: 'IndexPage',
     layout: 'no-search',
     mixins: [findVillaUrlMixin],
     components: {
-        Swiper
+        Swiper,
+        CountryFlag
     },
     head() {
         let site_id = process.env.SITE
@@ -515,7 +524,8 @@ export default {
             prefix: process.env.PREFIX,
             pageData: {},
             opportunities: [],
-            cdn_hotel: process.env.HOTEL_CDN_URL + '/'
+            cdn_hotel: process.env.HOTEL_CDN_URL + '/',
+            sitename:process.env.SITE_NAME
         }
     },
     async asyncData({ $getRedisKey, $axios, store }) {
@@ -580,6 +590,8 @@ export default {
       });
 
         pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas, select_otel: otelCategories };
+
+        console.log(pageData)
 
         return { pageData, opportunities };
     },
@@ -714,6 +726,8 @@ export default {
                 },
             },
         })
+
+        console.log(this.pageData.page_content.propery_category)
 
     },
     methods: {

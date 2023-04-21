@@ -3481,13 +3481,12 @@ body.overflow-hidden {
         width: 65px;
         height: 65px;
         background-size: 100% 100%;
-        background-image: url(../img/secure-payment.svg);
       }
       i.icon-vkv {
         width: 65px;
         height: 65px;
         background-size: 100% 100%;
-        background-image: url(../img/vkvlogo.svg);
+        
       }
     }
     p {
@@ -3500,11 +3499,29 @@ body.overflow-hidden {
         display: block;
       }
     }
+    &-links{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
     a {
+      display: flex;
+      align-items: center;
       font-size: 13px;
       font-weight: 500;
       line-height: 2.08;
-      color: #8a92a8;
+      text-decoration: underline;
+      color: #8A92A8;
+      transition: all 300ms;
+      i{
+        font-size: 20px;
+        color: var(--bs-theme-second);
+        margin-right: 10px;
+      }
+      &:hover{
+        color: var(--bs-theme-second);
+      }
     }
   }
   @media (max-width: 991px) {
@@ -8118,9 +8135,20 @@ body.overflow-hidden {
         margin-bottom: -45px;
       }
       &-flag {
-        img {
-          width: 56px;
-          height: 56px;
+        // width: 56px;
+        // height: 56px;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        // border-radius: 50%;
+        // overflow: hidden;
+        // background-color: #fff;
+        // padding: 2px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        span.flag{
+          transform: scale(0.96);
         }
       }
       &-smile {

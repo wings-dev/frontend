@@ -1,12 +1,10 @@
 <template>
     <div class="Home">
-        <client-only>
-            <search-bar :key="$route.path"></search-bar>
-        </client-only>
-        <section class="Banner Banner-home "
-            style="background-image: url(http://office.wingswebservices.com/storage/page/18168/381398/balayi-banner-home.jpg)">
+       
+        <section class="Banner Banner-home " style="background-image: url(/img/banner.jpg)">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
+            <nuxt-img src="/img/banner-mobile.jpg" alt=""></nuxt-img>
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -24,6 +22,9 @@
                 </div>
             </div>
         </section>
+        <client-only>
+            <search-bar :key="$route.path"></search-bar>
+        </client-only>
         <section class="popular-section bg-white overflow-hidden pb-sm-5 mt-6">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">

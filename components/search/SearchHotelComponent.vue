@@ -35,7 +35,7 @@
         </div>
 
       </div>
-      <div class="Search-item date">
+      <div class="Search-item date" @click="openCalendar">
         <div class="dates d-flex">
           <div class="date-title w-50 Search-item-name">
             Giriş Tarihi
@@ -72,6 +72,19 @@
       <img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
         class="contain flex-shrink-0 my-1 desktop"><span class="mobile">Otel Ara</span>
     </button>
+    <div class="Search-mobile" :class="{ 'show': mobileCalendar }">
+      <div class="Search-mobile-head">
+        <h4>Tarih Seçiniz</h4>
+        <button type="button" @click="closeCalendar"><i class="icon-login-close"></i></button>
+      </div>
+      <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
+        @check-out-changed="checkOutChanged($event)" format="DD dddd" ref="datePickerModal" :i18n="calendarLanguage"
+        :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
+      </HotelDatePicker>
+      <div class="Search-mobile-bottom">
+        <button type="button" @click="closeCalendar">Uygula</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -137,6 +150,7 @@ export default {
           groupItems: []
         }
       ],
+      mobileCalendar: false,
     }
   },
   beforeMount() {
@@ -315,6 +329,37 @@ export default {
       datepickerInput.innerHTML = `<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`;
 
     },
+    isMobile() {
+      return window.innerWidth <= 991;
+    },
+    openCalendar() {
+      if (this.isMobile()) {
+        this.mobileCalendar = true
+        setTimeout(() => {
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          this.$refs.datePickerModal.showDatepicker()
+          this.$refs.datePickerModal.clearSelection()
+        }, 10)
+      }
+    },
+    closeCalendar() {
+      if (this.isMobile()) {
+        this.mobileCalendar = false
+        setTimeout(() => {
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+          this.$refs.datePickerModal.hideDatepicker()
+        }, 10)
+      }
+    },
   }
 }
 </script>
@@ -332,9 +377,9 @@ export default {
   min-width: 240px;
 }
 
-.vs__selected {
-  margin: 0;
-  padding: 0;
+:deep() .v-select {
+  height: auto !important;
+  border: 1px solid #dadada;
 }
 
 :deep() .v-select-toggle {
@@ -371,6 +416,13 @@ export default {
   background-size: 100% 100%;
   background-image: url(/img/date-new.svg);
   margin-right: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width:1100px) {
+  :deep() .datepicker__input:before {
+    display: none;
+  }
 }
 
 :deep().datepicker__input--first {
@@ -384,22 +436,24 @@ export default {
   background-image: url(/img/date-right.svg);
   background-size: 100% 100%;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 18%;
 }
 
 :deep().datepicker__input .formatted-date {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: #24252e;
-
+  color: var(--bs-theme-first);
+  line-height: 1;
 }
 
 :deep().datepicker__input .formatted-date span {
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
-  color: #c1c1c1;
+  color: var(--bs-search-text-light);
+  text-align: left;
+  margin-top: 3px;
 }
 
 :deep() .datepicker__month-day--first-day-selected,
@@ -440,11 +494,13 @@ export default {
   width: 100%;
 }
 
-@media (max-width:800px) {
+@media (max-width:991px) {
   :deep().datepicker__input--first:after {
     background-size: 18px 10px;
     background-repeat: no-repeat;
     background-position: center;
+    width: 36px;
+    height: 36px;
     padding: 14px;
     background-color: #eff1f5;
     border-radius: 4px;
@@ -455,8 +511,22 @@ export default {
   }
 
   :deep() .datepicker__input:before {
-    position: absolute;
-    right: 0;
+    display: none;
+  }
+}
+
+@media (max-width:500px) {
+  .Search-mobile.show :deep() .datepicker__dummy-wrapper{
+    justify-content: center;
+  }
+  .Search-mobile.show :deep() .datepicker__input {
+    width: max-content;
+  }
+
+  .Search-mobile.show :deep().datepicker__input--first:after {
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: transparent;
   }
 }
 </style>

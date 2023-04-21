@@ -2,7 +2,7 @@
   <div>
     <template v-if="loading">
       <div class="No-villas" v-if="loading">
-              <img src="img/villa-loading.svg" alt="">
+              <nuxt-img src="img/villa-loading.svg" alt=""></nuxt-img>
               <h2>Takvim Yükleniyor...</h2>
               <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
             </div>

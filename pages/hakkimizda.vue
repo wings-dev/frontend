@@ -1,7 +1,7 @@
 <template>
     <main class="main">
         <section class="Banner Banner_md Banner-back Banner-kurumsal"
-            :style="`background-image: url(${pageData.page_content.default.page_banner});`">
+            :style="`background-image: url(${pageData.page_content?.default?.page_banner});`">
             <div class="container">
                 <div class=" Banner_search-text   pos-ab-xy-center ">
                     <p class="animated fadeInDown  flex-column">
@@ -10,7 +10,6 @@
                 </div>
             </div>
         </section>
-
         <section class="Content">
             <div class="container">
                 <div class="Content-in">
@@ -282,8 +281,12 @@ export default {
     async asyncData({ $getRedisKey }) {
         const site_id = process.env.SITE;
         let pageData = {};
-        pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
+        pageData = await $getRedisKey(`web:${site_id}:pages:anasayfa`);
+        console.log(`pageData`,pageData)
         return { pageData }
+    },
+    mounted(){
+        console.log(this.pageData)
     }
 }
 </script>

@@ -3283,6 +3283,15 @@
         padding: 0 20px;
       }
     }
+    &-otel{
+      .Search-otel .Search-item.date{
+        width: 100%!important;
+      }
+    }
+    
+  }
+  .Search-otel .Search-item.date{
+    width: 100%!important;
   }
 
   #search-tab {

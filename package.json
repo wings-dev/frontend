@@ -44,6 +44,7 @@
     "unzipper": "^0.10.11",
     "v-calendar": "^2.4.1",
     "vue": "^2.7.10",
+    "vue-country-flag": "^2.3.2",
     "vue-expandable-text-line": "^2.0.12",
     "vue-functional-calendar": "^2.9.97",
     "vue-hotel-datepicker2": "^1.2.8",

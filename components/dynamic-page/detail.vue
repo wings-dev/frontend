@@ -1467,7 +1467,7 @@ export default {
         market: [],
         transport: []
       },
-      categories: []
+      categories: [],
     }
   },
   methods: {
@@ -1852,8 +1852,6 @@ export default {
       this.monthlyPrices = response.data
       this.lowestPrice = Math.min(...this.monthlyPrices.map(price => price.lowest_price));
     } catch (e) { }
-
-    console.log(places)
 
     this.$nextTick(() => {
       Swiper.use([Navigation, Pagination])
