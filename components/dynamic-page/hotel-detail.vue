@@ -192,7 +192,7 @@
                       <nuxt-img v-if="room.mediaFiles" :src="room.mediaFiles[0].urlFull" width="297" height="208"
                         alt="room image" class="lazy cover flex-shrink-0 "></nuxt-img>
                       <div class="no-rooms" v-else>
-                        <nuxt-img src="/img/no-img.svg" alt=""></nuxt-img>
+                        <nuxt-img src="/img/no-img.svg" alt="" width="297" height="208"></nuxt-img>
                         <p>Oda fotoğrafı <span>bulunmuyor.</span></p>
                       </div>
                     </div>
@@ -382,13 +382,13 @@
         </div>
       </section>
 
-      <b-modal id="amenitesModal" class="Login" size="xl" :hide-header="true" hide-footer>
+      <b-modal id="amenitesModal" modal-class="Amenites-modal" :hide-header="true" hide-footer>
         <div class="Amenites otel">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             @click="$bvModal.hide('amenitesModal')"><i class="icon-login-close"></i></button>
 
           <div class="Amenites-slider" style="position:relative">
-            <b-carousel id="carousel-1" v-model="slide" controls img-width="1024" img-height="500">
+            <b-carousel id="carousel-1" v-model="slide" controls img-width="800" img-height="415">
               <b-carousel-slide :img-src="photo"
                 v-for="(photo, index) in previewImages.map(image => image.responsive_url)"
                 :key="index"></b-carousel-slide>
@@ -462,8 +462,14 @@ export default {
     BCarousel, lottie
   },
   async mounted() {
+    if(window.innerWidth <= 991){
+      document.querySelector('.Header').classList.add('Header-z')
+    }
+
     console.log(this.selectedFilters);
     this.roomSearch()
+
+
   },
   computed: {
     previewImages() {
@@ -530,7 +536,7 @@ export default {
       this.mobileAmenites = !this.mobileAmenites
     },
     goReservation(offer) {
-      const url = process.env.HOTEL_RESERVATION + 'otel/payments?searchId=' + this.searchId + '&offerId=' + offer.offerId;
+      const url = process.env.HOTEL_RESERVATION + 'otel/payments?searchId=' + this.searchId + '&offerId=' + offer.offerId + '&adult=' + this.selectedFilters.adult + '&children=' + this.selectedFilters.childAges.length;
       window.open(url, '_blank');
 
     },
@@ -601,11 +607,6 @@ export default {
     moreContentOpen() {
       this.moreContent = !this.moreContent
     },
-  },
-  mounted(){
-    if(window.innerWidth <= 991){
-      document.querySelector('.Header').classList.add('Header-z')
-    }
   }
 }
 </script>

@@ -120,7 +120,7 @@
                     <i class="icon-otel-discover"></i>
                     <h4 class="primary-title fw-medium ls-05 lh-1">
                         Otelleri
-                        <span>keşfedin</span>
+                        <span>keşfedin {{ pageData.page_content?.select_otel.length }}</span>
                     </h4>
                 </div>
               <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
@@ -133,7 +133,7 @@
                 <div v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index" :class="['tab-pane', 'fade', { 'show active': index === 0 }]" :id="`otel${index}`" role="tabpanel" :aria-labelledby="`otel-tab${index}`" v-if="otelCategory">
                   <div class="swiper list-slide-otel">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide" v-for="(hotel, hotelIndex) in otelCategory.otel_list" :key="hotelIndex" v-if="hotel">
+                      <div class="swiper-slide" v-for="(hotel, hotelIndex) in otelCategory.otel_list" :key="hotelIndex" v-if="hotel && (hotel.images && hotel.images[0]?.ImageUrl)">
                         <nuxt-link :to="hotel.url" class="O_Card" v-if="hotel.url">
                           <div class="O_Card-in">
                             <div class="O_Card-img">
@@ -205,7 +205,7 @@
                 </div>
             </div>
         </section>
-        <section class="popular-dark  bg-theme-first overflow-hidden mb-5 pb-sm-5 py-4">
+        <section class="popular-dark overflow-hidden mb-5 pb-sm-5 py-4">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-popular-calendar"></i>

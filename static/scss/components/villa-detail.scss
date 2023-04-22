@@ -2676,6 +2676,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--bs-theme-first);
 }
 
 .vc-weeks {
@@ -2961,6 +2962,12 @@
     }
   }
 
+  &-modal{
+    .modal-dialog{
+      max-width: 800px;
+    }
+  }
+
   @media (max-width:768px) {
     &.otel{
       .Amenites-title{
@@ -3003,7 +3010,6 @@
         position: absolute;
         right: 40px;
         top: 34px;
-        background-image: url(../../img/tarih-sec.svg);
         opacity: 1 !important;
         font-size: 12px;
         font-weight: bold;

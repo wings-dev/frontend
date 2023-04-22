@@ -46,7 +46,6 @@
     "vue": "^2.7.10",
     "vue-country-flag": "^2.3.2",
     "vue-expandable-text-line": "^2.0.12",
-    "vue-functional-calendar": "^2.9.97",
     "vue-hotel-datepicker2": "^1.2.8",
     "vue-lottie": "^0.2.1",
     "vue-select": "^3.20.2",
@@ -57,14 +56,14 @@
     "vue-the-mask": "^0.11.1",
     "vue-tour": "^2.0.0",
     "vue-yandex-maps": "^0.11.13",
-    "vue2-flip-countdown": "^0.12.1",
-    "vue2-slot-calendar": "^2.2.5"
+    "vue2-flip-countdown": "^0.12.1"
   },
   "devDependencies": {
     "@nuxt/image": "^0.7.1",
     "@nuxtclub/slugify": "^1.2.1",
     "@nuxtjs/dotenv": "^1.4.1",
     "env-cmd": "^10.1.0",
+    "node-sass": "^8.0.0",
     "sass-loader": "^10.4.1"
   }
 }

@@ -1,4 +1,8 @@
 export default {
+  async nuxtServerInit({ commit }, { app }) {
+    const settings = await app.$getRedisKey(`web:2:setting:general`)
+    commit('setSettings', settings)
+  },
   initializeVisitorId({ commit }) {
     let id = localStorage.getItem('visitorId')
     if (!id) {

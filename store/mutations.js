@@ -1,4 +1,7 @@
 export default {
+  setSettings(state, settings) {
+    state.site_settings = settings
+  },
   setVisitorId(state, id) {
     state.visitorId = id
   },

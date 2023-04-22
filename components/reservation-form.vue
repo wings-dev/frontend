@@ -670,168 +670,6 @@ export default {
 </script>
 
 <style scoped>
-html,
-body {
-  scroll-padding-top: 160px;
-}
-
-.vc-container {
-  --gray-500: #A6AFC2 !important;
-  --gray-900: var(--bs-theme-first-dark) !important;
-  border: none !important;
-  position: relative;
-  z-index: 1;
-  width: 100% !important;
-}
-
-.vc-container:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 48px;
-  background-color: #F2F5FB;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.vc-header {
-  padding: 10px 18px !important;
-  background-color: #F2F5FB;
-}
-
-.vc-day {
-  min-width: 48px !important;
-  min-height: 48px !important;
-}
-
-.vc-pane-layout {
-  gap: 20px;
-}
-
-.vc-weekday {
-  margin-bottom: 15px !important;
-}
-
-.kapali {
-  background-color: #F2F5FB;
-  position: relative;
-}
-
-
-.opsiyon {
-  background-color: #FFF8E7;
-  position: relative;
-}
-
-.kapali.giris {
-  background-color: transparent;
-  z-index: 1;
-}
-
-.kapali.giris:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(315deg, #f3f3ff 49%, transparent 50%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-/* .kapali.opsiyon.giris:before {
-  background-image: linear-gradient(315deg, #FFF8E7 49%, transparent 50%);
-} */
-
-.kapali.cikis {
-  background-color: transparent;
-  z-index: 1;
-}
-
-.kapali.cikis:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(135deg, #f3f3ff 49%, transparent 50%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.opsiyon.cikis {
-  background-color: transparent;
-}
-
-.opsiyon.cikis:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.doubleday:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.opsiyon:after {
-  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
-}
-
-.kapali:after {
-  background-image: linear-gradient(135deg, #f3f3ff 49%, transparent 50%);
-}
-
-
-
-/* .kapali.opsiyon.cikis:before {
-  background-image: linear-gradient(135deg, #FFF8E7 49%, transparent 50%);
-} */
-
-.calendar-price {
-  font-weight: 400;
-  font-size: 11px;
-  color: #989FB5;
-  margin-bottom: 0;
-}
-
-.swiper-overflow {
-  overflow: hidden;
-}
-
-#mapContainer {
-  width: 300px;
-  height: 300px;
-}
-
-.vc-day {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.day-label {
-  margin-top: 5px;
-}
-
 :deep() .datepicker__dummy-wrapper {
   border: none;
   background: none;
@@ -850,11 +688,17 @@ body {
 :deep() .datepicker__input:before {
   content: "";
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   background-size: 100% 100%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
 
-  margin-right: 9px;
+@media (max-width:1100px) {
+  :deep() .datepicker__input:before {
+    display: none;
+  }
 }
 
 :deep().datepicker__input--first {
@@ -865,45 +709,53 @@ body {
   content: "";
   width: 18px;
   height: 10px;
+  background-image: url(/img/date-right.svg);
   background-size: 100% 100%;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 18%;
 }
 
 :deep().datepicker__input .formatted-date {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: #24252e;
-
+  color: var(--bs-theme-first);
+  line-height: 1;
 }
 
 :deep().datepicker__input .formatted-date span {
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
-  color: #c1c1c1;
+  color: var(--bs-search-text-light);
+  text-align: left;
+  margin-top: 3px;
 }
 
 :deep() .datepicker__month-day--first-day-selected,
 :deep() .datepicker__month-day--last-day-selected {
-  background: var(--bs-theme-first-dark);
+  background: var(--bs-theme-first);
   color: #fff !important;
 }
 
+:deep() .datepicker__month-day--first-day-selected span,
+:deep() .datepicker__month-day--last-day-selected span{
+ opacity: 1;
+}
+
 :deep() .datepicker__month-day--selected {
-  background-color: rgb(var(--bs-theme-first-dark-rgb), .7);
+  background-color: rgb(var(--bs-theme-first-rgb), .7);
   color: #fff !important;
 }
 
 :deep() .datepicker__month-day--allowed-checkout:hover,
 :deep() .datepicker__month-day--valid:hover {
-  background: var(--bs-theme-first-dark);
+  background: var(--bs-theme-first);
   color: #fff;
 }
 
 :deep() .datepicker__month-day--today .datepicker__month-day-wrapper {
-  border: 2px solid var(--bs-theme-first-dark);
+  border: 2px solid var(--bs-theme-first);
 }
 
 :deep() .datepicker__header {
@@ -915,6 +767,33 @@ body {
 }
 
 :deep() .datepicker__month-button {
-  border: 1px solid var(--bs-theme-first-dark);
+  border: 1px solid var(--bs-theme-first);
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDcgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF80MDJfMTU5NCkiPgo8cGF0aCBkPSJNNS45MTQ5NyA0Ljc2Mjg4TDEuMzE3MDYgMC4xNjUwNkMxLjIxMDcxIDAuMDU4NjMyIDEuMDY4NzUgMCAwLjkxNzM4NiAwQzAuNzY2MDE4IDAgMC42MjQwNTggMC4wNTg2MzIgMC41MTc3MTQgMC4xNjUwNkwwLjE3OTExIDAuNTAzNThDLTAuMDQxMjIyNCAwLjcyNDE2NCAtMC4wNDEyMjI0IDEuMDgyNjggMC4xNzkxMSAxLjMwMjkyTDQuMDQwMDkgNS4xNjM5TDAuMTc0ODI2IDkuMDI5MTZDMC4wNjg0ODE2IDkuMTM1NTkgMC4wMDk3NjU2MiA5LjI3NzQ2IDAuMDA5NzY1NjIgOS40Mjg3NUMwLjAwOTc2NTYyIDkuNTgwMiAwLjA2ODQ4MTYgOS43MjIwOCAwLjE3NDgyNiA5LjgyODU5TDAuNTEzNDMgMTAuMTY3QzAuNjE5ODU4IDEwLjI3MzUgMC43NjE3MzQgMTAuMzMyMSAwLjkxMzEwMiAxMC4zMzIxQzEuMDY0NDcgMTAuMzMyMSAxLjIwNjQzIDEwLjI3MzUgMS4zMTI3NyAxMC4xNjdMNS45MTQ5NyA1LjU2NUM2LjAyMTU2IDUuNDU4MjQgNi4wODAxMSA1LjMxNTY5IDYuMDc5NzcgNS4xNjQxNUM2LjA4MDExIDUuMDEyMDMgNi4wMjE1NiA0Ljg2OTU2IDUuOTE0OTcgNC43NjI4OFoiIGZpbGw9IiMxMTI4NTUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF80MDJfMTU5NCI+CjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjExIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=) no-repeat 57%/10px;
-}</style>
+}
+
+.datepicker__wrapper {
+  width: 100%;
+}
+
+@media (max-width:991px) {
+  :deep().datepicker__input--first:after {
+    background-size: 18px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 36px;
+    height: 36px;
+    padding: 14px;
+    background-color: #eff1f5;
+    border-radius: 4px;
+  }
+
+  :deep() .datepicker__input--first:before {
+    display: none;
+  }
+
+  :deep() .datepicker__input:before {
+    display: none;
+  }
+}
+
+</style>

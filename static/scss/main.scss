@@ -631,6 +631,7 @@ body.overflow-hidden {
 .popular-dark {
   background-image: url(../img/popular-dark-back.svg);
   background-size: 100% 100%;
+  background-color: var(--bs-popular-dark-bg);
   .btn-more {
     background-color: transparent;
     color: #fff;
@@ -2262,7 +2263,6 @@ body.overflow-hidden {
     height: 100%;
   }
   .modal-content {
-    border-radius: 0 !important;
     height: 100%;
   }
   .Login {
@@ -2513,13 +2513,14 @@ body.overflow-hidden {
     min-height: 29px;
   }
 }
-
-.modal-body {
-  padding: 0;
-}
-
-.modal-open {
-  overflow: hidden !important;
+.modal{
+  overflow: hidden;
+  &-body {
+    padding: 0;
+  }
+  &-open {
+    overflow: hidden !important;
+  }
 }
 
 @media (min-width: 992px) {
@@ -4327,7 +4328,6 @@ body.overflow-hidden {
     .icon-opportunity-calendar {
       width: 40px;
       height: 40px;
-      background-image: url(../img/opportunity-calendar.svg);
       background-size: 100% 100%;
       margin-right: 20px;
     }

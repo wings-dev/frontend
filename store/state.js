@@ -1,4 +1,5 @@
 export default () => ({
+  site_settings: {},
   loginCodeModalData: {
     loginType: "phone",
     phone: null,

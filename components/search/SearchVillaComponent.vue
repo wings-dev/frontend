@@ -818,7 +818,6 @@ export default {
   width: 22px;
   height: 22px;
   background-size: 100% 100%;
-  background-image: url(/img/date-new.svg);
   margin-right: 10px;
   flex-shrink: 0;
 }
@@ -864,6 +863,11 @@ export default {
 :deep() .datepicker__month-day--last-day-selected {
   background: var(--bs-theme-first);
   color: #fff !important;
+}
+
+:deep() .datepicker__month-day--first-day-selected span,
+:deep() .datepicker__month-day--last-day-selected span{
+ opacity: 1;
 }
 
 :deep() .datepicker__month-day--selected {
