@@ -925,7 +925,7 @@
                     <div class="View-info-fee-item" v-for="(item,index) in villa.amenites.amenite_302.list" :key="index">
                       <p>{{ item }}</p>
                     </div>
-                    
+
                   </div>
                   <div class="View-info-fee-right">
                     <h5>Hasar Depozitosu</h5>
@@ -1785,6 +1785,8 @@ export default {
     this.setAttributes();
   },
   async mounted() {
+
+    console.log(this.$store.state.site_settings);
 
     this.categories = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_2')
     this.amenites = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_600')
