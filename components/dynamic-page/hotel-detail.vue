@@ -462,8 +462,14 @@ export default {
     BCarousel, lottie
   },
   async mounted() {
+    if(window.innerWidth <= 991){
+      document.querySelector('.Header').classList.add('Header-z')
+    }
+
     console.log(this.selectedFilters);
     this.roomSearch()
+
+
   },
   computed: {
     previewImages() {
@@ -530,7 +536,7 @@ export default {
       this.mobileAmenites = !this.mobileAmenites
     },
     goReservation(offer) {
-      const url = process.env.HOTEL_RESERVATION + 'otel/payments?searchId=' + this.searchId + '&offerId=' + offer.offerId;
+      const url = process.env.HOTEL_RESERVATION + 'otel/payments?searchId=' + this.searchId + '&offerId=' + offer.offerId + '&adult=' + this.selectedFilters.adult + '&children=' + this.selectedFilters.childAges.length;
       window.open(url, '_blank');
 
     },
@@ -601,11 +607,6 @@ export default {
     moreContentOpen() {
       this.moreContent = !this.moreContent
     },
-  },
-  mounted(){
-    if(window.innerWidth <= 991){
-      document.querySelector('.Header').classList.add('Header-z')
-    }
   }
 }
 </script>

@@ -79,6 +79,7 @@
       padding-top: clamp(90px, 8.1vw, 155px);
     }
     &-text {
+      z-index: 2;
       &-spin {
         display: flex;
         align-items: center;

@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>C4CZY9F03KQQ0JW6</RequestId><HostId>a1NMVdXZ1IW6Vq8khuFOkmD3HRVCFjKqnHbbqA3ZzX34wcpUQXZufqFiJjhcImumgbF2QAPF0DY=</HostId></Error>
+=======
+<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>M63ZWXW27KRHXKYW</RequestId><HostId>li8NAIthEXw2X7Z8WQ9wkdQYAJBTCP5ES5XCsH4HDAb5n67zjDAXCWxj2zujJ4qU4vVcFmFUqReYcrGILyemNQ==</HostId></Error>
+>>>>>>> master
