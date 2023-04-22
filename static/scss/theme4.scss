@@ -29,6 +29,8 @@
     --bs-theme-second-hover: #f79641;
     --bs-theme-white:#fff;
     --bs-detail-menu-text:#221A52;
+
+    --bs-popular-dark-bg:#D84D64;
     
     --bs-theme-first-rgb: 16, 39, 84;
     --bs-theme-first-dark-rgb: 25, 51, 103;
@@ -86,6 +88,11 @@
   .Header-menu-item-link{
     color: #211a4f;
   }
+  @media (max-width:991px){
+    .Header-menu-item-link{
+      color: #fff;
+    }
+  }
   .Header-call p{
     color: var(--bs-theme-first);
   }
@@ -117,9 +124,16 @@
   .H_info-item-icon i.icon-vkv{
     background-image: url(../img/site4/vkvlogo.svg);
   }
+  .Opportunity-slider .section-caption .icon-opportunity-calendar{
+    background-image: url(../img/site4/opportunity-calendar.svg);
+  }
+  .Reservation-form-top .tarihsec{
+    background-image: url(../img/site4/tarih-sec.svg);
+  }
+
+
   .Footer-call .Contact-support a:before{
     background-image: url(../img/site4/footer-call.svg);
-  
   }
   
   //Villa Kalkan

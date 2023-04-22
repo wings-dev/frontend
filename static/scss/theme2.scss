@@ -31,6 +31,8 @@
   --bs-theme-second-hover: #f79641;
   --bs-theme-white:#fff;
   --bs-detail-menu-text:#f2f5fb;
+
+  --bs-popular-dark-bg:#102754;
   
   --bs-theme-first-rgb: 16, 39, 84;
   --bs-theme-first-dark-rgb: 25, 51, 103;
@@ -120,6 +122,12 @@ i.icon-abroad-villa {
   background-image: url(../img/site2/vkvlogo.svg);
 }
 
+.Opportunity-slider .section-caption .icon-opportunity-calendar{
+  background-image: url(../img/site2/opportunity-calendar.svg);
+}
+.Reservation-form-top .tarihsec{
+  background-image: url(../img/site2/tarih-sec.svg);
+}
 
 .Footer-call .Contact-support a:before{
   background-image: url(../img/site2/footer-call.svg);
