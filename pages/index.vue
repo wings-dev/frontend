@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
-                                            <p><b>{{ item.min_price }} -
+                                            <p><b>{{ item.min_price | numberFormat }} -
                                                     {{ item.max_price }}
                                                 </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
@@ -725,7 +725,6 @@ export default {
                 },
             },
         })
-
 
     },
     methods: {
