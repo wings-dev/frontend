@@ -382,7 +382,7 @@
               </p>
 
               <client-only>
-                <availibility-calendar :slug="$route.params.slug" :calendarColumns="calendarColumn" :rows="calendarRow"
+                <availibility-calendar :code="villa.code" :calendarColumns="calendarColumn" :rows="calendarRow"
                   :calendarStep="1"></availibility-calendar>
               </client-only>
 

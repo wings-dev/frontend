@@ -36,7 +36,7 @@ export default {
     HotelDatePicker,
   },
   props: {
-    slug: {
+    code: {
       required: true
     },
     calendarColumns:{
@@ -62,12 +62,12 @@ export default {
     }
   },
   async mounted() {
-    let redisData = this.$store.state['routes'].routes[this.slug];
+    let redisData = this.$store.state['routes'].routes[this.code];
 
-    const data = await this.$getRedisKey([`data:villas:${redisData.code}:calendar`, `data:villas:${redisData.code}:prices`])
+    const data = await this.$getRedisKey([`data:villas:${this.code}:calendar`, `data:villas:${this.code}:prices`])
     // villa redis datası
-    this.calendar = data[`data:villas:${redisData.code}:calendar`] ? data[`data:villas:${redisData.code}:calendar`] : [];
-    this.price_list_1 = data[`data:villas:${redisData.code}:prices`] ? data[`data:villas:${redisData.code}:prices`].price_list_1 : [];
+    this.calendar = data[`data:villas:${this.code}:calendar`] ? data[`data:villas:${this.code}:calendar`] : [];
+    this.price_list_1 = data[`data:villas:${this.code}:prices`] ? data[`data:villas:${this.code}:prices`].price_list_1 : [];
     console.log('this.calendar', this.calendar)
     console.log('this.price_list_1', this.price_list_1)
     this.setAttributes()
