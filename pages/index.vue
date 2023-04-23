@@ -120,7 +120,7 @@
                     <i class="icon-otel-discover"></i>
                     <h4 class="primary-title fw-medium ls-05 lh-1">
                         Otelleri
-                        <span>keşfedin {{ pageData.page_content?.select_otel.length }}</span>
+                        <span>keşfedin </span>
                     </h4>
                 </div>
               <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">

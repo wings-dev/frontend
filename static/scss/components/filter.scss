@@ -748,6 +748,7 @@
     .multiselect__option {
       display: flex;
       align-items: center;
+      white-space:normal;
       i {
         font-size: 16px;
         color: #989fb5;
@@ -812,6 +813,11 @@
         font-size: 10px;
       }
     }
+
+    .multiselect__option{
+
+    }
+
   }
   &-mobile {
     display: none;
@@ -1292,7 +1298,7 @@
       h4 {
         font-size: 15px;
         font-weight: bold;
-        color: var(--bs-theme-first-dark);
+        color: var(--bs-theme-first);
       }
 
       button {
@@ -1715,7 +1721,7 @@
         margin-right: 10px;
         position: relative;
         flex-shrink: 0;
-        border:2px solid #eff0f5;
+        border: 2px solid #eff0f5;
         &:after {
           content: "";
           display: inline-block;
@@ -2040,7 +2046,7 @@
       }
     }
   }
-  &-clear-mobile{
+  &-clear-mobile {
     display: none;
   }
 }
@@ -2152,12 +2158,12 @@
   position: relative;
 }
 
-.Home{
+.Home {
   display: flex;
   flex-direction: column;
- .search-engine-section{
-  order: -1;
- }
+  .search-engine-section {
+    order: -1;
+  }
 }
 
 @media (max-width: 991px) {
@@ -2199,10 +2205,10 @@
         margin-bottom: 0;
         margin-right: auto;
         margin-left: -28px;
-        &.more{
+        &.more {
           margin-left: 0;
         }
-        h5{
+        h5 {
           font-weight: normal;
         }
       }
@@ -2283,7 +2289,6 @@
     }
   }
   .Filters {
-
     &-region {
       .Filters-head {
         border-bottom: 1px solid #dee2e6 !important;
@@ -2326,7 +2331,7 @@
         padding: 16px;
         margin-bottom: 0;
         padding-top: 24px;
-        
+
         .Filters-head {
           border-bottom: none !important;
           margin-right: auto;
@@ -2347,8 +2352,14 @@
           }
         }
       }
+      &-m-button-container{
+        border-top: solid 2px #f2f5fb;
+        padding: 17px;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: auto;
+      }
       &-m-button {
-        background-color: var(--bs-theme-first);
         display: flex;
         width: 100%;
         align-items: center;
@@ -2359,6 +2370,7 @@
         color: #fff;
         padding: 22px 0;
         margin-top: auto;
+        border-radius: 4px;
         span {
           color: var(--bs-theme-second);
         }
@@ -2398,15 +2410,15 @@
     &-range {
       padding: 0 16px;
     }
-    &-search{
+    &-search {
       display: flex;
       align-items: center;
-      .Filters-clear-mobile{
+      .Filters-clear-mobile {
         margin-left: 10px;
         flex-shrink: 0;
       }
     }
-    &-clear-mobile{
+    &-clear-mobile {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2415,7 +2427,7 @@
       font-weight: 500;
       font-size: 13px;
       background-color: transparent;
-      &.right{
+      &.right {
         justify-content: flex-end;
         margin-right: 20px;
       }
@@ -2597,7 +2609,7 @@
         .icon-down-arrow {
           right: 30px !important;
         }
-        .dropdown-toggle{
+        .dropdown-toggle {
           pointer-events: none;
         }
         .dropdown-menu {
@@ -2784,20 +2796,27 @@
           }
           &-people {
             width: 100%;
-            .dropdown-toggle{
-              pointer-events: all;
+            .dropdown-toggle {
+              padding-left: 0;
+              i.icon-user {
+                display: block;
+              }
             }
-            .dropdown-menu{
+            .dropdown-menu {
               width: 100%;
               left: -12px !important;
               top: 10px !important;
             }
+            .Search-item-title{
+              i.icon-user{
+                display: none;
+              }
+            }
           }
 
-          &-date{
-            pointer-events: all;
+          &.date {
+            border-bottom: 1px solid #eff0f5;
           }
-         
         }
         &-button {
           width: 100%;
@@ -2811,24 +2830,48 @@
       .Search {
         &-item {
           width: 100%;
-          // &-date{
-          //   pointer-events: all;
-          // }
-          
-          &-people{
-            .dropdown-toggle{
-              pointer-events: all;
+
+          &-people {
+            .dropdown-toggle {
+              // pointer-events: all;
+              padding-left: 0;
+              i.icon-user {
+                display: block;
+              }
             }
-            .dropdown-menu{
+            .dropdown-menu {
               width: 100%;
               left: -12px !important;
               top: 10px !important;
             }
           }
+
+          &-region-otel {
+            order: -2;
+            border-bottom: 1px solid #eff0f5;
+            padding: 10px 20px;
+            // padding-bottom: 18px;
+
+            .Search-multiselect {
+              height: 25px;
+              pointer-events: none;
+            }
+            .Search-item-title {
+              margin-bottom: 5px;
+              i.icon-new-location {
+                display: none;
+              }
+            }
+          }
+
+          &-title {
+            i.icon-user {
+              display: none;
+            }
+          }
         }
         &-button {
           width: 100%;
-          margin-left: 15px;
         }
       }
     }
@@ -2907,6 +2950,7 @@
         padding: 17px;
         display: flex;
         justify-content: flex-end;
+        margin-top: auto;
         button {
           width: 100%;
           height: 60px;
@@ -2915,7 +2959,6 @@
           align-items: center;
           padding: 4px;
           border-radius: 4px;
-          background-image: linear-gradient(236deg, #f5841f 100%, #f59f1f 0%);
           font-size: 13px;
           font-weight: 600;
           line-height: normal;
@@ -2930,6 +2973,44 @@
         height: 100%;
         padding: 24px;
         padding-top: 70px;
+      }
+      .Search-item-people{
+        order: 0;
+
+        .dropdown-menu-otel{
+          display: block!important;
+          left: 0!important;
+          top: 76px !important;
+          border: none;
+          box-shadow: none;
+
+          .Search-item-person{
+            padding: 0;
+          }
+        }
+      }
+      .Search-item-region-otel-in {
+        padding: 10px 20px;
+        border-bottom: 1px solid #eff0f5;
+        i.icon-new-location{
+          font-size: 20px;
+          flex-shrink: 0;
+          color: var(--bs-search-icon);
+        }
+        .Search-multiselect {
+          height: 25px;
+          .multiselect__select{
+            display: none;
+          }
+           .multiselect__content-wrapper{
+          width: calc(100% + 40px);
+          max-height: calc(100dvh - 210px) !important;
+          margin-left: -20px;
+          display: block!important;
+          border: none;
+          border-radius: 0;
+        }
+      }
       }
       .datepicker__wrapper {
         height: 100%;
@@ -2985,7 +3066,7 @@
             padding-left: 20px;
             padding-top: 10px;
           }
-          &:nth-child(3){
+          &:nth-child(3) {
             border: none;
           }
           &-more-mobile {
@@ -3108,10 +3189,14 @@
   .search-engine-section::before {
     height: calc(50% - 61px);
   }
-  .Home-z{
-    .search-engine-section.search-home-mobile-open{
+  .Home-z {
+    .search-engine-section.search-home-mobile-open {
       order: -1;
     }
+  }
+
+  .mobile-w-100 {
+    width: 100%;
   }
 }
 
@@ -3185,7 +3270,7 @@
         display: none;
 
         &-mobile {
-          width:calc(50% - 4px);
+          width: calc(50% - 4px);
           white-space: nowrap;
           padding: 16px 8px;
         }
@@ -3218,7 +3303,7 @@
     }
 
     &-button {
-      width:calc(50% - 4px);
+      width: calc(50% - 4px);
       max-width: unset;
     }
 
@@ -3311,15 +3396,14 @@
         padding: 0 20px;
       }
     }
-    &-otel{
-      .Search-otel .Search-item.date{
-        width: 100%!important;
+    &-otel {
+      .Search-otel .Search-item.date {
+        width: 100% !important;
       }
     }
-    
   }
-  .Search-otel .Search-item.date{
-    width: 100%!important;
+  .Search-otel .Search-item.date {
+    width: 100% !important;
   }
 
   #search-tab {

@@ -629,7 +629,7 @@ body.overflow-hidden {
   }
 }
 .popular-dark {
-  background-image: url(../img/popular-dark-back.svg);
+  
   background-size: 100% 100%;
   background-color: var(--bs-popular-dark-bg);
   .btn-more {
@@ -889,6 +889,9 @@ body.overflow-hidden {
       width: calc(50% - 6px);
     }
   }
+  .blog-section:before{
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -988,6 +991,9 @@ body.overflow-hidden {
           margin-bottom: 20px !important;
         }
       }
+    }
+    .blog-list-item-sm{
+      display: none;
     }
   }
 }
@@ -4308,7 +4314,6 @@ body.overflow-hidden {
 }
 
 .Opportunity-slider {
-  background-color: var(--bs-theme-first);
   padding: 40px 0;
 
   .list-slide {
@@ -8849,6 +8854,8 @@ body.overflow-hidden {
     margin-top: 0;
     &-in {
       flex-wrap: wrap;
+      margin-bottom: 0;
+      padding-bottom: 30px;
     }
     &-text {
       width: 100%;

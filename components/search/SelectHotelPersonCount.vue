@@ -1,9 +1,12 @@
 <template>
   <div class="Search-item Search-item-people Search-item-people-otel">
-    <span class="Search-item-name">Kişi Sayısı </span>
+    <div class="Search-item-title">
+      <i class="icon-user Search-item-icon"></i>
+      <span class="Search-item-name">Kişi Sayısı </span>
+    </div>
     <button class=" dropdown-toggle Search-item-person-info" type="button" id="dropdownMenuButton2"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            
+      data-bs-toggle="dropdown" aria-expanded="false">
+
       <div class="Search-item-people-in">
         <i class="icon-user Search-item-icon"></i>
         <span class="dropdown-toggle-title">{{ selectedPersonText }}</span>
@@ -41,7 +44,7 @@
             <div class="Search-item-person-child">
               <div v-for="(child, index) in childAges" class="Search-item-person-child-item">
                 <div class="Search-item-person-child-item-text">
-                  <p>{{index + 1}}. Çocuk</p>
+                  <p>{{ index + 1 }}. Çocuk</p>
                   <span>24.03.2001 sonrası doğumlu</span>
                 </div>
                 <div class="Search-item-person-child-item-select">
@@ -82,7 +85,7 @@ export default {
   },
   methods: {
     emit() {
-      this.$emit('change', {adult: this.adult, childAges: this.childAges})
+      this.$emit('change', { adult: this.adult, childAges: this.childAges })
     },
     adultIncrease() {
       if (this.adult < 20) {
@@ -98,7 +101,7 @@ export default {
     },
     children_Increase() {
       if (this.childAges.length < 10) {
-        this.childAges.push({age: ''})
+        this.childAges.push({ age: '' })
         this.emit()
       }
     },
@@ -112,6 +115,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
