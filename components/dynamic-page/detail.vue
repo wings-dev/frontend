@@ -1800,6 +1800,7 @@ export default {
           customData.price = matchingPriceItem.price;
         }
 
+        const existingObjIndex = attributes.findIndex(obj => obj.dates.getTime() === new Date(date).getTime());
         if (existingObjIndex !== -1) {
           const existingObj = attributes[existingObjIndex];
           existingObj.customData.status = [...new Set([...existingObj.customData.status, ...customData.status])];
