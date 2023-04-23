@@ -62,7 +62,7 @@
   &-reservation {
     position: fixed;
     z-index: 1;
-    max-width: 330px;
+    max-width: 350px;
     // right: calc((100vw - 1170px) / 2);
     top: 160px;
 
@@ -277,7 +277,7 @@ body.overflow-hidden {
         margin-right: 8px !important;
         opacity: 1;
         &-active {
-          background-color: #f2f5fb;
+          background-color: var(--bs-theme-grey);
           border: 3px solid #000;
         }
       }
@@ -1143,7 +1143,7 @@ body.overflow-hidden {
   .Home {
     display: flex;
     flex-direction: column;
-    background-color: #f2f5fb;
+    background-color: var(--bs-theme-grey);
     .Banner {
       height: 170px;
       transform: translateY(0);
@@ -1371,7 +1371,7 @@ body.overflow-hidden {
         height: 80px;
         background-image: linear-gradient(
           to top,
-          #f2f5fb 20%,
+          var(--bs-theme-grey) 20%,
           rgba(217, 217, 217, 0) 100%
         );
         position: absolute;
@@ -1413,7 +1413,7 @@ body.overflow-hidden {
     }
   }
   &-list {
-    background-color: #f2f5fb;
+    background-color: var(--bs-theme-grey);
     h1 {
       color: var(--bs-theme-first);
       &:before {
@@ -1452,7 +1452,7 @@ body.overflow-hidden {
       padding: 20px;
       border-radius: 2.6px;
       border: solid 1.3px #fff;
-      background-color: #f2f5fb;
+      background-color: var(--bs-theme-grey);
       font-size: 15.8px;
       font-weight: 500;
       line-height: 1.15;
@@ -2714,7 +2714,7 @@ body.overflow-hidden {
         border: none;
         margin-bottom: 8px;
         break-inside: avoid-column;
-        // background-color: #f2f5fb;
+        // background-color: var(--bs-theme-grey);
       }
       &-header {
       }
@@ -2722,11 +2722,11 @@ body.overflow-hidden {
         box-shadow: none;
       }
       &-button {
-        background-color: #f2f5fb;
+        background-color: var(--bs-theme-grey);
         font-size: 14px;
         font-weight: 500;
         color: var(--bs-fvilla-text);
-        border: solid 2px #f2f5fb;
+        border: solid 2px var(--bs-theme-grey);
         border-bottom: none;
         &:after {
           width: 1rem;
@@ -2739,7 +2739,7 @@ body.overflow-hidden {
         &[aria-expanded="true"] {
           background-color: transparent;
           & + .accordion-collapse {
-            border: solid 2px #f2f5fb;
+            border: solid 2px var(--bs-theme-grey);
             border-top: none;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -2747,7 +2747,7 @@ body.overflow-hidden {
         }
       }
       &-body {
-        // background-color: #f2f5fb;
+        // background-color: var(--bs-theme-grey);
         padding-top: 0;
         p {
           font-size: 13px;
@@ -3481,7 +3481,7 @@ body.overflow-hidden {
 }
 
 .H_info {
-  background-color: #f2f5fb;
+  background-color: var(--bs-theme-grey);
   &-in {
     display: flex;
     justify-content: space-between;
@@ -3501,7 +3501,7 @@ body.overflow-hidden {
       align-items: center;
       justify-content: center;
       border-radius: 2px;
-      background-color: #f2f5fb;
+      background-color: var(--bs-theme-grey);
       margin-right: 25px;
       flex-shrink: 0;
       padding: 14px;
@@ -5075,7 +5075,7 @@ body.overflow-hidden {
       width: calc(16.66% - 12px);
       padding: 10px 9px 18.5px;
       border-radius: 10.1px;
-      border: solid 1px #f2f5fb;
+      border: solid 1px var(--bs-theme-grey);
       background-color: rgba(202, 212, 221, 0.1);
       img {
         width: 100%;
@@ -5141,7 +5141,7 @@ body.overflow-hidden {
       width: calc(20% - 12px);
       padding: 10px 16px;
       border-radius: 4px;
-      border: solid 1px #f2f5fb;
+      border: solid 1px var(--bs-theme-grey);
       display: flex;
       font-size: 14px;
       font-weight: 600;
@@ -5298,7 +5298,7 @@ body.overflow-hidden {
 .User {
   &-header {
     width: 100%;
-    background-color: #f2f5fb;
+    background-color: var(--bs-theme-grey);
     padding: clamp(20px, 1.85vw, 35px) 0;
     &-in {
       display: flex;
@@ -5346,7 +5346,7 @@ body.overflow-hidden {
     padding-top: 54px;
     display: flex;
     flex-direction: column;
-    border-right: 2px solid #f2f5fb;
+    border-right: 2px solid var(--bs-theme-grey);
     a {
       font-size: 15px;
       font-weight: 500;
@@ -5360,7 +5360,7 @@ body.overflow-hidden {
       }
       span {
         border-radius: 5px;
-        border: solid 2px #f2f5fb;
+        border: solid 2px var(--bs-theme-grey);
         font-size: 12px;
         font-weight: 500;
         color: var(--bs-theme-first);
@@ -5954,7 +5954,7 @@ body.overflow-hidden {
       }
       &-right {
         width: 25%;
-        background-color: #f2f5fb;
+        background-color: var(--bs-theme-grey);
         display: flex;
         flex-direction: column;
         position: relative;
@@ -6193,7 +6193,7 @@ body.overflow-hidden {
     padding: 50px 0;
   }
   &-search {
-    background-color: #f2f5fb;
+    background-color: var(--bs-theme-grey);
     &-in {
       display: flex;
       flex-direction: column;
@@ -6279,7 +6279,7 @@ body.overflow-hidden {
       &-button {
         width: 100%;
         border-radius: 4px;
-        background-color: #f2f5fb;
+        background-color: var(--bs-theme-grey);
         border: none;
         box-shadow: none;
         font-size: clamp(14px, 1.25vw, 24px);
@@ -6356,7 +6356,7 @@ body.overflow-hidden {
   }
   &-header {
     width: 100%;
-    background-color: #f2f5fb;
+    background-color: var(--bs-theme-grey);
     padding: clamp(20px, 1.85vw, 35px) 0;
     &-in {
       display: flex;
@@ -6394,7 +6394,7 @@ body.overflow-hidden {
       -webkit-backdrop-filter: blur(54.4px);
       backdrop-filter: blur(54.4px);
       box-shadow: 0 22px 114px 0 rgba(135, 131, 153, 0.06);
-      background-color: #f2f5fb;
+      background-color: var(--bs-theme-grey);
       padding: clamp(15px, 1.57vw, 30px) clamp(14px, 1.1vw, 20px);
     }
     &-title {
@@ -6615,7 +6615,7 @@ body.overflow-hidden {
       &-text {
         width: 35%;
         padding-left: clamp(20px, 2.09vw, 40px);
-        background-color: #f2f5fb;
+        background-color: var(--bs-theme-grey);
         display: flex;
         flex-direction: column;
         padding-top: 7%;
@@ -6649,7 +6649,7 @@ body.overflow-hidden {
             margin-right: 8px;
             opacity: 1;
             &-active {
-              background-color: #f2f5fb;
+              background-color: var(--bs-theme-grey);
               border: 3px solid #000;
             }
           }
@@ -6691,7 +6691,7 @@ body.overflow-hidden {
     }
     &-info {
       width: 80%;
-      background-color: #f2f5fb;
+      background-color: var(--bs-theme-grey);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -6779,7 +6779,7 @@ body.overflow-hidden {
           margin-right: 8px;
           opacity: 1;
           &-active {
-            background-color: #f2f5fb;
+            background-color: var(--bs-theme-grey);
             border: 3px solid #000;
           }
         }
@@ -6850,7 +6850,7 @@ body.overflow-hidden {
 .Contact {
   &-header {
     width: 100%;
-    background-color: #f2f5fb;
+    background-color: var(--bs-theme-grey);
     padding: clamp(20px, 1.85vw, 35px) 0;
     &-in {
       display: flex;
@@ -7413,8 +7413,8 @@ body.overflow-hidden {
 
   .option {
     border-radius: 4px;
-    background-color: #f2f5fb;
-    border: 1px solid #f2f5fb;
+    background-color: var(--bs-theme-grey);
+    border: 1px solid var(--bs-theme-grey);
     justify-content: space-between;
     margin-top: 10px;
     transition: all 300ms;
@@ -7671,7 +7671,7 @@ body.overflow-hidden {
   }
 }
 .otel-features {
-  background-color: #f2f5fb;
+  background-color: var(--bs-theme-grey);
   margin-bottom: 100px;
   &-in {
     padding-top: 30px;
@@ -8028,7 +8028,7 @@ body.overflow-hidden {
           margin-right: 8px;
           opacity: 1;
           &-active {
-            background-color: #f2f5fb;
+            background-color: var(--bs-theme-grey);
             border: 3px solid #000;
           }
         }
@@ -8686,7 +8686,7 @@ body.overflow-hidden {
   &-in {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #f2f5fb;
+    border-bottom: 1px solid var(--bs-theme-grey);
     padding-bottom: 60px;
     margin-bottom: 50px;
     align-items: flex-start;
@@ -8757,7 +8757,7 @@ body.overflow-hidden {
   &-features {
     width: 22%;
     border-radius: 10px;
-    background-color: #f2f5fb;
+    background-color: var(--bs-theme-grey);
     padding: 30px;
     margin-left: auto;
     margin-right: 16px;
@@ -8903,14 +8903,14 @@ body.overflow-hidden {
     justify-content: space-between;
     padding: 24px;
     border-radius: 10px;
-    border: solid 2px #f2f5fb;
+    border: solid 2px var(--bs-theme-grey);
     margin-bottom: 16px;
     &-left {
       width: 17%;
       &-top {
         padding-bottom: 20px;
         margin-bottom: 20px;
-        border-bottom: 2px solid #f2f5fb;
+        border-bottom: 2px solid var(--bs-theme-grey);
         h6 {
           font-size: 20px;
           font-weight: 600;
@@ -9013,7 +9013,7 @@ body.overflow-hidden {
     display: inline-block;
     width: 47%;
     height: 100%;
-    background-color: #f2f5fb;
+    background-color: var(--bs-theme-grey);
     position: absolute;
     left: 0;
     top: 0;
@@ -9181,11 +9181,6 @@ body.overflow-hidden {
   height: 15px;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
-
-// Optional indicator pips/controls
-//
-// Add a container (such as a list) with the following class and add an item (ideally a focusable control,
-// like a button) with data-bs-target for each slide your carousel holds.
 
 .carousel-indicators {
   position: absolute;

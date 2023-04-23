@@ -404,7 +404,7 @@
         border-radius: 7px;
         backdrop-filter: blur(54.7px);
         box-shadow: 0 22.1px 114.7px 0 rgba(135, 131, 153, 0.06);
-        background-color: #f2f5fb;
+        background-color: var(--bs-theme-grey);
 
         i.icon-filter {
           color: var(--bs-theme-second);
@@ -700,7 +700,7 @@
       display: flex;
       align-items: center;
       border-radius: 4px;
-      background-color: #f2f5fb;
+      background-color: var(--bs-theme-grey);
       span {
         font-size: 12px;
         font-weight: 500;
@@ -1099,7 +1099,7 @@
     &-left {
       width: 62%;
       border-radius: 10px;
-      background-color: #f2f5fb;
+      background-color: var(--bs-theme-grey);
       padding: 16px 24px;
       display: flex;
       align-items: center;
@@ -1136,7 +1136,7 @@
     &-right {
       width: 36%;
       border-radius: 10px;
-      background-color: #f2f5fb;
+      background-color: var(--bs-theme-grey);
       padding: 24px;
 
       &-head {
@@ -2361,7 +2361,7 @@
         }
       }
       &-m-button-container {
-        border-top: solid 2px #f2f5fb;
+        border-top: solid 2px var(--bs-theme-grey);
         padding: 17px;
         display: flex;
         justify-content: flex-end;
@@ -2954,7 +2954,7 @@
         }
       }
       &-bottom {
-        border-top: solid 2px #f2f5fb;
+        border-top: solid 2px var(--bs-theme-grey);
         padding: 17px;
         display: flex;
         justify-content: flex-end;

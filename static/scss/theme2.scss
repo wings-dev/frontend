@@ -6,6 +6,7 @@
   --bs-theme-second-dark: #51b3a4;
   --bs-theme-second-light: #dcf2ef;
   --bs-theme-third: #183266;
+  --bs-theme-grey: #f2f5fb;
 
   //HEADER
   --bs-theme-menu-bg: #102754;
@@ -144,6 +145,11 @@ i.icon-abroad-villa {
 
 .Footer-call .Contact-support a:before{
   background-image: url(../img/site2/footer-call.svg);
-
 }
 
+.View-menu{
+  background-color: #f2f5fb;
+}
+.view-detail-section:before{
+  background-color: #f2f5fb;
+}
