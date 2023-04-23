@@ -1,6 +1,6 @@
 export default {
   async nuxtServerInit({ commit }, { app }) {
-    const settings = await app.$getRedisKey(`web:2:setting:general`)
+    const settings = await app.$getRedisKey(`web:4:setting:general`)
     commit('setSettings', settings)
   },
   initializeVisitorId({ commit }) {
