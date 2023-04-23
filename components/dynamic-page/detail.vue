@@ -175,8 +175,8 @@
         </template>
         <template v-else>
           <div class="view-gallery">
-            <div class="area-1"> 
-              <a :href="villa.watermark_images[0].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code" 
+            <div class="area-1">
+              <a :href="villa.watermark_images[0].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
@@ -223,7 +223,7 @@
             </div>
             <template v-if="villa.watermark_images.length > 4">
               <h2>TEST</h2>
-              
+
             </template>
             <div class="View-gallery-mobile-buttons">
 
@@ -1736,6 +1736,11 @@ export default {
       const attributes = [];
       const { calendar, price_list_1 } = this;
 
+      if (!calendar || !price_list_1) {
+        console.warn("Invalid data: 'calendar' or 'price_list_1' is not defined.");
+        return;
+      }
+
       const setClassName = (customData, date) => {
         let { status, dateStatus } = customData;
         status = [...new Set(status)]
@@ -1749,24 +1754,17 @@ export default {
         const prevDayData = findByDate(attributes, prevDayString)?.customData;
         const nextDayData = findByDate(attributes, nextDayString)?.customData;
 
-        // bu gün hem giriş hem çıkışsa
         if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(2) && prevDayData?.status.includes(2)) {
-          // bir önceki günün tipine bak
-          //Kapalı-to-kapalı
           return { "kapali": true }
         }
         if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(1) && prevDayData?.status.includes(1)) {
-          // bir önceki günün tipine bak
-          //opsiyon-to-opsiyon
           return { "opsiyon": true }
         }
         if (dateStatus.includes(0) && dateStatus.includes(2)) {
-          // bir önceki günün tipine bak
           return prevDayData?.status.includes(2)
             ? { "kapali-cikis-to-opsiyon-giris": true }
             : { "opsiyon-cikis-to-kapali-giris": true };
         }
-
 
         return {
           "kapali": status.includes(2),
@@ -1778,7 +1776,11 @@ export default {
         };
       }
 
-      [...calendar, ...price_list_1].forEach(item => dates.add(item.dates[0]));
+      [...calendar, ...price_list_1].forEach(item => {
+        if (item && item.dates && item.dates[0]) {
+          dates.add(item.dates[0]);
+        }
+      });
 
       dates.forEach(date => {
         const customData = {
@@ -1787,18 +1789,17 @@ export default {
           dateStatus: [],
         };
 
-        const matchingCalendarItems = calendar.filter(item => item.dates[0] === date);
+        const matchingCalendarItems = calendar.filter(item => item && item.dates && item.dates[0] === date);
         matchingCalendarItems.forEach(item => {
           customData.status = customData.status.concat(item.status);
           customData.dateStatus = customData.dateStatus.concat(item.dateStatus);
         });
 
-        const matchingPriceItem = price_list_1.find(item => item.dates === date);
+        const matchingPriceItem = price_list_1.find(item => item && item.dates === date);
         if (matchingPriceItem) {
           customData.price = matchingPriceItem.price;
         }
 
-        const existingObjIndex = attributes.findIndex(obj => obj.dates.getTime() === new Date(date).getTime());
         if (existingObjIndex !== -1) {
           const existingObj = attributes[existingObjIndex];
           existingObj.customData.status = [...new Set([...existingObj.customData.status, ...customData.status])];
@@ -1811,17 +1812,20 @@ export default {
       });
 
       price_list_1.forEach(item => {
-        const exists = attributes.find(obj => obj.dates.getTime() === new Date(item.dates).getTime());
-        if (!exists) {
-          const customData = {
-            price: item.price,
-            status: [],
-            dateStatus: [],
-            className: {}
-          };
+          if (item && item.dates) {
+            const exists = attributes.find(obj => obj.dates.getTime() === new Date(item.dates).getTime());
+            if (!exists) {
+              const customData = {
+                price: item.price,
+                status: [],
+                dateStatus: [],
+                className: {}
+              };
 
-          attributes.push({ customData, dates: new Date(item.dates) });
-        }
+              attributes.push({ customData, dates: new Date(item.dates) });
+            }
+          }
+
       });
 
       this.attributes = attributes;
