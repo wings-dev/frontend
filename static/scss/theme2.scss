@@ -128,6 +128,19 @@ i.icon-abroad-villa {
 .Reservation-form-top .tarihsec{
   background-image: url(../img/site2/tarih-sec.svg);
 }
+.Opportunity-slider{
+  background-color: var(--bs-theme-first);
+}
+.popular-dark{
+  background-image: url(../img/popular-dark-back.svg);
+}
+
+.Search-mobile-bottom button{
+  background-image: linear-gradient(236deg, #f5841f 100%, #f59f1f 0%);
+}
+.Filters-in-m-button{
+  background-image: linear-gradient(236deg, #f5841f 100%, #f59f1f 0%);
+}
 
 .Footer-call .Contact-support a:before{
   background-image: url(../img/site2/footer-call.svg);

@@ -3,7 +3,8 @@
     <div class="Search-fixed-in" :class="{ 'fixed-active': fixedSearch }">
       <div class="Search-fixed-in-left">
         <b>{{ checkIn }} - {{ checkOut }}</b>
-        <p>{{ selectedDestinations.length ? selectedDestinations[0].text : '' }} <span>{{ adult }} Yetişkin, {{ children }}
+        <p>{{ selectedDestinations.length ? selectedDestinations[0].text : '' }} <span>{{ adult }} Yetişkin, {{ children
+        }}
             Çocuk</span></p>
       </div>
       <button type="button" @click="fixedSearchOpen">Değiştir</button>
@@ -244,7 +245,9 @@
         <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü
           Temizle</button>
 
-        <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
+        <div class="Filters-in-m-button-container">
+          <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
+        </div>
       </div>
 
     </div>
@@ -663,7 +666,7 @@ export default {
           document.querySelector('body')?.classList.remove('over')
           document.querySelector('.search-home-mobile-open')?.classList.remove('over')
           document.querySelector('html')?.classList.remove('over')
-          
+
           document.querySelector('.Home')?.classList.remove('Home-z')
         }, 10)
       }
@@ -866,8 +869,8 @@ export default {
 }
 
 :deep() .datepicker__month-day--first-day-selected span,
-:deep() .datepicker__month-day--last-day-selected span{
- opacity: 1;
+:deep() .datepicker__month-day--last-day-selected span {
+  opacity: 1;
 }
 
 :deep() .datepicker__month-day--selected {
@@ -924,9 +927,10 @@ export default {
 }
 
 @media (max-width:500px) {
-  .Search-mobile.show :deep() .datepicker__dummy-wrapper{
+  .Search-mobile.show :deep() .datepicker__dummy-wrapper {
     justify-content: center;
   }
+
   .Search-mobile.show :deep() .datepicker__input {
     width: max-content;
   }

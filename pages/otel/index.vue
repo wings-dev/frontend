@@ -49,7 +49,7 @@
                             <div class="swiper-pagination blog-pagination"></div>
                         </div>
                     </div>
-                    <div class="blog-list-item bg-light area2">
+                    <div class="blog-list-item bg-light area2 blog-list-item-sm">
                         <a href="/" class="blog-item position-relative d-block w-100 h-100">
                             <nuxt-img src="/img/otel-sl2.jpg" width="402" height="182" alt="blog-image"
                                 class="lazy cover w-100" />
@@ -59,7 +59,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="blog-list-item bg-light area3">
+                    <div class="blog-list-item bg-light area3 blog-list-item-sm">
                         <a href="/" class="blog-item position-relative d-block w-100 h-100">
                             <nuxt-img src="/uploads/blog-image3.jpg" width="402" height="182" alt="blog-image"
                                 class="lazy cover w-100" />

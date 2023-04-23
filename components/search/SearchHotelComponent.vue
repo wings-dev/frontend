@@ -1,39 +1,38 @@
 <template>
   <div class="Search Search-otel ">
     <div class="Search-left">
-      <div class="Search-item Search-item-region-otel">
-        <span class="Search-item-name">Şehir, İlçe veya Otel adı yazın</span>
+      <div class="Search-item Search-item-region-otel" @click="openRegions">
+        <div class="Search-item-title">
+          <i class="icon-new-location Search-item-icon"></i>
+          <span class="Search-item-name">Şehir, İlçe veya Otel adı yazın</span>
+        </div>
         <div class="Search-item-region-otel-in">
           <i class="icon-new-location Search-item-icon"></i>
-          <!-- <client-only>
-            <v-select class="w-100" :options="filteredCities" id="code" v-model="selectedCity" :clearable="false"
-              placeholder="Şehir, İlçe veya Otel adı yazın" @search="onCitySearch"></v-select>
-          </client-only> -->
           <div class="Search-multiselect">
             <client-only>
-            <multiselect v-model="selectedCity" :options="otelSearchOptions" group-values="groupItems"
-                         group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false" @search-change="onOtelSearch">
-              <template slot="singleLabel" slot-scope="props">
-                <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
-              </template>
-              <template slot="option" slot-scope="props">
-                <template v-if="!props.option.$isLabel">
-                  <i class="icon-hotel-category" v-if="props.option.category == 'tema'"></i>
-                  <i class="icon-location-pin" v-else-if="props.option.category == 'bolge'"></i>
-                  <i class="icon-hotel-key" v-else></i>
+              <multiselect v-model="selectedCity" :options="otelSearchOptions" group-values="groupItems"
+                group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false"
+                @search-change="onOtelSearch">
+                <template slot="singleLabel" slot-scope="props">
+                  <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
                 </template>
-                <div class="option__desc">
-                  <span class="option__title" v-if="props.option.$isLabel">{{ props.option.$groupLabel }}</span>
-                  <span class="option__title" v-else>{{ props.option.name }}</span>
-                  <span class="option__small" v-if="props.option.district">{{ props.option.district }}</span>
-                </div>
-              </template>
-              <span slot="noResult">Oops! Aramanıza uygun sonuç bulunamadı.</span>
-            </multiselect>
+                <template slot="option" slot-scope="props">
+                  <template v-if="!props.option.$isLabel">
+                    <i class="icon-hotel-category" v-if="props.option.category == 'tema'"></i>
+                    <i class="icon-location-pin" v-else-if="props.option.category == 'bolge'"></i>
+                    <i class="icon-hotel-key" v-else></i>
+                  </template>
+                  <div class="option__desc">
+                    <span class="option__title" v-if="props.option.$isLabel">{{ props.option.$groupLabel }}</span>
+                    <span class="option__title" v-else>{{ props.option.name }}</span>
+                    <span class="option__small" v-if="props.option.district">{{ props.option.district }}</span>
+                  </div>
+                </template>
+                <span slot="noResult">Oops! Aramanıza uygun sonuç bulunamadı.</span>
+              </multiselect>
             </client-only>
           </div>
         </div>
-
       </div>
       <div class="Search-item date" @click="openCalendar">
         <div class="dates d-flex">
@@ -46,7 +45,6 @@
         </div>
 
         <div class="Search-item-date">
-          <!-- <span class="Search-item-name">Giriş / Çıkış Tarihi</span> -->
           <div class="Search-item-date-inputs" ref="datePickerContainer">
 
             <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
@@ -59,30 +57,80 @@
                 </div>
               </div>
             </HotelDatePicker>
-
-            <!-- <HotelDatePicker @check-in-changed="checkInChanged($event)" @check-out-changed="checkOutChanged($event)"
-              format="DD/MM/YYYY" :minNights="0" :firstDayOfWeek="Number(weekfirstday)"></HotelDatePicker> -->
+            <span class="Search-item-nightday">{{ night }} Gece</span>
           </div>
         </div>
       </div>
-      <select-hotel-person-count :adult="adult" :childAges="childAges"
-        @change="adult = $event.adult; childAges = $event.childAges"></select-hotel-person-count>
+      <div class="mobile-w-100" @click="openPeoples">
+        <select-hotel-person-count :adult="adult" :childAges="childAges"
+          @change="adult = $event.adult; childAges = $event.childAges"></select-hotel-person-count>
+      </div>
     </div>
-    <button type="button" class="Search-button" id="searchVilla" @click="search">
+    <button type="button" class="Search-button" id="searchVilla" @click=" search ">
       <nuxt-img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
         class="contain flex-shrink-0 my-1 desktop"></nuxt-img><span class="mobile">Otel Ara</span>
     </button>
-    <div class="Search-mobile" :class="{ 'show': mobileCalendar }">
+    <div class="Search-mobile" :class=" { 'show': mobileCalendar } ">
       <div class="Search-mobile-head">
         <h4>Tarih Seçiniz</h4>
-        <button type="button" @click="closeCalendar"><i class="icon-login-close"></i></button>
+        <button type="button" @click=" closeCalendar "><i class="icon-login-close"></i></button>
       </div>
-      <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
-        @check-out-changed="checkOutChanged($event)" format="DD dddd" ref="datePickerModal" :i18n="calendarLanguage"
-        :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
+      <HotelDatePicker v-bind=" datePickerProps " :disabled=" true " @check-in-changed=" checkInChanged($event) "
+        @check-out-changed=" checkOutChanged($event) " format="DD dddd" ref="datePickerModal" :i18n=" calendarLanguage "
+        :firstDayOfWeek=" firstDayOfWeek " :displayClearButton= false >
       </HotelDatePicker>
       <div class="Search-mobile-bottom">
-        <button type="button" @click="closeCalendar">Uygula</button>
+        <button type="button" @click=" closeCalendar ">Uygula</button>
+      </div>
+    </div>
+    <div class="Search-mobile" :class=" { 'show': mobileRegions } ">
+      <div class="Search-mobile-head">
+        <h4>Şehir, İlçe veya Otel adı yazın</h4>
+        <button type="button" @click=" closeRegions "><i class="icon-login-close"></i></button>
+      </div>
+      <div class="w-100">
+        <div class="Search-item-region-otel-in">
+          <i class="icon-new-location Search-item-icon"></i>
+          <div class="Search-multiselect">
+            <client-only>
+              <multiselect v-model="selectedCity" :options="otelSearchOptions" group-values="groupItems"
+                group-label="groupName" placeholder="Otel, tema" track-by="name" label="name" :showLabels="false"
+                @search-change="onOtelSearch">
+                <template slot="singleLabel" slot-scope="props">
+                  <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
+                </template>
+                <template slot="option" slot-scope="props">
+                  <template v-if="!props.option.$isLabel">
+                    <i class="icon-hotel-category" v-if="props.option.category == 'tema'"></i>
+                    <i class="icon-location-pin" v-else-if="props.option.category == 'bolge'"></i>
+                    <i class="icon-hotel-key" v-else></i>
+                  </template>
+                  <div class="option__desc">
+                    <span class="option__title" v-if="props.option.$isLabel">{{ props.option.$groupLabel }}</span>
+                    <span class="option__title" v-else>{{ props.option.name }}</span>
+                    <span class="option__small" v-if="props.option.district">{{ props.option.district }}</span>
+                  </div>
+                </template>
+                <span slot="noResult">Oops! Aramanıza uygun sonuç bulunamadı.</span>
+              </multiselect>
+            </client-only>
+          </div>
+        </div>
+      </div>
+
+      <div class="Search-mobile-bottom">
+        <button type="button" @click=" closeRegions ">Uygula</button>
+      </div>
+    </div>
+    <div class="Search-mobile" :class=" { 'show': mobilePeoples } ">
+      <div class="Search-mobile-head">
+        <h4>Kişi sayısı</h4>
+        <button type="button" @click=" closePeoples "><i class="icon-login-close"></i></button>
+      </div>
+      <select-hotel-person-count :adult=" adult " :childAges=" childAges "
+        @change=" adult = $event.adult; childAges = $event.childAges "></select-hotel-person-count>
+      <div class="Search-mobile-bottom">
+        <button type="button" @click=" closePeoples ">Uygula</button>
       </div>
     </div>
   </div>
@@ -151,6 +199,8 @@ export default {
         }
       ],
       mobileCalendar: false,
+      mobileRegions: false,
+      mobilePeoples: false,
     }
   },
   beforeMount() {
@@ -174,6 +224,24 @@ export default {
     }
   },
   computed: {
+    night() {
+      try {
+        const checkIn = new Date(this.checkIn);
+        const checkOut = new Date(this.checkOut);
+
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const nightCount = Math.floor((checkOut - checkIn) / millisecondsPerDay);
+
+        // NaN kontrolü ekleyerek nightCount değerinin geçerli olup olmadığını kontrol et
+        if (isNaN(nightCount)) {
+          return 0;
+        }
+
+        return nightCount;
+      } catch (e) {
+        return 0;
+      }
+    },
     ...mapState({
       hotels: state => state.hotels.searchData.destinations
     }),
@@ -201,7 +269,7 @@ export default {
   methods: {
     search() {
       // şehir ve otel
-      if ([1,2].includes(this.selectedCity.type)) {
+      if ([1, 2].includes(this.selectedCity.type)) {
         const queryParams = {
           destinations: this.selectedCity.city.id,
           checkIn: this.checkIn,
@@ -293,7 +361,16 @@ export default {
       this.checkIn = this.formatDate(value);
     },
     checkOutChanged(value) {
-      this.checkOut = this.formatDate(value);
+      const val = this.formatDate(value);
+      if (val) {
+        this.checkOut = this.formatDate(value);
+
+        setTimeout(() => {
+          if (this.checkIn && this.checkOut) {
+            this.closeCalendar()
+          }
+        }, 50)
+      }
     },
     formatDate(value) {
       if (value) {
@@ -347,6 +424,44 @@ export default {
         }, 10)
       }
     },
+    openRegions() {
+      if (this.isMobile()) {
+        this.mobileRegions = true
+        setTimeout(() => {
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 10)
+      }
+    },
+    openPeoples() {
+      if (this.isMobile()) {
+        this.mobilePeoples = true
+        setTimeout(() => {
+          document.querySelector('body')?.classList.add('over')
+          document.querySelector('html')?.classList.add('over')
+          document.querySelector('.Header')?.classList.add('Header-z')
+          document.querySelector('.Home')?.classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 10)
+      }
+    },
+    closeRegions() {
+      if (this.isMobile()) {
+        this.mobileRegions = false
+        setTimeout(() => {
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
+          document.querySelector('.Home')?.classList.remove('Home-z')
+        }, 10)
+      }
+    },
     closeCalendar() {
       if (this.isMobile()) {
         this.mobileCalendar = false
@@ -357,6 +472,18 @@ export default {
           document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
           document.querySelector('.Home')?.classList.remove('Home-z')
           this.$refs.datePickerModal.hideDatepicker()
+        }, 10)
+      }
+    },
+    closePeoples() {
+      if (this.isMobile()) {
+        this.mobilePeoples = false
+        setTimeout(() => {
+          document.querySelector('body')?.classList.remove('over')
+          document.querySelector('html')?.classList.remove('over')
+          document.querySelector('.Header')?.classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
+          document.querySelector('.Home')?.classList.remove('Home-z')
         }, 10)
       }
     },
@@ -462,8 +589,8 @@ export default {
 }
 
 :deep() .datepicker__month-day--first-day-selected span,
-:deep() .datepicker__month-day--last-day-selected span{
- opacity: 1;
+:deep() .datepicker__month-day--last-day-selected span {
+  opacity: 1;
 }
 
 :deep() .datepicker__month-day--selected {
@@ -520,9 +647,10 @@ export default {
 }
 
 @media (max-width:500px) {
-  .Search-mobile.show :deep() .datepicker__dummy-wrapper{
+  .Search-mobile.show :deep() .datepicker__dummy-wrapper {
     justify-content: center;
   }
+
   .Search-mobile.show :deep() .datepicker__input {
     width: max-content;
   }
