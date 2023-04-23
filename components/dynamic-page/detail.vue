@@ -1379,6 +1379,7 @@
         </div>
       </div>
     </div>
+
     <section class="Opportunity-slider popular-dark" id="more-villas">
       <div class="container ">
         <div class="section-caption d-flex align-items-center mb-3 pb-1">
@@ -1389,15 +1390,15 @@
         <client-only>
           <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+              <div class="swiper-slide" v-for="(item, index) in weekWillas" :key="index">
 
-                <a href="/" class="Card Card-h">
+                <nuxt-link :to="item.url" class="Card Card-h">
                   <div class="Card-in">
                     <div class="Card-img">
-                      <nuxt-link to="/">
-                        <nuxt-img src="https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/conversions/1-preview.jpg"
+                      <nuxt-link :to="item.url">
+                        <nuxt-img :src="item?.preview_image[0].preview_url"
                           width="292" height="187"
-                          srcset="https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_1920_1080.jpg 1920w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_1606_903.jpg 1606w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_1344_756.jpg 1344w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_1124_632.jpg 1124w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_940_529.jpg 940w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_787_443.jpg 787w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_658_370.jpg 658w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_550_309.jpg 550w, https://d1t2mawg5vwzes.cloudfront.net/property/493/9492/responsive-images/1___media_library_original_460_259.jpg 460w"></nuxt-img>
+                          :srcset="item?.preview_image[0].responsive_url"></nuxt-img>
                       </nuxt-link>
                       <!--
                       <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
@@ -1410,37 +1411,37 @@
                       <div class="Card-content">
                         <div class="Card-content-head">
                           <div class="Card-content-head-code">
-                            <b>VKV3456</b>
+                            <b>{{ villa_prefix + item.code }}</b>
                             <span>Tesis Kodu</span>
                           </div>
                           <div class="Card-content-head-location">
                             <i class="icon-pin"></i>
-                            <p>FETHİYE <span>Turkey / Muğla</span></p>
+                            <p>{{ item.destination }} <span>{{ item.country | titlecase }} / {{item.city | titlecase}}</span></p>
                           </div>
                         </div>
                         <div class="Card-content-info">
                           <div class="Card-content-info-item">
                             <i class="icon-user"></i>
-                            <span>4 Kişilik</span>
+                            <span>{{ item.max_adult }} Kişilik</span>
                           </div>
                           <div class="Card-content-info-item">
                             <i class="icon-bed"></i>
-                            <span>2 Yatak Odası</span>
+                            <span>{{ item.bedroom }} Yatak Odası</span>
                           </div>
                           <div class="Card-content-info-item">
                             <i class="icon-shower"></i>
-                            <span>2 Banyo</span>
+                            <span>{{ item.bathrooms }} Banyo</span>
                           </div>
                         </div>
                       </div>
                       <div class="Card-content-bottom opportunity">
                         <div class="Card-content-bottom-price">
-                          <p><b>2500TL -
-                              15000TL
+                          <p><b>{{ item.prices.min_price.price | numberFormat}} -
+                            {{ item.prices.max_price.price | numberFormat}}{{ item.prices.max_price.price_currency }}
                             </b><span>/Gecelik</span></p>
                           <p>Fiyat Aralığında</p>
                         </div>
-                        <nuxt-link to="/" class="Card-content-bottom-link">
+                        <nuxt-link :to="item.url" class="Card-content-bottom-link">
                           <i class="icon-right-arrows-new"></i>
                         </nuxt-link>
                       </div>
@@ -1460,7 +1461,7 @@
                         </div> -->
                     </div>
                   </div>
-                </a>
+                </nuxt-link>
               </div>
             </div>
 
@@ -1595,16 +1596,8 @@ export default {
       },
       categories: [],
       amenites: [],
-      weekWillas: [],
+      weekWillas: this.$store.state.site_settings.week_villas
     }
-  },
-  async asyncData({ $getRedisKey }) {
-    const site_id = process.env.SITE;
-    let weekVillas = {};
-    weekVillas = await $getRedisKey([`web:${site_id}:setting:general`]);
-
-    console.log(weekVillas)
-    return { weekVillas }
   },
   methods: {
     filterObjectsByPrefix(obj, prefix) {
@@ -1987,7 +1980,7 @@ export default {
   },
   async mounted() {
 
-    console.log(this.$store.state.site_settings);
+    console.log('this.weekWillas',this.weekWillas);
 
     this.categories = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_2')
     this.amenites = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_600')

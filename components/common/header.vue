@@ -394,6 +394,8 @@ export default {
 
         const menuData = this.$store.state['settings'].menuData;
 
+        
+
         // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
         this.mainMenu = menuData.mainmenu;

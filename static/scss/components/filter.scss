@@ -618,8 +618,11 @@
         }
       }
       &-people {
-        width: 40%;
+        width: 100%;
       }
+    }
+    .mobile-w-100 {
+      width: 40%;
     }
   }
   &-otel {
@@ -627,6 +630,13 @@
       &.date {
         width: 40%;
       }
+      &-people-otel{
+        width: 100%;
+      }
+    }
+    
+    .mobile-w-100 {
+      width: 30%;
     }
   }
   &-more {
@@ -748,7 +758,7 @@
     .multiselect__option {
       display: flex;
       align-items: center;
-      white-space:normal;
+      white-space: normal;
       i {
         font-size: 16px;
         color: #989fb5;
@@ -814,10 +824,8 @@
       }
     }
 
-    .multiselect__option{
-
+    .multiselect__option {
     }
-
   }
   &-mobile {
     display: none;
@@ -2352,7 +2360,7 @@
           }
         }
       }
-      &-m-button-container{
+      &-m-button-container {
         border-top: solid 2px #f2f5fb;
         padding: 17px;
         display: flex;
@@ -2807,8 +2815,8 @@
               left: -12px !important;
               top: 10px !important;
             }
-            .Search-item-title{
-              i.icon-user{
+            .Search-item-title {
+              i.icon-user {
                 display: none;
               }
             }
@@ -2974,17 +2982,17 @@
         padding: 24px;
         padding-top: 70px;
       }
-      .Search-item-people{
+      .Search-item-people {
         order: 0;
 
-        .dropdown-menu-otel{
-          display: block!important;
-          left: 0!important;
+        .dropdown-menu-otel {
+          display: block !important;
+          left: 0 !important;
           top: 76px !important;
           border: none;
           box-shadow: none;
 
-          .Search-item-person{
+          .Search-item-person {
             padding: 0;
           }
         }
@@ -2992,25 +3000,25 @@
       .Search-item-region-otel-in {
         padding: 10px 20px;
         border-bottom: 1px solid #eff0f5;
-        i.icon-new-location{
+        i.icon-new-location {
           font-size: 20px;
           flex-shrink: 0;
           color: var(--bs-search-icon);
         }
         .Search-multiselect {
           height: 25px;
-          .multiselect__select{
+          .multiselect__select {
             display: none;
           }
-           .multiselect__content-wrapper{
-          width: calc(100% + 40px);
-          max-height: calc(100dvh - 210px) !important;
-          margin-left: -20px;
-          display: block!important;
-          border: none;
-          border-radius: 0;
+          .multiselect__content-wrapper {
+            width: calc(100% + 40px);
+            max-height: calc(100dvh - 210px) !important;
+            margin-left: -20px;
+            display: block !important;
+            border: none;
+            border-radius: 0;
+          }
         }
-      }
       }
       .datepicker__wrapper {
         height: 100%;
@@ -3196,7 +3204,7 @@
   }
 
   .mobile-w-100 {
-    width: 100%;
+    width: 100%!important;
   }
 }
 
