@@ -34,11 +34,11 @@
                       Otel
                     </span>
                   </nuxt-link>
-                  <a href="tel:4448484" class="Header-call">
+                  <a :href="'tel:'+$store.state.site_settings.general_phone" class="Header-call">
                     <i class="icon-header-call"></i>
                     <p>
                       <span>Yardım / Destek</span>
-                      444 8 484
+                      {{ $store.state.site_settings.general_phone }}
                     </p>
                   </a>
                 </div>

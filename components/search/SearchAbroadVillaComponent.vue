@@ -683,6 +683,7 @@ export default {
           document.querySelector('html').classList.add('over')
           document.querySelector('.Header').classList.add('Header-z')
           document.querySelector('.Home').classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50)
       }
@@ -695,6 +696,7 @@ export default {
           document.querySelector('html').classList.add('over')
           document.querySelector('.Header').classList.add('Header-z')
           document.querySelector('.Home').classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50)
       }
@@ -707,6 +709,7 @@ export default {
           document.querySelector('html').classList.add('over')
           document.querySelector('.Header').classList.add('Header-z')
           document.querySelector('.Home').classList.add('Home-z')
+          document.querySelector('.search-engine-section')?.classList.add('search-home-mobile-open')
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50)
         this.$refs.datePickerModal.showDatepicker()
@@ -720,6 +723,7 @@ export default {
           document.querySelector('body').classList.remove('over')
           document.querySelector('html').classList.remove('over')
           document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
           document.querySelector('.Home').classList.remove('Home-z')
         }, 50)
       }
@@ -731,6 +735,7 @@ export default {
           document.querySelector('body').classList.remove('over')
           document.querySelector('html').classList.remove('over')
           document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
           document.querySelector('.Home').classList.remove('Home-z')
         }, 50)
       }
@@ -742,6 +747,7 @@ export default {
           document.querySelector('body').classList.remove('over')
           document.querySelector('html').classList.remove('over')
           document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('.search-engine-section')?.classList.remove('search-home-mobile-open')
           document.querySelector('.Home').classList.remove('Home-z')
         }, 50)
         this.$refs.datePickerModal.hideDatepicker()

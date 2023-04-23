@@ -1370,8 +1370,8 @@
     &:before {
       content: "";
       border-bottom: 10px solid #fff;
-      border-left: 10px solid;
-      border-right: 10px solid;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
       position: absolute;
       top: -10px;
       right: 47px;

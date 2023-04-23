@@ -155,7 +155,7 @@
           </div>
         </div>
         <client-only>
-          <availibility-calendar :slug="code" :calendarColumns="3" :calendarRows="2"
+          <availibility-calendar :code="code" :calendarColumns="3" :calendarRows="2"
             :calendarStep="5"></availibility-calendar>
         </client-only>
       </div>
