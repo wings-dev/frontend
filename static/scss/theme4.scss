@@ -4,6 +4,8 @@
   --bs-theme-first-light: #3f63c6;
   --bs-theme-second: #d84d64;
   --bs-theme-third: #183266;
+  --bs-theme-grey: #fdf1f2;
+  
 
   //HEADER
   --bs-theme-menu-bg: #f9e2e6;
@@ -145,6 +147,13 @@ i.icon-abroad-villa {
 }
 .Filters-in-m-button{
   background-image: linear-gradient(236deg, #d84d64 100%, #d84d64 0%);
+}
+
+.View-menu{
+  background-color: #fdf9f9;
+}
+.view-detail-section:before{
+  background-color: #fdf9f9;
 }
 
 //Villa Kalkan

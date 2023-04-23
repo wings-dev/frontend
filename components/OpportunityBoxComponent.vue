@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded">
+  <div v-if="loaded" style="order:5">
     <div class="View-right-opportunity" :class="componentclass">
       <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
       <a href="javascript:return void(0)" @click="selectOpportunity(opportunity)" class="View-right-opportunity-item" v-for="opportunity in opportunities.slice(0, 2)">
