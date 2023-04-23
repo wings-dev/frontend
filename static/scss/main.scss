@@ -629,7 +629,6 @@ body.overflow-hidden {
   }
 }
 .popular-dark {
-  
   background-size: 100% 100%;
   background-color: var(--bs-popular-dark-bg);
   .btn-more {
@@ -699,14 +698,14 @@ body.overflow-hidden {
 }
 .Home-text {
   margin-bottom: 100px;
- 
-  &.areas{
-    .Home-text-in{
+
+  &.areas {
+    .Home-text-in {
       padding: 40px 0;
     }
   }
 
-  h5{
+  h5 {
     font-size: 19.5px;
     font-weight: bold;
     line-height: 1.44;
@@ -723,7 +722,7 @@ body.overflow-hidden {
     margin-bottom: 20px;
   }
 
-  @media (max-width:991px) {
+  @media (max-width: 991px) {
     h5 {
       font-size: 15px;
       color: #989fb5;
@@ -889,7 +888,7 @@ body.overflow-hidden {
       width: calc(50% - 6px);
     }
   }
-  .blog-section:before{
+  .blog-section:before {
     display: none;
   }
 }
@@ -992,7 +991,7 @@ body.overflow-hidden {
         }
       }
     }
-    .blog-list-item-sm{
+    .blog-list-item-sm {
       display: none;
     }
   }
@@ -2519,7 +2518,7 @@ body.overflow-hidden {
     min-height: 29px;
   }
 }
-.modal{
+.modal {
   overflow: hidden;
   &-body {
     padding: 0;
