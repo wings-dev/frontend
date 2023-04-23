@@ -446,6 +446,7 @@
 
               </div>
             </div>
+            <template v-if="villa.floorplan.pool">
             <div class="View-pools">
               <div class="View-pools-head  mb-3">
                 <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
@@ -457,7 +458,7 @@
                 </div>
               </div>
 
-              <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
+              <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index" >
                 <div class="pool-item-left">
                   <nuxt-img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
                     class="lazy contain" v-if="poolitem.pool == 52"></nuxt-img>
@@ -474,6 +475,14 @@
               </div>
 
             </div>
+          </template>
+          <template v-else>
+            <div class="View-pools">
+              <div class="View-pools-head  mb-3">
+                <h4 class="View-title"><b>Havuz</b> Bilgisi bulunamadı!</h4>
+              </div>
+            </div>
+          </template>
             <div class="View-location location view-menu-content-item" id="location-content">
               <div class="View-location-head mb-3">
                 <div class="Viwe-location-head-in">

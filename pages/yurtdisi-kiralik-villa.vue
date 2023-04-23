@@ -1,7 +1,8 @@
 <template>
     <div class="Home">
-       
-        <section class="Banner Banner-home " :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
+
+        <section class="Banner Banner-home "
+            :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <nuxt-img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <nuxt-img src="/img/banner-mobile.jpg" alt=""></nuxt-img>
@@ -40,54 +41,63 @@
                 </div>
                 <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
+                        <div class="swiper-slide" v-for="item in pageData.page_content.popular" :key="item.id">
 
-                            <div class="Card">
+                            <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-link to="/">
-                                            <nuxt-img src="/img/card.png" width="267" height="175"></nuxt-img>
-                                        </nuxt-link>
-                                        <button class="Card-fav" type="button">
-                                            <i class="icon-heart"></i>
+                                        <nuxt-img :src="item.preview_image[0].preview_url"
+                                            :srcset="item.preview_image[0].responsive_url" width="267"
+                                            height="175"></nuxt-img>
+                                        <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
+                                            :class="isFavorite(item.code) ? 'active' : ''">
+                                            <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
                                         </button>
                                     </div>
                                     <div class="Card-content">
                                         <div class="Card-content-head">
                                             <div class="Card-content-head-code">
-                                                <b>VKV3456</b>
+                                                <b>{{ prefix + item.code }}</b>
                                                 <span>Tesis Kodu</span>
                                             </div>
                                             <div class="Card-content-head-location">
-                                                <nuxt-img src="/img/flag/flag-italy.svg" alt=""/>
-                                                <p>İtalya <span>Roma</span></p>
+                                                <i class="icon-pin"></i>
+                                                <p>{{ item.destination | titlecase }} <span>{{ item.country | titlecase }} / {{
+                                                    item.state | titlecase }}</span></p>
                                             </div>
+                                            <!-- Ülke Bayraklı -->
+                                            <!-- <div class="Card-content-head-location">
+                                                <nuxt-img src="/img/flag/flag-italy.svg" alt="" />
+                                                <p>İtalya <span>Roma</span></p>
+                                            </div> -->
                                         </div>
                                         <div class="Card-content-info">
                                             <div class="Card-content-info-item">
                                                 <i class="icon-user"></i>
-                                                <span>4 Kişilik</span>
+                                                <span>{{ item.max_adult }} Kişilik</span>
                                             </div>
                                             <div class="Card-content-info-item">
                                                 <i class="icon-bed"></i>
-                                                <span>2 Yatak Odası</span>
+                                                <span>{{ item.bedroom }} Yatak Odası</span>
                                             </div>
                                             <div class="Card-content-info-item">
                                                 <i class="icon-shower"></i>
-                                                <span>2 Banyo</span>
+                                                <span>{{ item.bathrooms }} Banyo</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
-                                            <p><b>1.500TL - 2.500TL</b><span>/Gecelik</span></p>
+                                            <p><b>{{ item.min_price | numberFormat }} -
+                                                    {{ item.max_price }}
+                                                </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
                                         </div>
-                                        <nuxt-link to="/" class="Card-content-bottom-link"><i
+                                        <nuxt-link :to="'/' + item.url" class="Card-content-bottom-link"><i
                                                 class="icon-right-arrows-new"></i></nuxt-link>
                                     </div>
                                 </div>
-                            </div>
+                            </nuxt-link>
                         </div>
                     </div>
                     <!-- If pagination is needed -->
@@ -99,8 +109,12 @@
 
             </div>
         </section>
+
+
+
+
         <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
-            <nuxt-img src="/img/home-banner-mobile.png" alt=""/>
+            <nuxt-img src="/img/home-banner-mobile.png" alt="" />
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
@@ -125,7 +139,7 @@
                         <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
                             <nuxt-link to="/" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <nuxt-img src="/img/country/italy.jpg" alt=""/>
+                                    <nuxt-img src="/img/country/italy.jpg" alt="" />
                                 </div>
                                 <div class="Abroad-villas-item-content">
                                     <div class="Abroad-villas-item-content-left">
@@ -134,10 +148,10 @@
                                     </div>
                                     <div class="Abroad-villas-item-content-right">
                                         <div class="Abroad-villas-item-content-flag">
-                                            <nuxt-img src="/img/flag/flag-italy.svg" alt=""/>
+                                            <nuxt-img src="/img/flag/flag-italy.svg" alt="" />
                                         </div>
                                         <div class="Abroad-villas-item-content-smile">
-                                            <nuxt-img src="/img/laughing-smile.svg" alt=""/>
+                                            <nuxt-img src="/img/laughing-smile.svg" alt="" />
                                             <span>VİZE YOK!</span>
                                         </div>
                                     </div>
@@ -163,13 +177,14 @@
                 <div class="List-sss">
                     <h3>En çok sorulan sorular </h3>
                     <div class="accordion" id="Faq">
-                        <div class="accordion-item" v-for="(item, index) in pageData.page_content.faq[0].faq_list" :key="index">
+                        <div class="accordion-item" v-for="(item, index) in pageData.page_content.faq[0].faq_list"
+                            :key="index">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                :data-bs-target="'#faq'+index" aria-expanded="false" :aria-controls="'faq'+index">
+                                :data-bs-target="'#faq' + index" aria-expanded="false" :aria-controls="'faq' + index">
                                 {{ item.howrent_category_question }}
                             </button>
-                            <div :id="'faq'+index" class="accordion-collapse collapse " data-bs-parent="#Faq">
-                                <div class="accordion-body" v-html="item.howrent_category_answer "></div>
+                            <div :id="'faq' + index" class="accordion-collapse collapse " data-bs-parent="#Faq">
+                                <div class="accordion-body" v-html="item.howrent_category_answer"></div>
                             </div>
                         </div>
                     </div>
@@ -184,17 +199,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- <div>
-            <div id="">A DOM element on your page. The first step will pop on this element because its ID is 'v-step-0'.
-            </div>
-            <div class="v-step-1">A DOM element on your page. The second step will pop on this element because its ID is
-                'v-step-1'.</div>
-            <div data-v-step="2">A DOM element on your page. The third and final step will pop on this element because its
-                ID is 'v-step-2'.</div>
-
-            <v-tour name="myTour" :steps="steps"></v-tour>
-        </div> -->
     </div>
 </template>
 
@@ -222,24 +226,7 @@ export default {
     },
     data() {
         return {
-            steps: [
-                {
-                    target: ".v-step-0", // We're using document.querySelector() under the hood
-                    content: `Discoverr <strong>Vue Tour</strong>!`
-                },
-                {
-                    target: ".v-step-1",
-                    content: "An awesome plugin made with Vue.js!"
-                },
-                {
-                    target: '[data-v-step="2"]',
-                    content:
-                        "Try it, you'll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.",
-                    params: {
-                        placement: "top"
-                    }
-                }
-            ]
+            prefix: process.env.PREFIX,
         }
     },
     async asyncData({ $getRedisKey, $axios }) {
@@ -248,11 +235,21 @@ export default {
 
         let response = await $getRedisKey([redisPageKey]);
         const pageData = response[redisPageKey] || {};
-        
 
-        
-
-        return {pageData} ;
+        return { pageData };
+    },
+    methods: {
+        isFavorite(code) {
+            return this.$store.state.favorite.favorites.includes(code)
+        },
+        toggleFavorite(code) {
+            event.stopPropagation();
+            if (this.isFavorite(code)) {
+                this.$store.dispatch('favorite/removeFavorite', code)
+            } else {
+                this.$store.dispatch('favorite/addFavorite', code)
+            }
+        }
     },
     mounted() {
         Swiper.use([Navigation, Pagination])
@@ -355,6 +352,8 @@ export default {
                 },
             },
         })
+
+        console.log(this.pageData)
     }
 
 }
