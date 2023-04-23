@@ -83,13 +83,9 @@
           color: var(--bs-detail-menu-text);
         }
         @media (max-width: 991px) {
-          display: none;
         }
       }
       @media (max-width: 991px) {
-        position: absolute;
-        right: 30px;
-        top: 0;
         justify-content: flex-end !important;
         .icon-pin {
           color: var(--bs-theme-second);
@@ -228,6 +224,7 @@
       @media (max-width: 768px) {
         img {
           max-height: unset;
+          height: 100%;
         }
       }
       &:hover {
@@ -408,8 +405,12 @@
         border-color: #ff0000;
       }
     }
-    @media (max-width: 991px) {
-      display: none;
+    @media (max-width: 1100px) {
+      &-right{
+        .dropdown.Share{
+          display: none;
+        }
+      }
     }
   }
   &-left {
@@ -3538,8 +3539,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     &-right {
-      margin-top: 10px;
-      width: 100%;
       justify-content: space-between;
     }
   }
