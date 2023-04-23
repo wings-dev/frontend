@@ -726,6 +726,8 @@ export default {
             },
         })
 
+        console.log(this.opportunities)
+
     },
     methods: {
         isFavorite(code) {

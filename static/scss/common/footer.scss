@@ -64,7 +64,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 0;
-        border-top: 1px solid #f2f5fb;
+        border-top: 1px solid var(--bs-theme-grey);
         &-left {
           a {
             font-size: 12px;
@@ -159,7 +159,7 @@
       }
     }
     &-creditcard {
-      border-left: 1px solid #f2f5fb;
+      border-left: 1px solid var(--bs-theme-grey);
       padding-left: 30px;
       flex-shrink: 0;
     }
@@ -258,7 +258,7 @@
       }
     }
     @media (max-width: 800px) {
-      background-color: #f2f5fb;
+      background-color: var(--bs-theme-grey);
 
       &-in {
         flex-direction: column;
@@ -438,7 +438,7 @@
           flex-wrap: wrap;
           justify-content: center;
           padding-bottom: 10px;
-          border-bottom: 1px solid #f2f5fb;
+          border-bottom: 1px solid var(--bs-theme-grey);
           &-item {
             border-right: none;
             padding: 0 10px;
