@@ -98,79 +98,163 @@
         </div>
       </div>
       <div class="container pb-1 gallery-container">
-        <div class="view-gallery">
-          <div class="area-1">
-            <a href="#" @click.prevent="showGallery()"
-              class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
-              <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
+        <template v-if="villa.floorplan.kat">
+          <div class="view-gallery">
+            <div class="area-1">
+              <a href="#" @click.prevent="showGallery()"
+                class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
+                <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-              <nuxt-img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
-                width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
+                <nuxt-img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
+                  width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
 
-            </a>
-          </div>
-          <div class="area-2 d-md-block d-none">
-            <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-              <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
-                width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+              </a>
+            </div>
+            <div class="area-2 d-md-block d-none">
+              <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
+                <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
+                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
-            </a>
-          </div>
-          <div class="area-3 d-md-block d-none">
-            <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-              <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
-                width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+              </a>
+            </div>
+            <div class="area-3 d-md-block d-none">
+              <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
+                <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
+                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
-            </a>
-          </div>
-          <div class="area-4 d-none d-lg-block">
-            <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-              <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
-                width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+              </a>
+            </div>
+            <div class="area-4 d-none d-lg-block">
+              <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
+                <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
+                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
-            </a>
-          </div>
-          <div class="area-5 d-none d-lg-block">
-            <div class="view-item d-block w-100 h-100  last">
-              <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
-                width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
-              <div
-                class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
-                <span @click.prevent="showGallery()">Tüm Fotoğraflar ( 32 ) </span>
-                <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
-                <a :href="villa.video" data-fancybox v-if="villa.video">
-                  <i class="icon-play-button"></i> Video İzle
-                </a>
-                <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
+              </a>
+            </div>
+            <div class="area-5 d-none d-lg-block">
+              <div class="view-item d-block w-100 h-100  last">
+                <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
+                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <div
+                  class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
+                  <span @click.prevent="showGallery()">Tüm Fotoğraflar ( 32 ) </span>
+                  <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
+                  <a :href="villa.video" data-fancybox v-if="villa.video">
+                    <i class="icon-play-button"></i> Video İzle
+                  </a>
+                  <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
+                </div>
               </div>
             </div>
-          </div>
-          <div class="View-gallery-mobile-buttons">
+            <div class="View-gallery-mobile-buttons">
 
-            <div class="dropdown Share">
-              <button type="button"
-                class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
-                id="dropdownMenuShare2" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="dropdown Share">
+                <button type="button"
+                  class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                  id="dropdownMenuShare2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="action-btn-icon">
+                    <i class="icon-share"></i>
+                  </span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare2">
+                  <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
+                </ul>
+              </div>
+              <button type="button" @click="toggleFavorite(villa.code)"
+                class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
+                :class="isFavorite(villa.code) ? 'active' : ''">
                 <span class="action-btn-icon">
-                  <i class="icon-share"></i>
+                  <i class="icon-heart"></i>
                 </span>
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare2">
-                <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
-                <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
-                <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
-                <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
-              </ul>
             </div>
-            <button type="button" @click="toggleFavorite(villa.code)"
-              class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
-              :class="isFavorite(villa.code) ? 'active' : ''">
-              <span class="action-btn-icon">
-                <i class="icon-heart"></i>
-              </span>
-            </button>
           </div>
-        </div>
+        </template>
+        <template v-else>
+          <div class="view-gallery">
+            <div class="area-1"> 
+              <a :href="villa.watermark_images[0].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code" 
+                class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
+                <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
+                 alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
+                <nuxt-img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
+                  width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
+
+              </a>
+            </div>
+            <div class="area-2 d-md-block d-none">
+              <a :href="villa.watermark_images[1].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code"   class="view-item d-block w-100 h-100 ">
+                <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
+                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+
+              </a>
+            </div>
+            <div class="area-3 d-md-block d-none">
+              <a :href="villa.watermark_images[2].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code"  class="view-item d-block w-100 h-100 ">
+                <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
+                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+
+              </a>
+            </div>
+            <div class="area-4 d-none d-lg-block">
+              <a :href="villa.watermark_images[3].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code"  class="view-item d-block w-100 h-100 ">
+                <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
+                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+
+              </a>
+            </div>
+            <div class="area-5 d-none d-lg-block">
+              <div class="view-item d-block w-100 h-100  last">
+                <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
+                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <div
+                  class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
+                  <span @click.prevent="showGallery()">Tüm Fotoğraflar ( 32 ) </span>
+                  <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
+                  <a :href="villa.video" data-fancybox v-if="villa.video">
+                    <i class="icon-play-button"></i> Video İzle
+                  </a>
+                  <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
+                </div>
+              </div>
+            </div>
+            <template v-if="villa.watermark_images.length > 4">
+              <h2>TEST</h2>
+              
+            </template>
+            <div class="View-gallery-mobile-buttons">
+
+              <div class="dropdown Share">
+                <button type="button"
+                  class="action-btn share-btn fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center"
+                  id="dropdownMenuShare2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="action-btn-icon">
+                    <i class="icon-share"></i>
+                  </span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuShare2">
+                  <li><a class="dropdown-item" href="#"><i class="icon-facebook"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-instagram"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-twitter"></i></a></li>
+                  <li><a class="dropdown-item" href="#"><i class="icon-whatsapp"></i></a></li>
+                </ul>
+              </div>
+              <button type="button" @click="toggleFavorite(villa.code)"
+                class="action-btn fav-btn w-auto h-auto fs-7 ls-05 text-theme-secondary bg-transparent p-0 d-flex align-items-center me-4 "
+                :class="isFavorite(villa.code) ? 'active' : ''">
+                <span class="action-btn-icon">
+                  <i class="icon-heart"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+
+
+        </template>
+
       </div>
     </section>
 
@@ -447,42 +531,42 @@
               </div>
             </div>
             <template v-if="villa.floorplan.pool">
-            <div class="View-pools">
-              <div class="View-pools-head  mb-3">
-                <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
+              <div class="View-pools">
+                <div class="View-pools-head  mb-3">
+                  <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
 
-                <div class="View-pools-head-right">
-                  <span>En</span>
-                  <span>Boy</span>
-                  <span>Yükseklik</span>
+                  <div class="View-pools-head-right">
+                    <span>En</span>
+                    <span>Boy</span>
+                    <span>Yükseklik</span>
+                  </div>
+                </div>
+
+                <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
+                  <div class="pool-item-left">
+                    <nuxt-img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
+                      class="lazy contain" v-if="poolitem.pool == 52"></nuxt-img>
+                    <nuxt-img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon"
+                      class="lazy contain" v-if="poolitem.pool == 58"></nuxt-img>
+                    <!-- <img :src="'/img/site' + site_id + '/pool3.svg'" width="28" height="28" alt="pool icon" -->
+                    <span class="">{{ poolitem.name }}</span>
+                  </div>
+                  <div class="pool-item-right">
+                    <p><span>En</span>{{ poolitem['havuz-en'] }}m</p>
+                    <p><span>Boy</span>{{ poolitem['havuz-boy'] }}m</p>
+                    <p><span>Derinlik</span>{{ poolitem['havuz-derinlik'] }}m</p>
+                  </div>
+                </div>
+
+              </div>
+            </template>
+            <template v-else>
+              <div class="View-pools">
+                <div class="View-pools-head  mb-3">
+                  <h4 class="View-title"><b>Havuz</b> Bilgisi bulunamadı!</h4>
                 </div>
               </div>
-
-              <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index" >
-                <div class="pool-item-left">
-                  <nuxt-img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
-                    class="lazy contain" v-if="poolitem.pool == 52"></nuxt-img>
-                  <nuxt-img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon"
-                    class="lazy contain" v-if="poolitem.pool == 58"></nuxt-img>
-                  <!-- <img :src="'/img/site' + site_id + '/pool3.svg'" width="28" height="28" alt="pool icon" -->
-                  <span class="">{{ poolitem.name }}</span>
-                </div>
-                <div class="pool-item-right">
-                  <p><span>En</span>{{ poolitem['havuz-en'] }}m</p>
-                  <p><span>Boy</span>{{ poolitem['havuz-boy'] }}m</p>
-                  <p><span>Derinlik</span>{{ poolitem['havuz-derinlik'] }}m</p>
-                </div>
-              </div>
-
-            </div>
-          </template>
-          <template v-else>
-            <div class="View-pools">
-              <div class="View-pools-head  mb-3">
-                <h4 class="View-title"><b>Havuz</b> Bilgisi bulunamadı!</h4>
-              </div>
-            </div>
-          </template>
+            </template>
             <div class="View-location location view-menu-content-item" id="location-content">
               <div class="View-location-head mb-3">
                 <div class="Viwe-location-head-in">
@@ -1405,8 +1489,7 @@
                   <div class="Card-in">
                     <div class="Card-img">
                       <nuxt-link :to="item.url">
-                        <nuxt-img :src="item?.preview_image[0].preview_url"
-                          width="292" height="187"
+                        <nuxt-img :src="item?.preview_image[0].preview_url" width="292" height="187"
                           :srcset="item?.preview_image[0].responsive_url"></nuxt-img>
                       </nuxt-link>
                       <!--
@@ -1425,7 +1508,8 @@
                           </div>
                           <div class="Card-content-head-location">
                             <i class="icon-pin"></i>
-                            <p>{{ item.destination }} <span>{{ item.country | titlecase }} / {{item.city | titlecase}}</span></p>
+                            <p>{{ item.destination }} <span>{{ item.country | titlecase }} / {{ item.city |
+                              titlecase }}</span></p>
                           </div>
                         </div>
                         <div class="Card-content-info">
@@ -1445,8 +1529,8 @@
                       </div>
                       <div class="Card-content-bottom opportunity">
                         <div class="Card-content-bottom-price">
-                          <p><b>{{ item.prices.min_price.price | numberFormat}} -
-                            {{ item.prices.max_price.price | numberFormat}}{{ item.prices.max_price.price_currency }}
+                          <p><b>{{ item.prices.min_price.price | numberFormat }} -
+                              {{ item.prices.max_price.price | numberFormat }}{{ item.prices.max_price.price_currency }}
                             </b><span>/Gecelik</span></p>
                           <p>Fiyat Aralığında</p>
                         </div>
@@ -1989,8 +2073,6 @@ export default {
   },
   async mounted() {
 
-    console.log('this.weekWillas',this.weekWillas);
-
     this.categories = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_2')
     this.amenites = this.filterObjectsByPrefix(this.villa.amenites, 'amenite_600')
     this.amenites = this.amenites.amenite_600.list
@@ -2115,6 +2197,7 @@ export default {
         },
       })
 
+      console.log(this.weekVillas)
 
       this.$el.addEventListener('click', function (e) {
         if (e.target.closest('.dropdown-menu')) {
@@ -2201,8 +2284,8 @@ export default {
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
 
-    })
-    console.log(this.weekVillas)
+    });
+
   },
   computed: {
     opportunityBoxComponent() {
