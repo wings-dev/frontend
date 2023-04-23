@@ -157,22 +157,9 @@
                             @click="openSearch($event)">
                             <i class="icon-search2"></i>
                         </button>
-                        <div class="dropdown Notification">
-                            <button type="button" class="search-button" aria-label="Bildirimler" id=""
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="icon-bell"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <h5>BİLDİRİM MERKEZİ</h5>
-                                <li><a class="dropdown-item active" href="#">%50’ye varan erken rezervasyon indirimleri için
-                                        son
-                                        gün 3 nisan!</a></li>
-                                <li><a class="dropdown-item" href="#">Kıbrıs600 Kuponu ile 600TL indirim kodunu
-                                        tanımlayın!</a></li>
-                                <li><a class="dropdown-item" href="#">Şeker tadında bayram fırsatlarını yakala</a></li>
-                                <li><a class="dropdown-item" href="#">Şeker tadında bayram fırsatlarını yakala</a></li>
-                            </ul>
-                        </div>
+                        
+                        <!--  -->
+                        <notification></notification>
 
                         <Nuxt-link :to="!$auth.loggedIn ? '/favorilerim' : '/user/favorilerim'" class="Fav-button">
                             <i class="icon-heart-full"></i>
@@ -226,6 +213,7 @@
 
 <script>
 import FlipCountdown from 'vue2-flip-countdown'
+import Notification from '../common/notification.vue';
 export default {
     name: "Header",
     data() {
@@ -245,7 +233,7 @@ export default {
             }
         }
     },
-    components: { FlipCountdown },
+    components: { FlipCountdown,Notification },
     computed: {
         greeting() {
             const saat = new Date().getHours();
