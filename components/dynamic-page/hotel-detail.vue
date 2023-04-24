@@ -258,97 +258,54 @@
           <div class="otel-reviews-in">
 
             <div class="View-reviews comments view-menu-content-item" id="reviews-content">
-              <div class="View-reviews-head">
-                <div class="general-informations-section-title mb-0"><span>{{ hotelDetails.body.hotel.name }}</span>
-                  Değerlendirmesi</div>
+              <div class="View-reviews-head" v-if="this.comments && this.comments.data">
+                <div class="general-informations-section-title mb-0">
+                  <span>{{ hotelDetails.body.hotel.name }}</span>
+                  Değerlendirmesi
+                </div>
                 <div class="Otel-card-review mt-2">
-                  <span>{{ hotelDetails.body.hotel.stars }}/5</span>
-                  <p>Mükemmel <u>0 yorum</u></p>
+                  <span>{{ this.comments.data.averageScore }}/10</span>
+                  <p>
+                    {{ this.comments.data.averageScoreText }}
+                    <u>{{ this.comments.data.count }} yorum</u>
+                  </p>
                 </div>
               </div>
-              <div class="otel-reviews-item">
+              <div
+                class="otel-reviews-item"
+                v-for="comment in this.comments?.data?.comments || []"
+              >
                 <div class="otel-reviews-item-left">
                   <div class="otel-reviews-item-left-top">
-                    <h6>Fatih ********</h6>
-                    <span>Holiday</span>
+                    <h6>
+                      {{ comment.user?.name }} {{ comment.user?.surname }}
+                    </h6>
+                    <span>{{ comment.accommodation?.reason }}</span>
                   </div>
                   <div class="otel-reviews-item-left-bottom">
-                    <p><i class="icon-date"></i> Temmuz '22</p>
+                    <p>
+                      <i class="icon-date"></i>
+                      {{ new Date(comment.commentDate).toLocaleString('tr-TR', { month: 'long', year: 'numeric' }) }}
+                    </p>
                   </div>
                 </div>
                 <div class="otel-reviews-item-right">
                   <div class="otel-reviews-item-right-head">
                     <div class="Otel-card-review">
-                      <span>{{ hotelDetails.body.hotel.stars }}/5</span>
-                      <b>Mükemmel</b>
+                      <span :style="{ color: comment.scoreColor }">{{ comment.score }}/10</span>
+                      <b>{{ comment.scoreText }}</b>
                     </div>
-                    <p>Yorum kaynağı <a href="">Google</a></p>
+                    <p>
+                      Yorum kaynağı
+                      <a href="" target="_blank" rel="noopener noreferrer">{{ comment.provider }}</a>
+                    </p>
                   </div>
                   <div class="otel-reviews-item-right-text">
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable There are many variations of passages of Lorem Ipsum available, but the majority have
-                      suffered alteration in some form, by injected humour, or randomised words which don't look even
-                      slightly believable</p>
-                  </div>
-                </div>
-              </div>
-              <div class="otel-reviews-item">
-                <div class="otel-reviews-item-left">
-                  <div class="otel-reviews-item-left-top">
-                    <h6>Fatih ********</h6>
-                    <span>Holiday</span>
-                  </div>
-                  <div class="otel-reviews-item-left-bottom">
-                    <p><i class="icon-date"></i> Temmuz '22</p>
-                  </div>
-                </div>
-                <div class="otel-reviews-item-right">
-                  <div class="otel-reviews-item-right-head">
-                    <div class="Otel-card-review">
-                      <span>{{ hotelDetails.body.hotel.stars }}/5</span>
-                      <b>Mükemmel</b>
-                    </div>
-                    <p>Yorum kaynağı <a href="">Google</a></p>
-                  </div>
-                  <div class="otel-reviews-item-right-text">
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable There are many variations of passages of Lorem Ipsum available, but the majority have
-                      suffered alteration in some form, by injected humour, or randomised words which don't look even
-                      slightly believable</p>
-                  </div>
-                </div>
-              </div>
-              <div class="otel-reviews-item">
-                <div class="otel-reviews-item-left">
-                  <div class="otel-reviews-item-left-top">
-                    <h6>Fatih ********</h6>
-                    <span>Holiday</span>
-                  </div>
-                  <div class="otel-reviews-item-left-bottom">
-                    <p><i class="icon-date"></i> Temmuz '22</p>
-                  </div>
-                </div>
-                <div class="otel-reviews-item-right">
-                  <div class="otel-reviews-item-right-head">
-                    <div class="Otel-card-review">
-                      <span>{{ hotelDetails.body.hotel.stars }}/5</span>
-                      <b>Mükemmel</b>
-                    </div>
-                    <p>Yorum kaynağı <a href="">Google</a></p>
-                  </div>
-                  <div class="otel-reviews-item-right-text">
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable There are many variations of passages of Lorem Ipsum available, but the majority have
-                      suffered alteration in some form, by injected humour, or randomised words which don't look even
-                      slightly believable</p>
+                    <p>{{ comment.contents?.[0]?.content }}</p>
                   </div>
                 </div>
               </div>
               <button class="otel-reviews-more" type="button">Tüm yorumları göster</button>
-
             </div>
           </div>
         </div>
@@ -400,7 +357,7 @@ import lottie from 'vue-lottie/src/lottie.vue'
 
 export default {
   name: 'DynamicHotelDetailPage',
-  props: ['hotelDetails', 'selectedFilters'],
+  props: ['hotelDetails', 'selectedFilters', 'comments'],
   data() {
     return {
       site_id:process.env.SITE,

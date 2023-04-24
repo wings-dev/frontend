@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dynamic-hotel-detail-page :hotelDetails="hotelDetails" :hotelPriceDetails="hotelPriceDetails" :selectedFilters="selectedFilters"></dynamic-hotel-detail-page>
+    <dynamic-hotel-detail-page :hotelDetails="hotelDetails" :hotelPriceDetails="hotelPriceDetails" :selectedFilters="selectedFilters" :comments="comments"></dynamic-hotel-detail-page>
   </div>
 </template>
 
@@ -19,10 +19,11 @@ export default {
       headData: {},
       hotelDetails: null,
       hotelPriceDetails: null,
-      selectedFilters: {}
+      selectedFilters: {},
+      comments: null
     }
   },
-  async asyncData({route, $axios, $dataService}) {
+  async asyncData({route, $axios, $dataService, $getRedisKey}) {
     const path = route.params.slug;
     const split = path.split('-');
     const hotel_id = split[split.length - 1];
@@ -39,7 +40,9 @@ export default {
     let response = await $dataService.getHotelDetail(hotel_id);
     const hotelDetails = response.data;
 
-    return {hotelDetails, selectedFilters}
+    const comments = await $getRedisKey(`data:otels:${hotel_id}:comments`)
+
+    return {hotelDetails, selectedFilters, comments}
   },
 }
 </script>
