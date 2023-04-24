@@ -176,31 +176,35 @@
         <template v-else>
           <div class="view-gallery">
             <div class="area-1">
-              <a :href="villa.watermark_images[0].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code"
+              <a :href="villa.watermark_images[0].original_url" data-fancybox="gallery"
+                :data-caption="villa_prefix + villa.code"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-                <nuxt-img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
+                <nuxt-img :src="villa.watermark_images[0].original_url" :srcset="villa.watermark_images[0].responsive"
                   width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
 
               </a>
             </div>
             <div class="area-2 d-md-block d-none">
-              <a :href="villa.watermark_images[1].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code"   class="view-item d-block w-100 h-100 ">
+              <a :href="villa.watermark_images[1].original_url" data-fancybox="gallery"
+                :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div class="area-3 d-md-block d-none">
-              <a :href="villa.watermark_images[2].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code"  class="view-item d-block w-100 h-100 ">
+              <a :href="villa.watermark_images[2].original_url" data-fancybox="gallery"
+                :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div class="area-4 d-none d-lg-block">
-              <a :href="villa.watermark_images[3].preview_url" data-fancybox="gallery" :data-caption="villa_prefix + villa.code"  class="view-item d-block w-100 h-100 ">
+              <a :href="villa.watermark_images[3].original_url" data-fancybox="gallery"
+                :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
@@ -208,7 +212,7 @@
             </div>
             <div class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
-                <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
+                <nuxt-img :src="villa.watermark_images[4].original_url" :srcset="villa.watermark_images[4].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
@@ -222,7 +226,12 @@
               </div>
             </div>
             <template v-if="villa.watermark_images.length > 4">
-              <h2>TEST</h2>
+              <div class="d-none">
+                <a v-for="previewImage in villa.watermark_images.slice(5)" :href="previewImage.original_url" data-fancybox="gallery"
+                  data-caption="Salon">
+                  <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" /></a>
+              </div>
 
             </template>
             <div class="View-gallery-mobile-buttons">
@@ -467,70 +476,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-rooms rooms-section position-relative d-none">
-              <div class="rooms-caption d-flex flex-column flex-sm-row align-items-sm-center flex-wrap mb-3 mb-sm-4 pb-1">
-                <h4 class="View-title me-4 pe-2">
-                  Kat Planı
-                </h4>
-                <ul class="nav nav-pills me-auto" id="room-tab" role="tablist">
-                  <li class="nav-item" role="presentation" v-for="(floor, index) in villa.floorplan.kat" :key="index">
-                    <button :class="[index == 0 ? 'active' : '']" class="nav-link" :id="'floor' + index"
-                      data-bs-toggle="pill" :data-bs-target="'#floor' + index" type="button" role="tab"
-                      :aria-controls="'floor' + index" aria-selected="true">
-                      <span class="d-inline-block ">{{ floor.name }}</span>
-                    </button>
-                  </li>
-                  <!-- <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="floor-2-tab" data-bs-toggle="pill" data-bs-target="#floor-2"
-                                        type="button" role="tab" aria-controls="floor-2" aria-selected="false">
-                                        <span class="d-inline-block ">Kat 2</span>
-                                      </button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="floor-3-tab" data-bs-toggle="pill" data-bs-target="#floor-3"
-                                        type="button" role="tab" aria-controls="floor-3" aria-selected="false">
-                                        <span class="d-inline-block ">Kat 3</span>
-                                      </button>
-                                    </li> -->
-                </ul>
-                <div class="swiper-button-prev floorplan-navigation-prev"></div>
-                <div class="swiper-button-next floorplan-navigation-next"></div>
-              </div>
-              {{ villa.floorplan.kat.bolum }}
-              <div class="tab-content mb-4 mb-sm-5 pb-3" id="room-tabContent">
-                <div :class="[index == 0 ? 'show active' : '']" class="tab-pane fade " id="floor-1" role="tabpanel"
-                  aria-labelledby="floor-1-tab" v-for="(floor, index) in villa.floorplan.kat" :key="index">
-
-                  <div class="rooms ">
-                    <div class="swiper swiper-floorplan">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(bolum, index) in floor.bolum" :key="index">
-                          <div class="room-item">
-                            <div class="img-box w-100">
-
-                              <nuxt-img :src="img.preview_url" width="312" height="213" alt="room image"
-                                class="lazy cover rounded-xl w-100" v-for="(img, index2) in bolum.gorsel" :key="index2"
-                                v-if="index <= 0"></nuxt-img>
-                            </div>
-                            <div class="item-content d-flex flex-column align-items-center text-center px-3 pt-3">
-                              <span class="room-item-title">{{ bolum.name }}</span>
-                              <p class="room-item-text">
-                                <span style="margin-right: 5px;" v-for="(ozellik, index3) in bolum.donanim"
-                                  :key="index3">{{
-                                    ozellik }}</span>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            <template v-if="villa.floorplan.pool">
+            <template v-if="villa.floorplan.pool[0]['havuz-en']">
               <div class="View-pools">
                 <div class="View-pools-head  mb-3">
                   <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
@@ -1016,14 +962,14 @@
                       <p>Parti Yapılamaz</p>
                     </div>
                   </div>
-                  <div class="View-info-policy">
+                  <div class="View-info-policy d-none">
                     <h5>İptal Politikası</h5>
                     <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi
                       pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.Yemek servisi
                       hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi pişirebilir,kendi
                       ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
                   </div>
-                  <div class="View-info-policy-mobile">
+                  <div class="View-info-policy-mobile d-none">
                     <h5>İptal Politikası</h5>
                     <div class="View-info-policy-mobile-in">
                       <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi yemeklerinizi...
@@ -1041,7 +987,7 @@
                     </div>
 
                   </div>
-                  <div class="View-info-fee-right">
+                  <div class="View-info-fee-right d-none">
                     <h5>Hasar Depozitosu</h5>
                     <p>Depozito ücreti <b>2000₺</b> olarak belirlenmiştir. Konaklama süresince tesiste herhangi bir
                       zarar olmaması
@@ -1053,7 +999,7 @@
 
               </div>
             </div>
-            <div class="View-info-warning">
+            <div class="View-info-warning d-none">
               <div class="View-info-warning-in">
                 <i class="icon-warning"></i>
                 <div class="View-info-warning-text">
@@ -1063,7 +1009,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-faq sss view-menu-content-item" id="sss-content">
+            <div class="View-faq sss view-menu-content-item d-none" id="sss-content">
               <h4 class="View-title"><b>Sıkça</b> Sorulan Sorular</h4>
               <div class="accordion" id="Faq">
                 <div class="accordion-item">
@@ -1570,7 +1516,7 @@
       </div>
     </section>
 
-    <section class="Gallery" @keydown.esc="closeGallery">
+    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat">
       <div class="container">
         <div class="Gallery-head">
           <button type="button" class="Gallery-close" @click="closeGallery"><i class="icon-search-close"></i></button>
@@ -1655,15 +1601,6 @@ export default {
       disabledDates: [
         { start: null, end: new Date() },
       ],
-      center: [36.618867138910204, 29.145069037654377],
-      circle: {
-        center: [36.618867138910204, 29.145069037654377],
-        radius: 100
-      },
-      markers: [
-        [36.61751702707028, 29.143651464471198], [36.61814341192442, 29.143354164069745]
-      ],
-      iconSize: [140, 140],
       calendarColumn: 2,
       calendarRow: 1,
       moreMobileContent: false,
@@ -1813,19 +1750,19 @@ export default {
       });
 
       price_list_1.forEach(item => {
-          if (item && item.dates) {
-            const exists = attributes.find(obj => obj.dates.getTime() === new Date(item.dates).getTime());
-            if (!exists) {
-              const customData = {
-                price: item.price,
-                status: [],
-                dateStatus: [],
-                className: {}
-              };
+        if (item && item.dates) {
+          const exists = attributes.find(obj => obj.dates.getTime() === new Date(item.dates).getTime());
+          if (!exists) {
+            const customData = {
+              price: item.price,
+              status: [],
+              dateStatus: [],
+              className: {}
+            };
 
-              attributes.push({ customData, dates: new Date(item.dates) });
-            }
+            attributes.push({ customData, dates: new Date(item.dates) });
           }
+        }
 
       });
 
@@ -2202,7 +2139,6 @@ export default {
         },
       })
 
-      console.log(this.weekVillas)
 
       this.$el.addEventListener('click', function (e) {
         if (e.target.closest('.dropdown-menu')) {
@@ -2276,7 +2212,6 @@ export default {
           }
 
         } catch (error) {
-          // console.error('scrollFunction hatası:', error);
         }
 
       }
@@ -2363,5 +2298,4 @@ export default {
   .modal-xl {
     max-width: 1140px;
   }
-}
-</style>
+}</style>

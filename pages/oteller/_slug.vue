@@ -1,15 +1,12 @@
 <template>
   <main class="main">
 
-    <div class="Banner-otel" style="background-image: url(/img/istanbulotel.jpg);">
+    <div class="Banner-otel" :style="{ 'background-image': 'url(' + pageData?.page_content.default.page_banner + ')' }">
       <div class="container">
         <div class="Banner-otel-in">
           <div class="Banner-otel-text">
-            <h1>İstanbul Otelleri Ara</h1>
-            <p>Taksim Meydanı ve İstiklal Caddesi'nin yanı başında yer alan ve İstanbul'un büyük iş merkezlerine
-              kısa bir yürüyüşle ulaşabileceğiniz Divan İstanbul, güzel konumuyla iş seyahatlerinin yanında
-              tarih
-              ve kültür gezileri için de tercih ediliyor.</p>
+            <h1>{{ pageData.name }}</h1>
+            <p>{{ pageData.meta[0].content }}</p>
           </div>
           <search-hotel-detail-component :key="$route.path"></search-hotel-detail-component>
         </div>
@@ -21,13 +18,13 @@
         <div class="O_List-card-in">
           <div class="O_List-card-item" v-for="hotel in hotels">
             <div class="O_List-card-item-img">
-              <nuxt-img :src="cdn + hotel.images?.[0]?.ImageUrl" alt=""/>
+              <nuxt-img :src="cdn + hotel.images?.[0]?.ImageUrl" alt="" />
             </div>
             <div class="O_List-card-item-content">
               <div class="O_List-card-item-content-head">
                 <div class="O_List-card-item-content-head-in">
-                  <b>{{hotel.Name}}</b>
-                  <nuxt-link to="/">{{hotel.DestinationName}}</nuxt-link>
+                  <b>{{ hotel.Name }}</b>
+                  <nuxt-link to="/">{{ hotel.DestinationName }}</nuxt-link>
                 </div>
                 <div class="O_List-card-item-reviews mobile">
                   <span>4/5</span>
@@ -51,15 +48,15 @@
               <!-- Go to First Page -->
               <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page > 1">
                 <a href="javascript:void(0)" @click.prevent="goToPage(1)"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
                   <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                       xmlns:xlink="http://www.w3.org/1999/xlink">
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                       <g id="VillaListeleme" transform="translate(-860.000000, -2875.000000)" fill="#AFAFB6"
-                         fill-rule="nonzero">
+                        fill-rule="nonzero">
                         <g id="Group-27" transform="translate(837.000000, 2861.000000)">
                           <g id="right-arrow-(3)-copy"
-                             transform="translate(26.954957, 19.166042) scale(-1, 1) translate(-26.954957, -19.166042) translate(23.919953, 14.000000)">
+                            transform="translate(26.954957, 19.166042) scale(-1, 1) translate(-26.954957, -19.166042) translate(23.919953, 14.000000)">
                             <path
                               d="M5.9052,4.762884 L1.307292,0.16506 C1.200948,0.058632 1.058988,0 0.90762,0 C0.756252,0 0.614292,0.058632 0.507948,0.16506 L0.169344,0.50358 C-0.050988,0.724164 -0.050988,1.082676 0.169344,1.302924 L4.03032,5.1639 L0.16506,9.02916 C0.058716,9.135588 0,9.277464 0,9.428748 C0,9.5802 0.058716,9.722076 0.16506,9.828588 L0.503664,10.167024 C0.610092,10.273452 0.751968,10.332084 0.903336,10.332084 C1.054704,10.332084 1.196664,10.273452 1.303008,10.167024 L5.9052,5.565 C6.011796,5.458236 6.070344,5.315688 6.07000944,5.164152 C6.070344,5.012028 6.011796,4.869564 5.9052,4.762884 Z"
                               id="Path"></path>
@@ -74,20 +71,20 @@
               <!-- Page numbers -->
               <li class="page-item me-2 me-sm-3 mb-1" v-if="showLeftDots">
                 <a href="javascript:void(0)"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
                   <span aria-hidden="true">&hellip;</span>
                 </a>
               </li>
               <li class="page-item me-2 me-sm-3 mb-1" v-for="(pageNumber, index) in displayedPageNumbers" :key="index">
                 <a href="javascript:void(0)"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
-                   :class="{ 'active': pageNumber === current_page }" @click.prevent="goToPage(pageNumber)">
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary"
+                  :class="{ 'active': pageNumber === current_page }" @click.prevent="goToPage(pageNumber)">
                   {{ pageNumber }}
                 </a>
               </li>
               <li class="page-item me-2 me-sm-3 mb-1" v-if="showRightDots">
                 <a href="javascript:void(0)"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
                   <span aria-hidden="true">&hellip;</span>
                 </a>
               </li>
@@ -113,12 +110,12 @@
               <!-- Go to Last Page -->
               <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page < totalPages">
                 <a href="javascript:void(0)" @click.prevent="goToPage(totalPages)"
-                   class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
                   <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                       xmlns:xlink="http://www.w3.org/1999/xlink">
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                       <g id="VillaListeleme" transform="translate(-1374.000000, -2875.000000)" fill="#AFAFB6"
-                         fill-rule="nonzero">
+                        fill-rule="nonzero">
                         <g id="Group-27" transform="translate(837.000000, 2861.000000)">
                           <g id="Group-19" transform="translate(514.000000, 0.000000)">
                             <g id="right-arrow-(3)" transform="translate(23.010038, 14.000000)">
@@ -139,17 +136,16 @@
       </div>
     </section>
 
-    <section class="highlight-section bg-theme-light-2  pb-4 ">
+    <section class="highlight-section  ">
       <div class="container">
-        <div class="row pt-4 pb-md-2">
+        <div class="row pt-4 ">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
-            <h1 class="highlight-section-title">İstanbul hakkında</h1>
-            <p class="highlight-section-desc" :class="{ active: isExpanded }" v-html="content">
-            </p>
+            <div class="highlight-section-desc" :class="{ active: isExpanded }" v-html="pageData.page_content.article.data">
+            </div>
 
-            <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded }"
-                 @click="isExpanded = !isExpanded"><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' :
-              'DAHA AZ OKU' }}</div>
+            <div class="highlight-section-desc-more-button read-more-button pb-4" :class="{ active: isExpanded }"
+              @click="isExpanded = !isExpanded"><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' :
+                'DAHA AZ OKU' }}</div>
           </div>
         </div>
       </div>
@@ -160,55 +156,14 @@
         <div class="List-sss">
           <h3>En çok sorulan sorular </h3>
           <div class="accordion" id="Faq">
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
-                Nasıl rezervasyon yapabilirim ?
+            <div class="accordion-item" v-for="(item,index) in pageData.page_content?.faq[0].faq_list" :key="index">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#faq'+index"
+                aria-expanded="false" :aria-controls="'faq'+index">
+                {{item.howrent_category_question}}
               </button>
-              <div id="faq1" class="accordion-collapse collapse " data-bs-parent="#Faq">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                    yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                Kaç Kişi Konaklayabiliyoruz ?
-              </button>
-              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                    yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                Yemek servisi hizmetiniz var mı ?
-              </button>
-              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                    yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
-                Yemek servisi hizmetiniz var mı ?
-              </button>
-              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#Faq">
-                <div class="accordion-body">
-                  <p>Yemek servisi hizmetimiz bulunmamaktadır. Villalarımıza ait mutfaklarda kendi
-                    yemeklerinizi
-                    pişirebilir,kendi ellerinizle güzel bir kahvaltı sofrası hazırlayabilirsiniz.</p>
+              <div :id="'faq'+index" class="accordion-collapse collapse " data-bs-parent="#Faq">
+                <div class="accordion-body" v-html="item.howrent_category_answer">
+                  
                 </div>
               </div>
             </div>
@@ -217,7 +172,7 @@
       </div>
     </section>
 
-    <section class="Blog-more mt-5">
+    <section class="Blog-more mt-5 d-none">
       <div class="container">
         <div class="Blog-more-in">
           <div class="Blog-more-head">
@@ -230,7 +185,7 @@
                 <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
                   <a class="Blog-item">
                     <div class="Blog-item-img">
-                      <nuxt-img src="/img/blog.png" alt=""/>
+                      <nuxt-img src="/img/blog.png" alt="" />
                       <div class="Blog-item-img-text">
                         <h6>Roots in a piece of classical Latin literature</h6>
                       </div>
@@ -273,39 +228,20 @@ export default {
   data() {
     return {
       destination_id: null,
-      hotels:[],
+      hotels: [],
       current_page: 1,
       per_page: 10,
       total_items: 0,
       isExpanded: false,
       isExpanded2: false,
-      content: `Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.`,
       cdn: process.env.HOTEL_CDN_URL + '/'
     }
   },
-  async asyncData({route, $axios}) {
+  async asyncData({ route, $axios, $getRedisKey, store, redirect }) {
     const path = route.params.slug;
     const split = path.split('-');
     const destination_id = split[split.length - 1];
+    const site_id = process.env.SITE;
 
     const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') + `/website/destination-hotels/${destination_id}?api_token=${process.env.WEBSITE_TOKEN}`)
     let hotels = response.data.data;
@@ -313,7 +249,30 @@ export default {
     const total_items = response.data.total;
     const current_page = response.data.current_page;
 
-    return {hotels, per_page, total_items, current_page, destination_id}
+    let pageData = {}
+
+    let redisData = JSON.parse(JSON.stringify(store.state['routes'].routes[path]));
+
+    console.log(redisData)
+
+    if (redisData) {
+      const type = redisData.type;
+      const headData = {
+        title: redisData.title,
+        meta: redisData.meta
+      }
+
+      // type 18 => Otel Kategori
+      if (redisData.type === 18) {
+        // filtre redis datası
+        pageData = await $getRedisKey(`web:${site_id}:pages:${path}`);
+      }
+
+    } else {
+      return redirect('/404')
+    }
+
+    return { hotels, per_page, total_items, current_page, destination_id, pageData }
   },
   mounted() {
     Swiper.use([Navigation, Pagination])
@@ -374,6 +333,9 @@ export default {
 
       },
     })
+
+    console.log(this.pageData)
+
   },
   computed: {
     totalPages() {
@@ -400,7 +362,7 @@ export default {
   },
   methods: {
     async filter(page = 1) {
-      const response = await this.$axios.get( `/website/destination-hotels/${this.destination_id}?page=${page}&api_token=${process.env.WEBSITE_TOKEN}`)
+      const response = await this.$axios.get(`/website/destination-hotels/${this.destination_id}?page=${page}&api_token=${process.env.WEBSITE_TOKEN}`)
       this.hotels = response.data.data;
       this.per_page = response.data.per_page;
       this.total_items = response.data.total;

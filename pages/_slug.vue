@@ -75,21 +75,6 @@ export default {
 
       }
 
-      if (redisData.type === 18 || redisData.type === 19) {
-        componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
-
-        let blogPostKeys = []
-        let blogPost = componentData.page_content.blog_post
-
-        blogPost.forEach(element => {
-          const data = `web:${site_id}:pages:${element}`
-          blogPostKeys.push(data)
-        });
-
-        blogPostData = await $getRedisKey(blogPostKeys);
-
-      }
-
 
       if (redisData.type === 1 || redisData.type === 23) {
         // filtre redis datası

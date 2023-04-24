@@ -94,7 +94,7 @@
       <b>Max price:{{ villa.prices.max_price.price }}₺</b>
       <b>Total price:{{ villa.total.total }}₺</b>
       <b>Day:{{ villa.total.day }}</b> -->
-        <div class="F_villa-item-bottom " :class="{'price':checkindate}">
+        <div class="F_villa-item-bottom " :class="{ 'price': checkindate }">
           <div class="F_villa-item-features">
             <h6>Öne çıkan özellikleri</h6>
             <div class="F_villa-item-features-in">
@@ -105,8 +105,9 @@
 
           </div>
           <div class="F_villa-item-bottom-price" v-if="!checkindate">
-            <p v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}{{ villa.prices.min_price.price_currency }} - {{
-              villa.prices.max_price.price | numberFormat }}{{ villa.prices.max_price.price_currency }}
+            <p v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}{{
+              villa.prices.min_price.price_currency }} - {{
+    villa.prices.max_price.price | numberFormat }}{{ villa.prices.max_price.price_currency }}
               <span>/Gecelik</span>
             </p>
             <p v-if="villa.total">
@@ -119,9 +120,9 @@
             <div class="F_villa-item-bottom-price-in">
               <p class="F_villa-item-bottom-price-in-day"><span>{{ villa.total.day }}</span> GECE</p>
               <div class="F_villa-item-bottom-price-in-date">
-              <p><span>{{ checkin }}</span><i class="icon-arrow-right-2"></i><span>{{ checkout }}</span></p>
-                                            <small>Fırsatı kaçırma!</small>
-            </div>
+                <p><span>{{ checkin }}</span><i class="icon-arrow-right-2"></i><span>{{ checkout }}</span></p>
+                <small>Fırsatı kaçırma!</small>
+              </div>
             </div>
             <div class="F_villa-item-bottom-price-right">
               <p class="orange">TOPLAM FİYAT</p>
@@ -143,15 +144,17 @@
       <div class="Login Calendar">
         <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide(`modal-${code}`)"><i
             class="icon-login-close"></i></button>
-        <h3 class=""><span>{{ prefix + villa.code }}</span> Müsaitlik Takvimi</h3>
-        <div class="View-availibility-legand mt-2">
-          <div class="View-availibility-legand-item">
-            <span class="close-day"></span>
-            <p>Dolu</p>
-          </div>
-          <div class="View-availibility-legand-item">
-            <span></span>
-            <p>Onay Bekleniyor</p>
+        <div class="Login-calendar-head">
+          <h3 class=""><span>{{ prefix + villa.code }}</span> Müsaitlik Takvimi</h3>
+          <div class="View-availibility-legand mt-2">
+            <div class="View-availibility-legand-item">
+              <span class="close-day"></span>
+              <p>Dolu</p>
+            </div>
+            <div class="View-availibility-legand-item">
+              <span></span>
+              <p>Onay Bekleniyor</p>
+            </div>
           </div>
         </div>
         <client-only>

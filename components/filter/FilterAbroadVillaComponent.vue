@@ -11,20 +11,20 @@
           </div>
           <div class="Filter-left-selected">
 
-              <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
-                Bölge:{{ facilityType.text }}
-                <i class="icon-search-close" @click="unselect(facilityType)"></i>
-              </a>
+            <a v-for="facilityType in selectedFacilityTypes" class="Filter-right-selected-item">
+              Bölge:{{ facilityType.text }}
+              <i class="icon-search-close" @click="unselect(facilityType)"></i>
+            </a>
 
-              <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">
-                Konsept:{{ facilityConcept.text }}
-                <i class="icon-search-close" @click="unselect(facilityConcept)"></i>
-              </a>
+            <a v-for="facilityConcept in selectedFacilityConcepts" class="Filter-right-selected-item">
+              Konsept:{{ facilityConcept.text }}
+              <i class="icon-search-close" @click="unselect(facilityConcept)"></i>
+            </a>
 
-              <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
-                Olanak:{{ facility.text }}
-                <i class="icon-search-close" @click="unselect(facility)"></i>
-              </a>
+            <a v-for="facility in selectedFacilities" class="Filter-right-selected-item">
+              Olanak:{{ facility.text }}
+              <i class="icon-search-close" @click="unselect(facility)"></i>
+            </a>
           </div>
           <div class="Filter-left-in">
             <div class="Filters-item Filters-item-notfound">
@@ -32,19 +32,20 @@
             </div>
 
             <filter-item-checkbox-component title="BÖLGE" filterInputPlaceholder="Bölge Arayın" :checkboxes="destinations"
-              :hideTitleBorder="true" @updated="updateFilter('destinations', $event)" groupName="destinationCheckbox"></filter-item-checkbox-component>
+              :hideTitleBorder="true" @updated="updateFilter('destinations', $event)"
+              groupName="destinationCheckbox"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="TESİS TİPİ" :checkboxes="amenites.facilityTypes"
-              :groups="amenites.groups.facilityTypes"
-              @updated="updateFilter('amenites.facilityTypes', $event)" groupName="typeCheckbox"></filter-item-checkbox-component>
+              :groups="amenites.groups.facilityTypes" @updated="updateFilter('amenites.facilityTypes', $event)"
+              groupName="typeCheckbox"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="TESİS KATEGORİLERİ" :checkboxes="amenites.facilityConcepts"
-              :groups="amenites.groups.facilityConcepts"
-              @updated="updateFilter('amenites.facilityConcepts', $event)" groupName="categoryCheckbox"></filter-item-checkbox-component>
+              :groups="amenites.groups.facilityConcepts" @updated="updateFilter('amenites.facilityConcepts', $event)"
+              groupName="categoryCheckbox"></filter-item-checkbox-component>
 
             <filter-item-checkbox-component title="OLANAKLAR" :checkboxes="amenites.facilities"
-              :groups="amenites.groups.facilities"
-              @updated="updateFilter('amenites.facilities', $event)" groupName="facilitiesCheckbox"></filter-item-checkbox-component>
+              :groups="amenites.groups.facilities" @updated="updateFilter('amenites.facilities', $event)"
+              groupName="facilitiesCheckbox"></filter-item-checkbox-component>
             <!-- <filter-item-checkbox-component title="TESİS OLANAKLARI" filterInputPlaceholder="Özellik Arayın"
               :checkboxes="amenites.facilities" :hideTitleBorder="true"
               @updated="updateFilter('amenites.facilities', $event)"
@@ -52,11 +53,12 @@
               ></filter-item-checkbox-component> -->
 
             <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
-              @max_price="updateFilter('max_price', $event)" groupName="priceRange" ></filter-price-between-component>
+              @max_price="updateFilter('max_price', $event)" groupName="priceRange"></filter-price-between-component>
 
-              <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü Temizle</button>
+            <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü
+              Temizle</button>
 
-              <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
+            <button type="button" @click="closeMobileFilter()" class="Filters-in-m-button">Uygula</button>
           </div>
 
         </div>
@@ -76,7 +78,9 @@
                   <VSelect :options="orderValues" :labelTitle="orderPlaceholder" @input="orderChanged" />
                 </client-only>
               </div>
-              <button type="button" @click="openMobileFilter()" class="Filter-right-head-buttons-item mobile-filter-button"><i class="icon-new-filter"></i>FİLTRELE <span>(4)</span></button>
+              <button type="button" @click="openMobileFilter()"
+                class="Filter-right-head-buttons-item mobile-filter-button"><i class="icon-new-filter"></i>FİLTRELE
+                <span>(4)</span></button>
             </div>
           </div>
 
@@ -104,84 +108,15 @@
               </a>
             </div>
             <button type="button" id="Fetures_clear" v-show="filterCount > 0" @click="clearFilter()">Temizle</button>
-            <button type="button" class="morebutton" @click="isExpandedMore = !isExpandedMore" ref="moreButton">{{ !isExpandedMore ? 'TÜMÜNÜ GÖR'
+            <button type="button" class="morebutton" @click="isExpandedMore = !isExpandedMore" ref="moreButton">{{
+              !isExpandedMore ? 'TÜMÜNÜ GÖR'
               : 'DAHA AZ GÖR' }}</button>
           </div>
 
           <div class="F_villa ">
 
-            <template v-if="villas.length > 2">
-
-              <filter-villa-preview-component v-for="(villa, index) in villas.slice(0, 2)" :key="index" :villa="villa"
-                :checkindate="checkIn"></filter-villa-preview-component>
-              <div
-                class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-                <nuxt-img src="/uploads/holiday-banner.jpg" alt=""
-                  class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100"></nuxt-img>
-
-                <div class="d-flex flex-column position-relative ls-05 pt-3">
-                  <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
-                  <span class="fs-6 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
-                  <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
-                </div>
-                <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
-                      <g id="Group" transform="translate(626.000000, 202.000000)">
-                        <path
-                          d="M14,13.3334991 C14,14.2539193 13.2166932,15 12.25,15 C11.2836548,15 10.5,14.2539193 10.5,13.3334991 C10.5,12.4130788 11.2836548,11.6666667 12.25,11.6666667 C13.2166932,11.6666667 14,12.4130788 14,13.3334991"
-                          id="Fill-13"></path>
-                        <path
-                          d="M6.12867316,9.20434506 C4.17402549,9.20434506 2.58538231,7.69131915 2.58538231,5.8369566 C2.58538231,3.97534751 4.17402549,2.46257148 6.12867316,2.46257148 C8.07544978,2.46257148 9.66435532,3.97534751 9.66435532,5.8369566 C9.66435532,7.69131915 8.07544978,9.20434506 6.12867316,9.20434506 M6.12867316,0 C2.74122939,0 0,2.61050069 0,5.8369566 C0,9.0559161 2.74122939,11.6666667 6.12867316,11.6666667 C9.50850825,11.6666667 12.25,9.0559161 12.25,5.8369566 C12.25,2.61050069 9.50850825,0 6.12867316,0"
-                          id="Fill-15"></path>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index + 3" :villa="villa"
-                :checkindate="checkIn"></filter-villa-preview-component>
-
-            </template>
-
-            <template v-if="villas.length > 0 && villas.length <= 2">
-              <filter-villa-preview-component v-for="(villa, index) in villas" :key="index" :villa="villa"
-                :checkindate="checkIn"></filter-villa-preview-component>
-              <div
-                class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-                <nuxt-img src="/uploads/holiday-banner.jpg" alt=""
-                  class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100"></nuxt-img>
-
-                <div class="d-flex flex-column position-relative ls-05 pt-3">
-                  <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
-                  <span class="fs-6 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
-                  <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
-                </div>
-                <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
-                      <g id="Group" transform="translate(626.000000, 202.000000)">
-                        <path
-                          d="M14,13.3334991 C14,14.2539193 13.2166932,15 12.25,15 C11.2836548,15 10.5,14.2539193 10.5,13.3334991 C10.5,12.4130788 11.2836548,11.6666667 12.25,11.6666667 C13.2166932,11.6666667 14,12.4130788 14,13.3334991"
-                          id="Fill-13"></path>
-                        <path
-                          d="M6.12867316,9.20434506 C4.17402549,9.20434506 2.58538231,7.69131915 2.58538231,5.8369566 C2.58538231,3.97534751 4.17402549,2.46257148 6.12867316,2.46257148 C8.07544978,2.46257148 9.66435532,3.97534751 9.66435532,5.8369566 C9.66435532,7.69131915 8.07544978,9.20434506 6.12867316,9.20434506 M6.12867316,0 C2.74122939,0 0,2.61050069 0,5.8369566 C0,9.0559161 2.74122939,11.6666667 6.12867316,11.6666667 C9.50850825,11.6666667 12.25,9.0559161 12.25,5.8369566 C12.25,2.61050069 9.50850825,0 6.12867316,0"
-                          id="Fill-15"></path>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </template>
-
-
-
-
-
             <div class="No-villas" v-if="loading == false && villas.length <= 0">
-              <nuxt-img src="img/no-villas.svg" alt=""></nuxt-img>
+              <nuxt-img :src="`img/site${site_id}/no-villas.svg`" alt=""></nuxt-img>
               <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
               <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
               <div class="No-villas-buttons">
@@ -192,13 +127,28 @@
             </div>
 
             <div class="No-villas" v-if="loading">
-              <nuxt-img src="img/villa-loading.svg" alt=""></nuxt-img>
+              <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" alt=""></nuxt-img>
               <h2>Villalar hazırlanıyor.</h2>
               <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
             </div>
 
+            <template v-if="villas.length > 2">
 
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(0, 2)" :key="index" :villa="villa"
+                :checkindate="checkIn"></filter-villa-preview-component>
+              
+                <filter-banner></filter-banner>
 
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index + 3" :villa="villa"
+                :checkindate="checkIn"></filter-villa-preview-component>
+
+            </template>
+
+            <template v-if="villas.length > 0 && villas.length <= 2">
+              <filter-villa-preview-component v-for="(villa, index) in villas" :key="index" :villa="villa"
+                :checkindate="checkIn"></filter-villa-preview-component>
+                <filter-banner></filter-banner>
+            </template>
           </div>
 
           <nav aria-label="..." class="my-3" v-if="!loading">
@@ -308,6 +258,7 @@ export default {
   },
   data() {
     return {
+      site_id: process.env.SITE,
       current_page: 1,
       per_page: 10,
       total_items: 0,
@@ -341,7 +292,7 @@ export default {
       orderPlaceholder: "Sırala:",
       loading: true,
       novillas: false,
-      isMobileFilterOpen:false
+      isMobileFilterOpen: false
     }
   },
   components: {
@@ -535,21 +486,21 @@ export default {
     isMobile() {
       return window.innerWidth <= 991;
     },
-    openMobileFilter(){
-      if(this.isMobile()){
+    openMobileFilter() {
+      if (this.isMobile()) {
         this.isMobileFilterOpen = true
       }
     },
-    closeMobileFilter(){
-      if(this.isMobile()){
+    closeMobileFilter() {
+      if (this.isMobile()) {
         this.isMobileFilterOpen = false
       }
     },
-    checkboxOpen(groupName){
+    checkboxOpen(groupName) {
       const targetDiv = this.$refs[groupName];
       targetDiv.classList.add('show')
     },
-    checkboxClose(groupName){
+    checkboxClose(groupName) {
       const targetDivClose = this.$refs[groupName];
       targetDivClose.classList.remove('show')
     }
@@ -557,6 +508,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
