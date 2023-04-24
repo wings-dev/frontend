@@ -8,8 +8,9 @@
     <dynamic-villa-filter-page :selectedFilters="categoryFilter" :pageContent="componentData" :highlights=true
       v-else-if="type === 5 || type === 8"></dynamic-villa-filter-page>
     <text-template-component :data="componentData" v-else-if="type === 1 || type === 23"></text-template-component>
-    <hotel-list :data="componentData" :blog="blogPostData" v-else-if="type === 18"></hotel-list>
-    <hotel-destination :data="componentData" :blog="blogPostData" v-else-if="type === 19"></hotel-destination>
+    <otel-area-dynamic-page :data="componentData" v-else-if="type === 18"></otel-area-dynamic-page>
+    <!-- <hotel-list :data="componentData" :blog="blogPostData" v-else-if="type === 18"></hotel-list>
+    <hotel-destination :data="componentData" :blog="blogPostData" v-else-if="type === 19"></hotel-destination> -->
   </div>
 </template>
 
@@ -19,10 +20,11 @@ import DynamicDetailPage from "@/components/dynamic-page/detail.vue";
 import HotelList from "@/components/hotel/hotel-list.vue";
 import HotelDestination from "@/components/hotel/hotel-destination.vue";
 import TextTemplateComponent from "@/components/dynamic-page/TextTemplateComponent.vue";
+import OtelAreaDynamicPage from "@/components/dynamic-page/otel-area.vue";
 
 export default {
   name: 'DynamicPage',
-  components: { TextTemplateComponent, DynamicDetailPage, DynamicVillaFilterPage, HotelList, HotelDestination },
+  components: { TextTemplateComponent, DynamicDetailPage, DynamicVillaFilterPage, HotelList, HotelDestination,OtelAreaDynamicPage },
   layout: "no-search",
   head() {
     return this.headData
@@ -38,7 +40,7 @@ export default {
       blogPostData: {}
     }
   },
-  async asyncData({ $getRedisKey, route, store, redirect }) {
+  async asyncData({ route, $axios, $getRedisKey, store, redirect }) {
     const site_id = process.env.SITE;
     const path = route.params.slug;
     // Gelen sayfanın redisteki datası
@@ -56,6 +58,7 @@ export default {
         title: redisData.title,
         meta: redisData.meta
       }
+
       // type 2 => villa detay sayfası
       if (redisData.type === 2) {
         headData.link = [
@@ -71,8 +74,19 @@ export default {
       if (redisData.type === 5 || redisData.type === 8) {
         // filtre redis datası
         componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
+      }
 
+      if (redisData.type === 18) {
+        // filtre redis datası
+        componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
 
+        const destination_id = componentData.page_content.otel_destination;
+    
+        const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') + `/website/destination-hotels/${destination_id}?api_token=${process.env.WEBSITE_TOKEN}`)
+        componentData.total_items = response.data.total;
+        componentData.current_page = response.data.current_page;
+        componentData.per_page =response.data.per_page
+        componentData.hotels =response.data.data;
       }
 
 

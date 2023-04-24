@@ -10,11 +10,11 @@
                         <div class="swiper blog-carousel w-100 h-100 position-relative">
                             <div class="swiper-wrapper d-flex">
                                 <div class="swiper-slide">
-                                    <a href="/" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
-                                        <nuxt-img src="/img/otel-sl.jpg" width="781" height="380" alt="blog-image"
+                                    <a href="/firsat" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
+                                        <nuxt-img src="/img/otel-slider.jpg" width="781" height="380" alt="blog-image"
                                             class="item-image lazy cover w-100 " />
                                         <div
-                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3">
+                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 d-none">
                                             <h4 class="">En sevdiğiniz rezervasyon sitelerindeki fırsatlar; Hepsi tek yerde.
                                             </h4>
                                             <p class="">Şehir, belirli bir otel veya ünlü bir yer aramayı deneyin!</p>
@@ -22,11 +22,11 @@
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="/" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
-                                        <nuxt-img src="/img/otel-sl.jpg" width="781" height="380" alt="blog-image"
+                                    <a href="/firsat" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
+                                        <nuxt-img src="/img/otel-slider.jpg" width="781" height="380" alt="blog-image"
                                             class="item-image lazy cover w-100 " />
                                         <div
-                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3">
+                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 d-none">
                                             <h4 class="">En sevdiğiniz rezervasyon sitelerindeki fırsatlar; Hepsi tek yerde.
                                             </h4>
                                             <p class="">Şehir, belirli bir otel veya ünlü bir yer aramayı deneyin!</p>
@@ -34,11 +34,11 @@
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="/" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
-                                        <nuxt-img src="/img/otel-sl.jpg" width="781" height="380" alt="blog-image"
+                                    <a href="/firsat" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
+                                        <nuxt-img src="/img/otel-slider.jpg" width="781" height="380" alt="blog-image"
                                             class="item-image lazy cover w-100 " />
                                         <div
-                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3">
+                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 d-none">
                                             <h4 class="">En sevdiğiniz rezervasyon sitelerindeki fırsatlar; Hepsi tek yerde.
                                             </h4>
                                             <p class="">Şehir, belirli bir otel veya ünlü bir yer aramayı deneyin!</p>
@@ -50,10 +50,10 @@
                         </div>
                     </div>
                     <div class="blog-list-item bg-light area2 blog-list-item-sm">
-                        <a href="/" class="blog-item position-relative d-block w-100 h-100">
-                            <nuxt-img src="/img/otel-sl2.jpg" width="402" height="182" alt="blog-image"
+                        <a href="https://www.tursab.org.tr/tr/ddsv" class="blog-item position-relative d-block w-100 h-100">
+                            <nuxt-img src="/img/small-slider2.jpg" width="402" height="182" alt="blog-image"
                                 class="lazy cover w-100" />
-                            <div class="blog-item-text">
+                            <div class="blog-item-text d-none">
                                 <h4 class="blog-item-sm-title">Lüks villalarda </h4>
                                 <p class="blog-item-sm-text">tatil deneyimi yaşa</p>
                             </div>
@@ -61,9 +61,9 @@
                     </div>
                     <div class="blog-list-item bg-light area3 blog-list-item-sm">
                         <a href="/" class="blog-item position-relative d-block w-100 h-100">
-                            <nuxt-img src="/uploads/blog-image3.jpg" width="402" height="182" alt="blog-image"
+                            <nuxt-img src="/img/small-slider.jpg" width="402" height="182" alt="blog-image"
                                 class="lazy cover w-100" />
-                            <div class="blog-item-text">
+                            <div class="blog-item-text d-none">
                                 <h4 class="blog-item-sm-title">Yazın tatili fırsatlarını</h4>
                                 <p class="blog-item-sm-text">Erken rezervasyon otelleriyle değerlendir</p>
                             </div>
@@ -223,28 +223,28 @@
                             <div class="Areas-otel-item-in">
                                 <h4><b>Yurtiçi</b> Otelleri</h4>
                                 <div class="Areas-otel-item-list">
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/antalya.jpg" width="172" height="114"></nuxt-img>
+                                    <nuxt-link to="/antalya-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/antalya.jpeg" width="172" height="114"></nuxt-img>
                                         <span>Antalya Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/side.jpg" width="172" height="114"></nuxt-img>
+                                    <nuxt-link to="/side-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/side.jpeg" width="172" height="114"></nuxt-img>
                                         <span>Side Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/kemer.jpg" width="172" height="114"></nuxt-img>
+                                    <nuxt-link to="/kemer-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/kemer.jpeg" width="172" height="114"></nuxt-img>
                                         <span>Kemer Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/bodrum.jpg" width="172" height="114"></nuxt-img>
+                                    <nuxt-link to="/bodrum-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/bodrum.jpeg" width="172" height="114"></nuxt-img>
                                         <span>Bodrum Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/marmaris.jpg" width="172" height="114"></nuxt-img>
+                                    <nuxt-link to="/marmaris-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/marmaris.jpeg" width="172" height="114"></nuxt-img>
                                         <span>Marmaris Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/alanya.jpg" width="172" height="114"></nuxt-img>
+                                    <nuxt-link to="/alanya-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/alanya.jpeg" width="172" height="114"></nuxt-img>
                                         <span>Alanya Otelleri</span>
                                     </nuxt-link>
                                 </div>
@@ -256,41 +256,41 @@
                         </div>
                         <div class="Areas-otel-item">
                             <div class="Areas-otel-item-in">
-                                <h4><b>Yurtiçi</b> Otelleri</h4>
+                                <h4><b>Kıbrıs</b> Otelleri</h4>
                                 <div class="Areas-otel-item-list">
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/antalya.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Antalya Otelleri</span>
+                                    <nuxt-link to="/magosa-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/magosa.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Magosa Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/side.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Side Otelleri</span>
+                                    <nuxt-link to="/girne-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/girne.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Girne Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/kemer.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Kemer Otelleri</span>
+                                    <nuxt-link to="/bafra-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/bafra.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Bafra Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/bodrum.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Bodrum Otelleri</span>
+                                    <nuxt-link to="/lefkosa-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/lefkosa.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Lefkoşa Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/marmaris.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Marmaris Otelleri</span>
+                                    <nuxt-link to="/otel" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/kibris-balayi.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Kıbrıs Balayı Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/alanya.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Alanya Otelleri</span>
+                                    <nuxt-link to="/otel" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/kibris-ucakli.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Kıbrıs Uçaklı Paketler</span>
                                     </nuxt-link>
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i
+                                <nuxt-link to="/">Tüm Kıbrıs Otellerini Keşfedin <i
                                         class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
                     </div>
-                    <div class="Areas-slider">
+                    <div class="Areas-slider d-none">
                         <div class="Areas-slider-head">
                             <h4><b>Konaklama</b> Seçenekleri</h4>
                             <div class="swiper-pagination Areas-slider-pagination"></div>
@@ -361,7 +361,7 @@
                             <div class="swiper-button-next list-navigation-next"></div>
                         </div>
                     </div>
-                    <div class="Areas-otel">
+                    <div class="Areas-otel mt-4">
                         <div class="section-caption d-flex align-items-center mb-3 pb-1 w-100">
                             <i class="icon-otel-discover"></i>
                             <h4 class="primary-title fw-medium ls-05 lh-1">
@@ -371,71 +371,71 @@
                         </div>
                         <div class="Areas-otel-item">
                             <div class="Areas-otel-item-in">
-                                <h4><b>Yurtiçi</b> Otelleri</h4>
+                                <h4><b>Şehir</b> Otelleri</h4>
                                 <div class="Areas-otel-item-list">
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/antalya.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Antalya Otelleri</span>
+                                    <nuxt-link to="/istanbul-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/istanbul.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>İstanbul Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/side.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Side Otelleri</span>
+                                    <nuxt-link to="/kapadokya-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/kapadokya.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Kapadokya Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/kemer.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Kemer Otelleri</span>
+                                    <nuxt-link to="/izmir-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/izmir.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>İzmir Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/bodrum.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Bodrum Otelleri</span>
+                                    <nuxt-link to="/selimiye-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/selimiye.jpg" width="172" height="114"></nuxt-img>
+                                        <span>Selimiye Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/marmaris.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Marmaris Otelleri</span>
+                                    <nuxt-link to="/kas-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/kas.jpg" width="172" height="114"></nuxt-img>
+                                        <span>Kaş Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/alanya.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Alanya Otelleri</span>
+                                    <nuxt-link to="/akyaka-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/akyaka.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Akyaka Otelleri</span>
                                     </nuxt-link>
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i
+                                <nuxt-link to="/">Tüm Şehir Otellerini Keşfedin <i
                                         class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
                         <div class="Areas-otel-item">
                             <div class="Areas-otel-item-in">
-                                <h4><b>Yurtiçi</b> Otelleri</h4>
+                                <h4><b>Yurtdışı</b> Otelleri</h4>
                                 <div class="Areas-otel-item-list">
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/antalya.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Antalya Otelleri</span>
+                                    <nuxt-link to="/amsterdam-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/amsterdam.jpeg" width="172" height="114"></nuxt-img>
+                                        <span>Amsterdam Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/side.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Side Otelleri</span>
+                                    <nuxt-link to="/barselona-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/barselona.jpg" width="172" height="114"></nuxt-img>
+                                        <span>Barselona Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/kemer.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Kemer Otelleri</span>
+                                    <nuxt-link to="/roma-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/roma.jpg" width="172" height="114"></nuxt-img>
+                                        <span>Roma Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/bodrum.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Bodrum Otelleri</span>
+                                    <nuxt-link to="/dubai-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/dubai.jpg" width="172" height="114"></nuxt-img>
+                                        <span>Dubai Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/marmaris.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Marmaris Otelleri</span>
+                                    <nuxt-link to="/paris-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/paris.jpg" width="172" height="114"></nuxt-img>
+                                        <span>Paris Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otel/alanya.jpg" width="172" height="114"></nuxt-img>
-                                        <span>Alanya Otelleri</span>
+                                    <nuxt-link to="/prag-otelleri" class="Areas-otel-item-list-item">
+                                        <nuxt-img src="/img/otelarea/prag.jpg" width="172" height="114"></nuxt-img>
+                                        <span>Prag Otelleri</span>
                                     </nuxt-link>
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i
+                                <nuxt-link to="/">Tüm Yurtdışı Otelleri Keşfedin <i
                                         class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
@@ -538,25 +538,14 @@ export default {
     },
     data() {
         return {
-            steps: [
-                {
-                    target: ".v-step-0", // We're using document.querySelector() under the hood
-                    content: `Discoverr <strong>Vue Tour</strong>!`
-                },
-                {
-                    target: ".v-step-1",
-                    content: "An awesome plugin made with Vue.js!"
-                },
-                {
-                    target: '[data-v-step="2"]',
-                    content:
-                        "Try it, you'll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.",
-                    params: {
-                        placement: "top"
-                    }
-                }
-            ]
+         
         }
+    },
+    async asyncData({ $getRedisKey }) {
+        const site_id = process.env.SITE;
+        let pageData = {};
+        pageData = await $getRedisKey(`web:${site_id}:pages:otel`);
+        return { pageData }
     },
     mounted() {
         Swiper.use([Navigation, Pagination])
@@ -635,6 +624,8 @@ export default {
                 },
             },
         })
+
+        console.log(this.pageData)
     }
 
 }
