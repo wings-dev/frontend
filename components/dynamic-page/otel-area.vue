@@ -8,7 +8,7 @@
               <h1>{{ data.name }}</h1>
               <p>{{ data.meta[0].content }}</p>
             </div>
-            <search-hotel-detail-component :key="$route.path"></search-hotel-detail-component>
+            <search-hotel-detail-component :key="$route.path" @search="search($event)"></search-hotel-detail-component>
           </div>
         </div>
       </div>
@@ -320,6 +320,14 @@
       }
     },
     methods: {
+      search(queryParams) {
+        queryParams.destinations = this.data.page_content.otel_destination
+
+        this.$router.push({
+          path: '/oteller',
+          query: queryParams,
+        });
+      },
       async filter(page = 1) {
         const response = await this.$axios.get(`/website/destination-hotels/${this.data.page_content.otel_destination}?page=${page}&api_token=${process.env.WEBSITE_TOKEN}`)
         this.data.hotels = response.data.data;

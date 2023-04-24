@@ -5,7 +5,9 @@
   --bs-theme-second: #d84d64;
   --bs-theme-third: #183266;
   --bs-theme-grey: #fdf1f2;
-  
+  --bs-theme-grey2: #fdf1f2;
+  --bs-theme-grey3: #fdf1f2;
+  --bs-theme-dark-blue:#d84d64;
 
   //HEADER
   --bs-theme-menu-bg: #f9e2e6;
@@ -21,6 +23,7 @@
   --bs-menu-toggle-color: #d84d64;
 
   --bs-card-info-text: #221a52;
+  --bs-card-link-color:#221a52;
   --bs-fvilla-info-text: #221a52;
   --bs-fvilla-text: #d84d64;
 
@@ -32,7 +35,7 @@
   --bs-theme-white: #fff;
   --bs-detail-menu-text: #221a52;
 
-  --bs-popular-dark-bg: #d84d64;
+  --bs-popular-dark-bg: #221a52;
 
   --bs-theme-first-rgb: 16, 39, 84;
   --bs-theme-first-dark-rgb: 25, 51, 103;
@@ -140,7 +143,7 @@ i.icon-abroad-villa {
   background-image: linear-gradient(236deg, #d84d64 100%, #d84d64 0%);
 }
 .Opportunity-slider{
-  background-color: var(--bs-theme-second);
+  background-color: var(--bs-theme-first);
 }
 .popular-dark{
   background-image: none;

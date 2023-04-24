@@ -1,7 +1,7 @@
 <template>
   <div>
     <client-only>
-      <search-bar :key="$route.path" v-if="[5, 8, 18, 19].includes(type)"></search-bar>
+      <search-bar :key="$route.path" v-if="[5, 8, 19].includes(type)"></search-bar>
     </client-only>
     <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1"
       v-if="type === 2"></dynamic-detail-page>

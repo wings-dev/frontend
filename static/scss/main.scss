@@ -642,7 +642,7 @@ body.overflow-hidden {
   }
 }
 .categories-more {
-  background-color: #cad4dd;
+  background-color: var(--bs-theme-grey2);
   border-radius: 4px;
   a {
     width: 100%;
@@ -857,7 +857,11 @@ body.overflow-hidden {
     left: unset;
     right: 16px;
   }
+  .blog-section .blog{
+    // grid-template-rows: 142px 142px;
+  }
 }
+
 
 @media only screen and (max-width: 991px) {
   .categories {
@@ -881,6 +885,19 @@ body.overflow-hidden {
   }
   .blog-section:before {
     display: none;
+  }
+  .blog-section {
+    .blog {
+      display: flex;
+      flex-direction: column;
+
+      .blog-list-item.area1{
+        width: 100%;
+      }
+    }
+    .blog-list-item-sm {
+      display: none;
+    }
   }
 }
 
@@ -1064,7 +1081,7 @@ body.overflow-hidden {
     &-opportunity {
       .swiper-pagination {
         &-bullet {
-          background: #cad4dd;
+          background: var(--bs-theme-grey2);
           opacity: 1;
           &-active {
             background: var(--bs-theme-second) !important;
@@ -1194,7 +1211,7 @@ body.overflow-hidden {
 @media (max-width: 600px) {
   .Home {
     .search-engine-section {
-      transform: translateY(-85px);
+      transform: translateY(-83px);
       z-index: 99;
       margin-bottom: -60px;
     }
@@ -1203,11 +1220,7 @@ body.overflow-hidden {
     }
     .Banner {
       &-home {
-        height: 220px;
-        min-height: 220px;
-        &-in {
-          padding-top: 40px;
-        }
+    
         &-text {
           &-spin {
             height: auto;
@@ -2465,6 +2478,9 @@ body.overflow-hidden {
 @media only screen and (max-width: 767px) {
   .page-description .desc-image {
     height: 200px !important;
+  }
+  .item-image{
+    height: 100%;
   }
 }
 
@@ -9307,6 +9323,21 @@ body.overflow-hidden {
     b {
       font-weight: 700;
     }
+  }
+}
+
+.pagination{
+  &-left{
+    background-color: var(--bs-theme-grey);
+    border: 1px solid var(--bs-theme-grey);
+  }
+  &-right{
+    background-color: var(--bs-theme-grey);
+    border: 1px solid var(--bs-theme-grey);
+  }
+  .page-link{
+    background-color: var(--bs-theme-grey);
+    border: 1px solid var(--bs-theme-grey);
   }
 }
 
