@@ -189,7 +189,7 @@
                   <div
                     class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
                     <div class="img-box position-relative flex-shrink-0">
-                      <nuxt-img v-if="room.mediaFiles" :src="room.mediaFiles[0].urlFull" width="297" height="208"
+                      <nuxt-img v-if="room.roomInfo?.mediaFiles" :src="room.roomInfo.mediaFiles[0].urlFull" width="297" height="208"
                         alt="room image" class="lazy cover flex-shrink-0 "></nuxt-img>
                       <div class="no-rooms" v-else>
                         <nuxt-img src="/img/no-img.svg" alt="" width="297" height="208"></nuxt-img>
@@ -202,14 +202,14 @@
                       </div>
                       <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
 
-                        <small v-for="group in room.boardGroups"
+                        <small v-for="facility in room.roomInfo?.facilities?.slice(0,5) || []"
                           class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
-                          <i class="icon-check-big"></i> {{ group.name }}
+                          <i class="icon-check-big"></i> {{ facility.name }}
                         </small>
 
                       </div>
-                      <div class="d-flex align-items-center mb-sm-0 mb-1">
-                        <b-button v-b-modal.amenitesModal class="room-highlights-more"><u><small>Odanın Tüm
+                      <div class="d-flex align-items-center mb-sm-0 mb-1" v-if="room.roomInfo?.facilities">
+                        <b-button class="room-highlights-more" @click="showRoomDetails(room)"><u><small>Odanın Tüm
                               Özellikleri</small></u></b-button>
                       </div>
                     </div>
@@ -383,36 +383,31 @@
       </section>
 
       <b-modal id="amenitesModal" modal-class="Amenites-modal" :hide-header="true" hide-footer>
-        <div class="Amenites otel">
+        <div class="Amenites otel" v-if="selectedRoom">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             @click="$bvModal.hide('amenitesModal')"><i class="icon-login-close"></i></button>
 
           <div class="Amenites-slider" style="position:relative">
             <b-carousel id="carousel-1" v-model="slide" controls img-width="800" img-height="415">
               <b-carousel-slide :img-src="photo"
-                v-for="(photo, index) in previewImages.map(image => image.responsive_url)"
+                v-for="(photo, index) in selectedRoom.roomInfo.mediaFiles.map(image => image.urlFull)"
                 :key="index"></b-carousel-slide>
             </b-carousel>
             <div class="slide-numbers">
-              {{ slide + 1 }}/{{ previewImages.map(image => image.responsive_url).length }}
+              {{ slide + 1 }}/{{ selectedRoom.roomInfo.mediaFiles.length }}
             </div>
           </div>
 
           <div class="Amenites-head">
-            <h3 class="Amenites-title">{{ hotelDetails.body.hotel.name }}</h3>
+            <h3 class="Amenites-title">{{ selectedRoom.roomName }}</h3>
             <h4 class="Amenites-title-sub">Tüm <b>özellikler</b></h4>
           </div>
 
           <div class="Amenites-in">
-            <div class="Amenites-item"
-              v-for="(category, index) in hotelDetails.body.hotel?.seasons?.[0]?.facilityCategories">
-              <span class="Amenites-item-title">{{ category.name }}</span>
+            <div class="Amenites-item">
+              <!--<span class="Amenites-item-title">Özellikler</span>-->
               <div class="Amenites-item-in">
-                <template v-if="category.facilities && category.facilities.length">
-                  <template v-for="facility in category.facilities">
-                    <p>{{ facility.name }}</p>
-                  </template>
-                </template>
+                <p v-for="facility in selectedRoom.roomInfo.facilities">{{ facility.name }}</p>
               </div>
             </div>
           </div>
@@ -425,18 +420,12 @@
   </div>
 </template>
 
-<!-- ~ -->
 <script>
-import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
-import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
-import CloseVillaModal from '../modals/close-villa-modal.vue';
 import { BCarousel } from 'bootstrap-vue'
 import lottie from 'vue-lottie/src/lottie.vue'
 import * as animationData from "~/assets/yukleniyor.json";
-
-
 
 export default {
   name: 'DynamicHotelDetailPage',
@@ -448,9 +437,9 @@ export default {
       hotelPriceDetails: {},
       offerDetails: {},
       offers: [],
+      selectedRoom: null,
       roomsLoading: true,
       slide: 0,
-      slidePhotos: ['https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg', 'https://picsum.photos/1024/480/?image=52', 'https://media.dev.paximum.com/hotelimages/101637/a6c2315890e2921cfdcbd10d85d79f45.jpg'],
       moreContent: false,
       moreFeatures: false,
       mobileAmenites: false,
@@ -468,8 +457,6 @@ export default {
 
     console.log(this.selectedFilters);
     this.roomSearch()
-
-
   },
   computed: {
     previewImages() {
@@ -503,31 +490,48 @@ export default {
     }
   },
   methods: {
+    showRoomDetails(room) {
+      this.selectedRoom = JSON.parse(JSON.stringify(room))
+
+      this.$nextTick(() => {
+        this.$bvModal.show('amenitesModal')
+      })
+    },
     handleAnimation: function (anim) {
       this.anim = anim;
     },
     async roomSearch() {
+      this.selectedRoom = null;
       this.roomsLoading = true;
 
       // Adım 1: Hotel fiyatını al
-      let response = await this.getHotelPrice();
+      let response = await this.getRooms();
       this.searchId = response.body?.searchId;
-
-      // Adım 2: Offer ID'lerini al
-      const offerIds = this.getOfferIds();
-
-      // Adım 3: Oda detaylarını al
-      const rooms = await this.getRoomDetails(offerIds);
-
-      // Adım 4: Oda detaylarını offer'lara entegre et
-      this.mergeRoomDetails(rooms);
 
       this.roomsLoading = false;
     },
+    async getRooms() {
+      let response = await this.$dataService.getRooms({ ...this.selectedFilters, id: this.hotelDetails?.body?.hotel?.id });
+      const roomInfos = response?.data?.body?.roomInfos || [];
+      const offers = response?.data?.body?.offers || [];
+
+      // roomInfo ile eşleleşenleri odaların içine aktarıyor
+      offers.forEach((offer) => {
+        offer.rooms = offer.rooms || [];
+        offer.rooms.forEach((room) => {
+          room.roomInfo = room.roomInfoId
+            ? roomInfos.find((roomInfo) => roomInfo.id === room.roomInfoId) || null
+            : null;
+        });
+      });
+
+      this.offers = offers;
+      return response?.data;
+    },
     search(queryParams) {
-      this.selectedFilters.adult = queryParams.adult
-      this.selectedFilters.checkIn = queryParams.checkIn
-      this.selectedFilters.checkOut = queryParams.checkOut
+      this.selectedFilters.adult = queryParams.adult.toString()
+      this.selectedFilters.checkIn = queryParams.checkIn.toString()
+      this.selectedFilters.checkOut = queryParams.checkOut.toString()
       this.selectedFilters.childAges = queryParams.childAges
 
       this.roomSearch()
@@ -538,63 +542,6 @@ export default {
     goReservation(offer) {
       const url = process.env.HOTEL_RESERVATION + 'otel/payments?searchId=' + this.searchId + '&offerId=' + offer.offerId + '&adult=' + this.selectedFilters.adult + '&children=' + this.selectedFilters.childAges.length;
       window.open(url, '_blank');
-
-    },
-    async getHotelPrice() {
-      let response = await this.$dataService.getHotelPrice(this.hotelDetails.body.hotel.id, this.selectedFilters);
-      this.hotelPriceDetails = response.data;
-      console.log(JSON.stringify(this.hotelPriceDetails));
-
-      return response.data;
-    },
-
-    getOfferIds() {
-      let offers = [];
-
-      if (this.hotelPriceDetails.body && this.hotelPriceDetails.body.hotels) {
-        this.hotelPriceDetails.body.hotels.forEach(hotel => {
-          if (hotel.offers) {
-            hotel.offers.forEach(offer => {
-              offers.push(offer);
-            });
-          }
-        });
-      }
-
-      this.offers = offers;
-      return offers.map(offer => offer.offerId);
-    },
-
-    async getRoomDetails(offerIds) {
-      const response = await this.$dataService.getRooms({ offerIds });
-      return response.data;
-    },
-
-    async getOffers(searchId, offerId, productId) {
-      const response = await this.$dataService.getOffers({ searchId, offerId, productId });
-      return response.data;
-    },
-
-    async mergeRoomDetails(rooms) {
-
-      for (const offer of this.offers) {
-        if (offer.rooms && offer.rooms.length > 0) {
-          // const response = await this.getOffers(this.searchId, offer.offerId, this.hotelDetails.body.hotel.id)
-          // console.log(response)
-          offer.rooms.forEach((room, roomIndex) => {
-            let roomDetail = rooms.find(r => r.offerId == offer.offerId);
-            if (roomDetail && roomDetail.mediaFiles) {
-              offer.rooms[roomIndex] = Object.assign({}, room, { mediaFiles: roomDetail.mediaFiles });
-            }
-          });
-        }
-      }
-    },
-    onSlideStart(slide) {
-      this.sliding = true
-    },
-    onSlideEnd(slide) {
-      this.sliding = false
     },
     showGallery() {
       setTimeout(() => {
