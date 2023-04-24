@@ -1194,7 +1194,7 @@ body.overflow-hidden {
 @media (max-width: 600px) {
   .Home {
     .search-engine-section {
-      transform: translateY(-85px);
+      transform: translateY(-83px);
       z-index: 99;
       margin-bottom: -60px;
     }
@@ -1203,11 +1203,7 @@ body.overflow-hidden {
     }
     .Banner {
       &-home {
-        height: 220px;
-        min-height: 220px;
-        &-in {
-          padding-top: 40px;
-        }
+    
         &-text {
           &-spin {
             height: auto;
