@@ -184,13 +184,12 @@
           </template>
           <template v-else>
             <template v-for="(offer, offerIndex) in offers">
-              <div class="room " v-for="room in offer.rooms">
+              <div class="room" v-for="(room, roomIndex) in offer.rooms">
                 <div class="row">
-                  <div
-                    class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
+                  <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
                     <div class="img-box position-relative flex-shrink-0">
                       <nuxt-img v-if="room.roomInfo?.mediaFiles" :src="room.roomInfo.mediaFiles[0].urlFull" width="297" height="208"
-                        alt="room image" class="lazy cover flex-shrink-0 "></nuxt-img>
+                                alt="room image" class="lazy cover flex-shrink-0"></nuxt-img>
                       <div class="no-rooms" v-else>
                         <nuxt-img src="/img/no-img.svg" alt="" width="297" height="208"></nuxt-img>
                         <p>Oda fotoğrafı <span>bulunmuyor.</span></p>
@@ -201,69 +200,42 @@
                         <span class="d-inline-block me-auto room-title">{{ room.roomName }}</span>
                       </div>
                       <div class="room-highlights d-flex flex-wrap w-100 fs-6 lh-sm mb-2 mb-sm-3">
-
                         <small v-for="facility in room.roomInfo?.facilities?.slice(0,5) || []"
-                          class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
+                               class="hl-item d-flex align-items-center justify-content-sm-start justify-content-between ls-05 me-sm-3 pe-2 pe-sm-1 mb-2 mb-sm-1">
                           <i class="icon-check-big"></i> {{ facility.name }}
                         </small>
-
                       </div>
                       <div class="d-flex align-items-center mb-sm-0 mb-1" v-if="room.roomInfo?.facilities">
                         <b-button class="room-highlights-more" @click="showRoomDetails(room)"><u><small>Odanın Tüm
-                              Özellikleri</small></u></b-button>
+                          Özellikleri</small></u></b-button>
                       </div>
                     </div>
                   </div>
                   <div class="room-scroll-wrapper col-12 col-lg-4 col-xl-5 ps-lg-0">
-                    <div class="room-options d-flex pb-lg-0 pb-1">
+                    <div class="room-options d-flex pb-lg-0 pb-1 mb-2" v-for="(roomOption, roomOptionIndex) in room.roomOptions">
                       <div class="option d-flex flex-fill overflow-hidden">
                         <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
                           <div class="option-all">
-                            <span v-if="offerIndex === 0">En Ucuzu</span>
+                            <span v-if="offerIndex === 0 && roomOptionIndex === 0">En Ucuzu</span>
                             <b v-for="group in room.boardGroups">{{ group.name }}</b>
                           </div>
-                          <div class="option-warning" v-if="offer.cancellationPolicies.length > 0">
-
+                          <div class="option-warning" v-if="roomOption.cancellationPolicies.length > 0">
                             <p class="free-cancellation">Ücretsiz İptal</p>
                             <p class="last-date"><i class="icon-info-month"></i>{{
-                              $moment(offer.cancellationPolicies[0].dueDate).format('YYYY-MM-DD HH:mm') }} a kadar</p>
+                                $moment(roomOption.cancellationPolicies[0].dueDate).format('YYYY-MM-DD HH:mm') }} a kadar</p>
                           </div>
                         </div>
                         <div class="room-price">
-                          <span>{{ offer.night }} GECE</span>
+                          <span>{{ roomOption.night }} GECE</span>
                           <div class="room-price-in">
-                            <s v-if="offer.price.amount_old > 0">{{ offer.price.amount_old }}{{ offer.price.currency
-                            }}</s>
-                            <b>{{ offer.price.amount }}<small>{{ offer.price.currency }}</small></b>
-                            <p>Gecelik <span>{{ (offer.price.amount / offer.night).toFixed(2) | numberFormat }}{{
-                              offer.price.currency }}</span></p>
+                            <s v-if="roomOption.price.amount_old > 0">{{ roomOption.price.amount_old }}{{ roomOption.price.currency }}</s>
+                            <b>{{ roomOption.price.amount }}<small>{{ roomOption.price.currency }}</small></b>
+                            <p>Gecelik <span>{{ (roomOption.price.amount / roomOption.night).toFixed(2) | numberFormat }}{{
+                                roomOption.price.currency }}</span></p>
                           </div>
-                          <a href="" @click.prevent="goReservation(offer)">Odayı Seç</a>
+                          <a href="" @click.prevent="goReservation(roomOption)">Odayı Seç</a>
                         </div>
                       </div>
-
-                      <!-- Diğer Fiyatlar için -->
-                      <!-- <div class="option d-flex flex-column flex-xl-row  flex-fill overflow-hidden">
-                        <div
-                          class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
-                          <div class="option-all">
-                            <span>En Ucuzu</span>
-                            <b>Oda Kahvaltı</b>
-                          </div>
-                          <div class="option-warning">
-                            <p class="irrevocable">İptal Edilemez</p>
-                          </div>
-                        </div>
-                        <div class="room-price">
-                          <span>3 GECE</span>
-                          <div class="room-price-in">
-                            <s>16.500TL</s>
-                            <b>412.420<small>TL</small></b>
-                            <p>Gecelik <span>1.400TL</span></p>
-                          </div>
-                          <nuxt-link to="/">Odayı Seç</nuxt-link>
-                        </div>
-                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -513,11 +485,12 @@ export default {
       this.roomsLoading = false;
     },
     async getRooms() {
+      // Otel odalarını ve teklifleri al
       let response = await this.$dataService.getRooms({ ...this.selectedFilters, id: this.hotelDetails?.body?.hotel?.id });
       const roomInfos = response?.data?.body?.roomInfos || [];
       const offers = response?.data?.body?.offers || [];
 
-      // roomInfo ile eşleleşenleri odaların içine aktarıyor
+      // Oda bilgilerini (roomInfo) ilgili oda nesnelerine aktar
       offers.forEach((offer) => {
         offer.rooms = offer.rooms || [];
         offer.rooms.forEach((room) => {
@@ -527,7 +500,51 @@ export default {
         });
       });
 
-      this.offers = offers;
+      // Aynı oda adına sahip tekliflerin odalarını birleştirmek için yeni bir dizi oluştur
+      const mergedOffers = [];
+
+      // Teklifleri döngüye al ve aynı oda adına sahip olanları birleştir
+      offers.forEach((offer) => {
+        offer.rooms.forEach((room) => {
+          // Aynı oda adına sahip mevcut bir teklif bul
+          const existingOffer = mergedOffers.find((mergedOffer) =>
+            mergedOffer.rooms.some((mergedRoom) => mergedRoom.roomName === room.roomName)
+          );
+
+          // Eğer mevcut bir teklif varsa, yeni oda seçeneğini mevcut odaya ekle
+          if (existingOffer) {
+            const existingRoom = existingOffer.rooms.find((mergedRoom) => mergedRoom.roomName === room.roomName);
+            existingRoom.roomOptions.push({
+              night: offer.night,
+              isRefundable: offer.isRefundable,
+              cancellationPolicies: offer.cancellationPolicies,
+              price: offer.price,
+            });
+          } else {
+            // Mevcut bir teklif yoksa, yeni teklif ve oda seçeneğini mergedOffers dizisine ekle
+            mergedOffers.push({
+              ...offer,
+              rooms: [
+                {
+                  ...room,
+                  roomOptions: [
+                    {
+                      night: offer.night,
+                      isRefundable: offer.isRefundable,
+                      cancellationPolicies: offer.cancellationPolicies,
+                      price: offer.price,
+                    },
+                  ],
+                },
+              ],
+            });
+          }
+        });
+      });
+
+      // Birleştirilmiş teklifleri ana teklifler dizisine ata ve API yanıtını döndür
+      this.offers = mergedOffers;
+      console.log(this.offers);
       return response?.data;
     },
     search(queryParams) {
