@@ -1,6 +1,6 @@
 <template>
     <main class="main">
-  
+
       <div class="Banner-otel" :style="{ 'background-image': 'url(' + data?.page_content.default.page_banner + ')' }">
         <div class="container">
           <div class="Banner-otel-in">
@@ -12,7 +12,7 @@
           </div>
         </div>
       </div>
-  
+
       <section class="O_List-card">
         <div class="container">
           <div class="O_List-card-in">
@@ -67,7 +67,7 @@
                     </svg>
                   </a>
                 </li>
-  
+
                 <!-- Page numbers -->
                 <li class="page-item me-2 me-sm-3 mb-1" v-if="showLeftDots">
                   <a href="javascript:void(0)"
@@ -88,7 +88,7 @@
                     <span aria-hidden="true">&hellip;</span>
                   </a>
                 </li>
-  
+
                 <!-- 3 dots -->
                 <!--              <li class="page-item me-2 me-sm-3 mb-1">
                                 <svg width="23px" height="5px" viewBox="0 0 23 5" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@
                                   </g>
                                 </svg>
                               </li>-->
-  
+
                 <!-- Go to Last Page -->
                 <li class="page-item me-2 me-sm-3 mb-1" v-if="data.current_page < totalPages">
                   <a href="javascript:void(0)" @click.prevent="goToPage(totalPages)"
@@ -135,14 +135,14 @@
           </div>
         </div>
       </section>
-  
+
       <section class="highlight-section  ">
         <div class="container">
           <div class="row pt-4 ">
             <div class="note-box col-12 col-lg-12 pe-lg-5">
               <div class="highlight-section-desc" :class="{ active: isExpanded }" v-html="data.page_content.article.data">
               </div>
-  
+
               <div class="highlight-section-desc-more-button read-more-button pb-4" :class="{ active: isExpanded }"
                 @click="isExpanded = !isExpanded"><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' :
                   'DAHA AZ OKU' }}</div>
@@ -150,7 +150,7 @@
           </div>
         </div>
       </section>
-  
+
       <section class="List mt-4">
         <div class="container">
           <div class="List-sss">
@@ -163,7 +163,7 @@
                 </button>
                 <div :id="'faq'+index" class="accordion-collapse collapse " data-bs-parent="#Faq">
                   <div class="accordion-body" v-html="item.howrent_category_answer">
-                    
+
                   </div>
                 </div>
               </div>
@@ -171,7 +171,7 @@
           </div>
         </div>
       </section>
-  
+
       <section class="Blog-more mt-5 d-none">
         <div class="container">
           <div class="Blog-more-in">
@@ -214,10 +214,10 @@
           </div>
         </div>
       </section>
-  
+
     </main>
   </template>
-  
+
   <script>
   import { Swiper, Navigation, Pagination } from 'swiper'
   import 'swiper/swiper-bundle.min.css'
@@ -233,10 +233,10 @@
         cdn: process.env.HOTEL_CDN_URL + '/'
       }
     },
-   
+
     mounted() {
       Swiper.use([Navigation, Pagination])
-  
+
       const swiper4 = new Swiper('.list-slide-otel', {
         slidesPerView: 1.1,
         spaceBetween: 10,
@@ -290,10 +290,10 @@
             slidesPerView: 3,
             spaceBetween: 18,
           },
-  
+
         },
       })
-  
+
 
     },
     computed: {
@@ -321,7 +321,7 @@
     },
     methods: {
       async filter(page = 1) {
-        const response = await this.$axios.get(`/website/destination-hotels/${this.page_content.otel_destination}?page=${page}&api_token=${process.env.WEBSITE_TOKEN}`)
+        const response = await this.$axios.get(`/website/destination-hotels/${this.data.page_content.otel_destination}?page=${page}&api_token=${process.env.WEBSITE_TOKEN}`)
         this.data.hotels = response.data.data;
         this.data.per_page = response.data.per_page;
         this.data.total_items = response.data.total;
@@ -338,5 +338,4 @@
     }
   }
   </script>
-  
-  
+

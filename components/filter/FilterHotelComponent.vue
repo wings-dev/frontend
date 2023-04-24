@@ -190,7 +190,7 @@
               <h2>Oteller hazırlanıyor.</h2>
               <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
             </div>
-            <filter-banner></filter-banner>
+            <filter-banner v-if="!loading"></filter-banner>
           </div>
 
         </div>

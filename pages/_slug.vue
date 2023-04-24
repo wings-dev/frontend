@@ -79,9 +79,8 @@ export default {
       if (redisData.type === 18) {
         // filtre redis datası
         componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
-
         const destination_id = componentData.page_content.otel_destination;
-    
+
         const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') + `/website/destination-hotels/${destination_id}?api_token=${process.env.WEBSITE_TOKEN}`)
         componentData.total_items = response.data.total;
         componentData.current_page = response.data.current_page;
