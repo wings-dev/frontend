@@ -301,13 +301,13 @@
                 </div>
                 <div class="categories">
                     <nuxt-link to="/hamamli--saunali-villalar" class="cat-item no-hover area1 overflow-hidden position-relative">
-                        <nuxt-img src="/uploads/category-image1.jpg" data-src="" width="380" height="235" alt="category image"
+                        <nuxt-img src="/img/category/hamam-sauna.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
                                 <strong class="title fs-5 fw-normal ls-05">Sauna - Hamamlı Villalar</strong>
-                                <span class="ls-1">423 seçenek içeriyor</span>
+                                <span class="ls-1">89 seçenek içeriyor</span>
                             </div>
                             <div class="caption-content flex-fill d-flex align-items-end ps-2 pb-2">
                                 <div class="btn btn-outline-white fs-6 ls-05 rounded-md py-2 px-3">
@@ -317,13 +317,13 @@
                         </div>
                     </nuxt-link>
                     <nuxt-link to="/kapali-havuzlu-balayi-villalari" class="cat-item no-hover area2 overflow-hidden position-relative">
-                        <nuxt-img src="/uploads/category-image2.jpg" data-src="" width="380" height="235" alt="category image"
+                        <nuxt-img src="/img/category/kapali-havuzlu.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
-                                <strong class="title fs-5 fw-normal ls-05">Özel Havuzlu</strong>
-                                <span class="ls-1">423 seçenek içeriyor</span>
+                                <strong class="title fs-5 fw-normal ls-05">Kapalı Havuzlu Villalar</strong>
+                                <span class="ls-1">173 seçenek içeriyor</span>
                             </div>
                             <div class="caption-content flex-fill d-flex align-items-end ps-2 pb-2">
                                 <div class="btn btn-outline-white fs-6 ls-05 rounded-md py-2 px-3">
@@ -332,14 +332,14 @@
                             </div>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/kis-aylarina-uygun-villalar" class="cat-item no-hover area3 overflow-hidden position-relative">
-                        <nuxt-img src="/uploads/category-image3.jpg" data-src="" width="380" height="235" alt="category image"
+                    <nuxt-link to="/deniz-manzarali-balayi-villalari" class="cat-item no-hover area3 overflow-hidden position-relative">
+                        <nuxt-img src="/img/category/deniz-manzarali.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
-                                <strong class="title fs-5 fw-normal ls-05">Kış Aylarına Uygun Villalar</strong>
-                                <span class="ls-1">423 seçenek içeriyor</span>
+                                <strong class="title fs-5 fw-normal ls-05">Deniz Manzaralı Villalar</strong>
+                                <span class="ls-1">375 seçenek içeriyor</span>
                             </div>
                             <div class="caption-content flex-fill d-flex align-items-end ps-2 pb-2">
                                 <div class="btn btn-outline-white fs-6 ls-05 rounded-md py-2 px-3">
@@ -348,17 +348,17 @@
                             </div>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/2023-villalari" class="cat-item no-hover area4 overflow-hidden position-relative">
-                        <nuxt-img src="/uploads/category-image4.jpg" data-src="" width="380" height="235" alt="category image"
+                    <nuxt-link to="/jakuzili-balayi-villalari" class="cat-item no-hover area4 overflow-hidden position-relative">
+                        <nuxt-img src="/img/category/jakuzili-villalar.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
-                        <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1">
+                        <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1 d-none">
                             <small>Yeni Listenenler</small>
                         </div>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
-                                <strong class="title fs-5 fw-normal ls-05">2023 Vilları</strong>
-                                <span class="ls-1">423 seçenek içeriyor</span>
+                                <strong class="title fs-5 fw-normal ls-05">Jakuzili Villar</strong>
+                                <span class="ls-1">1032 seçenek içeriyor</span>
                             </div>
                             <div class="caption-content flex-fill d-flex align-items-end ps-2 pb-2">
                                 <div class="btn btn-outline-white fs-6 ls-05 rounded-md py-2 px-3">
@@ -368,13 +368,13 @@
                         </div>
                     </nuxt-link>
                     <nuxt-link to="/tum-balayi-villalari" class="cat-item no-hover area5 overflow-hidden position-relative">
-                        <nuxt-img src="/uploads/category-image5.jpg" data-src="" width="380" height="235" alt="category image"
+                        <nuxt-img src="/img/category/balayi.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
                                 <strong class="title fs-5 fw-normal ls-05">Balayı Villaları</strong>
-                                <span class="ls-1">423 seçenek içeriyor</span>
+                                <span class="ls-1">962 seçenek içeriyor</span>
                             </div>
                             <div class="caption-content flex-fill d-flex align-items-end ps-2 pb-2">
                                 <div class="btn btn-outline-white fs-6 ls-05 rounded-md py-2 px-3">
@@ -383,14 +383,14 @@
                             </div>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/balayi-otelleri" class="cat-item no-hover area6 overflow-hidden position-relative">
-                        <nuxt-img src="/uploads/category-image7.jpg" data-src="" width="380" height="235" alt="category image"
+                    <nuxt-link to="/muhafazakar-balayi-villalari" class="cat-item no-hover area6 overflow-hidden position-relative">
+                        <nuxt-img src="/img/category/muhafazakar.jpg" data-src="" width="380" height="235" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
-                                <strong class="title fs-5 fw-normal ls-05">Butik Oteller</strong>
-                                <span class="ls-1">423 seçenek içeriyor</span>
+                                <strong class="title fs-5 fw-normal ls-05">Muhafazakar Villalar</strong>
+                                <span class="ls-1">908 seçenek içeriyor</span>
                             </div>
                             <div class="caption-content flex-fill d-flex align-items-end ps-2 pb-2">
                                 <div class="btn btn-outline-white fs-6 ls-05 rounded-md py-2 px-3">
