@@ -238,17 +238,8 @@ export default {
     }
   },
   async asyncData({ route, $axios, $getRedisKey, store, redirect }) {
-    const path = route.params.slug;
-    const split = path.split('-');
-    const destination_id = split[split.length - 1];
+
     const site_id = process.env.SITE;
-
-    const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') + `/website/destination-hotels/${destination_id}?api_token=${process.env.WEBSITE_TOKEN}`)
-    let hotels = response.data.data;
-    const per_page = response.data.per_page;
-    const total_items = response.data.total;
-    const current_page = response.data.current_page;
-
     let pageData = {}
 
     let redisData = JSON.parse(JSON.stringify(store.state['routes'].routes[path]));
@@ -271,6 +262,15 @@ export default {
     } else {
       return redirect('/404')
     }
+
+    const destination_id = pageData.page_content.otel_destination;
+    
+
+    const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') + `/website/destination-hotels/${destination_id}?api_token=${process.env.WEBSITE_TOKEN}`)
+    let hotels = response.data.data;
+    const per_page = response.data.per_page;
+    const total_items = response.data.total;
+    const current_page = response.data.current_page;
 
     return { hotels, per_page, total_items, current_page, destination_id, pageData }
   },

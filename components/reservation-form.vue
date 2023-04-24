@@ -198,7 +198,7 @@
                     <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
                       title="Tooltip on right"></i>
                   </div>
-                  <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                  <b>{{ availabilityData.total_payment | numberFormat }}{{ availabilityData.night_price_currency_symbol
                   }}</b>
                 </div>
 
@@ -213,7 +213,7 @@
 
     <div class="Reservation-form-bottom">
       <div class="Reservation-form-bottom-left">
-        <b>14.120TL</b>
+        <b>{{ availabilityData.total_payment | numberFormat}}{{availabilityData.night_price_currency_symbol }}</b>
         <span v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">GECE</span>
         <span v-else>{{ formattedCheckIn }} - {{ formattedCheckOut }}</span>
         <small v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">Başlayan fiyatlar</small>
@@ -461,6 +461,8 @@ export default {
 
       const response = await this.$axios.post(`/website/check_availability?api_token=${process.env.WEBSITE_TOKEN}`, data)
       this.availabilityData = response.data.data;
+
+      console.log(this.availabilityData)
 
       this.availabilityLoading = false;
 
