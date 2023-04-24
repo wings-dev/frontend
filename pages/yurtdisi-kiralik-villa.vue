@@ -4,8 +4,8 @@
         <section class="Banner Banner-home "
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
-            <!-- <nuxt-img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
-            <nuxt-img src="/img/banner-mobile.jpg" alt=""></nuxt-img>
+            <nuxt-img :src="pageData.page_content.default.page_list_img" class="w-100 mobile" alt="" />
+                <!-- <nuxt-img src="/img/banner-b-m.jpg" alt=""></nuxt-img> -->
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
