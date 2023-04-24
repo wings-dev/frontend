@@ -156,7 +156,7 @@
               <!-- Go to First Page -->
               <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page > 1">
                 <a href="javascript:void(0)" @click.prevent="goToPage(1)"
-                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center pagination-left text-secondary ">
                   <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -192,7 +192,7 @@
               </li>
               <li class="page-item me-2 me-sm-3 mb-1" v-if="showRightDots">
                 <a href="javascript:void(0)"
-                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">
+                  class="page-link rounded-sm d-flex align-items-center justify-content-center text-center pagination-right text-secondary">
                   <span aria-hidden="true">&hellip;</span>
                 </a>
               </li>

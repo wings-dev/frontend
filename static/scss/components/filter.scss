@@ -1394,7 +1394,7 @@
           &.mobile-filter-button {
             display: none;
             border-radius: 3.6px;
-            background-color: #eff1f5;
+            background-color: var(--bs-theme-grey3);
             font-size: 12px;
             font-weight: 500;
             color: var(--bs-theme-first);
@@ -1640,8 +1640,8 @@
         padding: 8px;
         padding-left: 45px;
         border-radius: 4px;
-        background-color: #f2f3f8;
-        border: 1px solid #f2f3f8;
+        background-color: var(--bs-theme-grey);
+        border: 1px solid var(--bs-theme-grey);
         font-size: 14px;
         font-weight: normal;
         color: var(--bs-theme-first);
@@ -1822,7 +1822,7 @@
         align-items: center;
         padding: 8px 15px 8px 10px;
         border-radius: 4px;
-        background-color: #f2f3f8;
+        background-color: var(--bs-theme-grey);
 
         input {
           width: 100%;
@@ -2070,7 +2070,7 @@
   cursor: pointer;
   border-radius: 6px;
   color: var(--bs-theme-first) !important;
-  background-color: #eff1f5 !important;
+  background-color: var(--bs-theme-grey3) !important;
 }
 .search-engine-section {
   z-index: 99;
@@ -2837,7 +2837,7 @@
       border-top-left-radius: 0;
       .Search {
         &-item {
-          width: 100%;
+          width: 100%!important;
 
           &-people {
             .dropdown-toggle {
@@ -3057,7 +3057,7 @@
 
       .Search {
         &-left {
-          border: 1px solid #eff1f5;
+          border: 1px solid var(--bs-theme-grey3);
           border-bottom-left-radius: 8px;
           border-top: 0;
           border-bottom-right-radius: 8px;
@@ -3082,7 +3082,7 @@
           }
           &.date {
             order: -1;
-            border-bottom: 1px solid #eff1f5;
+            border-bottom: 1px solid var(--bs-theme-grey3);
             padding: 10px 20px;
           }
         }
