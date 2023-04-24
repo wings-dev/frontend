@@ -110,9 +110,6 @@
             </div>
         </section>
 
-
-
-
         <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
             <nuxt-img src="/img/home-banner-mobile.png" alt="" />
             <div class="container">
@@ -205,7 +202,6 @@
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
-// import MoreVillas from '../MoreVillas.vue';
 export default {
     name: 'AbroadIndexPage',
     layout: 'no-search',
