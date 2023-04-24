@@ -335,6 +335,7 @@
         width: 40%;
         img {
           border-radius: 0;
+          object-fit: cover;
         }
       }
       &-content {

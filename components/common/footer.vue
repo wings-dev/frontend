@@ -112,6 +112,9 @@
                 </div>
             </div>
         </div>
+        <div class="Whatsapp">
+            <a href="#"><nuxt-img src="/img/wp-icon.svg" width="41" height="41" alt=""/></a>
+        </div>
         <section class="Navigation d-none">
             <a class="Navigation-item">
                 <i class="icon-house"></i>

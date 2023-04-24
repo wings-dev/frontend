@@ -51,7 +51,7 @@
     <client-only>
       <fav-modal></fav-modal>
     </client-only>
-    <CookieControl locale="en" />
+    <!-- <CookieControl locale="tr" /> -->
   </div>
 </template>
 
