@@ -1472,7 +1472,7 @@
             font-size: 8.3px;
             font-weight: 500;
             line-height: 0.96;
-            color: #1f355f;
+            color: var(--bs-theme-dark-blue);
           }
         }
         &-righthours {
@@ -1483,7 +1483,7 @@
             font-size: 8.3px;
             font-weight: 500;
             line-height: 0.96;
-            color: #1f355f;
+            color: var(--bs-theme-dark-blue);
           }
         }
         &-tophours {
@@ -1491,7 +1491,7 @@
           top: -45px;
           padding: 8px 16px;
           padding-top: 3px;
-          background-color: #1f355f;
+          background-color: var(--bs-theme-dark-blue);
           border-radius: 12px;
           left: 50%;
           transform: translate(-50%);
@@ -1501,7 +1501,7 @@
             width: 0;
             height: 0;
             border: 8px solid transparent;
-            border-top-color: #1f355f;
+            border-top-color: var(--bs-theme-dark-blue);
             position: absolute;
             bottom: -16px;
             left: 50%;
@@ -1736,7 +1736,7 @@
         span {
           font-size: 19.2px;
           font-weight: 500;
-          color: #1f355f;
+          color: var(--bs-theme-dark-blue);
           margin-right: 6px;
         }
         i {
@@ -1790,7 +1790,7 @@
             font-size: 10.3px;
             font-weight: 500;
             line-height: 2.1;
-            color: #1f355f;
+            color: var(--bs-theme-dark-blue);
             margin-bottom: 4px;
             span {
               width: 120px;

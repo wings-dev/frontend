@@ -5,7 +5,7 @@
             <div class="container">
                 <div class=" Banner_search-text   pos-ab-xy-center ">
                     <p class="animated fadeInDown  flex-column">
-                        <span>{{ pageData.meta[0].content }}</span>
+                        <span>{{ pageData?.meta[0].content }}</span>
                     </p>
                 </div>
             </div>

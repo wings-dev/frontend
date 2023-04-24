@@ -174,7 +174,7 @@
             <filter-hotel-preview-component v-for="(hotel, index) in filteredHotels" :key="hotel.id" :hotel="hotel"
               :checkindate="checkIn" :requestId="requestId"></filter-hotel-preview-component>
 
-            <div class="No-villas" v-if="loading === false && hotels.length <= 0">
+            <div class="No-villas mb-4" v-if="loading === false && hotels.length <= 0">
               <nuxt-img :src="`img/site${site_id}/no-villas.svg`" alt=""></nuxt-img>
               <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
               <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
@@ -185,7 +185,7 @@
               </div>
             </div>
 
-            <div class="No-villas" v-if="loading">
+            <div class="No-villas mb-4" v-if="loading">
               <lottie :width="168" :height="125" :options="loadingOptions" v-on:animCreated="handleAnimation" />
               <h2>Oteller hazırlanıyor.</h2>
               <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>

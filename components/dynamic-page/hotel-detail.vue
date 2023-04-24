@@ -221,6 +221,7 @@
                           </div>
                           <div class="option-warning" v-if="roomOption.cancellationPolicies.length > 0">
                             <p class="free-cancellation">Ücretsiz İptal</p>
+                            {{offer.cancellationPolicies[0].dueDate}}
                             <p class="last-date"><i class="icon-info-month"></i>{{
                                 $moment(roomOption.cancellationPolicies[0].dueDate).format('YYYY-MM-DD HH:mm') }} a kadar</p>
                           </div>

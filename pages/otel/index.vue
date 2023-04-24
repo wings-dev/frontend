@@ -9,57 +9,33 @@
                     <div class="blog-list-item bg-light area1">
                         <div class="swiper blog-carousel w-100 h-100 position-relative">
                             <div class="swiper-wrapper d-flex">
-                                <div class="swiper-slide">
-                                    <a href="/firsat" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
-                                        <nuxt-img src="/img/otel-slider.jpg" width="781" height="380" alt="blog-image"
+                                <div class="swiper-slide" v-for="(item,index) in pageData.page_content.slider" :key="index">
+                                    <a :href="item.otel_slider_link" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
+                                        <nuxt-img :src="item?.otel_slider_input" width="781" height="380" alt="blog-image"
                                             class="item-image lazy cover w-100 " />
                                         <div
-                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 d-none">
-                                            <h4 class="">En sevdiğiniz rezervasyon sitelerindeki fırsatlar; Hepsi tek yerde.
-                                            </h4>
-                                            <p class="">Şehir, belirli bir otel veya ünlü bir yer aramayı deneyin!</p>
+                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 ">
+                                            <h4 class="" v-if="item.otel_slider_title">{{item.otel_slider_title}}</h4>
+                                            <p class="" v-if="item.otel_slider_desc">{{item.otel_slider_desc}}</p>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <a href="/firsat" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
-                                        <nuxt-img src="/img/otel-slider.jpg" width="781" height="380" alt="blog-image"
-                                            class="item-image lazy cover w-100 " />
-                                        <div
-                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 d-none">
-                                            <h4 class="">En sevdiğiniz rezervasyon sitelerindeki fırsatlar; Hepsi tek yerde.
-                                            </h4>
-                                            <p class="">Şehir, belirli bir otel veya ünlü bir yer aramayı deneyin!</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/firsat" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
-                                        <nuxt-img src="/img/otel-slider.jpg" width="781" height="380" alt="blog-image"
-                                            class="item-image lazy cover w-100 " />
-                                        <div
-                                            class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 d-none">
-                                            <h4 class="">En sevdiğiniz rezervasyon sitelerindeki fırsatlar; Hepsi tek yerde.
-                                            </h4>
-                                            <p class="">Şehir, belirli bir otel veya ünlü bir yer aramayı deneyin!</p>
-                                        </div>
-                                    </a>
-                                </div>
+                               
                             </div>
                             <div class="swiper-pagination blog-pagination"></div>
                         </div>
                     </div>
-                    <div class="blog-list-item bg-light area2 blog-list-item-sm">
-                        <a href="https://www.tursab.org.tr/tr/ddsv" class="blog-item position-relative d-block w-100 h-100">
-                            <nuxt-img src="/img/small-slider2.jpg" width="402" height="182" alt="blog-image"
+                    <div class="blog-list-item bg-light area2 blog-list-item-sm" v-for="(item,index) in pageData.page_content.banner" :key="index" :class="{'area2':index == 0 ,'area3':index == 1 }">
+                        <a :href="item.otel_banner_link" class="blog-item position-relative d-block w-100 h-100">
+                            <nuxt-img :src="item?.banner_img" width="402" height="182" alt="blog-image"
                                 class="lazy cover w-100" />
-                            <div class="blog-item-text d-none">
-                                <h4 class="blog-item-sm-title">Lüks villalarda </h4>
-                                <p class="blog-item-sm-text">tatil deneyimi yaşa</p>
+                            <div class="blog-item-text ">
+                                <h4 class="blog-item-sm-title" v-if="item.otel_banner_title">{{ item.otel_banner_title }} </h4>
+                                <p class="blog-item-sm-text" v-if="item.otel_banner_desc">{{ item.otel_banner_desc }}</p>
                             </div>
                         </a>
                     </div>
-                    <div class="blog-list-item bg-light area3 blog-list-item-sm">
+                    <!-- <div class="blog-list-item bg-light area3 blog-list-item-sm">
                         <a href="/" class="blog-item position-relative d-block w-100 h-100">
                             <nuxt-img src="/img/small-slider.jpg" width="402" height="182" alt="blog-image"
                                 class="lazy cover w-100" />
@@ -68,7 +44,7 @@
                                 <p class="blog-item-sm-text">Erken rezervasyon otelleriyle değerlendir</p>
                             </div>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -285,7 +261,7 @@
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Kıbrıs Otellerini Keşfedin <i
+                                <nuxt-link :to="`/oteller?destinations=10150&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`">Tüm Kıbrıs Otellerini Keşfedin <i
                                         class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
@@ -447,67 +423,7 @@
         <section class="Home-text areas">
             <div class="container">
                 <div class="Home-text-in">
-                    <div class="Home-text-desc" >
-                        <h5>Yurt İçinde Konaklama</h5>
-
-                        <p>Jolly yurt içi tatillerinizin kusursuz geçmesi için yüzlerce farklı konsepte otel seçenekleri
-                            oluşturarak ihtiyaçlarınızı kolay bir şekilde bulmanızı sağlıyor. Otel çeşitlilikleri sayesinde
-                            tatil zevkinize uygun işletmeler hakkında kolayca bilgi sahibi olabiliyorsunuz. Her bölgede ayrı
-                            ayrı listelenen oteller kendi içlerinde verdikleri hizmetlere, temalara ve bütçelere göre
-                            ayrılıyor.
-                            Dilediğiniz oteli bulmanız konusunda örnek vermek gerekirse, termal tatil yapmak istediğinizi
-                            varsayalım. Gitmek istediğiniz bölge ise Bursa olsun. Bursa Otelleri sayfasından termal otelleri
-                            seçerek Bursa’daki bütün termal otelleri görebilirsiniz. Aynı zamanda Spa & Wellness hizmeti de
-                            almak istiyorsanız yine aynı sayfada verilen hizmetler bölümünden Spa & Wellness seçeneğini
-                            tıklayarak bütün ihtiyaçlarınıza yönelik otelleri görebilirsiniz. Aynı sayfada saniyeler içinde
-                            dilediğiniz tatili bulabilir Jolly ayrıcalığı ile uygun fiyatlardan yararlanabilirsiniz.</p>
-
-                        <h5>Yurt Dışında Konaklama</h5>
-                        <p>Yurtdışı tatil planları çoğu tatil sever için zorlu süreçleri olan bir durum gibi gözükebilir.
-                            Jolly
-                            bütün bu zorlukları sizler için kolaylaştırıyor. Dünya’nın hemen hemen her bölgesinde sunduğu
-                            konaklama seçenekleri ile aradığınız yurt dışı tatilini kolay bir şekilde bulmanızı sağlıyor.
-                            Oluşturduğu yurt dışı otel listelemeleri ile daha otelinize varmadan gerekli tüm bilgileri
-                            ayrıntılı
-                            bir şekilde öğrenmiş oluyorsunuz. Böylece tatil zevkinize uygun otelleri yanılgıya düşmeden
-                            tercih
-                            edebilirsiniz. Birçok erken rezervasyon yurt dışı otelleri fırsatları ile tatiliniz
-                            tahmininizden
-                            çok daha uygun bir şekilde gerçekleştirebilirsiniz. Böylece ister Maldivler’de güneşin ve kumun
-                            keyfini çıkarın, isterseniz Avrupa’nın sokaklarını aşındırın Jolly tatil seçenekleri ile konforu
-                            en
-                            uygun şekilde sizlere ulaştırıyor.</p>
-
-                        <h5>Temalarına Göre Oteller</h5>
-                        <p>Jolly tatilde ihtiyaç duyacağınız her şeyi ayrıntısına kadar düzenleyip kategorize ediyor. Bu
-                            kurulan
-                            sistem sayesinde nasıl bir tatil yapmak istiyorsanız dilediğiniz gibi yapabileceğiniz tercihleri
-                            önünüze çıkarıyor. Evcil hayvanınızla beraber tatil yapmak istiyorsanız otel temalarından Evcil
-                            hayvan dostu otellere tıklayarak saniyeler içinde yüzlerce seçeneğe ulaşabiliyorsunuz. Ailenizle
-                            beraber keyifli bir tatil mi yapmak istiyorsunuz bir tıklama ile Aile Otellerine
-                            ulaşabilirsiniz. Bu
-                            temalar sayesinde Jolly, ziyaretçilerine nokta atışı tatil yapma fırsatı sunuyor. Böylece
-                            otellerinize ulaştığınızda hiçbir sorunla karşılaşmadan tatilin keyfini çıkartıyorsunuz.
-                            Temalarına Göre Otel Aramak ve Tatil Yapmak İçin Tıklayın!</p>
-
-                        <h5>Erken Rezervasyon Otelleri</h5>
-                        <p>Jolly erken rezervasyon otelleri ile tatil yapmak isteyen ziyaretçilerine uygun fiyat avantajı
-                            sunuyor. Erken rezervasyon otelleri sayesinde yapmak istediğiniz tatil, sezon fiyatından oldukça
-                            düşük fırsatlar ile sizlerle buluşuyor. Planladığınız kar tatili, aylar öncesinden erken
-                            rezervasyon
-                            seçeneği ile cazip ödeme seçenekleri ve yükse indirim oranlarıyla karşınıza çıkar. Bu sistem
-                            yapabileceğiniz en kaliteli tatili en uygun fiyatlarla birleştirerek müşteri memnuniyeti sağlar.
-                            Erken Rezervasyon Otellerinde Tatil Yapmak İçin Tıklayın!</p>
-
-                        <h5>Aile Otelleri</h5>
-                        <p>Aile otelleri, ailenizle beraber nezih işletmelerde gerek doğa ile iç içe gerekse deniz kenarında
-                            huzur içinde tatil yapabileceğiniz yerler. Aile otelleri, ailelere yönelik özel hizmetlerle ön
-                            plana
-                            çıkıyor. Çocuk menüleri, oyun parkları ve bahçeler, çocuk havuzları, animasyon ve eğlence
-                            etkinlikleri, akşam yemekleri ile ailenizle beraber tatil keyfinizi kat kat arttırıyor. Aile
-                            otellerinde konaklama sadece aileler dahilinde yapılabildiği için sosyal ortam da herkesi memnun
-                            edecek düzeyde kalıyor.
-                            Aile Otellerinde Tatil Yapmak İçin Tıklayın!</p>
+                    <div class="Home-text-desc" v-html="pageData.page_content.article.data">
                     </div>
                 </div>
             </div>
@@ -538,7 +454,6 @@ export default {
     },
     data() {
         return {
-         
         }
     },
     async asyncData({ $getRedisKey }) {
