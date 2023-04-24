@@ -82,6 +82,7 @@ export default {
     { src: "~/plugins/vue-select.js", ssr: false },
     { src: "~/plugins/dataService.js" },
     { src: "~/plugins/moment.js" },
+    { src: "~/plugins/gtm.js", mode: "client" },
     // '~/plugins/bugsnag.js'
   ],
 
