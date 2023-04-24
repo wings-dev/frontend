@@ -877,6 +877,11 @@
         line-height: 1.46;
         color: #7e8f9a;
         margin-bottom: 16px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     }
     &-link {
@@ -927,6 +932,9 @@
         u {
           display: block;
         }
+      }
+      &.mobile{
+        display: none;
       }
     }
   }

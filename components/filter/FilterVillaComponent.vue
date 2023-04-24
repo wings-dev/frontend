@@ -115,81 +115,9 @@
               !isExpandedMore ? 'TÜMÜNÜ GÖR'
               : 'DAHA AZ GÖR' }}</button>
           </div>
-
           <div class="F_villa ">
-
-            <template v-if="villas.length > 2">
-
-              <filter-villa-preview-component v-for="(villa, index) in villas.slice(0, 2)" :key="index" :villa="villa"
-                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
-              <div
-                class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-                <nuxt-img src="/uploads/holiday-banner.jpg" alt=""
-                  class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100"></nuxt-img>
-
-                <div class="d-flex flex-column position-relative ls-05 pt-3">
-                  <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
-                  <span class="fs-6 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
-                  <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
-                </div>
-                <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
-                      <g id="Group" transform="translate(626.000000, 202.000000)">
-                        <path
-                          d="M14,13.3334991 C14,14.2539193 13.2166932,15 12.25,15 C11.2836548,15 10.5,14.2539193 10.5,13.3334991 C10.5,12.4130788 11.2836548,11.6666667 12.25,11.6666667 C13.2166932,11.6666667 14,12.4130788 14,13.3334991"
-                          id="Fill-13"></path>
-                        <path
-                          d="M6.12867316,9.20434506 C4.17402549,9.20434506 2.58538231,7.69131915 2.58538231,5.8369566 C2.58538231,3.97534751 4.17402549,2.46257148 6.12867316,2.46257148 C8.07544978,2.46257148 9.66435532,3.97534751 9.66435532,5.8369566 C9.66435532,7.69131915 8.07544978,9.20434506 6.12867316,9.20434506 M6.12867316,0 C2.74122939,0 0,2.61050069 0,5.8369566 C0,9.0559161 2.74122939,11.6666667 6.12867316,11.6666667 C9.50850825,11.6666667 12.25,9.0559161 12.25,5.8369566 C12.25,2.61050069 9.50850825,0 6.12867316,0"
-                          id="Fill-15"></path>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index + 3" :villa="villa"
-                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
-
-            </template>
-
-            <template v-if="villas.length > 0 && villas.length <= 2">
-              <filter-villa-preview-component v-for="(villa, index) in villas" :key="index" :villa="villa"
-                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
-              <div
-                class="holiday-banner bg-light text-white position-relative rounded-lg overflow-hidden d-flex py-3 py-sm-4 ps-3 ps-sm-4 ps-xl-5 pe-3 pe-sm-4 my-4">
-                <nuxt-img src="/uploads/holiday-banner.jpg" alt=""
-                  class="banner-image lazy cover flex-shrink-0 position-absolute top-0 start-0 w-100 h-100"></nuxt-img>
-
-                <div class="d-flex flex-column position-relative ls-05 pt-3">
-                  <span class="fs-6 fw-medium lh-1">+1259 Seçenek ile</span>
-                  <span class="fs-6 fw-medium lh-1">Konaklamanın en keyifli halleri</span>
-                  <strong class="big-title fs-1 fw-bold lh-sm d-block mt-n1">OtelBnb’de</strong>
-                </div>
-                <svg class="align-self-end ms-auto" width="33px" height="36px" viewBox="0 0 14 15" version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="VillaListeleme" transform="translate(-626.000000, -202.000000)" fill="#ffffff">
-                      <g id="Group" transform="translate(626.000000, 202.000000)">
-                        <path
-                          d="M14,13.3334991 C14,14.2539193 13.2166932,15 12.25,15 C11.2836548,15 10.5,14.2539193 10.5,13.3334991 C10.5,12.4130788 11.2836548,11.6666667 12.25,11.6666667 C13.2166932,11.6666667 14,12.4130788 14,13.3334991"
-                          id="Fill-13"></path>
-                        <path
-                          d="M6.12867316,9.20434506 C4.17402549,9.20434506 2.58538231,7.69131915 2.58538231,5.8369566 C2.58538231,3.97534751 4.17402549,2.46257148 6.12867316,2.46257148 C8.07544978,2.46257148 9.66435532,3.97534751 9.66435532,5.8369566 C9.66435532,7.69131915 8.07544978,9.20434506 6.12867316,9.20434506 M6.12867316,0 C2.74122939,0 0,2.61050069 0,5.8369566 C0,9.0559161 2.74122939,11.6666667 6.12867316,11.6666667 C9.50850825,11.6666667 12.25,9.0559161 12.25,5.8369566 C12.25,2.61050069 9.50850825,0 6.12867316,0"
-                          id="Fill-15"></path>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </template>
-
-
-
-
-
             <div class="No-villas" v-if="loading == false && villas.length <= 0">
-              <nuxt-img src="img/no-villas.svg" alt=""></nuxt-img>
+              <nuxt-img :src="`img/site${site_id}/no-villas.svg`" alt=""></nuxt-img>
               <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
               <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
               <div class="No-villas-buttons">
@@ -200,13 +128,27 @@
             </div>
 
             <div class="No-villas" v-if="loading">
-              <nuxt-img src="img/villa-loading.svg" alt=""></nuxt-img>
+              <!-- <nuxt-img src="img/villa-loading.svg" alt=""></nuxt-img> -->
+              <lottie :width="168" :height="125" :options="loadingOptions" ref="lottieAnim" />
               <h2>Villalar hazırlanıyor.</h2>
               <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
             </div>
 
+            <template v-if="villas.length > 2">
 
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(0, 2)" :key="index" :villa="villa"
+                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
+              <filter-banner></filter-banner>
+              <filter-villa-preview-component v-for="(villa, index) in villas.slice(2)" :key="index + 3" :villa="villa"
+                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
 
+            </template>
+
+            <template v-if="villas.length > 0 && villas.length <= 2">
+              <filter-villa-preview-component v-for="(villa, index) in villas" :key="index" :villa="villa"
+                :checkindate="checkIn" :checkoutdate="checkOut"></filter-villa-preview-component>
+                <filter-banner></filter-banner>
+            </template>
           </div>
 
           <nav aria-label="..." class="my-3" v-if="!loading">
@@ -308,7 +250,7 @@
 <script>
 import VSelect from "@alfsnd/vue-bootstrap-select";
 import { mapState } from "vuex";
-
+import lottie from 'vue-lottie/src/lottie.vue'
 export default {
   name: "FilterVillaComponent",
   props: {
@@ -321,6 +263,7 @@ export default {
   },
   data() {
     return {
+      site_id: process.env.SITE,
       current_page: 1,
       per_page: 10,
       total_items: 0,
@@ -356,11 +299,18 @@ export default {
       novillas: false,
       isMobileFilterOpen: false,
       timeoutId: null,
-      extraFilters: {}
+      extraFilters: {},
+      anim: null, // for saving the reference to the animation
+      loadingOptions: {
+        animationData: require(`~/assets/animation/site${process.env.SITE}/villa_loading.json`),
+        loop: true,
+        renderer: 'svg',
+        autoplay: true,
+      },
     }
   },
   components: {
-    VSelect
+    VSelect, lottie
   },
   watch: {
     day() {
@@ -642,6 +592,9 @@ export default {
     checkboxClose(groupName) {
       const targetDivClose = this.$refs[groupName];
       targetDivClose.classList.remove('show')
+    },
+    handleAnimation: function (anim) {
+      this.anim = anim;
     }
   }
 }

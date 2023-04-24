@@ -66,7 +66,7 @@ export default {
     },
     mounted() {
         this.customIcon = L.icon({
-            iconUrl: "img/map-center.svg",
+            iconUrl: `img/site${process.env.SITE}/map-center.svg`,
             iconSize: [112, 112],
             iconAnchor: [56, 56]
         });

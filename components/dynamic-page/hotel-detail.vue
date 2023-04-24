@@ -177,7 +177,7 @@
 
           <template v-if="roomsLoading">
             <div class="Loading">
-              <lottie :width="168" :height="125" :options="lottieOptions" v-on:animCreated="handleAnimation" />
+              <lottie :width="168" :height="125" :options="loadingOptions" v-on:animCreated="handleAnimation" />
               <h4 class="Loading-title">Odalar hazırlanıyor...</h4>
               <h3 class="Loading-subtitle"><b>En uygun</b> fiyatları arıyoruz</h3>
             </div>
@@ -271,7 +271,7 @@
             </template>
             <template v-if="!roomsLoading && offers.length === 0">
               <div class="No-villas">
-                <nuxt-img src="img/no-villas.svg" alt=""></nuxt-img>
+                <nuxt-img :src="`img/site${site_id}/no-villas.svg`" alt=""></nuxt-img>
                 <h2>Uygun oda bulunamadı.</h2>
                 <p>Arama filtrenizi veya tarihi değiştirerek yeniden deneyebilirsiniz.</p>
               </div>
@@ -434,7 +434,6 @@ import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import CloseVillaModal from '../modals/close-villa-modal.vue';
 import { BCarousel } from 'bootstrap-vue'
 import lottie from 'vue-lottie/src/lottie.vue'
-import * as animationData from "~/assets/yukleniyor.json";
 
 
 
@@ -443,6 +442,7 @@ export default {
   props: ['hotelDetails', 'selectedFilters'],
   data() {
     return {
+      site_id:process.env.SITE,
       searchId: null,
       hotel: this.hotelDetails,
       hotelPriceDetails: {},
@@ -455,7 +455,11 @@ export default {
       moreFeatures: false,
       mobileAmenites: false,
       anim: null, // for saving the reference to the animation
-      lottieOptions: { animationData: animationData.default }
+      loadingOptions: {
+        animationData: require(`~/assets/animation/site${process.env.SITE}/otel_loading.json`),
+        loop: true,
+        autoplay: true,
+      },
     }
   },
   components: {
@@ -465,11 +469,7 @@ export default {
     if(window.innerWidth <= 991){
       document.querySelector('.Header').classList.add('Header-z')
     }
-
-    console.log(this.selectedFilters);
     this.roomSearch()
-
-
   },
   computed: {
     previewImages() {

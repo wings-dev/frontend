@@ -288,6 +288,10 @@ body.overflow-hidden {
 .highlights-section {
   margin-top: -92px;
   padding-top: 189px;
+  
+}
+.highlight-section{
+  background-color: var(--bs-theme-grey);
 }
 
 .list-categories {
@@ -398,7 +402,7 @@ body.overflow-hidden {
     justify-content: center;
     margin: 28px 0;
   }
-  .holiday-banner {
+  .Holiday-banner {
     max-width: 865px;
     width: 100%;
   }
@@ -470,20 +474,7 @@ body.overflow-hidden {
   }
 }
 
-.holiday-banner {
-  & > * {
-    position: relative;
-    z-index: 2;
-  }
-  .banner-image {
-    z-index: 1;
-    filter: brightness(90%);
-  }
-  .big-title {
-    /* font-size: calc(1.625rem + 2.175vw) !important; */
-    font-size: 3.25rem !important;
-  }
-}
+
 
 .categories {
   display: grid;
@@ -1082,19 +1073,6 @@ body.overflow-hidden {
       }
     }
   }
-  .holiday-banner {
-    span.fs-5 {
-      font-size: 16px !important;
-    }
-    .big-title {
-      font-size: 2.25rem !important;
-    }
-    svg {
-      width: 30px;
-      height: 33px;
-    }
-  }
-
   .section-caption {
     h4 {
       font-size: 16px;
@@ -1471,6 +1449,8 @@ body.overflow-hidden {
 }
 
 .Login {
+  height: 90vh;
+  max-height: 1000px;
   .modal-content {
     border: none;
   }
@@ -1497,7 +1477,7 @@ body.overflow-hidden {
   }
   &-in {
     display: flex;
-    height: 800px;
+    height: 100%;
   }
   &-left {
     width: 45%;
@@ -2027,6 +2007,11 @@ body.overflow-hidden {
   }
   &.Calendar {
     padding: 20px;
+    height: 100%;
+    overflow: hidden;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
     h3 {
       font-size: 22px;
       color: var(--bs-theme-first);
@@ -2038,6 +2023,9 @@ body.overflow-hidden {
     }
     .View-availibility-legand {
       justify-content: flex-start;
+    }
+    .Login-calendar-in{
+      overflow-y: scroll;
     }
   }
   &-card {
@@ -2522,6 +2510,7 @@ body.overflow-hidden {
   overflow: hidden;
   &-body {
     padding: 0;
+    overflow: hidden;
   }
   &-open {
     overflow: hidden !important;
@@ -2654,18 +2643,56 @@ body.overflow-hidden {
   }
 }
 
-.holiday-banner {
-  & > * {
+.Holiday-banner{
+  padding: 30px;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  &-img{
+    display: none;
+  }
+  &-text{
+    p{
+      font-size: 16px;
+      line-height: 1;
+      color: var(--bs-theme-first);
+    }
+    h4{
+      margin-top: 12px;
+      font-size: 27px;
+      color: var(--bs-theme-second);
+      font-weight: bold;
+      span{
+        color: var(--bs-theme-first);
+      }
+    }
+  }
+
+  @media (max-width:600px) {
+    background-image: none!important;
     position: relative;
-    z-index: 2;
-  }
-  .banner-image {
-    z-index: 1;
-    filter: brightness(90%);
-  }
-  .big-title {
-    /* font-size: calc(1.625rem + 2.175vw) !important; */
-    font-size: 2.25rem !important;
+    padding: 0;
+    &-img{
+      display: block;
+      img{
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+    &-text{
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      p{
+        font-size: 14px;
+      }
+      h4{
+        font-size: 19px;
+        margin-top: 6px;
+      }
+    }
   }
 }
 
@@ -5061,6 +5088,15 @@ body.overflow-hidden {
       }
     }
   }
+
+  @media (max-width:991px) {
+    .Login-left{
+      display: none;
+    }
+    .Login-right{
+      height: 100%;
+    }
+  }
 }
 
 .Otel_areas {
@@ -6254,7 +6290,7 @@ body.overflow-hidden {
           font-size: 14px;
           font-weight: normal;
           line-height: 1.48;
-          color: var(--bs-theme-first-dark);
+          color: var(--bs-theme-first);
           &::placeholder {
             opacity: 0.5;
           }
@@ -6285,7 +6321,7 @@ body.overflow-hidden {
         font-size: clamp(14px, 1.25vw, 24px);
         font-weight: 500;
         line-height: 1.15;
-        color: var(--bs-theme-first-dark);
+        color: var(--bs-theme-first);
         padding-top: 30px;
         padding-bottom: 30px;
         padding-left: 44px;
@@ -6624,7 +6660,7 @@ body.overflow-hidden {
           max-width: 335px;
           font-size: clamp(20px, 1.4vw, 27px);
           font-weight: 500;
-          color: var(--bs-theme-first-dark);
+          color: var(--bs-theme-first);
           margin-bottom: 10px;
         }
         p {
