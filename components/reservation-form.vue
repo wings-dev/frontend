@@ -407,6 +407,7 @@ export default {
           document.querySelector('.Header').classList.add('Header-z')
           document.querySelector('body').classList.add('over')
           document.querySelector('html').classList.add('over')
+          document.querySelector(".Whatsapp").classList.add('Whatsapp-z')
         }, 50)
 
       } else {
@@ -415,6 +416,7 @@ export default {
           document.querySelector('body').classList.remove('over')
           document.querySelector('html').classList.remove('over')
           document.querySelector('body').style.overflow = "auto"
+          document.querySelector(".Whatsapp").classList.remove('Whatsapp-z')
         }, 50)
       }
     }

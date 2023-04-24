@@ -227,8 +227,8 @@
             </div>
             <template v-if="villa.watermark_images.length > 4">
               <div class="d-none">
-                <a v-for="previewImage in villa.watermark_images.slice(5)" :href="previewImage.original_url" data-fancybox="gallery"
-                  data-caption="Salon">
+                <a v-for="previewImage in villa.watermark_images.slice(5)" :href="previewImage.original_url"
+                  data-fancybox="gallery" data-caption="Salon">
                   <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" width="284" height="187"
                     sizes="sm:100vw md:50vw lg:284px" /></a>
               </div>
@@ -1424,7 +1424,7 @@
         <div class="section-caption d-flex align-items-center mb-3 pb-1">
           <i class="icon-opportunity-calendar"></i>
           <h4 class="">Haftanın <span>Villaları</span></h4>
-          <nuxt-link to="/kiralik-villa-ara" class="button-more button-more-dark">Tümünü Gör</nuxt-link>
+          <nuxt-link to="/kiralik-villa-ara" class="button-more button-more-dark d-none">Tümünü Gör</nuxt-link>
         </div>
         <client-only>
           <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
@@ -2221,8 +2221,16 @@ export default {
           this.$bvModal.show('closeVillaModal')
         }, 50)
       }
+
+      if(window.innerWidth <= 991){
+        setTimeout(() => {
+          document.querySelector(".Whatsapp").classList.add('Whatsapp-villa')
+        }, 50)
+      }
+
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
+
 
     });
 
@@ -2251,7 +2259,11 @@ export default {
     },
 
 
-  }
+  },
+  beforeDestroy() {
+    document.querySelector(".Whatsapp").classList.remove('Whatsapp-villa')
+    console.log('beforeDestroy');
+  },
 
 }
 </script>
@@ -2298,4 +2310,5 @@ export default {
   .modal-xl {
     max-width: 1140px;
   }
-}</style>
+}
+</style>
