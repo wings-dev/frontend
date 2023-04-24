@@ -71,18 +71,28 @@
                                         <div class="Header-menu-item-otel-left">
                                             <template v-for="(subitem, index) in item.children">
                                                 <div class="Header-menu-item-otel-left-item">
-                                                    <h5 @click="toggleMenuItem(index)"
-                                                        :class="{ 'active': openIndexes.includes(index) }">{{ subitem.text
-                                                        }}<i class="icon-down-arrow mobile"></i></h5>
-                                                    <div class="Header-menu-sub-item-list"
-                                                        :class="{ 'active': openIndexes.includes(index) }">
-                                                        <NuxtLink :to="'/' + subitemchildren.href"
-                                                            class="Header-top-menu-item"
-                                                            v-for="(subitemchildren, index) in subitem.children"
-                                                            :key="index">
-                                                            {{ subitemchildren.text }}
-                                                        </NuxtLink>
-                                                    </div>
+
+                                                    <template v-if="subitem.children">
+                                                        <h5 @click="toggleMenuItem(index)"
+                                                            :class="{ 'active': openIndexes.includes(index) }">{{
+                                                                subitem.text
+                                                            }}<i class="icon-down-arrow mobile"></i></h5>
+                                                        <div class="Header-menu-sub-item-list"
+                                                            :class="{ 'active': openIndexes.includes(index) }">
+                                                            <NuxtLink :to="'/' + subitemchildren.href"
+                                                                class="Header-top-menu-item"
+                                                                v-for="(subitemchildren, index) in subitem.children"
+                                                                :key="index">
+                                                                {{ subitemchildren.text }}
+                                                            </NuxtLink>
+                                                        </div>
+                                                    </template>
+                                                    <template v-else>
+                                                        <nuxt-link :to="'/'+subitem.href"><b>{{ subitem.text }}</b></nuxt-link>
+                                                    </template>
+
+
+
                                                 </div>
                                             </template>
                                         </div>
@@ -157,7 +167,7 @@
                             @click="openSearch($event)">
                             <i class="icon-search2"></i>
                         </button>
-                        
+
                         <!--  -->
                         <notification></notification>
 
@@ -233,7 +243,7 @@ export default {
             }
         }
     },
-    components: { FlipCountdown,Notification },
+    components: { FlipCountdown, Notification },
     computed: {
         greeting() {
             const saat = new Date().getHours();
@@ -382,7 +392,7 @@ export default {
 
         const menuData = this.$store.state['settings'].menuData;
 
-        
+        console.log(menuData)
 
         // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
