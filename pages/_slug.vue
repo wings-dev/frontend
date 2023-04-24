@@ -1,7 +1,7 @@
 <template>
   <div>
     <client-only>
-      <search-bar :key="$route.path" v-if="[5, 8, 19].includes(type)"></search-bar>
+      <search-bar :key="$route.path" v-if="[5, 8, 19].includes(type)" :tab="type === 8 && componentData?.page_content?.isabroad ? {tab: 2} : null"></search-bar>
     </client-only>
     <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1"
       v-if="type === 2"></dynamic-detail-page>
@@ -74,6 +74,7 @@ export default {
       if (redisData.type === 5 || redisData.type === 8) {
         // filtre redis datası
         componentData = await $getRedisKey(`web:${site_id}:pages:${path}`);
+        console.log(componentData);
       }
 
       if (redisData.type === 18) {
