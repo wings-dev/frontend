@@ -228,9 +228,9 @@
                         <div class="room-price">
                           <span>{{ roomOption.night }} GECE</span>
                           <div class="room-price-in">
-                            <s v-if="roomOption.price.amount_old > 0">{{ roomOption.price.amount_old }}{{ roomOption.price.currency }}</s>
-                            <b>{{ roomOption.price.amount }}<small>{{ roomOption.price.currency }}</small></b>
-                            <p>Gecelik <span>{{ (roomOption.price.amount / roomOption.night).toFixed(2) | numberFormat }}{{
+                            <s v-if="roomOption.price.amount_old > 0">{{ parseFloat(roomOption.price.amount_old) | numberFormat }}{{ roomOption.price.currency }}</s>
+                            <b>{{ parseFloat(roomOption.price.amount) | numberFormat }}<small>{{ roomOption.price.currency }}</small></b>
+                            <p>Gecelik <span>{{ parseFloat((roomOption.price.amount / roomOption.night).toFixed(2)) | numberFormat }}{{
                                 roomOption.price.currency }}</span></p>
                           </div>
                           <a href="" @click.prevent="goReservation(roomOption)">Odayı Seç</a>
@@ -305,7 +305,7 @@
                   </div>
                 </div>
               </div>
-              <button class="otel-reviews-more" type="button">Tüm yorumları göster</button>
+              <button class="otel-reviews-more" type="button" v-if="this.comments?.data?.comments.length">Tüm yorumları göster</button>
             </div>
           </div>
         </div>
