@@ -27,8 +27,8 @@
               <div class="view-top-right">
                 <div class="d-flex align-items-center text-theme-secondary">
                   <i class="icon-pin"></i>
-                  <p class="view-top-right-location">{{ villa.location.city.name | titlecase }}
-                    <span class="lh-sm">{{ villa.location.country.name | titlecase }} / {{ villa.location.state.name |
+                  <p class="view-top-right-location">{{ villa.location?.city?.name | titlecase }}
+                    <span class="lh-sm">{{ villa.location?.country?.name | titlecase }} / {{ villa.location?.state?.name |
                       titlecase }}</span>
                   </p>
                 </div>
@@ -98,9 +98,9 @@
         </div>
       </div>
       <div class="container pb-1 gallery-container">
-        <template v-if="villa.floorplan.kat">
+        <template v-if="villa && villa.floorplan && villa.floorplan.kat">
           <div class="view-gallery">
-            <div class="area-1">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 0" class="area-1">
               <a href="#" @click.prevent="showGallery()"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
@@ -110,34 +110,34 @@
 
               </a>
             </div>
-            <div class="area-2 d-md-block d-none">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
-            <div class="area-3 d-md-block d-none">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
-            <div class="area-4 d-none d-lg-block">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
-            <div class="area-5 d-none d-lg-block">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
                 <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
-                  <span @click.prevent="showGallery()">Tüm Fotoğraflar ( 32 ) </span>
+                  <span @click.prevent="showGallery()">Tüm Fotoğraflar ( {{villa.watermark_images.length}} ) </span>
                   <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
                   <a :href="villa.video" data-fancybox v-if="villa.video">
                     <i class="icon-play-button"></i> Video İzle
@@ -175,7 +175,7 @@
         </template>
         <template v-else>
           <div class="view-gallery">
-            <div class="area-1">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 0" class="area-1">
               <a :href="villa.watermark_images[0].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
@@ -186,7 +186,7 @@
 
               </a>
             </div>
-            <div class="area-2 d-md-block d-none">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
               <a :href="villa.watermark_images[1].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
@@ -194,7 +194,7 @@
 
               </a>
             </div>
-            <div class="area-3 d-md-block d-none">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
               <a :href="villa.watermark_images[2].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
@@ -202,7 +202,7 @@
 
               </a>
             </div>
-            <div class="area-4 d-none d-lg-block">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
               <a :href="villa.watermark_images[3].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
@@ -210,13 +210,13 @@
 
               </a>
             </div>
-            <div class="area-5 d-none d-lg-block">
+            <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
                 <nuxt-img :src="villa.watermark_images[4].original_url" :srcset="villa.watermark_images[4].responsive"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
-                  <span @click.prevent="showGallery()">Tüm Fotoğraflar ( 32 ) </span>
+                  <span @click.prevent="showGallery()">Tüm Fotoğraflar ( {{villa.watermark_images.length}} ) </span>
                   <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
                   <a :href="villa.video" data-fancybox v-if="villa.video">
                     <i class="icon-play-button"></i> Video İzle
@@ -225,7 +225,7 @@
                 </div>
               </div>
             </div>
-            <template v-if="villa.watermark_images.length > 4">
+            <template v-if="villa.watermark_images && villa.watermark_images.length > 4">
               <div class="d-none">
                 <a v-for="previewImage in villa.watermark_images.slice(5)" :href="previewImage.original_url"
                   data-fancybox="gallery" data-caption="Salon">
@@ -260,10 +260,7 @@
               </button>
             </div>
           </div>
-
-
         </template>
-
       </div>
     </section>
 
@@ -309,8 +306,8 @@
               <div class="View-desc-mobile-top">
                 <div class="View-desc-mobile-top-location">
                   <i class="icon-pin"></i>
-                  <p>{{ villa.location.city.name | titlecase }}<span>{{ villa.location.country.name | titlecase }} / {{
-                    villa.location.state.name | titlecase }}</span></p>
+                  <p>{{ villa.location?.city?.name | titlecase }}<span>{{ villa.location?.country?.name | titlecase }} / {{
+                    villa.location?.state?.name | titlecase }}</span></p>
                 </div>
                 <div class="View-desc-mobile-top-price" v-if="lowestPrice">
                   <span>GECELİK</span>
@@ -488,7 +485,7 @@
                   </div>
                 </div>
 
-                <div class="pool-item mb-3" v-for="(poolitem, index) in villa.floorplan.pool" :key="index">
+                <div class="pool-item mb-3" v-for="(poolitem, index) in (villa.floorplan?.pool || [])" :key="index">
                   <div class="pool-item-left">
                     <nuxt-img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
                       class="lazy contain" v-if="poolitem.pool == 52"></nuxt-img>
@@ -555,7 +552,7 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.beaches"
                         v-if="places.beaches.length <= 4" :key="index">
-                        <div class="first-tab-item-img">
+                        <div class="first-tab-item-img" v-if="item.images && item.images.length">
                           <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
                           <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else></nuxt-img>
@@ -565,8 +562,8 @@
                           <p>{{ item.description }}</p>
                         </div>
                         <div class="first-tab-item-length">
-                          <b>{{ item.distance.match(/\d+/)[0] }}</b>
-                          <p>{{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
+                          <b>{{ item.distance?.match(/\d+/)[0] }}</b>
+                          <p>{{ item.distance?.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
 
                           <span>#{{ index + 1 }}</span>
                         </div>
@@ -580,7 +577,7 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.locations"
                         v-if="places.locations.length <= 4" :key="index">
-                        <div class="first-tab-item-img">
+                        <div class="first-tab-item-img" v-if="item.images && item.images.length">
 
                           <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
@@ -598,7 +595,7 @@
                         </div>
                       </div>
                       <button type="button" class="first-tab-more" @click="mobilePlaceToggle"
-                        v-if="places.locations.length > 4">Tümünü Görüntüle <i class="icon-right-arrow"></i></button>
+                        v-if="places.locations?.length > 4">Tümünü Görüntüle <i class="icon-right-arrow"></i></button>
                     </div>
 
                   </div>
@@ -1380,7 +1377,7 @@
                         bakışı
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.locations">
-                        <div class="first-tab-item-img">
+                        <div class="first-tab-item-img" v-if="item.images && item.images.length">
                           <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
                           <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" v-else></nuxt-img>
@@ -1433,7 +1430,7 @@
 
                 <nuxt-link :to="item.url" class="Card Card-h">
                   <div class="Card-in">
-                    <div class="Card-img">
+                    <div class="Card-img" v-if="item.preview_image && item.preview_image.length">
                       <nuxt-link :to="item.url">
                         <nuxt-img :src="item?.preview_image[0].preview_url" width="292" height="187"
                           :srcset="item?.preview_image[0].responsive_url"></nuxt-img>
@@ -1527,7 +1524,7 @@
             <h3 class="Gallery-list-title">Mekâna genel bakış</h3>
             <div class="Gallery-list">
               <template v-for="(floor, index) in villa.floorplan.kat">
-                <button type="button" class="Gallery-list-item" :id="'Gallery_item' + index"
+                <button v-if="bolum.gorsel && bolum.gorsel.length" type="button" class="Gallery-list-item" :id="'Gallery_item' + index"
                   @click="scrollGallery($event)" v-for="(bolum, index) in floor.bolum" :key="index">
                   <nuxt-img :src="bolum.gorsel[0].preview_url" class="w-100" alt="test"></nuxt-img>
                   <p>{{ bolum.name }} <br> <span>({{ floor.name }})</span></p>
@@ -1543,12 +1540,12 @@
                     <h3>{{ bolum.name }}</h3>
                   </div>
                   <div class="Gallery-detail-item-right">
-
-                    <a class="Gallery-detail-item-right-img" :href="img.original_url" data-fancybox="gallery"
-                      data-caption="Salon" v-for="(img, index) in bolum.gorsel" :key="index">
-                      <nuxt-img :src="img.preview_url" :srcset="img.responsive" sizes="sm:100vw md:50vw lg:756px" />
-                    </a>
-
+                    <template v-if="bolum.gorsel && bolum.gorsel.length">
+                      <a class="Gallery-detail-item-right-img" :href="img.original_url" data-fancybox="gallery"
+                         data-caption="Salon" v-for="(img, index) in bolum.gorsel" :key="index">
+                        <nuxt-img :src="img.preview_url" :srcset="img.responsive" sizes="sm:100vw md:50vw lg:756px" />
+                      </a>
+                    </template>
                   </div>
                 </div>
               </template>
