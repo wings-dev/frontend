@@ -9,28 +9,33 @@
                     <div class="blog-list-item bg-light area1">
                         <div class="swiper blog-carousel w-100 h-100 position-relative">
                             <div class="swiper-wrapper d-flex">
-                                <div class="swiper-slide" v-for="(item,index) in pageData.page_content.slider" :key="index">
-                                    <a :href="item.otel_slider_link" class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
+                                <div class="swiper-slide" v-for="(item, index) in pageData.page_content.slider"
+                                    :key="index">
+                                    <a :href="item.otel_slider_link"
+                                        class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
                                         <nuxt-img :src="item?.otel_slider_input" width="781" height="380" alt="blog-image"
                                             class="item-image lazy cover w-100 " />
                                         <div
                                             class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 ">
-                                            <h4 class="" v-if="item.otel_slider_title">{{item.otel_slider_title}}</h4>
-                                            <p class="" v-if="item.otel_slider_desc">{{item.otel_slider_desc}}</p>
+                                            <h4 class="" v-if="item.otel_slider_title">{{ item.otel_slider_title }}</h4>
+                                            <p class="" v-if="item.otel_slider_desc">{{ item.otel_slider_desc }}</p>
                                         </div>
                                     </a>
                                 </div>
-                               
+
                             </div>
                             <div class="swiper-pagination blog-pagination"></div>
                         </div>
                     </div>
-                    <div class="blog-list-item bg-light area2 blog-list-item-sm" v-for="(item,index) in pageData.page_content.banner" :key="index" :class="{'area2':index == 0 ,'area3':index == 1 }">
+                    <div class="blog-list-item bg-light area2 blog-list-item-sm"
+                        v-for="(item, index) in pageData.page_content.banner" :key="index"
+                        :class="{ 'area2': index == 0, 'area3': index == 1 }">
                         <a :href="item.otel_banner_link" class="blog-item position-relative d-block w-100 h-100">
                             <nuxt-img :src="item?.banner_img" width="402" height="182" alt="blog-image"
                                 class="lazy cover w-100" />
                             <div class="blog-item-text ">
-                                <h4 class="blog-item-sm-title" v-if="item.otel_banner_title">{{ item.otel_banner_title }} </h4>
+                                <h4 class="blog-item-sm-title" v-if="item.otel_banner_title">{{ item.otel_banner_title }}
+                                </h4>
                                 <p class="blog-item-sm-text" v-if="item.otel_banner_desc">{{ item.otel_banner_desc }}</p>
                             </div>
                         </a>
@@ -49,53 +54,53 @@
             </div>
         </section>
 
-        <section class="popular-section-otel bg-white overflow-hidden pb-sm-5 mt-5">
+        <section class="popular-section-otel bg-white overflow-hidden pb-sm-5 pt-5">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-otel-discover"></i>
                     <h4 class="primary-title fw-medium ls-05 lh-1">
                         Otelleri
-                        <span>keşfedin</span>
+                        <span>keşfedin </span>
                     </h4>
-                    <a href=""
-                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
-                        <span class="d-block py-1 px-3">Tümünü Gör</span>
-                    </a>
                 </div>
                 <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="otel-tab" data-bs-toggle="pill" data-bs-target="#otel"
-                            type="button" role="tab" aria-selected="true">Kaş <span>Otelleri</span></button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="otel-tab2" data-bs-toggle="pill" data-bs-target="#otel2" type="button"
-                            role="tab" aria-selected="false">Fethiye <span>Otelleri</span></button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="otel-tab3" data-bs-toggle="pill" data-bs-target="#otel3" type="button"
-                            role="tab" aria-selected="false">Muğla <span>Otelleri</span></button>
+                    <li class="nav-item" role="presentation"
+                        v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index"
+                        v-if="otelCategory">
+                        <button :class="['nav-link', { active: index === 0 }]" :id="`otel-tab${index}`"
+                            data-bs-toggle="pill" :data-bs-target="`#otel${index}`" type="button" role="tab"
+                            :aria-selected="index === 0">{{ otelCategory.otel_category }}</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="otel-tabContent">
-                    <div class="tab-pane fade show active" id="otel" role="tabpanel" aria-labelledby="otel-tab">
+                    <div v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index"
+                        :class="['tab-pane', 'fade', { 'show active': index === 0 }]" :id="`otel${index}`" role="tabpanel"
+                        :aria-labelledby="`otel-tab${index}`" v-if="otelCategory">
                         <div class="swiper list-slide-otel">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                                    <nuxt-link to="" class="O_Card">
+                                <div class="swiper-slide" v-for="(hotel, hotelIndex) in otelCategory.otel_list"
+                                    :key="hotelIndex" v-if="hotel && (hotel.images && hotel.images[0]?.ImageUrl)">
+                                    <nuxt-link :to="hotel.url" class="O_Card" v-if="hotel.url">
                                         <div class="O_Card-in">
                                             <div class="O_Card-img">
-                                                <nuxt-img src="/img/otel-list.png" alt="" />
+                                                <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" alt=""
+                                                    v-if="hotel.images && hotel.images[0]?.ImageUrl" width="299"
+                                                    height="188"></nuxt-img>
                                                 <div class="O_Card-img-text" style="background-color: #5d91c1;">
-                                                    <span>9,5/10</span>
+                                                    <span>{{ parseFloat(hotel.Rating).toFixed(2) }}/10</span>
                                                 </div>
                                             </div>
                                             <div class="O_Card-content">
                                                 <div class="O_Card-content-head">
-                                                    <b>Pera Palace Hotel</b>
-                                                    <small>Ankara,Türkiye</small>
+                                                    <b>{{ hotel.Name }}</b>
+                                                    <small>{{ hotel.DestinationName }}</small>
                                                 </div>
                                                 <div class="O_Card-content-in">
-                                                    <nuxt-link to="/" class="O_Card-content-link">
+                                                    <div class="O_Card-content-price d-none">
+                                                        <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
+                                                        <p>Başlayan Fiyatlar</p>
+                                                    </div>
+                                                    <nuxt-link :to="hotel.url" class="O_Card-content-link" v-if="hotel.url">
                                                         Oteli İncele
                                                         <i class="icon-right-arrows-new"></i>
                                                     </nuxt-link>
@@ -105,87 +110,11 @@
                                     </nuxt-link>
                                 </div>
                             </div>
-                            <!-- If pagination is needed -->
-
-                            <!-- If navigation buttons are needed -->
-                            <!-- <div class="swiper-pagination"></div> -->
-                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
-                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="otel2" role="tabpanel" aria-labelledby="otel-tab2">
-                        <div class="swiper list-slide-otel">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                                    <nuxt-link to="" class="O_Card">
-                                        <div class="O_Card-in">
-                                            <div class="O_Card-img">
-                                                <nuxt-img src="/img/otel-list.png" alt="" />
-                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
-                                                    <span>9,5/10</span>
-                                                </div>
-                                            </div>
-                                            <div class="O_Card-content">
-                                                <div class="O_Card-content-head">
-                                                    <b>Pera Palace Hotel</b>
-                                                    <small>Ankara,Türkiye</small>
-                                                </div>
-                                                <div class="O_Card-content-in">
-                                                    <nuxt-link to="/" class="O_Card-content-link">
-                                                        Oteli İncele
-                                                        <i class="icon-right-arrows-new"></i>
-                                                    </nuxt-link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </nuxt-link>
-                                </div>
-                            </div>
-                            <!-- If pagination is needed -->
-
-                            <!-- If navigation buttons are needed -->
-                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
-                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="otel3" role="tabpanel" aria-labelledby="otel-tab3">
-                        <div class="swiper list-slide-otel">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                                    <nuxt-link to="" class="O_Card">
-                                        <div class="O_Card-in">
-                                            <div class="O_Card-img">
-                                                <nuxt-img src="/img/otel-list.png" alt="" />
-                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
-                                                    <span>9,5/10</span>
-                                                </div>
-                                            </div>
-                                            <div class="O_Card-content">
-                                                <div class="O_Card-content-head">
-                                                    <b>Pera Palace Hotel</b>
-                                                    <small>Ankara,Türkiye</small>
-                                                </div>
-                                                <div class="O_Card-content-in">
-                                                    <nuxt-link to="/" class="O_Card-content-link">
-                                                        Oteli İncele
-                                                        <i class="icon-right-arrows-new"></i>
-                                                    </nuxt-link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </nuxt-link>
-                                </div>
-                            </div>
-                            <!-- If pagination is needed -->
-
-                            <!-- If navigation buttons are needed -->
-                            <!-- <div class="swiper-button-prev list-navigation-prev"></div> -->
-                            <!-- <div class="swiper-button-next list-navigation-next"></div> -->
-                        </div>
+                        <nuxt-link :to="'/' + otelCategory.otel_category_all_link" class="popular-section-otel-more">Tüm
+                            {{ otelCategory.otel_category }}</nuxt-link>
                     </div>
                 </div>
-
-
             </div>
         </section>
 
@@ -251,18 +180,23 @@
                                         <span>Lefkoşa Otelleri</span>
                                     </nuxt-link>
                                     <nuxt-link to="/otel" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otelarea/kibris-balayi.jpeg" width="172" height="114"></nuxt-img>
+                                        <nuxt-img src="/img/otelarea/kibris-balayi.jpeg" width="172"
+                                            height="114"></nuxt-img>
                                         <span>Kıbrıs Balayı Otelleri</span>
                                     </nuxt-link>
                                     <nuxt-link to="/otel" class="Areas-otel-item-list-item">
-                                        <nuxt-img src="/img/otelarea/kibris-ucakli.jpeg" width="172" height="114"></nuxt-img>
+                                        <nuxt-img src="/img/otelarea/kibris-ucakli.jpeg" width="172"
+                                            height="114"></nuxt-img>
                                         <span>Kıbrıs Uçaklı Paketler</span>
                                     </nuxt-link>
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link :to="`/oteller?destinations=10150&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`">Tüm Kıbrıs Otellerini Keşfedin <i
-                                        class="icon-right-arrows-new"></i></nuxt-link>
+                                <client-only>
+                                <nuxt-link
+                                    :to="`/oteller?destinations=10150&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`">Tüm
+                                    Kıbrıs Otellerini Keşfedin <i class="icon-right-arrows-new"></i></nuxt-link>
+                                </client-only>
                             </div>
                         </div>
                     </div>
@@ -435,6 +369,7 @@
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
+import slugify from "slugify";
 
 export default {
     name: 'OtelIndexPage',
@@ -454,12 +389,30 @@ export default {
     },
     data() {
         return {
+            cdn_hotel: process.env.HOTEL_CDN_URL + '/',
+            sitename:process.env.SITE_NAME
         }
     },
-    async asyncData({ $getRedisKey }) {
+    async asyncData({ $getRedisKey, $axios, store }) {
         const site_id = process.env.SITE;
         let pageData = {};
         pageData = await $getRedisKey(`web:${site_id}:pages:otel`);
+
+        const otelCategories = Array.isArray(pageData.page_content?.select_otel) ? pageData.page_content.select_otel : [];
+
+        otelCategories.forEach((otelCategory, index) => {
+            if (otelCategory && Array.isArray(otelCategory.otel_list)) {
+                otelCategory.otel_list = otelCategory.otel_list.map(hotel => {
+                    if (hotel && hotel.Name && hotel.Id) {
+                        hotel.url = '/otel/' + slugify(hotel.Name.toLowerCase()) + '-' + hotel.Id;
+                    }
+                    return hotel;
+                });
+            }
+        });
+
+        pageData.page_content = { ...pageData.page_content, select_otel: otelCategories };
+
         return { pageData }
     },
     mounted() {
@@ -545,6 +498,7 @@ export default {
 
 }
 </script>
-<style scoped>.list-item .list-image {
+<style scoped>
+.list-item .list-image {
     width: 100%;
 }</style>

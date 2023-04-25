@@ -10,13 +10,19 @@ Vue.filter('formatDate', function(value, format) {
 });
 
 Vue.prototype.$moment = function (dateString) {
-  // Kullanıcının tarayıcı dilini tespit ediyoruz
-  const userLang = navigator.language || navigator.userLanguage;
-  console.log(userLang);
-  // moment.js'ye kullanıcının tarayıcı dilini iletmek için kullanıyoruz
-  if (userLang === 'tr') {
-    return moment(dateString).locale('tr');
+  // Kullanıcının tarayıcı dilini tespit etmek için
+  // process.browser veya process.client kullanarak tarayıcı ortamında olduğumuzu kontrol ediyoruz
+  if (process.browser || process.client) {
+    const userLang = navigator.language || navigator.userLanguage;
+    console.log(userLang);
+    // moment.js'ye kullanıcının tarayıcı dilini iletmek için kullanıyoruz
+    if (userLang === 'tr') {
+      return moment(dateString).locale('tr');
+    } else {
+      return moment(dateString).locale('en-gb');
+    }
   } else {
-    return moment(dateString).locale('en-gb');
+    // Sunucu tarafında olduğumuzda varsayılan dil olarak İngilizce (Birleşik Krallık) kullanıyoruz
+    return moment(dateString).locale('tr');
   }
 };
