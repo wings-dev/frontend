@@ -455,10 +455,10 @@ export default {
 
           const hotelPrices = this.hotels.map(hotel => {
             const price = Math.ceil(hotel?.offers?.[0]?.price?.amount);
-            return price ?? Infinity;
+            return price ?? 0;
           });
 
-          const validPrices = hotelPrices.filter(price => price !== Infinity);
+          const validPrices = hotelPrices.filter(price => price !== 0);
 
           this.min_hotel_price = validPrices.length > 0 ? Math.min(...validPrices) : null;
           this.max_hotel_price = validPrices.length > 0 ? Math.max(...validPrices) : null;
