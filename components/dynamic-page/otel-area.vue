@@ -16,7 +16,7 @@
     <section class="O_List-card">
       <div class="container">
         <div class="O_List-card-in">
-          <div class="O_List-card-item" v-for="hotel in data.hotels">
+          <nuxt-link :to="detailUrl(hotel)" class="O_List-card-item" v-for="hotel in data.hotels" v-if="hotel.images?.[0]?.ImageUrl">
             <div class="O_List-card-item-img">
               <nuxt-img :src="cdn + hotel.images?.[0]?.ImageUrl" alt="" />
             </div>
@@ -42,7 +42,7 @@
               </div>
               <nuxt-link :to="detailUrl(hotel)">Fiyatları Göster</nuxt-link>
             </div>
-          </div>
+          </nuxt-link >
           <nav class="w-100 mt-5">
             <ul class="w-100 pagination d-flex flex-wrap justify-content-center align-items-center">
               <!-- Go to First Page -->
@@ -136,7 +136,7 @@
       </div>
     </section>
 
-    <section class="highlight-section  ">
+    <section class="highlight-section  " v-if="data.page_content.article">
       <div class="container">
         <div class="row pt-4 ">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
@@ -151,7 +151,7 @@
       </div>
     </section>
 
-    <section class="List mt-4">
+    <section class="List mt-4" v-if="data.page_content?.faq[0].faq_list.length > 1">
       <div class="container">
         <div class="List-sss">
           <h3>En çok sorulan sorular </h3>
@@ -344,7 +344,8 @@ export default {
       this.filter(pageNumber);
     },
     getBackgroundImageStyle(pageBanner) {
-      const bannerUrl = pageBanner ? `url(${pageBanner})` : `url(/img/no-banner.img)`;
+      console.log('pageBanner',pageBanner)
+      const bannerUrl = pageBanner ? `url(${pageBanner})` : `url(https://d1t2mawg5vwzes.cloudfront.net/page/36458/381828/no-banner-img.jpeg)`;
       return {
         'background-image': bannerUrl
       };

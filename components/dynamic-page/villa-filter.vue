@@ -3,7 +3,7 @@
     <opportunity-header :opportunities="opportunities" v-if="opportunity"
       @selected="opportunitySelected($event)"></opportunity-header>
 
-    <section class="highlight-section pt-5 pb-4 mt-n5 desktop" v-if="highlights">
+    <section class="highlight-section pt-5 pb-4 mt-n5 desktop" v-if="highlights && pageContent.page_content.summary.data">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
@@ -25,7 +25,7 @@
     <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity" :month="month" :pageContent="pageContent"
       :day="day" :type="type" :world="type == 8 ? 1 : 0"></filter-villa-component>
 
-    <section class="highlight-section  pt-5 pb-4" v-if="highlights">
+    <section class="highlight-section  pt-5 pb-4" v-if="highlights && pageContent.page_content.article.data">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
@@ -43,7 +43,7 @@
       </div>
     </section>
 
-    <section class="List" v-if="highlights">
+    <section class="List" v-if="highlights && pageContent.page_content.faq[0].faq_list.length > 1">
       <div class="container">
         <div class="List-sss">
           <h3>En çok sorulan sorular </h3>
