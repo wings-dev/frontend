@@ -295,7 +295,7 @@
               <div class="View-desc-amenites">
                 <h4 class="View-title"><b>Tesis</b> Olanakları</h4>
                 <div class="View-desc-amenites-in">
-                  <p v-for="(item, index) in amenites" :key="index" v-if="index <= 5">{{ item.name }}</p>
+                  <p v-for="(item, index) in amenites" v-if="index <= 5">{{ item.name }}</p>
                 </div>
                 <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar ({{ amenites.length
                 }})</b-button>
@@ -485,7 +485,7 @@
                   </div>
                 </div>
 
-                <div class="pool-item mb-3" v-for="(poolitem, index) in (villa.floorplan?.pool || [])" :key="index">
+                <div class="pool-item mb-3" v-for="(poolitem, index) in (villa.floorplan?.pool || [])">
                   <div class="pool-item-left">
                     <nuxt-img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
                       class="lazy contain" v-if="poolitem.pool == 52"></nuxt-img>
@@ -551,7 +551,7 @@
                       <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığı kuş bakışı
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.beaches"
-                        v-if="places.beaches.length <= 4" :key="index">
+                        v-if="places.beaches.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
                           <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
@@ -576,7 +576,7 @@
                       <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığı kuş bakışı
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.locations"
-                        v-if="places.locations.length <= 4" :key="index">
+                        v-if="places.locations.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
 
                           <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95"
@@ -681,7 +681,7 @@
                       </button>
                       <div id="collapseHealth" class="accordion-collapse collapse " data-bs-parent="#Location">
                         <div class="accordion-body">
-                          <div class="second-tab-item" v-for="(item, index) in places.health" :key="index"
+                          <div class="second-tab-item" v-for="(item, index) in places.health"
                             v-if="index < 2">
                             <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                             <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
@@ -698,7 +698,7 @@
                       </button>
                       <div id="collapseRestoran" class="accordion-collapse collapse" data-bs-parent="#Location">
                         <div class="accordion-body">
-                          <div class="second-tab-item" v-for="(item, index) in places.restaurant" :key="index"
+                          <div class="second-tab-item" v-for="(item, index) in places.restaurant"
                             v-if="index < 2">
                             <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                             <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
@@ -716,7 +716,7 @@
                       </button>
                       <div id="collapseMarket" class="accordion-collapse collapse" data-bs-parent="#Location">
                         <div class="accordion-body">
-                          <div class="second-tab-item" v-for="(item, index) in places.market" :key="index"
+                          <div class="second-tab-item" v-for="(item, index) in places.market"
                             v-if="index < 2">
                             <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                             <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
@@ -734,7 +734,7 @@
                       </button>
                       <div id="collapseMap" class="accordion-collapse collapse" data-bs-parent="#Location">
                         <div class="accordion-body">
-                          <div class="second-tab-item" v-for="(item, index) in places.transport" :key="index"
+                          <div class="second-tab-item" v-for="(item, index) in places.transport"
                             v-if="index < 2">
                             <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                             <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
@@ -979,7 +979,7 @@
                 <div class="View-info-fee">
                   <div class="View-info-fee-left" v-if="villa.amenites.amenite_302.list">
                     <h5>Ücrete Dahil olanlar</h5>
-                    <div class="View-info-fee-item" v-for="(item, index) in villa.amenites.amenite_302.list" :key="index">
+                    <div class="View-info-fee-item" v-for="(item, index) in villa.amenites.amenite_302.list">
                       <p>{{ item }}</p>
                     </div>
 
@@ -1078,7 +1078,7 @@
                   <div class="Amenites-item">
                     <!-- <span class="Amenites-item-title">Bahçe Alanı</span> -->
                     <div class="Amenites-item-in">
-                      <p v-for="(item, index) in amenites" :key="index">{{ item.name }}</p>
+                      <p v-for="(item, index) in amenites">{{ item.name }}</p>
                     </div>
                   </div>
                   <!-- <div class="Amenites-item">
@@ -1260,7 +1260,7 @@
               <button type="button" class="mobile-menus-back" @click="mobileLocationToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
-                <div class="second-tab-item w-100" v-for="(item, index) in places.health" :key="index" v-if="index < 2">
+                <div class="second-tab-item w-100" v-for="(item, index) in places.health" v-if="index < 2">
                   <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                   <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                     {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
@@ -1271,7 +1271,7 @@
               <button type="button" class="mobile-menus-back" @click="mobileLocationRestoranToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
-                <div class="second-tab-item w-100" v-for="(item, index) in places.restaurant" :key="index"
+                <div class="second-tab-item w-100" v-for="(item, index) in places.restaurant"
                   v-if="index < 2">
                   <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                   <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
@@ -1283,7 +1283,7 @@
               <button type="button" class="mobile-menus-back" @click="mobileLocationMarketToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
-                <div class="second-tab-item w-100" v-for="(item, index) in places.market" :key="index" v-if="index < 2">
+                <div class="second-tab-item w-100" v-for="(item, index) in places.market" v-if="index < 2">
                   <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                   <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                     {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
@@ -1294,7 +1294,7 @@
               <button type="button" class="mobile-menus-back" @click="mobileLocationTransportToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
-                <div class="second-tab-item w-100" v-for="(item, index) in places.transport" :key="index"
+                <div class="second-tab-item w-100" v-for="(item, index) in places.transport"
                   v-if="index < 2">
                   <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                   <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
@@ -1426,7 +1426,7 @@
         <client-only>
           <div class="swiper popular list-slide list-slide-opportunity list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(item, index) in weekWillas" :key="index">
+              <div class="swiper-slide" v-for="(item, index) in weekWillas">
 
                 <nuxt-link :to="item.url" class="Card Card-h">
                   <div class="Card-in">
@@ -1525,7 +1525,7 @@
             <div class="Gallery-list">
               <template v-for="(floor, index) in villa.floorplan.kat">
                 <button v-if="bolum.gorsel && bolum.gorsel.length" type="button" class="Gallery-list-item" :id="'Gallery_item' + index"
-                  @click="scrollGallery($event)" v-for="(bolum, index) in floor.bolum" :key="index">
+                  @click="scrollGallery($event)" v-for="(bolum, index) in floor.bolum">
                   <nuxt-img :src="bolum.gorsel[0].preview_url" class="w-100" alt="test"></nuxt-img>
                   <p>{{ bolum.name }} <br> <span>({{ floor.name }})</span></p>
                 </button>
@@ -1534,15 +1534,14 @@
             </div>
             <div class="Gallery-detail">
               <template v-for="(floor, index) in villa.floorplan.kat">
-                <div class="Gallery-detail-item" :class="'Gallery_item' + index" v-for="(bolum, index) in floor.bolum"
-                  :key="index">
+                <div class="Gallery-detail-item" :class="'Gallery_item' + index" v-for="(bolum, index) in floor.bolum">
                   <div class="Gallery-detail-item-left">
                     <h3>{{ bolum.name }}</h3>
                   </div>
                   <div class="Gallery-detail-item-right">
                     <template v-if="bolum.gorsel && bolum.gorsel.length">
                       <a class="Gallery-detail-item-right-img" :href="img.original_url" data-fancybox="gallery"
-                         data-caption="Salon" v-for="(img, index) in bolum.gorsel" :key="index">
+                         data-caption="Salon" v-for="(img, index) in bolum.gorsel">
                         <nuxt-img :src="img.preview_url" :srcset="img.responsive" sizes="sm:100vw md:50vw lg:756px" />
                       </a>
                     </template>
