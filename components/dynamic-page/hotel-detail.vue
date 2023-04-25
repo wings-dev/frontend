@@ -217,7 +217,7 @@
                         <div class="flex-fill d-flex flex-column justify-content-center fs-6 ps-3 ps-xl-4 pe-3 py-4 beforeborder">
                           <div class="option-all">
                             <span v-if="offerIndex === 0 && roomOptionIndex === 0">En Ucuzu</span>
-                            <b v-for="group in room.boardGroups">{{ group.name }}</b>
+                            <b v-for="group in roomOption.offer?.rooms?.[0]?.boardGroups">{{ group.name }}</b>
                           </div>
                           <div class="option-warning" v-if="roomOption.cancellationPolicies.length > 0">
                             <p class="free-cancellation">Ücretsiz İptal</p>
