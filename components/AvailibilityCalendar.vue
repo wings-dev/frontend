@@ -69,7 +69,9 @@ export default {
     const data = await this.$getRedisKey([`data:villas:${this.code}:calendar`, `data:villas:${this.code}:prices`])
     // villa redis datası
     this.calendar = data[`data:villas:${this.code}:calendar`] ? data[`data:villas:${this.code}:calendar`] : [];
-    this.price_list_1 = data[`data:villas:${this.code}:prices`] ? data[`data:villas:${this.code}:prices`][`price_list_` + process.env.PRICELIST_ID]['list'] : [];
+    this.price_list_1 = Array.isArray(data[`data:villas:${this.code}:prices`]?.[`price_list_${process.env.PRICELIST_ID}`]?.list)
+      ? data[`data:villas:${this.code}:prices`][`price_list_${process.env.PRICELIST_ID}`].list
+      : [];
     this.setAttributes()
     this.loading = false
   },

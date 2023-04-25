@@ -79,7 +79,9 @@ export default {
         const response = await this.$axios.post('/data/get-villas', { ids });
 
         this.villas = response.data.map(villa => {
-          const priceList = (villa && villa.price) ? villa.price[`price_list_${process.env.PRICELIST_ID}`] || [] : [];
+          const priceList = Array.isArray(villa?.price?.[`price_list_${process.env.PRICELIST_ID}`]?.list)
+            ? villa.price[`price_list_${process.env.PRICELIST_ID}`].list
+            : [];
           const prices = priceList.map(item => parseInt(item.price.replace("₺", "")));
           const min_price = prices.length ? Math.min(...prices) : null;
           const max_price = prices.length ? Math.max(...prices) : null;
