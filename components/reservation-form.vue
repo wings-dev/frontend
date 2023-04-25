@@ -211,9 +211,12 @@
       </div>
     </div>
 
-    <div class="Reservation-form-bottom">
+    <div class="Reservation-form-bottom" v-if="!closed">
       <div class="Reservation-form-bottom-left">
-        <b>{{ availabilityData.total_payment | numberFormat}}{{availabilityData.night_price_currency_symbol }}</b>
+
+        <b v-if="availabilityData.total_payment">{{ availabilityData.total_payment | numberFormat}}{{availabilityData.night_price_currency_symbol }}</b>
+        <b v-else>{{ lowestPrice | numberFormat}}{{availabilityData.night_price_currency_symbol }}</b>
+
         <span v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">GECE</span>
         <span v-else>{{ formattedCheckIn }} - {{ formattedCheckOut }}</span>
         <small v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">Başlayan fiyatlar</small>
@@ -266,7 +269,7 @@ import { mapMutations } from "vuex";
 
 export default {
   name: "ReservationForm",
-  props: ['villa', 'propertyCode', 'disableReservation'],
+  props: ['villa', 'propertyCode', 'disableReservation', 'closed', 'lowestPrice'],
   components: {
     HotelDatePicker,
   },
