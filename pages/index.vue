@@ -317,7 +317,7 @@
                         </div>
                     </nuxt-link>
                     <nuxt-link to="/kapali-havuzlu-balayi-villalari" class="cat-item no-hover area2 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/kapali-havuzlu.jpg" data-src="" width="380" height="235" alt="category image"
+                        <nuxt-img src="/img/category/kapali-havuzlu.jpg" data-src="" width="380" height="487" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
@@ -384,7 +384,7 @@
                         </div>
                     </nuxt-link>
                     <nuxt-link to="/muhafazakar-balayi-villalari" class="cat-item no-hover area6 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/muhafazakar.jpg" data-src="" width="380" height="235" alt="category image"
+                        <nuxt-img src="/img/category/muhafazakar2.jpg" data-src="" width="380" height="487" alt="category image"
                                   class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
@@ -441,9 +441,6 @@
                                     <div class="Abroad-villas-item-content-right">
                                         <div class="Abroad-villas-item-content-flag">
                                             <country-flag :country='item.countryFlag' :rounded="true"/>
-                                            <!-- <country-flag country='tr' />
-                                            <country-flag country='us' />
-                                            <country-flag country='ca' /> -->
                                         </div>
 
                                         <div class="Abroad-villas-item-content-smile" v-if="item.emojiStatus !== 'emojistatus_2'">
@@ -714,9 +711,6 @@ export default {
                 },
             },
         })
-
-        console.log(this.pageData)
-
     },
     methods: {
         isFavorite(code) {

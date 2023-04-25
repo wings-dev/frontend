@@ -288,9 +288,8 @@ body.overflow-hidden {
 .highlights-section {
   margin-top: -92px;
   padding-top: 189px;
-  
 }
-.highlight-section{
+.highlight-section {
   background-color: var(--bs-theme-grey);
 }
 
@@ -473,8 +472,6 @@ body.overflow-hidden {
   &-firsat {
   }
 }
-
-
 
 .categories {
   display: grid;
@@ -857,11 +854,10 @@ body.overflow-hidden {
     left: unset;
     right: 16px;
   }
-  .blog-section .blog{
+  .blog-section .blog {
     // grid-template-rows: 142px 142px;
   }
 }
-
 
 @media only screen and (max-width: 991px) {
   .categories {
@@ -891,7 +887,7 @@ body.overflow-hidden {
       display: flex;
       flex-direction: column;
 
-      .blog-list-item.area1{
+      .blog-list-item.area1 {
         width: 100%;
       }
     }
@@ -1220,7 +1216,6 @@ body.overflow-hidden {
     }
     .Banner {
       &-home {
-    
         &-text {
           &-spin {
             height: auto;
@@ -2037,7 +2032,7 @@ body.overflow-hidden {
     .View-availibility-legand {
       justify-content: flex-start;
     }
-    .Login-calendar-in{
+    .Login-calendar-in {
       overflow-y: scroll;
     }
   }
@@ -2479,7 +2474,7 @@ body.overflow-hidden {
   .page-description .desc-image {
     height: 200px !important;
   }
-  .item-image{
+  .item-image {
     height: 100%;
   }
 }
@@ -2659,52 +2654,52 @@ body.overflow-hidden {
   }
 }
 
-.Holiday-banner{
+.Holiday-banner {
   padding: 30px;
   background-size: cover;
   background-position: right center;
   background-repeat: no-repeat;
   border-radius: 10px;
   margin-bottom: 16px;
-  &-img{
+  &-img {
     display: none;
   }
-  &-text{
-    p{
+  &-text {
+    p {
       font-size: 16px;
       line-height: 1;
       color: var(--bs-theme-first);
     }
-    h4{
+    h4 {
       margin-top: 12px;
       font-size: 27px;
       color: var(--bs-theme-second);
       font-weight: bold;
-      span{
+      span {
         color: var(--bs-theme-first);
       }
     }
   }
 
-  @media (max-width:600px) {
-    background-image: none!important;
+  @media (max-width: 600px) {
+    background-image: none !important;
     position: relative;
     padding: 0;
-    &-img{
+    &-img {
       display: block;
-      img{
+      img {
         width: 100%;
         border-radius: 10px;
       }
     }
-    &-text{
+    &-text {
       position: absolute;
       left: 10px;
       bottom: 10px;
-      p{
+      p {
         font-size: 14px;
       }
-      h4{
+      h4 {
         font-size: 19px;
         margin-top: 6px;
       }
@@ -4664,6 +4659,12 @@ body.overflow-hidden {
       }
     }
   }
+  &-abroad {
+    .list-navigation-next,
+    .list-navigation-prev {
+      top: 40%;
+    }
+  }
 }
 .Gallery {
   display: none;
@@ -5105,11 +5106,11 @@ body.overflow-hidden {
     }
   }
 
-  @media (max-width:991px) {
-    .Login-left{
+  @media (max-width: 991px) {
+    .Login-left {
       display: none;
     }
-    .Login-right{
+    .Login-right {
       height: 100%;
     }
   }
@@ -8233,18 +8234,11 @@ body.overflow-hidden {
         margin-bottom: -45px;
       }
       &-flag {
-        // width: 56px;
-        // height: 56px;
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
-        // border-radius: 50%;
-        // overflow: hidden;
-        // background-color: #fff;
-        // padding: 2px;
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
+        right: 25px;
+        position: absolute;
+        top: 0;
         span.flag {
           transform: scale(0.96);
         }
@@ -8256,6 +8250,7 @@ body.overflow-hidden {
         background-color: #fff;
         display: flex;
         align-items: center;
+        margin-top: 40px;
         img {
           width: 24px;
           height: 24px;
@@ -9055,28 +9050,28 @@ body.overflow-hidden {
   }
 }
 
-@media (max-width:768px) {
- .otel-reviews{
-  &-item {
-    flex-direction: column;
-    &-left{
-      width: 100%;
-      display: flex;
-      border-bottom: 2px solid var(--bs-theme-grey);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      &-top{
-        padding-bottom: 0;
-        margin-right: 20px;
-        margin-bottom: 0;
-        border-bottom: none;
+@media (max-width: 768px) {
+  .otel-reviews {
+    &-item {
+      flex-direction: column;
+      &-left {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid var(--bs-theme-grey);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        &-top {
+          padding-bottom: 0;
+          margin-right: 20px;
+          margin-bottom: 0;
+          border-bottom: none;
+        }
+      }
+      &-right {
+        width: 100%;
       }
     }
-    &-right{
-      width: 100%;
-    }
   }
- } 
 }
 
 .Success {
@@ -9350,16 +9345,16 @@ body.overflow-hidden {
   }
 }
 
-.pagination{
-  &-left{
+.pagination {
+  &-left {
     background-color: var(--bs-theme-grey);
     border: 1px solid var(--bs-theme-grey);
   }
-  &-right{
+  &-right {
     background-color: var(--bs-theme-grey);
     border: 1px solid var(--bs-theme-grey);
   }
-  .page-link{
+  .page-link {
     background-color: var(--bs-theme-grey);
     border: 1px solid var(--bs-theme-grey);
   }
@@ -9367,29 +9362,27 @@ body.overflow-hidden {
 
 @import "common/footer";
 
-.Whatsapp{
-  display: none;
-}
-@media (max-width:991px) {
-  .Whatsapp{
-    display: block;
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 99;
+.Whatsapp {
+  display: block;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 99;
 
-    a{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    &-villa{
-      bottom: 120px;
-    }
-    &-z{
-      z-index: 1;
-    }
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
+
+  &-villa {
+    bottom: 120px;
+  }
+  &-z {
+    z-index: 1;
+  }
+}
+@media (max-width: 991px) {
+  
 }
