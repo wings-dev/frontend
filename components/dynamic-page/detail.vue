@@ -947,7 +947,7 @@
                   </div>
                 </div>
                 <div class="View-info-bg">
-                  <div class="View-info-rules">
+                  <div class="View-info-rules" v-if="villa.amenites.amenite_301">
                     <h5>Tesis Kuralları</h5>
                     <div class="View-info-rules-item">
                       <i class="icon-no-dog"></i>
@@ -1475,7 +1475,7 @@
                       </div>
                       <div class="Card-content-bottom opportunity">
                         <div class="Card-content-bottom-price">
-                          <p><b>{{ item.prices.min_price.price | numberFormat }} -
+                          <p><b>{{ item.prices.min_price.price | numberFormat }}{{ item.prices.max_price.price_currency }} -
                               {{ item.prices.max_price.price | numberFormat }}{{ item.prices.max_price.price_currency }}
                             </b><span>/Gecelik</span></p>
                           <p>Fiyat Aralığında</p>
@@ -2231,6 +2231,7 @@ export default {
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
 
+      console.log(this.villa.amenites.amenite_301)
 
     });
 

@@ -147,15 +147,15 @@
         <div class="Login-calendar-head">
           <h3 class=""><span>{{ prefix + villa.code }}</span> Müsaitlik Takvimi</h3>
           <div class="View-availibility-legand mt-2">
-            <div class="View-availibility-legand-item">
-              <span class="close-day"></span>
-              <p>Dolu</p>
-            </div>
-            <div class="View-availibility-legand-item">
-              <span></span>
-              <p>Onay Bekleniyor</p>
-            </div>
-          </div>
+                <div class="View-availibility-legand-item">
+                  <span class="close-day"><i class="icon-time-1"></i></span>
+                  <p>Onay Bekleniyor</p>
+                </div>
+                <div class="View-availibility-legand-item">
+                  <span>/</span>
+                  <p>Dolu</p>
+                </div>
+              </div>
         </div>
         <client-only>
           <availibility-calendar :code="code" :calendarColumns="3" :calendarRows="2"

@@ -165,7 +165,7 @@
                       </div>
                     </div>
                   </div>
-                  <nuxt-link :to="`/otel`" class="popular-section-otel-more">Tüm {{otelCategory.otel_category}} Otelleri</nuxt-link>
+                  <nuxt-link :to="'/'+otelCategory.otel_category_all_link" class="popular-section-otel-more">Tüm {{otelCategory.otel_category}}</nuxt-link>
                 </div>
               </div>
             </div>

@@ -185,7 +185,7 @@
             </div>
         </section>
 
-        <section class="highlight-section bg-theme-light-2  pb-4 ">
+        <section class="highlight-section   pb-4 ">
             <div class="container">
                 <div class="row pt-4 pb-md-2">
                     <div class="note-box col-12 col-lg-12 pe-lg-5">

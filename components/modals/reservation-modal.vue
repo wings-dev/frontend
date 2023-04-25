@@ -26,7 +26,7 @@
             </div>
             <div class="Login-card-content">
               <p class="Login-card-content-total">
-                Toplam Ödeme <span>{{ reservationModalData.availabilityData.total_price | numberFormat }}{{ reservationModalData.availabilityData.night_price_currency_symbol }}</span>
+                Toplam Ödeme <span>{{ reservationModalData.availabilityData.total_payment | numberFormat }}{{ reservationModalData.availabilityData.night_price_currency_symbol }}</span>
               </p>
               <div class="Login-card-content-bottom">
                 <div class="Login-card-content-bottom-item">
