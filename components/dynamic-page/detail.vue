@@ -1676,9 +1676,11 @@ export default {
       window.location.href = this.villa.code + '?' + queryString;
     },
     setAttributes() {
-      const dates = new Set();
-      const attributes = [];
-      const { calendar, price_list_1 } = this;
+      let dates = new Set();
+      let attributes = [];
+      let { calendar, price_list_1 } = this;
+
+      calendar = calendar.filter(date => !date.status.includes(3));
 
       if (!calendar || !price_list_1) {
         console.warn("Invalid data: 'calendar' or 'price_list_1' is not defined.");
@@ -1693,18 +1695,24 @@ export default {
 
         const prevDayString = getAdjacentDay(-1);
         const nextDayString = getAdjacentDay(1);
-        const findByDate = (attr, dateString) => attr.find(attribute => new Date(attribute.dates).getTime() === new Date(dateString).getTime());
+        const findByDate = (attr, dateString) => attr.find(attribute => attribute.dates.getTime() === new Date(dateString).getTime());
 
         const prevDayData = findByDate(attributes, prevDayString)?.customData;
         const nextDayData = findByDate(attributes, nextDayString)?.customData;
 
+        // bu gün hem giriş hem çıkışsa
         if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(2) && prevDayData?.status.includes(2)) {
+          // bir önceki günün tipine bak
+          //Kapalı-to-kapalı
           return { "kapali": true }
         }
         if (dateStatus.includes(0) && dateStatus.includes(2) && status.length == 1 && status.includes(1) && prevDayData?.status.includes(1)) {
+          // bir önceki günün tipine bak
+          //opsiyon-to-opsiyon
           return { "opsiyon": true }
         }
         if (dateStatus.includes(0) && dateStatus.includes(2)) {
+          // bir önceki günün tipine bak
           return prevDayData?.status.includes(2)
             ? { "kapali-cikis-to-opsiyon-giris": true }
             : { "opsiyon-cikis-to-kapali-giris": true };
@@ -1725,6 +1733,9 @@ export default {
           dates.add(item.dates[0]);
         }
       });
+
+      dates = [...dates]
+      dates.sort((a, b) => new Date(a) - new Date(b));
 
       dates.forEach(date => {
         const customData = {
@@ -1773,7 +1784,15 @@ export default {
 
       });
 
-      this.attributes = attributes;
+
+      attributes = attributes.map(attribute => {
+        attribute.customData.status = [...new Set(attribute.customData.status)]
+        attribute.customData.dateStatus = [...new Set(attribute.customData.dateStatus)]
+
+        return attribute
+      })
+
+      this.calendarAttributes = attributes;
     },
     isFavorite(code) {
       return this.$store.state.favorite.favorites.includes(code)

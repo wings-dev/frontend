@@ -17,8 +17,7 @@
             <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
             <div class="flex-grow overflow-y-auto overflow-x-auto">
               <p class="calendar-price" style="" :class="attr.customData.class">
-                {{ !attr.customData.status.includes(2) || (attr.customData.dateStatus.length === 1 &&
-                  attr.customData.dateStatus.includes(2)) ? attr.customData.price : '' }}
+                {{ !attr.customData.status.includes(2) || (attr.customData.dateStatus.includes(2) && !attr.customData.dateStatus.includes(0) && !attr.customData.dateStatus.includes(1)) ? attr.customData.price : '' }}
               </p>
             </div>
           </div>
@@ -77,9 +76,11 @@ export default {
   },
   methods: {
     setAttributes() {
-      const dates = new Set();
-      const attributes = [];
-      const { calendar, price_list_1 } = this;
+      let dates = new Set();
+      let attributes = [];
+      let { calendar, price_list_1 } = this;
+
+      calendar = calendar.filter(date => !date.status.includes(3));
 
       if (!calendar || !price_list_1) {
         console.warn("Invalid data: 'calendar' or 'price_list_1' is not defined.");
@@ -94,7 +95,7 @@ export default {
 
         const prevDayString = getAdjacentDay(-1);
         const nextDayString = getAdjacentDay(1);
-        const findByDate = (attr, dateString) => attr.find(attribute => new Date(attribute.dates).getTime() === new Date(dateString).getTime());
+        const findByDate = (attr, dateString) => attr.find(attribute => attribute.dates.getTime() === new Date(dateString).getTime());
 
         const prevDayData = findByDate(attributes, prevDayString)?.customData;
         const nextDayData = findByDate(attributes, nextDayString)?.customData;
@@ -132,6 +133,9 @@ export default {
           dates.add(item.dates[0]);
         }
       });
+
+      dates = [...dates]
+      dates.sort((a, b) => new Date(a) - new Date(b));
 
       dates.forEach(date => {
         const customData = {
@@ -179,6 +183,14 @@ export default {
         }
 
       });
+
+
+      attributes = attributes.map(attribute => {
+        attribute.customData.status = [...new Set(attribute.customData.status)]
+        attribute.customData.dateStatus = [...new Set(attribute.customData.dateStatus)]
+
+        return attribute
+      })
 
       this.calendarAttributes = attributes;
     }
