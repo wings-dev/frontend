@@ -306,7 +306,7 @@
                   </div>
                 </div>
               </div>
-              <button class="otel-reviews-more" type="button" v-if="this.comments?.data?.comments.length">Tüm yorumları göster</button>
+              <button class="otel-reviews-more d-none" type="button" v-if="this.comments?.data?.comments.length">Tüm yorumları göster</button>
             </div>
           </div>
         </div>
