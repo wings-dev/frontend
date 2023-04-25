@@ -3,9 +3,9 @@ import moment from 'moment';
 import 'moment/locale/tr'; // Türkçe dil dosyasını içeri aktarıyoruz
 import 'moment/locale/en-gb'; // İngilizce (Birleşik Krallık) dil dosyasını içeri aktarıyoruz
 
-Vue.filter('formatDate', function(value, format) {
+Vue.filter('formatDate', function(value, inputFormat, outputFormat) {
   if (value) {
-    return moment(String(value)).format(format);
+    return moment(value, inputFormat).locale('tr').format(outputFormat);
   }
 });
 
