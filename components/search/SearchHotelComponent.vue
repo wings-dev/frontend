@@ -70,7 +70,7 @@
       <nuxt-img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
         class="contain flex-shrink-0 my-1 desktop"></nuxt-img><span class="mobile">Otel Ara</span>
     </button>
-    <div class="Search-mobile" :class=" { 'show': mobileCalendar } ">
+    <div class="Search-mobile" :class=" { 'show': mobileCalendar } " ref="datePickerContainerMobile">
       <div class="Search-mobile-head">
         <h4>Tarih Seçiniz</h4>
         <button type="button" @click=" closeCalendar "><i class="icon-login-close"></i></button>
@@ -398,8 +398,15 @@ export default {
         weekday: 'long',
       }).toUpperCase();
 
-      const datepickerInputParent = this.$refs.datePickerContainer;
-      const datepickerInput = datepickerInputParent.querySelector(
+      let datepickerInputParent = this.$refs.datePickerContainer;
+      let datepickerInput = datepickerInputParent.querySelector(
+        `[data-qa="datepickerInput"][tabindex="${tabIndex}"]`
+      );
+
+      datepickerInput.innerHTML = `<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`;
+
+      datepickerInputParent = this.$refs.datePickerContainerMobile;
+      datepickerInput = datepickerInputParent.querySelector(
         `[data-qa="datepickerInput"][tabindex="${tabIndex}"]`
       );
 

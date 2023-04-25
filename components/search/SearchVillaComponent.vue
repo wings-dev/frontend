@@ -311,7 +311,7 @@
         <button type="button" @click="closePeoples">Uygula</button>
       </div>
     </div>
-    <div class="Search-mobile" :class="{ 'show': mobileCalendar }">
+    <div class="Search-mobile" :class="{ 'show': mobileCalendar }" ref="datePickerContainerMobile">
       <div class="Search-mobile-head">
         <h4>Tarih Seçiniz</h4>
         <button type="button" @click="closeCalendar"><i class="icon-login-close"></i></button>
@@ -623,8 +623,15 @@ export default {
         weekday: 'long',
       }).toUpperCase();
 
-      const datepickerInputParent = this.$refs.datePickerContainer;
-      const datepickerInput = datepickerInputParent.querySelector(
+      let datepickerInputParent = this.$refs.datePickerContainer;
+      let datepickerInput = datepickerInputParent.querySelector(
+        `[data-qa="datepickerInput"][tabindex="${tabIndex}"]`
+      );
+
+      datepickerInput.innerHTML = `<div class="formatted-date">${formattedDate}<span class="formatted-date-sm">${formattedDay}</span></div>`;
+
+      datepickerInputParent = this.$refs.datePickerContainerMobile;
+      datepickerInput = datepickerInputParent.querySelector(
         `[data-qa="datepickerInput"][tabindex="${tabIndex}"]`
       );
 

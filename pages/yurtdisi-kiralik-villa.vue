@@ -150,7 +150,7 @@
                                     <div class="Abroad-villas-item-content-right">
                                         <div class="Abroad-villas-item-content-flag">
                                             <country-flag :country='item.countryFlag' :rounded="true"/>
-                                            
+
                                         </div>
 
                                         <div class="Abroad-villas-item-content-smile"
@@ -222,8 +222,6 @@ export default {
                 { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
             ],
         }
-    },
-    components: {
     },
     data() {
         return {

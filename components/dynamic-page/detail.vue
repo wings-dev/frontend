@@ -1081,7 +1081,7 @@
                   <div class="Amenites-item">
                     <!-- <span class="Amenites-item-title">Bahçe Alanı</span> -->
                     <div class="Amenites-item-in">
-                      <p v-for="(item, index) in amenites" :key="index">{{ item }}</p>
+                      <p v-for="(item, index) in amenites" :key="index">{{ item.name }}</p>
                     </div>
                   </div>
                   <!-- <div class="Amenites-item">

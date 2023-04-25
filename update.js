@@ -41,6 +41,10 @@ function downloadAndUnzip(urlObj) {
 
             console.log(`İşlem tamamlandı: ${url}`);
             resolve();
+          })
+          .on("error", (err) => {
+            console.error(`Çıkarma işlemi sırasında hata oluştu: ${url}`, err);
+            reject(err);
           });
       });
     }).on("error", (err) => {
@@ -56,6 +60,12 @@ function downloadAndUnzip(urlObj) {
       await downloadAndUnzip(urlObj);
     } catch (error) {
       console.error(`İşlem sırasında hata oluştu: ${urlObj.url}`, error);
+      try {
+        fs.unlinkSync(path.basename(urlObj.url));
+        console.log(`Hatalı dosya silindi: ${urlObj.url}`);
+      } catch (unlinkError) {
+        console.error(`Dosya silinirken hata oluştu: ${urlObj.url}`, unlinkError);
+      }
     }
   }
   console.log("Tüm işlemler tamamlandı.");
