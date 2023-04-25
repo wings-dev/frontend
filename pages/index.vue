@@ -179,7 +179,7 @@
                         </div>
                         <div class="H_info-item-icon-text">
                             <p>Wings Seyehat Tur. San.ve Tic.Ltd.Şti. 11095’nolu <span>Türsab Acentesidir.</span></p>
-                            <a href="">Belge Görüntüle</a>
+                            <a href="https://d1t2mawg5vwzes.cloudfront.net/page/18197/381761/tursab-belge.jpeg" data-fancybox="Türsab Belgesi">Belge Görüntüle</a>
                         </div>
                     </div>
                     <div class="H_info-item">
@@ -199,7 +199,7 @@
                             <p>balayivillasi.com.tr’yi<b> Keşfet</b></p>
                             <div class="H_info-item-links">
                                 <nuxt-link to="/hakkimizda">Hakkımızda</nuxt-link>
-                                <a href=""><i class="icon-icon-play-sm"></i>Video İzle</a>
+                                <a href="https://www.youtube.com/watch?v=n62oS7mSx1A" data-fancybox="Tanıtım Videosu"><i class="icon-icon-play-sm"></i>Video İzle</a>
                             </div>
                         </div>
                     </div>
