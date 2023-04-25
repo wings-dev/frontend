@@ -522,7 +522,7 @@ export default {
         const updatedPopularVillas = popularVillas.map(villa => {
           if (villa && villa.code) {
             const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
-            const priceList = Array.isArray(priceInfo[`price_list_${process.env.PRICELIST_ID}`]) ? priceInfo[`price_list_${process.env.PRICELIST_ID}`] : [];
+            const priceList = Array.isArray(priceInfo[`price_list_${process.env.PRICELIST_ID}`]?.list) ? priceInfo[`price_list_${process.env.PRICELIST_ID}`].list : [];
 
             const prices = priceList.map(item => item && item.price ? parseInt(item.price.replace("₺", "")) : null).filter(Boolean);
             const min_price = prices.length > 0 ? Math.min(...prices) : null;

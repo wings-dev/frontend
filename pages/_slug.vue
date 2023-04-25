@@ -68,7 +68,9 @@ export default {
         // villa redis datası
         componentData = data[`data:villas:${redisData.code}:detail`];
         calendar = data[`data:villas:${redisData.code}:calendar`] ? data[`data:villas:${redisData.code}:calendar`] : [];
-        price_list_1 = data[`data:villas:${redisData.code}:prices`] ? data[`data:villas:${redisData.code}:prices`][`price_list_` + process.env.PRICELIST_ID]['list'] : [];
+        price_list_1 = price_list_1 = Array.isArray(data[`data:villas:${redisData.code}:prices`]?.[`price_list_${process.env.PRICELIST_ID}`]?.list)
+          ? data[`data:villas:${redisData.code}:prices`][`price_list_${process.env.PRICELIST_ID}`].list
+          : [];
       }
       // type 7 => filtre sayfası
       if (redisData.type === 5 || redisData.type === 8) {
