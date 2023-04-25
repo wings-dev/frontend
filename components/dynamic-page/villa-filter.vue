@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
-            <h1 class="highlight-section-title">{{ pageContent.title }}</h1>
+            <h1 class="highlight-section-title">{{ pageContent.name }}</h1>
             <p class="highlight-section-desc" :class="{ active: isExpanded }"
               v-html="pageContent.page_content.summary.data">
             </p>
@@ -29,7 +29,7 @@
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
-            <h1 class="highlight-section-title">{{ pageContent.title }}</h1>
+            <h1 class="highlight-section-title">{{ pageContent.name }}</h1>
             <p class="highlight-section-desc" :class="{ active: isExpanded2 }"
               v-html="pageContent.page_content.article.data">
             </p>
@@ -101,26 +101,7 @@ export default {
       disableDates: ['2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-24', '2023-02-26', '2023-02-27', '2023-02-28'],
       isExpanded: false,
       isExpanded2: false,
-      content: `Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.
-                  Muğla’nın tatil cenneti Fethiye, her yıl yüz binlerce kişinin tercih ettiği, harika doğası ve
-                  masmavi denizi ile ünlü bir adres. Fethiye’nin tadını gerçekten çıkarmak isteyenler içinse, en
-                  mantıklı seçenek villa kiralama. Günlük ya da haftalık villa tatili yapmak isteyenlere jakuzili,
-                  kapalı havuzlu ya da bahçeli kiralık villa alternatifleri sunulan
-                  Fethiye’de, kalabalıktan uzakta, sakin ve keyifli bir tatil mümkün.`,
+      
       day: null,
       month: null
     }
@@ -173,7 +154,7 @@ export default {
     setTimeout(() => {
       document.querySelector('.Header').classList.add('Header-no-fixed')
     }, 50)
-
+console.log(this.pageContent)
   },
   beforeDestroy() {
     document.querySelector('.Header').classList.remove('Header-no-fixed')
