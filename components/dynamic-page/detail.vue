@@ -298,7 +298,7 @@
               <div class="View-desc-amenites">
                 <h4 class="View-title"><b>Tesis</b> Olanakları</h4>
                 <div class="View-desc-amenites-in">
-                  <p v-for="(item, index) in amenites" :key="index" v-if="index <= 5">{{ item }}</p>
+                  <p v-for="(item, index) in amenites" :key="index" v-if="index <= 5">{{ item.name }}</p>
                 </div>
                 <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar ({{ amenites.length
                 }})</b-button>
@@ -361,7 +361,7 @@
 
               <div class="swiper swiper-months swiper-overflow mt-4">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" v-for="price in monthlyPrices" :key="price.month">
+                  <div class="swiper-slide" v-for="price in monthlyPrices">
                     <div class="View-months-item">
                       <div class="View-months-item-title">
                         <h5>{{ price.month }}</h5>
@@ -1571,7 +1571,7 @@
 
 
 <script>
-import { Swiper, Navigation, Pagination } from 'swiper'
+import {Navigation, Pagination, Swiper} from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
@@ -1579,7 +1579,7 @@ import CloseVillaModal from '../modals/close-villa-modal.vue';
 import AmenitesModal from '../modals/amenites-modal.vue';
 import LocationMapModal from '../modals/map-modal.vue';
 import opportunityBoxComponent from "@/components/OpportunityBoxComponent.vue";
-import { shareOnFacebook, shareOnInstagram, shareOnTwitter, shareOnWhatsApp } from '@/assets/share';
+import {shareOnFacebook, shareOnTwitter, shareOnWhatsApp} from '@/assets/share';
 
 export default {
   name: 'DynamicDetailPage',
@@ -1631,6 +1631,7 @@ export default {
   },
   methods: {
     filterObjectsByPrefix(obj, prefix) {
+      if (!obj || !prefix) return {};
       return Object.keys(obj)
         .filter(key => key.startsWith(prefix))
         .reduce((result, key) => {
@@ -1639,6 +1640,7 @@ export default {
         }, {});
     },
     goFacilityConceptsFilter(id) {
+      if (!id) return;
       this.$router.push({
         path: '/kiralik-villa-ara',
         query: {
@@ -1647,15 +1649,20 @@ export default {
       });
     },
     shareOnFacebook() {
+      if (!window || !window.location || !window.location.href) return;
       shareOnFacebook(window.location.href);
     },
     shareOnTwitter() {
+      if (!window || !window.location || !window.location.href) return;
       shareOnTwitter(window.location.href);
     },
     shareOnWhatsApp() {
+      if (!window || !window.location || !window.location.href) return;
       shareOnWhatsApp(window.location.href);
     },
     opportunitySelected(opportunity) {
+      if (!opportunity || !opportunity.price || !opportunity.price.start_date || !opportunity.price.end_date || !this.villa || !this.villa.code) return;
+
       function encodeTimestamp(dateString) {
         return (new Date(dateString)).getTime();
       }
@@ -1858,11 +1865,12 @@ export default {
       this.$bvModal.show('locationMapModal')
     },
     getAmeniteCount(ameniteId) {
+      if (!this.villa || !this.villa.amenites) return 0;
+
       const amenite = this.villa.amenites[`amenite_${ameniteId}`];
       if (amenite && amenite.list && amenite.list.length > 0) {
-        const countString = amenite.list[0].split(" ")[0];
-        const count = parseInt(countString, 10);
-        return count;
+        const countString = amenite.list[0].name.split(" ")[0];
+        return parseInt(countString, 10);
       }
       return 0;
     },
@@ -2231,7 +2239,6 @@ export default {
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
 
-      console.log(this.villa.amenites.amenite_301)
 
     });
 
@@ -2263,7 +2270,6 @@ export default {
   },
   beforeDestroy() {
     document.querySelector(".Whatsapp").classList.remove('Whatsapp-villa')
-    console.log('beforeDestroy');
   },
 
 }
