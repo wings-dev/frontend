@@ -204,6 +204,7 @@
       border-radius: 20px;
       img {
         transition: all 400ms;
+        object-fit: cover;
         width: 100%;
       }
       .hover-box {

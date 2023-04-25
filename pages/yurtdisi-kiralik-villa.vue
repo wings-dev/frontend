@@ -5,7 +5,7 @@
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <nuxt-img :src="pageData.page_content.default.page_list_img" class="w-100 mobile" alt="" />
-                <!-- <nuxt-img src="/img/banner-b-m.jpg" alt=""></nuxt-img> -->
+            <!-- <nuxt-img src="/img/banner-b-m.jpg" alt=""></nuxt-img> -->
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -62,8 +62,9 @@
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>{{ item.destination | titlecase }} <span>{{ item.country | titlecase }} / {{
-                                                    item.state | titlecase }}</span></p>
+                                                <p>{{ item.destination | titlecase }} <span>{{ item.country | titlecase }} /
+                                                        {{
+                                                            item.state | titlecase }}</span></p>
                                             </div>
                                             <!-- Ülke Bayraklı -->
                                             <!-- <div class="Card-content-head-location">
@@ -130,38 +131,39 @@
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-abroad-villa"></i>
                     <h4 class=""><b>Ülkeler</b></h4>
+                    <nuxt-link to="/yurtdisi-kiralik-villa" class="button-more">Tümünü Gör</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
-                            <nuxt-link to="/" class="Abroad-villas-item">
+                        <div class="swiper-slide" v-for="(item, index) in pageData.page_content.property_category"
+                            :key="index">
+                            <nuxt-link :to="item.category_url" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <nuxt-img src="/img/country/italy.jpg" alt="" />
+                                    <nuxt-img :src="item.category_img" alt="" v-if="item.category_img"></nuxt-img>
+                                    <nuxt-img src="/img/country/italy.jpg" alt="" v-else></nuxt-img>
                                 </div>
                                 <div class="Abroad-villas-item-content">
                                     <div class="Abroad-villas-item-content-left">
-                                        <b>İtalya</b>
-                                        <p>423 seçenek içeriyor</p>
+                                        <b>{{ item.cateogory_name }}</b>
+                                        <p>{{ item.property_count }} seçenek içeriyor</p>
                                     </div>
                                     <div class="Abroad-villas-item-content-right">
                                         <div class="Abroad-villas-item-content-flag">
-                                            <nuxt-img src="/img/flag/flag-italy.svg" alt="" />
+                                            <country-flag :country='item.countryFlag' :rounded="true"/>
+                                            
                                         </div>
-                                        <div class="Abroad-villas-item-content-smile">
-                                            <nuxt-img src="/img/laughing-smile.svg" alt="" />
-                                            <span>VİZE YOK!</span>
+
+                                        <div class="Abroad-villas-item-content-smile"
+                                            v-if="item.emojiStatus !== 'emojistatus_2'">
+                                            <nuxt-img src="/img/laughing-smile.svg" alt=""
+                                                v-if="item.emojiStatus == 'emojistatus_1'"></nuxt-img>
+                                            <span>{{ item.vizeStatus }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </nuxt-link>
                         </div>
                     </div>
-
-
-                    <!-- If pagination is needed -->
-
-                    <!-- If navigation buttons are needed -->
-                    <!-- <div class="swiper-pagination"></div> -->
                     <div class="swiper-button-prev list-navigation-prev"></div>
                     <div class="swiper-button-next list-navigation-next"></div>
                 </div>
@@ -200,13 +202,16 @@
 </template>
 
 <script>
+
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
+import CountryFlag from 'vue-country-flag'
+
 export default {
     name: 'AbroadIndexPage',
     layout: 'no-search',
     components: {
-        Swiper
+        Swiper, CountryFlag
     },
     head() {
         let site_id = process.env.SITE
