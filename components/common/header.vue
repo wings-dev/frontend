@@ -53,7 +53,7 @@
                                 <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}</NuxtLink>
                             </div>
 
-                            <div class="Header-menu-item otel" v-else :id="index">
+                            <div class="Header-menu-item otel" v-else :id="index" @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)" :class="{'hover' : hoveredLink === index}">
                                 <!--  -->
                                 <button type="button" class="Header-menu-item-link menu-children menu-item"
                                     :data-dropdown="'dropdown' + index" :id="index">
@@ -61,7 +61,7 @@
                                     <i class="icon-right-arrow mobile"></i>
                                 </button>
 
-                                <div class="Header-menu-item-in menu-item-dropdown" :id="'dropdown' + index">
+                                <div class="Header-menu-item-in menu-item-dropdown" :id="'dropdown' + index" >
                                     <button type="button" class="mobile-back-button">
                                         <i class="icon-left-arrow" @click="closeSubMenu($event)"></i>
                                         Geri dön
@@ -88,7 +88,8 @@
                                                         </div>
                                                     </template>
                                                     <template v-else>
-                                                        <nuxt-link :to="'/'+subitem.href"><b>{{ subitem.text }}</b></nuxt-link>
+                                                        <nuxt-link :to="'/' + subitem.href"><b>{{ subitem.text
+                                                        }}</b></nuxt-link>
                                                     </template>
 
 
@@ -235,6 +236,7 @@ export default {
             topMenu: [],
             mainMenu: [],
             openIndexes: [],
+            hoveredLink: null,
             labels: {
                 days: 'Gün',
                 hours: 'Saat',
@@ -310,6 +312,7 @@ export default {
 
         onRouteChange(to, from) {
             this.mobileMenuActive = false;
+            this.hoveredLink = null;
         },
         toggleMenuItem(index) {
             const itemIndex = this.openIndexes.indexOf(index);
@@ -318,7 +321,13 @@ export default {
             } else {
                 this.openIndexes.push(index);
             }
-        }
+        },
+        handleMouseEnter(linkId) {
+            this.hoveredLink = linkId;
+        },
+        handleMouseLeave() {
+            this.hoveredLink = null;
+        },
 
     },
     mounted() {

@@ -49,7 +49,7 @@
                         <ul class="w-100 pagination d-flex flex-wrap justify-content-center align-items-center">
                             <li class="page-item me-2 me-sm-3 mb-1">
                                 <a href="#!"
-                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
+                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary pagination-left">
                                     <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -70,15 +70,15 @@
                             </li>
                             <li class="page-item me-2 me-sm-3 mb-1">
                                 <a href="#!"
-                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">1</a>
+                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">1</a>
                             </li>
                             <li class="page-item me-2 me-sm-3 mb-1" aria-current="page">
                                 <a href="#!"
-                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary active">2</a>
+                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary active">2</a>
                             </li>
                             <li class="page-item me-2 me-sm-3 mb-1">
                                 <a href="#!"
-                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">3</a>
+                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">3</a>
                             </li>
                             <li class="page-item me-2 me-sm-3 mb-1">
                                 <svg width="23px" height="5px" viewBox="0 0 23 5" version="1.1"
@@ -99,19 +99,19 @@
                             </li>
                             <li class="page-item me-2 me-sm-3 mb-1">
                                 <a href="#!"
-                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">14</a>
+                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">14</a>
                             </li>
                             <li class="page-item me-2 me-sm-3 mb-1" aria-current="page">
                                 <a href="#!"
-                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">15</a>
+                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">15</a>
                             </li>
                             <li class="page-item me-2 me-sm-3 mb-1">
                                 <a href="#!"
-                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary">16</a>
+                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">16</a>
                             </li>
                             <li class="page-item me-2 me-sm-3 mb-1">
                                 <a href="#!"
-                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center border border-theme-light-2 text-secondary bg-theme-light-2">
+                                    class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary pagination-right">
                                     <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -137,7 +137,7 @@
             </div>
         </section>
 
-        <section class="highlight-section bg-theme-light-2  pb-4 ">
+        <section class="highlight-section   pb-4 ">
             <div class="container">
                 <div class="row pt-4 pb-md-2">
                     <div class="note-box col-12 col-lg-12 pe-lg-5">

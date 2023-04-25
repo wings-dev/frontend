@@ -2,22 +2,23 @@
   <div class="Login-calendar-in">
     <template v-if="loading">
       <div class="No-villas" v-if="loading">
-              <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" alt=""></nuxt-img>
-              <h2>Takvim Yükleniyor...</h2>
-              <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
-            </div>
+        <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" alt=""></nuxt-img>
+        <h2>Takvim Yükleniyor...</h2>
+        <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
+      </div>
     </template>
     <template v-else>
-      <v-calendar class="custom-calendar mt-4" :attributes="calendarAttributes" :columns="calendarColumns" :rows="calendarRows"
-                  :disabled-dates="disabledDates" disable-page-swipe :step="calendarStep">
+      <v-calendar class="custom-calendar mt-4" :attributes="calendarAttributes" :columns="calendarColumns"
+        :rows="calendarRows" :disabled-dates="disabledDates" disable-page-swipe :step="calendarStep">
         <template v-slot:day-content="{ day, attributes }">
           <div v-for="(attr, index) in attributes" :key="index"
-               class="d-flex flex-column align-items-center justify-content-center h-100 z-10 overflow-hidden w-100 calendar-cell"
-               :class="attr?.customData?.className">
+            class="d-flex flex-column align-items-center justify-content-center h-100 z-10 overflow-hidden w-100 calendar-cell"
+            :class="attr?.customData?.className">
             <span class="day-label text-sm fw-bold text-gray-900">{{ day.day }}</span>
             <div class="flex-grow overflow-y-auto overflow-x-auto">
               <p class="calendar-price" style="" :class="attr.customData.class">
-                {{ !attr.customData.status.includes(2) || (attr.customData.dateStatus.length === 1 && attr.customData.dateStatus.includes(2)) ? attr.customData.price : '' }}
+                {{ !attr.customData.status.includes(2) || (attr.customData.dateStatus.length === 1 &&
+                  attr.customData.dateStatus.includes(2)) ? attr.customData.price : '' }}
               </p>
             </div>
           </div>
@@ -39,14 +40,14 @@ export default {
     code: {
       required: true
     },
-    calendarColumns:{
-      type:Number
+    calendarColumns: {
+      type: Number
     },
-    calendarRows:{
-      type:Number
+    calendarRows: {
+      type: Number
     },
-    calendarStep:{
-      type:Number
+    calendarStep: {
+      type: Number
     },
   },
   data() {
@@ -54,7 +55,7 @@ export default {
       calendarAttributes: [],
       calendar: null,
       price_list_1: null,
-      site_id:process.env.SITE,
+      site_id: process.env.SITE,
       disabledDates: [
         // { start: null, end: new Date() },
         { start: null, end: new Date() },
@@ -185,7 +186,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

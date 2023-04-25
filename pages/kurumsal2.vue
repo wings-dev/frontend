@@ -76,7 +76,7 @@
         </div>
     </section>
 
-    <section class="documents-section bg-theme-light-2 lazy cover" data-src="/img/tools/page-title-bg.svg">
+    <section class="documents-section  lazy cover" data-src="/img/tools/page-title-bg.svg">
         <div class="container pb-5">
             <div class="documents ls-05">
                 <h4 class="fs-3 text-theme-first text-center fw-normal lh-sm mb-sm-5 pb-3">Belgelerimiz</h4>

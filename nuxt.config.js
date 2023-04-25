@@ -83,6 +83,7 @@ export default {
     { src: "~/plugins/dataService.js" },
     { src: "~/plugins/moment.js" },
     { src: "~/plugins/gtm.js", mode: "client" },
+    // '~/plugins/reset-hover.js'
     // '~/plugins/bugsnag.js'
   ],
 
