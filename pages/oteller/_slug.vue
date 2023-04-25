@@ -163,7 +163,7 @@
               </button>
               <div :id="'faq'+index" class="accordion-collapse collapse " data-bs-parent="#Faq">
                 <div class="accordion-body" v-html="item.howrent_category_answer">
-                  
+
                 </div>
               </div>
             </div>
@@ -242,9 +242,11 @@ export default {
     const site_id = process.env.SITE;
     let pageData = {}
 
-    let redisData = JSON.parse(JSON.stringify(store.state['routes'].routes[path]));
-
-    console.log(redisData)
+    let redisData = store.state['routes'].routes[path] // await $getRedisKey(`web:${site_id}:pages:${path}`);
+    if (!redisData) {
+      redirect('404')
+      return
+    }
 
     if (redisData) {
       const type = redisData.type;
@@ -264,7 +266,7 @@ export default {
     }
 
     const destination_id = pageData.page_content.otel_destination;
-    
+
 
     const response = await $axios.get((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') + `/website/destination-hotels/${destination_id}?api_token=${process.env.WEBSITE_TOKEN}`)
     let hotels = response.data.data;
