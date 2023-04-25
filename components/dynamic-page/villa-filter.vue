@@ -23,7 +23,7 @@
 
 
     <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity" :month="month" :pageContent="pageContent"
-      :day="day"></filter-villa-component>
+      :day="day" :type="type" :world="type == 8 ? 1 : 0"></filter-villa-component>
 
     <section class="highlight-section  pt-5 pb-4" v-if="highlights">
       <div class="container">
@@ -83,7 +83,8 @@ export default {
     pageContent: { type: Object },
     highlights: { type: Boolean, default: false },
     opportunity: { type: Boolean, default: false },
-    opportunities: { type: Array, default: () => [] }
+    opportunities: { type: Array, default: () => [] },
+    type: { type: Number, default: null }
   },
   data() {
     return {

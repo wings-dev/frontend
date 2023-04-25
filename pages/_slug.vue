@@ -5,7 +5,7 @@
     </client-only>
     <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1"
       v-if="type === 2"></dynamic-detail-page>
-    <dynamic-villa-filter-page :selectedFilters="categoryFilter" :pageContent="componentData" :highlights=true
+    <dynamic-villa-filter-page :selectedFilters="categoryFilter" :pageContent="componentData" :highlights=true :type="type"
       v-else-if="type === 5 || type === 8"></dynamic-villa-filter-page>
     <text-template-component :data="componentData" v-else-if="type === 1 || type === 23"></text-template-component>
     <otel-area-dynamic-page :data="componentData" v-else-if="type === 18"></otel-area-dynamic-page>
