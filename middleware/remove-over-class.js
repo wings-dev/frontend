@@ -15,6 +15,9 @@ export default function removeOverClass({ app }) {
         if (body.style.overflow === 'hidden') {
           body.style.overflow = '';
         }
+
+        
+
       });
     }
   }

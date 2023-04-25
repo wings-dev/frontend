@@ -3,7 +3,7 @@
     <opportunity-header :opportunities="opportunities" v-if="opportunity"
       @selected="opportunitySelected($event)"></opportunity-header>
 
-    <section class="highlight-section bg-theme-light-2 pt-5 pb-4 mt-n5 desktop" v-if="highlights">
+    <section class="highlight-section pt-5 pb-4 mt-n5 desktop" v-if="highlights">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
@@ -25,7 +25,7 @@
     <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity" :month="month" :pageContent="pageContent"
       :day="day"></filter-villa-component>
 
-    <section class="highlight-section bg-theme-light-2 pt-5 pb-4" v-if="highlights">
+    <section class="highlight-section  pt-5 pb-4" v-if="highlights">
       <div class="container">
         <div class="row pt-4 pb-md-2">
           <div class="note-box col-12 col-lg-12 pe-lg-5">

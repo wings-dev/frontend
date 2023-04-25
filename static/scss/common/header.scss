@@ -229,7 +229,7 @@
       }
       
       @media (min-width:991px) {
-        &:hover{
+        &.hover{
           &:before{
             opacity: 0.2;
           }
