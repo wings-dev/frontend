@@ -1408,7 +1408,7 @@
 
             <client-only>
               <reservation-form :villa="villa" :property-code="villa.code"
-                :disable-reservation="disableDate"></reservation-form>
+                :disable-reservation="disableDate" :closed="closed" :lowestPrice="lowestPrice"></reservation-form>
 
               <opportunity-box-component :propertyCode="villa.code"
                 @selected="opportunitySelected($event)"></opportunity-box-component>
@@ -1592,6 +1592,7 @@ export default {
   data() {
     return {
       site_id: process.env.SITE,
+      closed: true,
       attributes: [],
       galleryIsOpen: false,
       modalIsOpen: false,
@@ -2092,7 +2093,7 @@ export default {
         "pricelist_id": process.env.PRICELIST_ID
       })
       this.monthlyPrices = response.data
-      this.lowestPrice = Math.min(...this.monthlyPrices.map(price => price.lowest_price));
+      this.lowestPrice = this.monthlyPrices.length ? Math.min(...this.monthlyPrices.map(price => price.lowest_price)) : 0;
     } catch (e) { }
 
     this.$nextTick(() => {
@@ -2247,6 +2248,8 @@ export default {
         setTimeout(() => {
           this.$bvModal.show('closeVillaModal')
         }, 50)
+      } else {
+        this.closed = false
       }
 
       if(window.innerWidth <= 991){

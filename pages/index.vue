@@ -270,8 +270,8 @@
                                             <p><span>3</span>Gece</p>
                                         </div>
                                         <div class="Card-content-bottom-date">
-                                            <p><span>{{ villa.start_date }}</span><i class="icon-arrow-right-2"></i><span>{{
-                                                villa.end_date }}</span></p>
+                                            <p><span>{{ villa.start_date | formatDate('DD-MM-YYYY', 'DD MMMM')}}</span><i class="icon-arrow-right-2"></i><span>{{
+                                                villa.end_date | formatDate('DD-MM-YYYY', 'DD MMMM') }}</span></p>
                                             <small>Fırsatı kaçırma!</small>
                                         </div>
                                         <div class="Card-content-bottom-price single">
