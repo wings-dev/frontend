@@ -5,18 +5,18 @@
       <div class="container">
         <div class="Banner-otel-in">
           <div class="Banner-otel-text">
-            <h1>{{ data.name }}</h1>
-            <p>{{ data.meta[0].content }}</p>
+            <h1 v-if="data.name">{{ data.name }}</h1>
+            <p v-if="data.meta[0].content">{{ data.meta[0].content }}</p>
           </div>
           <search-hotel-detail-component :key="$route.path" @search="search($event)"></search-hotel-detail-component>
         </div>
       </div>
     </div>
 
-    <section class="O_List-card">
+    <section class="O_List-card" v-if="data.hotels">
       <div class="container">
         <div class="O_List-card-in">
-          <nuxt-link :to="detailUrl(hotel)" class="O_List-card-item" v-for="hotel in data.hotels" v-if="hotel.images?.[0]?.ImageUrl">
+          <nuxt-link :to="detailUrl(hotel)" class="O_List-card-item" v-for="(hotel,index) in data.hotels" v-if="hotel.images?.[0]?.ImageUrl" :key="index">
             <div class="O_List-card-item-img">
               <nuxt-img :src="cdn + hotel.images?.[0]?.ImageUrl" alt="" />
             </div>
@@ -42,7 +42,7 @@
               </div>
               <nuxt-link :to="detailUrl(hotel)">Fiyatları Göster</nuxt-link>
             </div>
-          </nuxt-link >
+          </nuxt-link>
           <nav class="w-100 mt-5">
             <ul class="w-100 pagination d-flex flex-wrap justify-content-center align-items-center">
               <!-- Go to First Page -->
@@ -329,7 +329,7 @@ export default {
       });
     },
     async filter(page = 1) {
-      const response = await this.$axios.get(`/website/destination-hotels/${this.data.page_content.otel_destination}?page=${page}&api_token=${process.env.WEBSITE_TOKEN}`)
+      const response = await this.$axios.get(`/website/destination-hotels/${this.data?.page_content.otel_destination}?page=${page}&api_token=${process.env.WEBSITE_TOKEN}`)
       this.data.hotels = response.data.data;
       this.data.per_page = response.data.per_page;
       this.data.total_items = response.data.total;
