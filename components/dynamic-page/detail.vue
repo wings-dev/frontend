@@ -1792,7 +1792,7 @@ export default {
         return attribute
       })
 
-      this.calendarAttributes = attributes;
+      this.attributes = attributes;
     },
     isFavorite(code) {
       return this.$store.state.favorite.favorites.includes(code)
