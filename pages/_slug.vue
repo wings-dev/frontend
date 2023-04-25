@@ -50,6 +50,7 @@ export default {
       redirect('404')
       return
     }
+    redisData = JSON.parse(JSON.stringify(store.state['routes'].routes[path]))
     let componentData = {};
     let categoryFilter = {};
     let blogPostData = {};

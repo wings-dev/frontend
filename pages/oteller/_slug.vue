@@ -248,6 +248,8 @@ export default {
       return
     }
 
+    redisData = JSON.parse(JSON.stringify(store.state['routes'].routes[path]))
+
     if (redisData) {
       const type = redisData.type;
       const headData = {
