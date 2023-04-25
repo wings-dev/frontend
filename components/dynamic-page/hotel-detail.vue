@@ -234,7 +234,7 @@
                             <p>Gecelik <span>{{ parseFloat((roomOption.price.amount / roomOption.night).toFixed(2)) | numberFormat }}{{
                                 roomOption.price.currency }}</span></p>
                           </div>
-                          <a href="" @click.prevent="goReservation(roomOption)">Odayı Seç</a>
+                          <a href="" @click.prevent="goReservation(roomOption.offer)">Odayı Seç</a>
                         </div>
                       </div>
                     </div>
@@ -477,6 +477,7 @@ export default {
               isRefundable: offer.isRefundable,
               cancellationPolicies: offer.cancellationPolicies,
               price: offer.price,
+              offer: JSON.parse(JSON.stringify(offer))
             });
           } else {
             // Mevcut bir teklif yoksa, yeni teklif ve oda seçeneğini mergedOffers dizisine ekle
@@ -491,6 +492,7 @@ export default {
                       isRefundable: offer.isRefundable,
                       cancellationPolicies: offer.cancellationPolicies,
                       price: offer.price,
+                      offer: JSON.parse(JSON.stringify(offer))
                     },
                   ],
                 },
