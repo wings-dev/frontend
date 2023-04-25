@@ -445,7 +445,7 @@
                                             <country-flag country='us' />
                                             <country-flag country='ca' /> -->
                                         </div>
-                                        
+
                                         <div class="Abroad-villas-item-content-smile" v-if="item.emojiStatus !== 'emojistatus_2'">
                                           <nuxt-img src="/img/laughing-smile.svg" alt="" v-if="item.emojiStatus == 'emojistatus_1'"></nuxt-img>
                                             <span>{{ item.vizeStatus }}</span>
@@ -517,26 +517,32 @@ export default {
 
         let response = await $getRedisKey([redisPageKey]);
         const pageData = response[redisPageKey] || {};
-        const popularVillas = pageData.page_content?.popular || [];
+        const popularVillas = Array.isArray(pageData.page_content?.popular) ? pageData.page_content.popular : [];
 
-        const popularVillaPriceKeys = popularVillas.map(villa => `data:villas:${villa.code}:prices`);
-        const responsePrice = await $getRedisKey(popularVillaPriceKeys);
+        const popularVillaPriceKeys = popularVillas.map(villa => villa && villa.code ? `data:villas:${villa.code}:prices` : null).filter(Boolean);
+        const responsePrice = popularVillaPriceKeys.length > 0 ? await $getRedisKey(popularVillaPriceKeys) : {};
 
         const updatedPopularVillas = popularVillas.map(villa => {
+          if (villa && villa.code) {
             const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
-            const priceList = priceInfo[`price_list_${process.env.PRICELIST_ID}`] || [];
+            const priceList = Array.isArray(priceInfo[`price_list_${process.env.PRICELIST_ID}`]) ? priceInfo[`price_list_${process.env.PRICELIST_ID}`] : [];
 
-            const prices = priceList.map(item => parseInt(item.price.replace("₺", "")));
-            const min_price = Math.min(...prices) || null;
-            const max_price = Math.max(...prices) || null;
+            const prices = priceList.map(item => item && item.price ? parseInt(item.price.replace("₺", "")) : null).filter(Boolean);
+            const min_price = prices.length > 0 ? Math.min(...prices) : null;
+            const max_price = prices.length > 0 ? Math.max(...prices) : null;
 
-            villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes);
+            if (typeof store.state.routes.routes === 'object' && store.state.routes.routes !== null) {
+              villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes);
+            }
 
             return {
-                ...villa,
-                min_price: min_price ? min_price + "₺" : null,
-                max_price: max_price ? max_price + "₺" : null,
+              ...villa,
+              min_price: min_price ? min_price + "₺" : null,
+              max_price: max_price ? max_price + "₺" : null,
             };
+          } else {
+            return villa;
+          }
         });
 
         let data = {
