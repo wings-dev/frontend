@@ -1349,12 +1349,12 @@
                         <nuxt-img :src="item?.preview_image[0].preview_url" width="292" height="187"
                           :srcset="item?.preview_image[0].responsive_url"></nuxt-img>
                       </nuxt-link>
-                      <!--
+                      
                       <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
                           :class="isFavorite(item.code) ? 'active' : ''">
                           <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
                       </button>
-                      -->
+                     
                     </div>
                     <div class="Card-h-in">
                       <div class="Card-content">

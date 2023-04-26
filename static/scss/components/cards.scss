@@ -356,8 +356,8 @@
         }
       }
       &-fav {
-        right: 20px;
-        top: 20px;
+        right: 10px;
+        top: 10px;
       }
     }
     &-in {
@@ -391,6 +391,10 @@
           width: 100%;
           padding: 10px;
           padding-bottom: 0;
+        }
+        &-fav {
+          right: 20px;
+          top: 20px;
         }
       }
       &-in {
