@@ -305,7 +305,7 @@ export default {
         "status": null,
         "total_price": 0,
         "day": 0,
-        "night_price_currency_symbol": "₺",
+        "night_price_currency_symbol": "TL",
         "cleaning_fee": 0,
         "min_cleaning_day": 0,
         "min_day": 0,

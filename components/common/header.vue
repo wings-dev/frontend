@@ -152,14 +152,12 @@
                             </div>
                         </template>
                         <div class="Header-menu-bottom">
-                            <a href="tel:4448484" class="Header-call">
+                            <a :href="'tel:'+$store.state.site_settings.general_phone" class="Header-call">
                                 <i class="icon-header-call"></i>
-                                <p><span>müşteri hizmetleri</span>444 8 484</p>
+                                <p><span>müşteri hizmetleri</span>{{ $store.state.site_settings.general_phone }}</p>
                             </a>
                             <div class="Header-menu-bottom-social">
-                                <a href="" class="Header-menu-bottom-social-item"><i class="icon-facebook"></i></a>
-                                <a href="" class="Header-menu-bottom-social-item"><i class="icon-instagram"></i></a>
-                                <a href="" class="Header-menu-bottom-social-item"><i class="icon-twitter"></i></a>
+                                <a :href="item.social_link" class="Header-menu-bottom-social-item" v-for="(item,index) in $store.state.site_settings.social" :key="index"><i :class="'icon-'+item.social_icon"></i></a>
                             </div>
                         </div>
                     </div>
@@ -395,15 +393,12 @@ export default {
             });
         }
 
+        console.log(this.$store.state.site_settings)
+
     },
     created() {
-        // const menuData = { "topmenu": [{ "href": "sss", "text": "S.S.S", "target": "_self" }, { "href": "hakkimizda", "text": "Hakk\u0131m\u0131zda", "target": "_self" }, { "href": "blog", "text": "Blog", "target": "_self" }, { "href": "iletisim", "text": "\u0130leti\u015fim", "target": "_self" }], "mainmenu": [{ "href": "kiralik-villa", "text": "Kiral\u0131k Villalar", "target": "_self" }, { "href": "", "text": "Villa Se\u00e7enekleri", "target": "_self", "children": [{ "href": "", "text": "Antalya Kiral\u0131k Villa", "target": "_self", "children": [{ "href": "fethiye-kiralik-villa", "text": "Fethiye Kiral\u0131k Villa", "target": "_self" }, { "href": "dalaman-kiralik-villa", "text": "Dalaman Kiral\u0131k Villa", "target": "_self" }, { "href": "bodrum-kiralik-villa", "text": "Bodrum Kiral\u0131k Villa", "target": "_self" }] }, { "href": "", "text": "Mu\u011fla Kiral\u0131k Villa", "target": "_self", "children": [{ "href": "fethiye-kiralik-villa", "text": "Fethiye Kiral\u0131k Villa", "target": "_self" }, { "href": "dalaman-kiralik-villa", "text": "Dalaman Kiral\u0131k Villa", "target": "_self" }, { "href": "bodrum-kiralik-villa", "text": "Bodrum Kiral\u0131k Villa", "target": "_self" }] }] }, { "href": "", "text": "Pop\u00fcler B\u00f6lgeler", "target": "_self", "children": [{ "href": "ozel-bolge", "text": "\u00d6zel B\u00f6lgeler", "target": "_self", "children": [{ "href": "cocuk-havuzlu", "text": "\u00c7ocuk Havuzlu", "target": "_self" }, { "href": "deniz-manzarali", "text": "Deniz Manzaral\u0131", "target": "_self" }, { "href": "ozel-havuzlu", "text": "\u00d6zel Havuzlu", "target": "_self" }, { "href": "jakuzili-villalar", "text": "Jakuzili Villalar", "target": "_self" }, { "href": "luks-villalar", "text": "L\u00fcks Villalar", "target": "_self" }, { "href": "balayi-villalari", "text": "Balay\u0131 Villalar\u0131", "target": "_self" }] }, { "href": "", "text": "Pop\u00fcler Villa Se\u00e7enekleri", "target": "_self", "children": [{ "href": "fethiye-kiralik-villa", "text": "Fethiye Kiral\u0131k Villa", "target": "_self" }, { "href": "dalaman-kiralik-villa", "text": "Dalaman Kiral\u0131k Villa", "target": "_self" }, { "href": "bodrum-kiralik-villa", "text": "Bodrum Kiral\u0131k Villa", "target": "_self" }, { "href": "marmaris-kiralik-villa", "text": "Marmaris Kiral\u0131k Villa", "target": "_self" }] }] }, { "href": "iletisim", "text": "\u0130leti\u015fim", "target": "_self" }], "foootermenu": [{ "href": "", "text": "Villa Kalkan", "target": "_self" }, { "href": "gizlilik-politikasi", "text": "Gizlilik Politikas\u0131", "target": "_self" }, { "href": "kvkk-aydinlatma-metni", "text": "KVKK", "target": "_self" }, { "href": "rezervasyon-kosullari", "text": "Rezervasyon Ko\u015fullar\u0131", "target": "_self" }] }
 
         const menuData = this.$store.state['settings'].menuData;
-
-        console.log(menuData)
-
-        // this.amenites = JSON.parse(JSON.stringify(searchData.amenites));
 
         this.mainMenu = menuData.mainmenu;
     },

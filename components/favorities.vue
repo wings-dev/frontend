@@ -91,8 +91,8 @@ export default {
           return {
             detail: {
               ...(villa && villa.detail ? villa.detail : {}),
-              min_price: min_price ? min_price + "₺" : null,
-              max_price: max_price ? max_price + "₺" : null,
+              min_price: min_price ? min_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
+              max_price: max_price ? max_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
             },
             price: villa && villa.price ? villa.price : {},
           };

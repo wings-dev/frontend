@@ -3,7 +3,7 @@
     <section class="Text-banner Text-banner-list">
       <div class="container">
         <div class="Text-banner-in">
-          <h1>GİZLİLİK POLİTİKASI</h1>
+          <h1>KİŞİSEL VERİLERİN KORUNMASI</h1>
         </div>
       </div>
     </section>
@@ -22,7 +22,7 @@ export default {
   layout: 'no-search',
   head() {
     return {
-      title: 'Gizlilik',
+      title: 'KİŞİSEL VERİLERİN KORUNMASI',
       meta: [
         { hid: 'description', name: 'description', content: 'gizlilik' },
         { hid: 'keywords', name: 'keywords', content: 'gizlilik1, gizlilik2, gizlilik3' }

@@ -6,8 +6,7 @@
             <h3 class="Amenites-title">Tesis <b>olanakları</b></h3>
             <div class="Amenites-head-link">
               <p>Tesis kategorisi</p>
-              <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(175)">Deniz Manzaralı</a>
-                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(175)">Muhafazakar Villa</a>
+              <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)" v-for="(item,index) in categorielist.amenite_200?.list" :key="index">{{ item.name }}</a>
             </div>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
@@ -17,7 +16,7 @@
           <div class="Amenites-item">
             <!-- <span class="Amenites-item-title">Bahçe Alanı</span> -->
             <div class="Amenites-item-in">
-              <p v-for="(item,index) in amenitelist" :key="index" >{{item}}</p>
+              <p v-for="(item,index) in amenitelist" :key="index" >{{item.name}}</p>
             </div>
           </div>
           <!-- <div class="Amenites-item">
@@ -129,6 +128,9 @@ export default {
         },
       });
     },
+  },
+  mounted(){
+    console.log('TS',this.categorielist)
   }
 }
 </script>

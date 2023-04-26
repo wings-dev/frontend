@@ -31,19 +31,22 @@
                     <div class="Info-left">
                         <h3 class="new-title">Banka Bilgilerimiz</h3>
                         <div class="Info-left-in">
-                            <template v-for="item in pageData.page_content.corporate_banks">
-                                
+                            <template v-for="(item, index) in banks">
+
                                 <div>
-                                    <nuxt-img :src="item.corporate_banks_logo" v-if="item.corporate_banks_logo"/>
+                                    <nuxt-img :src="item.corporate_banks_logo" v-if="item.corporate_banks_logo" />
                                     <div class="Info-left-item">
                                         <span>Alıcı Ünvan</span>
                                         <p>{{ item.corporate_banks_title }}</p>
                                     </div>
                                     <div class="Info-left-item">
                                         <span>{{ item.corporate_banks_iban_currency }}</span>
-                                        <p id="myInput"><input type="text" :value="item.corporate_banks_iban">
-                                            <button type="button" id="copy" class="button-copy"><i
-                                                    class="icon-copy"></i></button>
+                                        <p id="myInput">
+                                            <input type="text" :value="item.corporate_banks_iban"
+                                                :ref="`ibanInput-${index}`">
+                                            <button type="button" id="copy" class="button-copy"
+                                                @click="onCopyButtonClick(index)">
+                                                <i class="icon-copy"></i></button>
                                         </p>
                                     </div>
                                     <div class="Info-left-item" v-if="item.corporate_banks_swift">
@@ -133,7 +136,7 @@
                             v-for="(item, index) in pageData.page_content.corporate_brands.corporate_brands_info"
                             :key="index">
                             <a target="_blank" :href="item.corporate_brand_link">
-                                <nuxt-img :src="item.corporate_brand_logo" alt="Diğer Markalarımız - Balayı Villası"/>
+                                <nuxt-img :src="item.corporate_brand_logo" alt="Diğer Markalarımız - Balayı Villası" />
                             </a>
                         </div>
 
@@ -147,36 +150,37 @@
                     <h3 class="new-title">{{ item.corporate_office_name }}</h3>
                     <div class="Ofis-content">
                         <div class="Ofis-content-item">
-                            <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis">
+                            <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" :data-fancybox="'group-ofis'+index">
                                 <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                                    alt="Villa Kalkan - Kalkan Ofis"/>
+                                    alt="Villa Kalkan - Kalkan Ofis" />
                             </a>
                         </div>
                         <div class="Ofis-content-item">
-                            <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" data-fancybox="group-ofis">
+                            <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" :data-fancybox="'group-ofis'+index">
                                 <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                                    alt="Balayı Villası - Kalkan Ofis"/>
+                                    alt="Balayı Villası - Kalkan Ofis" />
                                 <span class="Ofis-content-item-more"><i class="icon-gallery"></i>+6 Fotoğraf Daha</span>
                             </a>
                             <div class="Ofis-content-item-list">
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg"
-                                    data-fancybox="group-ofis"></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg"
-                                    data-fancybox="group-ofis"></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                                    data-fancybox="group-ofis"></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg"
-                                    data-fancybox="group-ofis"></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg"
-                                    data-fancybox="group-ofis"></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg"
-                                    data-fancybox="group-ofis"></a>
+                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg" :data-fancybox="'group-ofis'+index">
+                                    <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg"></nuxt-img>
+                                </a>
+                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg" :data-fancybox="'group-ofis'+index">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg"></nuxt-img></a>
+                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" :data-fancybox="'group-ofis'+index">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"></nuxt-img></a>
+                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg" :data-fancybox="'group-ofis'+index">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg"></nuxt-img></a>
+                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg" :data-fancybox="'group-ofis'+index">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg"></nuxt-img></a>
+                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg" :data-fancybox="'group-ofis'+index">
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg"></nuxt-img></a>
                             </div>
                         </div>
                         <div class="Ofis-content-item Ofis-content-item-video">
                             <a href="https://www.youtube.com/embed/abWhzr3Y2Ow" data-fancybox="">
                                 <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
-                                    alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu"/>
+                                    alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu" />
                                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
                             </a>
                         </div>
@@ -281,10 +285,35 @@ export default {
     async asyncData({ $getRedisKey }) {
         const site_id = process.env.SITE;
         let pageData = {};
+        
         pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
-        return { pageData }
+        let banks = pageData.page_content.corporate_banks
+        return { pageData,banks }
     },
-    mounted(){
+    data() {
+        return {
+        }
+    },
+    mounted() {
+        console.log(this.pageData)
+    },
+    methods: {
+        copyToClipboard(text) {
+            const el = document.createElement("textarea");
+            el.value = text;
+            el.setAttribute("readonly", "");
+            el.style.position = "absolute";
+            el.style.left = "-9999px";
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand("copy");
+            document.body.removeChild(el);
+        },
+
+        onCopyButtonClick(index) {
+            const ibanValue = this.$refs[`ibanInput-${index}`][0].value;
+            this.copyToClipboard(ibanValue);
+        },
     }
 }
 </script>

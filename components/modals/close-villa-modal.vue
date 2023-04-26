@@ -8,7 +8,7 @@
             <div class="Login-left" style="background-image:url('/img/satisa-kapali.jpg')">
               <div class="Satis-modal-text">
                 <h3>Diğer binlerce villamıza göz atmaya devam edebilirsiniz.</h3>
-                <a href="">DİĞER VİLLALAR</a>
+                <nuxt-link to="/kiralik-villa-ara">DİĞER VİLLALAR</nuxt-link>
               </div>
             </div>
             <div class="Login-right">
@@ -17,7 +17,7 @@
                 <div class="Satis-modal-right-text">
                   <h4>ARADIĞINIZ VİLLA</h4>
                   <h3>ŞU ANDA <b>SATIŞTA</b> DEĞİLDİR.</h3>
-                  <a href="">ANASAYFA</a>
+                  <nuxt-link to="/">ANASAYFA</nuxt-link>
                 </div>
               </div>
             </div>

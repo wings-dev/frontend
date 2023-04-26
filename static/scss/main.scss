@@ -2697,7 +2697,9 @@ body.overflow-hidden {
       left: 10px;
       bottom: 10px;
       p {
-        font-size: 14px;
+        // font-size: 14px;
+        font-size: 11px;
+    max-width: 230px;
       }
       h4 {
         font-size: 19px;
@@ -5081,18 +5083,19 @@ body.overflow-hidden {
       font-size: clamp(19px, 1.44vw, 27.5px);
       font-weight: 500;
       line-height: 1.46;
-      color: #f5841f;
+      color: var(--bs-theme-second);
     }
     a {
       margin-top: 25px;
-      background-color: #1b366d;
-      border: 1px solid #1b366d;
+      background-color: var(--bs-theme-first);
+      border: 1px solid var(--bs-theme-first);
       font-size: clamp(14px, 0.85vw, 16px);
       font-weight: bold;
       letter-spacing: 2.57px;
       text-align: center;
       color: #fff;
       padding: 20px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;

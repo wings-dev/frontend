@@ -81,7 +81,7 @@
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
                                             <p><b>{{ item.min_price | numberFormat }} -
-                                                    {{ item.max_price }}
+                                                    {{ item.max_price | numberFormat}}
                                                 </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
                                         </div>
@@ -188,7 +188,7 @@
                         </div>
                         <div class="H_info-item-icon-text">
                             <p>Tüm Kredi Kartlarına<span>Taksit İmkanı.</span></p>
-                            <a href="">Şartları Görüntüle</a>
+                            <nuxt-link to="/rezervasyon-ve-iptal-kosullari">Şartları Görüntüle</nuxt-link>
                         </div>
                     </div>
                     <div class="H_info-item">
@@ -534,8 +534,8 @@ export default {
 
             return {
               ...villa,
-              min_price: min_price ? min_price + "₺" : null,
-              max_price: max_price ? max_price + "₺" : null,
+              min_price: min_price ? min_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
+              max_price: max_price ? max_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
             };
           } else {
             return villa;
