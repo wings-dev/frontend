@@ -10,7 +10,7 @@
                 <div class="Login-card">
                   <div class="Login-card-img">
                     <nuxt-img :src="villa.watermark_images[0].preview_url"
-                         alt="" />
+                         alt=" " />
                     <div class="Login-card-img-text">
                       <div class="Login-card-img-text-head">
                         <span>Villa kodu</span>
