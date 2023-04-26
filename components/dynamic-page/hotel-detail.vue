@@ -187,7 +187,7 @@
               <div class="room" v-for="(room, roomIndex) in offer.rooms">
                 <div class="row">
                   <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
-                    <div class="img-box position-relative flex-shrink-0">
+                    <div class="img-box position-relative flex-shrink-0 room-img-container">
                       <nuxt-img v-if="room.roomInfo?.mediaFiles" :src="room.roomInfo.mediaFiles[0].urlFull" width="297" height="208"
                                 alt="room image" class="lazy cover flex-shrink-0"></nuxt-img>
                       <div class="no-rooms" v-else>

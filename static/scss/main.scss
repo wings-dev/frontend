@@ -4523,8 +4523,28 @@ body.overflow-hidden {
   }
 }
 @media (max-width: 576px) {
-  .room-content {
-    width: 100%;
+ 
+  .rooms-section {
+    .room-img-container{
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    .room-content {
+      width: 100%;
+      padding: 0;
+    }
+    .no-rooms {
+      &:before {
+        content: "";
+        background-repeat: no-repeat;
+        background-position: right;
+      }
+
+      img {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
   }
 }
 #room-tab {
@@ -7636,6 +7656,7 @@ body.overflow-hidden {
       font-size: 12px;
       font-weight: 500;
       line-height: 1;
+      text-align: right;
       color: #8a92a8;
       span {
         font-size: 12px;
@@ -7657,6 +7678,7 @@ body.overflow-hidden {
       align-items: center;
       justify-content: center;
       transition: all 300ms;
+      white-space: nowrap;
       &:hover {
         transform: scale(0.98);
       }

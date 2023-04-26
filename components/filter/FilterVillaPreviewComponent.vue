@@ -59,15 +59,15 @@
               <p>{{ villa.total.day }} GECE</p>
               <strong>{{ checkin }} - {{ checkout }}</strong>
             </div>
-            <b>{{ villa.total.total | numberFormat }}<span>TL</span></b>
-
+            <b>{{ villa.total.total | numberFormat }}<span>{{ villa.total.price_currency == '₺' ? 'TL' : villa.total.price_currency }}</span></b>
+            
           </div>
           <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
 
             <div class="F_villa-item-head-price-in">
               <span>GECELİK</span>
-              <b v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}<span>TL</span></b>
-              <b v-if="villa.total">{{ villa.total.total | numberFormat }}<span>TL</span></b>
+              <b v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}<span>{{villa.prices.min_price.price_currency }}</span></b>
+              <b v-if="villa.total">{{ villa.total.total | numberFormat }}<span>{{ villa.prices.max_price.price_currency }}</span></b>
               <p>‘den başlayan fiyatlar</p>
             </div>
 
@@ -105,9 +105,7 @@
 
           </div>
           <div class="F_villa-item-bottom-price" v-if="!checkindate">
-            <p v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}{{
-              villa.prices.min_price.price_currency }} - {{
-    villa.prices.max_price.price | numberFormat }}{{ villa.prices.max_price.price_currency }}
+            <p v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}{{villa.prices.min_price.price_currency }} - {{villa.prices.max_price.price | numberFormat }}{{ villa.prices.max_price.price_currency }}
               <span>/Gecelik</span>
             </p>
             <p v-if="villa.total">
@@ -277,6 +275,7 @@ export default {
 
     this.formatDate(this.checkindate, this.checkoutdate)
 
+    console.log(this.villa)
 
   }
 }

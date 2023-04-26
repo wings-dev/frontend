@@ -42,7 +42,7 @@
                             <Nuxt-link :to="!$auth.loggedIn ? '/favorilerim' : '/user/favorilerim'"
                                 class="Header-menu-top-fav">
                                 <i class="icon-heart-full"></i>
-                                <span>Favorilerim(4)</span>
+                                <span>Favorilerim <span v-if="favoritiesLength">({{ favoritiesLength }})</span></span>
                             </Nuxt-link>
                             <b-button v-b-modal.loginModal v-if="!$auth.loggedIn" type="button" class="Login-button">
                                 <span class="">ÜYE GİRİŞİ YAP </span>
@@ -53,7 +53,8 @@
                                 <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}</NuxtLink>
                             </div>
 
-                            <div class="Header-menu-item otel" v-else :id="index" @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)" :class="{'hover' : hoveredLink === index}">
+                            <div class="Header-menu-item otel" v-else :id="index" @mouseenter="handleMouseEnter(index)"
+                                @mouseleave="handleMouseLeave(index)" :class="{ 'hover': hoveredLink === index }">
                                 <!--  -->
                                 <button type="button" class="Header-menu-item-link menu-children menu-item"
                                     :data-dropdown="'dropdown' + index" :id="index">
@@ -61,7 +62,7 @@
                                     <i class="icon-right-arrow mobile"></i>
                                 </button>
 
-                                <div class="Header-menu-item-in menu-item-dropdown" :id="'dropdown' + index" >
+                                <div class="Header-menu-item-in menu-item-dropdown" :id="'dropdown' + index">
                                     <button type="button" class="mobile-back-button">
                                         <i class="icon-left-arrow" @click="closeSubMenu($event)"></i>
                                         Geri dön
@@ -152,12 +153,14 @@
                             </div>
                         </template>
                         <div class="Header-menu-bottom">
-                            <a :href="'tel:'+$store.state.site_settings.general_phone" class="Header-call">
+                            <a :href="'tel:' + $store.state.site_settings.general_phone" class="Header-call">
                                 <i class="icon-header-call"></i>
                                 <p><span>müşteri hizmetleri</span>{{ $store.state.site_settings.general_phone }}</p>
                             </a>
                             <div class="Header-menu-bottom-social">
-                                <a :href="item.social_link" class="Header-menu-bottom-social-item" v-for="(item,index) in $store.state.site_settings.social" :key="index"><i :class="'icon-'+item.social_icon"></i></a>
+                                <a :href="item.social_link" class="Header-menu-bottom-social-item"
+                                    v-for="(item, index) in $store.state.site_settings.social" :key="index"><i
+                                        :class="'icon-' + item.social_icon"></i></a>
                             </div>
                         </div>
                     </div>
@@ -240,7 +243,8 @@ export default {
                 hours: 'Saat',
                 minutes: 'Dakika',
                 seconds: 'Saniye'
-            }
+            },
+            favoritiesLength: 0
         }
     },
     components: { FlipCountdown, Notification },
@@ -393,8 +397,12 @@ export default {
             });
         }
 
-        console.log(this.$store.state.site_settings)
+        const storedFavorites = localStorage.getItem('favorites');
 
+        if (storedFavorites) {
+            const ids = JSON.parse(storedFavorites);
+            this.favoritiesLength = ids.length
+        }
     },
     created() {
 

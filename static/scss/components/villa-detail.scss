@@ -3593,6 +3593,11 @@
       margin-bottom: 30px;
     }
   }
+  .view-detail-section {
+    &.otel {
+      z-index: 0;
+    }
+  }
 }
 
 @media (max-width: 576px) {

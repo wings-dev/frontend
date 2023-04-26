@@ -7,7 +7,7 @@
   --bs-theme-grey: #fdf1f2;
   --bs-theme-grey2: #fdf1f2;
   --bs-theme-grey3: #fdf1f2;
-  --bs-theme-dark-blue:#d84d64;
+  --bs-theme-dark-blue: #d84d64;
 
   //HEADER
   --bs-theme-menu-bg: #f9e2e6;
@@ -23,7 +23,7 @@
   --bs-menu-toggle-color: #d84d64;
 
   --bs-card-info-text: #221a52;
-  --bs-card-link-color:#221a52;
+  --bs-card-link-color: #221a52;
   --bs-fvilla-info-text: #221a52;
   --bs-fvilla-text: #d84d64;
 
@@ -92,13 +92,16 @@
 .Header-menu-item-link {
   color: #211a4f;
 }
+.Header-call p {
+  color: var(--bs-theme-first);
+}
 @media (max-width: 991px) {
   .Header-menu-item-link {
     color: #fff;
   }
-}
-.Header-call p {
-  color: var(--bs-theme-first);
+  .Header-call p {
+    color: #fff;
+  }
 }
 
 i.icon-flame {
@@ -139,23 +142,23 @@ i.icon-abroad-villa {
   background-image: url(../img/site4/footer-call.svg);
 }
 
-.Search-mobile-bottom button{
+.Search-mobile-bottom button {
   background-image: linear-gradient(236deg, #d84d64 100%, #d84d64 0%);
 }
-.Opportunity-slider{
+.Opportunity-slider {
   background-color: var(--bs-theme-first);
 }
-.popular-dark{
+.popular-dark {
   background-image: none;
 }
-.Filters-in-m-button{
+.Filters-in-m-button {
   background-image: linear-gradient(236deg, #d84d64 100%, #d84d64 0%);
 }
 
-.View-menu{
+.View-menu {
   background-color: #fdf9f9;
 }
-.view-detail-section:before{
+.view-detail-section:before {
   background-color: #fdf9f9;
 }
 
