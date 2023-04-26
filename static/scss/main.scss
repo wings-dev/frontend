@@ -6243,6 +6243,13 @@ body.overflow-hidden {
       span {
         color: var(--bs-theme-second);
       }
+
+      
+    }
+    @media (max-width:991px) {
+        h2{
+          font-size: 22px;
+        }
     }
   }
   &-list {

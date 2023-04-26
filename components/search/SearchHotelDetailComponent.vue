@@ -91,7 +91,7 @@ export default {
       checkOut: null,
       adult: 1,
       childAges: [],
-      firstDayOfWeek: Number(process.env.CALENDAR_FIRST_DAY),
+      firstDayOfWeek: Number(process.env.WEEKDAY),
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',

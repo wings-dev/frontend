@@ -1319,7 +1319,7 @@
 
             <client-only>
               <reservation-form :villa="villa" :property-code="villa.code" :disable-reservation="disableDate"
-                :closed="closed" :lowestPrice="lowestPrice" ></reservation-form>
+                :closed="closed" :lowestPrice="lowestPrice" @night-price-currency-symbol="receiveNightPriceCurrencySymbol"></reservation-form>
 
               <opportunity-box-component :propertyCode="villa.code"
                 @selected="opportunitySelected($event)"></opportunity-box-component>
@@ -1494,7 +1494,7 @@ import opportunityBoxComponent from "@/components/OpportunityBoxComponent.vue";
 import { shareOnFacebook, shareOnTwitter, shareOnWhatsApp } from '@/assets/share';
 
 export default {
-  name: 'DynamicDetailPage',
+  name: 'DynamicAbroadVillaDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
   components: {
     Swiper,
@@ -1540,6 +1540,7 @@ export default {
       categories: [],
       amenites: [],
       weekWillas: this.$store.state.site_settings.week_villas,
+      currency_symbol: ''
     }
   },
   methods: {
@@ -1820,7 +1821,9 @@ export default {
         }
       })
     },
-  
+    receiveNightPriceCurrencySymbol(symbol) {
+      this.currency_symbol = symbol
+    }
   },
   watch: {
     galleryIsOpen() {

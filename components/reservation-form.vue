@@ -21,8 +21,8 @@
             </div>
 
             <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
-              @check-out-changed="checkOutChanged($event)" format="DD dddd" :positionRight="true"
-              :disabledDates="disableReservation" ref="datePicker" :i18n="calendarLanguage"
+              @check-out-changed="checkOutChanged($event)" :positionRight="true"
+              :disabledDates="disableReservation" format="DD dddd" ref="datePicker" :i18n="calendarLanguage"
               :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
 
               <div slot="content">
@@ -32,6 +32,7 @@
                 </div>
               </div>
             </HotelDatePicker>
+            
           </div>
           <div class="Reservation-form-item Reservation-form-item-person">
             <label for="">
@@ -119,7 +120,7 @@
                 <h5>Toplam Tutar</h5>
               </div>
               <div class="Reservation-form-info-item-right">
-                <b>{{ availabilityData.total_payment | numberFormat }} TL</b>
+                <b>{{ availabilityData.total_payment | numberFormat }} {{ availabilityData.night_price_currency_symbol }}</b>
               </div>
             </div>
           </div>
@@ -170,8 +171,7 @@
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
                   </div>
-                  <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol
-                  }}</b>
+                  <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol}}</b>
                 </div>
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
@@ -299,7 +299,7 @@ export default {
         week: "hafta",
         weeks: "haftalar",
       },
-      firstDayOfWeek: Number(process.env.CALENDAR_FIRST_DAY),
+      firstDayOfWeek: Number(process.env.WEEKDAY),
       availabilityLoading: false,
       availabilityData: {
         "status": null,

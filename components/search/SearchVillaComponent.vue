@@ -45,7 +45,7 @@
             Giriş Tarihi
           </div>
           <div class="date-title w-50 Search-item-name">
-            Çıkış Tarihi
+            Çıkış Tarihi 
           </div>
         </div>
 
@@ -327,8 +327,9 @@
   </div>
 </template>
 
+
+
 <script>
-// import HotelDatePicker from "vue-hotel-datepicker";
 import HotelDatePicker from "vue-hotel-datepicker2";
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import { mapMutations, mapState } from "vuex";
@@ -343,7 +344,7 @@ export default {
       checkOut: null,
       adult: 1,
       children: 0,
-      firstDayOfWeek: Number(process.env.CALENDAR_FIRST_DAY),
+      firstDayOfWeek: Number(process.env.WEEKDAY),
       baby: 0,
       destinations: [],
       amenites: {
@@ -359,7 +360,6 @@ export default {
       ],
       orderValue: null,
       orderPlaceholder: "Sırala:",
-      firstDayOfWeek: 1,
       calendarLanguage: {
         night: 'Gece',
         nights: 'Gece',

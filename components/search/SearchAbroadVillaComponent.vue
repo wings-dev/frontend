@@ -341,7 +341,7 @@ export default {
       checkOut: null,
       adult: 1,
       children: 0,
-      firstDayOfWeek: Number(process.env.CALENDAR_FIRST_DAY),
+      firstDayOfWeek: Number(process.env.WEEKDAY),
       baby: 0,
       destinations: [],
       amenites: {
