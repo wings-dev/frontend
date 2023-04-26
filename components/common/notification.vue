@@ -17,7 +17,7 @@ export default {
     name: "Notification",
     data() {
         return {
-            notifications: this.$store.state.site_settings.notifications
+            notifications: this.$store.state?.site_settings?.notifications
         }
     },
 }

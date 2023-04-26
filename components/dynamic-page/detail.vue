@@ -34,7 +34,7 @@
                 </div>
                 <div class="view-top-right-price" v-if="lowestPrice">
                   <span>GECELİK</span>
-                  <p>{{ lowestPrice | numberFormat }} <span>{{ currency_symbol == '₺' ? 'TL' : currency_symbol }}</span></p>
+                  <p>{{ lowestPrice | numberFormat }} <span>TL</span></p>
                   <small>'den başlayan fiyatlar' </small>
                 </div>
               </div>
@@ -50,7 +50,7 @@
                   @click.prevent="scrollItem($event)">Müsaitlik
                   ve Takvim Fiyatı</a>
                 <a id="location" class="View-menu-item location-content" @click.prevent="scrollItem($event)">Konum</a>
-                <a id="comments" class="View-menu-item reviews-content" @click.prevent="scrollItem($event)">Yorumlar</a>
+                <!-- <a id="comments" class="View-menu-item reviews-content" @click.prevent="scrollItem($event)">Yorumlar</a> -->
                 <!-- <a id="sss" class="View-menu-item sss-content" @click.prevent="scrollItem($event)">S.S.S.</a> -->
                 <a id="rules" class="View-menu-item rules-content" @click.prevent="scrollItem($event)">*Bilmeniz
                   Gerekenler</a>
@@ -367,13 +367,19 @@
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
                           <span>GECELİK</span>
-                          <b>{{ price.lowest_price }}TL</b>
+                          <b>{{ price.lowest_price | numberFormat }}TL</b>
                           <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
                           <p>En az konaklama</p>
-                          <b>{{ price.minaccomodationday }} GECE <i class="icon-information" data-bs-toggle="tooltip"
-                              data-bs-placement="right" title="Tooltip on right"></i></b>
+                          <div class="View-months-item-days-tooltip">
+                            <b>{{ price.minaccomodationday }} GECE <i class="icon-information"></i></b>
+                            <span class="tooltiptext">12 gece altındaki
+                              konaklamalardan 21
+                              temizlik ücreti
+                              alınır.</span>
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -747,7 +753,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-reviews comments view-menu-content-item" id="reviews-content">
+            <!-- <div class="View-reviews comments view-menu-content-item d-none" id="reviews-content">
               <div class="View-reviews-head">
                 <h4 class="View-title"><b>Tesis</b> Değerlendirmesi</h4>
                 <div class="View-reviews-head-stars">
@@ -863,7 +869,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="View-info rules view-menu-content-item" id="rules-content">
               <div class="View-info-in">
                 <h4 class="View-title"><b>Bilmeniz</b> Gerekenler</h4>
@@ -999,7 +1005,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-faq sss view-menu-content-item d-none" id="sss-content">
+            <!-- <div class="View-faq sss view-menu-content-item d-none" id="sss-content">
               <h4 class="View-title"><b>Sıkça</b> Sorulan Sorular</h4>
               <div class="accordion" id="Faq">
                 <div class="accordion-item">
@@ -1051,7 +1057,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="View-mobile-modal" :class="{ 'show': mobileAmenites }">
               <button type="button" class="mobile-menus-back" @click="mobileAmenitesToggle"><i
@@ -1319,10 +1325,12 @@
 
             <client-only>
               <reservation-form :villa="villa" :property-code="villa.code" :disable-reservation="disableDate"
-                :closed="closed" :lowestPrice="lowestPrice" ></reservation-form>
+                :closed="closed" :lowestPrice="lowestPrice"></reservation-form>
 
-              <opportunity-box-component :propertyCode="villa.code"
-                @selected="opportunitySelected($event)"></opportunity-box-component>
+              <div class="View-right-opportunity-container">
+                <opportunity-box-component :propertyCode="villa.code"
+                  @selected="opportunitySelected($event)"></opportunity-box-component>
+              </div>
             </client-only>
 
           </div>
@@ -1349,12 +1357,12 @@
                         <nuxt-img :src="item?.preview_image[0].preview_url" width="292" height="187"
                           :srcset="item?.preview_image[0].responsive_url"></nuxt-img>
                       </nuxt-link>
-                      
+
                       <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
-                          :class="isFavorite(item.code) ? 'active' : ''">
-                          <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
+                        :class="isFavorite(item.code) ? 'active' : ''">
+                        <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
                       </button>
-                     
+
                     </div>
                     <div class="Card-h-in">
                       <div class="Card-content">
@@ -1539,7 +1547,7 @@ export default {
       },
       categories: [],
       amenites: [],
-      weekWillas: this.$store.state.site_settings.week_villas,
+      weekWillas: this.$store.state?.site_settings?.week_villas,
     }
   },
   methods: {
@@ -1820,7 +1828,7 @@ export default {
         }
       })
     },
-  
+
   },
   watch: {
     galleryIsOpen() {
@@ -2007,7 +2015,7 @@ export default {
       })
       this.monthlyPrices = response.data
 
-      console.log('this.monthlyPrices',this.monthlyPrices)
+      console.log('this.monthlyPrices', this.monthlyPrices)
       this.lowestPrice = this.monthlyPrices.length ? Math.min(...this.monthlyPrices.map(price => price.lowest_price)) : 0;
     } catch (e) { }
 
@@ -2019,7 +2027,7 @@ export default {
         spaceBetween: 18,
         breakpoints: {
           200: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 8,
           },
           768: {
@@ -2147,11 +2155,11 @@ export default {
           }
           if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
             document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
-            document.querySelector(".View-right-opportunity").classList.add('opacity-0')
+            document.querySelector(".View-right-opportunity-container").classList.add('opacity-0')
 
           } else {
             document.getElementById("reservationForm").classList.remove('custom-fixed-reservation')
-            document.querySelector(".View-right-opportunity").classList.remove('opacity-0')
+            document.querySelector(".View-right-opportunity-container").classList.remove('opacity-0')
           }
 
         } catch (error) {
@@ -2179,7 +2187,6 @@ export default {
 
     });
 
-    console.log(this.villa)
   },
   computed: {
     opportunityBoxComponent() {

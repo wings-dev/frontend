@@ -21,9 +21,9 @@
             </div>
 
             <HotelDatePicker v-bind="datePickerProps" :disabled="true" @check-in-changed="checkInChanged($event)"
-              @check-out-changed="checkOutChanged($event)" :positionRight="true"
-              :disabledDates="disableReservation" format="DD dddd" ref="datePicker" :i18n="calendarLanguage"
-              :firstDayOfWeek="firstDayOfWeek" :displayClearButton=false>
+              @check-out-changed="checkOutChanged($event)" :positionRight="true" :disabledDates="disableReservation"
+              format="DD dddd" ref="datePicker" :i18n="calendarLanguage" :firstDayOfWeek="firstDayOfWeek"
+              :displayClearButton=false>
 
               <div slot="content">
                 <div class="d-flex align-items-center justify-content-end mt-3 calendar-buttons">
@@ -32,7 +32,7 @@
                 </div>
               </div>
             </HotelDatePicker>
-            
+
           </div>
           <div class="Reservation-form-item Reservation-form-item-person">
             <label for="">
@@ -108,7 +108,7 @@
                 <h5>Ön Ödeme Tutarı</h5>
               </div>
               <div class="Reservation-form-info-item-right">
-                <b>{{ availabilityData.advance_payment | numberFormat }} {{ availabilityData.night_price_currency_symbol
+                <b>{{ availabilityData?.advance_payment | numberFormat }} {{ availabilityData?.night_price_currency_symbol
                 }}</b>
               </div>
             </div>
@@ -120,7 +120,8 @@
                 <h5>Toplam Tutar</h5>
               </div>
               <div class="Reservation-form-info-item-right">
-                <b>{{ availabilityData.total_payment | numberFormat }} {{ availabilityData.night_price_currency_symbol }}</b>
+                <b>{{ availabilityData?.total_payment | numberFormat }} {{ availabilityData?.night_price_currency_symbol
+                }}</b>
               </div>
             </div>
           </div>
@@ -128,30 +129,37 @@
 
             <div class="Reservation-form-detail-top">
               <div class="Reservation-form-detail-top-item">
-                <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
-                <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol }}</b>
+                <p>{{ availabilityData?.day }} Gece Konaklama Tutarı </p>
+                <b>{{ availabilityData?.total_price | numberFormat }}{{ availabilityData?.night_price_currency_symbol
+                }}</b>
               </div>
               <div class="Reservation-form-detail-top-item">
-                <p>Temizlik Ücreti <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                    title="Tooltip on right"></i></p>
-                <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                <div class="Reservation-form-detail-top-item-tooltip">
+                  <p>Temizlik Ücreti </p>
+                  <i class="icon-information"></i>
+                  <span class="tooltiptext">{{ availabilityData?.min_cleaning_day }} gece altındaki konaklamalardan {{
+                    availabilityData?.cleaning_fee }}{{ availabilityData?.night_price_currency_symbol }} temizlik ücreti
+                    alınır.</span>
+                </div>
+
+                <b>{{ availabilityData?.cleaning_fee | numberFormat }}{{ availabilityData?.night_price_currency_symbol
                 }}</b>
               </div>
             </div>
             <p class="Reservation-form-detail-total">
-              Toplam Ödeme <span>{{ availabilityData.total_price | numberFormat }}{{
-                availabilityData.night_price_currency_symbol }}</span>
+              Toplam Ödeme <span>{{ availabilityData?.total_price | numberFormat }}{{
+                availabilityData?.night_price_currency_symbol }}</span>
             </p>
             <div class="Reservation-form-detail-bottom">
               <div class="Reservation-form-detail-bottom-item">
-                <p>Ön Ödeme <span>{{ availabilityData.advance_payment | numberFormat }}{{
-                  availabilityData.night_price_currency_symbol
+                <p>Ön Ödeme <span>{{ availabilityData?.advance_payment | numberFormat }}{{
+                  availabilityData?.night_price_currency_symbol
                 }}</span></p>
                 <small>Rezervasyonu gerçekleştirmek için yapmanız gereken ön ödeme tutarı</small>
               </div>
               <div class="Reservation-form-detail-bottom-item">
-                <p>Tesise Girişte <span>{{ availabilityData.remaining_payment | numberFormat }}{{
-                  availabilityData.night_price_currency_symbol
+                <p>Tesise Girişte <span>{{ availabilityData?.remaining_payment | numberFormat }}{{
+                  availabilityData?.night_price_currency_symbol
                 }}</span></p>
                 <small>Ön ödeme sonrası yapmanız gereken kalan tutar girişte alınacaktır.</small>
               </div>
@@ -169,36 +177,40 @@
                 data-bs-parent="#accordionExample">
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
-                    <p>{{ availabilityData.day }} Gece Konaklama Tutarı</p>
+                    <p>{{ availabilityData?.day }} Gece Konaklama Tutarı</p>
                   </div>
-                  <b>{{ availabilityData.total_price | numberFormat }}{{ availabilityData.night_price_currency_symbol}}</b>
+                  <b>{{ availabilityData?.total_price | numberFormat }}{{ availabilityData?.night_price_currency_symbol
+                  }}</b>
                 </div>
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Temizlik Ücreti</p>
-                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                      title="Tooltip on right"></i>
+                    <div class="Reservation-form-info-item-more-item-tooltip">
+                      <i class="icon-information"></i>
+                      <span class="tooltiptext">{{ availabilityData?.min_cleaning_day }} gece altındaki konaklamalardan {{
+                        availabilityData?.cleaning_fee }}{{ availabilityData?.night_price_currency_symbol }} temizlik
+                        ücreti alınır.</span>
+                    </div>
+
                   </div>
-                  <b>{{ availabilityData.cleaning_fee | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                  <b>{{ availabilityData?.cleaning_fee | numberFormat }}{{ availabilityData?.night_price_currency_symbol
                   }}</b>
                 </div>
-
+                <!-- availabilityData?.night_price_currency_symbol == '₺' ? 'TL' : availabilityData?.night_price_currency_symbol -->
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Girişte Ödenecek</p>
                   </div>
-                  <b>{{ availabilityData.remaining_payment | numberFormat }}{{
-                    availabilityData.night_price_currency_symbol
+                  <b>{{ availabilityData?.remaining_payment | numberFormat }}{{
+                    availabilityData?.night_price_currency_symbol
                   }}</b>
                 </div>
 
                 <div class="Reservation-form-info-item-more-item">
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Toplam Tutar</p>
-                    <i class="icon-information" data-bs-toggle="tooltip" data-bs-placement="right"
-                      title="Tooltip on right"></i>
                   </div>
-                  <b>{{ availabilityData.total_payment | numberFormat }}{{ availabilityData.night_price_currency_symbol
+                  <b>{{ availabilityData?.total_payment | numberFormat }}{{ availabilityData?.night_price_currency_symbol
                   }}</b>
                 </div>
 
@@ -214,8 +226,9 @@
     <div class="Reservation-form-bottom" v-if="!closed">
       <div class="Reservation-form-bottom-left">
 
-        <b v-if="availabilityData.total_payment">{{ availabilityData.total_payment | numberFormat}}{{availabilityData.night_price_currency_symbol }}</b>
-        <b v-else>{{ lowestPrice | numberFormat}}{{availabilityData.night_price_currency_symbol }}</b>
+        <b v-if="availabilityData?.total_payment">{{ availabilityData?.total_payment |
+          numberFormat }}{{ availabilityData?.night_price_currency_symbol }}</b>
+        <b v-else>{{ lowestPrice | numberFormat }}{{ availabilityData?.night_price_currency_symbol }}</b>
 
         <span v-if="!availabilityChecked" :disabled="!dateSelected || availabilityLoading">GECE</span>
         <span v-else>{{ formattedCheckIn }} - {{ formattedCheckOut }}</span>
@@ -326,6 +339,7 @@ export default {
       mobileReservation: false,
       reservationDetail: false,
       isMobile: false,
+      currency: this.availabilityData?.night_price_currency_symbol
     }
   },
   beforeMount() {
@@ -421,6 +435,11 @@ export default {
           document.querySelector('body').style.overflow = "auto"
           document.querySelector(".Whatsapp").classList.remove('Whatsapp-z')
         }, 50)
+      }
+    },
+    availabilityData(newValue) {
+      if (newValue.night_price_currency_symbol == '₺') {
+        newValue.night_price_currency_symbol = 'TL'
       }
     }
   },
@@ -592,9 +611,9 @@ export default {
       }
     },
     checkMaxPerson() {
-      const max = this.adult + this.child === this.villa.max_adult
+      const max = this.adult + this.child === this.villa?.max_adult
       if (max) {
-        this.$toast.error("<p>Bu villada en fazla " + this.villa.max_adult + " kişi kalabilir</p>", {
+        this.$toast.error("<p>Bu villada en fazla " + this.villa?.max_adult + " kişi kalabilir</p>", {
           className: 'custom-toast error-toast',
           icon: {
             name: 'icon-reservation-cancel',
@@ -746,8 +765,8 @@ export default {
 }
 
 :deep() .datepicker__month-day--first-day-selected span,
-:deep() .datepicker__month-day--last-day-selected span{
- opacity: 1;
+:deep() .datepicker__month-day--last-day-selected span {
+  opacity: 1;
 }
 
 :deep() .datepicker__month-day--selected {
@@ -801,6 +820,4 @@ export default {
   :deep() .datepicker__input:before {
     display: none;
   }
-}
-
-</style>
+}</style>

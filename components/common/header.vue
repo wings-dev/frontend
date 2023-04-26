@@ -153,13 +153,13 @@
                             </div>
                         </template>
                         <div class="Header-menu-bottom">
-                            <a :href="'tel:' + $store.state.site_settings.general_phone" class="Header-call">
+                            <a :href="'tel:' + $store.state?.site_settings?.general_phone" class="Header-call">
                                 <i class="icon-header-call"></i>
-                                <p><span>müşteri hizmetleri</span>{{ $store.state.site_settings.general_phone }}</p>
+                                <p><span>müşteri hizmetleri</span>{{ $store.state?.site_settings?.general_phone }}</p>
                             </a>
                             <div class="Header-menu-bottom-social">
                                 <a :href="item.social_link" class="Header-menu-bottom-social-item"
-                                    v-for="(item, index) in $store.state.site_settings.social" :key="index"><i
+                                    v-for="(item, index) in $store.state?.site_settings?.social" :key="index"><i
                                         :class="'icon-' + item.social_icon"></i></a>
                             </div>
                         </div>

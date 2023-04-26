@@ -1539,7 +1539,7 @@ export default {
       },
       categories: [],
       amenites: [],
-      weekWillas: this.$store.state.site_settings.week_villas,
+      weekWillas: this.$store.state?.site_settings?.week_villas,
       currency_symbol: ''
     }
   },
