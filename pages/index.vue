@@ -43,7 +43,7 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-img :src="item.preview_image[0].preview_url" loading="lazy" preset="card"
+                                        <nuxt-img :src="item.preview_image[0].preview_url" loading="lazy" preset="card" format="webp"
                                             :srcset="item.preview_image[0].responsive_url" sizes="sm:325px lg:267px" :placeholder="[100, 50, 10]"></nuxt-img>
 
                                             <!-- :srcset="'https://d1t2mawg5vwzes.cloudfront.net/property/585/16121/responsive-images/1___media_library_original_322_181.jpg 322w,'" -->
@@ -227,7 +227,7 @@
                                         <!-- <nuxt-img :src="villa.preview_image[0].preview_url" width="371"
                                             height="225"></nuxt-img> -->
 
-                                            <nuxt-img :src="villa.watermark_preview_image[0].preview_url" loading="lazy" preset="card"
+                                            <nuxt-img :src="villa.watermark_preview_image[0].preview_url" loading="lazy" preset="card" format="webp"
                                             :srcset="villa.watermark_preview_image[0].responsive_url" sizes="sm:385w lg:364px"></nuxt-img>
 
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(villa.code)"
