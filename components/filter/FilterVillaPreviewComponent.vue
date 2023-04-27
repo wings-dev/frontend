@@ -23,9 +23,8 @@
             </span>
           </button>
         </div>
-        <!-- TODO fırsatdan geldiğinde görünecek -->
-        <div class="F_villa-item-opportunity" v-if="false">
-          <b>3</b>
+        <div class="F_villa-item-opportunity" v-if="villa?.total?.day">
+          <b>{{villa.total.day}}</b>
           <span>GECE</span>
         </div>
       </div>
@@ -65,6 +64,7 @@
           <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
 
             <div class="F_villa-item-head-price-in">
+              <strong>{{ villa.start_date | formatDate('DD-MM-YYYY', 'DD MMMM') }} - {{ villa.end_date | formatDate('DD-MM-YYYY', 'DD MMMM') }}</strong>
               <span>GECELİK</span>
               <b v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}<span>{{villa.prices.min_price.price_currency }}</span></b>
               <b v-if="villa.total">{{ villa.total.total | numberFormat }}<span>{{ villa.total.price_currency }}</span></b>
@@ -274,9 +274,6 @@ export default {
     })
 
     this.formatDate(this.checkindate, this.checkoutdate)
-
-    console.log(this.villa)
-
   }
 }
 </script>
