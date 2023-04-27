@@ -18,7 +18,7 @@
                 <div class="O_List-card-in">
                     <div class="O_List-card-item" v-for="item in 5">
                         <div class="O_List-card-item-img">
-                            <nuxt-img src="/img/otel-list.png" alt=""></nuxt-img>
+                            <nuxt-img src="/img/otel-list.png" alt="" loading="lazy" placeholder ></nuxt-img>
                         </div>
                         <div class="O_List-card-item-content">
                             <div class="O_List-card-item-content-head">
@@ -191,7 +191,7 @@
                                 <div class="swiper-slide" v-for="(item, index) in blogs" :key="index">
                                     <nuxt-link :to="'/blog/fethiye/'+item.url" class="Blog-item">
                                         <div class="Blog-item-img">
-                                            <nuxt-img :src="item.page_content.default.page_list_img" alt=""></nuxt-img>
+                                            <nuxt-img :src="item.page_content.default.page_list_img" alt="" loading="lazy" placeholder ></nuxt-img>
                                             <div class="Blog-item-img-text">
                                                 <h6>{{ item.title }}</h6>
                                             </div>

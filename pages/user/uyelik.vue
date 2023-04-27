@@ -25,11 +25,7 @@ export default {
     middleware: ['auth'],
     head() {
         return {
-            title: 'Üyelik Bilgileri',
-            meta: [
-                { hid: 'description', name: 'description', content: 'anasayfa' },
-                { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
-            ],
+            title: 'Üyelik Bilgileri'
         }
     },
     data() {

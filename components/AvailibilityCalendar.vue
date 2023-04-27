@@ -2,7 +2,7 @@
   <div class="Login-calendar-in">
     <template v-if="loading">
       <div class="No-villas" v-if="loading">
-        <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" alt=""></nuxt-img>
+        <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" alt="" loading="lazy" placeholder ></nuxt-img>
         <h2>Takvim Yükleniyor...</h2>
         <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
       </div>

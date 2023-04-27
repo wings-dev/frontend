@@ -173,7 +173,7 @@
               </div> -->
               <div class="User-invoice-item last">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#addInvoiceModal">
-                  <nuxt-img src="/img/big-plus.svg" alt=""></nuxt-img>
+                  <nuxt-img src="/img/big-plus.svg" alt="" loading="lazy" ></nuxt-img>
                   <span>Yeni Fatura Bilgisi Ekle</span>
                 </button>
               </div>
@@ -191,7 +191,7 @@
 
           <div class="User-modal-in">
             <div class="User-modal-left">
-              <nuxt-img src="/img/invoice-text.svg" alt=""></nuxt-img>
+              <nuxt-img src="/img/invoice-text.svg" alt="" loading="lazy" ></nuxt-img>
             </div>
             <div class="User-modal-right">
               <h4><span>FATURA</span> BİLGİLERİ EKLE</h4>
@@ -275,7 +275,7 @@
 
           <div class="User-modal-in">
             <div class="User-modal-left">
-              <nuxt-img src="/img/invoice-text.svg" alt=""></nuxt-img>
+              <nuxt-img src="/img/invoice-text.svg" alt="" loading="lazy" ></nuxt-img>
             </div>
             <div class="User-modal-right">
               <h4><span>FATURA</span> BİLGİLERİ GÜNCELLE</h4>

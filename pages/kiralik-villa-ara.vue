@@ -13,11 +13,7 @@ export default {
   head() {
     let site_id = process.env.SITE
     return {
-      title: 'Listele',
-      meta: [
-        {hid: 'description', name: 'description', content: 'listele'},
-        {hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3'}
-      ],
+      title: 'Kiralık Villa Ara',
     }
   },
   data() {

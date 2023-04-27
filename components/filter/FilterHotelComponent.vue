@@ -175,7 +175,7 @@
               :checkindate="checkIn" :requestId="requestId"></filter-hotel-preview-component>
 
             <div class="No-villas mb-4" v-if="loading === false && hotels.length <= 0">
-              <nuxt-img :src="`img/site${site_id}/no-villas.svg`" alt=""></nuxt-img>
+              <nuxt-img :src="`img/site${site_id}/no-villas.svg`" alt="" loading="lazy" placeholder ></nuxt-img>
               <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
               <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
               <div class="No-villas-buttons">

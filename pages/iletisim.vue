@@ -48,7 +48,7 @@
                         :aria-labelledby="'pills-office-tab' + index"
                         v-for="(item, index) in pageData.page_content.contact_list" :key="index">
                         <div class="Contact-offices-tab-img">
-                            <nuxt-img src="/img/office.jpg" alt=""/>
+                            <nuxt-img src="/img/office.jpg" alt="" loading="lazy" placeholder />
                         </div>
                         <div class="Contact-offices-tab-in">
 

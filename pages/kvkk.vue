@@ -22,23 +22,16 @@ export default {
   layout: 'no-search',
   head() {
     return {
-      title: 'KİŞİSEL VERİLERİN KORUNMASI',
-      meta: [
-        { hid: 'description', name: 'description', content: 'gizlilik' },
-        { hid: 'keywords', name: 'keywords', content: 'gizlilik1, gizlilik2, gizlilik3' }
-      ]
+      title: 'KİŞİSEL VERİLERİN KORUNMASI'
     }
   },
   data(){
     return {
-      pageData:null,
       pageURLs:null
     }
   },
   async asyncData({ $getRedisKey,store }) {
     const site_id = process.env.SITE;
-    let pageData = {};
-    // store.state.routes.routes.filter(route => route.type == 16)
 
     const pageURLs = Object.keys(store.state.routes.routes).filter(key => store.state.routes.routes[key].type === 23).map(key => {
       const data = JSON.parse(JSON.stringify(store.state.routes.routes[key]))
@@ -47,8 +40,7 @@ export default {
 
     })
 
-    pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
-    return { pageData,pageURLs }
+    return {pageURLs }
   }
 }
 </script>

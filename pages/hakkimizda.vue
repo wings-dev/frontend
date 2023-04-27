@@ -34,7 +34,7 @@
                             <template v-for="(item, index) in banks">
 
                                 <div>
-                                    <nuxt-img :src="item.corporate_banks_logo" v-if="item.corporate_banks_logo" />
+                                    <nuxt-img :src="item.corporate_banks_logo" v-if="item.corporate_banks_logo" loading="lazy" placeholder />
                                     <div class="Info-left-item">
                                         <span>Alıcı Ünvan</span>
                                         <p>{{ item.corporate_banks_title }}</p>
@@ -136,7 +136,7 @@
                             v-for="(item, index) in pageData.page_content.corporate_brands.corporate_brands_info"
                             :key="index">
                             <a target="_blank" :href="item.corporate_brand_link">
-                                <nuxt-img :src="item.corporate_brand_logo" alt="Diğer Markalarımız - Balayı Villası" />
+                                <nuxt-img :src="item.corporate_brand_logo" alt="Diğer Markalarımız - Balayı Villası" loading="lazy" placeholder />
                             </a>
                         </div>
 
@@ -151,35 +151,35 @@
                     <div class="Ofis-content">
                         <div class="Ofis-content-item">
                             <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder 
                                     alt="Villa Kalkan - Kalkan Ofis" />
                             </a>
                         </div>
                         <div class="Ofis-content-item">
                             <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder 
                                     alt="Balayı Villası - Kalkan Ofis" />
                                 <span class="Ofis-content-item-more"><i class="icon-gallery"></i>+6 Fotoğraf Daha</span>
                             </a>
                             <div class="Ofis-content-item-list">
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg" :data-fancybox="'group-ofis'+index">
-                                    <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg"></nuxt-img>
+                                    <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg" loading="lazy" placeholder ></nuxt-img>
                                 </a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg"></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg" loading="lazy" placeholder ></nuxt-img></a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder ></nuxt-img></a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg"></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg" loading="lazy" placeholder ></nuxt-img></a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg"></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg" loading="lazy" placeholder ></nuxt-img></a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg"></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg" loading="lazy" placeholder ></nuxt-img></a>
                             </div>
                         </div>
                         <div class="Ofis-content-item Ofis-content-item-video">
                             <a href="https://www.youtube.com/embed/abWhzr3Y2Ow" data-fancybox="">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg"
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder 
                                     alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu" />
                                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
                             </a>

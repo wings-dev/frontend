@@ -67,7 +67,7 @@
       </div>
     </div>
     <button type="button" class="Search-button" id="searchVilla" @click=" search ">
-      <nuxt-img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search"
+      <nuxt-img src="/img/icons/006-ob-search-icon.svg" width="16" height="18" alt="ob-search" loading="lazy" 
         class="contain flex-shrink-0 my-1 desktop"></nuxt-img><span class="mobile">Otel Ara</span>
     </button>
     <div class="Search-mobile" :class=" { 'show': mobileCalendar } " ref="datePickerContainerMobile">

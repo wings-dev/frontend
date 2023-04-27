@@ -4,7 +4,7 @@
             <div class="Footer-in">
                 <div class="Footer-left">
                     <NuxtLink to="/" class="Footer-logo">
-                        <nuxt-img :src="'/img/site' + site_id + '/logo-dark.svg'" />
+                        <nuxt-img :src="'/img/site' + site_id + '/logo-dark.svg'" loading="lazy" placeholder />
                     </NuxtLink>
                     <p>{{ $store.state?.site_settings?.footer_address }}</p>
                     <p><a href="mailto:info@wings.com.tr">info@wings.com.tr</a></p>
@@ -39,17 +39,17 @@
                     </div>
                     <div class="Footer-right-bottom">
                         <div class="Footer-web">
-                            <a href="https://wings.com.tr/" target="_blank" class="Footer-web-item wings"><nuxt-img src="/img/logo-wings-grey.svg" alt=""></nuxt-img></a>
-                            <a href="https://villakalkan.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-villakalkan-grey.svg" alt=""></nuxt-img></a>
-                            <a href="#" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-otelbnb-grey.svg" alt=""></nuxt-img></a>
-                            <a href="https://balayivillasi.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-balayivillasi-grey.svg" alt=""></nuxt-img></a>
-                            <a href="https://balayisepeti.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-balayi-sepeti-grey.svg" alt=""></nuxt-img></a>
+                            <a href="https://wings.com.tr/" target="_blank" class="Footer-web-item wings"><nuxt-img src="/img/logo-wings-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a href="https://villakalkan.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-villakalkan-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a href="#" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-otelbnb-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a href="https://balayivillasi.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-balayivillasi-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a href="https://balayisepeti.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-balayi-sepeti-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
 
                             
                         </div>
                         <div class="Footer-tursab">
-                            <a :href="$store.state?.site_settings?.tursab_link" class="Footer-tursab-item tursab"><nuxt-img src="/img/tursab.png" alt=""></nuxt-img></a>
-                            <a :href="$store.state?.site_settings?.etbis_link" class="Footer-tursab-item etbis"><nuxt-img src="/img/etbis.png" alt=""></nuxt-img></a>
+                            <a :href="$store.state?.site_settings?.tursab_link" class="Footer-tursab-item tursab"><nuxt-img src="/img/tursab.png" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a :href="$store.state?.site_settings?.etbis_link" class="Footer-tursab-item etbis"><nuxt-img src="/img/etbis.png" alt="" loading="lazy" placeholder ></nuxt-img></a>
                         </div>
                         <div class="Footer-right-bottom-credit mobilex">
                             <div class="Footer-right-bottom-credit-text">
@@ -57,7 +57,7 @@
                                 <h6>Tüm kartlara Taksit imkanı</h6>
                                 <p>Villakalkan.com.tr’de</p>
                             </div>
-                            <nuxt-img src="/img/banks-grey.png" alt=""></nuxt-img>
+                            <nuxt-img src="/img/banks-grey.png" alt="" loading="lazy" placeholder ></nuxt-img>
                         </div>
 
                         <div class="Footer-right-bottom-social mobilex">
@@ -86,15 +86,15 @@
             <div class="container">
                 <div class="Footer-mobile-in">
                     <div class="Footer-web mobile">
-                        <a href="https://wings.com.tr/" target="_blank" class="Footer-web-item wings"><nuxt-img src="/img/logo-wings-grey.svg" alt=""></nuxt-img></a>
-                            <a href="https://villakalkan.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-villakalkan-grey.svg" alt=""></nuxt-img></a>
-                            <a href="#" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-otelbnb-grey.svg" alt=""></nuxt-img></a>
-                            <a href="https://balayivillasi.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-balayivillasi-grey.svg" alt=""></nuxt-img></a>
-                            <a href="https://balayisepeti.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-balayi-sepeti-grey.svg" alt=""></nuxt-img></a>
+                        <a href="https://wings.com.tr/" target="_blank" class="Footer-web-item wings"><nuxt-img src="/img/logo-wings-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a href="https://villakalkan.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-villakalkan-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a href="#" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-otelbnb-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a href="https://balayivillasi.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-balayivillasi-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a href="https://balayisepeti.com.tr/" target="_blank" class="Footer-web-item"><nuxt-img src="/img/logo-balayi-sepeti-grey.svg" alt="" loading="lazy" placeholder ></nuxt-img></a>
                     </div>
                         <div class="Footer-tursab Footer-tursab-mobile">      
-                            <a :href="$store.state?.site_settings?.tursab_link" class="Footer-tursab-item tursab"><nuxt-img src="/img/tursab.png" alt=""></nuxt-img></a>
-                            <a :href="$store.state?.site_settings?.etbis_link" class="Footer-tursab-item etbis"><nuxt-img src="/img/etbis.png" alt=""></nuxt-img></a>
+                            <a :href="$store.state?.site_settings?.tursab_link" class="Footer-tursab-item tursab"><nuxt-img src="/img/tursab.png" alt="" loading="lazy" placeholder ></nuxt-img></a>
+                            <a :href="$store.state?.site_settings?.etbis_link" class="Footer-tursab-item etbis"><nuxt-img src="/img/etbis.png" alt="" loading="lazy" placeholder ></nuxt-img></a>
                         </div>
                     <div class="Footer-mobile-text">
                         <div class="Footer-mobile-text-link">
@@ -109,7 +109,7 @@
             </div>
         </div>
         <div class="Whatsapp">
-            <a :href="$store.state?.site_settings?.wp_phone"><nuxt-img src="/img/wp-icon.svg" width="41" height="41" alt=""/></a>
+            <a :href="$store.state?.site_settings?.wp_phone"><nuxt-img src="/img/wp-icon.svg" width="41" height="41" alt="" loading="lazy" placeholder /></a>
         </div>
         <section class="Navigation d-none">
             <a class="Navigation-item">

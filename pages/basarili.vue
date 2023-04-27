@@ -9,7 +9,7 @@
               <div class="Login-left">
                 <div class="Login-card">
                   <div class="Login-card-img">
-                    <nuxt-img :src="villa.watermark_images[0].preview_url"
+                    <nuxt-img :src="villa.watermark_images[0].preview_url" loading="lazy" placeholder 
                          alt=" " />
                     <div class="Login-card-img-text">
                       <div class="Login-card-img-text-head">
@@ -70,6 +70,11 @@
 export default {
   name: 'ReservationSuccess',
   layout: 'no-search',
+  head() {
+        return {
+            title:"Rezervasyon Talebiniz Başarılı"
+        }
+    },
   data() {
     return {
       hash: {},

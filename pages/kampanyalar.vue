@@ -2,7 +2,7 @@
     <main class="main">
         <section class="Home-banner Home-banner-center"
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
-            <nuxt-img :src="pageData.page_content.default.page_list_img" alt=""/>
+            <nuxt-img :src="pageData.page_content.default.page_list_img" alt="" loading="lazy" placeholder />
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
@@ -19,7 +19,7 @@
                 <div class="Campaigns-in">
                     <b-button type="button" class="Campaigns-item" @click="showModal(index)"
                         v-for="(campaign, index) in campaigns" :key="index" v-if="campaign">
-                        <nuxt-img :src="campaign.page_content.default.page_list_img"> </nuxt-img>
+                        <nuxt-img :src="campaign.page_content.default.page_list_img" loading="lazy" placeholder > </nuxt-img>
                     </b-button>
 
                 </div>

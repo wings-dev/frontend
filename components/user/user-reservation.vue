@@ -26,7 +26,7 @@
                                 <div class="User-reservation-item ">
                                     <div class="User-reservation-item-left">
                                         <div class="User-reservation-item-left-img">
-                                            <nuxt-img src="/img/reservation-img.jpg" alt=""/>
+                                            <nuxt-img src="/img/reservation-img.jpg" alt="" loading="lazy" placeholder />
 
                                             <div class="User-reservation-item-left-img-text">
                                                 <div class="User-reservation-item-left-img-text-left">

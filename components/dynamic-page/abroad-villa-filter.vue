@@ -457,7 +457,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                 class="icon-login-close"></i></button>
             <div class="Login-success">
-              <nuxt-img src="/img/success-check.svg" alt=""></nuxt-img>
+              <nuxt-img src="/img/success-check.svg" alt="" loading="lazy" ></nuxt-img>
               <h3>Rezervasyon Talebi Alındı</h3>
               <h4>Ödeme yaptığınız takdirde adınıza rezerve edilecektir.</h4>
               <p>Satış temsilcilerimiz size en kısa sürede dönüş yapacaktır.</p>

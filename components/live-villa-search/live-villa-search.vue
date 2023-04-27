@@ -4,7 +4,7 @@
       <div class="Search-villas-in">
         <div class="Search-villas-head">
           <NuxtLink to="/" class="Header-logo">
-            <nuxt-img :src="'/img/site' + site_id + '/logo-dark.svg'" />
+            <nuxt-img :src="'/img/site' + site_id + '/logo-dark.svg'" loading="lazy" placeholder />
           </NuxtLink>
           <button type="button" class="Search-villas-close" @click="closeSearch">Kapat <i
               class="icon-login-close"></i></button>
@@ -87,7 +87,7 @@
 
             <a :href="villa.url" class="Search-villas-item" v-for="villa in villas">
               <div class="Search-villas-item-img">
-                <nuxt-img :src="villa.preview_image[0].preview_url" width="355" height="228" />
+                <nuxt-img :src="villa.preview_image[0].preview_url" width="355" height="228" loading="lazy" placeholder />
 
                 <div class="Search-villas-item-hover">
                   <i class="icon-search"></i>
