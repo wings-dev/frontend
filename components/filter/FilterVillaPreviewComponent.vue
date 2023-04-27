@@ -6,7 +6,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
               <a href="javascript:void(0)" @click="goDetail">
-                <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" sizes="sm:100vw md:50vw lg:400px" />
+                <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" loading="lazy" sizes="sm:100vw md:50vw lg:400px" />
               </a>
             </div>
           </div>
