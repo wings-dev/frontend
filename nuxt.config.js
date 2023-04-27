@@ -183,6 +183,15 @@ export default {
           ? process.env.CDN_URL + "/_ipx/"
           : "/_ipx/",
     },
+    presets: {
+      card: {
+        modifiers: {
+          format: 'webp',
+          fit: 'cover',
+          quality: '60'
+        }
+      }
+    }
   },
 
   cookies: {
