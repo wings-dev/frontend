@@ -34,7 +34,7 @@
             <div class="container h-100">
                 <div class="Header-inner-in">
                     <NuxtLink to="/" class="Header-logo">
-                        <nuxt-img :src="'/img/site' + site_id + '/logo.svg'" />
+                        <nuxt-img :src="'/img/site' + site_id + '/logo.svg'" loading="lazy"/>
                     </NuxtLink>
 
                     <div class="Header-menu" :class="{ active: mobileMenuActive }">
@@ -99,7 +99,7 @@
                                             </template>
                                         </div>
                                         <div class="Header-menu-item-otel-right" v-if="item.image">
-                                            <nuxt-img src="/img/otel-menu.png" alt=""></nuxt-img>
+                                            <nuxt-img src="/img/otel-menu.png" alt="" loading="lazy"></nuxt-img>
                                         </div>
                                     </div>
 
