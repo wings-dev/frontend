@@ -34,15 +34,16 @@ export default {
     link: [
       {
         rel: "icon",
-        type: "image/x-icon",
-        href:
-          (process.env.NODE_ENV === "production" ? process.env.CDN_URL : "") +
-          "/favicon.ico",
+        type: "image/svg+xml",
+        href:(process.env.NODE_ENV === "production" ? process.env.CDN_URL : "") + "/img/site"+ process.env.SITE + "/favicon.svg",
       },
-      // {rel: "stylesheet", href:  (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + "/css/custom-bootstrap.min.css"},
-      // {rel: "stylesheet", href: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + "/css/main.min.css"}
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href:(process.env.NODE_ENV === "production" ? process.env.CDN_URL : "") + "/img/site"+ process.env.SITE + "/favicon.png",
+      },
       { rel: "stylesheet", href: "/css/custom-bootstrap.min.css" },
-      { rel: "stylesheet", href: "/css/main.min.css" },
+      { rel: "stylesheet", href: "/css/main.min.css" }
     ],
     script: [
       {
@@ -59,7 +60,7 @@ export default {
       src: "@fancyapps/ui/dist/fancybox.css",
       lang: "css",
     },
-    "vue-select/dist/vue-select.css",
+    "vue-select/dist/vue-select.css"
   ],
   googleFonts: {
     families: {
