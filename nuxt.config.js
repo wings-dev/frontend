@@ -59,7 +59,6 @@ export default {
       src: "@fancyapps/ui/dist/fancybox.css",
       lang: "css",
     },
-    "vue-tour/dist/vue-tour.css",
     "vue-select/dist/vue-select.css",
   ],
   googleFonts: {
@@ -77,7 +76,6 @@ export default {
     "~/plugins/redisHelper.js",
     { src: "~/plugins/jquery.js", mode: "client" },
     { src: "~/plugins/ymaps.js", mode: "client" },
-    { src: "~/plugins/vue-tour.js", ssr: false },
     { src: "~/plugins/filters.js" },
     { src: "~/plugins/vue-select.js", ssr: false },
     { src: "~/plugins/dataService.js" },
@@ -279,6 +277,7 @@ export default {
   build: {
     // standalone: true,
     transpile: ["swiper"],
+    analyze: true,
     publicPath:
       process.env.NODE_ENV === "production"
         ? process.env.CDN_URL + "/_nuxt/"

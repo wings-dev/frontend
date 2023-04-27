@@ -154,7 +154,6 @@ export default {
     setTimeout(() => {
       document.querySelector('.Header').classList.add('Header-no-fixed')
     }, 50)
-console.log(this.pageContent)
   },
   beforeDestroy() {
     document.querySelector('.Header').classList.remove('Header-no-fixed')

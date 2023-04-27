@@ -1,7 +1,8 @@
 <template>
     <div class="Home">
 
-        <section class="Banner Banner-home " :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
+        <section class="Banner Banner-home "
+            :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <!-- <nuxt-img src="/img/banner-b-m.jpg" alt=""></nuxt-img> -->
@@ -43,10 +44,11 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-img :src="item.preview_image[0].preview_url" loading="lazy" preset="card" format="webp"
-                                            :srcset="item.preview_image[0].responsive_url" sizes="sm:325px lg:267px" :placeholder="[100, 50, 10]"></nuxt-img>
+                                        <nuxt-img :src="item.preview_image[0].preview_url" loading="lazy" preset="card"
+                                            format="webp" :srcset="item.preview_image[0].responsive_url"
+                                            sizes="sm:325px lg:267px" :placeholder="[100, 50, 10]"></nuxt-img>
 
-                                            <!-- :srcset="'https://d1t2mawg5vwzes.cloudfront.net/property/585/16121/responsive-images/1___media_library_original_322_181.jpg 322w,'" -->
+                                        <!-- :srcset="'https://d1t2mawg5vwzes.cloudfront.net/property/585/16121/responsive-images/1___media_library_original_322_181.jpg 322w,'" -->
 
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
                                             :class="isFavorite(item.code) ? 'active' : ''">
@@ -83,7 +85,7 @@
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
                                             <p><b>{{ item.min_price | numberFormat }} -
-                                                    {{ item.max_price | numberFormat}}
+                                                    {{ item.max_price | numberFormat }}
                                                 </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
                                         </div>
@@ -126,50 +128,58 @@
                         <span>keşfedin </span>
                     </h4>
                 </div>
-              <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
-                <li class="nav-item" role="presentation" v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index" v-if="otelCategory">
-                  <button :class="['nav-link', { active: index === 0 }]" :id="`otel-tab${index}`" data-bs-toggle="pill" :data-bs-target="`#otel${index}`"
-                          type="button" role="tab" :aria-selected="index === 0">{{otelCategory.otel_category}}</button>
-                </li>
-              </ul>
-              <div class="tab-content" id="otel-tabContent">
-                <div v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index" :class="['tab-pane', 'fade', { 'show active': index === 0 }]" :id="`otel${index}`" role="tabpanel" :aria-labelledby="`otel-tab${index}`" v-if="otelCategory">
-                  <div class="swiper list-slide-otel">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide" v-for="(hotel, hotelIndex) in otelCategory.otel_list" :key="hotelIndex" v-if="hotel && (hotel.images && hotel.images[0]?.ImageUrl)">
-                        <nuxt-link :to="hotel.url" class="O_Card" v-if="hotel.url">
-                          <div class="O_Card-in">
-                            <div class="O_Card-img">
-                              <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" alt="" v-if="hotel.images && hotel.images[0]?.ImageUrl" width="299" loading="lazy"
-                                            height="188"></nuxt-img>
-                              <div class="O_Card-img-text" style="background-color: #5d91c1;">
-                                <span>{{parseFloat(hotel.Rating).toFixed(2)}}/10</span>
-                              </div>
-                            </div>
-                            <div class="O_Card-content">
-                              <div class="O_Card-content-head">
-                                <b>{{hotel.Name}}</b>
-                                <small>{{hotel.DestinationName}}</small>
-                              </div>
-                              <div class="O_Card-content-in">
-                                <div class="O_Card-content-price d-none">
-                                  <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
-                                  <p>Başlayan Fiyatlar</p>
+                <ul class="otel-pills nav nav-pills mb-3" id="otel-tab" role="tablist">
+                    <li class="nav-item" role="presentation"
+                        v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index"
+                        v-if="otelCategory">
+                        <button :class="['nav-link', { active: index === 0 }]" :id="`otel-tab${index}`"
+                            data-bs-toggle="pill" :data-bs-target="`#otel${index}`" type="button" role="tab"
+                            :aria-selected="index === 0">{{ otelCategory.otel_category }}</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="otel-tabContent">
+                    <div v-for="(otelCategory, index) in pageData.page_content?.select_otel" :key="index"
+                        :class="['tab-pane', 'fade', { 'show active': index === 0 }]" :id="`otel${index}`" role="tabpanel"
+                        :aria-labelledby="`otel-tab${index}`" v-if="otelCategory">
+                        <div class="swiper list-slide-otel">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" v-for="(hotel, hotelIndex) in otelCategory.otel_list"
+                                    :key="hotelIndex" v-if="hotel && (hotel.images && hotel.images[0]?.ImageUrl)">
+                                    <nuxt-link :to="hotel.url" class="O_Card" v-if="hotel.url">
+                                        <div class="O_Card-in">
+                                            <div class="O_Card-img">
+                                                <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" alt=""
+                                                    v-if="hotel.images && hotel.images[0]?.ImageUrl" width="299"
+                                                    loading="lazy" height="188"></nuxt-img>
+                                                <div class="O_Card-img-text" style="background-color: #5d91c1;">
+                                                    <span>{{ parseFloat(hotel.Rating).toFixed(2) }}/10</span>
+                                                </div>
+                                            </div>
+                                            <div class="O_Card-content">
+                                                <div class="O_Card-content-head">
+                                                    <b>{{ hotel.Name }}</b>
+                                                    <small>{{ hotel.DestinationName }}</small>
+                                                </div>
+                                                <div class="O_Card-content-in">
+                                                    <div class="O_Card-content-price d-none">
+                                                        <p><b>300</b><span><u>TL</u>/Gecelik</span></p>
+                                                        <p>Başlayan Fiyatlar</p>
+                                                    </div>
+                                                    <nuxt-link :to="hotel.url" class="O_Card-content-link" v-if="hotel.url">
+                                                        Oteli İncele
+                                                        <i class="icon-right-arrows-new"></i>
+                                                    </nuxt-link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nuxt-link>
                                 </div>
-                                <nuxt-link :to="hotel.url" class="O_Card-content-link" v-if="hotel.url">
-                                  Oteli İncele
-                                  <i class="icon-right-arrows-new"></i>
-                                </nuxt-link>
-                              </div>
                             </div>
-                          </div>
-                        </nuxt-link>
-                      </div>
+                        </div>
+                        <nuxt-link :to="'/' + otelCategory.otel_category_all_link" class="popular-section-otel-more">Tüm
+                            {{ otelCategory.otel_category }}</nuxt-link>
                     </div>
-                  </div>
-                  <nuxt-link :to="'/'+otelCategory.otel_category_all_link" class="popular-section-otel-more">Tüm {{otelCategory.otel_category}}</nuxt-link>
                 </div>
-              </div>
             </div>
         </section>
         <section class="H_info">
@@ -177,11 +187,12 @@
                 <div class="H_info-in">
                     <div class="H_info-item">
                         <div class="H_info-item-icon">
-                          <nuxt-img src="/img/tursabnew.png" alt="" loading="lazy"></nuxt-img>
+                            <nuxt-img src="/img/tursabnew.png" alt="" loading="lazy"></nuxt-img>
                         </div>
                         <div class="H_info-item-icon-text">
                             <p>Wings Seyehat Tur. San.ve Tic.Ltd.Şti. 11095’nolu <span>Türsab Acentesidir.</span></p>
-                            <a href="https://d1t2mawg5vwzes.cloudfront.net/page/18197/381761/tursab-belge.jpeg" data-fancybox="Türsab Belgesi">Belge Görüntüle</a>
+                            <a href="https://d1t2mawg5vwzes.cloudfront.net/page/18197/381761/tursab-belge.jpeg"
+                                data-fancybox="Türsab Belgesi">Belge Görüntüle</a>
                         </div>
                     </div>
                     <div class="H_info-item">
@@ -201,7 +212,8 @@
                             <p>balayivillasi.com.tr’yi<b> Keşfet</b></p>
                             <div class="H_info-item-links">
                                 <nuxt-link to="/hakkimizda">Hakkımızda</nuxt-link>
-                                <a href="https://www.youtube.com/watch?v=n62oS7mSx1A" data-fancybox="Tanıtım Videosu"><i class="icon-icon-play-sm"></i>Video İzle</a>
+                                <a href="https://www.youtube.com/watch?v=n62oS7mSx1A" data-fancybox="Tanıtım Videosu"><i
+                                        class="icon-icon-play-sm"></i>Video İzle</a>
                             </div>
                         </div>
                     </div>
@@ -227,8 +239,10 @@
                                         <!-- <nuxt-img :src="villa.preview_image[0].preview_url" width="371"
                                             height="225"></nuxt-img> -->
 
-                                            <nuxt-img :src="villa.watermark_preview_image[0].preview_url" loading="lazy" preset="card" format="webp"
-                                            :srcset="villa.watermark_preview_image[0].responsive_url" sizes="sm:385w lg:364px"></nuxt-img>
+                                        <nuxt-img :src="villa.watermark_preview_image[0].preview_url" loading="lazy"
+                                            preset="card" format="webp"
+                                            :srcset="villa.watermark_preview_image[0].responsive_url"
+                                            sizes="sm:385w lg:364px"></nuxt-img>
 
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(villa.code)"
                                             :class="isFavorite(villa.code) ? 'active' : ''">
@@ -271,8 +285,9 @@
                                             <p><span>3</span>Gece</p>
                                         </div>
                                         <div class="Card-content-bottom-date">
-                                            <p><span>{{ villa.start_date | formatDate('DD-MM-YYYY', 'DD MMMM')}}</span><i class="icon-arrow-right-2"></i><span>{{
-                                                villa.end_date | formatDate('DD-MM-YYYY', 'DD MMMM') }}</span></p>
+                                            <p><span>{{ villa.start_date | formatDate('DD-MM-YYYY', 'DD MMMM') }}</span><i
+                                                    class="icon-arrow-right-2"></i><span>{{
+                                                        villa.end_date | formatDate('DD-MM-YYYY', 'DD MMMM') }}</span></p>
                                             <small>Fırsatı kaçırma!</small>
                                         </div>
                                         <div class="Card-content-bottom-price single">
@@ -301,9 +316,10 @@
                     </h4>
                 </div>
                 <div class="categories">
-                    <nuxt-link to="/hamamli--saunali-villalar" class="cat-item no-hover area1 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/hamam-sauna.jpg" data-src="" width="380" height="235" alt="category image" loading="lazy"
-                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
+                    <nuxt-link to="/hamamli--saunali-villalar"
+                        class="cat-item no-hover area1 overflow-hidden position-relative">
+                        <nuxt-img src="/img/category/hamam-sauna.jpg" data-src="" width="380" height="235"
+                            alt="category image" loading="lazy" class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -317,9 +333,10 @@
                             </div>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/kapali-havuzlu-balayi-villalari" class="cat-item no-hover area2 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/kapali-havuzlu.jpg" data-src="" width="380" height="487" alt="category image" loading="lazy"
-                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
+                    <nuxt-link to="/kapali-havuzlu-balayi-villalari"
+                        class="cat-item no-hover area2 overflow-hidden position-relative">
+                        <nuxt-img src="/img/category/kapali-havuzlu.jpg" data-src="" width="380" height="487"
+                            alt="category image" loading="lazy" class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -333,9 +350,10 @@
                             </div>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/deniz-manzarali-balayi-villalari" class="cat-item no-hover area3 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/deniz-manzarali.jpg" data-src="" width="380" height="235" alt="category image" loading="lazy"
-                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
+                    <nuxt-link to="/deniz-manzarali-balayi-villalari"
+                        class="cat-item no-hover area3 overflow-hidden position-relative">
+                        <nuxt-img src="/img/category/deniz-manzarali.jpg" data-src="" width="380" height="235"
+                            alt="category image" loading="lazy" class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -349,9 +367,10 @@
                             </div>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/jakuzili-balayi-villalari" class="cat-item no-hover area4 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/jakuzili-villalar.jpg" data-src="" width="380" height="235" alt="category image" loading="lazy"
-                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
+                    <nuxt-link to="/jakuzili-balayi-villalari"
+                        class="cat-item no-hover area4 overflow-hidden position-relative">
+                        <nuxt-img src="/img/category/jakuzili-villalar.jpg" data-src="" width="380" height="235"
+                            alt="category image" loading="lazy" class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1 d-none">
                             <small>Yeni Listenenler</small>
                         </div>
@@ -369,8 +388,8 @@
                         </div>
                     </nuxt-link>
                     <nuxt-link to="/tum-balayi-villalari" class="cat-item no-hover area5 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/balayi.jpg" data-src="" width="380" height="235" alt="category image" loading="lazy"
-                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
+                        <nuxt-img src="/img/category/balayi.jpg" data-src="" width="380" height="235" alt="category image"
+                            loading="lazy" class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -384,9 +403,10 @@
                             </div>
                         </div>
                     </nuxt-link>
-                    <nuxt-link to="/muhafazakar-balayi-villalari" class="cat-item no-hover area6 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/muhafazakar2.jpg" data-src="" width="380" height="487" alt="category image" loading="lazy"
-                                  class="cat-image lazy cover w-100 h-100"></nuxt-img>
+                    <nuxt-link to="/muhafazakar-balayi-villalari"
+                        class="cat-item no-hover area6 overflow-hidden position-relative">
+                        <nuxt-img src="/img/category/muhafazakar2.jpg" data-src="" width="380" height="487"
+                            alt="category image" loading="lazy" class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
                             <div class="d-flex flex-column py-md-2 ps-md-2">
@@ -428,11 +448,13 @@
                 </div>
                 <div class="swiper popular list-slide list-slide-abroad list-wrapper scroll-wrapper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, index) in pageData.page_content.property_category" :key="index">
+                        <div class="swiper-slide" v-for="(item, index) in pageData.page_content.property_category"
+                            :key="index">
                             <nuxt-link :to="item.category_url" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                  <nuxt-img :src="item.category_img" alt="" v-if="item.category_img" loading="lazy"></nuxt-img>
-                                  <nuxt-img src="/img/country/italy.jpg" alt="" loading="lazy" v-else></nuxt-img>
+                                    <nuxt-img :src="item.category_img" alt="" v-if="item.category_img"
+                                        loading="lazy"></nuxt-img>
+                                    <nuxt-img src="/img/country/italy.jpg" alt="" loading="lazy" v-else></nuxt-img>
                                 </div>
                                 <div class="Abroad-villas-item-content">
                                     <div class="Abroad-villas-item-content-left">
@@ -441,11 +463,13 @@
                                     </div>
                                     <div class="Abroad-villas-item-content-right">
                                         <div class="Abroad-villas-item-content-flag">
-                                            <country-flag :country='item.countryFlag' :rounded="true"/>
+                                            <country-flag :country='item.countryFlag' :rounded="true" />
                                         </div>
 
-                                        <div class="Abroad-villas-item-content-smile" v-if="item.emojiStatus !== 'emojistatus_2'">
-                                          <nuxt-img src="/img/laughing-smile.svg" alt="" v-if="item.emojiStatus == 'emojistatus_1'"></nuxt-img>
+                                        <div class="Abroad-villas-item-content-smile"
+                                            v-if="item.emojiStatus !== 'emojistatus_2'">
+                                            <nuxt-img src="/img/laughing-smile.svg" alt=""
+                                                v-if="item.emojiStatus == 'emojistatus_1'"></nuxt-img>
                                             <span>{{ item.vizeStatus }}</span>
                                         </div>
                                     </div>
@@ -477,7 +501,7 @@
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
-import findVillaUrlMixin, {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
+import findVillaUrlMixin, { findVillaUrlByCode } from "@/mixins/findVillaUrlMixin";
 import slugify from "slugify";
 import CountryFlag from 'vue-country-flag'
 
@@ -491,14 +515,7 @@ export default {
         CountryFlag
     },
     head() {
-        let site_id = process.env.SITE
-        return {
-            title: 'Anasayfa',
-            meta: [
-                { hid: 'description', name: 'description', content: 'anasayfa' },
-                { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
-            ],
-        }
+        return this.headData
     },
     data() {
         return {
@@ -506,7 +523,7 @@ export default {
             pageData: {},
             opportunities: [],
             cdn_hotel: process.env.HOTEL_CDN_URL + '/',
-            sitename:process.env.SITE_NAME
+            sitename: process.env.SITE_NAME
         }
     },
     async asyncData({ $getRedisKey, $axios, store }) {
@@ -521,26 +538,26 @@ export default {
         const responsePrice = popularVillaPriceKeys.length > 0 ? await $getRedisKey(popularVillaPriceKeys) : {};
 
         const updatedPopularVillas = popularVillas.map(villa => {
-          if (villa && villa.code) {
-            const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
-            const priceList = Array.isArray(priceInfo[`price_list_${process.env.PRICELIST_ID}`]?.list) ? priceInfo[`price_list_${process.env.PRICELIST_ID}`].list : [];
+            if (villa && villa.code) {
+                const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
+                const priceList = Array.isArray(priceInfo[`price_list_${process.env.PRICELIST_ID}`]?.list) ? priceInfo[`price_list_${process.env.PRICELIST_ID}`].list : [];
 
-            const prices = priceList.map(item => item && item.price ? parseInt(item.price.replace("₺", "")) : null).filter(Boolean);
-            const min_price = prices.length > 0 ? Math.min(...prices) : null;
-            const max_price = prices.length > 0 ? Math.max(...prices) : null;
+                const prices = priceList.map(item => item && item.price ? parseInt(item.price.replace("₺", "")) : null).filter(Boolean);
+                const min_price = prices.length > 0 ? Math.min(...prices) : null;
+                const max_price = prices.length > 0 ? Math.max(...prices) : null;
 
-            if (typeof store.state.routes.routes === 'object' && store.state.routes.routes !== null) {
-              villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes);
+                if (typeof store.state.routes.routes === 'object' && store.state.routes.routes !== null) {
+                    villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes);
+                }
+
+                return {
+                    ...villa,
+                    min_price: min_price ? min_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
+                    max_price: max_price ? max_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
+                };
+            } else {
+                return villa;
             }
-
-            return {
-              ...villa,
-              min_price: min_price ? min_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
-              max_price: max_price ? max_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
-            };
-          } else {
-            return villa;
-          }
         });
 
         let data = {
@@ -551,38 +568,42 @@ export default {
         response = await $axios.post((process.server ? 'http://localhost:' + process.env.NODE_PORT : '') +
             `/website/opportunity?api_token=${process.env.WEBSITE_TOKEN}&page=1`, data)
 
-      function encodeTimestamp(dateString) {
-        // Tarih formatını "dd-MM-yyyy" olarak kabul ediyoruz
-        const [day, month, year] = dateString.split('-').map(Number);
-        return (new Date(year, month - 1, day)).getTime();
-      }
+        function encodeTimestamp(dateString) {
+            // Tarih formatını "dd-MM-yyyy" olarak kabul ediyoruz
+            const [day, month, year] = dateString.split('-').map(Number);
+            return (new Date(year, month - 1, day)).getTime();
+        }
 
         const opportunities = response.data.data.map(villa => {
-          villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes) +
-            '?i=' + encodeTimestamp(villa.start_date)  + '&o='  + encodeTimestamp(villa.end_date) // + '&v=' + localStorage.getItem('visitorId') ;
-          return villa
+            villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes) +
+                '?i=' + encodeTimestamp(villa.start_date) + '&o=' + encodeTimestamp(villa.end_date) // + '&v=' + localStorage.getItem('visitorId') ;
+            return villa
         });
 
-      const otelCategories = Array.isArray(pageData.page_content?.select_otel) ? pageData.page_content.select_otel : [];
+        const otelCategories = Array.isArray(pageData.page_content?.select_otel) ? pageData.page_content.select_otel : [];
 
-      otelCategories.forEach((otelCategory, index) => {
-        if (otelCategory && Array.isArray(otelCategory.otel_list)) {
-          otelCategory.otel_list = otelCategory.otel_list.map(hotel => {
-            if (hotel && hotel.Name && hotel.Id) {
-              hotel.url = '/otel/' + slugify(hotel.Name.toLowerCase()) + '-' + hotel.Id;
+        otelCategories.forEach((otelCategory, index) => {
+            if (otelCategory && Array.isArray(otelCategory.otel_list)) {
+                otelCategory.otel_list = otelCategory.otel_list.map(hotel => {
+                    if (hotel && hotel.Name && hotel.Id) {
+                        hotel.url = '/otel/' + slugify(hotel.Name.toLowerCase()) + '-' + hotel.Id;
+                    }
+                    return hotel;
+                });
             }
-            return hotel;
-          });
-        }
-      });
+        });
 
         pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas, select_otel: otelCategories };
 
+        let headData = {
+          title: pageData.title,
+          meta: pageData.meta
+        }
 
-        return { pageData, opportunities };
+        return { pageData, opportunities,headData };
     },
     mounted() {
-      Swiper.use([Navigation, Pagination])
+        Swiper.use([Navigation, Pagination])
 
         const swiper = new Swiper('.list-slide-first', {
             slidesPerView: 1.1,
@@ -731,8 +752,6 @@ export default {
 
 }
 </script>
-<style scoped>
-.list-item .list-image {
+<style scoped>.list-item .list-image {
     width: 100%;
-}
-</style>
+}</style>

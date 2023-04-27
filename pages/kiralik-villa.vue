@@ -11,14 +11,7 @@ import DynamicVillaFilterPage from "@/components/dynamic-page/villa-filter.vue";
 export default {
   name: 'VillaListPage',
   head() {
-    let site_id = process.env.SITE
-    return {
-      title: 'Listele',
-      meta: [
-        { hid: 'description', name: 'description', content: 'listele' },
-        { hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3' }
-      ],
-    }
+    return this.headData
   },
   data() {
     return {
@@ -29,7 +22,11 @@ export default {
     const site_id = process.env.SITE;
     let pageData = {};
     pageData = await $getRedisKey(`web:${site_id}:pages:kiralik-villa`);
-    return { pageData }
+    let headData = {
+          title: pageData.title,
+          meta: pageData.meta
+        }
+    return { pageData,headData }
   },
   components: {
     DynamicVillaFilterPage

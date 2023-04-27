@@ -8,7 +8,8 @@
                     <form action="" class="Sss-search-form">
                         <label for="">
                             <i class="icon-search"></i>
-                            <input type="text" v-model="search" placeholder="Villa’nın şehir merkezine uzaklıklarını nasıl görebilirim">
+                            <input type="text" v-model="search"
+                                placeholder="Villa’nın şehir merkezine uzaklıklarını nasıl görebilirim">
                             <button type="submit" class="d-none">Ara</button>
                         </label>
                     </form>
@@ -20,8 +21,7 @@
                 <div class="Sss-in">
                     <h2 class="Sss-title">En çok sorulan sorular</h2>
                     <div class="Sss-list accordion" id="accordionSSS">
-                        <div class="accordion-item" v-for="(faqItem, index) in filteredFaqs"
-                            :key="index">
+                        <div class="accordion-item" v-for="(faqItem, index) in filteredFaqs" :key="index">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 :data-bs-target="'#faq' + index" aria-expanded="false" :aria-controls="'faq' + index">
                                 {{ faqItem.howrent_category_question }}
@@ -45,17 +45,11 @@ export default {
     name: 'SSS',
     layout: 'no-search',
     head() {
-        return {
-            title: 'Sıkça Sorulan Sorular',
-            meta: [
-                { hid: 'description', name: 'description', content: 'anasayfa' },
-                { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
-            ],
-        }
+        return this.headData
     },
     data() {
         return {
-            search:""
+            search: ""
         }
     },
     async asyncData({ $getRedisKey, $axios }) {
@@ -65,9 +59,13 @@ export default {
         let response = await $getRedisKey([redisPageKey]);
         const pageData = response[redisPageKey] || {};
 
-        const faqs = pageData.page_content.faq[0].faq_list
+        const faqs = pageData.page_content.faq[0].faq_list;
+        let headData = {
+          title: pageData.title,
+          meta: pageData.meta
+        }
 
-        return { pageData, faqs };
+        return { pageData, faqs,headData };
     },
     computed: {
         filteredFaqs() {

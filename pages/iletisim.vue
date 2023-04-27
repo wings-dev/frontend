@@ -152,13 +152,7 @@ export default {
     name: 'iletisim',
     layout: 'no-search',
     head() {
-        return {
-            title: 'İletişim',
-            meta: [
-                { hid: 'description', name: 'description', content: 'anasayfa' },
-                { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
-            ],
-        }
+        return this.headData
     },
     data() {
         return {
@@ -206,7 +200,11 @@ export default {
         pageData = await $getRedisKey(`web:${site_id}:pages:iletisim`);
         const pageContent = pageData.page_content;
         const contactList = pageContent.contact_list;
-        const officeCoordinates = []
+        const officeCoordinates = [];
+        let headData = {
+          title: pageData.title,
+          meta: pageData.meta
+        }
 
         contactList.forEach(office => {
             const coordinates = {
@@ -216,9 +214,7 @@ export default {
             officeCoordinates.push(coordinates);
         });
 
-
-
-        return { pageData,officeCoordinates }
+        return { pageData,officeCoordinates,headData }
     },
     methods: {
         async send() {

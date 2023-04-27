@@ -273,29 +273,27 @@ export default {
     name: 'HakkimizdaPage',
     layout: 'no-search',
     head() {
-        let site_id = process.env.SITE
-        return {
-            title: 'Hakkımızda',
-            meta: [
-                { hid: 'description', name: 'description', content: 'hakkımızda' },
-                { hid: 'keywords', name: 'keywords', content: 'hakkımızda1, hakkımızda2, hakkımızd3' }
-            ],
-        }
+        return this.headData
     },
     async asyncData({ $getRedisKey }) {
         const site_id = process.env.SITE;
         let pageData = {};
-        
         pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
+
+        let headData = {
+          title: pageData.title,
+          meta: pageData.meta
+        }
+        
+        
         let banks = pageData.page_content.corporate_banks
-        return { pageData,banks }
+        return { pageData,banks,headData }
     },
     data() {
         return {
         }
     },
     mounted() {
-        console.log(this.pageData)
     },
     methods: {
         copyToClipboard(text) {

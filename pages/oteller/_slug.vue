@@ -140,7 +140,8 @@
       <div class="container">
         <div class="row pt-4 ">
           <div class="note-box col-12 col-lg-12 pe-lg-5">
-            <div class="highlight-section-desc" :class="{ active: isExpanded }" v-html="pageData.page_content.article.data">
+            <div class="highlight-section-desc" :class="{ active: isExpanded }"
+              v-html="pageData.page_content.article.data">
             </div>
 
             <div class="highlight-section-desc-more-button read-more-button pb-4" :class="{ active: isExpanded }"
@@ -156,12 +157,12 @@
         <div class="List-sss">
           <h3>En çok sorulan sorular </h3>
           <div class="accordion" id="Faq">
-            <div class="accordion-item" v-for="(item,index) in pageData.page_content?.faq[0].faq_list" :key="index">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#faq'+index"
-                aria-expanded="false" :aria-controls="'faq'+index">
-                {{item.howrent_category_question}}
+            <div class="accordion-item" v-for="(item, index) in pageData.page_content?.faq[0].faq_list" :key="index">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                :data-bs-target="'#faq' + index" aria-expanded="false" :aria-controls="'faq' + index">
+                {{ item.howrent_category_question }}
               </button>
-              <div :id="'faq'+index" class="accordion-collapse collapse " data-bs-parent="#Faq">
+              <div :id="'faq' + index" class="accordion-collapse collapse " data-bs-parent="#Faq">
                 <div class="accordion-body" v-html="item.howrent_category_answer">
 
                 </div>
@@ -241,7 +242,7 @@ export default {
 
     const site_id = process.env.SITE;
     let pageData = {}
-
+    let headData = {}
     let redisData = store.state['routes'].routes[path] // await $getRedisKey(`web:${site_id}:pages:${path}`);
     if (!redisData) {
       redirect('404')
@@ -252,15 +253,14 @@ export default {
 
     if (redisData) {
       const type = redisData.type;
-      const headData = {
-        title: redisData.title,
-        meta: redisData.meta
-      }
-
+      
       // type 18 => Otel Kategori
       if (redisData.type === 18) {
-        // filtre redis datası
         pageData = await $getRedisKey(`web:${site_id}:pages:${path}`);
+        headData = {
+          title: pageData.title,
+          meta: pageData.meta
+        }
       }
 
     } else {
@@ -276,7 +276,7 @@ export default {
     const total_items = response.data.total;
     const current_page = response.data.current_page;
 
-    return { hotels, per_page, total_items, current_page, destination_id, pageData }
+    return { hotels, per_page, total_items, current_page, destination_id, pageData,headData }
   },
   mounted() {
     Swiper.use([Navigation, Pagination])

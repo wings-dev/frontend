@@ -21,7 +21,7 @@
                   </div>
                   <div class="Otel-card-review">
                     <span>{{ hotelDetails.body.hotel.stars }}/5</span>
-                    <p>{{ hotelDetails.body.hotel.stars }} Yıldız <u>0 yorum</u></p>
+                    <p>{{ hotelDetails.body.hotel.stars }} Yıldız <u v-if="this.comments && this.comments.data">{{ this.comments.data.count }} yorum</u></p>
                   </div>
                 </div>
 
@@ -120,7 +120,7 @@
                     :data-caption="hotelDetails.body.hotel.name">Tüm Fotoğraflar
                     ( {{ previewImages.length }} ) </span>
                   <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
-                  <a href="https://www.youtube.com/watch?v=5SMaakuGyH0" data-fancybox>
+                  <a href="https://www.youtube.com/watch?v=5SMaakuGyH0" data-fancybox class="d-none">
                     <i class="icon-play-button"></i> Video İzle
                   </a>
                   <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
@@ -130,7 +130,7 @@
 
             <div class="d-none">
               <a v-for="previewImage in previewImages.slice(5)" :href="previewImage.preview_url" data-fancybox="gallery"
-                data-caption="Salon">
+                :data-caption="hotelDetails.body.hotel.name">
                 <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" width="284" height="187"
                   sizes="sm:100vw md:50vw lg:284px" /></a>
             </div>
@@ -258,23 +258,20 @@
           <div class="otel-reviews-in">
 
             <div class="View-reviews comments view-menu-content-item" id="reviews-content">
-              <div class="View-reviews-head" v-if="this.comments && this.comments.data">
+              <div class="View-reviews-head" v-if="comments && comments.data">
                 <div class="general-informations-section-title mb-0">
                   <span>{{ hotelDetails.body.hotel.name }}</span>
                   Değerlendirmesi
                 </div>
                 <div class="Otel-card-review mt-2">
-                  <span>{{ this.comments.data.averageScore }}/10</span>
+                  <span>{{ comments.data.averageScore }}/10</span>
                   <p>
-                    {{ this.comments.data.averageScoreText }}
-                    <u>{{ this.comments.data.count }} yorum</u>
+                    {{ comments.data.averageScoreText }}
+                    <u>{{ comments.data.count }} yorum</u>
                   </p>
                 </div>
               </div>
-              <div
-                class="otel-reviews-item"
-                v-for="comment in this.comments?.data?.comments || []"
-              >
+              <div class="otel-reviews-item" v-for="(comment,index) in comments?.data?.comments || []" :key="index" v-if="index < 10">
                 <div class="otel-reviews-item-left">
                   <div class="otel-reviews-item-left-top">
                     <h6>
@@ -292,12 +289,12 @@
                 <div class="otel-reviews-item-right">
                   <div class="otel-reviews-item-right-head">
                     <div class="Otel-card-review">
-                      <span :style="{ color: comment.scoreColor }">{{ comment.score }}/10</span>
+                      <span :style="{ 'background-color': comment.scoreColor }">{{ comment.score }}/10</span>
                       <b>{{ comment.scoreText }}</b>
                     </div>
                     <p>
                       Yorum kaynağı
-                      <a href="" target="_blank" rel="noopener noreferrer">{{ comment.provider }}</a>
+                      <b>{{ comment.provider }}</b>
                     </p>
                   </div>
                   <div class="otel-reviews-item-right-text">
@@ -305,7 +302,7 @@
                   </div>
                 </div>
               </div>
-              <button class="otel-reviews-more d-none" type="button" v-if="this.comments?.data?.comments.length">Tüm yorumları göster</button>
+              <button class="otel-reviews-more d-none" type="button" v-if="comments?.data?.comments.length">Tüm yorumları göster</button>
             </div>
           </div>
         </div>

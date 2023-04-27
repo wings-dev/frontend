@@ -214,14 +214,7 @@ export default {
         Swiper, CountryFlag
     },
     head() {
-        let site_id = process.env.SITE
-        return {
-            title: 'Anasayfa',
-            meta: [
-                { hid: 'description', name: 'description', content: 'anasayfa' },
-                { hid: 'keywords', name: 'keywords', content: 'anasayfa1, anasayfa2, anasayfa3' }
-            ],
-        }
+        return this.headData
     },
     data() {
         return {
@@ -234,8 +227,12 @@ export default {
 
         let response = await $getRedisKey([redisPageKey]);
         const pageData = response[redisPageKey] || {};
+        let headData = {
+          title: pageData.title,
+          meta: pageData.meta
+        }
 
-        return { pageData };
+        return { pageData,headData };
     },
     methods: {
         isFavorite(code) {
@@ -351,8 +348,6 @@ export default {
                 },
             },
         })
-
-        console.log(this.pageData)
     }
 
 }

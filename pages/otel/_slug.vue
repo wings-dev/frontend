@@ -1,6 +1,7 @@
 <template>
   <div>
-    <dynamic-hotel-detail-page :hotelDetails="hotelDetails" :hotelPriceDetails="hotelPriceDetails" :selectedFilters="selectedFilters" :comments="comments"></dynamic-hotel-detail-page>
+    <dynamic-hotel-detail-page :hotelDetails="hotelDetails" :hotelPriceDetails="hotelPriceDetails"
+      :selectedFilters="selectedFilters" :comments="comments"></dynamic-hotel-detail-page>
   </div>
 </template>
 
@@ -8,7 +9,7 @@
 import DynamicHotelDetailPage from "@/components/dynamic-page/hotel-detail.vue";
 export default {
   name: 'DynamicPage',
-  components: {DynamicHotelDetailPage},
+  components: { DynamicHotelDetailPage },
   layout: "no-search",
   head() {
     return this.headData
@@ -23,7 +24,7 @@ export default {
       comments: null
     }
   },
-  async asyncData({route, $axios, $dataService, $getRedisKey}) {
+  async asyncData({ route, $axios, $dataService, $getRedisKey }) {
     const path = route.params.slug;
     const split = path.split('-');
     const hotel_id = split[split.length - 1];
@@ -40,9 +41,16 @@ export default {
     let response = await $dataService.getHotelDetail(hotel_id);
     const hotelDetails = response.data;
 
+    let headData = {
+      title: hotelDetails.body.hotel.name
+    }
+
     const comments = await $getRedisKey(`data:otels:${hotel_id}:comments`)
 
-    return {hotelDetails, selectedFilters, comments}
+    return { hotelDetails, selectedFilters, comments, headData }
   },
+  mounted() {
+    console.log(this.hotelDetails, this.headData)
+  }
 }
 </script>
