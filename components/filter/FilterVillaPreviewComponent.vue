@@ -60,14 +60,14 @@
               <strong>{{ checkin }} - {{ checkout }}</strong>
             </div>
             <b>{{ villa.total.total | numberFormat }}<span>{{ villa.total.price_currency == '₺' ? 'TL' : villa.total.price_currency }}</span></b>
-            
+
           </div>
           <div class="F_villa-item-head-price F_villa-item-head-price-promotion" v-else>
 
             <div class="F_villa-item-head-price-in">
               <span>GECELİK</span>
               <b v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}<span>{{villa.prices.min_price.price_currency }}</span></b>
-              <b v-if="villa.total">{{ villa.total.total | numberFormat }}<span>{{ villa.prices.max_price.price_currency }}</span></b>
+              <b v-if="villa.total">{{ villa.total.total | numberFormat }}<span>{{ villa.total.price_currency }}</span></b>
               <p>‘den başlayan fiyatlar</p>
             </div>
 
