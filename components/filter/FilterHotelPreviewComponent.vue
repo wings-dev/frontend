@@ -36,13 +36,13 @@
     <div class="Otel-card-right">
       <div class="Otel-card-review desktop">
         <span>{{hotel.stars}}/5</span>
-        <p>{{hotel.stars}} Yıldız <u>0 yorum</u></p>
+        <p>{{hotel.stars}} Yıldız <u> yorum</u></p>
       </div>
       <div class="Otel-card-price">
         <span>{{ hotel.offers[0].night }} GECE</span>
         <div class="Otel-card-price-in">
-          <s v-if="hotel.offers[0].price.amount_old > 0">{{hotel.offers[0].price.amount_old}}{{ hotel.offers[0].price.currency }}</s>
-          <b>{{ hotel.offers[0].price.amount }}<small>{{ hotel.offers[0].price.currency }}</small></b>
+          <s v-if="hotel.offers[0].price.amount_old > 0">{{hotel.offers[0].price.amount_old | numberFormat}}{{ hotel.offers[0].price.currency }}</s>
+          <b>{{ hotel.offers[0].price.amount | numberFormat}}<small>{{ hotel.offers[0].price.currency }}</small></b>
           <p>Gecelik <span>{{ (hotel.offers[0].price.amount / hotel.offers[0].night).toFixed(2) | numberFormat }}{{ hotel.offers[0].price.currency }}</span></p>
           <!--<p class="Otel-card-content-warning mobile">Bu fiyattan son oda!</p>-->
         </div>

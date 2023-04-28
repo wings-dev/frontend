@@ -14,10 +14,9 @@ export default {
   head() {
     let site_id = process.env.SITE
     return {
-      title: 'Listele',
+      title: 'Kısa Süreli Fırsatlar',
       meta: [
-        {hid: 'description', name: 'description', content: 'listele'},
-        {hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3'}
+        {hid: 'description', name: 'description', content: 'Kısa Süreli Fırsatlar'},
       ],
     }
   },

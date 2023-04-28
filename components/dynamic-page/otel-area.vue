@@ -185,7 +185,7 @@
                 <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
                   <a class="Blog-item">
                     <div class="Blog-item-img">
-                      <nuxt-img src="/img/blog.png" :alt="hotel.Name + ' ' + sitename" loading="lazy" placeholder />
+                      <nuxt-img src="/img/blog.png" :alt="'Blog ' + sitename" loading="lazy" placeholder />
                       <div class="Blog-item-img-text">
                         <h6>Roots in a piece of classical Latin literature</h6>
                       </div>
@@ -343,6 +343,11 @@ export default {
       if (pageNumber === this.data.current_page) return;
       this.data.current_page = pageNumber;
       this.filter(pageNumber);
+      if(window.innerWidth < 991){
+        window.scrollTo({ top: 500, behavior: 'smooth' });
+      }else{
+        window.scrollTo({ top: 200, behavior: 'smooth' });
+      }
     },
     getBackgroundImageStyle(pageBanner) {
       console.log('pageBanner',pageBanner)

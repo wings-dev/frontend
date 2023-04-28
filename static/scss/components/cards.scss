@@ -1896,6 +1896,89 @@
             display: none;
           }
         }
+        &.day-price {
+          display: flex;
+          width: 100%;
+          .F_villa-item-more {
+            display: none;
+          }
+          .F_villa-item-bottom-price {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            &-in {
+              display: flex;
+              align-items: center;
+              &-day {
+                width: 40px;
+                height: 40px;
+                border-radius: 3px;
+                background-color: var(--bs-theme-second);
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                margin-right: 9px;
+                font-size: 9px;
+                font-weight: 500;
+                color: #fff;
+                line-height: 1;
+                span{
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: #fff;
+                }
+              }
+              &-date{
+                p{
+                  display: flex;
+                  align-items: center;
+                  line-height: 1;
+                  margin-bottom: 5px;
+                  span{
+                    font-size: 14px;
+                  font-weight: bold;
+                  color: var(--bs-theme-first);
+                  }
+                  .icon-arrow-right-2 {
+                    margin: 0 7px;
+                    font-size: 12px;
+                    color: var(--bs-theme-second);
+                }
+                }
+                small{
+                  display: block;
+                  font-size: 11px;
+                  font-weight: bold;
+                  color: #7e8f9a;
+                }
+              }
+            }
+            &-right{
+              p{
+                display: flex;
+              align-items: flex-start;
+              font-size: 11px;
+              font-weight: 500;
+              color: #8a92a8;
+              &.orange{
+                color: var(--bs-theme-second)!important;
+                margin-bottom: 5px;
+              }
+              b{
+                font-size: 20px;
+                font-weight: bold;
+                color: var(--bs-theme-first);
+              }
+              span{
+                color: var(--bs-theme-first);
+              }
+              }
+            }
+          }
+        }
       }
       &-more {
         width: 46px;

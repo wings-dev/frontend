@@ -371,6 +371,11 @@ export default {
       if (pageNumber === this.current_page) return;
       this.current_page = pageNumber;
       this.filter(pageNumber);
+      if(window.innerWidth < 991){
+        window.scrollTo({ top: 200, behavior: 'smooth' });
+      }else{
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     },
     filter(pageNumber = 1) {
       const data = {
