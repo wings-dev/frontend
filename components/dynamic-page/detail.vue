@@ -34,7 +34,7 @@
                 </div>
                 <div class="view-top-right-price" v-if="lowestPrice">
                   <span>GECELİK</span>
-                  <p>{{ lowestPrice | numberFormat }} <span>TL</span></p>
+                  <p>{{ lowestPrice | numberFormat }} <span v-if="villa.code < 9999">TL</span><span v-else>€</span></p>
                   <small>'den başlayan fiyatlar' </small>
                 </div>
               </div>
@@ -311,7 +311,7 @@
                 </div>
                 <div class="View-desc-mobile-top-price" v-if="lowestPrice">
                   <span>GECELİK</span>
-                  <p>{{ lowestPrice | numberFormat }} <span>TL</span></p>
+                  <p>{{ lowestPrice | numberFormat }} <span v-if="villa.code < 9999">TL</span><span>€</span></p>
                   <small>'den başlayan fiyatlar'</small>
                 </div>
 
@@ -365,7 +365,7 @@
                       <div class="View-months-item-in">
                         <div class="View-months-item-price">
                           <span>GECELİK</span>
-                          <b>{{ price.lowest_price | numberFormat }}TL</b>
+                          <b>{{ price.lowest_price | numberFormat }}{{ villa.code < 9999 ? 'TL' : '€' }}</b>
                           <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
