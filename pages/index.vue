@@ -527,12 +527,11 @@ import 'swiper/swiper-bundle.min.css'
 import findVillaUrlMixin, { findVillaUrlByCode } from "@/mixins/findVillaUrlMixin";
 import slugify from "slugify";
 import CountryFlag from 'vue-country-flag'
-import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin'
 
 export default {
     name: 'IndexPage',
     layout: 'no-search',
-    mixins: [findVillaUrlMixin,cdnSrcsetMixin],
+    mixins: [findVillaUrlMixin],
     components: {
         Swiper,
         CountryFlag
