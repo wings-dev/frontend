@@ -5,9 +5,9 @@
         <div class="swiper villa-list-slider">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
-              <a href="javascript:void(0)" @click="goDetail">
+              <nuxt-link :to="{path: villa.url ,query: detailUrlData}">
                 <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" loading="lazy" sizes="sm:100vw md:50vw lg:400px" placeholder />
-              </a>
+              </nuxt-link>
             </div>
           </div>
           <div class="swiper-button-prev" @clik.stop></div>
@@ -28,12 +28,12 @@
           <span>GECE</span>
         </div>
       </div>
-      <a class="F_villa-item-right" @click="goDetail">
+      <nuxt-link :to="{path: villa.url ,query: detailUrlData}" class="F_villa-item-right">
         <div class="F_villa-item-head">
           <div class="F_villa-item-head-name">
             <span>Tesis Kodu</span>
 
-            <a href="javascript:void(0)" @click="goDetail">{{ prefix + villa.code }}</a>
+            <nuxt-link :to="{path: villa.url ,query: detailUrlData}">{{ prefix + villa.code }}</nuxt-link>
             <div class="F_villa-item-head-name-star">
               <i class="icon-star active"></i>
               <i class="icon-star active"></i>
@@ -130,12 +130,12 @@
           <button type="button" class="F_villa-item-show" @click.stop="openModal(villa.code)"><i
               class="icon-calendar"></i>Müsaitlik Takvimi
           </button>
-          <button type="button" class="F_villa-item-more" @click="goDetail">
+          <nuxt-link :to="{path: villa.url ,query: detailUrlData}" class="F_villa-item-more">
             <i class="icon-right-arrow"></i>
             <i class="icon-right-arrows-new"></i>
-          </button>
+          </nuxt-link>
         </div>
-      </a>
+      </nuxt-link>
     </div>
 
     <b-modal :id="`modal-${code}`" :ref="`modalRef-${code}`" class="Login" size="xl" :hide-header="true" hide-footer>
@@ -168,6 +168,7 @@
 <script>
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
+import moment from "moment";
 
 export default {
   name: "FilterVillaPreviewComponent",
@@ -197,6 +198,18 @@ export default {
     },
     code() {
       return this.villa.code
+    },
+    detailUrlData() {
+      const query = this.$route.query;
+      let data = null;
+      if (query.checkIn && query.checkOut) {
+        data = { i: this.encodeTimestamp(query.checkIn), o: this.encodeTimestamp(query.checkOut), v: localStorage.getItem('visitorId') };
+      } else if (this.villa.start_date && this.villa.end_date) {
+        const i = moment(this.villa.start_date, 'DD-MM-YYYY').format('YYYY-MM-DD')
+        const o = moment(this.villa.end_date, 'DD-MM-YYYY').format('YYYY-MM-DD')
+        data = { i: this.encodeTimestamp(i), o: this.encodeTimestamp(o), v: localStorage.getItem('visitorId') }
+      }
+      return data
     }
   },
   methods: {
@@ -205,6 +218,10 @@ export default {
       let data = null;
       if (query.checkIn && query.checkOut) {
         data = { i: this.encodeTimestamp(query.checkIn), o: this.encodeTimestamp(query.checkOut), v: localStorage.getItem('visitorId') };
+      } else if (this.villa.start_date && this.villa.end_date) {
+        const i = moment(this.villa.start_date, 'DD-MM-YYYY').format('YYYY-MM-DD')
+        const o = moment(this.villa.end_date, 'DD-MM-YYYY').format('YYYY-MM-DD')
+        data = { i: this.encodeTimestamp(i), o: this.encodeTimestamp(o), v: localStorage.getItem('visitorId') }
       }
 
       this.$router.push({
