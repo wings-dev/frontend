@@ -6,7 +6,7 @@
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <!-- <nuxt-img src="/img/banner-b-m.jpg" alt=""></nuxt-img> -->
-            <nuxt-img :src="pageData.page_content.default.page_list_img" class="w-100 mobile" loading="lazy" placeholder alt="" />
+            <nuxt-img :src="pageData.page_content.default.page_list_img" class="w-100 mobile" loading="lazy" placeholder :alt="'Banner - '+sitename" />
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -44,10 +44,14 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-img :src="item.preview_image[0].preview_url" loading="lazy" preset="card"
-                                            placeholder format="webp"
+                                        <nuxt-img :src="item.preview_image[0].preview_url" 
+                                            loading="lazy" 
+                                            preset="card"
+                                            placeholder 
                                             :srcset="item.preview_image[0].responsive_url"
-                                            sizes="sm:325px lg:267px"></nuxt-img>
+                                            sizes="sm:325px lg:267px"
+                                            :alt="prefix + item.code + ' | ' + sitename"
+                                            ></nuxt-img>
 
                                         <!-- :srcset="'https://d1t2mawg5vwzes.cloudfront.net/property/585/16121/responsive-images/1___media_library_original_322_181.jpg 322w,'" -->
 
@@ -107,7 +111,7 @@
             </div>
         </section>
         <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
-            <nuxt-img src="/img/home-banner-mobile.png" alt="" loading="lazy" placeholder> </nuxt-img>
+            <nuxt-img src="/img/home-banner-mobile.png" loading="lazy" placeholder :alt="'Home Banner - '+sitename"> </nuxt-img>
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
@@ -149,9 +153,13 @@
                                     <nuxt-link :to="hotel.url" class="O_Card" v-if="hotel.url">
                                         <div class="O_Card-in">
                                             <div class="O_Card-img">
-                                                <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" alt=""
-                                                    v-if="hotel.images && hotel.images[0]?.ImageUrl" width="299" placeholder
-                                                    loading="lazy" height="188"></nuxt-img>
+                                                <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" 
+                                                    :alt="hotel.Name + ' | ' + sitename"
+                                                    v-if="hotel.images && hotel.images[0]?.ImageUrl" 
+                                                    width="299" 
+                                                    placeholder
+                                                    loading="lazy" 
+                                                    height="188"></nuxt-img>
                                                 <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                                     <span>{{ parseFloat(hotel.Rating).toFixed(2) }}/10</span>
                                                 </div>
@@ -188,7 +196,7 @@
                 <div class="H_info-in">
                     <div class="H_info-item">
                         <div class="H_info-item-icon">
-                            <nuxt-img src="/img/tursabnew.png" alt="" loading="lazy" placeholder></nuxt-img>
+                            <nuxt-img src="/img/tursabnew.png" :alt="'Türsab Belgesi ' + sitename" loading="lazy" placeholder></nuxt-img>
                         </div>
                         <div class="H_info-item-icon-text">
                             <p>Wings Seyehat Tur. San.ve Tic.Ltd.Şti. 11095’nolu <span>Türsab Acentesidir.</span></p>
@@ -240,8 +248,11 @@
                                         <!-- <nuxt-img :src="villa.preview_image[0].preview_url" width="371"
                                             height="225"></nuxt-img> -->
 
-                                        <nuxt-img :src="villa.watermark_preview_image[0].preview_url" loading="lazy"
-                                            preset="card" format="webp" :placeholder="[364, 205, 10]"
+                                        <nuxt-img :src="villa.watermark_preview_image[0].preview_url" 
+                                            loading="lazy"
+                                            preset="card" 
+                                            :alt="prefix + villa.code + ' | ' + sitename"
+                                            :placeholder="[364, 205, 10]"
                                             :srcset="villa.watermark_preview_image[0].responsive_url"
                                             sizes="sm:385w lg:364px"></nuxt-img>
 
@@ -319,8 +330,11 @@
                 <div class="categories">
                     <nuxt-link to="/hamamli--saunali-villalar"
                         class="cat-item no-hover area1 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/hamam-sauna.jpg" data-src="" width="380" height="235"
-                            :placeholder="[380, 235, 10]" alt="category image" loading="lazy"
+                        <nuxt-img src="/img/category/hamam-sauna.jpg" 
+                            data-src="" width="380" height="235"
+                            :placeholder="[380, 235, 10]" 
+                            :alt="'Sauna - Hamamlı ' + sitename" 
+                            loading="lazy"
                             class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
@@ -338,7 +352,7 @@
                     <nuxt-link to="/kapali-havuzlu-balayi-villalari"
                         class="cat-item no-hover area2 overflow-hidden position-relative">
                         <nuxt-img src="/img/category/kapali-havuzlu.jpg" data-src="" width="380" height="487"
-                            :placeholder="[380, 487, 10]" alt="category image" loading="lazy"
+                            :placeholder="[380, 487, 10]" :alt="'Kapalı Havuzlu ' + sitename"  loading="lazy"
                             class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
@@ -356,7 +370,7 @@
                     <nuxt-link to="/deniz-manzarali-balayi-villalari"
                         class="cat-item no-hover area3 overflow-hidden position-relative">
                         <nuxt-img src="/img/category/deniz-manzarali.jpg" data-src="" width="380" height="235"
-                            :placeholder="[380, 235, 10]" alt="category image" loading="lazy"
+                            :placeholder="[380, 235, 10]" :alt="'Deniz Manzaralı ' + sitename" loading="lazy"
                             class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
@@ -374,7 +388,7 @@
                     <nuxt-link to="/jakuzili-balayi-villalari"
                         class="cat-item no-hover area4 overflow-hidden position-relative">
                         <nuxt-img src="/img/category/jakuzili-villalar.jpg" data-src="" width="380" height="235"
-                            :placeholder="[380, 235, 10]" alt="category image" loading="lazy"
+                            :placeholder="[380, 235, 10]" :alt="'Jakuzili ' + sitename" loading="lazy"
                             class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div class="ribbon ls-05 position-absolute fw-medium top-0 start-0 px-5 py-1 d-none">
                             <small>Yeni Listenenler</small>
@@ -393,7 +407,7 @@
                         </div>
                     </nuxt-link>
                     <nuxt-link to="/tum-balayi-villalari" class="cat-item no-hover area5 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/balayi.jpg" data-src="" width="380" height="235" alt="category image"
+                        <nuxt-img src="/img/category/balayi.jpg" data-src="" width="380" height="235" :alt="sitename"
                             :placeholder="[380, 235, 10]" loading="lazy"
                             class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
@@ -412,7 +426,7 @@
                     <nuxt-link to="/muhafazakar-balayi-villalari"
                         class="cat-item no-hover area6 overflow-hidden position-relative">
                         <nuxt-img src="/img/category/muhafazakar2.jpg" data-src="" width="380" height="487"
-                            :placeholder="[380, 487, 10]" alt="category image" loading="lazy"
+                            :placeholder="[380, 487, 10]" :alt="'Muhafazakar ' + sitename" loading="lazy"
                             class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
                             class="item-caption text-white d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 px-4 py-4">
@@ -459,9 +473,11 @@
                             :key="index">
                             <nuxt-link :to="item.category_url" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <nuxt-img :src="item.category_img" alt="" v-if="item.category_img"
+                                    <nuxt-img :src="item.category_img" 
+                                        :alt="item.cateogory_name + ' ' + sitename"
+                                        v-if="item.category_img"
                                         :placeholder="[380, 245, 10]" loading="lazy"></nuxt-img>
-                                    <nuxt-img src="/img/country/italy.jpg" alt="" loading="lazy" v-else></nuxt-img>
+                                    <nuxt-img src="/img/country/italy.jpg" :alt="'Yurtdışı Kiralık Villa ' + sitename" loading="lazy" v-else></nuxt-img>
                                 </div>
                                 <div class="Abroad-villas-item-content">
                                     <div class="Abroad-villas-item-content-left">
@@ -475,7 +491,7 @@
 
                                         <div class="Abroad-villas-item-content-smile"
                                             v-if="item.emojiStatus !== 'emojistatus_2'">
-                                            <nuxt-img src="/img/laughing-smile.svg" alt=""
+                                            <nuxt-img src="/img/laughing-smile.svg" alt="Gülme emojisi"
                                                 v-if="item.emojiStatus == 'emojistatus_1'"></nuxt-img>
                                             <span>{{ item.vizeStatus }}</span>
                                         </div>
