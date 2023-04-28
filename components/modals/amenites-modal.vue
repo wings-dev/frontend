@@ -4,10 +4,7 @@
         <div class="Amenites-head">
           <div class="Amenites-head-in">
             <h3 class="Amenites-title">Tesis <b>olanakları</b></h3>
-            <div class="Amenites-head-link">
-              <p>Tesis kategorisi</p>
-              <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)" v-for="(item,index) in categorielist.amenite_200?.list" :key="index">{{ item.name }}</a>
-            </div>
+            
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             @click="$bvModal.hide('amenitesModal')">Kapat<i class="icon-search-close"></i></button>
@@ -115,7 +112,7 @@ export default {
 
     }
   },
-  props:['amenitelist','categorielist'],
+  props:['amenitelist'],
   computed: {
 
   },

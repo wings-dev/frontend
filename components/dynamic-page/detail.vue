@@ -176,7 +176,7 @@
         <template v-else>
           <div class="view-gallery">
             <div v-if="villa.watermark_images && villa.watermark_images.length > 0" class="area-1">
-              <a :href="villa.watermark_images[0].original_url" data-fancybox="gallery"
+              <a :href="global_cdn + villa.watermark_images[0].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
@@ -187,7 +187,7 @@
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
-              <a :href="villa.watermark_images[1].original_url" data-fancybox="gallery"
+              <a :href="global_cdn + villa.watermark_images[1].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
@@ -195,7 +195,7 @@
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
-              <a :href="villa.watermark_images[2].original_url" data-fancybox="gallery"
+              <a :href="global_cdn + villa.watermark_images[2].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
@@ -203,7 +203,7 @@
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
-              <a :href="villa.watermark_images[3].original_url" data-fancybox="gallery"
+              <a :href="global_cdn + villa.watermark_images[3].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
                 <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
@@ -227,7 +227,7 @@
             </div>
             <template v-if="villa.watermark_images && villa.watermark_images.length > 4">
               <div class="d-none">
-                <a v-for="previewImage in villa.watermark_images.slice(5)" :href="previewImage.original_url"
+                <a v-for="previewImage in villa.watermark_images.slice(5)" :href="global_cdn + previewImage.original_url"
                   data-fancybox="gallery" data-caption="Salon">
                   <nuxt-img :src="previewImage.preview_url" width="284" height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                     sizes="sm:100vw md:50vw lg:284px" /></a>
@@ -271,7 +271,7 @@
             <div class="View-desc genelbakis view-menu-content-item" id="desc-content">
               <h2 class="View-title"><b>Tesise</b> Genel Bakış</h2>
               <div class="View-desc-category">
-                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)"
+                <a href="javascript:void(0)" v-if="villa.amenites.amenite_200?.list" @click.prevent="goFacilityConceptsFilter(item.id)"
                   v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
               </div>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
@@ -292,13 +292,12 @@
                 yiyebileceğiniz masa sandalye ve taş barbekü bulunmaktadır.Yüzme havuzunda bulunan özel jet dalga motoru
                 ile
                 yorulana kadar yüzmenize imkan vermektedir.</p>
-              <div class="View-desc-amenites">
+              <div class="View-desc-amenites" v-if="amenites">
                 <h4 class="View-title"><b>Tesis</b> Olanakları</h4>
                 <div class="View-desc-amenites-in">
                   <p v-for="(item, index) in amenites" v-if="index <= 5">{{ item.name }}</p>
                 </div>
-                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar ({{ amenites.length
-                }})</b-button>
+                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more" >Tüm Olanaklar ({{ amenites.length}})</b-button>
 
               </div>
             </div>
@@ -343,9 +342,8 @@
                     moreMobileContent ? 'Daha Az Göster' : 'Daha Fazla Göster' }} </button>
                 </div>
               </div>
-              <div class="View-desc-mobile-amenites">
-                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)"
-                  v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
+              <div class="View-desc-mobile-amenites" v-if="Number(villa.code) < 9999">
+                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)" v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
                 <button type="button" @click="mobileAmenitesToggle">Tüm Olanarakları <i
                     class="icon-right-arrow"></i></button>
               </div>
@@ -1052,7 +1050,7 @@
               </div>
             </div> -->
 
-            <div class="View-mobile-modal" :class="{ 'show': mobileAmenites }">
+            <div class="View-mobile-modal" :class="{ 'show': mobileAmenites }" v-if="Number(villa.code) < 9999">
               <button type="button" class="mobile-menus-back" @click="mobileAmenitesToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="Amenites">
@@ -1171,7 +1169,7 @@
                 </client-only>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileLocation }">
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocation }" v-if="Number(villa.code) < 9999">
               <button type="button" class="mobile-menus-back" @click="mobileLocationToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
@@ -1182,7 +1180,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileLocationRestoran }">
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocationRestoran }" v-if="Number(villa.code) < 9999">
               <button type="button" class="mobile-menus-back" @click="mobileLocationRestoranToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
@@ -1193,7 +1191,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileLocationMarket }">
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocationMarket }" v-if="Number(villa.code) < 9999">
               <button type="button" class="mobile-menus-back" @click="mobileLocationMarketToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
@@ -1204,7 +1202,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileLocationTransport }">
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocationTransport }" v-if="Number(villa.code) < 9999">
               <button type="button" class="mobile-menus-back" @click="mobileLocationTransportToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
@@ -1226,7 +1224,7 @@
                   bir kahvaltı sofrası hazırlayabilirsiniz.</p>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileBeach }">
+            <div class="View-mobile-modal" :class="{ 'show': mobileBeach }" v-if="Number(villa.code) < 9999">
               <button type="button" class="mobile-menus-back" @click="mobileBeachToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
@@ -1268,7 +1266,7 @@
                 </div>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobilePlace }">
+            <div class="View-mobile-modal" :class="{ 'show': mobilePlace }" v-if="Number(villa.code) < 9999">
               <button type="button" class="mobile-menus-back" @click="mobilePlaceToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
@@ -1459,7 +1457,7 @@
                   </div>
                   <div class="Gallery-detail-item-right">
                     <template v-if="bolum.gorsel && bolum.gorsel.length">
-                      <a class="Gallery-detail-item-right-img" :href="img.original_url" data-fancybox="gallery"
+                      <a class="Gallery-detail-item-right-img" :href="global_cdn + img.original_url" data-fancybox="gallery"
                         data-caption="Salon" v-for="(img, index) in bolum.gorsel">
                         <nuxt-img :src="global_cdn + img.preview_url" loading="lazy" sizes="sm:100vw md:50vw lg:756px" :alt="villa_prefix + villa.code + ' ' + sitename"/>
                       </a>
@@ -1473,8 +1471,7 @@
       </div>
     </section>
 
-    <amenites-modal sectionTitle="Haftanın Villaları" :amenitelist="amenites"
-      :categorielist="categories"></amenites-modal>
+    <amenites-modal sectionTitle="Haftanın Villaları" :amenitelist="amenites"></amenites-modal>
     <location-map-modal :villalocationcity="villa.location.city.name" :villalocationdistrict="villa.location.state.name"
       :villacode="villa.code" :villaprefix="villa_prefix"></location-map-modal>
 
