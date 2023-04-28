@@ -212,8 +212,7 @@
             </p>
 
             <div class="highlight-section-desc-more-button read-more-button" :class="{ active: isExpanded }"
-              @click="isExpanded = !isExpanded"><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' : 'DAHA AZ OKU'
-              }}</div>
+              @click="isExpanded = !isExpanded"><i class="readmore"></i> {{ !isExpanded ? 'TAMAMINI OKU' : 'DAHA AZ OKU'}}</div>
           </div>
         </div>
       </div>
@@ -457,7 +456,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                 class="icon-login-close"></i></button>
             <div class="Login-success">
-              <nuxt-img src="/img/success-check.svg" alt="Success Check" loading="lazy" ></nuxt-img>
+              <nuxt-img src="/img/success-check.svg" alt="Success Check" loading="lazy"></nuxt-img>
               <h3>Rezervasyon Talebi Alındı</h3>
               <h4>Ödeme yaptığınız takdirde adınıza rezerve edilecektir.</h4>
               <p>Satış temsilcilerimiz size en kısa sürede dönüş yapacaktır.</p>
@@ -473,7 +472,8 @@
 
     <!-- <filter-abroad-villa-component :selectedFilters="selectedFilters"></filter-abroad-villa-component>-->
 
-    <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity" :world="1"></filter-villa-component>
+    <filter-villa-component :selectedFilters="selectedFilters" :opportunity="opportunity"
+      :world="1"></filter-villa-component>
 
     <section class="highlight-section  pt-5 pb-4" v-if="highlights">
       <div class="container">
@@ -618,10 +618,6 @@ export default {
     },
 
   },
-
-  watch: {
-
-  },
   computed: {
     phoneProps() {
       return {
@@ -641,11 +637,6 @@ export default {
     },
 
   },
-  mounted() {
-
-
-  },
-
 }
 </script>
 <style>

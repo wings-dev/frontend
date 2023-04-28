@@ -27,8 +27,6 @@ export default {
   beforeMount() {
     this.parseQueryString();
   },
-  mounted() {
-  },
   methods: {
     parseQueryString() {
       const query = this.$route.query;

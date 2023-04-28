@@ -247,13 +247,13 @@
 
                                         <!-- <nuxt-img :src="villa.preview_image[0].preview_url" width="371"
                                             height="225"></nuxt-img> -->
-
-                                        <nuxt-img :src="villa.watermark_preview_image[0].preview_url" 
+<!-- :srcset="global_cdn + villa.watermark_preview_image[0].responsive_url" -->
+                                        <nuxt-img :src="global_cdn + villa.watermark_preview_image[0].preview_url" 
+                                            
                                             loading="lazy"
                                             preset="card" 
                                             :alt="prefix + villa.code + ' | ' + sitename"
                                             :placeholder="[364, 205, 10]"
-                                            :srcset="villa.watermark_preview_image[0].responsive_url"
                                             sizes="sm:385w lg:364px"></nuxt-img>
 
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(villa.code)"
@@ -527,12 +527,12 @@ import 'swiper/swiper-bundle.min.css'
 import findVillaUrlMixin, { findVillaUrlByCode } from "@/mixins/findVillaUrlMixin";
 import slugify from "slugify";
 import CountryFlag from 'vue-country-flag'
-
+import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin'
 
 export default {
     name: 'IndexPage',
     layout: 'no-search',
-    mixins: [findVillaUrlMixin],
+    mixins: [findVillaUrlMixin,cdnSrcsetMixin],
     components: {
         Swiper,
         CountryFlag
@@ -543,10 +543,11 @@ export default {
     data() {
         return {
             prefix: process.env.PREFIX,
-            pageData: {},
-            opportunities: [],
             cdn_hotel: process.env.HOTEL_CDN_URL + '/',
-            sitename: process.env.SITE_NAME
+            global_cdn: process.env.GLOBAL_CDN_URL,
+            sitename: process.env.SITE_NAME,
+            pageData: {},
+            opportunities: []
         }
     },
     async asyncData({ $getRedisKey, $axios, store }) {
