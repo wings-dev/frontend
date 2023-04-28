@@ -414,7 +414,7 @@
               <opportunity-box-component :propertyCode="villa.code" @selected="opportunitySelected($event)"
                 componentclass="View-right-opportunity-mobile"></opportunity-box-component>
             </client-only>
-            <div class="View-beds">
+            <div class="View-beds" v-if="singleBed !== 0 || doubleBed !== 0 || jacuziNum !== 0">
               <h4 class="View-title">Kişi Bilgisi ve Yatak Düzeni</h4>
               <div class="View-beds-in">
                 <div class="View-beds-item first">
@@ -480,7 +480,7 @@
                 </div>
               </div>
             </div>
-            <template v-if="villa.floorplan.pool[0]['havuz-en']">
+            <template v-if="villa.floorplan.length &&  villa.floorplan.pool[0]['havuz-en']">
               <div class="View-pools">
                 <div class="View-pools-head  mb-3">
                   <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
@@ -510,14 +510,7 @@
 
               </div>
             </template>
-            <!-- <template v-else>
-              <div class="View-pools">
-                <div class="View-pools-head  mb-3">
-                  <h4 class="View-title"><b>Havuz</b> Bilgisi bulunamadı!</h4>
-                </div>
-              </div>
-            </template> -->
-            <div class="View-location location view-menu-content-item" id="location-content">
+            <div class="View-location location view-menu-content-item" id="location-content" v-if="Number(villa.code) < 9999">
               <div class="View-location-head mb-3">
                 <div class="Viwe-location-head-in">
                   <h4 class="View-title">
@@ -560,7 +553,7 @@
                       <div class="first-tab-item" v-for="(item, index) in places.beaches"
                         v-if="places.beaches.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
-                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
+                          <nuxt-img :src="global_cdn + item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
                           <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" v-else></nuxt-img>
                         </div>
@@ -586,7 +579,7 @@
                         v-if="places.locations.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
 
-                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
+                          <nuxt-img :src="global_cdn + item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
                           <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" v-else></nuxt-img>
                         </div>
@@ -946,8 +939,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="View-info-bg">
-                  <div class="View-info-rules" v-if="villa.amenites.amenite_301.list">
+                <div class="View-info-bg" v-if="villa.amenites.amenite_301.list">
+                  <div class="View-info-rules" >
                     <h5>Tesis Kuralları</h5>
                     <div class="View-info-rules-item" v-for="item in villa.amenites.amenite_301.list">
                       <i class="icon-no-dog" v-if="item.id == 189"></i>
@@ -2014,7 +2007,7 @@ export default {
     }
 
     this.places = places;
-
+console.log(this.places)
     try {
       const response = await this.$axios.post(`/website/property/month-prices?api_token=${process.env.WEBSITE_TOKEN}`, {
         "code": this.villa.code,
@@ -2022,7 +2015,6 @@ export default {
       })
       this.monthlyPrices = response.data
 
-      console.log('this.monthlyPrices', this.monthlyPrices)
       this.lowestPrice = this.monthlyPrices.length ? Math.min(...this.monthlyPrices.map(price => price.lowest_price)) : 0;
     } catch (e) { }
 
