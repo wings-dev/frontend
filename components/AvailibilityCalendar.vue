@@ -2,7 +2,7 @@
   <div class="Login-calendar-in">
     <template v-if="loading">
       <div class="No-villas" v-if="loading">
-        <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" alt="" loading="lazy" placeholder ></nuxt-img>
+        <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" :alt="'Müsaitlik Takvimi ' + sitename" loading="lazy" placeholder ></nuxt-img>
         <h2>Takvim Yükleniyor...</h2>
         <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
       </div>
@@ -55,6 +55,7 @@ export default {
       calendar: null,
       price_list_1: null,
       site_id: process.env.SITE,
+      sitename: process.env.SITE_NAME,
       disabledDates: [
         // { start: null, end: new Date() },
         { start: null, end: new Date() },

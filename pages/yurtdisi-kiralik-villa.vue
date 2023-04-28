@@ -3,9 +3,7 @@
 
         <section class="Banner Banner-home "
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
-            <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
-            <nuxt-img :src="pageData.page_content.default.page_list_img" class="w-100 mobile" alt="" loading="lazy" placeholder />
-            <!-- <nuxt-img src="/img/banner-b-m.jpg" alt=""></nuxt-img> -->
+            <nuxt-img :src="pageData.page_content.default.page_list_img" class="w-100 mobile" :alt="'Yurtdışı Kiralık Villa ' + sitename" loading="lazy" placeholder />
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -66,11 +64,6 @@
                                                         {{
                                                             item.state | titlecase }}</span></p>
                                             </div>
-                                            <!-- Ülke Bayraklı -->
-                                            <!-- <div class="Card-content-head-location">
-                                                <nuxt-img src="/img/flag/flag-italy.svg" alt="" />
-                                                <p>İtalya <span>Roma</span></p>
-                                            </div> -->
                                         </div>
                                         <div class="Card-content-info">
                                             <div class="Card-content-info-item">
@@ -112,7 +105,7 @@
         </section>
 
         <section class="Home-banner" style="background-image: url(/img/home-banner.png);">
-            <nuxt-img src="/img/home-banner-mobile.png" alt="" loading="lazy" placeholder />
+            <nuxt-img src="/img/home-banner-mobile.png" :alt="'Yurtdışı Kiralık Villa ' + sitename" loading="lazy" placeholder />
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
@@ -139,8 +132,8 @@
                             :key="index">
                             <nuxt-link :to="item.category_url" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <nuxt-img :src="item.category_img" alt="" v-if="item.category_img" loading="lazy" placeholder ></nuxt-img>
-                                    <nuxt-img src="/img/country/italy.jpg" alt="" loading="lazy" placeholder  v-else></nuxt-img>
+                                    <nuxt-img :src="item.category_img" :alt="'Yurtdışı Kiralık Villa ' + sitename" v-if="item.category_img" loading="lazy" placeholder ></nuxt-img>
+                                    <nuxt-img src="/img/country/italy.jpg" :alt="'Yurtdışı Kiralık Villa ' + sitename" loading="lazy" placeholder  v-else></nuxt-img>
                                 </div>
                                 <div class="Abroad-villas-item-content">
                                     <div class="Abroad-villas-item-content-left">
@@ -155,7 +148,7 @@
 
                                         <div class="Abroad-villas-item-content-smile"
                                             v-if="item.emojiStatus !== 'emojistatus_2'">
-                                            <nuxt-img src="/img/laughing-smile.svg" alt="" loading="lazy" 
+                                            <nuxt-img src="/img/laughing-smile.svg" alt="laughing smile" loading="lazy" 
                                                 v-if="item.emojiStatus == 'emojistatus_1'"></nuxt-img>
                                             <span>{{ item.vizeStatus }}</span>
                                         </div>
@@ -219,6 +212,7 @@ export default {
     data() {
         return {
             prefix: process.env.PREFIX,
+            sitename: process.env.SITE_NAME
         }
     },
     async asyncData({ $getRedisKey, $axios }) {

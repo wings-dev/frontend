@@ -9,8 +9,11 @@
             <div class="Card-in">
               <div class="Card-img">
                 <nuxt-link :to="'/'+(villa.detail.url || '')">
-                  <nuxt-img v-if="villa.detail.watermark_images && villa.detail.watermark_images[0]" :src="villa.detail.watermark_images[0].preview_url" :srcset="villa.detail.watermark_images[0].responsive"
-                            width="267" height="175" loading="lazy" placeholder ></nuxt-img>
+                  <nuxt-img v-if="villa.detail.watermark_images && villa.detail.watermark_images[0]" 
+                    :src="villa.detail.watermark_images[0].preview_url" 
+                    :srcset="villa.detail.watermark_images[0].responsive"
+                    width="267" height="175" loading="lazy" placeholder :alt="prefix + (villa.detail.code || '') + ' ' + sitename">
+                  </nuxt-img>
                 </nuxt-link>
                 <button class="Card-fav active" type="button" @click="removeFavorite(villa.detail.code)">
                   <i class="icon-heart-full"></i>

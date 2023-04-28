@@ -81,7 +81,7 @@
             <div class="area-1" v-if="previewImages.length > 0">
               <a :href="previewImages[0].preview_url" data-fancybox="gallery" :data-caption="hotelDetails.body.hotel.name"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <nuxt-img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive" width="585" loading="lazy" placeholder 
+                <nuxt-img :src="previewImages[0].preview_url" :srcset="previewImages[0].responsive" width="585" loading="lazy" placeholder :alt="hotelDetails.body.hotel.name + ' ' + sitename"
                   height="387" sizes="sm:100vw md:50vw lg:585px" />
 
               </a>
@@ -89,7 +89,7 @@
             <div class="area-2 d-md-block d-none" v-if="previewImages.length > 1">
               <a :href="previewImages[1].preview_url" data-fancybox="gallery" :data-caption="hotelDetails.body.hotel.name"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <nuxt-img :src="previewImages[1].preview_url" :srcset="previewImages[1].responsive" width="284" loading="lazy" placeholder 
+                <nuxt-img :src="previewImages[1].preview_url" :srcset="previewImages[1].responsive" width="284" loading="lazy" placeholder :alt="hotelDetails.body.hotel.name + ' ' + sitename"
                   height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
@@ -97,7 +97,7 @@
             <div class="area-3 d-md-block d-none" v-if="previewImages.length > 2">
               <a :href="previewImages[2].preview_url" data-fancybox="gallery" :data-caption="hotelDetails.body.hotel.name"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <nuxt-img :src="previewImages[2].preview_url" :srcset="previewImages[2].responsive" width="284" loading="lazy" placeholder 
+                <nuxt-img :src="previewImages[2].preview_url" :srcset="previewImages[2].responsive" width="284" loading="lazy" placeholder :alt="hotelDetails.body.hotel.name + ' ' + sitename"
                   height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
@@ -105,14 +105,14 @@
             <div class="area-4 d-none d-lg-block" v-if="previewImages.length > 3">
               <a :href="previewImages[3].preview_url" data-fancybox="gallery" :data-caption="hotelDetails.body.hotel.name"
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl">
-                <nuxt-img :src="previewImages[3].preview_url" :srcset="previewImages[3].responsive" width="284" loading="lazy" placeholder 
+                <nuxt-img :src="previewImages[3].preview_url" :srcset="previewImages[3].responsive" width="284" loading="lazy" placeholder :alt="hotelDetails.body.hotel.name + ' ' + sitename"
                   height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div class="area-5 d-none d-lg-block" v-if="previewImages.length > 4">
               <div class="view-item d-block w-100 h-100 position-relative overflow-hidden rounded-xl last">
-                <nuxt-img :src="previewImages[4].preview_url" :srcset="previewImages[4].responsive" width="284" loading="lazy" placeholder 
+                <nuxt-img :src="previewImages[4].preview_url" :srcset="previewImages[4].responsive" width="284" loading="lazy" placeholder :alt="hotelDetails.body.hotel.name + ' ' + sitename"
                   height="187" sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
@@ -131,7 +131,7 @@
             <div class="d-none">
               <a v-for="previewImage in previewImages.slice(5)" :href="previewImage.preview_url" data-fancybox="gallery"
                 :data-caption="hotelDetails.body.hotel.name">
-                <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" width="284" height="187" loading="lazy" placeholder 
+                <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" width="284" height="187" loading="lazy" placeholder  :alt="hotelDetails.body.hotel.name + ' ' + sitename"
                   sizes="sm:100vw md:50vw lg:284px" /></a>
             </div>
 
@@ -189,9 +189,9 @@
                   <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
                     <div class="img-box position-relative flex-shrink-0 room-img-container">
                       <nuxt-img v-if="room.roomInfo?.mediaFiles" :src="room.roomInfo.mediaFiles[0].urlFull" width="297" height="208" loading="lazy" placeholder 
-                                alt="room image" class="lazy cover flex-shrink-0"></nuxt-img>
+                      :alt="hotelDetails.body.hotel.name + ' ' + sitename" class="lazy cover flex-shrink-0"></nuxt-img>
                       <div class="no-rooms" v-else>
-                        <nuxt-img src="/img/no-img.svg" alt="" width="297" height="208" loading="lazy" placeholder ></nuxt-img>
+                        <nuxt-img src="/img/no-img.svg" :alt="hotelDetails.body.hotel.name + ' ' + sitename" width="297" height="208" loading="lazy" placeholder ></nuxt-img>
                         <p>Oda fotoğrafı <span>bulunmuyor.</span></p>
                       </div>
                     </div>
@@ -243,7 +243,7 @@
             </template>
             <template v-if="!roomsLoading && offers.length === 0">
               <div class="No-villas">
-                <nuxt-img :src="`img/site${site_id}/no-villas.svg`" alt="" loading="lazy" placeholder ></nuxt-img>
+                <nuxt-img :src="`img/site${site_id}/no-villas.svg`" :alt="hotelDetails.body.hotel.name + ' ' + sitename" loading="lazy" placeholder ></nuxt-img>
                 <h2>Uygun oda bulunamadı.</h2>
                 <p>Arama filtrenizi veya tarihi değiştirerek yeniden deneyebilirsiniz.</p>
               </div>
@@ -358,6 +358,7 @@ export default {
   data() {
     return {
       site_id:process.env.SITE,
+      sitename: process.env.SITE_NAME,
       searchId: null,
       hotel: this.hotelDetails,
       hotelPriceDetails: {},

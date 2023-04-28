@@ -34,7 +34,7 @@
                         <div class="Info-left-in">
                             <template v-for="item in data.page_content.corporate_banks">
                                 <div>
-                                    <nuxt-img :src="item.corporate_banks_logo" loading="lazy" placeholder />
+                                    <nuxt-img :src="item.corporate_banks_logo" loading="lazy" placeholder :alt="item.corporate_banks_title + 'Logo'"/>
                                     <div class="Info-left-item">
                                         <span>Alıcı Ünvan</span>
                                         <p>{{ item.corporate_banks_title }}</p>
@@ -175,7 +175,7 @@
                         <div class="Ofis-content-item Ofis-content-item-video">
                             <a href="https://www.youtube.com/embed/abWhzr3Y2Ow" data-fancybox="">
                                 <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder 
-                                    alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu"></nuxt-img>
+                                    alt="Balayı Villası - Kalkan Ofis Tanıtım Videosu"></nuxt-img>
                                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
                             </a>
                         </div>

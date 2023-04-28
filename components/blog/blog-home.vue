@@ -8,7 +8,7 @@
                             <div class="swiper-slide" v-for="item in 4">
                                 <div class="Blog-banner-item">
                                     <div class="Blog-banner-item-img">
-                                        <nuxt-img src="/img/blog-banner.jpg" alt="" loading="lazy" placeholder ></nuxt-img>
+                                        <nuxt-img src="/img/blog-banner.jpg" :alt="'Blog ' + sitename" loading="lazy" placeholder ></nuxt-img>
                                     </div>
                                     <div class="Blog-banner-item-text">
                                         <h5>Tatil için yola çıkmadan önce valizinizde bulunması gereken 10 şey!</h5>
@@ -40,7 +40,7 @@
                         <template v-for="item in posts">
                             <nuxt-link :to="'/blog/'+item.page_content.blog_category[0] +'/'+item.url" class="Blog-item" :key="item.id" v-if="item !== null">
                                 <div class="Blog-item-img">
-                                    <nuxt-img :src="item.page_content.default.page_list_img" alt="" loading="lazy" placeholder ></nuxt-img>
+                                    <nuxt-img :src="item.page_content.default.page_list_img" :alt="item.name + 'Blog | ' + sitename" loading="lazy" placeholder ></nuxt-img>
                                     <div class="Blog-item-img-text">
                                         <h6>{{ item.name }}</h6>
                                     </div>
@@ -171,8 +171,10 @@ export default {
             required: true
         },
     },
-    created() {
-
+    data(){
+        return{
+            sitename: process.env.SITE_NAME
+        }
     },
     mounted() {
         Swiper.use([Navigation, Pagination])

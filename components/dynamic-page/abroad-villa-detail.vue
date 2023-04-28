@@ -106,34 +106,33 @@
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
                 <nuxt-img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
-                  width="585" height="387" sizes="sm:100vw md:50vw lg:585px" loading="lazy" placeholder />
-
+                  width="585" height="387" sizes="sm:100vw md:50vw lg:585px" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"/>
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
+                <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
+                <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
+                <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
-                <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive"
+                <nuxt-img :src="villa.watermark_images[4].preview_url" :srcset="villa.watermark_images[4].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
@@ -181,7 +180,7 @@
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-                <nuxt-img :src="villa.watermark_images[0].original_url" :srcset="villa.watermark_images[0].responsive"
+                <nuxt-img :src="villa.watermark_images[0].original_url" :srcset="villa.watermark_images[0].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="585" height="387" sizes="sm:100vw md:50vw lg:585px" loading="lazy" placeholder />
 
               </a>
@@ -189,7 +188,7 @@
             <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
               <a :href="villa.watermark_images[1].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive"
+                <nuxt-img :src="villa.watermark_images[1].preview_url" :srcset="villa.watermark_images[1].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder />
 
               </a>
@@ -197,7 +196,7 @@
             <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
               <a :href="villa.watermark_images[2].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive"
+                <nuxt-img :src="villa.watermark_images[2].preview_url" :srcset="villa.watermark_images[2].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder />
 
               </a>
@@ -205,14 +204,14 @@
             <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
               <a :href="villa.watermark_images[3].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive"
+                <nuxt-img :src="villa.watermark_images[3].preview_url" :srcset="villa.watermark_images[3].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
-                <nuxt-img :src="villa.watermark_images[4].original_url" :srcset="villa.watermark_images[4].responsive"
+                <nuxt-img :src="villa.watermark_images[4].original_url" :srcset="villa.watermark_images[4].responsive" :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
@@ -229,7 +228,7 @@
               <div class="d-none">
                 <a v-for="previewImage in villa.watermark_images.slice(5)" :href="previewImage.original_url"
                   data-fancybox="gallery" data-caption="Salon">
-                  <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" width="284" height="187"
+                  <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" width="284" height="187" :alt="villa_prefix + villa.code + ' ' + sitename"
                     sizes="sm:100vw md:50vw lg:284px" loading="lazy" placeholder /></a>
               </div>
 
@@ -554,9 +553,9 @@
                       <div class="first-tab-item" v-for="(item, index) in places.beaches"
                         v-if="places.beaches.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
-                          <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95" loading="lazy" placeholder 
+                          <nuxt-img :src="item.images[0].preview_url" width="157" height="95" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
-                          <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" loading="lazy" placeholder  v-else></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" placeholder  v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -580,9 +579,9 @@
                         v-if="places.locations.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
 
-                          <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95" loading="lazy" placeholder 
+                          <nuxt-img :src="item.images[0].preview_url" width="157" height="95" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
-                          <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" loading="lazy" placeholder  v-else></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" placeholder  v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -786,10 +785,10 @@
                     </div>
                     <div class="View-reviews-item-bottom-right">
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <nuxt-img src="/img/reviews.png" alt="" loading="lazy" placeholder ></nuxt-img>
+                        <nuxt-img src="/img/reviews.png" :alt="villa_prefix + villa.code + 'Yorumlar ' + sitename" loading="lazy" placeholder ></nuxt-img>
                       </a>
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <nuxt-img src="/img/reviews.png" alt="" loading="lazy" placeholder ></nuxt-img>
+                        <nuxt-img src="/img/reviews.png" :alt="villa_prefix + villa.code + 'Yorumlar ' + sitename" loading="lazy" placeholder ></nuxt-img>
                       </a>
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item more"
                         data-fancybox="reviews">Daha fazla görüntüle (12)</a>
@@ -815,7 +814,7 @@
                     </div>
                     <div class="View-reviews-item-mobile-right">
                       <a href="/img/reviews.png" class="View-reviews-item-bottom-right-item" data-fancybox="reviews">
-                        <nuxt-img src="/img/reviews.png" alt="" loading="lazy" placeholder ></nuxt-img>
+                        <nuxt-img src="/img/reviews.png" :alt="villa_prefix + villa.code + 'Yorumlar ' + sitename" loading="lazy" placeholder ></nuxt-img>
                         <span>+6</span>
                       </a>
                       <div class="d-none">
@@ -1248,9 +1247,9 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.beaches">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
-                          <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95" loading="lazy" placeholder 
+                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" placeholder 
                             v-if="item.images.length > 0"></nuxt-img>
-                          <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" loading="lazy" placeholder  v-else></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" placeholder  v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -1292,9 +1291,9 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.locations">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
-                          <nuxt-img :src="item.images[0].preview_url" alt="" width="157" height="95" loading="lazy" placeholder 
+                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" placeholder 
                             v-if="item.images && item.images.length > 0"></nuxt-img>
-                          <nuxt-img src="/img/tesis-yok.png" alt="" width="157" height="95" loading="lazy" placeholder  v-else></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" placeholder  v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -1346,7 +1345,7 @@
                   <div class="Card-in">
                     <div class="Card-img" v-if="item.preview_image && item.preview_image.length">
                       <nuxt-link :to="item.url">
-                        <nuxt-img :src="item?.preview_image[0].preview_url" width="292" height="187" loading="lazy" placeholder 
+                        <nuxt-img :src="item?.preview_image[0].preview_url" width="292" height="187" loading="lazy" placeholder :alt="villa_prefix + item.code + ' ' + sitename"
                           :srcset="item?.preview_image[0].responsive_url"></nuxt-img>
                       </nuxt-link>
                       
@@ -1442,7 +1441,7 @@
               <template v-for="(floor, index) in villa.floorplan.kat">
                 <button v-if="bolum.gorsel && bolum.gorsel.length" type="button" class="Gallery-list-item"
                   :id="'Gallery_item' + index" @click="scrollGallery($event)" v-for="(bolum, index) in floor.bolum">
-                  <nuxt-img :src="bolum.gorsel[0].preview_url" class="w-100" alt="" loading="lazy" placeholder ></nuxt-img>
+                  <nuxt-img :src="bolum.gorsel[0].preview_url" class="w-100" :alt="villa_prefix + villa.code + ' ' + sitename" loading="lazy" placeholder ></nuxt-img>
                   <p>{{ bolum.name }} <br> <span>({{ floor.name }})</span></p>
                 </button>
               </template>
@@ -1458,7 +1457,7 @@
                     <template v-if="bolum.gorsel && bolum.gorsel.length">
                       <a class="Gallery-detail-item-right-img" :href="img.original_url" data-fancybox="gallery"
                         data-caption="Salon" v-for="(img, index) in bolum.gorsel">
-                        <nuxt-img :src="img.preview_url" :srcset="img.responsive" sizes="sm:100vw md:50vw lg:756px" loading="lazy" placeholder />
+                        <nuxt-img :src="img.preview_url" :srcset="img.responsive" sizes="sm:100vw md:50vw lg:756px" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"/>
                       </a>
                     </template>
                   </div>
@@ -1504,11 +1503,12 @@ export default {
   data() {
     return {
       site_id: process.env.SITE,
+      sitename: process.env.SITE_NAME,
+      villa_prefix: process.env.PREFIX,
       closed: true,
       attributes: [],
       galleryIsOpen: false,
       modalIsOpen: false,
-      villa_prefix: process.env.PREFIX,
       date: null,
       disableReservation: ['2023-03-20', '2023-03-21', '2023-03-22', '2023-03-23', '2023-03-24', '2023-03-25', '2023-03-26', '2023-03-27'],
       disabledDates: [

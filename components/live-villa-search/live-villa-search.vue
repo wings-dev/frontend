@@ -4,7 +4,7 @@
       <div class="Search-villas-in">
         <div class="Search-villas-head">
           <NuxtLink to="/" class="Header-logo">
-            <nuxt-img :src="'/img/site' + site_id + '/logo-dark.svg'" loading="lazy" placeholder />
+            <nuxt-img :src="'/img/site' + site_id + '/logo-dark.svg'" :alt="'Logo - ' + sitename" loading="lazy" placeholder />
           </NuxtLink>
           <button type="button" class="Search-villas-close" @click="closeSearch">Kapat <i
               class="icon-login-close"></i></button>
@@ -87,7 +87,7 @@
 
             <a :href="villa.url" class="Search-villas-item" v-for="villa in villas">
               <div class="Search-villas-item-img">
-                <nuxt-img :src="villa.preview_image[0].preview_url" width="355" height="228" loading="lazy" placeholder />
+                <nuxt-img :src="villa.preview_image[0].preview_url" width="355" height="228" loading="lazy" :alt="prefix + villa.code + ' ' + sitename" placeholder />
 
                 <div class="Search-villas-item-hover">
                   <i class="icon-search"></i>
@@ -96,7 +96,7 @@
               <div class="Search-villas-item-in">
 
                 <div class="Search-villas-item-text">
-                  <p>{{ villa.code }}<span>Tesis Kodu</span></p>
+                  <p>{{prefix + villa.code }}<span>Tesis Kodu</span></p>
                   <!-- <div class="Search-villas-item-rating">
                     <i class="icon-star"></i>
                     <span>4.9</span>
@@ -144,6 +144,8 @@ export default {
       input: '',
       villas: [],
       cancelToken: null,
+      prefix: process.env.PREFIX,
+      sitename: process.env.SITE_NAME,
       site_id: process.env.SITE,
       otelSearchValue: [],
       otelSearchOptions: [

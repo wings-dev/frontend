@@ -5,8 +5,8 @@
                 <div class="Contact-header-in">
                     <h4>İletişim</h4>
                     <div class="Contact-header-pagination">
-                        <a href="">{{siteName | titlecase}} ></a>
-                        <a href="">İletişim</a>
+                        <nuxt-link to="/">{{siteName | titlecase}}</nuxt-link>
+                        <nuxt-link to="/iletisim">İletişim</nuxt-link>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                         :aria-labelledby="'pills-office-tab' + index"
                         v-for="(item, index) in pageData.page_content.contact_list" :key="index">
                         <div class="Contact-offices-tab-img">
-                            <nuxt-img src="/img/office.jpg" alt="" loading="lazy" placeholder />
+                            <nuxt-img src="/img/office.jpg" :alt="'İletişim ' + siteName" loading="lazy" placeholder />
                         </div>
                         <div class="Contact-offices-tab-in">
 
@@ -326,10 +326,6 @@ export default {
         activeCoords() {
             return [[this.officeCoordinates[0].x, this.officeCoordinates[0].y]][this.picked];
         },
-    },
-    mounted() {
-
-        // this.$refs.mymap.mapObject.invalidateSize()
     }
 }
 </script>

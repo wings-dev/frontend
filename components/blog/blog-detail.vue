@@ -5,7 +5,7 @@
                 <div class="Blog-header-in">
                     <h1>Kalkan</h1>
                     <div class="Blog-header-pagination">
-                        <a href="">OtelBnb ></a>
+                        <!-- <a href="">OtelBnb ></a> -->
                         <a href="">Blog > </a>
                         <a href="">Genel > </a>
                         <a href="">Tatil için yola çıkmadan....</a>
@@ -16,7 +16,7 @@
         <section class="Blog-detail-img">
             <div class="container">
                 <div class="Blog-detail-img-in">
-                    <nuxt-img :src="data.page_content.default.page_banner" alt="" loading="lazy" placeholder ></nuxt-img>
+                    <nuxt-img :src="data.page_content.default.page_banner" :alt="'Blog ' + sitename" loading="lazy" placeholder ></nuxt-img>
                 </div>
             </div>
         </section>
@@ -30,7 +30,7 @@
                         <div class="Blog-detail">
                             <div class="Blog-detail-info">
                                 <div class="Blog-detail-info-user">
-                                    <nuxt-img src="/img/user.jpg" alt="" loading="lazy" placeholder ></nuxt-img>
+                                    <nuxt-img src="/img/user.jpg" :alt="'Blog ' + sitename" loading="lazy" placeholder ></nuxt-img>
                                     <p>Yazar: <span>{{ data.page_content.blog_author }}</span>// <span>{{
                                         data.page_content.blog_publish_date }}</span></p>
                                 </div>
@@ -64,7 +64,7 @@
                                     <nuxt-link :to="'/blog/' + item.page_content.blog_category[0] + '/' + item.url"
                                         class="Blog-item" :key="item.id" v-if="item !== null">
                                         <div class="Blog-item-img">
-                                            <nuxt-img :src="item.page_content.default.page_list_img" alt="" loading="lazy" placeholder ></nuxt-img>
+                                            <nuxt-img :src="item.page_content.default.page_list_img" :alt="item.name + 'Blog ' + sitename" loading="lazy" placeholder ></nuxt-img>
                                             <div class="Blog-item-img-text">
                                                 <h6>{{ item.name }}</h6>
                                             </div>
@@ -102,6 +102,11 @@ export default {
     props: ['data', 'morePost'],
     components: {
         Swiper, BlogSidebar
+    },
+    data(){
+        return{
+            sitename: process.env.SITE_NAME
+        }
     },
     mounted() {
         Swiper.use([Navigation, Pagination])

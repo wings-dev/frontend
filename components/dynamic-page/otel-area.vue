@@ -18,7 +18,7 @@
         <div class="O_List-card-in">
           <nuxt-link :to="detailUrl(hotel)" class="O_List-card-item" v-for="(hotel,index) in data.hotels" v-if="hotel.images?.[0]?.ImageUrl" :key="index">
             <div class="O_List-card-item-img">
-              <nuxt-img :src="cdn + hotel.images?.[0]?.ImageUrl" alt="" loading="lazy" placeholder />
+              <nuxt-img :src="cdn + hotel.images?.[0]?.ImageUrl" :alt="hotel.Name + ' ' + sitename" loading="lazy" placeholder />
             </div>
             <div class="O_List-card-item-content">
               <div class="O_List-card-item-content-head">
@@ -185,7 +185,7 @@
                 <div class="swiper-slide" v-for="(item, index) in 4" :key="index">
                   <a class="Blog-item">
                     <div class="Blog-item-img">
-                      <nuxt-img src="/img/blog.png" alt="" loading="lazy" placeholder />
+                      <nuxt-img src="/img/blog.png" :alt="hotel.Name + ' ' + sitename" loading="lazy" placeholder />
                       <div class="Blog-item-img-text">
                         <h6>Roots in a piece of classical Latin literature</h6>
                       </div>
@@ -228,6 +228,7 @@ export default {
   props: ['data'],
   data() {
     return {
+      sitename: process.env.SITE_NAME,
       isExpanded: false,
       isExpanded2: false,
       cdn: process.env.HOTEL_CDN_URL + '/'

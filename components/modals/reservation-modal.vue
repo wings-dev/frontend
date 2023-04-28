@@ -8,7 +8,7 @@
         <div class="Login-left">
           <div class="Login-card">
             <div class="Login-card-img">
-              <nuxt-img :src="reservationModalData.villa?.watermark_images?.[0]?.preview_url" alt="" loading="lazy" placeholder ></nuxt-img>
+              <nuxt-img :src="reservationModalData.villa?.watermark_images?.[0]?.preview_url" :alt="prefix + reservationModalData.villa.code + ' ' + sitename" loading="lazy" placeholder ></nuxt-img>
               <div class="Login-card-img-text">
                 <div class="Login-card-img-text-head">
                   <span>Villa kodu</span>
@@ -101,6 +101,7 @@ export default {
   data() {
     return {
       prefix: process.env.PREFIX,
+      sitename: process.env.SITE_NAME,
       form: {
         name: null,
         email: null,

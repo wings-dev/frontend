@@ -6,7 +6,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
               <nuxt-link :to="{path: villa.url ,query: detailUrlData}">
-                <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" loading="lazy" sizes="sm:100vw md:50vw lg:400px" placeholder />
+                <nuxt-img :src="image.preview_url" :srcset="image.responsive_url" :alt="prefix + villa.code + ' ' + sitename" loading="lazy" sizes="sm:100vw md:50vw lg:400px" placeholder />
               </nuxt-link>
             </div>
           </div>
@@ -188,6 +188,7 @@ export default {
         }
       },
       prefix: process.env.PREFIX,
+      sitename: process.env.SITE_NAME,
       checkin: null,
       checkout: null
     }

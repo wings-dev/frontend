@@ -116,7 +116,7 @@
           <div class="F_villa ">
 
             <div class="No-villas" v-if="loading == false && villas.length <= 0">
-              <nuxt-img :src="`img/site${site_id}/no-villas.svg`" alt="" loading="lazy" placeholder ></nuxt-img>
+              <nuxt-img :src="`img/site${site_id}/no-villas.svg`" :alt="sitename" loading="lazy" placeholder ></nuxt-img>
               <h2>Arama filtrelerinize uygun ilan bulunamadı.</h2>
               <p>Arama filtrenizi veya tarih değiştirerek yeniden deneyebilirsiniz.</p>
               <div class="No-villas-buttons">
@@ -127,7 +127,7 @@
             </div>
 
             <div class="No-villas" v-if="loading">
-              <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" alt="" loading="lazy" placeholder ></nuxt-img>
+              <nuxt-img :src="`img/site${site_id}/villa-loading.svg`" :alt="sitename" loading="lazy" placeholder ></nuxt-img>
               <h2>Villalar hazırlanıyor.</h2>
               <p>Keyifli bir tatil için binlerce seçeneğe hazır mısınız?</p>
             </div>
@@ -259,6 +259,7 @@ export default {
   data() {
     return {
       site_id: process.env.SITE,
+      sitename: process.env.SITE_NAME,
       current_page: 1,
       per_page: 10,
       total_items: 0,
@@ -321,7 +322,6 @@ export default {
     this.filter();
 
   },
-
   computed: {
     totalPages() {
       return Math.ceil(this.total_items / this.per_page);

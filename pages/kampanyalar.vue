@@ -2,7 +2,7 @@
     <main class="main">
         <section class="Home-banner Home-banner-center"
             :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
-            <nuxt-img :src="pageData.page_content.default.page_list_img" alt="" loading="lazy" placeholder />
+            <nuxt-img :src="pageData.page_content.default.page_list_img" :alt="'Kampanyalar ' + sitename" loading="lazy" placeholder />
             <div class="container">
                 <div class="Home-banner-in">
                     <div class="Home-banner-text">
@@ -19,7 +19,7 @@
                 <div class="Campaigns-in">
                     <b-button type="button" class="Campaigns-item" @click="showModal(index)"
                         v-for="(campaign, index) in campaigns" :key="index" v-if="campaign">
-                        <nuxt-img :src="campaign.page_content.default.page_list_img" loading="lazy" placeholder > </nuxt-img>
+                        <nuxt-img :src="campaign.page_content.default.page_list_img" loading="lazy" placeholder :alt="'Kampanyalar ' + sitename" > </nuxt-img>
                     </b-button>
 
                 </div>
@@ -73,64 +73,12 @@
 export default {
     name: 'Kampanyalar',
     layout: 'no-search',
+    head() {
+        return this.headData
+    },
     data() {
         return {
-            items: [
-                {
-                    campaign_id: 1,
-                    campaign_img: '/img/kampanya/kampanya.jpg',
-                    campaign_title: '%1’ini önden öde, kalanı girişte öde!',
-                    campaign_end_date: '14.05.2023',
-                    campaign_desc: "Worldcard ile setur.com.tr ve Setur mobil uygulaması üzerinden veya 444 0 738'nolu Çağrı Merkezi, Setur Şube ve Yekili Satış Acentelerinden tek seferde yapılacak 15.000 TL ve üzeri rezervasyonlarda toplamda 1.000 TL'ye varan Worldpuan hediye!",
-                    campaign_policy: `<p>1 Nisan 2023-30 Nisan 2023 tarihleri arasında Worldcard ile setur.com.tr ve Setur Mobil uygulaması üzerinden veya 444 0 738 nolu Çağrı Merkezi, Setur Şube ve Yetkili Satış Acentelerinden tek seferde yapılacak tüm yurt içi ve Kuzey Kıbrıs otel, kültür turları, yurt dışı tur ve yurt dışı otel rezervasyonlarınızda 15.000 TL ve üzerine 925 TL Worldpuan hediye edilecektir. Bu kampanya kapsamında, World Mobil üzerinden Seyahat Kampanyası'na katılınması halinde ek 150 TL'ye varan Worldpuan kazanılacaktır.</p><p>Seyahat Kampanyası kapsamında tek seferde yapılan her 2.000 TL ve üzeri alışverişte 75 TL toplamda 150 TL Worldpuan kazanılacaktır. Üye işyerlerinden tek seferde yapılacak ilk 2.000 TL ve üzeri harcamada 75 TL, ikinci 2.000 TL ve üzeri harcamada da 75 TL, toplamda bir müşteri seyahat kampanyası kapsamında 150 TL Worldpuan kazanabilecektir. Seyahat Kampanyası detaylarına www.worldcard.com.tr 'den ulaşabilirsiniz.</p><p>Setur Worldpuan kampanyası 15.000 TL ve üzeri 925 TL Worldpuan alışverişlerinde geçerli olduğundan, kart hamili ilk alışverişinde 925 TL’ye varan Worldpuan’ı Setur Worldpuan kampanyasından kazanırken, ek olarak 75 TL Worldpuanı da Seyahat kampanyasından kazanmış olacaktır.</p><p>World Mobil uygulaması üzerinden kampanyaya katılmak için iPhone veya Android cep telefonuna World Mobil uygulaması indirilmelidir. World Mobil uygulamasından kampanyaya katılmak için “Kampanyalar” alanındaki ilgili kampanyanın "Hemen Katıl" butonuna tıklanması gerekmektedir.</p><p>Setur Seyahat Hattı üzerinden yapılan harcamalar kampanyaya dahil değildir.</p><p>Kampanyaya vize işlemleri dahil değildir.</p><p>Kampanyadan yararlanmak için online platformlarımızdan yapılacak rezervasyonlarda üye girişi ile rezervasyon yapılması gerekmektedir, üye girişi olmadan yapılacak rezervasyonlarda puan kazanımı olmayacaktır.</p><p>Kampanya kart bazında değil müşteri bazında geçerlidir. Kampanya süresince her müşteri kampanyadan 1 defa faydalanabilecektir.</p>`,
-                    campaign_urls: '/',
-                },
-                {
-                    campaign_id: 2,
-                    campaign_img: '/img/kampanya/kampanya2.jpg',
-                    campaign_title: '%2’ini önden öde, kalanı girişte öde!',
-                    campaign_end_date: '14.05.2023',
-                    campaign_desc: "Worldcard ile setur.com.tr ve Setur mobil uygulaması üzerinden veya 444 0 738'nolu Çağrı Merkezi, Setur Şube ve Yekili Satış Acentelerinden tek seferde yapılacak 15.000 TL ve üzeri rezervasyonlarda toplamda 1.000 TL'ye varan Worldpuan hediye!",
-                    campaign_policy: `<p>1 Nisan 2023-30 Nisan 2023 tarihleri arasında Worldcard ile setur.com.tr ve Setur Mobil uygulaması üzerinden veya 444 0 738 nolu Çağrı Merkezi, Setur Şube ve Yetkili Satış Acentelerinden tek seferde yapılacak tüm yurt içi ve Kuzey Kıbrıs otel, kültür turları, yurt dışı tur ve yurt dışı otel rezervasyonlarınızda 15.000 TL ve üzerine 925 TL Worldpuan hediye edilecektir. Bu kampanya kapsamında, World Mobil üzerinden Seyahat Kampanyası'na katılınması halinde ek 150 TL'ye varan Worldpuan kazanılacaktır.</p><p>Seyahat Kampanyası kapsamında tek seferde yapılan her 2.000 TL ve üzeri alışverişte 75 TL toplamda 150 TL Worldpuan kazanılacaktır. Üye işyerlerinden tek seferde yapılacak ilk 2.000 TL ve üzeri harcamada 75 TL, ikinci 2.000 TL ve üzeri harcamada da 75 TL, toplamda bir müşteri seyahat kampanyası kapsamında 150 TL Worldpuan kazanabilecektir. Seyahat Kampanyası detaylarına www.worldcard.com.tr 'den ulaşabilirsiniz.</p><p>Setur Worldpuan kampanyası 15.000 TL ve üzeri 925 TL Worldpuan alışverişlerinde geçerli olduğundan, kart hamili ilk alışverişinde 925 TL’ye varan Worldpuan’ı Setur Worldpuan kampanyasından kazanırken, ek olarak 75 TL Worldpuanı da Seyahat kampanyasından kazanmış olacaktır.</p><p>World Mobil uygulaması üzerinden kampanyaya katılmak için iPhone veya Android cep telefonuna World Mobil uygulaması indirilmelidir. World Mobil uygulamasından kampanyaya katılmak için “Kampanyalar” alanındaki ilgili kampanyanın "Hemen Katıl" butonuna tıklanması gerekmektedir.</p><p>Setur Seyahat Hattı üzerinden yapılan harcamalar kampanyaya dahil değildir.</p><p>Kampanyaya vize işlemleri dahil değildir.</p><p>Kampanyadan yararlanmak için online platformlarımızdan yapılacak rezervasyonlarda üye girişi ile rezervasyon yapılması gerekmektedir, üye girişi olmadan yapılacak rezervasyonlarda puan kazanımı olmayacaktır.</p><p>Kampanya kart bazında değil müşteri bazında geçerlidir. Kampanya süresince her müşteri kampanyadan 1 defa faydalanabilecektir.</p>`,
-                    campaign_urls: '/',
-                },
-                {
-                    campaign_id: 3,
-                    campaign_img: '/img/kampanya/kampanya3.jpg',
-                    campaign_title: '%3’ini önden öde, kalanı girişte öde!',
-                    campaign_end_date: '14.05.2023',
-                    campaign_desc: "Worldcard ile setur.com.tr ve Setur mobil uygulaması üzerinden veya 444 0 738'nolu Çağrı Merkezi, Setur Şube ve Yekili Satış Acentelerinden tek seferde yapılacak 15.000 TL ve üzeri rezervasyonlarda toplamda 1.000 TL'ye varan Worldpuan hediye!",
-                    campaign_policy: `<p>1 Nisan 2023-30 Nisan 2023 tarihleri arasında Worldcard ile setur.com.tr ve Setur Mobil uygulaması üzerinden veya 444 0 738 nolu Çağrı Merkezi, Setur Şube ve Yetkili Satış Acentelerinden tek seferde yapılacak tüm yurt içi ve Kuzey Kıbrıs otel, kültür turları, yurt dışı tur ve yurt dışı otel rezervasyonlarınızda 15.000 TL ve üzerine 925 TL Worldpuan hediye edilecektir. Bu kampanya kapsamında, World Mobil üzerinden Seyahat Kampanyası'na katılınması halinde ek 150 TL'ye varan Worldpuan kazanılacaktır.</p><p>Seyahat Kampanyası kapsamında tek seferde yapılan her 2.000 TL ve üzeri alışverişte 75 TL toplamda 150 TL Worldpuan kazanılacaktır. Üye işyerlerinden tek seferde yapılacak ilk 2.000 TL ve üzeri harcamada 75 TL, ikinci 2.000 TL ve üzeri harcamada da 75 TL, toplamda bir müşteri seyahat kampanyası kapsamında 150 TL Worldpuan kazanabilecektir. Seyahat Kampanyası detaylarına www.worldcard.com.tr 'den ulaşabilirsiniz.</p><p>Setur Worldpuan kampanyası 15.000 TL ve üzeri 925 TL Worldpuan alışverişlerinde geçerli olduğundan, kart hamili ilk alışverişinde 925 TL’ye varan Worldpuan’ı Setur Worldpuan kampanyasından kazanırken, ek olarak 75 TL Worldpuanı da Seyahat kampanyasından kazanmış olacaktır.</p><p>World Mobil uygulaması üzerinden kampanyaya katılmak için iPhone veya Android cep telefonuna World Mobil uygulaması indirilmelidir. World Mobil uygulamasından kampanyaya katılmak için “Kampanyalar” alanındaki ilgili kampanyanın "Hemen Katıl" butonuna tıklanması gerekmektedir.</p><p>Setur Seyahat Hattı üzerinden yapılan harcamalar kampanyaya dahil değildir.</p><p>Kampanyaya vize işlemleri dahil değildir.</p><p>Kampanyadan yararlanmak için online platformlarımızdan yapılacak rezervasyonlarda üye girişi ile rezervasyon yapılması gerekmektedir, üye girişi olmadan yapılacak rezervasyonlarda puan kazanımı olmayacaktır.</p><p>Kampanya kart bazında değil müşteri bazında geçerlidir. Kampanya süresince her müşteri kampanyadan 1 defa faydalanabilecektir.</p>`,
-                    campaign_urls: '/',
-                },
-                {
-                    campaign_id: 4,
-                    campaign_img: '/img/kampanya/kampanya4.jpg',
-                    campaign_title: '%4’ini önden öde, kalanı girişte öde!',
-                    campaign_end_date: '14.05.2023',
-                    campaign_desc: "Worldcard ile setur.com.tr ve Setur mobil uygulaması üzerinden veya 444 0 738'nolu Çağrı Merkezi, Setur Şube ve Yekili Satış Acentelerinden tek seferde yapılacak 15.000 TL ve üzeri rezervasyonlarda toplamda 1.000 TL'ye varan Worldpuan hediye!",
-                    campaign_policy: `<p>1 Nisan 2023-30 Nisan 2023 tarihleri arasında Worldcard ile setur.com.tr ve Setur Mobil uygulaması üzerinden veya 444 0 738 nolu Çağrı Merkezi, Setur Şube ve Yetkili Satış Acentelerinden tek seferde yapılacak tüm yurt içi ve Kuzey Kıbrıs otel, kültür turları, yurt dışı tur ve yurt dışı otel rezervasyonlarınızda 15.000 TL ve üzerine 925 TL Worldpuan hediye edilecektir. Bu kampanya kapsamında, World Mobil üzerinden Seyahat Kampanyası'na katılınması halinde ek 150 TL'ye varan Worldpuan kazanılacaktır.</p><p>Seyahat Kampanyası kapsamında tek seferde yapılan her 2.000 TL ve üzeri alışverişte 75 TL toplamda 150 TL Worldpuan kazanılacaktır. Üye işyerlerinden tek seferde yapılacak ilk 2.000 TL ve üzeri harcamada 75 TL, ikinci 2.000 TL ve üzeri harcamada da 75 TL, toplamda bir müşteri seyahat kampanyası kapsamında 150 TL Worldpuan kazanabilecektir. Seyahat Kampanyası detaylarına www.worldcard.com.tr 'den ulaşabilirsiniz.</p><p>Setur Worldpuan kampanyası 15.000 TL ve üzeri 925 TL Worldpuan alışverişlerinde geçerli olduğundan, kart hamili ilk alışverişinde 925 TL’ye varan Worldpuan’ı Setur Worldpuan kampanyasından kazanırken, ek olarak 75 TL Worldpuanı da Seyahat kampanyasından kazanmış olacaktır.</p><p>World Mobil uygulaması üzerinden kampanyaya katılmak için iPhone veya Android cep telefonuna World Mobil uygulaması indirilmelidir. World Mobil uygulamasından kampanyaya katılmak için “Kampanyalar” alanındaki ilgili kampanyanın "Hemen Katıl" butonuna tıklanması gerekmektedir.</p><p>Setur Seyahat Hattı üzerinden yapılan harcamalar kampanyaya dahil değildir.</p><p>Kampanyaya vize işlemleri dahil değildir.</p><p>Kampanyadan yararlanmak için online platformlarımızdan yapılacak rezervasyonlarda üye girişi ile rezervasyon yapılması gerekmektedir, üye girişi olmadan yapılacak rezervasyonlarda puan kazanımı olmayacaktır.</p><p>Kampanya kart bazında değil müşteri bazında geçerlidir. Kampanya süresince her müşteri kampanyadan 1 defa faydalanabilecektir.</p>`,
-                    campaign_urls: '/',
-                },
-                {
-                    campaign_id: 5,
-                    campaign_img: '/img/kampanya/kampanya5.jpg',
-                    campaign_title: '%5’ini önden öde, kalanı girişte öde!',
-                    campaign_end_date: '14.05.2023',
-                    campaign_desc: "Worldcard ile setur.com.tr ve Setur mobil uygulaması üzerinden veya 444 0 738'nolu Çağrı Merkezi, Setur Şube ve Yekili Satış Acentelerinden tek seferde yapılacak 15.000 TL ve üzeri rezervasyonlarda toplamda 1.000 TL'ye varan Worldpuan hediye!",
-                    campaign_policy: `<p>1 Nisan 2023-30 Nisan 2023 tarihleri arasında Worldcard ile setur.com.tr ve Setur Mobil uygulaması üzerinden veya 444 0 738 nolu Çağrı Merkezi, Setur Şube ve Yetkili Satış Acentelerinden tek seferde yapılacak tüm yurt içi ve Kuzey Kıbrıs otel, kültür turları, yurt dışı tur ve yurt dışı otel rezervasyonlarınızda 15.000 TL ve üzerine 925 TL Worldpuan hediye edilecektir. Bu kampanya kapsamında, World Mobil üzerinden Seyahat Kampanyası'na katılınması halinde ek 150 TL'ye varan Worldpuan kazanılacaktır.</p><p>Seyahat Kampanyası kapsamında tek seferde yapılan her 2.000 TL ve üzeri alışverişte 75 TL toplamda 150 TL Worldpuan kazanılacaktır. Üye işyerlerinden tek seferde yapılacak ilk 2.000 TL ve üzeri harcamada 75 TL, ikinci 2.000 TL ve üzeri harcamada da 75 TL, toplamda bir müşteri seyahat kampanyası kapsamında 150 TL Worldpuan kazanabilecektir. Seyahat Kampanyası detaylarına www.worldcard.com.tr 'den ulaşabilirsiniz.</p><p>Setur Worldpuan kampanyası 15.000 TL ve üzeri 925 TL Worldpuan alışverişlerinde geçerli olduğundan, kart hamili ilk alışverişinde 925 TL’ye varan Worldpuan’ı Setur Worldpuan kampanyasından kazanırken, ek olarak 75 TL Worldpuanı da Seyahat kampanyasından kazanmış olacaktır.</p><p>World Mobil uygulaması üzerinden kampanyaya katılmak için iPhone veya Android cep telefonuna World Mobil uygulaması indirilmelidir. World Mobil uygulamasından kampanyaya katılmak için “Kampanyalar” alanındaki ilgili kampanyanın "Hemen Katıl" butonuna tıklanması gerekmektedir.</p><p>Setur Seyahat Hattı üzerinden yapılan harcamalar kampanyaya dahil değildir.</p><p>Kampanyaya vize işlemleri dahil değildir.</p><p>Kampanyadan yararlanmak için online platformlarımızdan yapılacak rezervasyonlarda üye girişi ile rezervasyon yapılması gerekmektedir, üye girişi olmadan yapılacak rezervasyonlarda puan kazanımı olmayacaktır.</p><p>Kampanya kart bazında değil müşteri bazında geçerlidir. Kampanya süresince her müşteri kampanyadan 1 defa faydalanabilecektir.</p>`,
-                    campaign_urls: '/',
-                },
-                {
-                    campaign_id: 6,
-                    campaign_img: '/img/kampanya/kampanya6.jpg',
-                    campaign_title: '%6’ini önden öde, kalanı girişte öde!',
-                    campaign_end_date: '14.05.2023',
-                    campaign_desc: "Worldcard ile setur.com.tr ve Setur mobil uygulaması üzerinden veya 444 0 738'nolu Çağrı Merkezi, Setur Şube ve Yekili Satış Acentelerinden tek seferde yapılacak 15.000 TL ve üzeri rezervasyonlarda toplamda 1.000 TL'ye varan Worldpuan hediye!",
-                    campaign_policy: `<p>1 Nisan 2023-30 Nisan 2023 tarihleri arasında Worldcard ile setur.com.tr ve Setur Mobil uygulaması üzerinden veya 444 0 738 nolu Çağrı Merkezi, Setur Şube ve Yetkili Satış Acentelerinden tek seferde yapılacak tüm yurt içi ve Kuzey Kıbrıs otel, kültür turları, yurt dışı tur ve yurt dışı otel rezervasyonlarınızda 15.000 TL ve üzerine 925 TL Worldpuan hediye edilecektir. Bu kampanya kapsamında, World Mobil üzerinden Seyahat Kampanyası'na katılınması halinde ek 150 TL'ye varan Worldpuan kazanılacaktır.</p><p>Seyahat Kampanyası kapsamında tek seferde yapılan her 2.000 TL ve üzeri alışverişte 75 TL toplamda 150 TL Worldpuan kazanılacaktır. Üye işyerlerinden tek seferde yapılacak ilk 2.000 TL ve üzeri harcamada 75 TL, ikinci 2.000 TL ve üzeri harcamada da 75 TL, toplamda bir müşteri seyahat kampanyası kapsamında 150 TL Worldpuan kazanabilecektir. Seyahat Kampanyası detaylarına www.worldcard.com.tr 'den ulaşabilirsiniz.</p><p>Setur Worldpuan kampanyası 15.000 TL ve üzeri 925 TL Worldpuan alışverişlerinde geçerli olduğundan, kart hamili ilk alışverişinde 925 TL’ye varan Worldpuan’ı Setur Worldpuan kampanyasından kazanırken, ek olarak 75 TL Worldpuanı da Seyahat kampanyasından kazanmış olacaktır.</p><p>World Mobil uygulaması üzerinden kampanyaya katılmak için iPhone veya Android cep telefonuna World Mobil uygulaması indirilmelidir. World Mobil uygulamasından kampanyaya katılmak için “Kampanyalar” alanındaki ilgili kampanyanın "Hemen Katıl" butonuna tıklanması gerekmektedir.</p><p>Setur Seyahat Hattı üzerinden yapılan harcamalar kampanyaya dahil değildir.</p><p>Kampanyaya vize işlemleri dahil değildir.</p><p>Kampanyadan yararlanmak için online platformlarımızdan yapılacak rezervasyonlarda üye girişi ile rezervasyon yapılması gerekmektedir, üye girişi olmadan yapılacak rezervasyonlarda puan kazanımı olmayacaktır.</p><p>Kampanya kart bazında değil müşteri bazında geçerlidir. Kampanya süresince her müşteri kampanyadan 1 defa faydalanabilecektir.</p>`,
-                    campaign_urls: '/',
-                },
-            ]
+            sitename: process.env.SITE_NAME
         }
     },
     async asyncData({ $getRedisKey, route, store, redirect }) {
@@ -150,8 +98,12 @@ export default {
 
         const campaigns = await $getRedisKey(campaignRedisKeys)
 
+        let headData = {
+            title: pageData.title,
+            meta: pageData.meta
+        }
 
-        return { pageData, campaigns }
+        return { pageData, campaigns,headData }
     },
     methods: {
         openModal(campaignid) {

@@ -2,7 +2,7 @@
   <nuxt-link :to="{path: detailUrl ,query: detailUrlData}" target="_blank" class="Otel-card">
     <div class="Otel-card-left">
       <div class="Otel-card-img">
-        <nuxt-img :src="previewImageUrl" width="361" height="255" alt="hotel image" class="" loading="lazy" placeholder ></nuxt-img>
+        <nuxt-img :src="previewImageUrl" width="361" height="255" :alt="hotel.name + ' ' + sitename" class="" loading="lazy" placeholder ></nuxt-img>
         <button class="Card-fav" type="button" @click="toggleFavorite">
           <i class="icon-heart"></i>
         </button>
@@ -76,7 +76,8 @@ export default {
           prevEl: '.swiper-button-prev'
         }
       },
-      prefix: process.env.PREFIX
+      prefix: process.env.PREFIX,
+      sitename: process.env.SITE_NAME
     }
   },
   computed: {

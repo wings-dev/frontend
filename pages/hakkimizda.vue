@@ -34,7 +34,7 @@
                             <template v-for="(item, index) in banks">
 
                                 <div>
-                                    <nuxt-img :src="item.corporate_banks_logo" v-if="item.corporate_banks_logo" loading="lazy" placeholder />
+                                    <nuxt-img :src="item.corporate_banks_logo" v-if="item.corporate_banks_logo" loading="lazy" placeholder :alt="item.corporate_banks_title + ' Logo'" />
                                     <div class="Info-left-item">
                                         <span>Alıcı Ünvan</span>
                                         <p>{{ item.corporate_banks_title }}</p>
@@ -163,24 +163,24 @@
                             </a>
                             <div class="Ofis-content-item-list">
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg" :data-fancybox="'group-ofis'+index">
-                                    <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg" loading="lazy" placeholder ></nuxt-img>
+                                    <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img>
                                 </a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg" loading="lazy" placeholder ></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder ></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg" loading="lazy" placeholder ></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg" loading="lazy" placeholder ></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
                                 <a href="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg" loading="lazy" placeholder ></nuxt-img></a>
+                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
                             </div>
                         </div>
                         <div class="Ofis-content-item Ofis-content-item-video">
                             <a href="https://www.youtube.com/embed/abWhzr3Y2Ow" data-fancybox="">
                                 <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder 
-                                    alt="Villa Kalkan - Kalkan Ofis Tanıtım Videosu" />
+                                    alt="Balayı Villası - Kalkan Ofis Tanıtım Videosu" />
                                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
                             </a>
                         </div>
