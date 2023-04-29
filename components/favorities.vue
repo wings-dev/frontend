@@ -11,7 +11,7 @@
                 <nuxt-link :to="'/'+(villa.detail.url || '')">
                   <nuxt-img v-if="villa.detail.watermark_images && villa.detail.watermark_images[0]" 
                     :src="villa.detail.watermark_images[0].preview_url" 
-                    :srcset="villa.detail.watermark_images[0].responsive"
+                    :srcset="generateSrcset(villa.watermark_preview_image[0].responsive)"
                     width="267" height="175" loading="lazy" placeholder :alt="prefix + (villa.detail.code || '') + ' ' + sitename">
                   </nuxt-img>
                 </nuxt-link>
@@ -64,9 +64,11 @@
 </template>
 <script>
 import {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
+import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 
 export default {
   name: "favorities",
+  mixins: [cdnSrcsetMixin],
   data() {
     return {
       villas: [],

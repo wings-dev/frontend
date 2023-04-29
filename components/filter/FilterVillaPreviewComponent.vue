@@ -6,7 +6,8 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(image, index) in villa.preview_image" :key="index">
               <nuxt-link :to="{path: villa.url ,query: detailUrlData}">
-                <nuxt-img :src="global_cdn + image.preview_url"  :alt="prefix + villa.code + ' ' + sitename" loading="lazy" sizes="sm:100vw md:50vw lg:400px" placeholder />
+                <nuxt-img :src="global_cdn + image.preview_url"  :alt="prefix + villa.code + ' ' + sitename" :srcset="generateSrcset(image.responsive_url)" loading="lazy" sizes="sm:100vw md:50vw lg:400px" placeholder v-if="villa.code < 9999"/>
+                <nuxt-img :src="global_cdn + image.preview_url"  :alt="prefix + villa.code + ' ' + sitename" loading="lazy" sizes="sm:100vw md:50vw lg:400px" placeholder v-else/>
                 <!-- <nuxt-img :src="global_cdn + image.preview_url" :srcset="global_cdn + image.responsive_url" :alt="prefix + villa.code + ' ' + sitename" loading="lazy" sizes="sm:100vw md:50vw lg:400px" placeholder /> -->
               </nuxt-link>
             </div>
@@ -188,10 +189,11 @@
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import moment from "moment";
-
+import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 export default {
   name: "FilterVillaPreviewComponent",
   props: ['villa', 'checkindate', 'checkoutdate'],
+  mixins: [cdnSrcsetMixin],
   components: {
     Swiper
   },
@@ -310,7 +312,7 @@ export default {
       //   },
       // }
     })
-
+    console.log(this.villa)
     this.formatDate(this.checkindate, this.checkoutdate)
 
   }

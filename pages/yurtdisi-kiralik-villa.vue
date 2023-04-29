@@ -45,7 +45,8 @@
                                 <div class="Card-in">
                                     <div class="Card-img">
                                         <nuxt-img :src="item.preview_image[0].preview_url" loading="lazy" placeholder 
-                                            :srcset="item.preview_image[0].responsive_url" width="267"
+                                            :srcset="generateSrcset(item.preview_image[0].responsive_url)"
+                                             width="267"
                                             height="175"></nuxt-img>
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
                                             :class="isFavorite(item.code) ? 'active' : ''">
@@ -199,10 +200,11 @@
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import CountryFlag from 'vue-country-flag'
-
+import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 export default {
     name: 'AbroadIndexPage',
     layout: 'no-search',
+    mixins: [cdnSrcsetMixin],
     components: {
         Swiper, CountryFlag
     },

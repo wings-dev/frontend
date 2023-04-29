@@ -105,35 +105,37 @@
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-                <nuxt-img :src="global_cdn + villa.watermark_images[0].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[0].preview_url" 
+                  :srcset="generateSrcset(villa.watermark_images[0].responsive)"
+                  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
                   <!-- :srcset="villa.watermark_images[0].responsive" -->
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url" :srcset="generateSrcset(villa.watermark_images[1].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url" :srcset="generateSrcset(villa.watermark_images[2].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url" :srcset="generateSrcset(villa.watermark_images[3].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
-                <nuxt-img :src="global_cdn + villa.watermark_images[4].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[4].preview_url" :srcset="generateSrcset(villa.watermark_images[4].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
@@ -181,7 +183,7 @@
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-                <nuxt-img :src="global_cdn + villa.watermark_images[0].original_url" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[0].original_url" :srcset="generateSrcset(villa.watermark_images[0].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
 
               </a>
@@ -189,7 +191,7 @@
             <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
               <a :href="global_cdn + villa.watermark_images[1].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url" :srcset="generateSrcset(villa.watermark_images[1].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
@@ -197,7 +199,7 @@
             <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
               <a :href="global_cdn + villa.watermark_images[2].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url" :srcset="generateSrcset(villa.watermark_images[2].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
@@ -205,14 +207,14 @@
             <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
               <a :href="global_cdn + villa.watermark_images[3].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url" :srcset="generateSrcset(villa.watermark_images[3].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
-                <nuxt-img :src="global_cdn + villa.watermark_images[4].original_url"  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                <nuxt-img :src="global_cdn + villa.watermark_images[4].original_url" :srcset="generateSrcset(villa.watermark_images[4].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                   width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
@@ -229,7 +231,7 @@
               <div class="d-none">
                 <a v-for="previewImage in villa.watermark_images.slice(5)" :href="global_cdn + previewImage.original_url"
                   data-fancybox="gallery" data-caption="Salon">
-                  <nuxt-img :src="previewImage.preview_url" width="284" height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                  <nuxt-img :src="previewImage.preview_url" :srcset="generateSrcset(previewImage.responsive)" width="284" height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                     sizes="sm:100vw md:50vw lg:284px" /></a>
               </div>
 
@@ -1346,7 +1348,7 @@
                     <div class="Card-img" v-if="item.preview_image && item.preview_image.length">
                       <nuxt-link :to="item.url">
                         <nuxt-img :src="global_cdn + item?.preview_image[0].preview_url" width="292" height="187" loading="lazy" :alt="villa_prefix + item.code + ' ' + sitename"
-                          ></nuxt-img>
+                        :srcset="generateSrcset(item?.preview_image[0].responsive_url)"></nuxt-img>
                         <!-- <nuxt-img :src="item?.preview_image[0].preview_url" width="292" height="187" loading="lazy" :alt="villa_prefix + item.code + ' ' + sitename"
                           :srcset="item?.preview_image[0].responsive_url"></nuxt-img> -->
                       </nuxt-link>
@@ -1493,10 +1495,12 @@ import LocationMapModal from '../modals/map-modal.vue';
 import opportunityBoxComponent from "@/components/OpportunityBoxComponent.vue";
 import { shareOnFacebook, shareOnTwitter, shareOnWhatsApp } from '@/assets/share';
 import {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
+import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 
 export default {
   name: 'DynamicDetailPage',
   props: ['villa', 'calendar', 'price_list_1'],
+  mixins: [cdnSrcsetMixin],
   components: {
     Swiper,
     HotelDatePicker,

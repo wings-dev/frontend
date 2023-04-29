@@ -48,7 +48,7 @@
                                             loading="lazy" 
                                             preset="card"
                                             placeholder 
-                                            :srcset="item.preview_image[0].responsive_url"
+                                            :srcset="generateSrcset(item.preview_image[0].responsive_url)"
                                             sizes="sm:325px lg:267px"
                                             :alt="prefix + item.code + ' | ' + sitename"
                                             ></nuxt-img>
@@ -249,7 +249,7 @@
                                             height="225"></nuxt-img> -->
 <!-- :srcset="global_cdn + villa.watermark_preview_image[0].responsive_url" -->
                                         <nuxt-img :src="global_cdn + villa.watermark_preview_image[0].preview_url" 
-                                            
+                                            :srcset="generateSrcset(villa.watermark_preview_image[0].responsive_url)"
                                             loading="lazy"
                                             preset="card" 
                                             :alt="prefix + villa.code + ' | ' + sitename"
@@ -527,11 +527,11 @@ import 'swiper/swiper-bundle.min.css'
 import findVillaUrlMixin, { findVillaUrlByCode } from "@/mixins/findVillaUrlMixin";
 import slugify from "slugify";
 import CountryFlag from 'vue-country-flag'
-
+import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 export default {
     name: 'IndexPage',
     layout: 'no-search',
-    mixins: [findVillaUrlMixin],
+    mixins: [findVillaUrlMixin,cdnSrcsetMixin],
     components: {
         Swiper,
         CountryFlag
