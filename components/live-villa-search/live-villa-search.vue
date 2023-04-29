@@ -4,7 +4,7 @@
       <div class="Search-villas-in">
         <div class="Search-villas-head">
           <NuxtLink to="/" class="Header-logo">
-            <nuxt-img :src="'/img/site' + site_id + '/logo-dark.svg'" :alt="'Logo - ' + sitename" loading="lazy" placeholder />
+            <nuxt-img :src="'/img/site' + site_id + '/logo-dark.svg'" :alt="'Logo - ' + sitename" loading="lazy"  placeholder />
           </NuxtLink>
           <button type="button" class="Search-villas-close" @click="closeSearch">Kapat <i
               class="icon-login-close"></i></button>
@@ -80,14 +80,15 @@
         <div class="Search-villas-content">
           <div class="Search-villas-content-no" v-if="!villas.length">
             <i class="icon-searching"></i>
-            <b>2000+ <br> Villa arasından</b>
-            <p>dilediğiniz villayı size bulalım</p>
+            <b>7500+ Villa </b>
+            <b>1.000.000+ Otel </b>
+            <p>arasından dilediğinizi size bulalım</p>
           </div>
           <div class="Search-villas-content-list" v-else>
 
             <a :href="villa.url" class="Search-villas-item" v-for="villa in villas">
               <div class="Search-villas-item-img">
-                <nuxt-img :src="villa.preview_image[0].preview_url" width="355" height="228" loading="lazy" :alt="prefix + villa.code + ' ' + sitename" placeholder />
+                <nuxt-img :src="villa.preview_image[0].preview_url" :srcset="generateSrcset(villa.preview_image[0].responsive_url)" width="355" height="228" loading="lazy" :alt="prefix + villa.code + ' ' + sitename" placeholder />
 
                 <div class="Search-villas-item-hover">
                   <i class="icon-search"></i>
@@ -135,10 +136,11 @@
 <script>
 import LiveHotelSearchComponent from "@/components/search/LiveHotelSearchComponent.vue";
 import {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
-
+import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 export default {
   name: "live-villa-search",
   components: {LiveHotelSearchComponent},
+  mixins: [cdnSrcsetMixin],
   data() {
     return {
       input: '',
@@ -201,6 +203,7 @@ export default {
         )
         this.villas = response.data.map(villa => {
           villa.url = findVillaUrlByCode(villa.code, this.$store.state.routes.routes);
+          console.log(villa)
           return villa
         })
       } catch (error) {

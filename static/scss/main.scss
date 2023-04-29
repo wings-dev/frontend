@@ -7107,6 +7107,7 @@ body.overflow-hidden {
             &.social {
               font-size: clamp(17px, 1.3vw, 24.5px);
               color: #fff;
+              margin-right: 8px;
               &:hover {
                 color: var(--bs-theme-second);
               }

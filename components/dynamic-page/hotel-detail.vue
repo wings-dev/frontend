@@ -68,8 +68,7 @@
                   </div>
                 </div>
                 <div class="View-menu-right">
-                  <a target="_blank"
-                    :href="`https://www.google.com/maps/@${hotelDetails.body.hotel.geolocation.latitude},${hotelDetails.body.hotel.geolocation.longitude},16z`"
+                  <a target="_blank" @click="locationMapOpen"
                     class="map-view">Haritada Görüntüle</a>
                 </div>
               </div>
@@ -159,8 +158,7 @@
                     gör</small></u></b-button>
             </div>
             <div class="Otel-desc-map" style="background-image: url(/img/map-bg.png);">
-              <a :href="`https://www.google.com/maps/@${hotelDetails.body.hotel.geolocation.latitude},${hotelDetails.body.hotel.geolocation.longitude},16z`"
-                target="_blank">
+              <a @click="locationMapOpen">
                 <span>Haritada Göster</span>
                 <i class="icon-search-new"></i>
               </a>
@@ -308,10 +306,10 @@
         </div>
       </section>
 
-      <b-modal id="amenitesModal" modal-class="Amenites-modal" :hide-header="true" hide-footer>
+      <b-modal id="roomAmenitesModal" modal-class="Amenites-modal" :hide-header="true" hide-footer>
         <div class="Amenites otel" v-if="selectedRoom">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            @click="$bvModal.hide('amenitesModal')"><i class="icon-login-close"></i></button>
+            @click="$bvModal.hide('roomAmenitesModal')"><i class="icon-login-close"></i></button>
 
           <div class="Amenites-slider" style="position:relative">
             <b-carousel id="carousel-1" v-model="slide" controls img-width="800" img-height="415">
@@ -342,6 +340,9 @@
         </div>
       </b-modal>
 
+      <amenites-modal :amenitelist="hotelDetails.body.hotel?.seasons?.[0]?.facilityCategories?.[0]?.facilities"></amenites-modal>
+      <location-map-modal :villalocationcity="hotelDetails.body.hotel.city.name" :villalocationdistrict="hotelDetails.body.hotel.country.name"
+      :villacode="hotelDetails.body.hotel.name" :latitude="hotelDetails.body.hotel.geolocation.latitude" :longitude="hotelDetails.body.hotel.geolocation.longitude"></location-map-modal>
     </main>
   </div>
 </template>
@@ -350,6 +351,8 @@
 import 'swiper/swiper-bundle.min.css'
 import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import { BCarousel } from 'bootstrap-vue'
+import AmenitesModal from '../modals/amenites-modal.vue';
+import LocationMapModal from '../modals/map-modal.vue';
 import lottie from 'vue-lottie/src/lottie.vue'
 
 export default {
@@ -379,7 +382,7 @@ export default {
     }
   },
   components: {
-    BCarousel, lottie
+    BCarousel, lottie,AmenitesModal,LocationMapModal
   },
   async mounted() {
     if(window.innerWidth <= 991){
@@ -423,7 +426,7 @@ export default {
       this.selectedRoom = JSON.parse(JSON.stringify(room))
 
       this.$nextTick(() => {
-        this.$bvModal.show('amenitesModal')
+        this.$bvModal.show('roomAmenitesModal')
       })
     },
     handleAnimation: function (anim) {
@@ -529,6 +532,9 @@ export default {
     },
     moreContentOpen() {
       this.moreContent = !this.moreContent
+    },
+    locationMapOpen() {
+      this.$bvModal.show('locationMapModal')
     },
   }
 }

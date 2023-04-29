@@ -10,9 +10,10 @@
               <div class="Card-img">
                 <nuxt-link :to="'/'+(villa.detail.url || '')">
                   <nuxt-img v-if="villa.detail.watermark_images && villa.detail.watermark_images[0]" 
-                    :src="villa.detail.watermark_images[0].preview_url" 
+                    :src="global_cdn + villa.detail.watermark_images[0].preview_url" 
                     :srcset="generateSrcset(villa.detail.watermark_images[0].responsive)"
-                    width="267" height="175" loading="lazy" placeholder :alt="prefix + (villa.detail.code || '') + ' ' + sitename">
+                    sizes="sm:325px lg:267px"
+                    width="267" height="205" loading="lazy" placeholder :alt="prefix + (villa.detail.code || '') + ' ' + sitename">
                   </nuxt-img>
                 </nuxt-link>
                 <button class="Card-fav active" type="button" @click="removeFavorite(villa.detail.code)">
@@ -72,7 +73,9 @@ export default {
   data() {
     return {
       villas: [],
-      prefix: process.env.PREFIX
+      prefix: process.env.PREFIX,
+      global_cdn: process.env.GLOBAL_CDN_URL,
+      sitename: process.env.SITE_NAME
     }
   },
   async mounted() {
@@ -106,9 +109,6 @@ export default {
     } catch (error) {
       console.error(error);
     }
-
-    console.log(this.villas)
-
   },
   methods: {
     removeFavorite(code) {

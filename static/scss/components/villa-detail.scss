@@ -740,6 +740,10 @@
           line-height: 1.16;
           color: var(--bs-theme-first);
           transition: all 400ms;
+
+          @media (max-width:768px) {
+            font-size: 20px;
+          }
         }
         small {
           max-width: 63px;
@@ -776,6 +780,9 @@
           transition: all 400ms;
           i {
             margin-left: 6px;
+            @media (max-width:768px) {
+              display: none;
+            }
           }
         }
         &-tooltip {
@@ -804,12 +811,16 @@
               left: 44%;
               bottom: -22%;
             }
+            @media (max-width:768px) {
+              display: none;
+            }
           }
           &:hover {
             .tooltiptext {
               visibility: visible;
             }
           }
+         
         }
       }
 

@@ -105,38 +105,46 @@
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-                <nuxt-img :src="global_cdn + villa.watermark_images[0].preview_url" 
-                  :srcset="generateSrcset(villa.watermark_images[0].responsive)"
-                  loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
-                  <!-- :srcset="villa.watermark_images[0].responsive" -->
+                <nuxt-img :src="global_cdn + villa.watermark_images[0].preview_url"
+                  :srcset="generateSrcset(villa.watermark_images[0].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="585" height="387"
+                  sizes="sm:100vw md:50vw lg:585px" />
+                <!-- :srcset="villa.watermark_images[0].responsive" -->
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url" :srcset="generateSrcset(villa.watermark_images[1].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url"
+                  :srcset="generateSrcset(villa.watermark_images[1].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                  sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url" :srcset="generateSrcset(villa.watermark_images[2].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url"
+                  :srcset="generateSrcset(villa.watermark_images[2].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                  sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
               <a href="#" @click.prevent="showGallery()" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url" :srcset="generateSrcset(villa.watermark_images[3].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url"
+                  :srcset="generateSrcset(villa.watermark_images[3].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                  sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
-                <nuxt-img :src="global_cdn + villa.watermark_images[4].preview_url" :srcset="generateSrcset(villa.watermark_images[4].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[4].preview_url"
+                  :srcset="generateSrcset(villa.watermark_images[4].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                  sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
                   <span @click.prevent="showGallery()">Tüm Fotoğraflar ( {{ villa.watermark_images.length }} ) </span>
@@ -183,39 +191,49 @@
                 class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
                 <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-                <nuxt-img :src="global_cdn + villa.watermark_images[0].original_url" :srcset="generateSrcset(villa.watermark_images[0].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="585" height="387" sizes="sm:100vw md:50vw lg:585px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[0].original_url"
+                  :srcset="generateSrcset(villa.watermark_images[0].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="585" height="387"
+                  sizes="sm:100vw md:50vw lg:585px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
               <a :href="global_cdn + villa.watermark_images[1].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url" :srcset="generateSrcset(villa.watermark_images[1].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url"
+                  :srcset="generateSrcset(villa.watermark_images[1].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                  sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
               <a :href="global_cdn + villa.watermark_images[2].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url" :srcset="generateSrcset(villa.watermark_images[2].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url"
+                  :srcset="generateSrcset(villa.watermark_images[2].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                  sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
               <a :href="global_cdn + villa.watermark_images[3].original_url" data-fancybox="gallery"
                 :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url" :srcset="generateSrcset(villa.watermark_images[3].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url"
+                  :srcset="generateSrcset(villa.watermark_images[3].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                  sizes="sm:100vw md:50vw lg:284px" />
 
               </a>
             </div>
             <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
               <div class="view-item d-block w-100 h-100  last">
-                <nuxt-img :src="global_cdn + villa.watermark_images[4].original_url" :srcset="generateSrcset(villa.watermark_images[4].responsive)" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                  width="284" height="187" sizes="sm:100vw md:50vw lg:284px" />
+                <nuxt-img :src="global_cdn + villa.watermark_images[4].original_url"
+                  :srcset="generateSrcset(villa.watermark_images[4].responsive)" loading="lazy" placeholder
+                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                  sizes="sm:100vw md:50vw lg:284px" />
                 <div
                   class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
                   <span @click.prevent="showGallery()">Tüm Fotoğraflar ( {{ villa.watermark_images.length }} ) </span>
@@ -231,7 +249,8 @@
               <div class="d-none">
                 <a v-for="previewImage in villa.watermark_images.slice(5)" :href="global_cdn + previewImage.original_url"
                   data-fancybox="gallery" data-caption="Salon">
-                  <nuxt-img :src="previewImage.preview_url" :srcset="generateSrcset(previewImage.responsive)" width="284" height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                  <nuxt-img :src="previewImage.preview_url" :srcset="generateSrcset(previewImage.responsive)" width="284"
+                    height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                     sizes="sm:100vw md:50vw lg:284px" /></a>
               </div>
 
@@ -273,7 +292,8 @@
             <div class="View-desc genelbakis view-menu-content-item" id="desc-content">
               <h2 class="View-title"><b>Tesise</b> Genel Bakış</h2>
               <div class="View-desc-category">
-                <a href="javascript:void(0)" v-if="villa.amenites.amenite_200?.list" @click.prevent="goFacilityConceptsFilter(item.id)"
+                <a href="javascript:void(0)" v-if="villa.amenites.amenite_200?.list"
+                  @click.prevent="goFacilityConceptsFilter(item.id)"
                   v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
               </div>
               <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
@@ -299,7 +319,8 @@
                 <div class="View-desc-amenites-in">
                   <p v-for="(item, index) in amenites" v-if="index <= 5">{{ item.name }}</p>
                 </div>
-                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more" >Tüm Olanaklar ({{ amenites.length}})</b-button>
+                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar ({{
+                  amenites.length }})</b-button>
 
               </div>
             </div>
@@ -313,7 +334,7 @@
                 </div>
                 <div class="View-desc-mobile-top-price" v-if="lowestPrice">
                   <span>GECELİK</span>
-                  <p>{{ lowestPrice | numberFormat }} <span v-if="villa.code < 9999">TL</span><span>€</span></p>
+                  <p>{{ lowestPrice | numberFormat }} <span v-if="villa.code < 9999">TL</span><span v-else>€</span></p>
                   <small>'den başlayan fiyatlar'</small>
                 </div>
 
@@ -345,7 +366,8 @@
                 </div>
               </div>
               <div class="View-desc-mobile-amenites" v-if="Number(villa.code) < 9999">
-                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)" v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
+                <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)"
+                  v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
                 <button type="button" @click="mobileAmenitesToggle">Tüm Olanarakları <i
                     class="icon-right-arrow"></i></button>
               </div>
@@ -368,7 +390,7 @@
                         <div class="View-months-item-price">
                           <span>GECELİK</span>
                           <b>{{ price.lowest_price | numberFormat }}{{ villa.code < 9999 ? 'TL' : '€' }}</b>
-                          <small>‘den başlayan fiyatlarla</small>
+                              <small>‘den başlayan fiyatlarla</small>
                         </div>
                         <div class="View-months-item-days">
                           <p>En az konaklama</p>
@@ -480,7 +502,7 @@
                 </div>
               </div>
             </div>
-            <template v-if="villa.floorplan.length &&  villa.floorplan.pool[0]['havuz-en']">
+            <template v-if="villa.floorplan.length && villa.floorplan.pool[0]['havuz-en']">
               <div class="View-pools">
                 <div class="View-pools-head  mb-3">
                   <h4 class="View-title"><b>Havuz</b> Bilgisi</h4>
@@ -494,10 +516,10 @@
 
                 <div class="pool-item mb-3" v-for="(poolitem, index) in (villa.floorplan?.pool || [])">
                   <div class="pool-item-left">
-                    <nuxt-img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon" loading="lazy"
-                      class="lazy contain" v-if="poolitem.pool == 52"></nuxt-img>
-                    <nuxt-img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon" loading="lazy"
-                      class="lazy contain" v-if="poolitem.pool == 58"></nuxt-img>
+                    <nuxt-img :src="'/img/site' + site_id + '/pool1.svg'" width="28" height="28" alt="pool icon"
+                      loading="lazy" class="lazy contain" v-if="poolitem.pool == 52"></nuxt-img>
+                    <nuxt-img :src="'/img/site' + site_id + '/pool2.svg'" width="28" height="28" alt="pool icon"
+                      loading="lazy" class="lazy contain" v-if="poolitem.pool == 58"></nuxt-img>
                     <!-- <img :src="'/img/site' + site_id + '/pool3.svg'" width="28" height="28" alt="pool icon" -->
                     <span class="">{{ poolitem.name }}</span>
                   </div>
@@ -510,7 +532,8 @@
 
               </div>
             </template>
-            <div class="View-location location view-menu-content-item" id="location-content" v-if="Number(villa.code) < 9999">
+            <div class="View-location location view-menu-content-item" id="location-content"
+              v-if="Number(villa.code) < 9999">
               <div class="View-location-head mb-3">
                 <div class="Viwe-location-head-in">
                   <h4 class="View-title">
@@ -553,9 +576,11 @@
                       <div class="first-tab-item" v-for="(item, index) in places.beaches"
                         v-if="places.beaches.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
-                          <nuxt-img :src="global_cdn + item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
+                          <nuxt-img :src="global_cdn + item.images[0].preview_url"
+                            :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
-                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" v-else></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157"
+                            height="95" loading="lazy" v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -579,9 +604,11 @@
                         v-if="places.locations.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
 
-                          <nuxt-img :src="global_cdn + item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
+                          <nuxt-img :src="global_cdn + item.images[0].preview_url"
+                            :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
-                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" v-else></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157"
+                            height="95" loading="lazy" v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -940,7 +967,7 @@
                   </div>
                 </div>
                 <div class="View-info-bg" v-if="villa.amenites.amenite_301.list">
-                  <div class="View-info-rules" >
+                  <div class="View-info-rules">
                     <h5>Tesis Kuralları</h5>
                     <div class="View-info-rules-item" v-for="item in villa.amenites.amenite_301.list">
                       <i class="icon-no-dog" v-if="item.id == 189"></i>
@@ -1247,9 +1274,10 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.beaches">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
-                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
-                            v-if="item.images.length > 0"></nuxt-img>
-                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" v-else></nuxt-img>
+                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename"
+                            width="157" height="95" loading="lazy" v-if="item.images.length > 0"></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157"
+                            height="95" loading="lazy" v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -1291,9 +1319,11 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.locations">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
-                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
+                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename"
+                            width="157" height="95" loading="lazy"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
-                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy" v-else></nuxt-img>
+                          <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157"
+                            height="95" loading="lazy" v-else></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -1347,8 +1377,9 @@
                   <div class="Card-in">
                     <div class="Card-img" v-if="item.preview_image && item.preview_image.length">
                       <nuxt-link :to="item.url">
-                        <nuxt-img :src="global_cdn + item?.preview_image[0].preview_url" width="292" height="187" loading="lazy" :alt="villa_prefix + item.code + ' ' + sitename"
-                        :srcset="generateSrcset(item?.preview_image[0].responsive_url)"></nuxt-img>
+                        <nuxt-img :src="global_cdn + item?.preview_image[0].preview_url" width="292" height="187"
+                          loading="lazy" :alt="villa_prefix + item.code + ' ' + sitename"
+                          :srcset="generateSrcset(item?.preview_image[0].responsive_url)"></nuxt-img>
                         <!-- <nuxt-img :src="item?.preview_image[0].preview_url" width="292" height="187" loading="lazy" :alt="villa_prefix + item.code + ' ' + sitename"
                           :srcset="item?.preview_image[0].responsive_url"></nuxt-img> -->
                       </nuxt-link>
@@ -1445,7 +1476,8 @@
               <template v-for="(floor, index) in villa.floorplan.kat">
                 <button v-if="bolum.gorsel && bolum.gorsel.length" type="button" class="Gallery-list-item"
                   :id="'Gallery_item' + index" @click="scrollGallery($event)" v-for="(bolum, index) in floor.bolum">
-                  <nuxt-img :src="global_cdn + bolum.gorsel[0].preview_url" class="w-100" :alt="villa_prefix + villa.code + ' ' + sitename" loading="lazy"></nuxt-img>
+                  <nuxt-img :src="global_cdn + bolum.gorsel[0].preview_url" class="w-100"
+                    :alt="villa_prefix + villa.code + ' ' + sitename" loading="lazy"></nuxt-img>
                   <p>{{ bolum.name }} <br> <span>({{ floor.name }})</span></p>
                 </button>
               </template>
@@ -1459,9 +1491,10 @@
                   </div>
                   <div class="Gallery-detail-item-right">
                     <template v-if="bolum.gorsel && bolum.gorsel.length">
-                      <a class="Gallery-detail-item-right-img" :href="global_cdn + img.original_url" data-fancybox="gallery"
-                        data-caption="Salon" v-for="(img, index) in bolum.gorsel">
-                        <nuxt-img :src="global_cdn + img.preview_url" loading="lazy" sizes="sm:100vw md:50vw lg:756px" :alt="villa_prefix + villa.code + ' ' + sitename"/>
+                      <a class="Gallery-detail-item-right-img" :href="global_cdn + img.original_url"
+                        data-fancybox="gallery" data-caption="Salon" v-for="(img, index) in bolum.gorsel">
+                        <nuxt-img :src="global_cdn + img.preview_url" loading="lazy" sizes="sm:100vw md:50vw lg:756px"
+                          :alt="villa_prefix + villa.code + ' ' + sitename" />
                       </a>
                     </template>
                   </div>
@@ -1475,7 +1508,9 @@
 
     <amenites-modal sectionTitle="Haftanın Villaları" :amenitelist="amenites"></amenites-modal>
     <location-map-modal :villalocationcity="villa.location.city.name" :villalocationdistrict="villa.location.state.name"
-      :villacode="villa.code" :villaprefix="villa_prefix"></location-map-modal>
+      :villacode="villa.code" :villaprefix="villa_prefix" :latitude="villa.location.longitude"
+      :longitude="villa.location.latitude">
+    </location-map-modal>
 
     <client-only>
       <close-villa-modal></close-villa-modal>
@@ -1494,7 +1529,7 @@ import AmenitesModal from '../modals/amenites-modal.vue';
 import LocationMapModal from '../modals/map-modal.vue';
 import opportunityBoxComponent from "@/components/OpportunityBoxComponent.vue";
 import { shareOnFacebook, shareOnTwitter, shareOnWhatsApp } from '@/assets/share';
-import {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
+import { findVillaUrlByCode } from "@/mixins/findVillaUrlMixin";
 import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 
 export default {
@@ -2008,7 +2043,7 @@ export default {
     }
 
     this.places = places;
-console.log(this.places)
+    console.log(this.places)
     try {
       const response = await this.$axios.post(`/website/property/month-prices?api_token=${process.env.WEBSITE_TOKEN}`, {
         "code": this.villa.code,
@@ -2027,7 +2062,7 @@ console.log(this.places)
         spaceBetween: 18,
         breakpoints: {
           200: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 8,
           },
           768: {
@@ -2126,7 +2161,7 @@ console.log(this.places)
               li.classList.add("active");
             }
           });
-          if (scrollY >= document.querySelector('#more-villas').offsetTop - 400) {
+          if (scrollY >= document.querySelector('#more-villas').offsetTop - 650) {
             document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
           } else {
 
@@ -2153,7 +2188,7 @@ console.log(this.places)
             document.querySelector('.share-btn').classList.remove('d-none')
             document.querySelector('.up-button').classList.add('d-none')
           }
-          if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+          if (document.body.scrollTop > 650 || document.documentElement.scrollTop > 650) {
             document.getElementById("reservationForm").classList.add('custom-fixed-reservation')
             document.querySelector(".View-right-opportunity-container").classList.add('opacity-0')
 
@@ -2262,5 +2297,4 @@ console.log(this.places)
   .modal-xl {
     max-width: 1140px;
   }
-}
-</style>
+}</style>

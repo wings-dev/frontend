@@ -9,8 +9,7 @@
               <div class="Login-left">
                 <div class="Login-card">
                   <div class="Login-card-img">
-                    <nuxt-img :src="villa.watermark_images[0].preview_url" loading="lazy" placeholder 
-                         alt="Reservation Success" />
+                    <nuxt-img :src="global_cdn + villa.watermark_images[0].preview_url" :srcset="generateSrcset(villa.watermark_images[0].responsive)" width="337" height="225" loading="lazy" placeholder alt="Reservation Success" class="cover"/>
                     <div class="Login-card-img-text">
                       <div class="Login-card-img-text-head">
                         <span>Villa kodu</span>
@@ -67,9 +66,11 @@
 </template>
 
 <script>
+import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 export default {
   name: 'ReservationSuccess',
   layout: 'no-search',
+  mixins: [cdnSrcsetMixin],
   head() {
         return {
             title:"Rezervasyon Talebiniz Başarılı"
@@ -79,7 +80,8 @@ export default {
     return {
       hash: {},
       villa: {},
-      prefix: process.env.PREFIX
+      prefix: process.env.PREFIX,
+      global_cdn: process.env.GLOBAL_CDN_URL,
     }
   },
   async asyncData({query, $getRedisKey, redirect}) {
@@ -136,6 +138,7 @@ export default {
           }]
       }
     })
+    console.log(this.villa)
   },
   methods: {
     removeQueryString() {

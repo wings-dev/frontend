@@ -3,7 +3,7 @@
         <div class="LocationMap">
             <div class="LocationMap-head">
                 <div class="LocationMap-head-title">
-                    <h3>{{villaprefix + villacode}}</h3>
+                    <h3>{{villaprefix ? villaprefix : '' }}{{ villacode }}</h3>
                     <p>{{ villalocationdistrict | titlecase }} / {{villalocationcity | titlecase}}</p>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
@@ -21,16 +21,13 @@
 
 export default {
     name: "LocationMapModal",
-    props: ['villacode','villalocationcity','villalocationdistrict','villaprefix'],
+    props: ['villacode','villalocationcity','villalocationdistrict','villaprefix','latitude','longitude'],
     data() {
         return {
             map: null,
-            mapCenter: [38.963745, 35.243322],
+            mapCenter: [this.latitude,this.longitude],
             customIcon: null
         }
-    },
-    computed: {
-
     },
     methods: {
         onModalShown() {
@@ -66,11 +63,11 @@ export default {
     },
     mounted() {
         this.customIcon = L.icon({
-            iconUrl: `img/site${process.env.SITE}/map-center.svg`,
+            iconUrl: `/img/site${process.env.SITE}/map-center.svg`,
             iconSize: [112, 112],
             iconAnchor: [56, 56]
         });
-
+        console.log(this.villacode)
     }
 }
 </script>

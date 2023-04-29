@@ -115,7 +115,7 @@
                 </div>
               </div>
               <div class="Search-item-person-item ">
-                <p>Bebek<br><span>0-5 arası</span></p>
+                <p>Bebek<br><span>0-3 yaş arası</span></p>
                 <div class="Search-item-person-item-in ">
 
                   <button type="button" class="minus-person" @click="baby_Decrease">
@@ -293,7 +293,7 @@
           </div>
         </div>
         <div class="Search-item-person-item ">
-          <p>Bebek<br><span>0-5 arası</span></p>
+          <p>Bebek<br><span>0-3 yaş arası</span></p>
           <div class="Search-item-person-item-in ">
 
             <button type="button" class="minus-person" @click="baby_Decrease">

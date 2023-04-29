@@ -76,9 +76,7 @@
                                 </div>
                                 <div class="Contact-offices-tab-text-item">
                                     <h6>SOSYAL MEDYA’DA</h6>
-                                    <a href="" class="social"><i class="icon-facebook"></i></a>
-                                    <a href="" class="social"><i class="icon-instagram"></i></a>
-                                    <a href="" class="social"><i class="icon-twitter"></i></a>
+                                    <a :href="item.social_link" class="social" v-for="(item,index) in $store.state?.site_settings?.social" :key="index"><i :class="'icon-'+item.social_icon"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +279,7 @@ export default {
                         coordinates: [this.officeCoordinates[1].x, this.officeCoordinates[1].y]
                     },
                     properties: {
-                        iconContent: 'Kalkan Ofis',
+                        iconContent: 'Fethiye Ofis',
                     }
                 }, {
                     preset: 'islands#blackStretchyIcon',
