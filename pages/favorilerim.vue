@@ -18,6 +18,7 @@ export default {
   head() {
     return {
       title: 'Favorilerim',
+      sitename: process.env.SITE_NAME,
     }
   }
 }

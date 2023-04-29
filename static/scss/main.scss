@@ -4523,9 +4523,8 @@ body.overflow-hidden {
   }
 }
 @media (max-width: 576px) {
- 
   .rooms-section {
-    .room-img-container{
+    .room-img-container {
       width: 100%;
       margin-bottom: 12px;
     }
@@ -6243,13 +6242,11 @@ body.overflow-hidden {
       span {
         color: var(--bs-theme-second);
       }
-
-      
     }
-    @media (max-width:991px) {
-        h2{
-          font-size: 22px;
-        }
+    @media (max-width: 991px) {
+      h2 {
+        font-size: 22px;
+      }
     }
   }
   &-list {
@@ -7159,7 +7156,7 @@ body.overflow-hidden {
           font-size: 16px;
           font-weight: normal;
           line-height: 1.63;
-          color: var(--bs-theme-first-dark);
+          color: var(--bs-theme-first);
           height: 30px;
           &::placeholder {
             color: #979797;
@@ -7170,7 +7167,7 @@ body.overflow-hidden {
           font-size: 16px;
           font-weight: normal;
           line-height: 1.63;
-          color: var(--bs-theme-first-dark);
+          color: var(--bs-theme-first);
           &::placeholder {
             color: #979797;
           }
@@ -8377,7 +8374,7 @@ body.overflow-hidden {
       width: 41px;
       height: 41px;
       background-size: 100% 100%;
-      
+
       margin-bottom: 16px;
     }
     h3 {

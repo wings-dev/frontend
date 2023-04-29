@@ -11,7 +11,7 @@
                 <nuxt-link :to="'/'+(villa.detail.url || '')">
                   <nuxt-img v-if="villa.detail.watermark_images && villa.detail.watermark_images[0]" 
                     :src="villa.detail.watermark_images[0].preview_url" 
-                    :srcset="generateSrcset(villa.watermark_preview_image[0].responsive)"
+                    :srcset="generateSrcset(villa.detail.watermark_images[0].responsive)"
                     width="267" height="175" loading="lazy" placeholder :alt="prefix + (villa.detail.code || '') + ' ' + sitename">
                   </nuxt-img>
                 </nuxt-link>
@@ -106,6 +106,9 @@ export default {
     } catch (error) {
       console.error(error);
     }
+
+    console.log(this.villas)
+
   },
   methods: {
     removeFavorite(code) {

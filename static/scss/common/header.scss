@@ -497,7 +497,7 @@
       p{
         color: var(--bs-theme-second);
         span{
-          color: #fff;
+          color: var(--bs-theme-header-call-hover);
           opacity: 1;
         }
       }

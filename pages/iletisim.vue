@@ -4,10 +4,13 @@
             <div class="container">
                 <div class="Contact-header-in">
                     <h4>İletişim</h4>
-                    <div class="Contact-header-pagination">
-                        <nuxt-link to="/">{{siteName | titlecase}}</nuxt-link>
-                        <nuxt-link to="/iletisim">İletişim</nuxt-link>
-                    </div>
+                    <a :href="'tel:' + $store.state?.site_settings?.general_phone" class="Header-call">
+                        <i class="icon-header-call"></i>
+                        <p>
+                            <span>Yardım / Destek</span>
+                            {{ $store.state?.site_settings?.general_phone }}
+                        </p>
+                    </a>
                 </div>
             </div>
         </section>
@@ -39,13 +42,14 @@
                         :key="index">
                         <button class="nav-link" :class="index == 0 ? 'active' : ''" :id="'pills-office-tab' + index"
                             data-bs-toggle="pill" :data-bs-target="'#pills-office' + index" type="button" role="tab"
-                            aria-selected="false" @click="changeMap(item.ofis_name)"><span>{{ item.ofis_name }}</span></button>
+                            aria-selected="false" @click="changeMap(item.ofis_name)"><span>{{ item.ofis_name
+                            }}</span></button>
                     </li>
 
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade " :class="index == 0 ? 'show active' : ''" :id="'pills-office' + index" role="tabpanel"
-                        :aria-labelledby="'pills-office-tab' + index"
+                    <div class="tab-pane fade " :class="index == 0 ? 'show active' : ''" :id="'pills-office' + index"
+                        role="tabpanel" :aria-labelledby="'pills-office-tab' + index"
                         v-for="(item, index) in pageData.page_content.contact_list" :key="index">
                         <div class="Contact-offices-tab-img">
                             <nuxt-img src="/img/office.jpg" :alt="'İletişim ' + siteName" loading="lazy" placeholder />
@@ -124,14 +128,16 @@
                         </div>
                         <div class="Contact-form-item Contact-form-item-checkbox w-100">
                             <label for="" id="kvkkinput">
-                                <input type="checkbox" id="kvkkinput" v-model="form.data.kvkkSelected" :checked="form.data.kvkkSelected">
+                                <input type="checkbox" id="kvkkinput" v-model="form.data.kvkkSelected"
+                                    :checked="form.data.kvkkSelected">
                                 <span></span>
                                 <p><a href="">KVKK Aydınlatma metnini</a> okudum.*</p>
                             </label>
                         </div>
                         <div class="Contact-form-item Contact-form-item-checkbox w-100">
                             <label for="marka">
-                                <input type="checkbox" id="marka" v-model="form.data.informSelected" :checked="form.data.informSelected">
+                                <input type="checkbox" id="marka" v-model="form.data.informSelected"
+                                    :checked="form.data.informSelected">
                                 <span></span>
                                 <p>Markamız ile ilgili gelişmelerden haberdar olmak için tarafıma elektronik ileti
                                     gönderilmesini kabul ederim.</p>
@@ -180,17 +186,17 @@ export default {
             officeCoordinates: [],
             siteName: process.env.SITE_NAME,
             form: {
-              type: 2,
-              data: {
-                name: '',
-                surname: '',
-                email: '',
-                phone: '',
-                message: '',
-                kvkkSelected: false,
-                informSelected: false,
-                source_id: process.env.SOURCE_ID,
-              }
+                type: 2,
+                data: {
+                    name: '',
+                    surname: '',
+                    email: '',
+                    phone: '',
+                    message: '',
+                    kvkkSelected: false,
+                    informSelected: false,
+                    source_id: process.env.SOURCE_ID,
+                }
             }
         }
     },
@@ -202,8 +208,8 @@ export default {
         const contactList = pageContent.contact_list;
         const officeCoordinates = [];
         let headData = {
-          title: pageData.title,
-          meta: pageData.meta
+            title: pageData.title,
+            meta: pageData.meta
         }
 
         contactList.forEach(office => {
@@ -214,53 +220,53 @@ export default {
             officeCoordinates.push(coordinates);
         });
 
-        return { pageData,officeCoordinates,headData }
+        return { pageData, officeCoordinates, headData }
     },
     methods: {
         async send() {
-          try {
-            const response = await this.$axios.post(`/website/form?api_token=${process.env.WEBSITE_TOKEN}`, this.form)
+            try {
+                const response = await this.$axios.post(`/website/form?api_token=${process.env.WEBSITE_TOKEN}`, this.form)
 
-            this.form = {
-              type: 2,
-              data: {
-                name: '',
-                surname: '',
-                email: '',
-                phone: '',
-                message: '',
-                kvkkSelected: false,
-                informSelected: false,
-                source_id: process.env.SOURCE_ID,
-              }
+                this.form = {
+                    type: 2,
+                    data: {
+                        name: '',
+                        surname: '',
+                        email: '',
+                        phone: '',
+                        message: '',
+                        kvkkSelected: false,
+                        informSelected: false,
+                        source_id: process.env.SOURCE_ID,
+                    }
+                }
+
+                this.$toast.success(response.data.message, {
+                    className: 'custom-toast success-toast',
+                    icon: {
+                        name: 'icon-reservation-success',
+                    },
+                    action: {
+                        icon: 'icon-toast-exit',
+                        onClick: (e, toastObject) => {
+                            toastObject.goAway(0);
+                        }
+                    }
+                })
+            } catch (e) {
+                this.$toast.error("<p>Bir hata oldu! Lütfen telefon numaramızdan iletişime geçiniz.</p>", {
+                    className: 'custom-toast error-toast',
+                    icon: {
+                        name: 'icon-reservation-cancel',
+                    },
+                    action: {
+                        icon: 'icon-toast-exit',
+                        onClick: (e, toastObject) => {
+                            toastObject.goAway(0);
+                        }
+                    }
+                })
             }
-
-            this.$toast.success(response.data.message, {
-              className:'custom-toast success-toast',
-              icon: {
-                name: 'icon-reservation-success',
-              },
-              action : {
-                icon:'icon-toast-exit',
-                onClick : (e, toastObject) => {
-                  toastObject.goAway(0);
-                }
-              }
-            })
-          } catch (e) {
-            this.$toast.error("<p>Bir hata oldu! Lütfen telefon numaramızdan iletişime geçiniz.</p>", {
-              className:'custom-toast error-toast',
-              icon: {
-                name: 'icon-reservation-cancel',
-              },
-              action : {
-                icon:'icon-toast-exit',
-                onClick : (e, toastObject) => {
-                  toastObject.goAway(0);
-                }
-              }
-            })
-          }
         },
         changeMap(e) {
             if (e == 'Merkez') {
@@ -304,24 +310,24 @@ export default {
     },
     computed: {
         buttonDisabled() {
-          if (!this.form.data.kvkkSelected) {
-            return true;
-          }
-
-          // form.data içindeki tüm alanlarının doluluk durumunu kontrol et
-          const keys = Object.keys(this.form.data);
-          for (let i = 0; i < keys.length; i++) {
-            const key = keys[i];
-            const value = this.form.data[key];
-
-            // Eğer herhangi bir alan boşsa, buttonDisabled true döndür
-            if (value === '' || value === null || value === undefined) {
-              return true;
+            if (!this.form.data.kvkkSelected) {
+                return true;
             }
-          }
 
-          // Tüm alanlar doluysa, buttonDisabled false döndür
-          return false;
+            // form.data içindeki tüm alanlarının doluluk durumunu kontrol et
+            const keys = Object.keys(this.form.data);
+            for (let i = 0; i < keys.length; i++) {
+                const key = keys[i];
+                const value = this.form.data[key];
+
+                // Eğer herhangi bir alan boşsa, buttonDisabled true döndür
+                if (value === '' || value === null || value === undefined) {
+                    return true;
+                }
+            }
+
+            // Tüm alanlar doluysa, buttonDisabled false döndür
+            return false;
         },
         activeCoords() {
             return [[this.officeCoordinates[0].x, this.officeCoordinates[0].y]][this.picked];
@@ -332,5 +338,4 @@ export default {
 <style>
 .ymap-container {
     height: 100%;
-}
-</style>
+}</style>
