@@ -48,14 +48,28 @@
                                 <span class="">ÜYE GİRİŞİ YAP </span>
                             </b-button>
                         </div>
-                        <template v-for="(item, index) in mainMenu">
+                        <div class="Header-menu-item">
+                            <NuxtLink to="/kiralik-villa" class="Header-menu-item-link">Kiralık Villa</NuxtLink>
+                        </div>
+                        <div class="Header-menu-item">
+                            <NuxtLink to="/yurtdisi-kiralik-villa" class="Header-menu-item-link">Yurtdışı Kiralık Villa</NuxtLink>
+                        </div>
+                        <div class="Header-menu-item">
+                            <NuxtLink to="/otel" class="Header-menu-item-link">Otel</NuxtLink>
+                        </div>
+                        <div class="Header-menu-item">
+                            <NuxtLink to="/hakkimizda" class="Header-menu-item-link">Hakkımızda</NuxtLink>
+                        </div>
+                        <div class="Header-menu-item">
+                            <NuxtLink to="/iletisim" class="Header-menu-item-link">İletişim</NuxtLink>
+                        </div>
+                        <!-- <template v-for="(item, index) in mainMenu">
                             <div class="Header-menu-item" v-if="!item.children" :key="index">
                                 <NuxtLink :to="'/' + item.href" class="Header-menu-item-link">{{ item.text }}</NuxtLink>
                             </div>
 
                             <div class="Header-menu-item otel" v-else :id="index" @mouseenter="handleMouseEnter(index)"
                                 @mouseleave="handleMouseLeave(index)" :class="{ 'hover': hoveredLink === index }">
-                                <!--  -->
                                 <button type="button" class="Header-menu-item-link menu-children menu-item"
                                     :data-dropdown="'dropdown' + index" :id="index">
                                     {{ item.text }}
@@ -102,56 +116,10 @@
                                             <nuxt-img src="/img/otel-menu.png" alt="Otel Kampanya" loading="lazy"></nuxt-img>
                                         </div>
                                     </div>
-
-
-                                    <!-- <div class="Header-menu-sub-villa" v-else>
-                                            <a href="/asd" class="Header-menu-sub-villa-item">
-                                                <i class="icon-child-pool-villas"></i>
-                                                <span>Çocuk Havuzlu</span>
-                                            </a>
-                                            <a href="" class="Header-menu-sub-villa-item">
-                                                <i class="icon-seaview-villas"></i>
-                                                <span>Deniz Manzaralı</span>
-                                            </a>
-                                            <a href="" class="Header-menu-sub-villa-item">
-                                                <i class="icon-honeymoon-villas"></i>
-                                                <span>Özel Havuzlu</span>
-                                            </a>
-                                            <a href="" class="Header-menu-sub-villa-item">
-                                                <i class="icon-jacuzi-villas"></i>
-                                                <span>Jakuzili Villalar</span>
-                                            </a>
-                                            <a href="" class="Header-menu-sub-villa-item">
-                                                <i class="icon-lux-villas"></i>
-                                                <span>Lüks Villalar</span>
-                                            </a>
-                                            <a href="" class="Header-menu-sub-villa-item">
-                                                <i class="icon-honeymoon-villas"></i>
-                                                <span>Balayı Villaları</span>
-                                            </a>
-                                        </div> -->
-                                    <!-- <div class="Header-menu-sub-item popular">
-                                            <h5>Popüler Villa Seçenekleri</h5>
-                                            <div class="Header-menu-sub-item-list">
-                                                <a href="">Fethiye Kiralık Villa</a>
-                                                <a href="">Bodrum Kiralık Villa</a>
-                                                <a href="">Dalaman Kiralık Villa</a>
-                                                <a href="">Fethiye Kiralık Villa</a>
-                                                <a href="">Bodrum Kiralık Villa</a>
-                                                <a href="">Dalaman Kiralık Villa</a>
-                                                <a href="">Fethiye Kiralık Villa</a>
-                                                <a href="">Bodrum Kiralık Villa</a>
-                                                <a href="">Dalaman Kiralık Villa</a>
-                                                <a href="">Dalaman Kiralık Villa</a>
-                                            </div>
-                                        </div> -->
-
-
-
                                 </div>
 
                             </div>
-                        </template>
+                        </template> -->
                         <div class="Header-menu-bottom">
                             <a :href="'tel:' + $store.state?.site_settings?.general_phone" class="Header-call">
                                 <i class="icon-header-call"></i>
