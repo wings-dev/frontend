@@ -45,7 +45,7 @@
                 <div class="Search-villas-top">
                   <label for="">
                     <i class="icon-search-new"></i>
-                    <input v-model="input" type="text" placeholder="Villa adı veya kodu ile aramaya başla">
+                    <input v-model="input_world" type="text" placeholder="Villa adı veya kodu ile aramaya başla">
                   </label>
                 </div>
               </div>
@@ -88,7 +88,7 @@
 
             <a :href="villa.url" class="Search-villas-item" v-for="villa in villas">
               <div class="Search-villas-item-img">
-                <nuxt-img :src="villa.preview_image[0].preview_url" :srcset="generateSrcset(villa.preview_image[0].responsive_url)" width="355" height="228" loading="lazy" :alt="prefix + villa.code + ' ' + sitename" placeholder />
+                <nuxt-img :src="cdnUrl + villa.preview_image[0].preview_url" :srcset="generateSrcset(villa.preview_image[0].responsive_url ? villa.preview_image[0].responsive_url : villa.preview_image[0].responsive)" width="355" height="228" loading="lazy" :alt="prefix + villa.code + ' ' + sitename" placeholder />
 
                 <div class="Search-villas-item-hover">
                   <i class="icon-search"></i>
@@ -144,6 +144,7 @@ export default {
   data() {
     return {
       input: '',
+      input_world: '',
       villas: [],
       cancelToken: null,
       prefix: process.env.PREFIX,
@@ -181,6 +182,7 @@ export default {
           ]
         }
       ],
+      cdnUrl: process.env.GLOBAL_CDN_URL
     }
   },
   watch: {
@@ -190,20 +192,27 @@ export default {
       }
       this.cancelToken = this.$axios.CancelToken.source()
 
-      this.fetchVillas(newVal)
+      this.fetchVillas(newVal, 'tr')
+    },
+    input_world: function (newVal, oldVal) {
+      if (this.cancelToken) {
+        this.cancelToken.cancel()
+      }
+      this.cancelToken = this.$axios.CancelToken.source()
+
+      this.fetchVillas(newVal, 'world')
     },
   },
   methods: {
-    async fetchVillas(keyword) {
+    async fetchVillas(keyword, prefix) {
       try {
         const response = await this.$axios.post(
           '/data/villa-search',
-          { keyword: keyword, site_id: process.env.SITE },
+          { keyword: keyword, site_id: process.env.SITE, prefix: prefix },
           { cancelToken: this.cancelToken.token }
         )
         this.villas = response.data.map(villa => {
           villa.url = findVillaUrlByCode(villa.code, this.$store.state.routes.routes);
-          console.log(villa)
           return villa
         })
       } catch (error) {
