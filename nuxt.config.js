@@ -295,6 +295,9 @@ export default {
     "/visitor": {
       target: process.env.PROXY_VISITOR,
     },
+    "/uploads": {
+      target: process.env.OLD_IMAGE_DOMAIN,
+    },
   },
 
   router: {
