@@ -1463,7 +1463,7 @@
       </div>
     </section>
 
-    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat">
+    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat && galleryIsOpen">
       <div class="container">
         <div class="Gallery-head">
           <button type="button" class="Gallery-close" @click="closeGallery"><i class="icon-search-close"></i></button>
