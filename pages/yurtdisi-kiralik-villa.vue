@@ -32,10 +32,7 @@
                         Popüler Villaları
                         <span>keşfedin</span>
                     </h4>
-                    <a href=""
-                        class="btn btn-theme-second fs-7 lh-sm fw-medium ls-05 rounded-pill py-3 mb-2 ms-auto btn-more">
-                        <span class="d-block py-1 px-3">Tümünü Gör</span>
-                    </a>
+                    <nuxt-link to="/yurtdisi-kiralik-villa-ara" class="button-more">Tümünü Gör</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
