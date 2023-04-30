@@ -8,7 +8,7 @@
             <h3>Aylara göre Fırsatlar</h3>
           </div>
 
-          <p>Bu aya özel toplam <span>{{total}} fırsat villası</span> var. Fırsatı kaçırma, huzurlu bi tatili yakala!</p>
+          <p>Toplam <span>{{total}} fırsat villası</span> var. Fırsatı kaçırma, huzurlu bi tatili yakala!</p>
         </div>
         <div class="Opportunity-right">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">

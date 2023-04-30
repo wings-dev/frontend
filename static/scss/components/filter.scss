@@ -830,6 +830,9 @@
   &-mobile {
     display: none;
   }
+  &-clear-mobile{
+    display: none;
+  }
 }
 .Search-villas {
   background-color: #fff;
@@ -2451,6 +2454,7 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: 100px;
+    display: flex;
   }
   .Filter-right-head-buttons-item .v-select {
     width: calc(50% - 4px);

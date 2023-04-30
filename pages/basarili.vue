@@ -91,7 +91,7 @@ export default {
       const data = await $getRedisKey([`data:villas:${hash.villa_id}:detail`])
       // villa redis datası
       const villa = data[`data:villas:${hash.villa_id}:detail`];
-
+      console.log(villa,hash)
       return {
         hash,
         villa
