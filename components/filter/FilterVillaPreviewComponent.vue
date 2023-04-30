@@ -302,17 +302,7 @@ export default {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
-      // on: {
-      //   init: function () {
-      //     console.log('swiper init');
-      //   },
-      //   click: function (swiper, e) {
-      //     console.log('swiper click',e);
-      //     e.stopPropagation();
-      //   },
-      // }
     })
-    console.log(this.villa)
     this.formatDate(this.checkindate, this.checkoutdate)
 
   }

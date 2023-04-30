@@ -5374,7 +5374,7 @@ body.overflow-hidden {
   &-header {
     width: 100%;
     background-color: var(--bs-theme-grey);
-    padding: clamp(20px, 1.85vw, 35px) 0;
+    padding: clamp(14px, 1.85vw, 35px) 0;
     &-in {
       display: flex;
       flex-direction: column;
@@ -5392,6 +5392,15 @@ body.overflow-hidden {
         color: var(--bs-theme-first);
         b {
           font-weight: bold;
+        }
+      }
+
+      @media (max-width: 991px) {
+        h5 {
+          font-size: 14px;
+        }
+        h4 {
+          font-size: 16px;
         }
       }
     }
@@ -5458,7 +5467,7 @@ body.overflow-hidden {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: clamp(30px, 3.125vw, 60px);
+      margin-bottom: clamp(20px, 3.125vw, 60px);
 
       .nav {
         &-item {
@@ -5522,6 +5531,10 @@ body.overflow-hidden {
       }
       .vue-tel-input {
         height: 100%;
+      }
+      .vs__dropdown-toggle {
+        border: none;
+        padding: 14px 10px;
       }
       .v-select-toggle {
         background-color: transparent !important;
@@ -5644,7 +5657,7 @@ body.overflow-hidden {
     button {
       background-color: #1b366d;
       border: 1px solid #1b366d;
-      font-size: 16px;
+      font-size: clamp(13px, 0.85vw, 16px);
       font-weight: bold;
       letter-spacing: 2.57px;
       text-align: center;
@@ -5653,7 +5666,8 @@ body.overflow-hidden {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px 70px;
+      padding: clamp(12px, 1.1vw, 20px) clamp(30px, 3.65vw, 70px);
+      border-radius: 8px;
       transition: all 300ms;
 
       &:hover {
@@ -6126,14 +6140,31 @@ body.overflow-hidden {
       width: 100%;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-around;
+      justify-content: flex-start;
       border-right: none;
-      padding-top: 24px;
+      padding-top: 14px;
       a {
+        width: 50%;
+        line-height: 2.2;
       }
     }
     &-right {
       width: 100%;
+      padding-top: 20px;
+      h2 {
+        font-size: 18px;
+      }
+    }
+    &-form {
+      &-item {
+        label {
+          padding: 12px 20px;
+          input,
+          textarea {
+            font-size: 13px;
+          }
+        }
+      }
     }
     &-modal {
       &-in {
@@ -6265,6 +6296,11 @@ body.overflow-hidden {
       .Card {
         width: calc(100%);
       }
+    }
+  }
+  &.user {
+    .Favs-in {
+      padding-top: 0;
     }
   }
 }
@@ -8675,7 +8711,7 @@ body.overflow-hidden {
         color: var(--bs-theme-second);
       }
       b {
-        font-size: 27px;
+        font-size: clamp(16px,1.4vw,27px);
         font-weight: 500;
         line-height: normal;
         color: var(--bs-theme-first);
@@ -9099,6 +9135,50 @@ body.overflow-hidden {
       }
       &-right {
         width: 100%;
+      }
+    }
+  }
+  .Coupons {
+    &-item {
+      display: flex;
+      flex-direction: column;
+      border-radius: 9px;
+      &-left {
+        width: 100%;
+        padding: 28px 12px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        text-align: center;
+        span {
+          font-size: 13px;
+        }
+        b {
+          font-size: 18px;
+        }
+        p {
+          font-size: 12px;
+        }
+        &:before {
+          left: 50%;
+          top: -15px;
+          transform: translate(-50%,0);
+        }
+      }
+      &-right {
+        width: 100%;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;    
+        border-bottom-left-radius: 0;
+        border-top: 2px dashed #fff;
+        padding: 20px 0;
+        &:after {
+          bottom: -15px;
+          right: 50%;
+          top: unset;
+          transform: translate(50%,0);
+        }
       }
     }
   }
