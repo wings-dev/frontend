@@ -44,10 +44,10 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-img :src="global_cdn + item.preview_image[0].preview_url" 
-                                            loading="lazy" 
+                                        <nuxt-img :src="global_cdn + item.preview_image[0].preview_url"
+                                            loading="lazy"
                                             preset="card"
-                                            placeholder 
+                                            placeholder
                                             :srcset="generateSrcset(item.preview_image[0].responsive_url)"
                                             sizes="sm:325px lg:267px"
                                             :alt="prefix + item.code + ' | ' + sitename"
@@ -153,12 +153,12 @@
                                     <nuxt-link :to="hotel.url" class="O_Card" v-if="hotel.url">
                                         <div class="O_Card-in">
                                             <div class="O_Card-img">
-                                                <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl" 
+                                                <nuxt-img :src="cdn_hotel + hotel.images?.[0]?.ImageUrl"
                                                     :alt="hotel.Name + ' | ' + sitename"
-                                                    v-if="hotel.images && hotel.images[0]?.ImageUrl" 
-                                                    width="299" 
+                                                    v-if="hotel.images && hotel.images[0]?.ImageUrl"
+                                                    width="299"
                                                     placeholder
-                                                    loading="lazy" 
+                                                    loading="lazy"
                                                     height="188"></nuxt-img>
                                                 <div class="O_Card-img-text" style="background-color: #5d91c1;">
                                                     <span>{{ parseFloat(hotel.Rating).toFixed(2) }}/10</span>
@@ -248,10 +248,10 @@
                                         <!-- <nuxt-img :src="villa.preview_image[0].preview_url" width="371"
                                             height="225"></nuxt-img> -->
 <!-- :srcset="global_cdn + villa.watermark_preview_image[0].responsive_url" -->
-                                        <nuxt-img :src="global_cdn + villa.watermark_preview_image[0].preview_url" 
+                                        <nuxt-img :src="global_cdn + villa.watermark_preview_image[0].preview_url"
                                             :srcset="generateSrcset(villa?.watermark_preview_image[0]?.responsive_url)"
                                             loading="lazy"
-                                            preset="card" 
+                                            preset="card"
                                             :alt="prefix + villa.code + ' | ' + sitename"
                                             :placeholder="[364, 205, 10]"
                                             sizes="sm:385w lg:364px"></nuxt-img>
@@ -330,10 +330,10 @@
                 <div class="categories">
                     <nuxt-link to="/hamamli--saunali-villalar"
                         class="cat-item no-hover area1 overflow-hidden position-relative">
-                        <nuxt-img src="/img/category/hamam-sauna.jpg" 
+                        <nuxt-img src="/img/category/hamam-sauna.jpg"
                             data-src="" width="380" height="235"
-                            :placeholder="[380, 235, 10]" 
-                            :alt="'Sauna - Hamamlı ' + sitename" 
+                            :placeholder="[380, 235, 10]"
+                            :alt="'Sauna - Hamamlı ' + sitename"
                             loading="lazy"
                             class="cat-image lazy cover w-100 h-100"></nuxt-img>
                         <div
@@ -473,7 +473,7 @@
                             :key="index">
                             <nuxt-link :to="item.category_url" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <nuxt-img :src="global_cdn + item.category_img" 
+                                    <nuxt-img :src="global_cdn + item.category_img"
                                         :alt="item.cateogory_name + ' ' + sitename"
                                         v-if="item.category_img"
                                         :placeholder="[380, 245, 10]" loading="lazy"></nuxt-img>
@@ -756,7 +756,6 @@ export default {
                 },
             },
         })
-console.log(this.opportunities)
     },
     methods: {
         isFavorite(code) {
