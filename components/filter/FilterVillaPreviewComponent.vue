@@ -147,7 +147,7 @@
             </p>
             <small>Fiyat Aralığında</small>
           </div>
-          <button type="button" class="F_villa-item-show" @click.stop="openModal(villa.code)"><i
+          <button type="button" class="F_villa-item-show" @click.prevent="openModal(villa.code)"><i
               class="icon-calendar"></i>Müsaitlik Takvimi
           </button>
           <nuxt-link :to="{path: villa.url ,query: detailUrlData}" class="F_villa-item-more">
