@@ -5,62 +5,9 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
         @click="$bvModal.hide('kvkkModal')"><i class="icon-login-close"></i></button>
       <div class="Login-text">
-        <h2>Kullanım Şartları</h2>
-        <div class="Login-text-in">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, totam inventore ducimus,
-            itaque in vero harum sequi reprehenderit minus similique rerum eligendi labore obcaecati sed tempora
-            dolorem, debitis vitae cupiditate!</p>
+        <h2>Kişisel Verilerin Korunması Hakkında Aydınlatma Metni</h2>
+        <div class="Login-text-in" v-html="$store.state?.site_settings?.kvkktext">
+          
         </div>
       </div>
     </div>
