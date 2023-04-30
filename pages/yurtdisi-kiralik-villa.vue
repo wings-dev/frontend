@@ -45,7 +45,6 @@
                                 <div class="Card-in">
                                     <div class="Card-img">
                                         <nuxt-img :src="global_cdn + item.preview_image[0].preview_url" loading="lazy" placeholder 
-                                            :srcset="generateSrcset(item.preview_image[0].responsive_url)"
                                              width="267"
                                             height="175"></nuxt-img>
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
