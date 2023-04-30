@@ -88,20 +88,16 @@
       </div>
     </div>
   </b-modal>
-  <kvkk-modal></kvkk-modal>
-  <sozlesme-modal></sozlesme-modal>
   </div>
   
 </template>
 
 <script>
-import KvkkModal from '../modals/kvkk-modal.vue';
-import SozlesmeModal from '../modals/sozlesme-modal.vue';
+
 import {mapMutations, mapState} from "vuex";
 
 export default {
   name: "ReservationModal",
-  components:{KvkkModal,SozlesmeModal},
   data() {
     return {
       prefix: process.env.PREFIX,

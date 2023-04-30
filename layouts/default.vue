@@ -51,6 +51,12 @@
     <client-only>
       <fav-modal></fav-modal>
     </client-only>
+    <client-only>
+      <kvkk-modal></kvkk-modal>
+    </client-only>
+    <client-only>
+      <sozlesme-modal></sozlesme-modal>
+    </client-only>
     <!-- <CookieControl locale="tr" /> -->
   </div>
 </template>
@@ -66,6 +72,8 @@ import CallModal from "@/components/modals/call-modal.vue";
 import FavModal from "@/components/modals/fav-modal.vue";
 import ReservationModal from "@/components/modals/reservation-modal.vue";
 import ReservationCodeModal from "@/components/modals/reservation-code-modal.vue";
+import KvkkModal from '@/components/modals/kvkk-modal.vue';
+import SozlesmeModal from '@/components/modals/sozlesme-modal.vue';
 import SearchBar from "@/components/search/SearchBar.vue";
 import VSelect from "@alfsnd/vue-bootstrap-select";
 export default {
@@ -76,7 +84,7 @@ export default {
     return {
       link: [
         // { rel: 'stylesheet', href: (process.env.NODE_ENV === "production" ? process.env.CDN_URL : '')  + `/css/theme${site_id}.min.css` },
-        { rel: 'stylesheet', href:`/css/theme${site_id}.min.css` },
+        { rel: 'stylesheet', href: `/css/theme${site_id}.min.css` },
         // { rel: 'stylesheet', href: `/css/theme.min.css` },
       ]
     }
@@ -89,7 +97,7 @@ export default {
   components: {
     ReservationCodeModal,
     ReservationModal,
-    HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, VSelect, SearchBar
+    HotelDatePicker, LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, VSelect, SearchBar, KvkkModal, SozlesmeModal
   },
   methods: {
     async logout() {
