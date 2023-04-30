@@ -350,7 +350,6 @@ export default {
       }
     },
     getBackgroundImageStyle(pageBanner) {
-      console.log('pageBanner',pageBanner)
       const bannerUrl = pageBanner ? `url(${pageBanner})` : `url(https://d1t2mawg5vwzes.cloudfront.net/page/36458/381828/no-banner-img.jpeg)`;
       return {
         'background-image': bannerUrl

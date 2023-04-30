@@ -50,7 +50,6 @@ export default {
     return { hotelDetails, selectedFilters, comments, headData }
   },
   mounted() {
-    console.log(this.hotelDetails, this.headData)
   }
 }
 </script>

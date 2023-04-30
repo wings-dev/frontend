@@ -757,7 +757,6 @@ export default {
             },
         })
 
-        console.log(this.pageData.page_content.popular)
     },
     methods: {
         isFavorite(code) {

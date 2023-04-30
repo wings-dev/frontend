@@ -139,8 +139,6 @@ export default {
 
             },
         })
-
-        // console.log(this.data)
     }
 }
 </script>

@@ -273,7 +273,6 @@ export default {
     },
   },
   mounted(){
-    console.log(this.$bvModal)
   }
 }
 </script>

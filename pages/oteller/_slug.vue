@@ -338,9 +338,6 @@ export default {
 
       },
     })
-
-    console.log(this.pageData)
-
   },
   computed: {
     totalPages() {

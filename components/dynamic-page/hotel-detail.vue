@@ -504,7 +504,6 @@ export default {
 
       // Birleştirilmiş teklifleri ana teklifler dizisine ata ve API yanıtını döndür
       this.offers = mergedOffers;
-      console.log(this.offers);
       return response?.data;
     },
     search(queryParams) {

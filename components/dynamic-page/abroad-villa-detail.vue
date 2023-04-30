@@ -2011,7 +2011,6 @@ export default {
       })
       this.monthlyPrices = response.data
 
-      console.log('this.monthlyPrices',this.monthlyPrices)
       this.lowestPrice = this.monthlyPrices.length ? Math.min(...this.monthlyPrices.map(price => price.lowest_price)) : 0;
     } catch (e) { }
 
@@ -2183,7 +2182,6 @@ export default {
 
     });
 
-    console.log(this.villa)
   },
   computed: {
     opportunityBoxComponent() {

@@ -410,7 +410,6 @@ export default {
   },
   mounted() {
     if (window.innerWidth <= 991 && this.$refs.searchBar.classList.contains('list')) {
-      // console.log(this.$refs.searchBar.classList)
       window.onscroll = function () {
         if (scrollY >= 300) {
           setTimeout(() => {
