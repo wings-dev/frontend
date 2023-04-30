@@ -19,7 +19,7 @@
                   <input type="text" placeholder="E-posta Adresiniz" v-model="form.email">
                 </label>
               </div>
-              <div class="User-form-item">
+              <!--<div class="User-form-item">
                 <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"
                                :defaultCountry="'TR'"></vue-tel-input>
               </div>
@@ -74,10 +74,11 @@
                 <label for="">
                   <textarea name="" id="" placeholder="Adres" v-model="form.address.address"></textarea>
                 </label>
-              </div>
+              </div>-->
               <button type="submit" :disabled="loading">GÜNCELLE</button>
             </form>
-            <div class="User-invoice">
+
+            <div class="User-invoice d-none">
               <div class="User-right-head">
                 <h2>Fatura Bilgileriniz</h2>
               </div>
@@ -222,6 +223,7 @@
                   <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"
                                  :defaultCountry="'TR'"></vue-tel-input>
                 </div>
+                <!--
                 <div class="User-form-item">
                   <label for="">
                     <input type="text" placeholder="Doğum Tarihi">
@@ -256,7 +258,7 @@
                   <label for="">
                     <textarea name="" id="" placeholder="Adres"></textarea>
                   </label>
-                </div>
+                </div>-->
                 <button type="submit">KAYDET</button>
               </form>
             </div>
@@ -362,7 +364,7 @@ export default {
       form: {
         name: '',
         email: '',
-        prephone: '',
+        /*prephone: '',
         phone: '',
         birthday: '',
         resource_id: '',
@@ -386,7 +388,7 @@ export default {
             state_id: '',
             address: '',
           }
-        ]
+        ]*/
       },
       loading: false,
       phoneNumber: '',
@@ -432,6 +434,8 @@ export default {
     }
   },
   async mounted() {
+    this.form.name = this.$auth.user.name
+    this.form.email = this.$auth.user.email
     const response = await this.$axios.post(`/website/countries?api_token=${process.env.WEBSITE_TOKEN}`);
     this.countries = response.data.countries.map(item => {
       item.name = item.name.charAt(0).toUpperCase() + item.name.slice(1);
@@ -465,6 +469,7 @@ export default {
       });
     },
     onInput(phone, phoneObject) {
+      return
       setTimeout(() => {
         this.phoneObject = phoneObject;
         this.phoneNumberValid = phoneObject.valid;

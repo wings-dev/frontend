@@ -3,7 +3,7 @@
         <section class="User-header">
             <div class="container">
                 <div class="User-header-in">
-                    <h5>Hoşgeldiniz,</h5>
+                    <h5>Hoşgeldiniz, {{ $auth.user }}</h5>
                     <h4>Sn. <b>{{ $auth.user.name | titlecase}}</b></h4>
                 </div>
             </div>
