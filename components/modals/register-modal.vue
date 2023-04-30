@@ -43,17 +43,14 @@
         </div>
       </div>
     </b-modal>
-    <kvkk-modal></kvkk-modal>
   </div>
 </template>
 
 <script>
-import KvkkModal from '../modals/kvkk-modal.vue';
 import { mapActions, mapMutations } from "vuex";
 
 export default {
   name: "RegisterModal",
-  components:{KvkkModal},
   data() {
     return {
       form: {

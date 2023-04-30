@@ -394,8 +394,8 @@
                         <div class="View-months-item-days">
                           <p>En az konaklama</p>
                           <div class="View-months-item-days-tooltip">
-                            <b>{{ price.minaccomodationday }} GECE <i class="icon-information"></i></b>
-                            <span class="tooltiptext">12 gece altındaki
+                            <b>{{ price.minaccomodationday }} GECE <i class="icon-information d-none"></i></b>
+                            <span class="tooltiptext d-none">12 gece altındaki
                               konaklamalardan 21
                               temizlik ücreti
                               alınır.</span>

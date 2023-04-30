@@ -55,7 +55,12 @@
     <client-only>
       <fav-modal></fav-modal>
     </client-only>
-
+    <client-only>
+      <kvkk-modal></kvkk-modal>
+    </client-only>
+    <client-only>
+      <sozlesme-modal></sozlesme-modal>
+    </client-only>
   </div>
 </template>
 
@@ -69,13 +74,14 @@ import FavModal from "@/components/modals/fav-modal.vue";
 import ReservationModal from "@/components/modals/reservation-modal.vue";
 import ReservationCodeModal from "@/components/modals/reservation-code-modal.vue";
 import ReservationSuccessModal from "@/components/modals/reservation-success-modal.vue";
-
+import KvkkModal from '@/components/modals/kvkk-modal.vue';
+import SozlesmeModal from '@/components/modals/sozlesme-modal.vue';
 export default {
   name: "default",
   components: {
     ReservationCodeModal,
     ReservationModal,
-    LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, ReservationSuccessModal
+    LoginCodeModal, RegisterModal, LoginModal, CallModal, FavModal, ReservationSuccessModal, KvkkModal, SozlesmeModal
   },
   middleware: ['jwt'],
   head() {

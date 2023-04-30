@@ -76,7 +76,9 @@
                                 </div>
                                 <div class="Contact-offices-tab-text-item">
                                     <h6>SOSYAL MEDYA’DA</h6>
-                                    <a :href="item.social_link" class="social" v-for="(item,index) in $store.state?.site_settings?.social" :key="index"><i :class="'icon-'+item.social_icon"></i></a>
+                                    <a :href="item.social_link" class="social"
+                                        v-for="(item, index) in $store.state?.site_settings?.social" :key="index"><i
+                                            :class="'icon-' + item.social_icon"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +131,9 @@
                                 <input type="checkbox" id="kvkkinput" v-model="form.data.kvkkSelected"
                                     :checked="form.data.kvkkSelected">
                                 <span></span>
-                                <p><a href="">KVKK Aydınlatma metnini</a> okudum.*</p>
+                                <p><button type="button" @click="kvkkModalOpen">KVKK Aydınlatma metnini</button> okudum.*
+                                </p>
+
                             </label>
                         </div>
                         <div class="Contact-form-item Contact-form-item-checkbox w-100">
@@ -148,6 +152,7 @@
                 </div>
             </div>
         </div>
+   
     </main>
 </template>
 
@@ -304,7 +309,10 @@ export default {
         },
         mapWasInitializedHandler(map) {
             this.ymaps = map
-        }
+        },
+        kvkkModalOpen() {
+            this.$bvModal.show('kvkkModal')
+        },
     },
     computed: {
         buttonDisabled() {
@@ -336,4 +344,5 @@ export default {
 <style>
 .ymap-container {
     height: 100%;
-}</style>
+}
+</style>
