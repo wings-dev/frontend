@@ -168,7 +168,7 @@ export default {
               reservationID: this.reservationModalData.reservationID,
               hash: Buffer.from(JSON.stringify({
                 reservationID: this.reservationModalData.reservationID,
-                villa_id: 7994,
+                villa_id: this.reservationModalData.villa.code,
                 availabilityData: this.reservationModalData.availabilityData,
               })).toString('base64')
             }
