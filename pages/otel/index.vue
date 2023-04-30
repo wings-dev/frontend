@@ -318,27 +318,27 @@
                             <div class="Areas-otel-item-in">
                                 <h4><b>Yurtdışı</b> Otelleri</h4>
                                 <div class="Areas-otel-item-list">
-                                    <nuxt-link to="/amsterdam-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=10690&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/amsterdam.jpeg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Amsterdam Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/barselona-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=10275&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/barselona.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Barselona Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/roma-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=61096&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/roma.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename" ></nuxt-img>
                                         <span>Roma Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/dubai-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=10001&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/dubai.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Dubai Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/paris-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=60974&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/paris.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Paris Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/prag-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=10153&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/prag.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Prag Otelleri</span>
                                     </nuxt-link>
