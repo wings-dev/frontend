@@ -4860,6 +4860,10 @@ body.overflow-hidden {
           margin-right: 8px;
           margin-bottom: 8px;
 
+          img{
+            width: 100%;
+          }
+
           &:nth-child(1),
           &:nth-child(4),
           &:nth-child(7),
