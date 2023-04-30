@@ -91,7 +91,7 @@
   <kvkk-modal></kvkk-modal>
   <sozlesme-modal></sozlesme-modal>
   </div>
-  
+
 </template>
 
 <script>
@@ -214,6 +214,7 @@ export default {
       delete resData.villa;
       const data = Object.assign({}, resData, this.form);
       let reservationID;
+      let reservationCode;
       const apiUrl = `/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`;
 
       if (this.reservationModalData.reservationID) {
@@ -231,9 +232,11 @@ export default {
         try {
           const response = await this.$axios.put(apiUrl, requestData);
           reservationID = response.data.reservationID;
+          reservationCode = response.data.reservationCode;
         } catch (error) {
           if (error.response) {
             reservationID = error.response.data.reservationID;
+            reservationCode = error.response.data.reservationCode;
           } else {
             console.error(error);
           }
@@ -247,9 +250,11 @@ export default {
             browser: this.getBrowserInfo()
           });
           reservationID = response.data.reservationID;
+          reservationCode = response.data.reservationCode;
         } catch (error) {
           if (error.response) {
             reservationID = error.response.data.reservationID;
+            reservationCode = error.response.data.reservationCode;
           } else {
             console.error(error);
           }
@@ -257,7 +262,7 @@ export default {
       }
 
       if (reservationID) {
-        this.setReservationModalData({ ...data, reservationID });
+        this.setReservationModalData({ ...data, reservationID, reservationCode });
         this.$bvModal.hide('reservationModal')
         this.$bvModal.show('reservationCodeModal')
       }

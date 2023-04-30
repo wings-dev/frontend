@@ -129,15 +129,18 @@ export default {
     },
     async resend() {
       let reservationID;
+      let reservationCode;
       const reservationModalData = JSON.parse(JSON.stringify(this.reservationModalData))
       delete reservationModalData.villa
       delete reservationModalData.availabilityData
       try {
         const response = await this.$axios.post(`/website/pre_reservation?api_token=${process.env.WEBSITE_TOKEN}`, reservationModalData);
         reservationID = response.data.reservationID;
+        reservationCode = response.data.reservationCode;
       } catch (error) {
         if (error.response) {
           reservationID = error.response.data.reservationID;
+          reservationCode = error.response.data.reservationCode;
         } else {
           console.error(error);
         }
@@ -146,6 +149,7 @@ export default {
       if (reservationID) {
         let data = JSON.parse(JSON.stringify(this.reservationModalData))
         data.reservationID = reservationID;
+        data.reservationCode = reservationCode;
         this.setReservationModalData(data);
       }
       this.codes = ['', '', '', ''];
@@ -167,6 +171,7 @@ export default {
             const redirectData = {
               reservationID: this.reservationModalData.reservationID,
               hash: Buffer.from(JSON.stringify({
+                reservationCode: this.reservationModalData.reservationCode,
                 reservationID: this.reservationModalData.reservationID,
                 villa_id: this.reservationModalData.villa.code,
                 availabilityData: this.reservationModalData.availabilityData,

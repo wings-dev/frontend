@@ -50,7 +50,7 @@
               <div class="Login-right success">
                 <div class="Login-right-in">
                   <i class="icon-check-big"></i>
-                  <h3><span>{{ prefix }}{{ hash.reservationID }}</span> Rezervasyon kodu ile</h3>
+                  <h3><span>{{ hash.reservationCode }}</span> Rezervasyon kodu ile</h3>
                   <h2>Ön Rezervasyon talebiniz alınmıştır.</h2>
                   <p>Satış ekibimiz tesisle ilgili son kontrolleri yapıp sms veya telefonla size geri dönüş
                     sağlayacaktır.</p>
