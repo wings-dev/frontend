@@ -109,7 +109,7 @@
             </div>
         </div>
         <div class="Whatsapp">
-            <a :href="$store.state?.site_settings?.wp_phone"><nuxt-img src="/img/wp-icon.svg" width="41" height="41" alt="Whatsapp İcon" loading="lazy" placeholder /></a>
+            <a :href="$store.state?.site_settings?.wp_phone" target="_blank"><nuxt-img src="/img/wp-icon.svg" width="41" height="41" alt="Whatsapp İcon" loading="lazy" placeholder /></a>
         </div>
         <section class="Navigation d-none">
             <a class="Navigation-item">
