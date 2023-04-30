@@ -1378,14 +1378,14 @@ body.overflow-hidden {
 }
 
 .Text-banner {
-  background-color: var(--bs-theme-third);
+  background-color: var(--bs-theme-banner-bg);
   &-in {
     padding: clamp(24px, 2.1vw, 40px) 0;
   }
   h1 {
     font-weight: 700;
     font-size: clamp(20px, 1.25vw, 24px);
-    color: #fff;
+    color: var(--bs-theme-banner-text-w);
     position: relative;
     display: flex;
     align-items: center;
