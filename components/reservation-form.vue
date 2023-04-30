@@ -396,7 +396,6 @@ export default {
 
 
       } else {
-        console.log(this.disableReservation);
         this.checkIn = null;
         this.checkOut = null;
         this.datePickerProps.startingDateValue = null;
