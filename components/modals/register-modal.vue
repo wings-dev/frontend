@@ -1,9 +1,10 @@
 <template>
   <!-- Kayıt Modal -->
-  <b-modal id="signupModal" class="Login" size="xl" :hide-header="true" hide-footer>
-    <div class="Login">
-      <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('signupModal')"><i
-          class="icon-login-close"></i></button>
+  <div>
+    <b-modal id="signupModal" class="Login" size="xl" :hide-header="true" hide-footer>
+      <div class="Login">
+        <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('signupModal')"><i
+            class="icon-login-close"></i></button>
         <div class="Login-in">
           <div class="Login-left" style="background-image:url('/img/login-bg.jpg')"></div>
           <div class="Login-right">
@@ -19,38 +20,40 @@
                 <p class="Login-form-alert  mt-2 text-danger text-sm mail-alert mail-alert-signup"></p>
                 <label for="" class="Login-form-item Login-form-item-tr">
                   <vue-tel-input v-model="phoneNumber" @input="onInput" v-bind="phoneProps"
-                                 :defaultCountry="'TR'"></vue-tel-input>
+                    :defaultCountry="'TR'"></vue-tel-input>
                 </label>
                 <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert" v-if="phoneNumberValid === false">
                   Lütfen doğru bir telefon numarası giriniz</p>
                 <label for="gizlilik" class="Login-form-item Login-form-item-check">
                   <input v-model="checkboxAcceptRules" type="checkbox" id="gizlilik">
                   <span></span>
-                  <p><a data-bs-toggle="modal" href="#kullanimModal">Kullanım Şartları</a> ve <a
-                    data-bs-toggle="modal" href="#gizlilikModal">Gizlilik bildirimini</a> kabul ediyorum.
-                    Kişisel Verilerin Korunması ve <a data-bs-toggle="modal" href="#gizlilikPolitikasiModal">Gizlilik
-                      Politikasını</a> okudum.</p>
+                  <p><button type="button" @click="kvkkModalOpen">Kişisel Verilerin İşlenmesine İlişkin Aydınlatma
+                      Metni</button>’ni okudum ve kabul ediyorum.</p>
                 </label>
                 <label for="firsat" class="Login-form-item Login-form-item-check">
                   <input type="checkbox" id="firsat">
                   <span></span>
                   <p><a href="">Fırsat ve kampanyalardan haberdar olmak istiyorum.</a></p>
                 </label>
-                <button :disabled="!formValidated" :style="{ 'opacity':  formValidated ? '1' : '.5' }" type="submit" class="Login-form-button mt-2">KAYIT OL</button>
+                <button :disabled="!formValidated" :style="{ 'opacity': formValidated ? '1' : '.5' }" type="submit"
+                  class="Login-form-button mt-2">KAYIT OL</button>
               </form>
             </div>
           </div>
         </div>
       </div>
     </b-modal>
+    <kvkk-modal></kvkk-modal>
+  </div>
 </template>
 
 <script>
-
-import {mapActions, mapMutations} from "vuex";
+import KvkkModal from '../modals/kvkk-modal.vue';
+import { mapActions, mapMutations } from "vuex";
 
 export default {
   name: "RegisterModal",
+  components:{KvkkModal},
   data() {
     return {
       form: {
@@ -130,7 +133,7 @@ export default {
           const response = await this.$axios.post('/website/sendcode', data);
 
           this.setLoginCodeModalData({
-            loginType: this.form.prephone === '90' ? 'phone': 'email',
+            loginType: this.form.prephone === '90' ? 'phone' : 'email',
             phone: this.form.phone,
             email: this.email,
             data: data
@@ -144,7 +147,7 @@ export default {
       } catch (error) {
 
         this.setLoginCodeModalData({
-          loginType: this.form.prephone === '90' ? 'phone': 'email',
+          loginType: this.form.prephone === '90' ? 'phone' : 'email',
           phone: this.form.phone,
           email: this.email,
           data: data,
@@ -156,6 +159,9 @@ export default {
     },
     checkName() {
       this.form.name = this.form.name.replace(/[0-9]/g, '');
+    },
+    kvkkModalOpen(){
+      this.$bvModal.show('kvkkModal')
     },
   }
 }

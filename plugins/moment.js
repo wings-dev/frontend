@@ -14,7 +14,6 @@ Vue.prototype.$moment = function (dateString) {
   // process.browser veya process.client kullanarak tarayıcı ortamında olduğumuzu kontrol ediyoruz
   if (process.browser || process.client) {
     const userLang = navigator.language || navigator.userLanguage;
-    console.log(userLang);
     // moment.js'ye kullanıcının tarayıcı dilini iletmek için kullanıyoruz
     if (userLang === 'tr') {
       return moment(dateString).locale('tr');

@@ -41,6 +41,9 @@ export default {
     })
 
     return {pageURLs }
+  },
+  mounted(){
+    console.log(this.pageURLs)
   }
 }
 </script>

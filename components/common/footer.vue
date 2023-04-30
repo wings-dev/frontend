@@ -70,9 +70,9 @@
                     </div>
                     <div class="Footer-right-copyright">
                         <div class="Footer-right-copyright-left">
-                            <nuxt-link to="/">Gizlilik Politikası</nuxt-link>
-                            <nuxt-link to="/">Rezervasyon Koşulları</nuxt-link>
-                            <nuxt-link to="/">KVKK Aydınlat Metni</nuxt-link>
+                            <nuxt-link to="/gizlilik-politikasi">Gizlilik Politikası</nuxt-link>
+                            <nuxt-link to="/rezervasyon-ve-iptal-kosullari">Rezervasyon Koşulları</nuxt-link>
+                            <nuxt-link to="/kvkk-metni">KVKK Aydınlat Metni</nuxt-link>
                         </div>
                         <div class="Footer-right-copyright-right">
                             <p v-html="$store.state?.site_settings?.footer_copyright"></p>

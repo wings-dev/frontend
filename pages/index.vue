@@ -2,11 +2,11 @@
     <div class="Home">
 
         <section class="Banner Banner-home "
-            :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
+            :style="{ 'background-image': 'url(' + global_cdn + pageData.page_content.default.page_banner + ')' }">
             <!-- :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }" -->
             <!-- <img :src="pageData.page_content.default.page_banner" class="w-100 mobile" alt=""> -->
             <!-- <nuxt-img src="/img/banner-b-m.jpg" alt=""></nuxt-img> -->
-            <nuxt-img :src="pageData.page_content.default.page_list_img" class="w-100 mobile" loading="lazy" placeholder :alt="'Banner - '+sitename" />
+            <nuxt-img :src="global_cdn + pageData.page_content.default.page_list_img" class="w-100 mobile" loading="lazy" placeholder :alt="'Banner - '+sitename" />
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -44,7 +44,7 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-img :src="item.preview_image[0].preview_url" 
+                                        <nuxt-img :src="global_cdn + item.preview_image[0].preview_url" 
                                             loading="lazy" 
                                             preset="card"
                                             placeholder 
@@ -249,7 +249,7 @@
                                             height="225"></nuxt-img> -->
 <!-- :srcset="global_cdn + villa.watermark_preview_image[0].responsive_url" -->
                                         <nuxt-img :src="global_cdn + villa.watermark_preview_image[0].preview_url" 
-                                            :srcset="generateSrcset(villa.watermark_preview_image[0].responsive_url)"
+                                            :srcset="generateSrcset(villa?.watermark_preview_image[0]?.responsive_url)"
                                             loading="lazy"
                                             preset="card" 
                                             :alt="prefix + villa.code + ' | ' + sitename"
@@ -473,7 +473,7 @@
                             :key="index">
                             <nuxt-link :to="item.category_url" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <nuxt-img :src="item.category_img" 
+                                    <nuxt-img :src="global_cdn + item.category_img" 
                                         :alt="item.cateogory_name + ' ' + sitename"
                                         v-if="item.category_img"
                                         :placeholder="[380, 245, 10]" loading="lazy"></nuxt-img>
@@ -756,8 +756,7 @@ export default {
                 },
             },
         })
-
-        console.log(this.pageData.page_content.popular)
+console.log(this.opportunities)
     },
     methods: {
         isFavorite(code) {

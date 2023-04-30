@@ -192,9 +192,6 @@ export default {
                 el: ".swiper-pagination",
             },
         })
-
-        // console.log(this.posts)
-
     }
 }
 </script>

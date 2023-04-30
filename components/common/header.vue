@@ -47,6 +47,28 @@
                             <b-button v-b-modal.loginModal v-if="!$auth.loggedIn" type="button" class="Login-button">
                                 <span class="">ÜYE GİRİŞİ YAP </span>
                             </b-button>
+                            <div class="dropdown " v-else>
+                            <button class="Login-button-user dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i :class="greetingIcon"></i>
+                                <p><span>{{ greeting }}</span>{{ $auth.user.name }}</p>
+                            </button>
+                            <ul class="dropdown-menu Login-button-user-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <NuxtLink class="dropdown-item" to="/user/uyelik">BİLGİLERİNİZ</NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink class="dropdown-item" to="/user/rezervasyonlar">FAVORİLERİM</NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink class="dropdown-item" to="/user/kuponlar">KUPONLARIM</NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink class="dropdown-item" to="/user/yardim-destek">YARDIM & DESTEK</NuxtLink>
+                                </li>
+                                <li><a class="dropdown-item" href="#" @click.prevent="logout()">ÇIKIŞ YAP</a></li>
+                            </ul>
+                        </div>
                         </div>
                         <div class="Header-menu-item">
                             <NuxtLink to="/kiralik-villa" class="Header-menu-item-link">Kiralık Villa</NuxtLink>
@@ -144,21 +166,10 @@
                         <Nuxt-link :to="!$auth.loggedIn ? '/favorilerim' : '/user/favorilerim'" class="Fav-button">
                             <i class="icon-heart-full"></i>
                         </Nuxt-link>
-                        <!-- <button type="button" class="Fav-button" aria-label="Favorileri aç" data-bs-toggle="modal"
-                            data-bs-target="#favModal">
-                            <i class="icon-heart-full"></i>
-                        </button> -->
                         <b-button v-b-modal.loginModal v-if="!$auth.loggedIn" type="button" class="Login-button">
                             <i class="icon-user"></i><span class="">ÜYE GİRİŞİ YAP </span>
                         </b-button>
-                        <!--
-                        <button v-else type="button"
-                            class="membership btn btn-white btn-ripple text-primary fs-7 fw-medium ls-05 py-2 py-xl-3 px-3 px-xl-4 rounded-pill lh-sm shadow-none align-self-center d-md-flex d-none">
-                            <span class="d-inline-block px-1 px-xl-2 py-1 py-xl-0" @click="logout()">{{ $auth.user.name }}
-                                ÇIKIŞ
-                                YAP</span>
-                        </button> -->
-                        <div class="dropdown" v-else>
+                        <div class="dropdown dropdown-user" v-else>
                             <button class="Login-button-user dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i :class="greetingIcon"></i>
@@ -172,7 +183,10 @@
                                     <NuxtLink class="dropdown-item" to="/user/rezervasyonlar">FAVORİLERİM</NuxtLink>
                                 </li>
                                 <li>
-                                    <NuxtLink class="dropdown-item" to="/user/rezervasyonlar">REZERVASYONLARIM</NuxtLink>
+                                    <NuxtLink class="dropdown-item" to="/user/kuponlar">KUPONLARIM</NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink class="dropdown-item" to="/user/yardim-destek">YARDIM & DESTEK</NuxtLink>
                                 </li>
                                 <li><a class="dropdown-item" href="#" @click.prevent="logout()">ÇIKIŞ YAP</a></li>
                             </ul>

@@ -1,6 +1,7 @@
 <template>
   <!-- Rezervasyon Modal -->
-  <b-modal id="reservationModal" class="Login" size="xl" :hide-header="true" hide-footer>
+  <div>
+    <b-modal id="reservationModal" class="Login" size="xl" :hide-header="true" hide-footer>
     <div class="Login">
       <button type="button" class="btn-close" aria-label="Close" @click="$bvModal.hide('reservationModal')"><i
           class="icon-login-close"></i></button>
@@ -72,15 +73,12 @@
               <label for="gizlilik" class="Login-form-item Login-form-item-check">
                 <input v-model="checkboxAcceptRules" type="checkbox" id="gizlilik">
                 <span></span>
-                <p><a data-bs-toggle="modal" href="#kullanimModal">Kullanım Şartları</a> ve <a data-bs-toggle="modal"
-                    href="#gizlilikModal">Gizlilik bildirimini</a> kabul ediyorum.
-                  Kişisel Verilerin Korunması ve <a data-bs-toggle="modal" href="#gizlilikPolitikasiModal">Gizlilik
-                    Politikasını</a> okudum.</p>
+                <p><button type="button" @click="kvkkModalOpen">Kişisel Verilerin İşlenmesine İlişkin Aydınlatma Metni</button>’ni ve <button type="button" @click="sozlesmeModalOpen">Rezervasyon Sözleşmesi</button>'ni okudum ve kabul ediyorum.</p>
               </label>
               <label for="firsat" class="Login-form-item Login-form-item-check">
                 <input type="checkbox" id="firsat">
                 <span></span>
-                <p><a href="">Fırsat ve kampanyalardan haberdar olmak istiyorum.</a></p>
+                <p>Fırsat ve kampanyalardan haberdar olmak istiyorum.</p>
               </label>
               <button :disabled="!formValidated" :style="{ 'opacity': formValidated ? '1' : '.5' }" type="submit"
                 class="Login-form-button mt-2">GÖNDER</button>
@@ -90,14 +88,20 @@
       </div>
     </div>
   </b-modal>
+  <kvkk-modal></kvkk-modal>
+  <sozlesme-modal></sozlesme-modal>
+  </div>
+  
 </template>
 
 <script>
-
+import KvkkModal from '../modals/kvkk-modal.vue';
+import SozlesmeModal from '../modals/sozlesme-modal.vue';
 import {mapMutations, mapState} from "vuex";
 
 export default {
   name: "ReservationModal",
+  components:{KvkkModal,SozlesmeModal},
   data() {
     return {
       prefix: process.env.PREFIX,
@@ -261,6 +265,14 @@ export default {
     checkName() {
       this.form.name = this.form.name.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]/g, '');
     },
+    kvkkModalOpen(){
+      this.$bvModal.show('kvkkModal')
+    },
+    sozlesmeModalOpen(){
+      this.$bvModal.show('sozlesmeModal')
+    },
+  },
+  mounted(){
   }
 }
 </script>

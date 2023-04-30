@@ -488,7 +488,6 @@ export default {
       return null;
     },
     orderChanged(order) {
-      // console.log(order);
       this.orderValue = order;
     },
     unselect(item) {

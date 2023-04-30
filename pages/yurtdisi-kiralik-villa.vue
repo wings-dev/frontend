@@ -2,8 +2,8 @@
     <div class="Home">
 
         <section class="Banner Banner-home "
-            :style="{ 'background-image': 'url(' + pageData.page_content.default.page_banner + ')' }">
-            <nuxt-img :src="pageData.page_content.default.page_list_img" class="w-100 mobile" :alt="'Yurtdışı Kiralık Villa ' + sitename" loading="lazy" placeholder />
+            :style="{ 'background-image': 'url(' + global_cdn + pageData.page_content?.default?.page_banner + ')' }">
+            <nuxt-img :src="global_cdn + pageData.page_content?.default?.page_list_img" class="w-100 mobile" :alt="'Yurtdışı Kiralık Villa ' + sitename" loading="lazy" placeholder />
             <div class="container Banner-home-in">
                 <div class=" Banner-home-text">
                     <div class="Banner-home-text-spin">
@@ -44,8 +44,7 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-img :src="item.preview_image[0].preview_url" loading="lazy" placeholder 
-                                            :srcset="generateSrcset(item.preview_image[0].responsive_url)"
+                                        <nuxt-img :src="global_cdn + item.preview_image[0].preview_url" loading="lazy" placeholder 
                                              width="267"
                                             height="175"></nuxt-img>
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
@@ -133,7 +132,7 @@
                             :key="index">
                             <nuxt-link :to="item.category_url" class="Abroad-villas-item">
                                 <div class="Abroad-villas-item-img">
-                                    <nuxt-img :src="item.category_img" :alt="'Yurtdışı Kiralık Villa ' + sitename" v-if="item.category_img" loading="lazy" placeholder ></nuxt-img>
+                                    <nuxt-img :src="global_cdn + item.category_img" :alt="'Yurtdışı Kiralık Villa ' + sitename" v-if="item.category_img" loading="lazy" placeholder ></nuxt-img>
                                     <nuxt-img src="/img/country/italy.jpg" :alt="'Yurtdışı Kiralık Villa ' + sitename" loading="lazy" placeholder  v-else></nuxt-img>
                                 </div>
                                 <div class="Abroad-villas-item-content">
@@ -214,7 +213,8 @@ export default {
     data() {
         return {
             prefix: process.env.PREFIX,
-            sitename: process.env.SITE_NAME
+            sitename: process.env.SITE_NAME,
+            global_cdn: process.env.GLOBAL_CDN_URL
         }
     },
     async asyncData({ $getRedisKey, $axios }) {

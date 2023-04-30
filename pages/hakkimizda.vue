@@ -1,7 +1,7 @@
 <template>
     <main class="main">
         <section class="Banner Banner_md Banner-back Banner-kurumsal"
-            :style="`background-image: url(${pageData.page_content?.default?.page_banner});`">
+            :style="`background-image: url(${global_cdn + pageData.page_content?.default?.page_banner});`">
             <div class="container">
                 <div class=" Banner_search-text   pos-ab-xy-center ">
                     <p class="animated fadeInDown  flex-column">
@@ -34,7 +34,8 @@
                             <template v-for="(item, index) in banks">
 
                                 <div>
-                                    <nuxt-img :src="item.corporate_banks_logo" v-if="item.corporate_banks_logo" loading="lazy" placeholder :alt="item.corporate_banks_title + ' Logo'" />
+                                    <nuxt-img :src="global_cdn + item.corporate_banks_logo" v-if="item.corporate_banks_logo"
+                                        loading="lazy" placeholder :alt="item.corporate_banks_title + ' Logo'" />
                                     <div class="Info-left-item">
                                         <span>Alıcı Ünvan</span>
                                         <p>{{ item.corporate_banks_title }}</p>
@@ -71,7 +72,7 @@
                         <div class="Info-right-in">
                             <div class="Info-right-item" v-for="(item, index) in pageData.page_content.corporate_documents"
                                 :key="index">
-                                <a :href="item.corporate_document_file" :data-fancybox="'group_' + index" class="w-100">
+                                <a :href="global_cdn + item.corporate_document_file" :data-fancybox="'group_file'" class="w-100">
                                     <div class="Info-right-item-text">
                                         <h5>{{ item.corporate_document_name }}</h5>
                                     </div>
@@ -136,7 +137,8 @@
                             v-for="(item, index) in pageData.page_content.corporate_brands.corporate_brands_info"
                             :key="index">
                             <a target="_blank" :href="item.corporate_brand_link">
-                                <nuxt-img :src="item.corporate_brand_logo" alt="Diğer Markalarımız - Balayı Villası" loading="lazy" placeholder />
+                                <nuxt-img :src="global_cdn + item.corporate_brand_logo" alt="Diğer Markalarımız - Balayı Villası"
+                                    loading="lazy" placeholder />
                             </a>
                         </div>
 
@@ -150,37 +152,32 @@
                     <h3 class="new-title">{{ item.corporate_office_name }}</h3>
                     <div class="Ofis-content">
                         <div class="Ofis-content-item">
-                            <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder 
-                                    alt="Villa Kalkan - Kalkan Ofis" />
+                            <a :href="global_cdn + item.corporate_office_photo[0]"
+                                :data-fancybox="'group-ofis' + index">
+                                <nuxt-img :src="global_cdn + item.corporate_office_photo[0]" loading="lazy"
+                                    placeholder :alt="sitename+' - ' + item.corporate_office_name" />
                             </a>
                         </div>
                         <div class="Ofis-content-item">
-                            <a href="https://villakalkan.com.tr/images/fethiye-ofis/3.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder 
-                                    alt="Balayı Villası - Kalkan Ofis" />
+                            <a :href="global_cdn + item.corporate_office_photo[1]"
+                                :data-fancybox="'group-ofis' + index">
+                                <nuxt-img :src="global_cdn + item.corporate_office_photo[1]" loading="lazy"
+                                    placeholder :alt="sitename+' - ' + item.corporate_office_name" />
                                 <span class="Ofis-content-item-more"><i class="icon-gallery"></i>+6 Fotoğraf Daha</span>
                             </a>
                             <div class="Ofis-content-item-list">
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg" :data-fancybox="'group-ofis'+index">
-                                    <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/4.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img>
+                                <a :href="global_cdn + image" v-for="image in item.corporate_office_photo.slice(2)"
+                                    :data-fancybox="'group-ofis' + index">
+                                    <nuxt-img :src="global_cdn + image" loading="lazy"
+                                        placeholder :alt="sitename+' - ' + item.corporate_office_name "></nuxt-img>
                                 </a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/5.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/7.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/8.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
-                                <a href="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg" :data-fancybox="'group-ofis'+index">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/9.jpg" loading="lazy" placeholder alt="Balayı Villası - Kalkan Ofis"></nuxt-img></a>
+                               
                             </div>
                         </div>
                         <div class="Ofis-content-item Ofis-content-item-video">
-                            <a href="https://www.youtube.com/embed/abWhzr3Y2Ow" data-fancybox="">
-                                <nuxt-img src="https://villakalkan.com.tr/images/kalkan-ofis/1.jpg" loading="lazy" placeholder 
-                                    alt="Balayı Villası - Kalkan Ofis Tanıtım Videosu" />
+                            <a :href="item.corporate_office_videolink" data-fancybox="">
+                                <nuxt-img :src="global_cdn + item.corporate_office_photo[3]" loading="lazy"
+                                    placeholder :alt="sitename + ' - ' + item.corporate_office_name + 'Tanıtım Videosu'" />
                                 <span class="Ofis-content-item-play"><i class="icon-play"></i></span>
                             </a>
                         </div>
@@ -281,16 +278,18 @@ export default {
         pageData = await $getRedisKey(`web:${site_id}:pages:hakkimizda`);
 
         let headData = {
-          title: pageData.title,
-          meta: pageData.meta
+            title: pageData.title,
+            meta: pageData.meta
         }
-        
-        
+
+
         let banks = pageData.page_content.corporate_banks
-        return { pageData,banks,headData }
+        return { pageData, banks, headData }
     },
     data() {
         return {
+            global_cdn: process.env.GLOBAL_CDN_URL,
+            sitename: process.env.SITE_NAME
         }
     },
     mounted() {

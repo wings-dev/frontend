@@ -9,7 +9,7 @@
                             <h2>Kuponlarım</h2>
                         </div>
                         <div class="Coupons">
-                            <div class="Coupons-item">
+                            <div class="Coupons-item d-none">
                                 <div class="Coupons-item-left">
                                     <span>SİZE ÖZEL!</span>
                                     <b>1200TL indirim kuponu</b>
@@ -21,6 +21,7 @@
                                     <small>Son tarih: 10.11.2022</small>
                                 </div>
                             </div>
+                            <h4 class="no-coupons">Şu an mevcut kuponunuz bulunmamaktadır!</h4>
                         </div>
 
                     </div>

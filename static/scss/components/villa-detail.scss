@@ -540,6 +540,9 @@
           color: var(--bs-theme-second);
           background-color: transparent;
         }
+        &.mobile-button{
+          display: none;
+        }
       }
       &-head {
         width: 100%;
@@ -735,7 +738,7 @@
           color: #8793a9;
         }
         b {
-          font-size: 25px;
+          font-size: 20px;
           font-weight: bold;
           line-height: 1.16;
           color: var(--bs-theme-first);
@@ -1115,7 +1118,7 @@
   }
   &-location {
     // margin-bottom: clamp(30px, 3.125vw, 60px);
-    margin-bottom: 80px;
+    margin-bottom: clamp(40px, 4.17vw, 60px);
     &-in {
       display: flex;
       flex-wrap: wrap;
@@ -1286,6 +1289,12 @@
             font-weight: 500;
             line-height: 1.2;
             color: #989fb5;
+          }
+
+          @media (max-width:768px) {
+            b {
+              font-size: 16px;
+            }
           }
         }
         &-length {
@@ -2472,6 +2481,20 @@
           .View-right-opportunity-item {
             margin-bottom: 12px;
           }
+          .View-right-opportunity{
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            padding-top: 16px;
+          }
+        }
+        button{
+          &.desktop-button{
+            display: none;
+          }
+          &.mobile-button{
+            display: block;
+          }
         }
       }
     }
@@ -2616,7 +2639,7 @@
       }
       &-collapse {
         display: block;
-        margin-top: 60px;
+        margin-top: 30px;
         width: 100%;
         h5 {
           font-size: 18px;
@@ -3042,7 +3065,8 @@
       }
     }
     &-in {
-      max-height: 100% !important;
+      max-height: calc(100dvh - 200px) !important;
+      height: 100%;
       padding-bottom: 40px;
     }
 
@@ -3929,7 +3953,10 @@
             }
             &-tooltip {
               position: relative;
-              display: inline-block;
+              display: flex;
+              .icon-information{
+                margin-left: 5px;
+              }
               .tooltiptext {
                 visibility: hidden;
                 width: 190px;

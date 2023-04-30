@@ -36,7 +36,7 @@
             <span>Tesis Kodu</span>
 
             <nuxt-link :to="{path: villa.url ,query: detailUrlData}">{{ prefix + villa.code }}</nuxt-link>
-            <div class="F_villa-item-head-name-star">
+            <div class="F_villa-item-head-name-star d-none">
               <i class="icon-star active"></i>
               <i class="icon-star active"></i>
               <i class="icon-star active"></i>
@@ -147,7 +147,7 @@
             </p>
             <small>Fiyat Aralığında</small>
           </div>
-          <button type="button" class="F_villa-item-show" @click.stop="openModal(villa.code)"><i
+          <button type="button" class="F_villa-item-show" @click.prevent="openModal(villa.code)"><i
               class="icon-calendar"></i>Müsaitlik Takvimi
           </button>
           <nuxt-link :to="{path: villa.url ,query: detailUrlData}" class="F_villa-item-more">
@@ -302,17 +302,7 @@ export default {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
-      // on: {
-      //   init: function () {
-      //     console.log('swiper init');
-      //   },
-      //   click: function (swiper, e) {
-      //     console.log('swiper click',e);
-      //     e.stopPropagation();
-      //   },
-      // }
     })
-    console.log(this.villa)
     this.formatDate(this.checkindate, this.checkoutdate)
 
   }

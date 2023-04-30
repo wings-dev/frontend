@@ -1,8 +1,8 @@
 <template>
-  <section class="Favs">
+  <section class="Favs user">
     <div class="container">
       <div class="Favs-in">
-        <h2>Favorilerinizdeki Villalar <span>({{ villas.length }})</span></h2>
+        <!-- <h2>Favorilerinizdeki Villalar <span>({{ villas.length }})</span></h2> -->
         <div class="Favs-list">
 
           <div class="Card" v-for="(villa, index) in villas" :key="index">

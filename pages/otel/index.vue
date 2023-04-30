@@ -13,7 +13,7 @@
                                     :key="index">
                                     <a :href="item.otel_slider_link"
                                         class="blog-item position-relative d-block w-100 h-100  overflow-hidden">
-                                        <nuxt-img :src="item?.otel_slider_input" width="781" height="380" :alt="'Otel | ' + sitename" loading="lazy" placeholder 
+                                        <nuxt-img :src="global_cdn + item?.otel_slider_input" width="781" height="380" :alt="'Otel | ' + sitename" loading="lazy" placeholder 
                                             class="item-image lazy cover w-100 " />
                                         <div
                                             class="slide-caption text-white position-absolute bottom-0 start-0 d-flex flex-column align-items-start ps-4 pe-5 pb-4 ms-sm-3 me-sm-4 mb-sm-3 ">
@@ -31,7 +31,7 @@
                         v-for="(item, index) in pageData.page_content.banner" :key="index"
                         :class="{ 'area2': index == 0, 'area3': index == 1 }">
                         <a :href="item.otel_banner_link" class="blog-item position-relative d-block w-100 h-100">
-                            <nuxt-img :src="item?.banner_img" width="402" height="182" :alt="'Otel | ' + sitename" loading="lazy" placeholder 
+                            <nuxt-img :src="global_cdn + item?.banner_img" width="402" height="182" :alt="'Otel | ' + sitename" loading="lazy" placeholder 
                                 class="lazy cover w-100" />
                             <div class="blog-item-text ">
                                 <h4 class="blog-item-sm-title" v-if="item.otel_banner_title">{{ item.otel_banner_title }}
@@ -318,27 +318,27 @@
                             <div class="Areas-otel-item-in">
                                 <h4><b>Yurtdışı</b> Otelleri</h4>
                                 <div class="Areas-otel-item-list">
-                                    <nuxt-link to="/amsterdam-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=10690&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/amsterdam.jpeg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Amsterdam Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/barselona-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=10275&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/barselona.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Barselona Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/roma-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=61096&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/roma.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename" ></nuxt-img>
                                         <span>Roma Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/dubai-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=10001&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/dubai.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Dubai Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/paris-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=60974&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/paris.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Paris Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/prag-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=10153&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/prag.jpg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Prag Otelleri</span>
                                     </nuxt-link>
@@ -383,7 +383,8 @@ export default {
     data() {
         return {
             cdn_hotel: process.env.HOTEL_CDN_URL + '/',
-            sitename:process.env.SITE_NAME
+            sitename:process.env.SITE_NAME,
+            global_cdn: process.env.GLOBAL_CDN_URL
         }
     },
     async asyncData({ $getRedisKey, $axios, store }) {
@@ -490,8 +491,6 @@ export default {
                 },
             },
         })
-
-        console.log(this.pageData)
     }
 
 }

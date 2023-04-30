@@ -248,9 +248,9 @@
             <template v-if="villa.watermark_images && villa.watermark_images.length > 4">
               <div class="d-none">
                 <a v-for="previewImage in villa.watermark_images.slice(5)" :href="global_cdn + previewImage.original_url"
-                  data-fancybox="gallery" data-caption="Salon">
-                  <nuxt-img :src="previewImage.preview_url" :srcset="generateSrcset(previewImage.responsive)" width="284"
-                    height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                  data-fancybox="gallery" >
+                  <nuxt-img :src="global_cdn + previewImage.preview_url" :srcset="generateSrcset(previewImage.responsive)"
+                    width="284" height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                     sizes="sm:100vw md:50vw lg:284px" /></a>
               </div>
 
@@ -319,9 +319,8 @@
                 <div class="View-desc-amenites-in">
                   <p v-for="(item, index) in amenites" v-if="index <= 5">{{ item.name }}</p>
                 </div>
-                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar ({{
-                  amenites.length }})</b-button>
-
+                <b-button v-b-modal.amenitesModal class="View-desc-amenites-more">Tüm Olanaklar ({{ amenites.length
+                }})</b-button>
               </div>
             </div>
             <div class="View-desc-mobile">
@@ -365,10 +364,10 @@
                     moreMobileContent ? 'Daha Az Göster' : 'Daha Fazla Göster' }} </button>
                 </div>
               </div>
-              <div class="View-desc-mobile-amenites" v-if="Number(villa.code) < 9999">
+              <div class="View-desc-mobile-amenites" v-if="amenites && amenites.length > 0">
                 <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)"
                   v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
-                <button type="button" @click="mobileAmenitesToggle">Tüm Olanarakları <i
+                <button type="button" @click="mobileAmenitesToggle">Tüm Olanaklar ({{ amenites.length }}) <i
                     class="icon-right-arrow"></i></button>
               </div>
             </div>
@@ -550,7 +549,7 @@
               </div>
 
               <div class="View-location-in">
-                <div class="first-tab">
+                <div class="first-tab" v-if="places.beaches.length || places.locations.length">
                   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" id="pills-beach-tab" data-bs-toggle="pill"
@@ -577,10 +576,12 @@
                         v-if="places.beaches.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
                           <nuxt-img :src="global_cdn + item.images[0].preview_url"
-                            :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
-                            v-if="item.images && item.images.length > 0"></nuxt-img>
+                            :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95"
+                            loading="lazy"></nuxt-img>
+                        </div>
+                        <div class="first-tab-item-img" v-else>
                           <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157"
-                            height="95" loading="lazy" v-else></nuxt-img>
+                            height="95" loading="lazy"></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -598,17 +599,18 @@
                     </div>
                     <div class="tab-pane fade" id="pills-architecture" role="tabpanel"
                       aria-labelledby="pills-architecture-tab">
-                      <p class="first-tab-info"><i class="icon-info-month"></i> Plajlar, tesise olan yakınlığı kuş bakışı
+                      <p class="first-tab-info"><i class="icon-info-month"></i> Mekanlar, tesise olan yakınlığı kuş bakışı
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.locations"
                         v-if="places.locations.length <= 4">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
-
                           <nuxt-img :src="global_cdn + item.images[0].preview_url"
-                            :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
-                            v-if="item.images && item.images.length > 0"></nuxt-img>
+                            :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95"
+                            loading="lazy"></nuxt-img>
+                        </div>
+                        <div class="first-tab-item-img" v-else>
                           <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157"
-                            height="95" loading="lazy" v-else></nuxt-img>
+                            height="95" loading="lazy"></nuxt-img>
                         </div>
                         <div class="first-tab-item-content">
                           <b>{{ item.name }}</b>
@@ -628,29 +630,30 @@
                   </div>
                 </div>
 
-                <div class="second-tab">
+                <div class="second-tab"
+                  v-if="places.health.length || places.restaurant.length || places.market.length || places.transport.length">
                   <ul class="nav nav-pills " id="location-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" role="presentation" v-if="places.health.length">
                       <button class="nav-link active" id="pills-health-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-health" type="button" role="tab" aria-controls="pills-home"
                         aria-selected="true">
                         <p><i class="icon-health"></i>Sağlık</p>
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" role="presentation" v-if="places.restaurant.length">
                       <button class="nav-link" id="pills-restoran-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-restoran" type="button" role="tab" aria-controls="pills-profile"
                         aria-selected="false">
                         <p><i class="icon-restoran-1"></i>Restoran</p>
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" role="presentation" v-if="places.market.length">
                       <button class="nav-link" id="pills-market-tab" data-bs-toggle="pill" data-bs-target="#pills-market"
                         type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
                         <p><i class="icon-market-1"></i>Market</p>
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" role="presentation" v-if="places.transport.length">
                       <button class="nav-link" id="pills-map-tab" data-bs-toggle="pill" data-bs-target="#pills-map"
                         type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
                         <p><i class="icon-map"></i>Ulaşım</p>
@@ -659,7 +662,7 @@
                   </ul>
                   <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-health" role="tabpanel"
-                      aria-labelledby="pills-health-tab">
+                      aria-labelledby="pills-health-tab" v-if="places.health.length">
                       <div class="second-tab-in">
                         <div class="second-tab-item" v-for="(item, index) in places.health">
                           <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
@@ -668,7 +671,8 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-restoran" role="tabpanel" aria-labelledby="pills-restoran-tab">
+                    <div class="tab-pane fade" id="pills-restoran" role="tabpanel" aria-labelledby="pills-restoran-tab"
+                      v-if="places.restaurant.length">
                       <div class="second-tab-in">
                         <div class="second-tab-item" v-for="(item, index) in places.restaurant">
                           <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
@@ -677,7 +681,8 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-market" role="tabpanel" aria-labelledby="pills-market-tab">
+                    <div class="tab-pane fade" id="pills-market" role="tabpanel" aria-labelledby="pills-market-tab"
+                      v-if="places.market.length">
                       <div class="second-tab-in">
                         <div class="second-tab-item" v-for="(item, index) in places.market">
                           <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
@@ -686,7 +691,8 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                    <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab"
+                      v-if="places.transport.length">
                       <div class="second-tab-in">
                         <div class="second-tab-item" v-for="(item, index) in places.transport">
                           <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
@@ -698,10 +704,11 @@
 
                   </div>
                 </div>
-                <div class="View-location-collapse">
+                <div class="View-location-collapse"
+                  v-if="places.health.length || places.restaurant.length || places.market.length || places.transport.length">
                   <h5>Diğer Mesafeler</h5>
                   <div class="accordion" id="Location">
-                    <div class="accordion-item">
+                    <div class="accordion-item" v-if="places.health.length">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseHealth" aria-expanded="false" aria-controls="collapseHealth">
                         <p><i class="icon-health"></i>Sağlık</p><i class="icon-down-arrow"></i>
@@ -713,11 +720,12 @@
                             <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                               {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
                           </div>
-                          <button type="button" class="more" @click="mobileLocationToggle">Daha Fazla Göster</button>
+                          <button type="button" class="more" @click="mobileLocationToggle"
+                            v-if="places.health.length > 2">Daha Fazla Göster ({{ places.health.length }})</button>
                         </div>
                       </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" v-if="places.restaurant.length">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseRestoran" aria-expanded="false" aria-controls="collapseRestoran">
                         <p><i class="icon-restoran"></i>Restoran</p><i class="icon-down-arrow"></i>
@@ -729,12 +737,13 @@
                             <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                               {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
                           </div>
-                          <button type="button" class="more" @click="mobileLocationRestoranToggle">Daha Fazla
-                            Göster</button>
+                          <button type="button" class="more" @click="mobileLocationRestoranToggle"
+                            v-if="places.restaurant.length > 2">Daha Fazla
+                            Göster ({{ places.restaurant.length }})</button>
                         </div>
                       </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" v-if="places.market.length">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket">
                         <p><i class="icon-market"></i>Market</p><i class="icon-down-arrow"></i>
@@ -746,12 +755,12 @@
                             <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                               {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
                           </div>
-                          <button type="button" class="more" @click="mobileLocationMarketToggle">Daha Fazla
-                            Göster</button>
+                          <button type="button" class="more" @click="mobileLocationMarketToggle"
+                            v-if="places.market.length > 2">Daha Fazla Göster ({{ places.market.length }}) </button>
                         </div>
                       </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" v-if="places.transport.length">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
                         <p><i class="icon-map"></i>Ulaşım</p><i class="icon-down-arrow"></i>
@@ -763,8 +772,9 @@
                             <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                               {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
                           </div>
-                          <button type="button" class="more" @click="mobileLocationTransportToggle">Daha Fazla
-                            Göster</button>
+                          <button type="button" class="more" @click="mobileLocationTransportToggle"
+                            v-if="places.transport.length > 2">Daha Fazla
+                            Göster ({{ places.transport.length }})</button>
                         </div>
                       </div>
                     </div>
@@ -960,13 +970,13 @@
                         </div>
                       </div>
                       <div class="View-info-hours-status-mobile">
-                        <span>{{ villa.checkin !== null ? villa.checkin.substr(0, 5) : ' ' }} - {{ villa.checkin_end
-                          !== null ? villa.checkin_end.substr(0, 5) : ' ' }} Arası</span>
+                        <span>{{ villa.checkout !== null ? villa.checkout.substr(0, 5) : ' ' }} - {{ villa.checkout_end
+                          !== null ? villa.checkout_end.substr(0, 5) : ' ' }} Arası</span>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="View-info-bg" v-if="villa.amenites.amenite_301.list">
+                <div class="View-info-bg" v-if="villa?.amenites && villa.amenites.amenite_301.list">
                   <div class="View-info-rules">
                     <h5>Tesis Kuralları</h5>
                     <div class="View-info-rules-item" v-for="item in villa.amenites.amenite_301.list">
@@ -1011,8 +1021,6 @@
                   </div>
 
                 </div>
-
-
               </div>
             </div>
             <div class="View-info-warning d-none">
@@ -1079,14 +1087,14 @@
               </div>
             </div> -->
 
-            <div class="View-mobile-modal" :class="{ 'show': mobileAmenites }" v-if="Number(villa.code) < 9999">
+            <div class="View-mobile-modal" :class="{ 'show': mobileAmenites }" v-if="amenites && amenites.length > 0">
               <button type="button" class="mobile-menus-back" @click="mobileAmenitesToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="Amenites">
                 <div class="Amenites-head">
                   <div class="Amenites-head-in">
                     <h3 class="Amenites-title">Tesis <b>olanakları</b></h3>
-                    <div class="Amenites-head-link">
+                    <div class="Amenites-head-link d-none">
                       <p>Tesis kategorisi</p>
                       <a href="javascript:void(0)" @click.prevent="goFacilityConceptsFilter(item.id)"
                         v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
@@ -1184,58 +1192,49 @@
                 </div>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileOpportunity }">
-              <button type="button" class="mobile-menus-back" @click="mobileOpportunityToggle"><i
-                  class="icon-left-arrow"></i></button>
-              <div class="View-right-opportunity View-right-opportunity-modal">
-                <div class="View-right-opportunity-head">
-                  <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara</h4>
 
-                </div>
-                <client-only>
-                  <opportunity-box-component :propertyCode="villa.code" @selected="opportunitySelected($event)"
-                    componentclass="View-right-opportunity-mobile"></opportunity-box-component>
-                </client-only>
-              </div>
-            </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileLocation }" v-if="Number(villa.code) < 9999">
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocation }"
+              v-if="Number(villa.code) < 9999 && places.health.length > 2">
               <button type="button" class="mobile-menus-back" @click="mobileLocationToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
-                <div class="second-tab-item w-100" v-for="(item, index) in places.health" v-if="index < 2">
+                <div class="second-tab-item w-100" v-for="(item, index) in places.health">
                   <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                   <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                     {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
                 </div>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileLocationRestoran }" v-if="Number(villa.code) < 9999">
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocationRestoran }"
+              v-if="Number(villa.code) < 9999 && places.restaurant.length > 2">
               <button type="button" class="mobile-menus-back" @click="mobileLocationRestoranToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
-                <div class="second-tab-item w-100" v-for="(item, index) in places.restaurant" v-if="index < 2">
+                <div class="second-tab-item w-100" v-for="(item, index) in places.restaurant">
                   <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                   <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                     {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
                 </div>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileLocationMarket }" v-if="Number(villa.code) < 9999">
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocationMarket }"
+              v-if="Number(villa.code) < 9999 && places.market.length > 2">
               <button type="button" class="mobile-menus-back" @click="mobileLocationMarketToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
-                <div class="second-tab-item w-100" v-for="(item, index) in places.market" v-if="index < 2">
+                <div class="second-tab-item w-100" v-for="(item, index) in places.market">
                   <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                   <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                     {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
                 </div>
               </div>
             </div>
-            <div class="View-mobile-modal" :class="{ 'show': mobileLocationTransport }" v-if="Number(villa.code) < 9999">
+            <div class="View-mobile-modal" :class="{ 'show': mobileLocationTransport }"
+              v-if="Number(villa.code) < 9999 && places.transport.length > 2">
               <button type="button" class="mobile-menus-back" @click="mobileLocationTransportToggle"><i
                   class="icon-left-arrow"></i></button>
               <div class="View-location">
-                <div class="second-tab-item w-100" v-for="(item, index) in places.transport" v-if="index < 2">
+                <div class="second-tab-item w-100" v-for="(item, index) in places.transport">
                   <p class="name"><b>{{ item.name }}</b>{{ item.description }}</p>
                   <p class="length"><b>{{ item.distance.match(/\d+/)[0] }}</b>
                     {{ item.distance.replace(/\d+/, '') }} <small>Uzaklıkta</small></p>
@@ -1274,8 +1273,9 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.beaches">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length > 0">
-                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename"
-                            width="157" height="95" loading="lazy" v-if="item.images.length > 0"></nuxt-img>
+                          <nuxt-img :src="global_cdn + item.images[0].preview_url"
+                            :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
+                            v-if="item.images.length > 0"></nuxt-img>
                           <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157"
                             height="95" loading="lazy" v-else></nuxt-img>
                         </div>
@@ -1319,8 +1319,8 @@
                         olarak hesaplanmıştır.</p>
                       <div class="first-tab-item" v-for="(item, index) in places.locations">
                         <div class="first-tab-item-img" v-if="item.images && item.images.length">
-                          <nuxt-img :src="item.images[0].preview_url" :alt="villa_prefix + villa.code + ' ' + sitename"
-                            width="157" height="95" loading="lazy"
+                          <nuxt-img :src="global_cdn + item.images[0].preview_url"
+                            :alt="villa_prefix + villa.code + ' ' + sitename" width="157" height="95" loading="lazy"
                             v-if="item.images && item.images.length > 0"></nuxt-img>
                           <nuxt-img src="/img/tesis-yok.png" :alt="villa_prefix + villa.code + ' ' + sitename" width="157"
                             height="95" loading="lazy" v-else></nuxt-img>
@@ -1463,7 +1463,7 @@
       </div>
     </section>
 
-    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat">
+    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat && galleryIsOpen">
       <div class="container">
         <div class="Gallery-head">
           <button type="button" class="Gallery-close" @click="closeGallery"><i class="icon-search-close"></i></button>
@@ -1492,8 +1492,10 @@
                   <div class="Gallery-detail-item-right">
                     <template v-if="bolum.gorsel && bolum.gorsel.length">
                       <a class="Gallery-detail-item-right-img" :href="global_cdn + img.original_url"
-                        data-fancybox="gallery" data-caption="Salon" v-for="(img, index) in bolum.gorsel">
-                        <nuxt-img :src="global_cdn + img.preview_url" loading="lazy" sizes="sm:100vw md:50vw lg:756px"
+                        data-fancybox="gallery" :data-caption="bolum.name" v-for="(img, index) in bolum.gorsel">
+                        <nuxt-img :src="global_cdn + img.preview_url"
+                        :srcset="generateSrcset(img.responsive)"
+                        loading="lazy" sizes="sm:100vw md:50vw lg:756px"
                           :alt="villa_prefix + villa.code + ' ' + sitename" />
                       </a>
                     </template>
@@ -1507,6 +1509,7 @@
     </section>
 
     <amenites-modal sectionTitle="Haftanın Villaları" :amenitelist="amenites"></amenites-modal>
+
     <location-map-modal :villalocationcity="villa.location.city.name" :villalocationdistrict="villa.location.state.name"
       :villacode="villa.code" :villaprefix="villa_prefix" :latitude="villa.location.longitude"
       :longitude="villa.location.latitude">
@@ -1560,7 +1563,6 @@ export default {
       calendarRow: 1,
       moreMobileContent: false,
       mobileAmenites: false,
-      mobileOpportunity: false,
       mobileLocation: false,
       mobileLocationRestoran: false,
       mobileLocationMarket: false,
@@ -1596,12 +1598,21 @@ export default {
     },
     goFacilityConceptsFilter(id) {
       if (!id) return;
-      this.$router.push({
-        path: '/kiralik-villa-ara',
-        query: {
-          facilityConcepts: id
-        },
-      });
+      if (this.villa.code < 9999) {
+        this.$router.push({
+          path: '/kiralik-villa-ara',
+          query: {
+            facilityConcepts: id
+          },
+        });
+      }else{
+        this.$router.push({
+          path: '/yurtdisi-kiralik-villa-ara',
+          query: {
+            facilityConcepts: id
+          },
+        });
+      }
     },
     shareOnFacebook() {
       if (!window || !window.location || !window.location.href) return;
@@ -1806,9 +1817,6 @@ export default {
     mobileAmenitesToggle() {
       this.mobileAmenites = !this.mobileAmenites
     },
-    mobileOpportunityToggle() {
-      this.mobileOpportunity = !this.mobileOpportunity
-    },
     mobileLocationToggle() {
       this.mobileLocation = !this.mobileLocation
     },
@@ -1864,7 +1872,6 @@ export default {
         }
       })
     },
-
   },
   watch: {
     galleryIsOpen() {
@@ -1882,24 +1889,15 @@ export default {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
+          document.querySelector('.Header').classList.add('Header-z')
+          document.querySelector('.Whatsapp').classList.add('Whatsapp-z')
         }, 50)
       } else {
         setTimeout(() => {
           document.querySelector('body').classList.remove('detail-over')
           document.querySelector('html').classList.remove('detail-over')
-        }, 50)
-      }
-    },
-    mobileOpportunity() {
-      if (this.mobileOpportunity == true) {
-        setTimeout(() => {
-          document.querySelector('body').classList.add('detail-over')
-          document.querySelector('html').classList.add('detail-over')
-        }, 50)
-      } else {
-        setTimeout(() => {
-          document.querySelector('body').classList.remove('detail-over')
-          document.querySelector('html').classList.remove('detail-over')
+          document.querySelector('.Header').classList.remove('Header-z')
+          document.querySelector('.Whatsapp').classList.remove('Whatsapp-z')
         }, 50)
       }
     },
@@ -1908,11 +1906,13 @@ export default {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
+          document.querySelector('.Whatsapp').classList.add('Whatsapp-z')
         }, 50)
       } else {
         setTimeout(() => {
           document.querySelector('body').classList.remove('detail-over')
           document.querySelector('html').classList.remove('detail-over')
+          document.querySelector('.Whatsapp').classList.remove('Whatsapp-z')
         }, 50)
       }
     },
@@ -1921,11 +1921,13 @@ export default {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
+          document.querySelector('.Whatsapp').classList.add('Whatsapp-z')
         }, 50)
       } else {
         setTimeout(() => {
           document.querySelector('body').classList.remove('detail-over')
           document.querySelector('html').classList.remove('detail-over')
+          document.querySelector('.Whatsapp').classList.remove('Whatsapp-z')
         }, 50)
       }
     },
@@ -1934,11 +1936,13 @@ export default {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
+          document.querySelector('.Whatsapp').classList.add('Whatsapp-z')
         }, 50)
       } else {
         setTimeout(() => {
           document.querySelector('body').classList.remove('detail-over')
           document.querySelector('html').classList.remove('detail-over')
+          document.querySelector('.Whatsapp').classList.remove('Whatsapp-z')
         }, 50)
       }
     },
@@ -1947,11 +1951,13 @@ export default {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
+          document.querySelector('.Whatsapp').classList.add('Whatsapp-z')
         }, 50)
       } else {
         setTimeout(() => {
           document.querySelector('body').classList.remove('detail-over')
           document.querySelector('html').classList.remove('detail-over')
+          document.querySelector('.Whatsapp').classList.remove('Whatsapp-z')
         }, 50)
       }
     },
@@ -1960,11 +1966,13 @@ export default {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
+          document.querySelector('.Whatsapp').classList.add('Whatsapp-z')
         }, 50)
       } else {
         setTimeout(() => {
           document.querySelector('body').classList.remove('detail-over')
           document.querySelector('html').classList.remove('detail-over')
+          document.querySelector('.Whatsapp').classList.remove('Whatsapp-z')
         }, 50)
       }
     },
@@ -1973,11 +1981,13 @@ export default {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
+          document.querySelector('.Whatsapp').classList.add('Whatsapp-z')
         }, 50)
       } else {
         setTimeout(() => {
           document.querySelector('body').classList.remove('detail-over')
           document.querySelector('html').classList.remove('detail-over')
+          document.querySelector('.Whatsapp').classList.remove('Whatsapp-z')
         }, 50)
       }
     },
@@ -1986,11 +1996,13 @@ export default {
         setTimeout(() => {
           document.querySelector('body').classList.add('detail-over')
           document.querySelector('html').classList.add('detail-over')
+          document.querySelector('.Whatsapp').classList.add('Whatsapp-z')
         }, 50)
       } else {
         setTimeout(() => {
           document.querySelector('body').classList.remove('detail-over')
           document.querySelector('html').classList.remove('detail-over')
+          document.querySelector('.Whatsapp').classList.remove('Whatsapp-z')
         }, 50)
       }
     },
@@ -2041,9 +2053,7 @@ export default {
         }
       }
     }
-
     this.places = places;
-    console.log(this.places)
     try {
       const response = await this.$axios.post(`/website/property/month-prices?api_token=${process.env.WEBSITE_TOKEN}`, {
         "code": this.villa.code,
@@ -2125,7 +2135,6 @@ export default {
         },
       })
 
-
       this.$el.addEventListener('click', function (e) {
         if (e.target.closest('.dropdown-menu')) {
           e.stopPropagation();
@@ -2161,6 +2170,7 @@ export default {
               li.classList.add("active");
             }
           });
+
           if (scrollY >= document.querySelector('#more-villas').offsetTop - 650) {
             document.querySelector('#reservationForm').classList.remove('custom-fixed-reservation')
           } else {
@@ -2245,11 +2255,15 @@ export default {
     jacuziNum() {
       return this.getAmeniteCount(505)
     },
-
-
   },
   beforeDestroy() {
     document.querySelector(".Whatsapp").classList.remove('Whatsapp-villa')
+    document.querySelector('.Header').classList.remove('villa-detay')
+    document.querySelector('.Footer-mobile').classList.remove('villa-detay')
+    document.querySelector('body').classList.remove('villa-detay')
+    if (document.querySelector('.Whatsapp').classList.contains('Whatsapp-z')) {
+      document.querySelector('.Whatsapp').classList.remove('Whatsapp-z');
+    }
   },
 
 }
