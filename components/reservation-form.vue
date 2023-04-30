@@ -133,13 +133,11 @@
                 <b>{{ availabilityData?.total_price | numberFormat }}{{ availabilityData?.night_price_currency_symbol
                 }}</b>
               </div>
-              <div class="Reservation-form-detail-top-item">
+              <div class="Reservation-form-detail-top-item" v-if="availabilityData?.cleaning_fee">
                 <div class="Reservation-form-detail-top-item-tooltip">
                   <p>Temizlik Ücreti </p>
                   <i class="icon-information"></i>
-                  <span class="tooltiptext">{{ availabilityData?.min_cleaning_day }} gece altındaki konaklamalardan {{
-                    availabilityData?.cleaning_fee }}{{ availabilityData?.night_price_currency_symbol }} temizlik ücreti
-                    alınır.</span>
+                  <span class="tooltiptext">{{ availabilityData?.min_cleaning_day }} gece altındaki konaklamalardan {{availabilityData?.cleaning_fee }}{{ availabilityData?.night_price_currency_symbol }} temizlik ücreti alınır.</span>
                 </div>
 
                 <b>{{ availabilityData?.cleaning_fee | numberFormat }}{{ availabilityData?.night_price_currency_symbol
@@ -182,7 +180,7 @@
                   <b>{{ availabilityData?.total_price | numberFormat }}{{ availabilityData?.night_price_currency_symbol
                   }}</b>
                 </div>
-                <div class="Reservation-form-info-item-more-item">
+                <div class="Reservation-form-info-item-more-item" v-if="availabilityData?.cleaning_fee">
                   <div class="Reservation-form-info-item-more-item-left">
                     <p>Temizlik Ücreti</p>
                     <div class="Reservation-form-info-item-more-item-tooltip">

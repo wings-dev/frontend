@@ -127,7 +127,6 @@ export default {
     },
   },
   mounted(){
-    console.log('TS',this.categorielist)
   }
 }
 </script>

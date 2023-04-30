@@ -13,8 +13,8 @@
           <span>{{ opportunity.price?.total | numberFormat }}{{ opportunity.price.price_currency }}</span>
         </div>
       </a>
-
-      <b-button @click="openModal" v-if="opportunities.length > 2" type="button">Diğer tarihleri
+      <button type="button" @click="mobileOpportunityToggle" class="mobile-button">Diğer tarihleri<span>görüntüle({{ opportunities.length}})</span></button>
+      <b-button @click="openModal" v-if="opportunities.length > 2" type="button" class="desktop-button">Diğer tarihleri
         <span>görüntüle({{ opportunities.length }})</span></b-button>
     </div>
 
@@ -38,6 +38,30 @@
         </a>
       </div>
     </b-modal>
+
+    <div class="View-mobile-modal" :class="{ 'show': mobileOpportunity }">
+      <button type="button" class="mobile-menus-back" @click="mobileOpportunityToggle"><i
+          class="icon-left-arrow"></i></button>
+      <div class="View-right-opportunity View-right-opportunity-modal">
+        <div class="View-right-opportunity-head">
+          <h4><i class="icon-star"></i>Kısa Süreli Fırsatlara <span>Gözat</span></h4>
+
+        </div>
+        <div class="View-right-opportunity" :class="componentclass">
+          <a href="javascript:return void(0)" @click="selectOpportunity(opportunity)" class="View-right-opportunity-item"
+            v-for="opportunity in opportunities">
+            <div class="View-right-opportunity-item-day">
+              <b>{{ opportunity.price?.day }}</b>
+              <span>GECE</span>
+            </div>
+            <div class="View-right-opportunity-item-price">
+              <p>{{ opportunity.start_date }} <i class="icon-right-arrow"></i>{{ opportunity.end_date }}</p>
+              <span>{{ opportunity.price?.total | numberFormat }}{{ opportunity.price.price_currency }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -48,7 +72,8 @@ export default {
   data() {
     return {
       loaded: false,
-      opportunities: []
+      opportunities: [],
+      mobileOpportunity: false,
     }
   },
   async mounted() {
@@ -60,13 +85,31 @@ export default {
 
     }
   },
+  watch:{
+    mobileOpportunity() {
+      if (this.mobileOpportunity == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add('detail-over')
+          document.querySelector('html').classList.add('detail-over')
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove('detail-over')
+          document.querySelector('html').classList.remove('detail-over')
+        }, 50)
+      }
+    }
+  },
   methods: {
     openModal() {
       this.$bvModal.show('opportunityModal')
     },
     selectOpportunity(opportunity) {
       this.$emit('selected', opportunity)
-    }
+    },
+    mobileOpportunityToggle() {
+      this.mobileOpportunity = !this.mobileOpportunity
+    },
   }
 }
 </script>

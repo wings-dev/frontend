@@ -183,7 +183,10 @@
                                     <NuxtLink class="dropdown-item" to="/user/rezervasyonlar">FAVORİLERİM</NuxtLink>
                                 </li>
                                 <li>
-                                    <NuxtLink class="dropdown-item" to="/user/rezervasyonlar">REZERVASYONLARIM</NuxtLink>
+                                    <NuxtLink class="dropdown-item" to="/user/kuponlar">KUPONLARIM</NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink class="dropdown-item" to="/user/yardim-destek">YARDIM & DESTEK</NuxtLink>
                                 </li>
                                 <li><a class="dropdown-item" href="#" @click.prevent="logout()">ÇIKIŞ YAP</a></li>
                             </ul>

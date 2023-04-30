@@ -67,7 +67,6 @@ export default {
             iconSize: [112, 112],
             iconAnchor: [56, 56]
         });
-        console.log(this.villacode)
     }
 }
 </script>
