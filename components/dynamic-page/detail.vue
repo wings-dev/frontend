@@ -248,7 +248,7 @@
             <template v-if="villa.watermark_images && villa.watermark_images.length > 4">
               <div class="d-none">
                 <a v-for="previewImage in villa.watermark_images.slice(5)" :href="global_cdn + previewImage.original_url"
-                  data-fancybox="gallery" data-caption="Salon">
+                  data-fancybox="gallery" >
                   <nuxt-img :src="global_cdn + previewImage.preview_url" :srcset="generateSrcset(previewImage.responsive)"
                     width="284" height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
                     sizes="sm:100vw md:50vw lg:284px" /></a>
@@ -1492,8 +1492,10 @@
                   <div class="Gallery-detail-item-right">
                     <template v-if="bolum.gorsel && bolum.gorsel.length">
                       <a class="Gallery-detail-item-right-img" :href="global_cdn + img.original_url"
-                        data-fancybox="gallery" data-caption="Salon" v-for="(img, index) in bolum.gorsel">
-                        <nuxt-img :src="global_cdn + img.preview_url" loading="lazy" sizes="sm:100vw md:50vw lg:756px"
+                        data-fancybox="gallery" :data-caption="bolum.name" v-for="(img, index) in bolum.gorsel">
+                        <nuxt-img :src="global_cdn + img.preview_url"
+                        :srcset="generateSrcset(img.responsive)"
+                        loading="lazy" sizes="sm:100vw md:50vw lg:756px"
                           :alt="villa_prefix + villa.code + ' ' + sitename" />
                       </a>
                     </template>
