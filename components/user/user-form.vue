@@ -1,67 +1,78 @@
 <template>
-    <div class="Contact-form">
+    <section class="User">
         <div class="container">
-            <div class="Contact-form-in">
-                <div class="Contact-form-title">
-                    <h1>Bizimle iletişime geç!</h1>
-                    <p>Size nasıl yardımcı olabiliriz?</p>
+            <div class="User-in">
+                <user-sidebar></user-sidebar>
+                <div class="User-right">
+                    <div class="Contact-form pt-3">
+                        <div class="container">
+                            <div class="Contact-form-in">
+                                <div class="Contact-form-title">
+                                    <h2>Yardım & Destek</h2>
+                                    <p>Size nasıl yardımcı olabiliriz?</p>
+                                </div>
+
+                                <form action="">
+                                    <div class="Contact-form-item">
+                                        <label for="">
+                                            <input type="text" placeholder="Adınız*" v-model="form.data.name">
+                                            <i class="icon-user"></i>
+                                        </label>
+                                    </div>
+                                    <div class="Contact-form-item">
+                                        <label for="">
+                                            <input type="text" placeholder="Soyadınız*" v-model="form.data.surname">
+                                            <i class="icon-user"></i>
+                                        </label>
+                                    </div>
+                                    <div class="Contact-form-item">
+                                        <label for="">
+                                            <input type="text" placeholder="Mail Adresiniz*" v-model="form.data.email">
+                                            <i class="icon-user"></i>
+                                        </label>
+                                    </div>
+                                    <div class="Contact-form-item">
+                                        <label for="">
+                                            <input type="text" placeholder="Telefon*" v-model="form.data.phone">
+                                            <i class="icon-user"></i>
+                                        </label>
+                                    </div>
+                                    <div class="Contact-form-item w-100">
+                                        <label for="">
+                                            <textarea name="" id="" placeholder="Mesajınız*"
+                                                v-model="form.data.message"></textarea>
+                                            <i class="icon-user"></i>
+                                        </label>
+                                    </div>
+                                    <div class="Contact-form-item Contact-form-item-checkbox w-100">
+                                        <label for="" id="kvkkinput">
+                                            <input type="checkbox" id="kvkkinput" v-model="form.data.kvkkSelected"
+                                                :checked="form.data.kvkkSelected">
+                                            <span></span>
+                                            <p><a href="">KVKK Aydınlatma metnini</a> okudum.*</p>
+                                        </label>
+                                    </div>
+                                    <div class="Contact-form-item Contact-form-item-checkbox w-100">
+                                        <label for="marka">
+                                            <input type="checkbox" id="marka" v-model="form.data.informSelected"
+                                                :checked="form.data.informSelected">
+                                            <span></span>
+                                            <p>Markamız ile ilgili gelişmelerden haberdar olmak için tarafıma elektronik
+                                                ileti
+                                                gönderilmesini kabul ederim.</p>
+                                        </label>
+                                    </div>
+
+                                    <button type="button" @click="send" :disabled="buttonDisabled">GÖNDER</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <form action="">
-                    <div class="Contact-form-item">
-                        <label for="">
-                            <input type="text" placeholder="Adınız*" v-model="form.data.name">
-                            <i class="icon-user"></i>
-                        </label>
-                    </div>
-                    <div class="Contact-form-item">
-                        <label for="">
-                            <input type="text" placeholder="Soyadınız*" v-model="form.data.surname">
-                            <i class="icon-user"></i>
-                        </label>
-                    </div>
-                    <div class="Contact-form-item">
-                        <label for="">
-                            <input type="text" placeholder="Mail Adresiniz*" v-model="form.data.email">
-                            <i class="icon-user"></i>
-                        </label>
-                    </div>
-                    <div class="Contact-form-item">
-                        <label for="">
-                            <input type="text" placeholder="Telefon*" v-model="form.data.phone">
-                            <i class="icon-user"></i>
-                        </label>
-                    </div>
-                    <div class="Contact-form-item w-100">
-                        <label for="">
-                            <textarea name="" id="" placeholder="Mesajınız*" v-model="form.data.message"></textarea>
-                            <i class="icon-user"></i>
-                        </label>
-                    </div>
-                    <div class="Contact-form-item Contact-form-item-checkbox w-100">
-                        <label for="" id="kvkkinput">
-                            <input type="checkbox" id="kvkkinput" v-model="form.data.kvkkSelected"
-                                :checked="form.data.kvkkSelected">
-                            <span></span>
-                            <p><a href="">KVKK Aydınlatma metnini</a> okudum.*</p>
-                        </label>
-                    </div>
-                    <div class="Contact-form-item Contact-form-item-checkbox w-100">
-                        <label for="marka">
-                            <input type="checkbox" id="marka" v-model="form.data.informSelected"
-                                :checked="form.data.informSelected">
-                            <span></span>
-                            <p>Markamız ile ilgili gelişmelerden haberdar olmak için tarafıma elektronik ileti
-                                gönderilmesini kabul ederim.</p>
-                        </label>
-                    </div>
-
-                    <button type="button" @click="send" :disabled="buttonDisabled">GÖNDER</button>
-
-                </form>
             </div>
         </div>
-    </div>
+    </section>
 </template>
   
 <script>
@@ -142,24 +153,15 @@ export default {
             if (!this.form.data.kvkkSelected) {
                 return true;
             }
-
-            // form.data içindeki tüm alanlarının doluluk durumunu kontrol et
             const keys = Object.keys(this.form.data);
             for (let i = 0; i < keys.length; i++) {
                 const key = keys[i];
                 const value = this.form.data[key];
-
-                // Eğer herhangi bir alan boşsa, buttonDisabled true döndür
                 if (value === '' || value === null || value === undefined) {
                     return true;
                 }
             }
-
-            // Tüm alanlar doluysa, buttonDisabled false döndür
             return false;
-        },
-        activeCoords() {
-            return [[this.officeCoordinates[0].x, this.officeCoordinates[0].y]][this.picked];
         },
     }
 }

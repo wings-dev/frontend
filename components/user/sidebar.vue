@@ -4,7 +4,7 @@
         <!-- <nuxt-link to="/user/rezervasyonlar">Rezervasyonlarım</nuxt-link> -->
         <nuxt-link to="/user/favorilerim">Favorilerim</nuxt-link>
         <nuxt-link to="/user/kuponlar">Kuponlarım</nuxt-link>
-        <a href="/user/yardim-destek">Yardım ve Destek</a>
+        <nuxt-link to="/user/yardim-destek">Yardım ve Destek</nuxt-link>
         <a href="" class="exit" @click.prevent="logout()">Çıkış Yap</a>
 
     </div>

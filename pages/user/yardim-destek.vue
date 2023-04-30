@@ -19,7 +19,7 @@
 import VSelect from "@alfsnd/vue-bootstrap-select";
 import UserForm from '../../components/user/user-form.vue';
 export default {
-    name: "user-form",
+    name: "yardim-destek",
     layout: 'no-search',
     middleware: ['auth'],
     head() {
