@@ -36,7 +36,7 @@
             <span>Tesis Kodu</span>
 
             <nuxt-link :to="{path: villa.url ,query: detailUrlData}">{{ prefix + villa.code }}</nuxt-link>
-            <div class="F_villa-item-head-name-star">
+            <div class="F_villa-item-head-name-star d-none">
               <i class="icon-star active"></i>
               <i class="icon-star active"></i>
               <i class="icon-star active"></i>
