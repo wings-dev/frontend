@@ -41,7 +41,7 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-img :src="global_cdn + item.preview_image[0].preview_url" loading="lazy" placeholder 
+                                        <nuxt-img :src="global_cdn + item.preview_image[0].preview_url" loading="lazy" placeholder
                                              width="267"
                                             height="175"></nuxt-img>
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
@@ -145,7 +145,7 @@
 
                                         <div class="Abroad-villas-item-content-smile"
                                             v-if="item.emojiStatus !== 'emojistatus_2'">
-                                            <nuxt-img src="/img/laughing-smile.svg" alt="laughing smile" loading="lazy" 
+                                            <nuxt-img src="/img/laughing-smile.svg" alt="laughing smile" loading="lazy"
                                                 v-if="item.emojiStatus == 'emojistatus_1'"></nuxt-img>
                                             <span>{{ item.vizeStatus }}</span>
                                         </div>
@@ -197,6 +197,7 @@ import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import CountryFlag from 'vue-country-flag'
 import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
+import {findVillaUrlByCode} from "@/mixins/findVillaUrlMixin";
 export default {
     name: 'AbroadIndexPage',
     layout: 'no-search',
@@ -214,18 +215,48 @@ export default {
             global_cdn: process.env.GLOBAL_CDN_URL
         }
     },
-    async asyncData({ $getRedisKey, $axios }) {
+    async asyncData({ $getRedisKey, $axios, store }) {
         const site_id = process.env.SITE;
         const redisPageKey = `web:${site_id}:pages:yurtdisi-kiralik-villa`;
 
-        let response = await $getRedisKey([redisPageKey]);
-        const pageData = response[redisPageKey] || {};
-        let headData = {
-          title: pageData.title,
-          meta: pageData.meta
-        }
+      let response = await $getRedisKey([redisPageKey]);
+      const pageData = response[redisPageKey] || {};
+      const popularVillas = Array.isArray(pageData.page_content?.popular) ? pageData.page_content.popular : [];
 
-        return { pageData,headData };
+      const popularVillaPriceKeys = popularVillas.map(villa => villa && villa.code ? `data:villas:${villa.code}:prices` : null).filter(Boolean);
+      const responsePrice = popularVillaPriceKeys.length > 0 ? await $getRedisKey(popularVillaPriceKeys) : {};
+
+      const updatedPopularVillas = popularVillas.map(villa => {
+        if (villa && villa.code) {
+          const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
+          const priceList = Array.isArray(priceInfo[`price_list_${process.env.PRICELIST_ID}`]?.list) ? priceInfo[`price_list_${process.env.PRICELIST_ID}`].list : [];
+
+          const prices = priceList.map(item => item && item.price ? parseInt(item.price.replace("₺", "")) : null).filter(Boolean);
+          const min_price = prices.length > 0 ? Math.min(...prices) : null;
+          const max_price = prices.length > 0 ? Math.max(...prices) : null;
+
+          if (typeof store.state.routes.routes === 'object' && store.state.routes.routes !== null) {
+            villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes);
+          }
+
+          return {
+            ...villa,
+            min_price: min_price ? min_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
+            max_price: max_price ? max_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
+          };
+        } else {
+          return villa;
+        }
+      });
+
+      pageData.page_content = { ...pageData.page_content, popular: updatedPopularVillas };
+
+      let headData = {
+        title: pageData.title,
+        meta: pageData.meta
+      }
+
+      return { pageData, headData };
     },
     methods: {
         isFavorite(code) {
