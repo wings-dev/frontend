@@ -54,7 +54,7 @@
                   {{ villa.city | titlecase }} </span>
               </p>
             </div>
-          </div>
+          </div> 
           <div class="F_villa-item-head-price F_villa-item-head-price-promotion with-price" v-if="checkindate">
             <div class="F_villa-item-head-price-in">
               <p>{{ villa.total.day }} GECE</p>
