@@ -155,7 +155,7 @@
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtiçi Otelleri Keşfedin <i
+                                <nuxt-link to="/otel#searchEngine">Tüm Yurtiçi Otelleri Keşfedin <i
                                         class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
@@ -163,31 +163,31 @@
                             <div class="Areas-otel-item-in">
                                 <h4><b>Kıbrıs</b> Otelleri</h4>
                                 <div class="Areas-otel-item-list">
-                                    <nuxt-link to="/magosa-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=123533&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/magosa.jpeg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Magosa Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/girne-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=123535&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/girne.jpeg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Girne Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/bafra-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=123537&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/bafra.jpeg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Bafra Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/lefkosa-otelleri" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=123534&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/lefkosa.jpeg" width="172" height="114" loading="lazy" placeholder :alt="'Otel | ' + sitename"></nuxt-img>
                                         <span>Lefkoşa Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/otel" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=123536&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/kibris-balayi.jpeg" width="172" :alt="'Otel | ' + sitename"
                                             height="114" loading="lazy" placeholder ></nuxt-img>
-                                        <span>Kıbrıs Balayı Otelleri</span>
+                                        <span>Güzelyurt Otelleri</span>
                                     </nuxt-link>
-                                    <nuxt-link to="/otel" class="Areas-otel-item-list-item">
+                                    <nuxt-link :to="`/oteller?destinations=123538&checkIn=${$moment().format('YYYY-MM-DD')}&checkOut=${$moment().add(2, 'days').format('YYYY-MM-DD')}&adult=2`" class="Areas-otel-item-list-item">
                                         <nuxt-img src="/img/otelarea/kibris-ucakli.jpeg" width="172" :alt="'Otel | ' + sitename"
                                             height="114" loading="lazy" placeholder ></nuxt-img>
-                                        <span>Kıbrıs Uçaklı Paketler</span>
+                                        <span>Karpaz Otelleri</span>
                                     </nuxt-link>
                                 </div>
                             </div>
@@ -310,7 +310,7 @@
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Şehir Otellerini Keşfedin <i
+                                <nuxt-link to="/otel#searchEngine">Tüm Şehir Otellerini Keşfedin <i
                                         class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
@@ -345,7 +345,7 @@
                                 </div>
                             </div>
                             <div class="Areas-otel-item-bottom">
-                                <nuxt-link to="/">Tüm Yurtdışı Otelleri Keşfedin <i
+                                <nuxt-link to="/otel#searchEngine">Tüm Yurtdışı Otelleri Keşfedin <i
                                         class="icon-right-arrows-new"></i></nuxt-link>
                             </div>
                         </div>
