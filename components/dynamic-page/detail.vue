@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="container pb-1 gallery-container">
-        <template v-if="villa && villa.floorplan && villa?.floorplan?.kat[0]?.bolum[0].gorsel">
+        <template v-if="villa && villa.floorplan && villa.floorplan.kat && villa?.floorplan?.kat[0]?.bolum[0].gorsel">
           <div class="view-gallery">
             <div v-if="villa.watermark_images && villa.watermark_images.length > 0" class="area-1">
               <a href="#" @click.prevent="showGallery()"
