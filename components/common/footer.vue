@@ -55,7 +55,7 @@
                             <div class="Footer-right-bottom-credit-text">
                                 <i class="icon-creditcard-single"></i>
                                 <h6>Tüm kartlara Taksit imkanı</h6>
-                                <p>Villakalkan.com.tr’de</p>
+                                <p>Balayivillasi.com.tr’de</p>
                             </div>
                             <nuxt-img src="/img/banks-grey.png" alt="Bankalar" loading="lazy" placeholder ></nuxt-img>
                         </div>

@@ -24,7 +24,7 @@
         <client-only>
             <search-bar :key="$route.path"></search-bar>
         </client-only>
-        <section class="popular-section bg-white overflow-hidden pb-sm-5 mt-6">
+        <section class="popular-section bg-white overflow-hidden pb-sm-5 mb-sm-5 mt-6">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-flame"></i>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <!-- If pagination is needed -->
-
+                    <div class="swiper-pagination"></div>
                     <!-- If navigation buttons are needed -->
                     <div class="swiper-button-prev list-navigation-prev"></div>
                     <div class="swiper-button-next list-navigation-next"></div>
@@ -161,7 +161,7 @@
             </div>
         </section>
 
-        <section class="List mt-5 mb-5">
+        <section class="List List-abroad">
             <div class="container">
                 <div class="List-sss">
                     <h3>En çok sorulan sorular </h3>
@@ -283,6 +283,10 @@ export default {
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
             },
             breakpoints: {
                 576: {

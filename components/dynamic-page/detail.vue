@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="container pb-1 gallery-container">
-        <template v-if="villa && villa.floorplan && villa.floorplan.kat">
+        <template v-if="villa && villa.floorplan && villa?.floorplan?.kat[0]?.bolum[0].gorsel">
           <div class="view-gallery">
             <div v-if="villa.watermark_images && villa.watermark_images.length > 0" class="area-1">
               <a href="#" @click.prevent="showGallery()"
@@ -185,75 +185,151 @@
         </template>
         <template v-else>
           <div class="view-gallery">
-            <div v-if="villa.watermark_images && villa.watermark_images.length > 0" class="area-1">
-              <a :href="global_cdn + villa.watermark_images[0].original_url" data-fancybox="gallery"
-                :data-caption="villa_prefix + villa.code"
-                class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
-                <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
+            <template v-if="villa.watermark_images.length">
+              <div v-if="villa.watermark_images.length > 0" class="area-1">
+                <a :href="global_cdn + villa.watermark_images[0].original_url" data-fancybox="gallery"
+                  :data-caption="villa_prefix + villa.code"
+                  class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
+                  <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
                  alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
-                <nuxt-img :src="global_cdn + villa.watermark_images[0].original_url"
-                  :srcset="generateSrcset(villa.watermark_images[0].responsive)" loading="lazy" placeholder
-                  :alt="villa_prefix + villa.code + ' ' + sitename" width="585" height="387"
-                  sizes="sm:100vw md:50vw lg:585px" />
+                  <nuxt-img :src="global_cdn + villa.watermark_images[0].original_url"
+                    :srcset="generateSrcset(villa.watermark_images[0].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="585" height="387"
+                    sizes="sm:100vw md:50vw lg:585px" />
 
-              </a>
-            </div>
-            <div v-if="villa.watermark_images && villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
-              <a :href="global_cdn + villa.watermark_images[1].original_url" data-fancybox="gallery"
-                :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url"
-                  :srcset="generateSrcset(villa.watermark_images[1].responsive)" loading="lazy" placeholder
-                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
-                  sizes="sm:100vw md:50vw lg:284px" />
+                </a>
+              </div>
+              <div v-if="villa.watermark_images.length > 1" class="area-2 d-md-block d-none">
+                <a :href="global_cdn + villa.watermark_images[1].original_url" data-fancybox="gallery"
+                  :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
+                  <nuxt-img :src="global_cdn + villa.watermark_images[1].preview_url"
+                    :srcset="generateSrcset(villa.watermark_images[1].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" />
 
-              </a>
-            </div>
-            <div v-if="villa.watermark_images && villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
-              <a :href="global_cdn + villa.watermark_images[2].original_url" data-fancybox="gallery"
-                :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url"
-                  :srcset="generateSrcset(villa.watermark_images[2].responsive)" loading="lazy" placeholder
-                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
-                  sizes="sm:100vw md:50vw lg:284px" />
+                </a>
+              </div>
+              <div v-if="villa.watermark_images.length > 2" class="area-3 d-md-block d-none">
+                <a :href="global_cdn + villa.watermark_images[2].original_url" data-fancybox="gallery"
+                  :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
+                  <nuxt-img :src="global_cdn + villa.watermark_images[2].preview_url"
+                    :srcset="generateSrcset(villa.watermark_images[2].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" />
 
-              </a>
-            </div>
-            <div v-if="villa.watermark_images && villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
-              <a :href="global_cdn + villa.watermark_images[3].original_url" data-fancybox="gallery"
-                :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
-                <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url"
-                  :srcset="generateSrcset(villa.watermark_images[3].responsive)" loading="lazy" placeholder
-                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
-                  sizes="sm:100vw md:50vw lg:284px" />
+                </a>
+              </div>
+              <div v-if="villa.watermark_images.length > 3" class="area-4 d-none d-lg-block">
+                <a :href="global_cdn + villa.watermark_images[3].original_url" data-fancybox="gallery"
+                  :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
+                  <nuxt-img :src="global_cdn + villa.watermark_images[3].preview_url"
+                    :srcset="generateSrcset(villa.watermark_images[3].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" />
 
-              </a>
-            </div>
-            <div v-if="villa.watermark_images && villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
-              <div class="view-item d-block w-100 h-100  last">
-                <nuxt-img :src="global_cdn + villa.watermark_images[4].original_url"
-                  :srcset="generateSrcset(villa.watermark_images[4].responsive)" loading="lazy" placeholder
-                  :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
-                  sizes="sm:100vw md:50vw lg:284px" />
-                <div
-                  class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
-                  <span @click.prevent="showGallery()">Tüm Fotoğraflar ( {{ villa.watermark_images.length }} ) </span>
-                  <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
-                  <a :href="villa.video" data-fancybox v-if="villa.video">
-                    <i class="icon-play-button"></i> Video İzle
-                  </a>
-                  <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
+                </a>
+              </div>
+              <div v-if="villa.watermark_images.length > 4" class="area-5 d-none d-lg-block">
+                <div class="view-item d-block w-100 h-100  last">
+                  <nuxt-img :src="global_cdn + villa.watermark_images[4].original_url"
+                    :srcset="generateSrcset(villa.watermark_images[4].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" />
+                  <div
+                    class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
+                    <span @click.prevent="showGallery()">Tüm Fotoğraflar ( {{ villa.watermark_images.length }} ) </span>
+                    <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
+                    <a :href="villa.video" data-fancybox v-if="villa.video">
+                      <i class="icon-play-button"></i> Video İzle
+                    </a>
+                    <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
+                  </div>
                 </div>
               </div>
-            </div>
-            <template v-if="villa.watermark_images && villa.watermark_images.length > 4">
-              <div class="d-none">
-                <a v-for="previewImage in villa.watermark_images.slice(5)" :href="global_cdn + previewImage.original_url"
-                  data-fancybox="gallery" >
-                  <nuxt-img :src="global_cdn + previewImage.preview_url" :srcset="generateSrcset(previewImage.responsive)"
-                    width="284" height="187" loading="lazy" placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
-                    sizes="sm:100vw md:50vw lg:284px" /></a>
-              </div>
+              <template v-if="villa.watermark_images.length > 4">
+                <div class="d-none">
+                  <a v-for="previewImage in villa.watermark_images.slice(5)"
+                    :href="global_cdn + previewImage.original_url" data-fancybox="gallery">
+                    <nuxt-img :src="global_cdn + previewImage.preview_url"
+                      :srcset="generateSrcset(previewImage.responsive)" width="284" height="187" loading="lazy"
+                      placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                      sizes="sm:100vw md:50vw lg:284px" /></a>
+                </div>
 
+              </template>
+            </template>
+            <template v-else>
+              <div v-if="villa.images.length > 0" class="area-1">
+                <a :href="global_cdn + villa.images[0].original_url" data-fancybox="gallery"
+                  :data-caption="villa_prefix + villa.code"
+                  class="view-item d-block w-100 h-100 position-relative overflow-hidden ">
+                  <!-- <img :src="villa.watermark_images[0].preview_url" :srcset="villa.watermark_images[0].responsive"
+                 alt="view-image" class="lazy cover rounded-xl w-100 h-100"> -->
+                  <nuxt-img :src="global_cdn + villa.images[0].original_url"
+                    :srcset="generateSrcset(villa.images[0].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="585" height="387"
+                    sizes="sm:100vw md:50vw lg:585px" />
+
+                </a>
+              </div>
+              <div v-if="villa.images.length > 1" class="area-2 d-md-block d-none">
+                <a :href="global_cdn + villa.images[1].original_url" data-fancybox="gallery"
+                  :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
+                  <nuxt-img :src="global_cdn + villa.images[1].preview_url"
+                    :srcset="generateSrcset(villa.images[1].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" />
+
+                </a>
+              </div>
+              <div v-if="villa.images.length > 2" class="area-3 d-md-block d-none">
+                <a :href="global_cdn + villa.images[2].original_url" data-fancybox="gallery"
+                  :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
+                  <nuxt-img :src="global_cdn + villa.images[2].preview_url"
+                    :srcset="generateSrcset(villa.images[2].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" />
+
+                </a>
+              </div>
+              <div v-if="villa.images.length > 3" class="area-4 d-none d-lg-block">
+                <a :href="global_cdn + villa.images[3].original_url" data-fancybox="gallery"
+                  :data-caption="villa_prefix + villa.code" class="view-item d-block w-100 h-100 ">
+                  <nuxt-img :src="global_cdn + villa.images[3].preview_url"
+                    :srcset="generateSrcset(villa.images[3].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" />
+
+                </a>
+              </div>
+              <div v-if="villa.images.length > 4" class="area-5 d-none d-lg-block">
+                <div class="view-item d-block w-100 h-100  last">
+                  <nuxt-img :src="global_cdn + villa.images[4].original_url"
+                    :srcset="generateSrcset(villa.images[4].responsive)" loading="lazy" placeholder
+                    :alt="villa_prefix + villa.code + ' ' + sitename" width="284" height="187"
+                    sizes="sm:100vw md:50vw lg:284px" />
+                  <div
+                    class="hover-box position-absolute top-0 start-0 w-100 h-100 bg-theme-first-dark text-white fs-6 bg-opacity-75 d-flex align-items-center justify-content-center px-2 fw-medium ls-05 d-flex flex-column">
+                    <span @click.prevent="showGallery()">Tüm Fotoğraflar ( {{ villa.images.length }} ) </span>
+                    <!-- <button type="button" @click.prevent="test()">Video İzle</button> -->
+                    <a :href="villa.video" data-fancybox v-if="villa.video">
+                      <i class="icon-play-button"></i> Video İzle
+                    </a>
+                    <!-- https://www.youtube.com/watch?v=5SMaakuGyH0 -->
+                  </div>
+                </div>
+              </div>
+              <template v-if="villa.images.length > 4">
+                <div class="d-none">
+                  <a v-for="previewImage in villa.images.slice(5)"
+                    :href="global_cdn + previewImage.original_url" data-fancybox="gallery">
+                    <nuxt-img :src="global_cdn + previewImage.preview_url"
+                      :srcset="generateSrcset(previewImage.responsive)" width="284" height="187" loading="lazy"
+                      placeholder :alt="villa_prefix + villa.code + ' ' + sitename"
+                      sizes="sm:100vw md:50vw lg:284px" /></a>
+                </div>
+
+              </template>
             </template>
             <div class="View-gallery-mobile-buttons">
 
@@ -296,24 +372,27 @@
                   @click.prevent="goFacilityConceptsFilter(item.id)"
                   v-for="(item, index) in villa.amenites.amenite_200?.list" :key="index">{{ item.name }}</a>
               </div>
-              <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel bir
-                tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve müthiş
-                manzarası ile sizleri mest edecek olan Mabel, dubleks bir dairedir. Giriş katında, harika deniz
-                manzarasını
-                izlemekten arta kalan zamanlarınızı değerlendirebileceğiniz amerikan bilardo masası ile
-                air-hockey,masa-futbolu ve dart bulunan oyun odası,sauna ve açık mutfak bulunmaktadır. Terasında yer
-                alan
-                perde sistemi ile havuz alanı korunaklı hale getirilebilmektedir.
-              </p>
-
-              <p>Suitimizin üst katında deniz manzaralı ve ferah bir salon ve açık mutfak bulunmaktadır. Salondan giriş
-                yapılan ana yatak odasında 1.20 x 1.85 ebatında deniz manzaralı jakuzi, tv, king size çift kişilik yatak
-                ve
-                banyo bulunmaktadır.</p>
-              <p>Kesintisiz bir deniz manzarası olan terasta özel yüzme havuzu,şezlonglar,açık alanda keyifle yemek
-                yiyebileceğiniz masa sandalye ve taş barbekü bulunmaktadır.Yüzme havuzunda bulunan özel jet dalga motoru
-                ile
-                yorulana kadar yüzmenize imkan vermektedir.</p>
+              <p>{{ villa?.location?.destination.name }} bölgesinde yer alan bu konforlu villa, {{ villa?.max_adult }}
+                kişi
+                kapasitesi, {{ villa?.bedroom }} yatak odası ve {{ villa?.bathrooms }} banyo sayısı ile unutulmaz bir
+                tatil
+                deneyimi sunuyor. Stresli şehir yaşamından uzaklaşarak huzur ve keyif dolu anılar biriktirmek isteyenler
+                için ideal bir seçimdir.</p>
+              <p>{{ villa?.location?.destination.name }}'nin etkileyici doğası ve zengin kültürel mirası, tatiliniz
+                boyunca
+                keşfedilmeyi bekleyen birçok güzellik sunar. Villa, hem şehir merkezine hem de popüler turistik alanlara
+                yakın konumda bulunarak, tatilinizi daha verimli ve eğlenceli hale getirecek imkanlar sunmaktadır.</p>
+              <p>Bu villamızda, {{ villa?.max_adult }} kişiye kadar konaklayabilecek geniş ve ferah bir yaşam alanı
+                bulunmaktadır. {{ villa?.bedroom }} yatak odası ve {{ villa?.bathrooms }} banyo sayısı ile misafirlerine
+                yeterli alan sağlayarak, kendinizi evinizde hissetmenizi sağlar. Ayrıca, villanın modern ve şık
+                dekorasyonu, tatilinizi daha keyifli ve rahat bir hale getirecektir.</p>
+              <p>Sevdiklerinizle bir arada olmak ve kaliteli zaman geçirmek için bu villayı tercih edebilirsiniz.
+                {{ villa?.location?.destination.name }} bölgesinin sunduğu doğal ve tarihi güzellikleri keşfe çıkarak,
+                tatilinizi daha anlamlı ve zengin bir hale getirebilirsiniz. Villa, kendi tatilini kendi yapmak isteyen ve
+                özgürlüğüne düşkün misafirler için idealdir.</p>
+              <p>Sonuç olarak, {{ villa?.location?.destination.name }} bölgesinde yer alan bu şık ve konforlu villamız,
+                sizlere ve sevdiklerinize unutulmaz bir tatil deneyimi yaşatmak için sizleri bekliyor. Huzurlu ve keyifli
+                bir tatil geçirmenizi dileriz.</p>
               <div class="View-desc-amenites" v-if="amenites">
                 <h4 class="View-title"><b>Tesis</b> Olanakları</h4>
                 <div class="View-desc-amenites-in">
@@ -347,18 +426,29 @@
                 </div>
                 <div class="View-desc-mobile-bottom-content">
                   <div class="View-desc-mobile-bottom-content-in" :class="{ 'active': moreMobileContent }">
-                    <p>Kalkan merkeze yürüyüş mesafesinde bulunan Suit Mabel konfor, estetik ve lüksü bir arada sunan özel
-                      bir tatil evidir. Özel kapalı garajına aracınızı parkedip suite girişinizle etkileyici donanım ve
-                      müthiş manzarası ile sizleri mest edecek olan Mabel, dubleks bir dairedir. Giriş katında, harika
-                      deniz manzarasını izlemekten arta kalan zamanlarınızı değerlendirebileceğiniz amerikan bilardo
-                      masası ile air hockey,masa-futbolu ve dart bulunan oyun odası,sauna ve açık mutfak bulunmaktadır.
-                      Terasında yer alan perde sistemi ile havuz alanı korunaklı hale getirilebilmektedir.</p>
-                    <p>Suitimizin üst katında deniz manzaralı ve ferah bir salon ve açık mutfak bulunmaktadır. Salondan
-                      giriş yapılan ana yatak odasında 1.20 x 1.85 ebatında deniz manzaralı jakuzi, tv, king size çift
-                      kişilik yatak ve banyo bulunmaktadır.</p>
-                    <p>Kesintisiz bir deniz manzarası olan terasta özel yüzme havuzu,şezlonglar,açık alanda keyifle yemek
-                      yiyebileceğiniz masa sandalye ve taş barbekü bulunmaktadır.Yüzme havuzunda bulunan özel jet dalga
-                      motoru ile yorulana kadar yüzmenize imkan vermektedir.</p>
+                    <p>{{ villa?.location?.destination.name }} bölgesinde yer alan bu konforlu villa, {{ villa?.max_adult
+                    }}
+                      kişi kapasitesi, {{ villa?.bedroom }} yatak odası ve {{ villa?.bathrooms }} banyo sayısı ile
+                      unutulmaz
+                      bir tatil deneyimi sunuyor. Stresli şehir yaşamından uzaklaşarak huzur ve keyif dolu anılar
+                      biriktirmek isteyenler için ideal bir seçimdir.</p>
+                    <p>{{ villa?.location?.destination.name }}'nin etkileyici doğası ve zengin kültürel mirası, tatiliniz
+                      boyunca keşfedilmeyi bekleyen birçok güzellik sunar. Villa, hem şehir merkezine hem de popüler
+                      turistik alanlara yakın konumda bulunarak, tatilinizi daha verimli ve eğlenceli hale getirecek
+                      imkanlar sunmaktadır.</p>
+                    <p>Bu villamızda, {{ villa?.max_adult }} kişiye kadar konaklayabilecek geniş ve ferah bir yaşam alanı
+                      bulunmaktadır. {{ villa?.bedroom }} yatak odası ve {{ villa?.bathrooms }} banyo sayısı ile
+                      misafirlerine
+                      yeterli alan sağlayarak, kendinizi evinizde hissetmenizi sağlar. Ayrıca, villanın modern ve şık
+                      dekorasyonu, tatilinizi daha keyifli ve rahat bir hale getirecektir.</p>
+                    <p>Sevdiklerinizle bir arada olmak ve kaliteli zaman geçirmek için bu villayı tercih edebilirsiniz.
+                      {{ villa?.location?.destination.name }} bölgesinin sunduğu doğal ve tarihi güzellikleri keşfe
+                      çıkarak,
+                      tatilinizi daha anlamlı ve zengin bir hale getirebilirsiniz. Villa, kendi tatilini kendi yapmak
+                      isteyen ve özgürlüğüne düşkün misafirler için idealdir.</p>
+                    <p>Sonuç olarak, {{ villa?.location?.destination.name }} bölgesinde yer alan bu şık ve konforlu
+                      villamız, sizlere ve sevdiklerinize unutulmaz bir tatil deneyimi yaşatmak için sizleri bekliyor.
+                      Huzurlu ve keyifli bir tatil geçirmenizi dileriz.</p>
                   </div>
                   <button type="button" class="View-desc-mobile-bottom-content-more" @click="moreMobileContentOpen">{{
                     moreMobileContent ? 'Daha Az Göster' : 'Daha Fazla Göster' }} </button>
@@ -1463,7 +1553,7 @@
       </div>
     </section>
 
-    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat && galleryIsOpen">
+    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat && galleryIsOpen" :class="{'show':galleryIsOpen}">
       <div class="container">
         <div class="Gallery-head">
           <button type="button" class="Gallery-close" @click="closeGallery"><i class="icon-search-close"></i></button>
@@ -1493,9 +1583,8 @@
                     <template v-if="bolum.gorsel && bolum.gorsel.length">
                       <a class="Gallery-detail-item-right-img" :href="global_cdn + img.original_url"
                         data-fancybox="gallery" :data-caption="bolum.name" v-for="(img, index) in bolum.gorsel">
-                        <nuxt-img :src="global_cdn + img.preview_url"
-                        :srcset="generateSrcset(img.responsive)"
-                        loading="lazy" sizes="sm:100vw md:50vw lg:756px"
+                        <nuxt-img :src="global_cdn + img.preview_url" :srcset="generateSrcset(img.responsive)"
+                          loading="lazy" sizes="sm:100vw md:50vw lg:756px"
                           :alt="villa_prefix + villa.code + ' ' + sitename" />
                       </a>
                     </template>
@@ -1605,7 +1694,7 @@ export default {
             facilityConcepts: id
           },
         });
-      }else{
+      } else {
         this.$router.push({
           path: '/yurtdisi-kiralik-villa-ara',
           query: {
@@ -1773,19 +1862,9 @@ export default {
       }
     },
     showGallery() {
-      setTimeout(() => {
-        document.querySelector('.Gallery').classList.add("show")
-        document.querySelector('body').classList.add("over")
-        document.querySelector('.main').classList.add("main-z")
-      }, 50)
       this.galleryIsOpen = true
     },
     closeGallery() {
-      setTimeout(() => {
-        document.querySelector('.Gallery').classList.remove("show")
-        document.querySelector('body').classList.remove("over")
-        document.querySelector('.main').classList.remove("main-z")
-      }, 50)
       this.galleryIsOpen = false
     },
     scrollGallery(event) {
@@ -1876,6 +1955,18 @@ export default {
   watch: {
     galleryIsOpen() {
       window.addEventListener("keyup", this.onEscapeKeyUp);
+
+      if (this.galleryIsOpen == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add("over")
+          document.querySelector('.main').classList.add("main-z")
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove("over")
+          document.querySelector('.main').classList.remove("main-z")
+        }, 50)
+      }
     },
     isMobile() {
       if (this.isMobile == true) {
@@ -2223,13 +2314,12 @@ export default {
       if (window.innerWidth <= 991) {
         setTimeout(() => {
           document.querySelector(".Whatsapp").classList.add('Whatsapp-villa')
+          window.scrollTo(0, 0)
         }, 50)
       }
 
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
-
-
     });
 
   },
