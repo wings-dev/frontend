@@ -65,7 +65,7 @@
                         </div>
                       </div>
                       <div class="Search-item-person-item">
-                        <p>Çocuk <br><span>6-17 arası</span></p>
+                        <p>Çocuk <br><span>4-17 arası</span></p>
                         <div class="Search-item-person-item-in ">
                           <button type="button" class="minus-person" @click="children_Decrease">
                             <i class="icon-minus"></i>
@@ -137,7 +137,9 @@
                 <div class="Reservation-form-detail-top-item-tooltip">
                   <p>Temizlik Ücreti </p>
                   <i class="icon-information"></i>
-                  <span class="tooltiptext">{{ availabilityData?.min_cleaning_day }} gece altındaki konaklamalardan {{availabilityData?.cleaning_fee }}{{ availabilityData?.night_price_currency_symbol }} temizlik ücreti alınır.</span>
+                  <span class="tooltiptext">{{ availabilityData?.min_cleaning_day }} gece altındaki konaklamalardan
+                    {{ availabilityData?.cleaning_fee }}{{ availabilityData?.night_price_currency_symbol }} temizlik ücreti
+                    alınır.</span>
                 </div>
 
                 <b>{{ availabilityData?.cleaning_fee | numberFormat }}{{ availabilityData?.night_price_currency_symbol
@@ -241,6 +243,10 @@
 
           <button v-if="!availabilityChecked" class="Reservation-form-submit" @click.prevent="reservatinAction()">
             Uygunluk Durumunu Kontrol Edin
+          </button>
+          <button v-else-if="availabilityChecked && adult == 0" :disabled="!dateSelected" class="Reservation-form-submit"
+            @click.prevent="reservatinActionNoPerson()">
+            Ön Rezervasyon Talebi Gönder
           </button>
           <button v-else :disabled="!dateSelected" class="Reservation-form-submit" @click.prevent="preReservation()">
             Ön Rezervasyon Talebi Gönder
@@ -674,10 +680,23 @@ export default {
         this.isMobile = false
       }
     },
-
     reservatinAction() {
       this.mobileReservation = !this.mobileReservation
-
+    },
+    reservatinActionNoPerson() {
+      this.mobileReservation = !this.mobileReservation
+      this.$toast.error("<p>Lütfen kişi sayısı seçiniz</p>", {
+        className: 'custom-toast error-toast',
+        icon: {
+          name: 'icon-reservation-cancel',
+        },
+        action: {
+          icon: 'icon-toast-exit',
+          onClick: (e, toastObject) => {
+            toastObject.goAway(0);
+          }
+        }
+      })
     },
   },
   mounted() {

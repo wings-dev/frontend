@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="container pb-1 gallery-container">
-        <template v-if="villa && villa.floorplan && villa.floorplan.kat[0].bolum.gorsel">
+        <template v-if="villa && villa.floorplan && villa?.floorplan?.kat[0]?.bolum[0].gorsel">
           <div class="view-gallery">
             <div v-if="villa.watermark_images && villa.watermark_images.length > 0" class="area-1">
               <a href="#" @click.prevent="showGallery()"
@@ -1553,7 +1553,7 @@
       </div>
     </section>
 
-    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat && galleryIsOpen">
+    <section class="Gallery" @keydown.esc="closeGallery" v-if="villa.floorplan.kat && galleryIsOpen" :class="{'show':galleryIsOpen}">
       <div class="container">
         <div class="Gallery-head">
           <button type="button" class="Gallery-close" @click="closeGallery"><i class="icon-search-close"></i></button>
@@ -1862,19 +1862,9 @@ export default {
       }
     },
     showGallery() {
-      setTimeout(() => {
-        document.querySelector('.Gallery').classList.add("show")
-        document.querySelector('body').classList.add("over")
-        document.querySelector('.main').classList.add("main-z")
-      }, 50)
       this.galleryIsOpen = true
     },
     closeGallery() {
-      setTimeout(() => {
-        document.querySelector('.Gallery').classList.remove("show")
-        document.querySelector('body').classList.remove("over")
-        document.querySelector('.main').classList.remove("main-z")
-      }, 50)
       this.galleryIsOpen = false
     },
     scrollGallery(event) {
@@ -1965,6 +1955,18 @@ export default {
   watch: {
     galleryIsOpen() {
       window.addEventListener("keyup", this.onEscapeKeyUp);
+
+      if (this.galleryIsOpen == true) {
+        setTimeout(() => {
+          document.querySelector('body').classList.add("over")
+          document.querySelector('.main').classList.add("main-z")
+        }, 50)
+      } else {
+        setTimeout(() => {
+          document.querySelector('body').classList.remove("over")
+          document.querySelector('.main').classList.remove("main-z")
+        }, 50)
+      }
     },
     isMobile() {
       if (this.isMobile == true) {
@@ -2312,13 +2314,12 @@ export default {
       if (window.innerWidth <= 991) {
         setTimeout(() => {
           document.querySelector(".Whatsapp").classList.add('Whatsapp-villa')
+          window.scrollTo(0, 0)
         }, 50)
       }
 
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
-
-
     });
 
   },

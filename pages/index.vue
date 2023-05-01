@@ -27,7 +27,7 @@
         <client-only>
             <search-bar :key="$route.path"></search-bar>
         </client-only>
-        <section class="popular-section bg-white overflow-hidden pb-sm-2 ">
+        <section class="popular-section bg-white overflow-hidden pb-sm-5 mt-6">
             <div class="container ">
                 <div class="section-caption d-flex align-items-center mb-3 pb-1">
                     <i class="icon-flame"></i>
@@ -35,7 +35,7 @@
                         Popüler Villaları
                         <span>keşfedin</span>
                     </h4>
-                    <nuxt-link to="/kiralik-villa-ara" class="button-more">Tümünü Gör</nuxt-link>
+                    <nuxt-link to="/yurtdisi-kiralik-villa-ara" class="button-more">Tümünü Gör</nuxt-link>
                 </div>
                 <div class="swiper popular list-slide list-slide-first list-wrapper scroll-wrapper mb-3 mb-sm-4 pb-1">
                     <div class="swiper-wrapper">
@@ -44,17 +44,9 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
-                                        <nuxt-img :src="global_cdn + item.preview_image[0].preview_url"
-                                            loading="lazy"
-                                            preset="card"
-                                            placeholder
-                                            :srcset="generateSrcset(item.preview_image[0].responsive_url)"
-                                            sizes="sm:325px lg:267px"
-                                            :alt="prefix + item.code + ' | ' + sitename"
-                                            ></nuxt-img>
-
-                                        <!-- :srcset="'https://d1t2mawg5vwzes.cloudfront.net/property/585/16121/responsive-images/1___media_library_original_322_181.jpg 322w,'" -->
-
+                                        <nuxt-img :src="global_cdn + item.preview_image[0].preview_url" loading="lazy" placeholder 
+                                             width="267"
+                                            height="175"></nuxt-img>
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
                                             :class="isFavorite(item.code) ? 'active' : ''">
                                             <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
@@ -68,8 +60,9 @@
                                             </div>
                                             <div class="Card-content-head-location">
                                                 <i class="icon-pin"></i>
-                                                <p>{{ item.city | titlecase }} <span>{{ item.country | titlecase }} / {{
-                                                    item.state | titlecase }}</span></p>
+                                                <p>{{ item.destination | titlecase }} <span>{{ item.country | titlecase }} /
+                                                        {{
+                                                            item.state | titlecase }}</span></p>
                                             </div>
                                         </div>
                                         <div class="Card-content-info">
@@ -90,7 +83,7 @@
                                     <div class="Card-content-bottom">
                                         <div class="Card-content-bottom-price">
                                             <p><b>{{ item.min_price | numberFormat }} -
-                                                    {{ item.max_price | numberFormat }}
+                                                    {{ item.max_price }}
                                                 </b><span>/Gecelik</span></p>
                                             <p>Fiyat Aralığında</p>
                                         </div>
@@ -628,10 +621,10 @@ export default {
     mounted() {
         Swiper.use([Navigation, Pagination])
 
+        
         const swiper = new Swiper('.list-slide-first', {
             slidesPerView: 1.1,
-            spaceBetween: 14,
-            centeredSlides: true,
+            spaceBetween: 10,
             direction: 'horizontal',
             loop: true,
             modules: [Navigation, Pagination],
@@ -646,19 +639,12 @@ export default {
             breakpoints: {
                 576: {
                     slidesPerView: 2,
-                    centeredSlides: false,
                 },
                 768: {
-                    slidesPerView: 2,
-                    centeredSlides: false,
-                },
-                991: {
                     slidesPerView: 3,
-                    centeredSlides: false,
                 },
                 1199: {
                     slidesPerView: 4,
-                    centeredSlides: false,
                 },
             },
         })

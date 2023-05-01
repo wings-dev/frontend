@@ -1134,7 +1134,7 @@ body.overflow-hidden {
   .Home {
     display: flex;
     flex-direction: column;
-    background-color: var(--bs-theme-grey);
+    // background-color: var(--bs-theme-grey);
     .Banner {
       height: 170px;
       transform: translateY(0);
@@ -2751,7 +2751,6 @@ body.overflow-hidden {
       margin-bottom: 18px;
     }
   }
-
   &-sss {
     .accordion {
       // display: flex;
@@ -2807,6 +2806,19 @@ body.overflow-hidden {
           color: #7f8090;
         }
       }
+    }
+  }
+  &-abroad{
+    margin-bottom: clamp(30px,3.125vw,60px);
+  }
+}
+
+@media (max-width:991px) {
+  .List {
+   
+    &-abroad{
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
   }
 }

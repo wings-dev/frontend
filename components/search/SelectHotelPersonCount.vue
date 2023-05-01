@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="Search-item-person-item" style="flex-wrap: wrap;">
-            <p>Çocuk <br><span>6-17 arası</span></p>
+            <p>Çocuk <br><span>4-17 arası</span></p>
             <div class="Search-item-person-item-in ">
               <button type="button" class="minus-person" @click="children_Decrease">
                 <i class="icon-minus"></i>

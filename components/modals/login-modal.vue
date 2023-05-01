@@ -34,8 +34,7 @@
                   <div class="Login-form-item">
                     <div class="input-group">
                       <span class="input-group-text">+90</span>
-                      <input v-model="phone" type="text" class="singlephone" id="inputTR"
-                        placeholder="Telefon Numaranız">
+                      <input v-model="phone" type="text" class="singlephone" id="inputTR" placeholder="Telefon Numaranız">
                     </div>
                   </div>
                   <p class="Login-form-alert  mt-2 text-danger text-sm phone-alert"></p>
@@ -127,16 +126,31 @@ export default {
 
         const response = await this.$axios.post('/website/sendcode', data);
         // TODO numaranın doğruluğu cevaptan kontrol edilecek ?
-
         // show Login Code Modal
-        this.setLoginCodeModalData({
-          loginType: this.loginType,
-          phone: this.phone,
-          email: this.email,
-          data: data
-        })
-        this.$bvModal.hide('loginModal')
-        this.$bvModal.show('loginCodeModal')
+
+        if (response.data.status) {
+          this.setLoginCodeModalData({
+            loginType: this.loginType,
+            phone: this.phone,
+            email: this.email,
+            data: data
+          })
+          this.$bvModal.hide('loginModal')
+          this.$bvModal.show('loginCodeModal')
+        } else {
+          this.$toast.error("<p>Telefon numaranızı kontrol ediniz!</p>", {
+            className: 'custom-toast error-toast',
+            icon: {
+              name: 'icon-reservation-cancel',
+            },
+            action: {
+              icon: 'icon-toast-exit',
+              onClick: (e, toastObject) => {
+                toastObject.goAway(0);
+              }
+            }
+          })
+        }
 
       } catch (error) {
         console.error(error);
@@ -146,7 +160,7 @@ export default {
 }
 </script>
 <style>
- .input-group-text {
+.input-group-text {
   border: none;
   background-color: transparent;
 }
