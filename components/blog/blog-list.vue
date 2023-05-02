@@ -3,11 +3,10 @@
         <section class="Blog-header">
             <div class="container">
                 <div class="Blog-header-in">
-                    <h1>Kalkan</h1>
+                    <h1>{{category.text}}</h1>
                     <div class="Blog-header-pagination">
-                        <a href="">Blog > </a>
-                        <a href="">Genel > </a>
-                        <a href="">Tatil için yola çıkmadan....</a>
+                        <nuxt-link to="/blog">Blog > </nuxt-link>
+                        <nuxt-link :to="'/blog/'+category.href">{{category.text}}</nuxt-link>
                     </div>
                 </div>
             </div>
@@ -17,35 +16,14 @@
                 <div class="Blog-in">
                     <blog-sidebar></blog-sidebar>
                     <div class="Blog-content ">
-                        <template v-for="item in posts">
-                            <nuxt-link :to="'/blog/'+item.page_content.blog_category[0] +'/'+item.url" class="Blog-item" :key="item.id" v-if="item !== null">
-                                <div class="Blog-item-img">
-                                    <nuxt-img :src="item.page_content.default.page_list_img" :alt="item.name + 'Blog | ' + sitename" loading="lazy" placeholder ></nuxt-img>
-                                    <div class="Blog-item-img-text">
-                                        <h6>{{ item.name }}</h6>
-                                    </div>
-                                    <div class="Blog-item-date">
-                                        <div class="Blog-item-date-month">
-                                            <b>{{ item.page_content.blog_publish_date.split(' ')[0] }}</b>
-                                            <span>{{ item.page_content.blog_publish_date.split(' ')[1] }}</span>
-                                        </div>
-                                        <div class="Blog-item-date-year">
-                                            <span>{{ item.page_content.blog_publish_date.split(' ')[2] }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="Blog-item-more">Devamını Oku</div>
-                                </div>
-                                <div class="Blog-item-text">
-                                    <p v-html="item.page_content.summary.data"></p>
-                                </div>
-                            </nuxt-link>
-                        </template>
+                        
+                        <blog-post :post="item" :category="category" v-for="(item,index) in paginatedPosts" :key="index"></blog-post>
 
-
-                        <nav class="w-100">
-                            <ul class="w-100 pagination d-flex flex-wrap justify-content-center align-items-center">
-                                <li class="page-item me-2 me-sm-3 mb-1">
-                                    <a href="#!"
+                        <nav aria-label="..." class="my-3">
+                            <ul class="pagination d-flex flex-wrap justify-content-center align-items-center">
+                                <!-- Go to First Page -->
+                                <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page > 1">
+                                    <a href="javascript:void(0)" @click.prevent="goToPage(1)"
                                         class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary pagination-left">
                                         <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1"
                                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -65,50 +43,33 @@
                                         </svg>
                                     </a>
                                 </li>
-                                <li class="page-item me-2 me-sm-3 mb-1">
-                                    <a href="#!"
-                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">1</a>
+
+                                <!-- Page numbers -->
+                                <li class="page-item me-2 me-sm-3 mb-1" v-if="showLeftDots">
+                                    <a href="javascript:void(0)"
+                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center text-secondary">
+                                        <span aria-hidden="true">&hellip;</span>
+                                    </a>
                                 </li>
-                                <li class="page-item me-2 me-sm-3 mb-1" aria-current="page">
-                                    <a href="#!"
-                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary active">2</a>
+                                <li class="page-item me-2 me-sm-3 mb-1" v-for="(pageNumber, index) in displayedPageNumbers"
+                                    :key="index">
+                                    <a href="javascript:void(0)"
+                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary"
+                                        :class="{ 'active': pageNumber === current_page }"
+                                        @click.prevent="goToPage(pageNumber)">
+                                        {{ pageNumber }}
+                                    </a>
                                 </li>
-                                <li class="page-item me-2 me-sm-3 mb-1">
-                                    <a href="#!"
-                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">3</a>
+                                <li class="page-item me-2 me-sm-3 mb-1" v-if="showRightDots">
+                                    <a href="javascript:void(0)"
+                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">
+                                        <span aria-hidden="true">&hellip;</span>
+                                    </a>
                                 </li>
-                                <li class="page-item me-2 me-sm-3 mb-1">
-                                    <svg width="23px" height="5px" viewBox="0 0 23 5" version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <g id="VillaListeleme" transform="translate(-1109.000000, -2877.000000)"
-                                                fill="#AFAFB6">
-                                                <g id="Group-27" transform="translate(837.000000, 2861.000000)">
-                                                    <g id="Group-16" transform="translate(272.000000, 16.000000)">
-                                                        <circle id="Oval" cx="2.5" cy="2.5" r="2.5"></circle>
-                                                        <circle id="Oval-Copy" cx="11.5" cy="2.5" r="2.5"></circle>
-                                                        <circle id="Oval-Copy-2" cx="20.5" cy="2.5" r="2.5"></circle>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </li>
-                                <li class="page-item me-2 me-sm-3 mb-1">
-                                    <a href="#!"
-                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">14</a>
-                                </li>
-                                <li class="page-item me-2 me-sm-3 mb-1" aria-current="page">
-                                    <a href="#!"
-                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">15</a>
-                                </li>
-                                <li class="page-item me-2 me-sm-3 mb-1">
-                                    <a href="#!"
-                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary">16</a>
-                                </li>
-                                <li class="page-item me-2 me-sm-3 mb-1">
-                                    <a href="#!"
-                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center  text-secondary pagination-right">
+                                <!-- Go to Last Page -->
+                                <li class="page-item me-2 me-sm-3 mb-1" v-if="current_page < totalPages">
+                                    <a href="javascript:void(0)" @click.prevent="goToPage(totalPages)"
+                                        class="page-link rounded-sm d-flex align-items-center justify-content-center text-center pagination-right text-secondary ">
                                         <svg width="7px" height="11px" viewBox="0 0 7 11" version="1.1"
                                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                             <g id="Anasayfa" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -140,19 +101,74 @@
 
 <script>
 import BlogSidebar from "@/components/blog/blog-sidebar.vue";
+import BlogPost from "@/components/blog/blog-post.vue";
 export default {
     name: 'DynamicBlogList',
-    components: { BlogSidebar },
+    components: { BlogSidebar,BlogPost },
     props: {
         posts: {
             required: true
         },
-    },
-    data(){
-        return{
-            sitename: process.env.SITE_NAME
+        category:{
+            required:false
         }
     },
+    data() {
+        return {
+            sitename: process.env.SITE_NAME,
+            current_page: 1,
+            postsPerPage: 6,
+        }
+    },
+    methods: {
+        reverseDate(inputDate) {
+            const dateParts = inputDate.split('-');
+            return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+        },
+        getMonth(date) {
+            const reversedDate = this.reverseDate(date);
+            return this.$moment(reversedDate).format('MMMM')
+        },
+        goToPage(pageNumber) {
+            if (pageNumber === this.current_page) return;
+            this.current_page = pageNumber;
+            if (window.innerWidth < 991) {
+                window.scrollTo({ top: 200, behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        },
+    },
+    computed: {
+        paginatedPosts() {
+            const start = (this.current_page - 1) * this.postsPerPage;
+            const end = start + this.postsPerPage;
+            return this.posts.slice(start, end);
+        },
+        pageNumbers() {
+            return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+        },
+        totalPages() {
+            return Math.ceil(this.posts.length / this.postsPerPage);
+        },
+        displayedPageNumbers() {
+            const currentIndex = this.pageNumbers.indexOf(this.current_page);
+            const leftIndex = Math.max(currentIndex - 3, 0);
+            const rightIndex = Math.min(currentIndex + 3, this.pageNumbers.length - 1);
+            const displayedNumbers = this.pageNumbers.slice(leftIndex, rightIndex + 1);
+            return displayedNumbers;
+        },
+        showLeftDots() {
+            const currentIndex = this.pageNumbers.indexOf(this.current_page);
+            return currentIndex > 3;
+        },
+        showRightDots() {
+            const currentIndex = this.pageNumbers.indexOf(this.current_page);
+            return currentIndex < this.pageNumbers.length - 4;
+        }
+    },
+    mounted(){
+    }
 }
 </script>
   

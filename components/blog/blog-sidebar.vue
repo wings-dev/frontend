@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="Blog-sidebar-item" v-else :key="index">
-                    <a href="" class="Blog-sidebar-item-button" type="button">{{ item.text }}</a>
+                    <nuxt-link :to="'/blog/'+item.href" class="Blog-sidebar-item-button" type="button">{{ item.text }}</nuxt-link>
 
                 </div>
             </template> 

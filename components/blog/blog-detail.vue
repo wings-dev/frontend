@@ -6,9 +6,9 @@
                     <h1>Kalkan</h1>
                     <div class="Blog-header-pagination">
                         <!-- <a href="">OtelBnb ></a> -->
-                        <a href="">Blog > </a>
-                        <a href="">Genel > </a>
-                        <a href="">Tatil için yola çıkmadan....</a>
+                        <nuxt-link to="/blog">Blog > </nuxt-link>
+                        <nuxt-link :to="'/blog/' + category.href">{{ category.text }} ></nuxt-link>
+                        <a>{{ data.title }}</a>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,8 @@
         <section class="Blog-detail-img">
             <div class="container">
                 <div class="Blog-detail-img-in">
-                    <nuxt-img :src="data.page_content.default.page_banner" :alt="'Blog ' + sitename" loading="lazy" placeholder ></nuxt-img>
+                    <nuxt-img :src="data.page_content?.default?.page_banner" v-if="data.page_content.default.page_banner"
+                        :alt="'Blog ' + sitename" loading="lazy" placeholder></nuxt-img>
                 </div>
             </div>
         </section>
@@ -30,14 +31,15 @@
                         <div class="Blog-detail">
                             <div class="Blog-detail-info">
                                 <div class="Blog-detail-info-user">
-                                    <nuxt-img src="/img/user.jpg" :alt="'Blog ' + sitename" loading="lazy" placeholder ></nuxt-img>
+                                    <nuxt-img src="/img/user.jpg" :alt="'Blog ' + sitename" loading="lazy"
+                                        placeholder></nuxt-img>
                                     <p>Yazar: <span>{{ data.page_content.blog_author }}</span>// <span>{{
                                         data.page_content.blog_publish_date }}</span></p>
                                 </div>
                                 <div class="Blog-detail-share">
-                                    <i class="icon-facebook"></i>
-                                    <i class="icon-instagram"></i>
-                                    <i class="icon-twitter"></i>
+                                    <a href="" @click.prevent="shareOnFacebook"><i class="icon-facebook"></i></a>
+                                    <a href="" @click.prevent="shareOnTwitter"><i class="icon-twitter"></i></a>
+                                    <a href="" @click.prevent="shareOnWhatsApp"><i class="icon-whatsapp"></i></a>
                                 </div>
                             </div>
                             <div class="Blog-detail-text">
@@ -64,7 +66,9 @@
                                     <nuxt-link :to="'/blog/' + item.page_content.blog_category[0] + '/' + item.url"
                                         class="Blog-item" :key="item.id" v-if="item !== null">
                                         <div class="Blog-item-img">
-                                            <nuxt-img :src="item.page_content.default.page_list_img" :alt="item.name + 'Blog ' + sitename" loading="lazy" placeholder ></nuxt-img>
+                                            <nuxt-img :src="item.page_content?.default?.page_list_img"
+                                                v-if="item.page_content.default.page_list_img"
+                                                :alt="item.name + 'Blog ' + sitename" loading="lazy" placeholder></nuxt-img>
                                             <div class="Blog-item-img-text">
                                                 <h6>{{ item.name }}</h6>
                                             </div>
@@ -97,16 +101,31 @@
 import { Swiper, Navigation, Pagination } from 'swiper'
 import 'swiper/swiper-bundle.min.css'
 import BlogSidebar from "@/components/blog/blog-sidebar.vue";
+import { shareOnFacebook, shareOnTwitter, shareOnWhatsApp } from '@/assets/share';
 export default {
     name: 'DynamicBlogDetail',
-    props: ['data', 'morePost'],
+    props: ['data', 'morePost', 'category'],
     components: {
         Swiper, BlogSidebar
     },
-    data(){
-        return{
+    data() {
+        return {
             sitename: process.env.SITE_NAME
         }
+    },
+    methods: {
+        shareOnFacebook() {
+            if (!window || !window.location || !window.location.href) return;
+            shareOnFacebook(window.location.href);
+        },
+        shareOnTwitter() {
+            if (!window || !window.location || !window.location.href) return;
+            shareOnTwitter(window.location.href);
+        },
+        shareOnWhatsApp() {
+            if (!window || !window.location || !window.location.href) return;
+            shareOnWhatsApp(window.location.href);
+        },
     },
     mounted() {
         Swiper.use([Navigation, Pagination])
@@ -139,6 +158,7 @@ export default {
 
             },
         })
+
     }
 }
 </script>

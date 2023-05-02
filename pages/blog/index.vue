@@ -16,8 +16,8 @@ export default {
     return {
       title: 'Blog',
       meta: [
-        { hid: 'description', name: 'description', content: 'listele' },
-        { hid: 'keywords', name: 'keywords', content: 'listele1, listele2, listele3' }
+        { hid: 'description', name: 'description', content: 'blog' },
+        { hid: 'keywords', name: 'keywords', content: '' }
       ],
     }
   },

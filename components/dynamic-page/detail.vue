@@ -1103,9 +1103,9 @@
                     </div>
 
                   </div>
-                  <div class="View-info-fee-right d-none">
+                  <div class="View-info-fee-right " v-if="deposit && deposit.charAt(0) !== '0'">
                     <h5>Hasar Depozitosu</h5>
-                    <p>Depozito ücreti <b>2000₺</b> olarak belirlenmiştir. Konaklama süresince tesiste herhangi bir
+                    <p>Depozito ücreti <b>{{deposit}}</b> olarak belirlenmiştir. Konaklama süresince tesiste herhangi bir
                       zarar olmaması
                       durumunda çıkışta <u>iade edilir.</u></p>
                   </div>
@@ -1626,7 +1626,7 @@ import cdnSrcsetMixin from '@/mixins/cdnSrcsetMixin';
 
 export default {
   name: 'DynamicDetailPage',
-  props: ['villa', 'calendar', 'price_list_1'],
+  props: ['villa', 'calendar', 'price_list_1','deposit'],
   mixins: [cdnSrcsetMixin],
   components: {
     Swiper,

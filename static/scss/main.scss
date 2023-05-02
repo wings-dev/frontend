@@ -6855,7 +6855,7 @@ body.overflow-hidden {
           font-size: clamp(12px, 1vw, 14px);
           font-weight: 500;
           line-height: 1.64;
-          color: var(--bs-theme-first-dark);
+          color: var(--bs-theme-first);
           span {
             display: block;
             margin: 0 5px;
@@ -6882,7 +6882,7 @@ body.overflow-hidden {
       h3 {
         font-size: clamp(20px, 2.35vw, 45px);
         font-weight: bold;
-        color: var(--bs-theme-first-dark);
+        color: var(--bs-theme-first);
         margin-bottom: 10px;
       }
       p {

@@ -44,9 +44,10 @@
                             <nuxt-link :to="'/' + item.url" class="Card">
                                 <div class="Card-in">
                                     <div class="Card-img">
+                                        <!-- sizes="(max-width: 576px) 87vw,(max-width: 768px) 44vw, (max-width: 1199px) 21vw, 265w" :srcset="generateSrcset(item.preview_image[0].responsive_url)" sizes="sm:385w lg:265px"-->
                                         <nuxt-img :src="global_cdn + item.preview_image[0].preview_url" loading="lazy" placeholder 
-                                             width="267"
-                                            height="175"></nuxt-img>
+                                         height="175" width="265" 
+                                            ></nuxt-img>
                                         <button class="Card-fav" type="button" @click.prevent="toggleFavorite(item.code)"
                                             :class="isFavorite(item.code) ? 'active' : ''">
                                             <i :class="isFavorite(item.code) ? 'icon-heart-full' : 'icon-heart'"></i>
@@ -742,6 +743,7 @@ export default {
                 },
             },
         })
+
     },
     methods: {
         isFavorite(code) {

@@ -4,7 +4,7 @@
       <search-bar :key="$route.path" v-if="[5, 8, 19].includes(type)"
         :tab="type === 8 && componentData?.page_content?.isabroad ? { tab: 2 } : null"></search-bar>
     </client-only>
-    <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1"
+    <dynamic-detail-page :villa="componentData" :calendar="calendar" :price_list_1="price_list_1" :deposit="deposit"
       v-if="type === 2"></dynamic-detail-page>
     <dynamic-villa-filter-page :selectedFilters="categoryFilter" :pageContent="componentData" :highlights=true
       :type="type" v-else-if="type === 5 || type === 8"></dynamic-villa-filter-page>
@@ -58,6 +58,7 @@ export default {
     let blogPostData = {};
     let calendar = [];
     let price_list_1 = [];
+    let deposit = null;
 
     if (redisData) {
       const type = redisData.type;
@@ -73,6 +74,9 @@ export default {
         price_list_1 = price_list_1 = Array.isArray(data[`data:villas:${redisData.code}:prices`]?.[`price_list_${process.env.PRICELIST_ID}`]?.list)
           ? data[`data:villas:${redisData.code}:prices`][`price_list_${process.env.PRICELIST_ID}`].list
           : [];
+
+        deposit = data[`data:villas:${redisData.code}:prices`][`price_list_${process.env.PRICELIST_ID}`].deposit;
+
         headData = {
           title: metaData.title,
           meta: metaData.meta,
@@ -118,7 +122,7 @@ export default {
         }
       }
 
-      return { type, headData, componentData, calendar, price_list_1, blogPostData }
+      return { type, headData, componentData, calendar, price_list_1, blogPostData,deposit }
     } else {
       return redirect('/404')
     }

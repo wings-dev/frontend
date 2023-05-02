@@ -391,7 +391,6 @@ export default {
   
     this.roomSearch()
 
-    console.log(this.previewImages)
   },
   computed: {
     previewImages() {
