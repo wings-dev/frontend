@@ -121,7 +121,7 @@
             </div>
             <div class="F_villa-item-bottom-price-right">
               <p class="orange">TOPLAM FİYAT</p>
-              <p><b>{{ villa.total.total | numberFormat }}</b><span>TL</span></p>
+              <p><b>{{ villa.total.total | numberFormat }}</b><span>{{ villa.total.price_currency == '₺' ? 'TL' : villa.total.price_currency }}</span></p>
             </div>
           </div>
           <div class="F_villa-item-bottom-price " v-else-if="villa.start_date">
@@ -134,15 +134,15 @@
             </div>
             <div class="F_villa-item-bottom-price-right">
               <p class="orange">TOPLAM FİYAT</p>
-              <p><b>{{ villa.total.total | numberFormat }}</b><span>TL</span></p>
+              <p><b>{{ villa.total.total | numberFormat }}</b><span>{{ villa.total.price_currency == '₺' ? 'TL' : villa.total.price_currency }}</span></p>
             </div>
           </div>
           <div class="F_villa-item-bottom-price" v-else>
-            <p v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}{{villa.prices.min_price.price_currency }} - {{villa.prices.max_price.price | numberFormat }}{{ villa.prices.max_price.price_currency }}
+            <p v-if="villa.prices">{{ villa.prices.min_price.price | numberFormat }}{{villa.prices.min_price.price_currency == '₺' ? 'TL' : villa.prices.min_price.price_currency }} - {{villa.prices.max_price.price | numberFormat }}{{ villa.prices.max_price.price_currency == '₺' ? 'TL' : villa.prices.max_price.price_currency }}
               <span>/Gecelik</span>
             </p>
             <p v-if="villa.total">
-              {{ villa.total.total | numberFormat }}{{ villa.total.price_currency }}
+              {{ villa.total.total | numberFormat }}{{ villa.total.price_currency == '₺' ? 'TL' : villa.total.price_currency }}
               <span>/Gecelik</span>
             </p>
             <small>Fiyat Aralığında</small>

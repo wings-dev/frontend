@@ -128,9 +128,10 @@
             </div>
 
             <div class="d-none">
-              <a v-for="previewImage in previewImages.slice(5)" :href="previewImage.preview_url" data-fancybox="gallery"
+              <a v-for="previewImage in previewImages.slice(4)" :href="previewImage.preview_url" data-fancybox="gallery"
                 :data-caption="hotelDetails.body.hotel.name">
-                <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" width="284" height="187" loading="lazy" placeholder  :alt="hotelDetails.body.hotel.name + ' ' + sitename"
+                <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" 
+                width="284" height="187" loading="lazy" placeholder  :alt="hotelDetails.body.hotel.name + ' ' + sitename"
                   sizes="sm:100vw md:50vw lg:284px" /></a>
             </div>
 
@@ -269,7 +270,8 @@
                   </p>
                 </div>
               </div>
-              <div class="otel-reviews-item" v-for="(comment,index) in comments?.data?.comments || []" :key="index" v-if="index < 10">
+              <hotel-comment :comment="comment" v-for="(comment,index) in comments?.data?.comments || []" :key="index" v-if="index < 10"></hotel-comment>
+              <!-- <div class="otel-reviews-item" >
                 <div class="otel-reviews-item-left">
                   <div class="otel-reviews-item-left-top">
                     <h6>
@@ -299,7 +301,7 @@
                     <p>{{ comment.contents?.[0]?.content }}</p>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <button class="otel-reviews-more d-none" type="button" v-if="comments?.data?.comments.length">Tüm yorumları göster</button>
             </div>
           </div>
@@ -353,6 +355,7 @@ import "vue-hotel-datepicker2/dist/vueHotelDatepicker2.css";
 import { BCarousel } from 'bootstrap-vue'
 import AmenitesModal from '../modals/amenites-modal.vue';
 import LocationMapModal from '../modals/map-modal.vue';
+import HotelComment from '@/components/hotel/hotel-comment.vue';
 import lottie from 'vue-lottie/src/lottie.vue'
 
 export default {
@@ -382,13 +385,13 @@ export default {
     }
   },
   components: {
-    BCarousel, lottie,AmenitesModal,LocationMapModal
+    BCarousel, lottie,AmenitesModal,LocationMapModal,HotelComment
   },
   async mounted() {
-    if(window.innerWidth <= 991){
-      document.querySelector('.Header').classList.add('Header-z')
-    }
+  
     this.roomSearch()
+
+    console.log(this.previewImages)
   },
   computed: {
     previewImages() {
