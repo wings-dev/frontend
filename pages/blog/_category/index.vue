@@ -38,7 +38,7 @@ export default {
       const category = getHrefData(pageURLs[0], store.state.settings.menuData.blogmenu);
 
       let headData = {
-        title: category,
+        title: category.text,
       }
 
       pagePosts = response.data.data.filter(item => item.page_content.blog_category.includes(String(pageURLs[0])))
