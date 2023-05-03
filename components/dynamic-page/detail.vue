@@ -2320,6 +2320,29 @@ export default {
 
       window.addEventListener("load", this.handleResize());
       window.addEventListener("resize", this.handleResize());
+
+      this.$gtm.push({
+        'event': 'villa_detay',
+        'villa_id': this.villa.code,
+        'villa_ad': this.villa.code,
+        'villa_fiyat': this.lowestPrice
+      })
+
+      this.$gtm.push({
+        event: "view_item",
+        ecommerce: {
+          currency: "TRY",
+          value: this.lowestPrice,
+          items: [
+            {
+              item_id: this.villa.code,
+              item_name: this.villa.code,
+              item_brand: "Villa Kalkan",
+              quantity: 1
+            }
+          ]
+        }
+      })
     });
 
   },
