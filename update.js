@@ -15,7 +15,7 @@ const urls = [
   },
   {
     url: "https://wings-web.s3.us-east-2.amazonaws.com/nuxt/" + process.env.SITE + "_sitemap.zip",
-    outputDir: "./static",
+    outputDir: "./",
   },
 ];
 
