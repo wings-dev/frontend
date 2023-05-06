@@ -231,9 +231,18 @@ export default {
           const priceInfo = responsePrice[`data:villas:${villa.code}:prices`] || {};
           const priceList = Array.isArray(priceInfo[`price_list_${process.env.PRICELIST_ID}`]?.list) ? priceInfo[`price_list_${process.env.PRICELIST_ID}`].list : [];
 
-          const prices = priceList.map(item => item && item.price ? parseInt(item.price.replace("₺", "")) : null).filter(Boolean);
-          const min_price = prices.length > 0 ? Math.min(...prices) : null;
-          const max_price = prices.length > 0 ? Math.max(...prices) : null;
+          const prices = priceList.map(item => {
+            if (item && item.price) {
+              const currency = item.price.match(/[^\d\s]+/g)?.join('') || '';
+              const price = parseInt(item.price.replace(currency, ""));
+              return { price, currency };
+            } else {
+              return null;
+            }
+          }).filter(Boolean);
+          const min_price = prices.length > 0 ? Math.min(...prices.map(p => p.price)) : null;
+          const max_price = prices.length > 0 ? Math.max(...prices.map(p => p.price)) : null;
+          const currency = prices.length > 0 ? prices[0].currency : '';
 
           if (typeof store.state.routes.routes === 'object' && store.state.routes.routes !== null) {
             villa.url = findVillaUrlByCode(villa.code, store.state.routes.routes);
@@ -241,8 +250,8 @@ export default {
 
           return {
             ...villa,
-            min_price: min_price ? min_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
-            max_price: max_price ? max_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + "TL" : null,
+            min_price: min_price ? min_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + currency : null,
+            max_price: max_price ? max_price.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + currency : null,
           };
         } else {
           return villa;
