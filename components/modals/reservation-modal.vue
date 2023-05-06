@@ -80,7 +80,7 @@
                 <span></span>
                 <p>Fırsat ve kampanyalardan haberdar olmak istiyorum.</p>
               </label>
-              <button :disabled="!formValidated" :style="{ 'opacity': formValidated ? '1' : '.5' }" type="submit"
+              <button :disabled="!formValidated || loading" :style="{ 'opacity': formValidated ? '1' : '.5' }" type="submit"
                 class="Login-form-button mt-2">GÖNDER</button>
             </form>
           </div>
@@ -135,7 +135,8 @@ export default {
         },
         mode: "international",
         validCharactersOnly: true,
-      }
+      },
+      loading:false,
     }
   },
   computed: {
@@ -205,6 +206,7 @@ export default {
       }, 50)
     },
     async register() {
+      this.loading = true;
       let resData = JSON.parse(JSON.stringify(this.reservationModalData))
       delete resData.availabilityData;
       delete resData.villa;
@@ -262,6 +264,7 @@ export default {
         this.$bvModal.hide('reservationModal')
         this.$bvModal.show('reservationCodeModal')
       }
+      this.loading = false;
     },
     checkName() {
       this.form.name = this.form.name.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]/g, '');
