@@ -13,17 +13,17 @@
         <div class="Filters-range-inputs">
           <label for="">
             <small class="">Min</small>
-            <input type="number" class="js-minFiyat" name="min" placeholder="Min" v-model="min_price" @change="emitPrices">
-            <span>₺</span>
+            <input style="color: black" type="number" readonly class="js-minFiyat" name="min" placeholder="Min" v-model="min_price" @change="emitPrices">
+            <span>{{this.currency}}</span>
           </label>
           <label for="">
             <small class="fw-medium text-theme-secondary d-block w-100">Max</small>
-            <input type="number" class="js-maxFiyat" name="max" placeholder="Max" value="" v-model="max_price" @change="emitPrices">
-            <span class="text-theme-secondary">₺</span>
+            <input style="color: black" readonly type="number" class="js-maxFiyat" name="max" placeholder="Max" value="" v-model="max_price" @change="emitPrices">
+            <span class="text-theme-secondary">{{this.currency}}</span>
           </label>
         </div>
         <div class="mt-3 px-3">
-          <vue-slider v-model="value" @change="onChange" :lazy="true" :tooltip-formatter="formatter" :min="500" :max="5000" />
+          <vue-slider v-model="value" @change="onChange" :lazy="true" :tooltip-formatter="formatter" :min="min" :max="max" :interval="1000" />
         </div>
       </div>
       <button type="button" @click="checkboxClose(groupName)" class="Filters-in-m-button">TAMAM</button>
@@ -38,16 +38,19 @@ import 'vue-slider-component/dist-css/vue-slider-component.css'
 import 'vue-slider-component/theme/default.css'
 export default {
   name: "FilterPriceBetweenComponent",
-  data() {
-    return {
-      min_price: null,
-      max_price: null,
-      value: [500, 2000],
-      formatter: '₺{value}',
-    }
-  },
   props: {
     groupName: {type: String},
+    min: { required: true, type: Number },
+    max: { required: true, type: Number },
+    currency: { required: true, type: String },
+  },
+  data() {
+    return {
+      min_price: this.min,
+      max_price: this.max,
+      value: [this.min, this.max],
+      formatter: this.currency + '{value}',
+    }
   },
   components: {
     VueSlider,

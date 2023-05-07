@@ -52,8 +52,8 @@
               :isFacilities="true"
               ></filter-item-checkbox-component> -->
 
-            <!-- <filter-price-between-component @min_price="updateFilter('min_price', $event, false)"
-              @max_price="updateFilter('max_price', $event)" groupName="priceRange"></filter-price-between-component> -->
+            <filter-price-between-component :min="slider_price_min" :max="slider_price_max" :currency="slider_price_currency" @min_price="updateFilter('min_price', $event, false)"
+              @max_price="updateFilter('max_price', $event)" groupName="priceRange"></filter-price-between-component>
 
             <button type="button" class="Search-clear-mobile" v-show="filterCount > 0" @click="clearFilter()">Tümünü
               Temizle</button>
@@ -308,6 +308,10 @@ export default {
         renderer: 'svg',
         autoplay: true,
       },
+      slider_price_min: null,
+      slider_price_max: null,
+      slider_price_currency: null,
+      source: null,
     }
   },
   components: {
@@ -338,6 +342,30 @@ export default {
     this.adult = this.selectedFilters['adult'] ?? null;
     this.children = this.selectedFilters['children'] ?? null;
     this.baby = this.selectedFilters['baby'] ?? null;
+
+    if (this.world) {
+      this.slider_price_currency = '€'
+      if (this.checkIn) {
+        this.slider_price_min = 1000
+        this.slider_price_max = 500000
+      } else {
+        this.slider_price_min = 1000
+        this.slider_price_max = 50000
+      }
+    } else {
+      this.slider_price_currency = '₺'
+      if (this.checkIn) {
+        this.slider_price_min = 1000
+        this.slider_price_max = 150000
+      } else {
+        this.slider_price_min = 1000
+        this.slider_price_max = 25000
+      }
+    }
+
+    this.min_price = this.slider_price_min
+    this.max_price = this.slider_price_max
+
   },
   mounted() {
     this.extraFilters = this.pageContent?.page_content?.villa_filter || null;
@@ -472,6 +500,14 @@ export default {
       this.villas = [];
       this.loading = true;
 
+      // Mevcut sorguyu iptal et
+      if (this.source) {
+        this.source.cancel('Previous request canceled due to new request.');
+      }
+
+      // Yeni bir axios.CancelTokenSource oluştur
+      this.source = this.$axios.CancelToken.source();
+
       let adult = this.adult ? parseInt(this.adult) + (this.children ? parseInt(this.children) : 0) : null;
 
       let data = {
@@ -492,7 +528,6 @@ export default {
         baby: this.baby ? parseInt(this.baby) : null,
         order: this.orderValue?.value,
         world: this.world
-        // ...this.extraFilters
       };
 
       if (this.opportunity) {
@@ -503,18 +538,24 @@ export default {
         : `/website/property?api_token=${process.env.WEBSITE_TOKEN}&page=${pageNumber}`
 
       this.$axios
-        .post(url, data)
+        .post(url, data, {
+          cancelToken: this.source.token, // İstekte iptal belirteci kullan
+        })
         .then(({ data: responseData }) => {
           this.villas = responseData.data;
           this.per_page = responseData.per_page;
           this.total_items = responseData.total;
           this.current_page = responseData.current_page;
-
-
         })
-        .catch(console.error)
+        .catch((error) => {
+          if (this.$axios.isCancel(error)) {
+            console.log('Request canceled:', error.message);
+          } else {
+            console.error(error);
+          }
+        })
         .finally(() => {
-          this.loading = false
+          this.loading = false;
         });
     },
     getSelectedObjects(checkboxes) {
