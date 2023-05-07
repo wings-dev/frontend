@@ -40,9 +40,9 @@ export default {
   name: "FilterPriceBetweenComponent",
   props: {
     groupName: {type: String},
-    min: { required: true, type: Number },
-    max: { required: true, type: Number },
-    currency: { required: true, type: String },
+    min: { required: false, default: 1000 },
+    max: { required: false, default: 500000},
+    currency: { required: false, default: '₺' },
   },
   data() {
     return {
