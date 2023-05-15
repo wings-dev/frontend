@@ -130,7 +130,7 @@
             <div class="d-none">
               <a v-for="previewImage in previewImages.slice(4)" :href="previewImage.preview_url" data-fancybox="gallery"
                 :data-caption="hotelDetails.body.hotel.name">
-                <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url" 
+                <nuxt-img :src="previewImage.preview_url" :srcset="previewImage.preview_url"
                 width="284" height="187" loading="lazy" placeholder  :alt="hotelDetails.body.hotel.name + ' ' + sitename"
                   sizes="sm:100vw md:50vw lg:284px" /></a>
             </div>
@@ -187,7 +187,7 @@
                 <div class="row">
                   <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column flex-sm-row pe-xl-4 mb-lg-0 mb-2 align-items-start">
                     <div class="img-box position-relative flex-shrink-0 room-img-container">
-                      <nuxt-img v-if="room.roomInfo?.mediaFiles" :src="room.roomInfo.mediaFiles[0].urlFull" width="297" height="208" loading="lazy" placeholder 
+                      <nuxt-img v-if="room.roomInfo?.mediaFiles" :src="room.roomInfo.mediaFiles[0].urlFull" width="297" height="208" loading="lazy" placeholder
                       :alt="hotelDetails.body.hotel.name + ' ' + sitename" class="lazy cover flex-shrink-0"></nuxt-img>
                       <div class="no-rooms" v-else>
                         <nuxt-img src="/img/no-img.svg" :alt="hotelDetails.body.hotel.name + ' ' + sitename" width="297" height="208" loading="lazy" placeholder ></nuxt-img>
@@ -302,7 +302,7 @@
                   </div>
                 </div>
               </div> -->
-              <button class="otel-reviews-more d-none" type="button" v-if="comments?.data?.comments.length">Tüm yorumları göster</button>
+              <button class="otel-reviews-more d-none" type="button" v-if="comments?.data?.comments?.length">Tüm yorumları göster</button>
             </div>
           </div>
         </div>
@@ -388,7 +388,7 @@ export default {
     BCarousel, lottie,AmenitesModal,LocationMapModal,HotelComment
   },
   async mounted() {
-  
+
     this.roomSearch()
 
   },
